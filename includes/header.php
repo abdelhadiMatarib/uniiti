@@ -23,7 +23,7 @@
         <div class="header_rightnav">
 
             <div class="header_yourcity">
-                <img src="img/marker_map.png" title="" alt="" height="23" width="15"/>
+                <img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/>
                 <aside>Votre ville :</aside>
                 <select>
                     <option>Paris 15e</option>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="header_user">
-                <img src="img/userpic.png" title="" alt="" height="30" width="30"/>
+                <img src="<?php echo SITE_URL; ?>/img/userpic.png" title="" alt="" height="30" width="30"/>
                 <select>
                     <option>David Brockman</option>
                 </select>

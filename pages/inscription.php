@@ -3,15 +3,17 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-        <?php include'../includes/head.php'; ?>
+        <?php
+        include_once '../config/configuration.inc.php';
+        include'../includes/head.php'; ?>
     <body>
         <?php include'../includes/header.php'; ?>
         <div class="big_wrapper">
             
             <div class="liseret_bleu"></div>
-            <div class="inscription_head"><h2><img src="img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head"><h2><img src="../img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_fb_wrap">
-                <div class="inscription_fb_plus"><a href="#" title=""><img src="img/pictos_inscription/plus_fb.png" height="48" width="48" title="" alt=""/></a></div>
+                <div class="inscription_fb_plus"><a href="#" title=""><img src="../img/pictos_inscription/plus_fb.png" height="48" width="48" title="" alt=""/></a></div>
                 <a class="fb_connect_pourquoi" href="#" title="Pourquoi se connecter avec Facebook ?">Pourquoi ?</a>
                 <div class="fb_connect_button">
                     <div class="fb_connect_button_wrap_text">
@@ -60,7 +62,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="inscription_charte">
-                <div class="img_container"><img src="img/pictos_inscription/charte.png" height="64" width="56" title="" alt=""/></div>
+                <div class="img_container"><img src="../img/pictos_inscription/charte.png" height="64" width="56" title="" alt=""/></div>
                 <div class="inscription_charte_texte">
                     <p><strong>CHARTE DE CONFIDENTIALITÉ & CONDITIONS D’UTILISATION</strong></p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet lorem pretium, blandit eros in, cursus nisl. Donec pharetra nisi massa. Nunc vitae leo sagittis, laoreet eros at, porttitor nibh. Mauris eleifend commodo lorem. Sed a pretium diam, ut volutpat mauris. Quisque adipiscing dui sit amet neque aliquet congue. Phasellus non mi lectus. Sed sit amet quam ac leo sodales ultrices.</p>

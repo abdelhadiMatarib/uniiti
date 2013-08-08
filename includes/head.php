@@ -7,9 +7,9 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
         
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/normalize.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/main.css">
         <!--<link rel="stylesheet" href="css/Isotope.css">-->
 
-        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>

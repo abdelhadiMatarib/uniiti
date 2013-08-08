@@ -1,9 +1,9 @@
 <!-- JS -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-        <script src="js/main.js"></script>
-        <script src="js/jquery.isotope.min.js"></script>
-        <script src="js/jquery.isotope.perfectmasonry.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="<?php echo SITE_URL; ?>/js/main.js"></script>
+        <script src="<?php echo SITE_URL; ?>/js/jquery.isotope.min.js"></script>
+        <script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js"></script>
         <script>
             $(document).ready(function() {
                 
