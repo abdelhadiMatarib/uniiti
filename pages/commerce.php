@@ -3,9 +3,9 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-        <?php include'includes/head.php'; ?>
+        <?php include'../includes/head.php'; ?>
     <body>
-        <?php include'includes/header.php'; ?>
+        <?php include'../includes/header.php'; ?>
         <div class="big_wrapper">
             <div class="liseret_orange"></div>
             <div class="commerce_head">
@@ -85,7 +85,7 @@
             </div>
         
         <!-- FILTRE DE TRI -->
-        <?php include'includes/filters.php' ?>
+        <?php include'../includes/filters.php' ?>
         <!-- FIN FILTRE DE TRI -->
         </div>
         <!-- FIN BIG WRAPPER -->
@@ -575,6 +575,6 @@
         
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
-        <?php include'includes/js.php' ?>
+        <?php include'../includes/js.php' ?>
     </body>
 </html>
