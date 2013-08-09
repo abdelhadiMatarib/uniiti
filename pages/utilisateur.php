@@ -66,7 +66,7 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content">
-               <!-- VIGNETTE TYPE -->
+                      <!-- VIGNETTE TYPE -->
         <div class="box">
             
             <header>
@@ -88,6 +88,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/1.jpg" title="" alt="" />
             </figure>
             
@@ -128,6 +129,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/2.jpg" title="" alt="" />
             </figure>
             
@@ -169,6 +171,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/3.jpg" title="" alt="" />
             </figure>
             
@@ -209,6 +212,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/4.jpg" title="" alt="" />
             </figure>
             
@@ -249,6 +253,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/5.jpg" title="" alt="" />
             </figure>
             
@@ -289,6 +294,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/5.jpg" title="" alt="" />
             </figure>
             
@@ -329,6 +335,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/3.jpg" title="" alt="" />
             </figure>
             
@@ -369,6 +376,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/2.jpg" title="" alt="" />
             </figure>
             
@@ -409,6 +417,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/1.jpg" title="" alt="" />
             </figure>
             
@@ -449,6 +458,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/4.jpg" title="" alt="" />
             </figure>
             
@@ -489,6 +499,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/3.jpg" title="" alt="" />
             </figure>
             
@@ -529,6 +540,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/2.jpg" title="" alt="" />
             </figure>
             
@@ -569,6 +581,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/5.jpg" title="" alt="" />
             </figure>
             
@@ -609,6 +622,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/4.jpg" title="" alt="" />
             </figure>
             
@@ -649,6 +663,7 @@
                     </div>
                     <div class="box_headratings"><span>9/10 - 2543 avis</span></div>
                 </div>
+                <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
                 <img src="../img/photos_commerces/1.jpg" title="" alt="" />
             </figure>
             
@@ -669,7 +684,6 @@
             
         </div>
         <!-- FIN VIGNETTE TYPE -->
-               
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
         <?php include'../includes/js.php' ?>

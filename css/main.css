@@ -52,7 +52,7 @@ input[type="text"],input[type="email"],input[type="textarea"],input[type="submit
 .filters ul li.filtreAvis{background:url('../img/sprite_filtre.png') no-repeat -170px 10px;background-color:#A4EBF1;}
 
 /* BOXES GENERIQUES */
-.box{-webkit-box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:212px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
+.box{position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:212px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
 .box:hover{border: 1px solid #fabe41; margin:0px 7px 14px 6px; -webkit-box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0); box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0);}
 .box_of_day{height:400px;width:420px;background-color:blue}
 
@@ -69,8 +69,11 @@ input[type="text"],input[type="email"],input[type="textarea"],input[type="submit
 .box_headratings span{color:white;font-size:85%;}
 
 .box figure img{max-width:100%;width:auto;height:auto;}
-.box figure {height:100%; overflow:hidden;}
+.box figure {position:relative;height:100%; overflow:hidden;}
 .box figure > img:hover{cursor:pointer; opacity:0.9;}
+
+.box_localisation{bottom: 10px;z-index:999;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
+
 .box_useraction{text-align: center;margin:0 0 10px 0;}
 .box_usertext{margin:0 0 7px 0;}
 .box section{border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px; margin-top:-4px;}
@@ -276,7 +279,7 @@ input[type="text"],input[type="email"],input[type="textarea"],input[type="submit
 
 /* INSCRIPTION */
 .liseret_bleu{background-color:#A4EBF1;height:5px;}
-.inscription_head{border-radius:0 0 3px 3px;height:90px;background-color:white;text-align:center;}
+.inscription_head{position:relative;border-radius:0 0 3px 3px;height:90px;background-color:white;text-align:center;}
 .inscription_head img{vertical-align:middle;margin:0 10px 0 0;}
 .inscription_head h2{margin:0;padding:15px 0 0 0;font-size:2.1em;font-weight:100;}
 .inscription_head span{display:inline-block;font-weight:400;}
@@ -290,17 +293,18 @@ input[type="text"],input[type="email"],input[type="textarea"],input[type="submit
 .fb_connect_button_text{font-weight:100;}
 .fb_connect_button_highlight{font-weight:600;}
 
-.inscription_head2{border-radius:3px 3px 0 0;margin:10px 0 0 0;height:35px;background-color:#252525;}
+.inscription_head2{position:relative;border-radius:3px 3px 0 0;margin:10px 0 0 0;height:35px;background-color:#252525;}
 .inscription_head2 h3{font-size:1.4em;margin:0;font-weight:100;}
 .inscription_step1,.inscription_step2,.inscription_step3{padding:5px 0 0 0;color:white;float:left;width:376px;height:30px;text-align:center;}
 .inscription_step1{color:#a4ebf1;}
-.inscription_fields_left,.inscription_fields_right{float:left;width:565px;}
+.inscription_fields_left,.inscription_fields_right{position:relative;float:left;width:565px;}
 .inscription_border_bottom{border-bottom:1px solid #e4e4e4;}
 .inscription_border_bottomright{border-bottom:1px solid #e4e4e4;border-right:1px solid #e4e4e4;}
 .inscription_field_sexe,.inscription_field_nom,.inscription_field_prenom,.inscription_field_mail,.inscription_field_confirmmail,.inscription_field_pseudo,.inscription_field_parrain,.inscription_field_cp,.inscription_field_mdp,.inscription_field_confirmmdp{float:left;height:30px;width:219px;padding:10px 0 0 0;background-color:white;text-align:center;font-size:1.2em;text-transform:uppercase;font-weight:600;}
 .inscription_field_sexe_button{display:inline-block;width:172.5px;height:40px;}
-.inscription_field_sexe_button_h{background-color:#a4ebf1;}
-.inscription_field_sexe_button_f{background-color:#e4e4e4;}
+.inscription_field_sexe_button_h{background:url('../img/pictos_inscription/sexe_h.png') no-repeat;background-position-x:20px;background-position-y:5px;}
+.inscription_field_sexe_button_f{background:url('../img/pictos_inscription/sexe_f.png') no-repeat;background-position-x:20px;background-position-y:5px;}
+.inscription_field_sexe_bg{background-color:#a4ebf1;}
 .inscription_field_input_text{padding:5px 0 5px 10px;font-size:1.2em;font-weight:600;width:335px;border:0 none;height:30px;background-color:#eaeaea;}
 
 .inscription_charte{float:left;height:145px;width:995px;background-color:white;}
@@ -316,6 +320,20 @@ input[type="text"],input[type="email"],input[type="textarea"],input[type="submit
 .inscription_footer_highlight{font-weight:700;}
 .inscription_next_step_button{padding:7px 0 0 0;text-align:center;color:white;position:absolute;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
 
+.inscription_upload_image_texte,.inscription_choisir_image_texte{border-bottom:1px solid #e4e4e4;padding-top:10px;height:30px;text-transform:uppercase;background-color:white;text-align:center;}
+.inscription_upload_image_texte{border-right:1px solid #e4e4e4;}
+
+.inscription_separation_ou{text-align:center;position:absolute;background:url('../img/pictos_inscription/rondou.png') no-repeat center;height:30px;width:30px;z-index: 1;right: -15px;top: 5px;}
+.inscription_separation_ou span{display:block;padding:5px;text-transform:uppercase;}
+.inscription_upload_image_container,.inscription_choisir_image_container{padding:40px;text-align:center;background-color:white;height:270px;}
+.inscription_upload_image_container{border-right:1px solid #e4e4e4;}
+.inscription_choisir_image_container{background-color:#e4e4e4;}
+.inscription_wrap_next_step2{border-top:1px solid #e4e4e4;height:55px;background-color:white;width:1130px;float:left;position:relative;}
+.inscription_next_step2{bottom:18px;right:10px;position:absolute;width:115px;padding:10px 10px 0 10px;}
+.inscription_next_step_button2{padding:7px 0 0 0;text-align:center;color:white;float:left;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
+.inscription_avatar_selected{position:absolute;left:50%;margin-left:-60px;bottom:18px;}
+.inscription_avatar_selected_texte{text-transform:uppercase;text-align:center;background-color:#a4ebf1;}
+.inscription_avatar_selected_texte span{display:block;}
 /* PRINT VERSION */
 @media print {}
 

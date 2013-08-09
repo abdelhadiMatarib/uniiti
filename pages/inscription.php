@@ -29,7 +29,7 @@
             </div>
             <div class="inscription_fields_left">
                 <div class="inscription_field_sexe inscription_border_bottomright">Sexe *</div>
-                <button class="inscription_field_sexe_button inscription_field_sexe_button_h">Homme</button><button class="inscription_field_sexe_button inscription_field_sexe_button_f">Femme</button>
+                <button class="inscription_field_sexe_button inscription_field_sexe_button_h" id="button_homme">Homme</button><button class="inscription_field_sexe_button inscription_field_sexe_button_f" id="button_femme">Femme</button>
                 <div class="clearfix"></div>
                 <div class="inscription_field_nom inscription_border_bottomright">Nom *</div>
                 <input class="inscription_field_input_text" type="text"/>
@@ -83,6 +83,6 @@
                 
             </div>
 
- <?php /*include'../includes/js.php' */?>
+ <?php include'../includes/js.php' ?>
     </body>
 </html>
