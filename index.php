@@ -30,6 +30,7 @@
             
             <figure>
                 <div class="box_mark">
+                    test
                     <div class="box_stars">
                         <img src="img/pictos_actions/star.png" title="" alt="" />
                         <img src="img/pictos_actions/star.png" title="" alt="" />
