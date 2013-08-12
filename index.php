@@ -15,6 +15,7 @@
         <?php include'includes/filters.php' ?>
         <!-- FIN FILTRES DE TRI -->
         </div>
+        kikoo lol
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content">
         <!-- VIGNETTE TYPE -->
