@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="inscription_head2">
-                <div class="inscription_step1"><h3>Informations générales</h3></div>
+                <div class="inscription_step1 inscription_current_step_texte_head"><h3>Informations générales</h3></div>
                 <div class="inscription_step2"><h3>Choix de l'avatar</h3></div>
                 <div class="inscription_step3"><h3>Vos centres d'intérêts</h3></div>
             </div>
@@ -77,7 +77,7 @@
             <div class="inscription_footer">
                 <h4 class="inscription_footer_highlight">Nous nous engageons à protéger votre vie privée et votre adresse e-mail ne sera jamais vendue ni louée.</h4> 
                 <h4 class="inscription_footer_text">En cliquant sur suivant, vous indiquez que vous acceptez notre Charte de confidentialité et nos Conditions d'utilisation.</h4>
-                <div class="inscription_next_step_button"><a href="#" title="">Suivant</a></div>
+                <div class="inscription_next_step_button"><a href="inscription2.php" title="">Suivant</a></div>
             </div>
         </div><!-- FIN BIG WRAPPER --><div class="inscription_fields_right">
                 
