@@ -4,7 +4,17 @@ body{color:#252525;background-color:#E3E3E3;text-rendering: optimizeLegibility;}
 .big_wrapper{min-width:1130px;max-width:1130px;margin:0 auto;}
 .content{max-width:1130px;min-width:1130px;margin:0 auto;height:100%;}
 input[type="text"],input[type="email"],input[type="textarea"],input[type="submit"],button{-webkit-border-radius: 3px;border-radius: 3px;}
-
+.index_overlay{z-index: 100;filter: alpha(opacity=90);filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);-moz-opacity: .90;-khtml-opacity: 0.9;	opacity: 0.9;background-color:#000000;position:fixed; top:0px; left:0px; width:100%; height:100%; color:#FFFFFF;}
+.index_overlay_wrap_content{z-index:101;text-align:center;color:white;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;height:160px;width:283px;}
+.index_overlay_texte_wrap{margin:10px 0 10px 0;font-size: 1.1em;}
+span.index_overlay_texte{display:block;}
+.index_overlay_button{width: 283px;height: 30px;background-color:#A4EBF1;}
+.index_overlay_button a{display:block;padding-top:5px;font-size:1.1em;color:#252525;font-weight:700;}
+.index_overlay_button:hover{background-color:#73d4dc;}
+.index_overlay_button:hover a{color:white;}
+.close_button{z-index:101;position:absolute;height:60px;width:60px;top:20px;right:20px;background:url('../img/close_button.png') no-repeat 0 0;}
+.close_button a{display:block;height:100%;width:100%;}
+.close_button:hover{background-position:0 -60px;}
 /* CLEARFIX */
 .clearfix:after {
 	content: ".";

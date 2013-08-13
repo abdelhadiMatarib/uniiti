@@ -10,4 +10,8 @@ $('.inscription_field_sexe_button_h').removeClass('inscription_field_sexe_bg');
 $('.inscription_field_sexe_button_f').toggleClass('inscription_field_sexe_bg');
   });
   
+    // Overlay bandeau accueil
+$('#close_button_home').click(function() {
+  $('#total_overlay').hide('2000');   
+    });
 });
