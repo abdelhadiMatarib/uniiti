@@ -12,6 +12,11 @@ $('.inscription_field_sexe_button_f').toggleClass('inscription_field_sexe_bg');
   
     // Overlay bandeau accueil
 $('#close_button_home').click(function() {
-  $('#total_overlay').hide('2000');   
+  $('#total_overlay').hide('fast');
+    });
+    
+    // Menu déroulant header
+    $('#header_usermenu,#header_usermenu2').click(function(){
+       $('#header_menu').slideToggle(150);
     });
 });

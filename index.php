@@ -19,7 +19,8 @@
         </div>
         <?php include'includes/header.php'; ?>
         <!-- END OF WRAPPER -->
-        <div class="big_wrapper">
+        <div class="biggymarginer">
+        <div class="big_wrapper">   
         <!-- FILTRES DE TRI -->
         <?php include'includes/filters.php' ?>
         <!-- FIN FILTRES DE TRI -->
@@ -647,5 +648,6 @@
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
         <?php include'includes/js.php' ?>
+        </div><!-- FIN DU BIGGY -->
     </body>
 </html>

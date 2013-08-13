@@ -23,18 +23,25 @@
         <div class="header_rightnav">
 
             <div class="header_yourcity">
-                <img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/>
+                <div class="header_img_container"><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></div>
                 <aside>Votre ville :</aside>
-                <select>
-                    <option>Paris 15e</option>
-                </select>
+                <div class="header_choixvilles"><a id="header_choixvilles" href="#">Paris 15<sup>ème</sup></a></div>
+                <div class="header_flechebas"><a id="header_choixvilles2" href="#"></a></div>
             </div>
 
             <div class="header_user">
-                <img src="<?php echo SITE_URL; ?>/img/userpic.png" title="" alt="" height="30" width="30"/>
-                <select>
-                    <option>David Brockman</option>
-                </select>
+                <div class="header_img_container"><img src="<?php echo SITE_URL; ?>/img/userpic.png" title="" alt="" height="30" width="30"/></div>
+                <div class="header_usermenu"><a id="header_usermenu" href="#">David Brockman</a></div>
+                <div id="header_flechebas_usermenu" class="header_flechebas"><a id="header_usermenu2" href="#"></a></div>
+            </div>
+            <div id="header_menu" class="header_user_menulist">
+                <ul>
+                    <li><a href="#" title="">Mon profil perso</a></li>
+                    <li><a href="#" title="">Mon restaurant</a></li>
+                    <li><a href="#" title="">Suggérer un commerce</a></li>
+                    <li><a href="#" title="">Suggérer un objet</a></li>
+                    <li><a href="#" title="">Déconnexion</a></li>
+                </ul>
             </div>
 
         </div>
