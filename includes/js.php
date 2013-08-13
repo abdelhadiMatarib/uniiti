@@ -66,11 +66,13 @@
                 
                 $(function(){
                     var $container = $('#box_container');
+                    $container.imagesLoaded( function(){
                     $container.isotope({
                     itemSelector : '.box',
                     masonry : {
                       columnWidth : 250
                     }
+                });
                 });
             });
             });

@@ -26,7 +26,7 @@ span.index_overlay_texte{display:block;}
 	height: 0;
 }
 /* HEADER */
-.header{position:relative;z-index:51;min-width: 1130px;margin:0 0 14px 0;background-color:#FFF;padding:7px 40px;height:30px;-webkit-box-shadow:0px 0px 2px 2px rgba(0, 0, 0, 0.15); box-shadow:0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
+.header{position:relative;z-index:51;margin:0 0 14px 0;background-color:#FFF;padding:7px 40px;height:30px;-webkit-box-shadow:0px 0px 2px 2px rgba(0, 0, 0, 0.15); box-shadow:0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
 .header input[type="text"]{padding:0 0 0 10px;background-color:#EDEDED;margin-right:7px;height:30px;}
 
 .header_leftnav{height:30px;float:left;}
@@ -93,7 +93,7 @@ span.index_overlay_texte{display:block;}
 .box figure {position:relative;height:100%; overflow:hidden;}
 .box figure > img:hover{cursor:pointer; opacity:0.9;}
 
-.box_localisation{bottom: 10px;z-index:999;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
+.box_localisation{bottom: 10px;z-index:90;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
 
 .box_useraction{text-align: center;margin:0 0 10px 0;}
 .box_usertext{margin:0 0 7px 0;}
@@ -427,7 +427,7 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     .biggymarginer{padding:0 9px;}
 }
 /* DESKTOP VERSION */
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 1024px) {
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
     .biggymarginer{padding:0 9px;}
