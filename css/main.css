@@ -421,7 +421,7 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     .header_leftnav{display:none;}
 }
 /* TABLET PORTRAIT VERSION */
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 1024px){
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
     .biggymarginer{padding:0 9px;}
