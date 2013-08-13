@@ -1,7 +1,7 @@
 /* GENERAL */
 
 body{color:#252525;background-color:#E3E3E3;text-rendering: optimizeLegibility;}
-.biggymarginer{margin:0 auto;padding:0 40px;overflow:visible;}
+.biggymarginer{margin:0 auto;padding:0 40px;}
 .big_wrapper{margin:0 auto;}
 .content{margin:0 auto;height:100%;}
 input[type="text"],input[type="email"],input[type="textarea"],input[type="submit"],button{-webkit-border-radius: 3px;border-radius: 3px;}
@@ -424,9 +424,11 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 @media only screen and (max-width: 768px){
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
+    .biggymarginer{padding:0 9px;}
 }
 /* DESKTOP VERSION */
 @media only screen and (max-width: 980px) {
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
+    .biggymarginer{padding:0 9px;}
 }
