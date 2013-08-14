@@ -438,7 +438,7 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     .biggymarginer{padding:0 9px;}
     .big_wrapper{width:736px;}
 }
-@media only screen and (min-width:960px) and (max-width: 1240px) {
+@media only screen and (min-width:960px) and (max-width: 1280px) {
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
     .biggymarginer{padding:0 9px;}
@@ -456,7 +456,7 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     .biggymarginer{padding:0 9px;}
     .big_wrapper{width:1486px;}
 }
-@media only screen and (min-width:1366px) and (max-width: 1920px) {
+@media only screen and (min-width:1440px) and (max-width: 1920px) {
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
     .biggymarginer{padding:0 9px;}
