@@ -8,8 +8,8 @@
         include'../includes/head.php'; ?>
 <body>    
         <?php include'../includes/header.php'; ?>
+    <div class="biggymarginer">
         <div class="big_wrapper">
-            
             <div class="liseret_marron"></div>
             <div class="objet_head">
                 <div class="objet_head_desc">
@@ -555,6 +555,7 @@
         
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
+    </div><!-- FIN BIGGY -->
         <?php include'../includes/js.php' ?>
         
     </body>

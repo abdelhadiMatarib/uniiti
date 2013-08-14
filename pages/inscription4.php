@@ -8,6 +8,7 @@
         include'../includes/head.php'; ?>
     <body>
         <?php include'../includes/header.php'; ?>
+        <div class="biggymarginer">
         <div class="big_wrapper">
             <div class="liseret_bleu"></div>
             <div class="inscription_head"><h2><img src="../img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
@@ -23,6 +24,7 @@
             <div class="containing_rondou"><div class="inscription_final_step_rondou"><span>Ou</span></div></div>
             <div class="inscription_fields_left inscription_final_step_right2"><div class="AbsoluteCenter"><a href="utilisateur.php"><span class="inscription_final_step_right_texte">Accéder à</span><span class="inscription_final_step_right_texte_highlight">votre profil</span></a></div></div>
         </div><!-- FIN BIG WRAPPER -->
+        </div><!-- FIN BIGGY -->
  <?php include'../includes/js.php' ?>
     </body>
 </html>

@@ -8,9 +8,9 @@
         include'../includes/head.php'; ?>
     <body>
         <?php include'../includes/header.php'; ?>
+        <div class="biggymarginer">
         <div class="big_wrapper">
-            
-            <div class="liseret_bleu"></div>
+          <div class="liseret_bleu"></div>
             <div class="inscription_head"><h2><img src="../img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_head2">
                 <div class="inscription_step1"><h3>Informations générales</h3></div>
@@ -176,6 +176,7 @@
             
             
         </div><!-- FIN BIG WRAPPER -->
+            </div><!-- FIN BIGGY -->
  <?php include'../includes/js.php' ?>
     </body>
 </html>

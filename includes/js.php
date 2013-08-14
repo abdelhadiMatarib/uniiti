@@ -4,7 +4,7 @@
         <script src="<?php echo SITE_URL; ?>/js/main.js" type="text/javascript"></script>
         <script src="<?php echo SITE_URL; ?>/js/jquery.isotope.min.js" type="text/javascript"></script>
         <script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
-        <script>
+        <!--<script>
             $(document).ready(function() {                
                $.Isotope.prototype._getCenteredMasonryColumns = function() {
     this.width = this.element.width();
@@ -76,7 +76,39 @@
                 });
             });
             });
-        </script>
+        </script>-->
+        <script>
+    $(function(){
+  
+  var $container = $('#box_container'),
+      $body = $('body'),
+      colW = 250,
+      columns = null;
+  $container.imagesLoaded( function(){
+  $container.isotope({
+    // disable window resizing
+    resizable: false,
+    masonry: {
+      columnWidth: colW
+    }
+  });
+  });
+  
+  $(window).smartresize(function(){
+    // check if columns has changed
+    var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
+    if ( currentColumns !== columns ) {
+      // set new column count
+      columns = currentColumns;
+      // apply width to container manually, then trigger relayout
+      $container.width( columns * colW )
+        .isotope('reLayout');
+    }
+    
+  }).smartresize(); // trigger resize to set container width
+  
+});    
+    </script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

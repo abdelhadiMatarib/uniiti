@@ -8,6 +8,7 @@
         include'../includes/head.php'; ?>
 <body>    
         <?php include'../includes/header.php'; ?>
+    <div class="biggymarginer">
         <div class="big_wrapper">
             
             <div class="liseret_gris"></div>
@@ -686,6 +687,7 @@
         <!-- FIN VIGNETTE TYPE -->
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
+    </div><!-- FIN BIGGY -->
         <?php include'../includes/js.php' ?>
         
     </body>

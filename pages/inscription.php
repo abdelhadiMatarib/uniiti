@@ -8,8 +8,8 @@
         include'../includes/head.php'; ?>
     <body>
         <?php include'../includes/header.php'; ?>
+        <div class="biggymarginer">
         <div class="big_wrapper">
-            
             <div class="liseret_bleu"></div>
             <div class="inscription_head"><h2><img src="../img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_fb_wrap">
@@ -79,10 +79,8 @@
                 <h4 class="inscription_footer_text">En cliquant sur suivant, vous indiquez que vous acceptez notre Charte de confidentialité et nos Conditions d'utilisation.</h4>
                 <div class="inscription_next_step_button"><a href="inscription2.php" title="">Suivant</a></div>
             </div>
-        </div><!-- FIN BIG WRAPPER --><div class="inscription_fields_right">
-                
-            </div>
-
+        </div><!-- FIN BIG WRAPPER -->
+        </div><!-- FIN BIGGY -->
  <?php include'../includes/js.php' ?>
     </body>
 </html>

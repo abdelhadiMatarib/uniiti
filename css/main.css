@@ -415,20 +415,50 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 
 /* PHONE PORTRAIT VERSION */
 @media only screen and (max-width: 320px){
+    .header_rightnav{display:none;}
     .header_leftnav{display:none;}
+    .big_wrapper{width:86px;}
 }
-@media only screen and (max-width: 480px){
+@media only screen and (min-width:320px) and (max-width: 480px){
+    .header_rightnav{display:none;}
     .header_leftnav{display:none;}
+    .big_wrapper{width:236px;}
 }
 /* TABLET PORTRAIT VERSION */
-@media only screen and (max-width: 768px){
+@media only screen and (min-width:480px) and (max-width: 768px){
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
     .biggymarginer{padding:0 9px;}
+    .big_wrapper{width:486px;}
 }
 /* DESKTOP VERSION */
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width:768px) and (max-width: 960px) {
     .header_leftnav{display:none;}
     .header_rightnav{display:none;}
     .biggymarginer{padding:0 9px;}
+    .big_wrapper{width:736px;}
+}
+@media only screen and (min-width:960px) and (max-width: 1240px) {
+    .header_leftnav{display:none;}
+    .header_rightnav{display:none;}
+    .biggymarginer{padding:0 9px;}
+    .big_wrapper{width:986px;}
+}
+@media only screen and (min-width:1280px) and (max-width: 1366px) {
+    .header_leftnav{display:none;}
+    .header_rightnav{display:none;}
+    .biggymarginer{padding:0 9px;}
+    .big_wrapper{width:1236px;}
+}
+@media only screen and (min-width:1366px) and (max-width: 1440px) {
+    .header_leftnav{display:none;}
+    .header_rightnav{display:none;}
+    .biggymarginer{padding:0 9px;}
+    .big_wrapper{width:1486px;}
+}
+@media only screen and (min-width:1366px) and (max-width: 1920px) {
+    .header_leftnav{display:none;}
+    .header_rightnav{display:none;}
+    .biggymarginer{padding:0 9px;}
+    .big_wrapper{width:1736px;}
 }
