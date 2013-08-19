@@ -78,13 +78,14 @@
             });
         </script>-->
         <script>
+            $(window).load(function() { 
     $(function(){
   
   var $container = $('#box_container'),
       $body = $('body'),
       colW = 250,
       columns = null;
-  $container.imagesLoaded( function(){
+  $container.imagesLoaded(function(){
   $container.isotope({
     // disable window resizing
     resizable: false,
@@ -108,6 +109,7 @@
   }).smartresize(); // trigger resize to set container width
   
 });    
+            });
     </script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

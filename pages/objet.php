@@ -69,6 +69,7 @@
         <!-- FIN FILTRE DE TRI -->
                 </div>
         <!-- FIN BIG WRAPPER -->
+        
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content utilisateur_boxes">
         <!-- VIGNETTE TYPE -->
