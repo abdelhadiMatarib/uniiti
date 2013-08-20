@@ -90,7 +90,8 @@
     // disable window resizing
     resizable: false,
     masonry: {
-      columnWidth: colW
+      columnWidth: colW,
+      resizable:false
     }
   });
   });

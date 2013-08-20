@@ -30,81 +30,20 @@ $('#close_button_home').click(function() {
         
     function resizeboxContainer(){
         
+        // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
+        
         var boxcontainersize = $('#box_container').width();
-        if (boxcontainersize == 2000){$('.big_wrapper').css('width',1986);}
-        if (boxcontainersize == 1750){$('.big_wrapper').css('width',1736);}
-        if (boxcontainersize == 1500){$('.big_wrapper').css('width',1486);}
-        if (boxcontainersize == 1250){$('.big_wrapper').css('width',1236);$('.commerce_couv').css('height',353);}
-        if (boxcontainersize == 1000){$('.big_wrapper').css('width',986);$('.commerce_couv').css('height',282);}
-        if (boxcontainersize == 750){$('.big_wrapper').css('width',736);}
-        if (boxcontainersize == 500){$('.big_wrapper').css('width',486);}
+        
         if (boxcontainersize == 250){$('.big_wrapper').css('width',236);}
+        if (boxcontainersize == 500){$('.big_wrapper').css('width',486);}
+        if (boxcontainersize == 750){$('.big_wrapper').css('width',736);$('.commerce_couv').css('height',210);}
+        if (boxcontainersize == 1000){$('.big_wrapper').css('width',986);$('.commerce_couv').css('height',282);}
+        if (boxcontainersize == 1250){$('.big_wrapper').css('width',1236);$('.commerce_couv').css('height',353);}
+        if (boxcontainersize == 1500){$('.big_wrapper').css('width',1486);}
+        if (boxcontainersize == 1750){$('.big_wrapper').css('width',1736);}
+        if (boxcontainersize == 2000){$('.big_wrapper').css('width',1986);}
         
-        if ($('.big_wrapper').width() == 1236){
-            
-            // PAGE COMMERCE
-            $('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',122);
-            $('.commerce_head_desc').css('width',545);
-            $('.commerce_head_desc_address').css('width','250px');
-            $('.commerce_head_desc_ariane').css('width','270px');
-            $('.commerce_head_desc_identity').css('width','250px');
-            $('.commerce_head_desc_prices').css('width','270px');
-            $('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200);
-        
-            //PAGE OBJET
-            $('.objet_head_desc').css('width',545);
-            $('.objet_head_infos_services,.objet_head_infos_infos').css('width',200);
-            $('.objet_head_infos_suivre').css('width',95);
-            $('.objet_head_desc_ouacheter').css('width','160px');
-            $('.objet_head_desc_ariane').css('width','200px');
-            $('.objet_head_desc_infosrapides').css('width','150px');
-            $('.wrapper_boutons_objet').css('top','90px');
-            
-            //PAGE UTILISATEUR
-            $('.utilisateur_head_desc_desc').css('width','180px');
-    }
-        
-        if ($('.big_wrapper').width() == 986){
-            
-            // PAGE COMMERCE
-            $('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',92);
-            $('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('font-size','85%');
-            $('.commerce_head_desc').css('width',418);
-            $('.commerce_head_desc_ariane').css('font-size','80%');
-            $('.commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices').css('width','195');
-            $('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',142);
-            $('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('padding',15);
-            $('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('padding-top',22);
-            $('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('font-size','0.9em');
-            $('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top',22);
-            $('.commerce_head_infos_infosrapides .img_container').css('width',35);
-            $('.gerant_photo').css('width','96px');
-            
-            // PAGE OBJET
-            $('.objet_head_infos_services,.objet_head_infos_infos').css('width',150);
-            $('.objet_head_infos_suivre').css('width',70);
-            $('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('margin-top','22px').css('margin-left','0').css('margin-right','0').css('font-size','95%');
-            //$('.objet_head_infos_services_text_fin,.objet_head_infos_infos_text_fin').css("font-size","0.8em");
-            $('.objet_head_infos_services .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','5px').css('padding-top','12px');
-            $('.objet_head_infos_services_classement').css('margin-top','2px').css("display","inline-block").css("font-size","1.1em");
-            //$('.objet_head_infos_services_text_couleur').css('font-size','0.9em');
-            
-            $('.objet_head_infos_infos .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','5px').css('padding-top','12px');
-            $('.objet_head_infos_infos_classement').css('margin-top','2px').css('display','inline-block').css("font-size","1.1em");
-            //$('.objet_head_infos_infos_text_couleur').css('font-size','0.9em');
-            
-            $('.objet_head_desc').css('width','420px');
-            $('.objet_head_desc_ouacheter').css('width','130px');
-            $('.objet_head_desc_ariane').css('width','160px');
-            $('.objet_head_desc_infosrapides').css('width','100px');
-            
-            //$('.objet_head_infos_services .img_container img,.objet_head_infos_infos .img_container img').css('width','28px').css('height','30px');
-            
-            //PAGE UTILISATEUR
-            $('.utilisateur_head_desc_desc').css('width','120px').css('padding-left','150px');
-            $('.utilisateur_head_desc_desc2').css('width','140px');
-            $('.objet_head_infos .separateur').css('width','416px');
-}
+        // RESIZING CONTENT DEPENDING ON SIZES
         
         if ($('.big_wrapper').width() == 736){
             
@@ -112,6 +51,9 @@ $('#close_button_home').click(function() {
             $('.infosrapides3,.infosrapides4').css('display','none');
             $('.infosrapides1,.infosrapides2').css('margin-top','10px');
             $('.infosrapides1').css('margin-right','20px');
+            $('.commerce_head_desc').css('width','294px');
+            $('.commerce_head_desc_address').css('width','230px');
+            $('.commerce_head_desc_identity').css('width','230px');
             $('.commerce_head_desc_ariane').css('width','40px');
             $('#commerce_head_desc_ariane_wrap').css('display','none');
             $('#commerce_head_desc_ariane_button').css('float','right');
@@ -126,8 +68,8 @@ $('#close_button_home').click(function() {
             $('.commerce_head_infos_suivre').css('width',70).css('height',88);
             $('.commerce_head_infos_suivre span').css('margin-bottom',15).css('margin-top',15);
             $('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('text-align','center').css('margin','0');
-            $('.commerce_head_infos_infos .img_container').css('padding-bottom',5).css('width',45).css('text-align','center').css('padding-top',10);
-            $('.commerce_head_infos_services .img_container').css('padding-bottom',5).css('width',45).css('text-align','center').css('padding-top',10);
+            $('.commerce_head_infos_infos .img_container').css('padding-bottom',5).css('width',60).css('text-align','center').css('padding-top',10);
+            $('.commerce_head_infos_services .img_container').css('padding-bottom',5).css('width',60).css('text-align','center').css('padding-top',10);
             $('.commerce_head_infos .separateur').css('display','none');
             $('.commerce_head_infos_infosrapides').css('margin-left','18px');
             $('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('font-size','90%').css('width',90);
@@ -145,7 +87,7 @@ $('#close_button_home').click(function() {
             $('.gerant_photo').css('width','75px');
             $('.gerant_title').css('font-size','75%').css('height','15px');
             $('.wrapper_boutons .boutons').addClass('boutons_ipad');
-            $('.wrapper_boutons').css('top','18px');
+            $('.wrapper_boutons').css('top','15px');
             $('.commerce_head_note_reserver').css('font-size','1.1em')
             
             //PAGE OBJET
@@ -177,12 +119,87 @@ $('#close_button_home').click(function() {
             $('.utilisateur_head_desc_avatar .img_container img').css('height','80px').css('width','80px');
             $('.utilisateur_head_desc_desc').css('padding-left','100px').css('width','75px').css('font-size','80%');
             $('.utilisateur_head_desc_desc2').css('width','110px').css('font-size','80%');
-    }
-    
-            // Boutons choix sexe formulaire d'inscription
-        $('#commerce_head_desc_ariane_button').click(function() {
-
-        });
+            $('.utilisateur_gerant_photo').css('width','145px');
+        }
+        /////////////////////////////////////////////////////////////////////////////////
+        else if ($('.big_wrapper').width() == 986){
+            
+            // PAGE COMMERCE
+            $('.commerce_head_desc_social').removeClass('ipad_portrait_social');
+            $('.commerce_head_desc_social img').css('display','inline-block');
+            $('.commerce_head_desc_social span').css('display','none');
+            $('.commerce_head_infos_infosrapides').css('margin-left','0px');
+            $('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',92).css('display','block').css('font-size','1em');
+            $('.infosrapides1').css('margin-right','10px')
+            $('.commerce_head_desc').css('width',418);
+            $('.commerce_head_desc_ariane').css('font-size','80%');
+            $('#commerce_head_desc_ariane_wrap').css('display','block');
+            $('#commerce_head_desc_ariane_button').css('float','left');
+            $('#commerce_head_desc_prices_wrap').css('display','block');
+            $('#commerce_head_desc_prices_button').css('float','left');
+            $('.commerce_head_desc_address,.commerce_head_desc_identity').css('font-size','90%');
+            $('.commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices').css('width','195');
+            $('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',142);
+            $('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('padding',15).css('padding-top',22).css('padding-right',10).css('width','45px');
+            $('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('font-size','0.9em').css('margin-top',22).css('width','60px').css('text-align','left');
+            $('.commerce_head_infos_infosrapides .img_container').css('width',35);
+            $('.commerce_head_infos_suivre').css('width','85px');
+            $('.gerant_photo').css('width','96px');
+            
+            // PAGE OBJET
+            $('.objet_head_desc_social').removeClass('ipad_portrait_social');
+            $('.objet_head_desc_social img').css('display','inline-block');
+            $('.objet_head_desc_social span').css('display','none');
+            $('.objet_head_infos_services,.objet_head_infos_infos').css('width',150);
+            $('.objet_head_infos_suivre').css('width',70);
+            $('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('margin-top','10px').css('margin-left','0').css('margin-right','0').css('font-size','95%').css('width','80px').css('text-align','left');
+            //$('.objet_head_infos_services_text_fin,.objet_head_infos_infos_text_fin').css("font-size","0.8em");
+            $('.objet_head_infos_services .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
+            $('.objet_head_infos_services_classement').css('width','80px').css('text-align','center').css('margin-top','2px').css("display","block").css("font-size","1.2em");
+            //$('.objet_head_infos_services_text_couleur').css('font-size','0.9em');
+            
+            $('.objet_head_infos_infos .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
+            $('.objet_head_infos_infos_classement').css('width','80px').css('text-align','center').css('margin-top','2px').css("display","block").css("font-size","1.2em");
+            //$('.objet_head_infos_infos_text_couleur').css('font-size','0.9em');
+            
+            $('.objet_head_desc').css('width','420px');
+            $('.objet_head_desc_ouacheter').css('width','130px').css('font-size','1em');
+            $('.objet_head_desc_ariane').css('width','160px').css('font-size','1em');
+            $('.objet_head_desc_infosrapides').css('width','100px').css('display','block').css('font-size','1em');
+            
+            $('.objet_head_infos_services .img_container img,.objet_head_infos_infos .img_container img').css('width','39px').css('height','41px');
+            
+            //PAGE UTILISATEUR
+            $('.utilisateur_head_desc_desc').css('width','120px').css('padding-left','150px').css('font-size','1em');
+            $('.utilisateur_head_desc_desc2').css('width','140px').css('font-size','1em');
+            $('.utilisateur_head_desc_avatar .img_container img').css('height','120px').css('width','120px');
+            $('.objet_head_infos .separateur').css('width','416px');
+        }
+        /////////////////////////////////////////////////////////////////////////////////
+        else if ($('.big_wrapper').width() == 1236){
+            
+            // PAGE COMMERCE
+            $('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',122).css('font-size','1em');
+            $('.commerce_head_desc').css('width',545);
+            $('.commerce_head_desc_address').css('width','250px').css('font-size','1em');
+            $('.commerce_head_desc_ariane').css('width','270px').css('font-size','1em');
+            $('.commerce_head_desc_identity').css('width','250px').css('font-size','1em');
+            $('.commerce_head_desc_prices').css('width','270px');
+            $('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200);
+        
+            //PAGE OBJET
+            $('.objet_head_desc').css('width',545);
+            $('.objet_head_infos_services,.objet_head_infos_infos').css('width',200);
+            $('.objet_head_infos_suivre').css('width',95);
+            $('.objet_head_desc_ouacheter').css('width','160px');
+            $('.objet_head_desc_ariane').css('width','200px');
+            $('.objet_head_desc_infosrapides').css('width','150px');
+            $('.wrapper_boutons_objet').css('top','90px');
+            
+            //PAGE UTILISATEUR
+            $('.utilisateur_head_desc_desc').css('width','180px').css('font-size','1em');
+            $('.utilisateur_head_desc_desc2').css('width','180px').css('font-size','1em');
+        }
   
-    }
+}
      

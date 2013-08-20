@@ -188,14 +188,14 @@ span.index_overlay_texte{display:block;}
 .commerce_head_infos_suivre{-webkit-border-radius: 3px;border-radius: 3px;float:left;width:88px;height:82px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
 .commerce_head_infos_suivre span{margin:12px 0 12px 0;color:white;display:block;text-align:center;font-weight:bold;font-size:1.1em;text-transform: uppercase;}
 .commerce_head_infos_suivre .img_container{text-align:center;}
-.commerce_head_infos_infosrapides{float:left;height:54px;line-height:12px;}
+.commerce_head_infos_infosrapides{float:left;height:50px;line-height:12px;}
 .commerce_head_infos_infosrapides .img_container{padding: 4px 0 0 0;float:left;height:35px;width:45px;}
 .infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4{float:left;width:110px;}
 .infosrapides1{margin:7px 10px 0 10px;}
 .infosrapides2{margin:7px 10px 0 0;}
 .infosrapides3{margin:7px 10px 0 0;}
 .infosrapides4{margin:7px 10px 0 0;}
-.infosrapides1 span,.infosrapides2 span,.infosrapides3 span,.infosrapides4 span{display:block;font-size:85%;}
+.infosrapides1 span,.infosrapides2 span,.infosrapides3 span,.infosrapides4 span{display:block;font-size:0.8em;}
 
 .commerce_head_infos .separateur{border-bottom:1px solid #EAEAEA;height:10px;}
 
@@ -474,7 +474,6 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     /* Partie droite */
     /* Objet */
     /* Partie droite */
-    .commerce_couv{height:139px;}
     .ligne_verticale1{display:none;}
     .ligne_verticale2{display:none;}
     .ligne_verticale3{display:none;}
@@ -495,7 +494,6 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     /*.commerce_head_infos{display:none;}*/
     /* Objet */
     /* Partie droite */
-    .commerce_couv{height:210px;}
     .ligne_verticale1{display:none;}
     .ligne_verticale2{display:none;}
     .ligne_verticale3{display:none;}
@@ -514,7 +512,6 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     /* Partie droite */
     /* Objet */
     /* Partie droite */
-    .commerce_couv{height:353px;}
     .ligne_verticale1{display:none;}
     .ligne_verticale2{display:none;}
     .ligne_verticale3{display:none;}
@@ -529,7 +526,6 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     .header_rightnav{display:none;}
     /* Big Wrapper */
     /*.big_wrapper{width:1236px;}*/
-    .commerce_couv{height:353px;}
     .ligne_verticale1{display:none;}
     .ligne_verticale2{display:none;}
     .ligne_verticale3{display:none;}
@@ -544,7 +540,6 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
     /*.header_rightnav{display:none;}*/
     /* Big Wrapper */
     /*.big_wrapper{width:1486px;}*/
-    .commerce_couv{height:425px;}
     .ligne_verticale1{display:none;}
     .ligne_verticale2{display:none;}
     .ligne_verticale3{display:none;}
