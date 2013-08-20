@@ -14,7 +14,7 @@
             <div class="objet_head">
                 <div class="objet_head_desc">
                     <div class="objet_head_desc_title"><div class="img_container"><img src="../img/pictos_commerces/chaussure.png" height="35" width="32" title="" alt="" /></div><h2>Converse All Star</h2></div>
-                    <div class="objet_head_desc_social"><img src="../img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="../img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="../img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /></div>
+                    <div class="objet_head_desc_social"><img src="../img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="../img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="../img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>

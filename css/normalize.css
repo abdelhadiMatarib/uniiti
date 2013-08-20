@@ -67,9 +67,9 @@ audio:not([controls]) {
  */
 
 html {
-    font-size: 80%; /* 1 */
-    -ms-text-size-adjust: 80%; /* 2 */
-    -webkit-text-size-adjust: 80%; /* 2 */
+    font-size: 0.8em; /* 1 */
+    -ms-text-size-adjust: 0.8em; /* 2 */
+    -webkit-text-size-adjust: 0.8em; /* 2 */
 }
 
 /**
