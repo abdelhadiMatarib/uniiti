@@ -53,6 +53,7 @@
                     <div class="commerce_head_infos_infosrapides">
                         <div class="infosrapides1"><div class="img_container"><img src="../img/pictos_commerces/infosrapides1.png" alt="" title="" height="26" width="21" /></div><span>Généreux</span><span>Chaleureux</span><span>Convivial</span></div>
                         <div class="infosrapides2"><div class="img_container"><img src="../img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div><span>Terrasse</span><span>Piscine</span><span>Voiturier</span></div>
+                        <div class="clearfix_infosrapides"></div>
                         <div class="infosrapides3"><div class="img_container"><img src="../img/pictos_commerces/infosrapides3.png" alt="" title="" height="30" width="30" /></div><span>Sans gluten</span><span>Bio</span><span></span></div>
                         <div class="infosrapides4"><div class="img_container"><img src="../img/pictos_commerces/infosrapides4.png" alt="" title="" height="23" width="32" /></div><span>Entre amis</span><span>En famille</span><span>Séminaire</span></div>
                     </div>
