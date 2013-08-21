@@ -12,4 +12,5 @@
         <!--<link rel="stylesheet" href="css/Isotope.css">-->
 
         <script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
     </head>

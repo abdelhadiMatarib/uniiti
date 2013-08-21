@@ -2,8 +2,10 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="<?php echo SITE_URL; ?>/js/main.js" type="text/javascript"></script>
+		<script src="../js/jquery.infinitescroll.min.js"></script>
         <script src="<?php echo SITE_URL; ?>/js/jquery.isotope.min.js" type="text/javascript"></script>
         <script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
+	
         <!--<script>
             $(document).ready(function() {                
                $.Isotope.prototype._getCenteredMasonryColumns = function() {
@@ -78,6 +80,7 @@
             });
         </script>-->
         <script>
+		
             $(window).load(function() { 
     $(function(){
   
@@ -85,15 +88,32 @@
       $body = $('body'),
       colW = 250,
       columns = null;
+	
   $container.imagesLoaded(function(){
   $container.isotope({
     // disable window resizing
     resizable: false,
     masonry: {
+	  itemSelector : '.box',
       columnWidth: colW,
-      resizable:false
+	  resizable: false,
     }
   });
+   	$(window).scroll(function() {
+		if ( $(window).scrollTop() == $(document).height() - $(window).height() )
+		{
+			$.ajax({
+				url : "includes/requete.php?lastid=\"" + $(".box:last").attr("id") + "\"", 
+				success: function(html){
+					if (html) {
+						$container.prepend( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });				}
+					else {
+						alert('Il n\'y a plus d\'enregistrements');
+					}
+				}
+			});
+		}
+	});
   });
   
   $(window).smartresize(function(){
@@ -110,7 +130,9 @@
   }).smartresize(); // trigger resize to set container width
   
 });    
-            });
+});
+		
+
     </script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
