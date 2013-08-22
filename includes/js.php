@@ -98,10 +98,10 @@
 	
 				$(window).scroll(function() {
 					if ( $(window).scrollTop() == $(document).height() - $(window).height() )
-					{	// Code à revoir mais ca marche
+					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
 						var $url;
-						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {$url = "<?php echo SITE_URL; ?>" + "/includes/requeteCommerce.php?id_enseigne=" + $idenseigne + "&lastid=\"" + $(".box:last").attr("id") + "\"";}
+						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {$url = "<?php echo SITE_URL; ?>/includes/requeteCommerce.php?id_enseigne=" + $idenseigne + "&lastid=\"" + $(".box:last").attr("id") + "\"";}
 						else {$url = "includes/requete.php?lastid=\"" + $(".box:last").attr("id") + "\"";}
 						$.ajax({
 							url : $url, 
