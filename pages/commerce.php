@@ -8,22 +8,22 @@
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
-		
-	$sql = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, note_moyenne, satisfaction_pourcent, certification_pro, code_visible, avis_visible, nom_type_enseigne, btn_donner_avis_visible, url
+	
+	$sql2 = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, note_moyenne, satisfaction_pourcent, certification_pro, code_visible, avis_visible, nom_type_enseigne, btn_donner_avis_visible, url
 			FROM enseignes AS t1
 			INNER JOIN types_enseigne AS t2
 				ON t1.types_enseigne_id_type_enseigne = t2.id_type_enseigne
 			WHERE id_enseigne = :id_enseigne
 		";
 
-	$req = $bdd->prepare($sql);
+	$req2 = $bdd->prepare($sql2);
 
 	$id_enseigne = $_GET['id_enseigne'];
 
-	$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
-	$req->execute();
-	$result = $req->fetch(PDO::FETCH_ASSOC);
+	$req2->execute();
+	$result = $req2->fetch(PDO::FETCH_ASSOC);
            
 	$RequeteNow = $bdd->prepare("select NOW() AS Maintenant");
 	$RequeteNow->execute();
@@ -43,6 +43,26 @@
 	$nom_type_enseigne       = $result['nom_type_enseigne'];
 	$btn_donner_avis_visible = $result['btn_donner_avis_visible'];
 	$url                     = $result['url'];
+
+	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
+			FROM avis AS t1
+
+			INNER JOIN enseignes_recoient_avis AS t2
+			ON t1.id_avis = t2.avis_id_avis
+			INNER JOIN enseignes AS t3
+				ON t2.enseignes_id_enseigne = t3.id_enseigne
+				INNER JOIN contributeurs_donnent_avis AS t4
+					ON t1.id_avis = t4.avis_id_avis
+					INNER JOIN contributeurs AS t5
+						ON t4.contributeurs_id_contributeur = t5.id_contributeur
+			WHERE id_enseigne = :id_enseigne
+			";
+	$req = $bdd->prepare($sql);
+	$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req->execute();
+	$result = $req->fetch(PDO::FETCH_ASSOC);
+	$count_avis_enseigne     = $result['count_avis'];
+	$note_arrondi = number_format($result['moyenne'],1);
 ?>
 
     <body>
@@ -74,9 +94,9 @@
                         <img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" title="" alt="" height="17" width="18" />
                     </div>
                     <div class="center_note">
-                    <span class="commerce_head_note_note">8,5</span><span class="commerce_head_note_note10">/10</span>
+                    <span class="commerce_head_note_note"><?php echo $note_arrondi; ?></span><span class="commerce_head_note_note10">/10</span>
                     </div>
-                    <span class="commerce_head_note_avis">26355 Avis</span>
+                    <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
                     <div class="commerce_head_note_reservation">
                         <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                         <div class="commerce_head_note_reserver"><a href="#" title=""><span><strong>Réserver</strong> une table</span></a></div>
@@ -106,7 +126,7 @@
                 </div>
                 <div class="commerce_head2_right">
                 <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>2</span></div>
-                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>321</span></div>
+                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
                 <div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span>1258</span></div>
                 </div>
             </div>
@@ -134,487 +154,8 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content utilisateur_boxes">
-        <!-- VIGNETTE TYPE -->
-        <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien, je le recommande vivement ! J’y suis allé pour la première fois ...</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien.</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien, je le recommande vivement ! J’y suis allé pour la première fois ...</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien.</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien, je le recommande vivement ! J’y suis allé pour la première fois ...</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien.</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien, je le recommande vivement ! J’y suis allé pour la première fois ...</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien.</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien, je le recommande vivement ! J’y suis allé pour la première fois ...</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien.</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien, je le recommande vivement ! J’y suis allé pour la première fois ...</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
-                <div class="box">
-            
-            <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
-                    <span class="box_title" title="Jean-Pierre F.">Jean-Pierre F.</span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
-                </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
-            </header>
-            
-            <figure>
-                <div class="box_mark">
-                    <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
-                    <div class="box_headratings"><span>9/10 - 254 avis</span></div>
-                </div>
-            </figure>
-            
-            <section>
-                <div class="box_useraction"><a href="#"><span>Jean-Pierre F.</span><a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> Très bon restaurant, on y mange très bien.</figcaption></div>
-            <div class="arrow_up"></div>
-            </section>
-            
-            <footer>
-                
-                <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong>2 min.</strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
-                </div>
-            </footer>
-            
-        </div>
+			<?php $Commerce = 1; include '../includes/requeteCommerce.php' ?>
+		</div>
         
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
