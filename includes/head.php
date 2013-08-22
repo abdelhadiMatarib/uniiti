@@ -9,6 +9,7 @@
         
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/normalize.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/main.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/jquery-ui-1.10.3.custom.css">
         <!--<link rel="stylesheet" href="css/Isotope.css">-->
 
         <script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>

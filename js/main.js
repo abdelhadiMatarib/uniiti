@@ -1,5 +1,29 @@
 $(document).ready(function() {
     
+    // GESTION DES POP-INS
+    // initialize dialog
+    var defaultdialog = $("#default_dialog").dialog({ 
+        autoOpen: false,
+        modal:true,
+        draggable:false,
+        resizable:false,
+        width: 560
+    });
+    // call dialogs
+    $('.not_signedin').click(function(e){console.log('youhou1');
+        e.preventDefault(); //don't go to default URL
+        // load content and open dialog
+        defaultdialog.load('../includes/popins/ident.tpl.php').dialog('open');
+    });
+    $('.oublimdp_link').click(function(e){console.log('youhou2');
+        e.preventDefault(); //don't go to default URL
+        defaultdialog.load('../includes/popins/oublimdp.tpl.php').dialog('open');
+    });
+    $('.popin_close_button').click(function(e){
+        e.preventDefault(); //don't go to default URL
+        defaultdialog.dialog('close');
+    });
+    
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {
 $('.inscription_field_sexe_button_f').removeClass('inscription_field_sexe_bg');
@@ -24,6 +48,7 @@ $('#close_button_home').click(function() {
      $(window).resize(function(){
         clearTimeout(this.id);
         this.id = setTimeout(resizeboxContainer, 200);
+        $("#default_dialog").dialog("option", "position", "center");
     });
 });
         // Respond
