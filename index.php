@@ -10,6 +10,10 @@
 		include_once 'config/configPDO.inc.php';
 		include_once 'includes/fonctions.inc.php'; ?>
     <body>
+		<?php
+			if (empty($_COOKIE["UNIITI"])) {
+			setcookie("UNIITI", "Premierefois");
+		?>
         <div id="total_overlay">
 			<div class="close_button" id="close_button_home"><a href="#"></a></div>
 			<div class="index_overlay"></div>
@@ -19,6 +23,9 @@
 				<div class="index_overlay_button"><a href="#" title="">Visite guidée</a></div>
 			</div>
         </div>
+		<?php
+		} // FIN DU IF
+		?>
 		
         <?php include 'includes/header.php'; ?>
         

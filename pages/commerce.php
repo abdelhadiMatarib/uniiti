@@ -18,7 +18,8 @@
 
 	$req2 = $bdd->prepare($sql2);
 
-	$id_enseigne = $_GET['id_enseigne'];
+	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
