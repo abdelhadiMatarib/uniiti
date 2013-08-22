@@ -1,7 +1,7 @@
 
 	<?php 
 	
-		if (!empty($_GET['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -31,7 +31,7 @@
 								ON t5.id_enseigne = t4.enseignes_id_enseigne
 								INNER JOIN types_enseigne AS t6
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne ";
-		if (!empty($_GET['lastid'])) {$sql2 .= "WHERE date_avis < " . stripslashes($_GET['lastid']);}
+		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . stripslashes($_POST['lastid']);}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,20";
 
 		$req2 = $bdd->prepare($sql2);
@@ -75,8 +75,8 @@
 				
 				<header>
 					<div class="box_icon"><img src="img/pictos_commerces/restaurant.png" title="" alt="" /></div>
-<!--					<div class="box_desc" onclick="location.href='<?php echo SITE_URL; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
--->						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti/"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
+<!--					<div class="box_desc" onclick="location.href='<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
+-->						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 		
 							<span class="box_title" title="<?php echo $nom_enseigne; ?>"><?php echo tronque($nom_enseigne); ?></span>
 							<span class="box_subtitle">Restauration</span>

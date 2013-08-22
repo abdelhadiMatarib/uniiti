@@ -100,18 +100,27 @@
 					if ( $(window).scrollTop() == $(document).height() - $(window).height() )
 					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
-						var $url;
-						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {$url = "<?php echo SITE_URL; ?>/includes/requeteCommerce.php?id_enseigne=" + $idenseigne + "&lastid=\"" + $(".box:last").attr("id") + "\"";}
-						else {$url = "includes/requete.php?lastid=\"" + $(".box:last").attr("id") + "\"";}
+						var $url, $data;
+						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
+							$url = "<?php echo SITE_URL; ?>/includes/requeteCommerce.php";
+							$data = {id_enseigne: $idenseigne, lastid: "\"" + $(".box:last").attr("id") + "\""};
+						}
+						else {
+							$url = "includes/requete.php";
+							$data = {lastid: "\"" + $(".box:last").attr("id") + "\""};
+						}
 						$.ajax({
-							url : $url, 
+							type:"POST",
+							url : $url,
+							data : $data,
 							success: function(html){
 								if (html) {
 									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });				}
 								else {
 									alert('Il n\'y a plus d\'enregistrements');
 								}
-							}
+							},
+							error: function() {alert('Erreur sur url : ' + $url);}
 						});
 					}
 				});

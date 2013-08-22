@@ -1,8 +1,8 @@
 
 	<?php 
 	
-		if (!empty($_GET['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
-		if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -31,7 +31,7 @@
 								ON t5.id_enseigne = t4.enseignes_id_enseigne
 								INNER JOIN types_enseigne AS t6
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne WHERE id_enseigne = " . $id_enseigne;
-		if (!empty($_GET['lastid'])) {$sql2 .= " AND date_avis < " . stripslashes($_GET['lastid']);}
+		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,20";
 
 		$req2 = $bdd->prepare($sql2);
