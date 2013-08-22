@@ -1,9 +1,25 @@
 
 	<?php 
-		include_once '../config/configPDO.inc.php';
-		include_once 'fonctions.inc.php';
+	
+		if (!empty($_GET['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
+		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
+					FROM avis AS t1
 
-		$sql = "SELECT id_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
+					INNER JOIN enseignes_recoient_avis AS t2
+					ON t1.id_avis = t2.avis_id_avis
+					INNER JOIN enseignes AS t3
+						ON t2.enseignes_id_enseigne = t3.id_enseigne
+						INNER JOIN contributeurs_donnent_avis AS t4
+							ON t1.id_avis = t4.avis_id_avis
+							INNER JOIN contributeurs AS t5
+								ON t4.contributeurs_id_contributeur = t5.id_contributeur
+					WHERE id_enseigne = :id_enseigne
+					";
+		$req = $bdd->prepare($sql);
+
+		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
+		$sql2 = "SELECT id_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
 				FROM avis AS t1
 				INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
@@ -14,20 +30,18 @@
 							INNER JOIN enseignes AS t5
 								ON t5.id_enseigne = t4.enseignes_id_enseigne
 								INNER JOIN types_enseigne AS t6
-									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne
-				WHERE date_avis < " . $_GET['lastid'] .
-				" ORDER BY date_avis DESC
-				LIMIT 0,20
-			";
+									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne ";
+		if (!empty($_GET['lastid'])) {$sql2 .= "WHERE date_avis < " . $_GET['lastid'];}
+		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,20";
 
-		$req = $bdd->prepare($sql);
-		$req->execute();
+		$req2 = $bdd->prepare($sql2);
+		$req2->execute();
 
 		$RequeteNow = $bdd->prepare("select NOW() AS Maintenant");
 		$RequeteNow->execute();
 		$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
 
-		while ($row = $req->fetch(PDO::FETCH_ASSOC))
+		while ($row = $req2->fetch(PDO::FETCH_ASSOC))
 		{
 			// Contributeurs
 			//$pseudo_contributeur    = $row['pseudo_contributeur'];
@@ -45,12 +59,15 @@
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
-			
 			$nom_type_enseigne       = $row['nom_type_enseigne'];
-			
 			$url                     = $row['url'];
-			
 			$btn_donner_avis_visible = $row['btn_donner_avis_visible'];
+			
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->execute();
+			$result = $req->fetch(PDO::FETCH_ASSOC);
+			$count_avis_enseigne     = $result['count_avis'];
+			$note_arrondi = number_format($result['moyenne'],1);	
 	?>
 
 			<!-- VIGNETTE TYPE -->
@@ -67,19 +84,19 @@
 				<figure>
 					<div class="box_mark">
 						<div class="box_stars">
-							<?php for ($i = 1 ; $i <= $note / 2 ; $i++) { ?>
+							<?php for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) { ?>
 								<img src="img/pictos_actions/star.png" title="" alt="" />
 							<?php } /* Fin du for */ ?>
 						</div>
-						<div class="box_headratings"><span><?php echo round($note, 0); ?>/10 - 2543 avis</span></div>
+						<div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
 					</div>
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<img src="img/photos_commerces/1.jpg" title="" alt="" />
 				</figure>
 				
 				<section>
-					<div class="box_useraction"><a href="#"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span><a> a noté</div>
-					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire ?></figcaption></div>
+					<div class="box_useraction"><a href="#"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
+					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php if ($commentaire <>"") {echo $commentaire;} else {echo "pas de commentaire";} ?></figcaption></div>
 				<div class="arrow_up"></div>
 				</section>
 				
@@ -94,9 +111,9 @@
 				
 			</div>
 			<!-- FIN VIGNETTE TYPE -->
-		<?php
+	<?php
 		} // Fin du while
 
-			$req->closeCursor();    // Ferme la connexion du serveur
-			$bdd = null;            // Détruit l'objet PDO
-		?>
+		$req->closeCursor();    // Ferme la connexion du serveur
+		$bdd = null;            // Détruit l'objet PDO
+	?>
