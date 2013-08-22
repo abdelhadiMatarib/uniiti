@@ -75,9 +75,11 @@
 				
 				<header>
 					<div class="box_icon"><img src="img/pictos_commerces/restaurant.png" title="" alt="" /></div>
-					<div class="box_desc">
-						<span class="box_title" title="<?php echo $nom_enseigne; ?>"><?php echo tronque($nom_enseigne); ?></span>
-						<span class="box_subtitle">Restauration</span>
+<!--					<div class="box_desc" onclick="location.href='<?php echo SITE_URL; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
+-->						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti/"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
+		
+							<span class="box_title" title="<?php echo $nom_enseigne; ?>"><?php echo tronque($nom_enseigne); ?></span>
+							<span class="box_subtitle">Restauration</span>
 					</div>
 				</header>
 				
