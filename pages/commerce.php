@@ -155,7 +155,7 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content utilisateur_boxes">
-			<?php $Commerce = 1; include '../includes/requeteCommerce.php' ?>
+			<?php $Commerce = 1; include '../includes/requetecommerce.php' ?>
 		</div>
         
         </div>
