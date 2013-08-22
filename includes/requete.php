@@ -31,7 +31,7 @@
 								ON t5.id_enseigne = t4.enseignes_id_enseigne
 								INNER JOIN types_enseigne AS t6
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne ";
-		if (!empty($_GET['lastid'])) {$sql2 .= "WHERE date_avis < " . $_GET['lastid'];}
+		if (!empty($_GET['lastid'])) {$sql2 .= "WHERE date_avis < " . stripslashes($_GET['lastid']);}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,20";
 
 		$req2 = $bdd->prepare($sql2);
