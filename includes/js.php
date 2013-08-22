@@ -102,8 +102,8 @@
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
 						var $url, $data;
 						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
-							$url = "<?php echo SITE_URL; ?>/includes/requeteCommerce.php";
-							$data = {id_enseigne: $idenseigne, lastid: "\"" + $(".box:last").attr("id") + "\""};
+							$url = "<?php echo SITE_URL; ?>/includes/requetecommerce.php";
+							$data = {id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\"")};
 						}
 						else {
 							$url = "includes/requete.php";
@@ -115,7 +115,8 @@
 							data : $data,
 							success: function(html){
 								if (html) {
-									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });				}
+									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+								}
 								else {
 									alert('Il n\'y a plus d\'enregistrements');
 								}

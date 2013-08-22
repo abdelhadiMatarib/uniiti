@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
         <?php 
+		header("Cache-Control: no-cache");
         include_once 'config/configuration.inc.php';
         include 'includes/head.php';
 		include_once 'config/configPDO.inc.php';
