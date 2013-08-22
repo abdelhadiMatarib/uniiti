@@ -9,8 +9,8 @@
         include 'includes/head.php';
 		include_once 'config/configPDO.inc.php';
 		include_once 'includes/fonctions.inc.php'; ?>
-    <body onload="includes/requete.php">
-<!--        <div id="total_overlay">
+    <body>
+        <div id="total_overlay">
 			<div class="close_button" id="close_button_home"><a href="#"></a></div>
 			<div class="index_overlay"></div>
 			<div class="index_overlay_wrap_content">
@@ -18,7 +18,7 @@
 				<div class="index_overlay_texte_wrap"><span class="index_overlay_texte">Bienvenue ! C'est votre première visite ?</span><span class="index_overlay_texte"> Laissez-vous guider...</span></div>
 				<div class="index_overlay_button"><a href="#" title="">Visite guidée</a></div>
 			</div>
-        </div> -->
+        </div>
 		
         <?php include 'includes/header.php'; ?>
         
