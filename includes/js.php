@@ -106,7 +106,7 @@
 				url : "includes/requete.php?lastid=\"" + $(".box:last").attr("id") + "\"", 
 				success: function(html){
 					if (html) {
-						$container.prepend( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });				}
+						$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });				}
 					else {
 						alert('Il n\'y a plus d\'enregistrements');
 					}

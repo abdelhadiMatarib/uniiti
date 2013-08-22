@@ -1,12 +1,12 @@
 <?php
 $db_config = array();
 $db_config['DRIVER']        = 'mysql';
-$db_config['HOST']          = 'mysql51-91.perso';
-$db_config['DB_NAME']       = 'captainopiniondb';
+$db_config['HOST']          = 'localhost';
+$db_config['DB_NAME']       = 'captainopinionDB';
 //$db_config['USER']          = 'root';                               // LOCAL
-$db_config['USER']        = 'captainopiniondb';                   // SERVEUR
+$db_config['USER']        = 'captainJohanUser';                   // SERVEUR
 //$db_config['PASSWORD']      = 'root';                               // LOCAL
-$db_config['PASSWORD']    = 'johann111';                // SERVEUR
+$db_config['PASSWORD']    = 'Darlot111JohannUser';                // SERVEUR
 $db_config['OPTIONS']       = array(
                                 // Activation des exceptions PDO :
                                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
