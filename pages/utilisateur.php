@@ -23,8 +23,16 @@
 	$nom_contributeur       = $result['nom_contributeur'];
 	$sexe_contributeur 		= $result['sexe_contributeur'];
 	$cp_contributeur 		= $result['cp_contributeur'];
-	$date_naissance 		= $result['date_naissance'];
+	$date_naissance_jour_contributeur 		= $result['date_naissance_jour_contributeur'];
+	$date_naissance_mois_contributeur 		= $result['date_naissance_mois_contributeur'];
+	$date_naissance_annee_contributeur 		= $result['date_naissance_annee_contributeur'];
 	$email_contributeur 	= $result['email_contributeur'];
+
+	$RequeteNow = $bdd->prepare("select NOW() AS Maintenant");
+	$RequeteNow->execute();
+	$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
+
+	$age = Age($Maintenant[0]['Maintenant'], $date_naissance_jour_contributeur, $date_naissance_mois_contributeur, $date_naissance_annee_contributeur);
 
 	$sql = "SELECT COUNT(avis_id_avis) AS count_avis FROM contributeurs_donnent_avis WHERE contributeurs_id_contributeur = " . $id_contributeur;
 
@@ -47,7 +55,7 @@
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
                     <div class="utilisateur_head_desc_avatar"><div class="img_container"><img src="../img/avatars/3.jpg" title="" alt="" height="120" width="120"/></div></div>
-                    <div class="utilisateur_head_desc_desc"><div class="img_container"><img src="../img/marker_map.png" title="" alt="" height="23" width="15"/></div><span><?php switch ($sexe_contributeur) {case 1: echo "Homme";break; case 0: echo "Femme";break;}?></span><span class="utilisateur_head_desc_desc_lastcat">25 ans</span></div>
+                    <div class="utilisateur_head_desc_desc"><div class="img_container"><img src="../img/marker_map.png" title="" alt="" height="23" width="15"/></div><span><?php switch ($sexe_contributeur) {case 1: echo "Homme";break; case 0: echo "Femme";break;}?></span><span class="utilisateur_head_desc_desc_lastcat"><?php echo $age; ?></span></div>
                     <div class="utilisateur_head_desc_desc2"><div class="img_container"><img src="../img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></div><span>Restaurateur</span><span class="utilisateur_head_desc_desc2_lastcat">Paris</span></div>
                     </div>
                 <div class="objet_head_note">
@@ -100,6 +108,5 @@
         <!-- FIN CONTENU PRINCIPAL -->
     </div><!-- FIN BIGGY -->
         <?php include'../includes/js.php' ?>
-        
     </body>
 </html>

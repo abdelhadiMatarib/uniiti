@@ -80,4 +80,18 @@ function EcartDate($Maintenant, $Date){
 	return $html;
 }
 
+function Age($Maintenant, $jour, $mois, $annee)
+{
+    $an = explode('-', $Maintenant);
+	if ($jour + $mois + $annee == 0) {$age = "âge NC";}
+	else
+	{
+		if(($mois < $an[1]) || ($mois == $an[1]) && ($jour <= $an[2])) {$age = $an[0] - $annee;}
+		else {$age = $an[0] - $annee - 1;}
+		$age .= " ans";
+	}
+
+    return $age;
+}
+
 ?>

@@ -45,6 +45,6 @@
 			<!-- FIN CONTENU PRINCIPAL -->
 			<?php include'includes/js.php' ?>
         </div><!-- FIN DU BIGGY -->
-    
+
 	</body>
 </html>
