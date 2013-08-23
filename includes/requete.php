@@ -19,7 +19,7 @@
 		$req = $bdd->prepare($sql);
 
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT id_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
+		$sql2 = "SELECT id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
 				FROM avis AS t1
 				INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
@@ -45,7 +45,8 @@
 		{
 			// Contributeurs
 			//$pseudo_contributeur    = $row['pseudo_contributeur'];
-			$id_contributeur      = $row['id_contributeur'];
+			$id_contributeur		 = $row['id_contributeur'];
+			$email_contributeur      = $row['email_contributeur'];
 			$photo_contributeur      = $row['photo_contributeur'];
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
@@ -106,7 +107,7 @@
 				<footer>
 					
 					<div class="box_foot">
-						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="img/avatars/1.png" title="" alt="" /></a></div>
+						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src=<?php echo get_gravatar( $email_contributeur, 50, 'monsterid');?> title="" alt="" /></a></div>
 						<div class="box_posttime"><time>Il y a <strong><?php echo EcartDate($Maintenant[0]['Maintenant'], $datetime);  ?></strong></time></div>
 						<div class="box_posttype"><img src="img/pictos_actions/notation.png" title="" alt="" /></div>
 					</div>

@@ -7,6 +7,9 @@
         include_once '../config/configuration.inc.php';
         include'../includes/head.php'; ?>
     <body>
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
         <?php include'../includes/header.php'; ?>
         <div class="biggymarginer">
         <div class="big_wrapper">
@@ -35,11 +38,24 @@
                 <div class="inscription_current_step"><span class="inscription_current_step_number">2</span><span class="inscription_current_step_etape_texte">étape</span></div>
                 <div class="inscription_next_step_button2"><a href="inscription3.php" title="">Suivant</a></div>
             </div>
-                <div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><img src="../img/avatars/6.png" height="120" width="120" title="" alt="" /></div>
+                <div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><div class="draggable"><img src="../img/avatars/6.png" height="120" width="120" title="" alt="" /></div></div>
             </div>
             
         </div><!-- FIN BIG WRAPPER -->
         </div><!-- FIN BIGGY -->
  <?php include'../includes/js.php' ?>
+	<script>
+			$(function() {
+				$( ".draggable" ).draggable();
+				$( ".inscription_upload_image_container" ).droppable({
+				drop: function( event, ui ) {alert("coucou");
+					$( this )
+					.addClass( "ui-state-highlight" )
+					.find( "p" )
+					.html( "Dropped!" );
+				}
+				});
+			});	
+	</script>
     </body>
 </html>

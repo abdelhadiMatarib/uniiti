@@ -133,7 +133,7 @@
 					}
 				});
 			});
-  
+ 
 			$(window).smartresize(function(){
 				// check if columns has changed
 				var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
