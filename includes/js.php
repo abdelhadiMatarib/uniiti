@@ -99,7 +99,7 @@
 				});
 	
 				$(window).scroll(function() {
-					if ( $(window).scrollTop() >= 0.9 * ($(document).height() - $(window).height()))
+					if ( $(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
 					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
 						var $idcontributeur = '<?php echo $id_contributeur; ?>';

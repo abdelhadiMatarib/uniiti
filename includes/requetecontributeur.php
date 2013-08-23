@@ -31,7 +31,7 @@
 								INNER JOIN types_enseigne AS t6
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne WHERE id_contributeur = " . $id_contributeur;
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
-		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,20";
+		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,50";
 
 		$req2 = $bdd->prepare($sql2);
 		$req2->execute();
