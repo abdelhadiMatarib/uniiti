@@ -5,7 +5,11 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.infinitescroll.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
+<<<<<<< HEAD
         <script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+=======
+    <script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+>>>>>>> configPDO remodifié. Normalement infinite scroll fonctionne sur commerce
 	
         <!--<script>
             $(document).ready(function() {                
@@ -101,14 +105,19 @@
 					if ( $(window).scrollTop() == $(document).height() - $(window).height() )
 					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
+						var $idcontributeur = '<?php echo $id_contributeur; ?>';
 						var $url, $data;
 						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
-							$url = "<?php echo SITE_URL; ?>/includes/requetecommerce.php";
-							$data = {id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\"")};
+							$url = "../includes/requetecommerce.php";
+							$data = {id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+						}
+						else if (<?php if (isset($Contributeur)) {echo 1;} else {echo 0;} ?>) {
+							$url = "../includes/requetecontributeur.php";
+							$data = {id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
 						}
 						else {
 							$url = "includes/requete.php";
-							$data = {lastid: "\"" + $(".box:last").attr("id") + "\""};
+							$data = {lastid: "\"" + $(".box:last").attr("id") + "\"", site_url: '<?php echo SITE_URL ; ?>'};
 						}
 						$.ajax({
 							type:"POST",
@@ -116,7 +125,7 @@
 							data : $data,
 							success: function(html){
 								if (html) {
-									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+									$container.append( $(decodeURIComponent(html))).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 								}
 								else {
 									alert('Il n\'y a plus d\'enregistrements');

@@ -1,6 +1,7 @@
 	<?php 
 		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
+		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -43,6 +44,7 @@
 		{
 			// Contributeurs
 			//$pseudo_contributeur    = $row['pseudo_contributeur'];
+			$id_contributeur      = $row['id_contributeur'];
 			$photo_contributeur      = $row['photo_contributeur'];
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
@@ -72,8 +74,8 @@
         <div class="box" id="<?php echo $datetime; ?>">
             
             <header>
-                <div class="box_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
-                <div class="box_desc">
+                <div class="box_icon"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
+                <div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>'">
                     <span class="box_title" title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span>
                     <span class="box_subtitle">355/3000 - Confirmé</span>
                 </div>
@@ -83,18 +85,18 @@
             <figure>
                 <div class="box_mark">
                     <div class="box_stars">
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
+                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
+                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
+                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
+                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
+                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
                     </div>
                     <div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
                 </div>
             </figure>
             
             <section>
-                <div class="box_useraction"><a href="#"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span><a> a noté</div>
+                <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
                 <div class="box_usertext"><figcaption><span>3/5 |</span> <?php if ($commentaire <>"") {echo $commentaire;} else {echo "pas de commentaire";} ?></figcaption></div>
             <div class="arrow_up"></div>
             </section>
@@ -102,9 +104,9 @@
             <footer>
                 
                 <div class="box_foot">
-                    <div class="box_userpic"><a href="#" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
+                    <div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo $SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
                     <div class="box_posttime"><time>Il y a <strong><?php echo EcartDate($Maintenant[0]['Maintenant'], $datetime);  ?></strong></time></div>
-                    <div class="box_posttype"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
+                    <div class="box_posttype"><img src="<?php echo $SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
                 </div>
             </footer>
             

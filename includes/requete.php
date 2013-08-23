@@ -1,6 +1,7 @@
 
-	<?php 
+	<?php
 		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -44,6 +45,7 @@
 		{
 			// Contributeurs
 			//$pseudo_contributeur    = $row['pseudo_contributeur'];
+			$id_contributeur      = $row['id_contributeur'];
 			$photo_contributeur      = $row['photo_contributeur'];
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
@@ -76,8 +78,9 @@
 					<div class="box_icon"><img src="img/pictos_commerces/restaurant.png" title="" alt="" /></div>
 <!--					<div class="box_desc" onclick="location.href='<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
--->		<div class="box_desc" onclick="location.href='<?php echo SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">
-							<span class="box_title" title="<?php echo $nom_enseigne; ?>"><?php echo tronque($nom_enseigne); ?></span> 							<span class="box_subtitle">Restauration</span>
+-->					<div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">
+							<span class="box_title" title="<?php echo $nom_enseigne; ?>"><?php echo tronque($nom_enseigne); ?></span>
+							<span class="box_subtitle">Restauration</span>
 					</div>
 				</header>
 				
@@ -95,7 +98,7 @@
 				</figure>
 				
 				<section>
-					<div class="box_useraction"><a href="#"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
+					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
 					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php if ($commentaire <>"") {echo $commentaire;} else {echo "pas de commentaire";} ?></figcaption></div>
 				<div class="arrow_up"></div>
 				</section>
@@ -103,7 +106,7 @@
 				<footer>
 					
 					<div class="box_foot">
-						<div class="box_userpic"><a href="#" ><img src="img/avatars/1.png" title="" alt="" /></a></div>
+						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="img/avatars/1.png" title="" alt="" /></a></div>
 						<div class="box_posttime"><time>Il y a <strong><?php echo EcartDate($Maintenant[0]['Maintenant'], $datetime);  ?></strong></time></div>
 						<div class="box_posttype"><img src="img/pictos_actions/notation.png" title="" alt="" /></div>
 					</div>

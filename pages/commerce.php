@@ -26,10 +26,6 @@
 	$req2->execute();
 	$result = $req2->fetch(PDO::FETCH_ASSOC);
            
-	$RequeteNow = $bdd->prepare("select NOW() AS Maintenant");
-	$RequeteNow->execute();
-	$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
-
 	$nom_enseigne            = $result['nom_enseigne'];
 	$logotype_enseigne       = $result['logotype_enseigne'];
 	$adresse1_enseigne       = $result['adresse1_enseigne'];
