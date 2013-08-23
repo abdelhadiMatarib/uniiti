@@ -5,7 +5,7 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.infinitescroll.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
-    <script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+        <script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	
         <!--<script>
             $(document).ready(function() {                
