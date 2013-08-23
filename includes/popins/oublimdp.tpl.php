@@ -21,10 +21,9 @@
         </div> 
             
     </div>
-    <div class="ident_footer">
+    <div class="oublimdp_footer">
         
-        <div class="ident_inscription_wrap"><a href="#">Inscription</a></div>
-        <div class="ident_connexion_wrap"><a href="#">Connexion</a></div>
+        <div class="oublimdp_valider_wrap"><a href="#">Valider</a></div>
         
     </div>
 </div>
