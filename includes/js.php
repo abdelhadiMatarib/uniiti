@@ -82,7 +82,7 @@
             });
         </script>-->
 	<script>
-	$(window).load(function() { 
+	$(window).load(function() {
 		$(function(){
   
 			var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
