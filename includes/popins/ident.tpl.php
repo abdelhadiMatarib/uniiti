@@ -1,7 +1,6 @@
 <?php
         include_once '../../config/configuration.inc.php';
         include'../head.php'; ?>
-
 <div class="ident_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="ident_head">
@@ -29,4 +28,11 @@
         
     </div>
 </div>
+<script>    
+    $('.popin_close_button').click(function(e){
+    e.preventDefault(); //don't go to default URL
+    var defaultdialog = $("#default_dialog").dialog();
+    defaultdialog.dialog('close');
+    });
+</script>
 </html>

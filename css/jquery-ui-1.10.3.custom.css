@@ -79,7 +79,7 @@
 
 /* Overlays */
 .ui-widget-overlay {
-        background-color:rgba(37,37,37,0.8);
+        background:url('../img/overlay.png') repeat;
 	position: fixed;
 	top: 0;
 	left: 0;

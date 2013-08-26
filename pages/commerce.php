@@ -64,6 +64,8 @@
 
     <body>
         <?php include'../includes/header.php'; ?>
+        <div id="default_dialog"></div>
+        <div id="default_dialog_large"></div>
         <div class="biggymarginer">
         <div class="big_wrapper" id="test">
             <div class="liseret_orange"></div>
@@ -138,9 +140,9 @@
                 <div class="commerce_labels"><span>Labels captain</span><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="23" height="23" title="" alt="" /><p>bio</p></div>
                 
                 <div class="wrapper_boutons">
-                <div class="boutons"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_OK.png" height="22" width="27"/></a></div>
-                <div class="boutons"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_NOK.png" height="22" width="27"/></a></div>
-                <div class="boutons"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/wishlist.png" height="23" width="30"/></a></div>
+                <div class="boutons not_signedin"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_OK.png" height="22" width="27"/></a></div>
+                <div class="boutons not_signedin"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_NOK.png" height="22" width="27"/></a></div>
+                <div class="boutons not_signedin"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/wishlist.png" height="23" width="30"/></a></div>
                 </div>
             </div>
         

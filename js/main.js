@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $('#recherche_avancee_button').click(function(){
         if(
         $('.overlay').is(':visible'))
@@ -6,33 +7,43 @@ $(document).ready(function() {
             $('.overlay').css('display','none');
         }
         else{$('.overlay').css('display','block');}
-    $('.recherche_avancee_wrapper').load("includes/menus/recherche_avancee.tpl.php").stop().slideToggle(300);
+        
+    $('.recherche_avancee_wrapper').load(siteurl+"/includes/menus/recherche_avancee.tpl.php").stop().slideToggle(300);
     $('.header').css('z-index','1000');
     $('.recherche_avancee_wrapper').css('z-index','1001');
     });
     // GESTION DES POP-INS
     // initialize dialog
-    /*var defaultdialog = $("#default_dialog").dialog({ 
+    var defaultdialog = $("#default_dialog").dialog({ 
         autoOpen: false,
         modal:true,
         draggable:false,
         resizable:false,
-        width: 560
+        width: '560px',
+        height: 'auto'
+    });
+    var defaultdialog_large = $("#default_dialog_large").dialog({ 
+        autoOpen: false,
+        modal:true,
+        draggable:false,
+        resizable:false,
+        width: '760px',
+        height: 549
     });
     // call dialogs
-    $('.not_signedin').click(function(e){console.log('youhou1');
+    // non-connecté
+    $('.not_signedin').click(function(e){
         e.preventDefault(); //don't go to default URL
         // load content and open dialog
-        defaultdialog.load('../includes/popins/ident.tpl.php').dialog('open');
+        defaultdialog.load(siteurl+'/includes/popins/ident.tpl.php').dialog('open');
     });
-    $('.oublimdp_link').click(function(e){console.log('youhou2');
+    
+    // commentaire
+    $('.box section').click(function(e){
         e.preventDefault(); //don't go to default URL
-        defaultdialog.load('../includes/popins/oublimdp.tpl.php').dialog('open');
+        // load content and open dialog
+        defaultdialog_large.load(siteurl+'/includes/popins/presentation_action_commentaire.tpl.php').dialog('open');
     });
-    $('.popin_close_button').click(function(e){
-        e.preventDefault(); //don't go to default URL
-        defaultdialog.dialog('close');
-    });*/
     
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {
@@ -508,5 +519,4 @@ $('#close_button_home').click(function() {
             $('.ligne_verticale3').css('left','1562px').css('height','496px');
         }
   
-}
-     
+}   

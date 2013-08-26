@@ -11,6 +11,8 @@
 		include_once 'config/configPDO.inc.php';
 		include_once 'includes/fonctions.inc.php'; ?>
     <body>
+        <div id="default_dialog"></div>
+        <div id="default_dialog_large"></div>
 		<?php
 			if (empty($_COOKIE["UNIITI"])) {
 			setcookie("UNIITI", "Premierefois");
