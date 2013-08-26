@@ -44,7 +44,7 @@
             <span class="presentation_action_left_body_username">Jean-Pierre P.</span>
             <span class="presentation_action_left_body_action">a laissé un avis</span>
             <div class="presentation_action_commentaire_left_body_message">
-                <span>5/5 | Accueil chaleureux, cadre agréable et calme. Déjeuner excellent, fin, produits de qualité bien mis en valeur, choix de vin. La musique et bonne !!! Je vais le recommander et je reviendrai sans aucun problème. Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <span>5/5 | Accueil chaleureux, cadre agréable et calme. Déjeuner excellent, f</span>
             </div>
             <div class="arrow_up"></div>
         </div>
