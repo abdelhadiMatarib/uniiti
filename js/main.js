@@ -74,6 +74,48 @@ $('#close_button_home').click(function() {
 });
         // Respond
         
+        $('.presentation_action_right_voirplus_txt a').click(function(){
+            console.log('youhou');
+            var new_element = $("#posts");
+            /*var commentHeight = $('.presentation_action_commentaire_left_body_message').height();
+            var suggestionBox =*/
+            $(".presentation_action_right_suggestions").append(new_element.html());
+        
+        });
+        
+        function content_message_suggestion_height(){
+            
+        var contentHeight = $('.presentation_action_commentaire_left_body_message').height();
+        var new_element = $("#posts");
+
+        if (contentHeight == 18){
+            $(".presentation_action_right_suggestions").css('height',280);
+        }
+        if (contentHeight == 36){
+            $(".presentation_action_right_suggestions").css('height',330);
+            $(".presentation_action_right_suggestions").append(new_element.html());
+        }
+        if (contentHeight == 54){
+            $(".presentation_action_right_suggestions").css('height',330);
+            $(".presentation_action_right_suggestions").append(new_element.html());
+        }
+        if (contentHeight == 72){
+            $(".presentation_action_right_suggestions").css('height',330);
+            $(".presentation_action_right_suggestions").append(new_element.html());
+        }
+        if (contentHeight == 90){
+            $(".presentation_action_right_suggestions").css('height',380);
+            $(".presentation_action_right_suggestions").append(new_element.html());
+            $(".presentation_action_right_suggestions").append(new_element.html());
+        }
+        if (contentHeight == 108){
+            $(".presentation_action_right_suggestions").css('height',380);
+            $(".presentation_action_right_suggestions").append(new_element.html());
+            $(".presentation_action_right_suggestions").append(new_element.html());
+        }
+        
+        }
+        content_message_suggestion_height()
     function resizeboxContainer(){
         
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
