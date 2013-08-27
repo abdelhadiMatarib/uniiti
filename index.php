@@ -47,6 +47,12 @@
 			<!-- FIN CONTENU PRINCIPAL -->
 			<?php include'includes/js.php' ?>
         </div><!-- FIN DU BIGGY -->
-
+<script>    
+    $('.popin_close_button').click(function(e){
+    e.preventDefault(); //don't go to default URL
+    var defaultdialog_large = $("#default_dialog_large").dialog();
+    defaultdialog_large.dialog('close');
+    });
+</script>
 	</body>
 </html>

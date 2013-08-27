@@ -29,7 +29,7 @@ $(document).ready(function() {
         resizable:false,
         width: '760px',
         height: 549
-    });
+	});
     // call dialogs
     // non-connecté
     $('.not_signedin').click(function(e){
@@ -42,9 +42,9 @@ $(document).ready(function() {
     $('.box section').click(function(e){
         e.preventDefault(); //don't go to default URL
         // load content and open dialog
-        defaultdialog_large.load(siteurl+'/includes/popins/presentation_action_commentaire.tpl.php').dialog('open');
+	    defaultdialog_large.load(siteurl+'/includes/popins/presentation_action_commentaire.tpl.php').dialog('open');
     });
-    
+	    
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {
 $('.inscription_field_sexe_button_f').removeClass('inscription_field_sexe_bg');
