@@ -1,6 +1,5 @@
         <?php
-        include_once '../../config/configuration.inc.php';
-        include'../head.php'; ?>
+        include_once '../../config/configuration.inc.php';?>
 <div class="presentation_action_wrapper">
     
     <div class="presentation_action_left">

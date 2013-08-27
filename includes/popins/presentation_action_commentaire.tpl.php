@@ -1,6 +1,5 @@
         <?php
-        include_once '../../config/configuration.inc.php';
-        include'../head.php'; ?>
+        include_once '../../config/configuration.inc.php';?>
 
 <div class="presentation_action_wrapper presentation_action_commentaire_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -44,7 +43,7 @@
             <span class="presentation_action_left_body_username">Jean-Pierre P.</span>
             <span class="presentation_action_left_body_action">a laissé un avis</span>
             <div class="presentation_action_commentaire_left_body_message">
-                <span>5/5 | Accueil chaleureux, cadre agréable et calme. Déjeuner excellent, f</span>
+                <span>5/5 | Accueil chaleureux, cadre agréable et calme. Déjeuner excellent, feduzefgeubsdivknsdvkndsvof, ofp kdfpo jdkfo ,dfm,</span>
             </div>
             <div class="arrow_up"></div>
         </div>
@@ -176,8 +175,8 @@
 <script>    
     $('.popin_close_button').click(function(e){
     e.preventDefault(); //don't go to default URL
-    var defaultdialog = $("#default_dialog_large").dialog();
-    defaultdialog.dialog('close');
+    var defaultdialog_large = $("#default_dialog_large").dialog();
+    defaultdialog_large.dialog('close');
     });
 </script>
 </html>

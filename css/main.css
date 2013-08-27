@@ -447,15 +447,16 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 
 /* IDENTIFICATION */
 
-.ident_wrapper,.oublimdp_wrapper,.suggestioncommerce_wrapper,.suggestionobjet_wrapper,.parrainage_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
-.ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;}
-.ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
+.ident_wrapper,.oublimdp_wrapper,.suggestioncommerce_wrapper,.suggestionobjet_wrapper,.parrainage_wrapper,.couverture_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
+.ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head,.couverture_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;}
+.ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle,.couverture_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
 .ident_mdp_oublie_wrapper{float:right;}
 .ident_head span.subtitle{display:inline-block;margin:16px 15px 0 0;}
-.ident_img_container,.oublimdp_img_container,.suggestioncommerce_img_container,.suggestionobjet_img_container,.parrainage_img_container{float:left;height:44px;width:37px;padding-top:8px;margin:0 15px 0 15px;}
+.ident_img_container,.oublimdp_img_container,.suggestioncommerce_img_container,.suggestionobjet_img_container,.parrainage_img_container,.couverture_img_container{float:left;height:44px;width:37px;padding-top:8px;margin:0 15px 0 15px;}
 .ident_body,.oublimdp_body{height:92px;background-color:#efefef;}
 
 .parrainage_body{}
+.couverture_step1_body{}
 
 .suggestioncommerce_body input,.suggestioncommerce_body select,.suggestioncommerce_body textarea{background-color:#f0f0f0;border-bottom:1px solid #e4e4e4;}
 .suggestionobjet_body input,.suggestionobjet_body select,.suggestionobjet_body textarea{background-color:#f0f0f0;border-bottom:1px solid #e4e4e4;}

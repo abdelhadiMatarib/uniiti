@@ -74,7 +74,8 @@ $('#close_button_home').click(function() {
 });
         // Respond
         
-        $('.presentation_action_right_voirplus_txt a').click(function(){
+        $('.presentation_action_right_voirplus_txt a').click(function(e){
+            e.preventDefault();
             console.log('youhou');
             var new_element = $("#posts");
             /*var commentHeight = $('.presentation_action_commentaire_left_body_message').height();
