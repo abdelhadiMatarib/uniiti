@@ -9,22 +9,23 @@
         </div><span class="maintitle">Images de couverture</span>
     </div>   
     <div class="couverture_step1_body">
+        <div class="couverture_step1_dropzone couverture_step2_dropzone">
+            <div class="couverture_step1_wrap_buttons">
+                <div class="couverture_step1_button_supprimer"></div>
+                <div class="couverture_step1_button_valider"></div>
+            </div>
+            <div class="couverture_step2_resize_infos">
+                <div class="couverture_step2_resize_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_resize_icon.png" title="" alt="" height="18" width="10" /></div>
+                <span>cliquez pour repositionner l'image</span>
+            </div>
+            <img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_popin2.jpg" title="" alt="" height="189" width="660" />
             
-        <div class="couverture_step1_dropzone">
-            <div class="couverture_step1_dropzone_img_container">
-                <img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="50" width="51" />
-            </div>
-            <div class="couverture_step1_dropzone_txt">
-            <span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
-            <span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="">votre ordinateur</a></span>
-            </div>
         </div>
             
     </div>
     <div class="couverture_step1_footer">
         <div class="couverture_step1_footer_vertical_sep"></div>
-        <div class="couverture_step1_infos"><div class="couverture_step_1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span>Une fois le chargement de/des images effectué, vous pourrez les ajuster pour un affichage optimal.</span></div>
-
+        <div class="couverture_step1_infos"><div class="couverture_step_1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span>Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.</span></div>
         <div class="couverture_arianne">
             <div class="couverture_arianne_txt">
             <span class="arianne_txt_1">Vos </span>
