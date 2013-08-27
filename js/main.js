@@ -1,3 +1,26 @@
+function OuvrePopin(data) {
+	var defaultdialog_large = $("#default_dialog_large").dialog({ 
+		autoOpen: false,
+		modal:true,
+		draggable:false,
+		resizable:false,
+		width: '760px',
+		height: 549
+	});	
+
+	var url = siteurl + '/includes/popins/presentation_action_commentaire.tpl.php';
+
+	$.ajax({
+		type:"POST",
+		url : url,
+		data : data,
+		success: function(html){
+			$("#default_dialog_large").html(html).dialog('open');
+		},
+		error: function() {alert('Erreur sur url : ' + $url);}
+	});
+}
+
 $(document).ready(function() {
 
     $('#recherche_avancee_button').click(function(){
@@ -22,14 +45,7 @@ $(document).ready(function() {
         width: '560px',
         height: 'auto'
     });
-    var defaultdialog_large = $("#default_dialog_large").dialog({ 
-        autoOpen: false,
-        modal:true,
-        draggable:false,
-        resizable:false,
-        width: '760px',
-        height: 549
-	});
+
     // call dialogs
     // non-connecté
     $('.not_signedin').click(function(e){
@@ -37,14 +53,7 @@ $(document).ready(function() {
         // load content and open dialog
         defaultdialog.load(siteurl+'/includes/popins/ident.tpl.php').dialog('open');
     });
-    
-    // commentaire
-    $('.box section').click(function(e){
-        e.preventDefault(); //don't go to default URL
-        // load content and open dialog
-	    defaultdialog_large.load(siteurl+'/includes/popins/presentation_action_commentaire.tpl.php').dialog('open');
-    });
-	    
+  
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {
 $('.inscription_field_sexe_button_f').removeClass('inscription_field_sexe_bg');

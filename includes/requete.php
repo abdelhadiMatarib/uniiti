@@ -52,10 +52,12 @@
 			$nom_contributeur        = $row['nom_contributeur'];
 			// Avis
 			$commentaire             = stripslashes($row['commentaire']);
+			if ($commentaire == "") {$commentaire = "pas de commentaire";}
 			$appreciation            = $row['appreciation'];
 			$note                    = $row['note'];
 			$origine                 = $row['origine'];
 			$datetime                = $row['date_avis'];
+			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
 			// Enseigne
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
@@ -69,9 +71,19 @@
 			$req->execute();
 			$result = $req->fetch(PDO::FETCH_ASSOC);
 			$count_avis_enseigne     = $result['count_avis'];
-			$note_arrondi = number_format($result['moyenne'],1);	
-	?>
+			$note_arrondi = number_format($result['moyenne'],1);
 
+			$data = "{id_contributeur :" . $id_contributeur . ","
+				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
+				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
+				. "id_enseigne :" . $id_enseigne . ","
+				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
+				. "delai_avis : '" . $delai_avis . "',"
+				. "count_avis_enseigne :" . $count_avis_enseigne . ","
+				. "note :" . $note . ","
+				. "note_arrondi :" . $note_arrondi . "}";
+	?>
 			<!-- VIGNETTE TYPE -->
 			<div class="box" id="<?php echo $datetime; ?>">
 				
@@ -98,9 +110,9 @@
 					<img src="img/photos_commerces/1.jpg" title="" alt="" />
 				</figure>
 				
-				<section>
+				<section onclick="OuvrePopin(<?php echo $data; ?>);">
 					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
-					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php if ($commentaire <>"") {echo $commentaire;} else {echo "pas de commentaire";} ?></figcaption></div>
+					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div>
 				<div class="arrow_up"></div>
 				</section>
 				
@@ -108,7 +120,7 @@
 					
 					<div class="box_foot">
 						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src=<?php echo get_gravatar( $email_contributeur, 50, 'monsterid');?> title="" alt="" /></a></div>
-						<div class="box_posttime"><time>Il y a <strong><?php echo EcartDate($Maintenant[0]['Maintenant'], $datetime);  ?></strong></time></div>
+						<div class="box_posttime"><time>Il y a <strong><?php echo $delai_avis;  ?></strong></time></div>
 						<div class="box_posttype"><img src="img/pictos_actions/notation.png" title="" alt="" /></div>
 					</div>
 				</footer>
