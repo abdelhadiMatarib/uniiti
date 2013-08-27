@@ -77,7 +77,7 @@
             <div class="inscription_footer">
                 <h4 class="inscription_footer_highlight">Nous nous engageons à protéger votre vie privée et votre adresse e-mail ne sera jamais vendue ni louée.</h4> 
                 <h4 class="inscription_footer_text">En cliquant sur suivant, vous indiquez que vous acceptez notre Charte de confidentialité et nos Conditions d'utilisation.</h4>
-                <div class="inscription_next_step_button"><a href="inscription2.php" title="">Suivant</a></div>
+                <div class="inscription_next_step_button"><a href="<?php echo SITE_URL . "/pages/inscription2.php"?>" title="">Suivant</a></div>
             </div>
         </div><!-- FIN BIG WRAPPER -->
         </div><!-- FIN BIGGY -->

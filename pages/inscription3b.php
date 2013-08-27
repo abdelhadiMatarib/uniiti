@@ -38,7 +38,7 @@
             <div class="inscription_wrap_next_step2">
             <div class="inscription_next_step2">
                 <div class="inscription_current_step"><span class="inscription_current_step_number">3</span><span class="inscription_current_step_etape_texte">étape</span></div>
-                <div class="inscription_next_step_button2"><a href="inscription4.php" title="">Suivant</a></div>
+                <div class="inscription_next_step_button2"><a href="<?php echo SITE_URL . "/pages/inscription4.php"?>" title="">Suivant</a></div>
             
             
         </div><!-- FIN BIG WRAPPER -->

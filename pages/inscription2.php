@@ -15,22 +15,23 @@
 		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<!-- Demo only -->
 		<script type="text/javascript" src="../Slider/demo/demo.js"></script>
-
-		<style>/* panel images */
-
-			.mb-inside img {
-			  width: 80%;
-			}
-		</style>
+		<script language="javascript" src="../js/jquery.easydrag.min.js"></script>
+	
 		<script>
-				$(function() {
-					$( ".draggable" ).draggable({ revert: true });
-					$( ".inscription_upload_button" ).droppable({
-					drop: function( event, ui ) {
-						$("#Avatar").attr("src", $(ui.draggable).find("img").attr("src"));
-					}
-					});
-				});	
+			function ChangeAvatar(src) {
+				$("#Avatar").attr("src", src);
+			}
+			
+			$(function() {
+				$( ".draggable" ).easyDrag({ axis: "x", revert: true});
+				$( ".inscription_upload_button" ).droppable({
+				drop: function( event, ui ) {
+					$("#Avatar").attr("src", $(ui.draggable).find("img").attr("src"));
+				}
+				});
+
+			});
+			
 		</script>
 	
         <?php include'../includes/header.php'; ?>
@@ -51,14 +52,49 @@
                 <div class="inscription_choisir_image_texte"><span>Choisissez-en une dans la Uniiti galerie</span></div>
             </div>
             <div class="inscription_fields_left">
-                <div class="inscription_upload_image_container"><span>Ou cliquez pour en choisir une sur votre ordinateur</span><button class="inscription_upload_button"><input id="inscription_upload" type="file" /></button></div>
+                <div class="inscription_upload_image_container"><span>Ou cliquez pour en choisir une sur votre ordinateur</span>
+				
+
+
+					<form id="upload" action="inscription2.php" method="POST" enctype="multipart/form-data">
+						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+						<div>
+							<div id="filedrag" class="inscription_upload_button">or drop files here</div>
+							<input type="file" id="inscription_upload" name="inscription_upload[]" multiple="multiple" />
+						</div>
+						<div id="submitbutton">
+							<button type="submit">Upload Files</button>
+						</div>
+					</form>
+					<div id="messages">
+						<p>Status Messages</p>
+					</div>				
+				
+				
+<!--					<form id="upload" action="inscription2.php" method="POST" enctype="multipart/form-data">
+					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+						<div id="filedrag" class="inscription_upload_button">
+							<input type="file" id="inscription_upload" name="inscription_upload[]" multiple="multiple" />
+						</div>
+						<div id="submitbutton">
+							<button type="submit">Upload Files</button>
+						</div>
+					</form>
+					<div id="messages">
+						<p>Status Messages</p>
+					</div>
+-->					
+					
+					
+					
+				</div>
             </div>
             <div class="inscription_fields_right">
                 <div class="inscription_choisir_image_container">
 				<!-- Slider --><div id="wrapper">
 					<div id="slider-one">
 						<?php for ($i = 1 ; $i < 10 ; $i++) { ?>
-							<div id="coucou<?php echo $i; ?>" class="draggable"><img src="../Slider/images/demo-images/img<?php echo $i; ?>.jpg" alt="" /></div>
+							<div class="draggable"><img onclick="ChangeAvatar('../Slider/images/demo-images/img<?php echo $i; ?>.jpg');" src="../Slider/images/demo-images/img<?php echo $i; ?>.jpg" alt="" /></div>
 						<?php } ?>
 					</div></div>
 				<!-- /Slider -->
@@ -67,12 +103,14 @@
             <div class="inscription_wrap_next_step2">
             <div class="inscription_next_step2">
                 <div class="inscription_current_step"><span class="inscription_current_step_number">2</span><span class="inscription_current_step_etape_texte">étape</span></div>
-                <div class="inscription_next_step_button2"><a href="inscription3.php" title="">Suivant</a></div>
+                <div class="inscription_next_step_button2"><a href="<?php echo SITE_URL . "/pages/inscription3.php"?>" title="">Suivant</a></div>
             </div>
                 <div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><img id="Avatar" src="../img/avatars/6.png" height="120" width="120" title="" alt="" /></div>
             </div>
             
         </div><!-- FIN BIG WRAPPER -->
         </div><!-- FIN BIGGY -->
+		
+		<script type="text/javascript" src="../js/filedrag.js"></script>
     </body>
 </html>

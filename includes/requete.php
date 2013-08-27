@@ -51,7 +51,7 @@
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
 			// Avis
-			$commentaire             = $row['commentaire'];
+			$commentaire             = stripslashes($row['commentaire']);
 			$appreciation            = $row['appreciation'];
 			$note                    = $row['note'];
 			$origine                 = $row['origine'];
