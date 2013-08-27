@@ -137,7 +137,21 @@
 					list($imagewidth, $imageheight, $imageType) = getimagesize($image);
 					$scale = $imagewidth / 1700;
 					$newImage = imagecreatetruecolor(1700,500);
-					$source=imagecreatefromjpeg($image);
+					$imageType = image_type_to_mime_type($imageType);
+					switch($imageType) {
+						case "image/gif":
+							$source=imagecreatefromgif($image); 
+							break;
+						case "image/pjpeg":
+						case "image/jpeg":
+						case "image/jpg":
+							$source=imagecreatefromjpeg($image); 
+							break;
+						case "image/png":
+						case "image/x-png":
+							$source=imagecreatefrompng($image); 
+							break;
+					}
 					imagecopyresampled($newImage,$source,0,0,0,-$y * $scale,1700,500,$imagewidth,500 * $scale);
 					imagepng($newImage, $couv);
 					echo "Image sauvegardée dans " . $CheminImageRecalibree;			
