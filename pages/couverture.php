@@ -47,7 +47,6 @@ $(function() {
 		// process all File objects
 		for (var i = 0, f; f = files[i]; i++) {
 			ParseFile(f);
-			UploadFile(f);
 		}
 	}
 
@@ -77,53 +76,6 @@ $(function() {
 
 			}
 			reader.readAsDataURL(file);
-		}
-
-		// display text
-		if (file.type.indexOf("text") == 0) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				Output(
-					"<p><strong>" + file.name + ":</strong></p><pre>" +
-					e.target.result.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
-					"</pre>"
-				);
-			}
-			reader.readAsText(file);
-		}
-	}
-
-	// upload JPEG files
-	function UploadFile(file) {
-
-		// following line is not necessary: prevents running on SitePoint servers
-		if (location.host.indexOf("sitepointstatic") >= 0) return
-
-		var xhr = new XMLHttpRequest();
-		if (xhr.upload && file.type == "image/jpeg" && file.size <= $id("MAX_FILE_SIZE").value) {
-
-			// create progress bar
-			var o = $id("progress");
-			var progress = o.appendChild(document.createElement("p"));
-			progress.appendChild(document.createTextNode("upload " + file.name));
-
-			// progress bar
-			xhr.upload.addEventListener("progress", function(e) {
-				var pc = parseInt(100 - (e.loaded / e.total * 100));
-				progress.style.backgroundPosition = pc + "% 0";
-			}, false);
-
-			// file received/failed
-			xhr.onreadystatechange = function(e) {
-				if (xhr.readyState == 4) {
-					progress.className = (xhr.status == 200 ? "success" : "failure");
-				}
-			};
-
-			// start upload
-			xhr.open("POST", $id("upload").action, true);
-			xhr.setRequestHeader("X_FILENAME", file.name);
-			xhr.send(file);
 		}
 	}
 
@@ -204,69 +156,7 @@ $(function() {
 				border-style: solid;
 				box-shadow: inset 0 3px 4px #888;
 			}
-			
-			#progress p
-			{
-				display: block;
-				width: 240px;
-				padding: 2px 5px;
-				margin: 2px 0;
-				border: 1px inset #446;
-				border-radius: 5px;
-				background: #eee url("../img/progress.png") 100% 0 repeat-y;
-			}
-
-			#progress p.success
-			{
-				background: #0c0 none 0 0 no-repeat;
-			}
-
-			#progress p.failed
-			{
-				background: #c00 none 0 0 no-repeat;
-			}
-			
 		</style>
-
-		<?php
-		
-		function CreerImageCouverture ($NomImage, $CheminImageRecalibree, $y) {
-
-			$image = $NomImage;
-			$couv = $CheminImageRecalibree . basename($image) . ".png";
-			list($imagewidth, $imageheight, $imageType) = getimagesize($image);
-			$scale = $imagewidth / 1700;
-			echo $NomImage . " " . $imagewidth . "," . $imageheight;
-			$newImage = imagecreatetruecolor(1700,500);
-			$source=imagecreatefromjpeg($image);
-			imagecopyresampled($newImage,$source,0,0,0,-$y * $scale,1700,500,$imagewidth,500 * $scale);
-			imagepng($newImage, $couv);		
-		
-		}
-		
-		
-		
-		$src = "";
-		if (isset($_POST["submitted"])) {
-//		print_r($_FILES);
-		$NomImage = realpath($_FILES['fileselect']['tmp_name']);
-		$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
-		CreerImageCouverture ($NomImage, $CheminImageRecalibree, $_POST['y']);
-/*			$src = SITE_URL . "/img/tmp/" . $_FILES['fileselect']['name'];
-		
-			$uploaddir = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
-			$uploadfile = $uploaddir . basename($_FILES['fileselect']['name']);
-
-			if (move_uploaded_file($_FILES['fileselect']['tmp_name'], $uploadfile)) {
-			} else {
-				echo "Attaque potentielle par téléchargement de fichiers.
-					  Voici plus d'informations :\n";
-				echo 'Voici quelques informations de débogage :';
-				print_r($_FILES);
-
-			}*/
-		}
-		?>
 
 		<div id="fenetre"></div>
 		<div id="selection">
@@ -284,11 +174,33 @@ $(function() {
 			<input type="file" name="fileselect" id="fileselect" multiple accept="image/*" />
 			<input type="hidden" name="y" value="" id="y" />
 			<BR>
-			<input id="submitbutton" name="submitted" type="submit" value="Envoyer le fichier" />
+			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
 			
-			<div id="progress"></div>
-			<div id="messages"></div>	
+			<div id="messages">
+				<?php
+				
+				function CreerImageCouverture ($NomImage, $CheminImageRecalibree, $y) {
 
+					$image = $NomImage;
+					$couv = $CheminImageRecalibree . basename($image) . ".png";
+					list($imagewidth, $imageheight, $imageType) = getimagesize($image);
+					$scale = $imagewidth / 1700;
+					$newImage = imagecreatetruecolor(1700,500);
+					$source=imagecreatefromjpeg($image);
+					imagecopyresampled($newImage,$source,0,0,0,-$y * $scale,1700,500,$imagewidth,500 * $scale);
+					imagepng($newImage, $couv);
+					echo "Image sauvegardée dans " . $CheminImageRecalibree;			
+				}
+				
+				$src = "";
+				if (isset($_POST["submitted"])) {
+
+				$NomImage = realpath($_FILES['fileselect']['tmp_name']);
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+				CreerImageCouverture ($NomImage, $CheminImageRecalibree, $_POST['y']);
+				}
+				?>
+			</div>	
 		</form>
-    </body>
+	</body>
 </html>
