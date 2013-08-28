@@ -52,6 +52,8 @@
 			$nom_contributeur        = $row['nom_contributeur'];
 			// Avis
 			$commentaire             = str_replace(PHP_EOL ,'<BR>', stripslashes($row['commentaire']));
+			$commentaire			 = str_replace("\r" , "", $commentaire);
+			$commentaire			 = str_replace("\n" , "", $commentaire);
 			if ($commentaire == "") {$commentaire = "pas de commentaire";}
 			$appreciation            = $row['appreciation'];
 			$note                    = $row['note'];
