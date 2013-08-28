@@ -40,7 +40,7 @@
 	$req->execute();
 	$result = $req->fetch(PDO::FETCH_ASSOC);	
 	$count_avis_contributeur = $result['count_avis'];
-	
+	$data = "{}";
 ?>
 <body>    
     <div id="default_dialog_large"></div>
