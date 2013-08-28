@@ -447,8 +447,8 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 
 /* IDENTIFICATION */
 
-.ident_wrapper,.oublimdp_wrapper,.suggestioncommerce_wrapper,.suggestionobjet_wrapper,.parrainage_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
-.ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head,.couverture_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;}
+.ident_wrapper,.oublimdp_wrapper,.suggestioncommerce_wrapper,.suggestionobjet_wrapper,.parrainage_wrapper,.reservation_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
+.ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head,.couverture_head,.reservation_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;}
 .ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle,.couverture_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
 .ident_mdp_oublie_wrapper{float:right;}
 .ident_head span.subtitle{display:inline-block;margin:16px 15px 0 0;}
@@ -475,13 +475,13 @@ textarea.parrainage_input_message{resize:none;}
 .parrainage_option2_body_socials{text-align:center;background-color:white;width:700px;border-top:1px solid #e4e4e4;float:left;}
 .parrainage_fb_img_container{background-color:#f0f0f0;float:left;}
 .parrainage_option2_body_socials_fb{background-color:#f0f0f0;width:179px;float:left;}
-.parrainage_option2_body_socials_fb a{display:inline-block;padding-top:15px;width:100%;height:30px;}
+.parrainage_option2_body_socials_fb a{color:#252525;display:inline-block;padding-top:15px;width:100%;height:30px;}
 .parrainage_tw_img_container{background-color:#f0f0f0;float:left;}
 .parrainage_option2_body_socials_tw{background-color:#f0f0f0;width:179px;float:left;}
-.parrainage_option2_body_socials_tw a{display:inline-block;padding-top:15px;width:100%;height:30px;}
+.parrainage_option2_body_socials_tw a{color:#252525;display:inline-block;padding-top:15px;width:100%;height:30px;}
 .parrainage_gplus_img_container{background-color:#f0f0f0;float:left;}
 .parrainage_option2_body_socials_gplus{background-color:#f0f0f0;width:179.5px;float:left;}
-.parrainage_option2_body_socials_gplus a{display:inline-block;padding-top:15px;width:100%;height:30px;}
+.parrainage_option2_body_socials_gplus a{color:#252525;display:inline-block;padding-top:15px;width:100%;height:30px;}
 .parrainage_bouton_envoyer{height:40px;width:40px;border:1px dashed white;position:absolute;top:80px;right:-50px;z-index:999;}
 .parrainage_bouton_envoyer a{display:inline-block;width:100%;height:100%;}
 .parrainage_bouton_envoyer:hover{border:1px dashed #a4ebf1;}
@@ -647,3 +647,8 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .recherche_avancee_right span{text-transform:uppercase;font-size:1.2em;display:block;}
 .recherche_avancee_right_txt1{font-weight:300;}
 .recherche_avancee_right_txt2{font-weight:700;}
+
+/* UTILISATEUR INTERFACE */
+.utilisateur_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:5px;}
+.utilisateur_interface_modifier_couv a{color:#252525;display:inline-block;}
+.utilisateur_interface_modifier_icon_noir{float:right;margin-left:5px;}

@@ -1,4 +1,5 @@
 function OuvrePopin(data) {
+    // PRESENTATION ACTION COMMENTAIRE
 	var defaultdialog_large = $("#default_dialog_large").dialog({ 
 		autoOpen: false,
 		modal:true,
@@ -19,6 +20,7 @@ function OuvrePopin(data) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
+
 }
 
 $(document).ready(function() {
