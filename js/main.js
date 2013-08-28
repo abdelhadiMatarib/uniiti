@@ -1,22 +1,13 @@
-function OuvrePopin(data) {
+function OuvrePopin(data, url, div) {
     // PRESENTATION ACTION COMMENTAIRE
-	var defaultdialog_large = $("#default_dialog_large").dialog({ 
-		autoOpen: false,
-		modal:true,
-		draggable:false,
-		resizable:false,
-		width: '760px',
-		height: 549
-	});	
-
-	var url = siteurl + '/includes/popins/presentation_action_commentaire.tpl.php';
+	url = siteurl + url;
 
 	$.ajax({
 		type:"POST",
 		url : url,
 		data : data,
 		success: function(html){
-			$("#default_dialog_large").html(html).dialog('open');
+			$("#" + div).html(html).dialog('open');
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
@@ -48,6 +39,16 @@ $(document).ready(function() {
         height: 'auto'
     });
 
+	var defaultdialog_large = $("#default_dialog_large").dialog({ 
+		autoOpen: false,
+		modal:true,
+		draggable:false,
+		resizable:false,
+		width: '760px',
+		height: 549
+	});	
+	
+	
     // call dialogs
     // non-connecté
     $('.not_signedin').click(function(e){
