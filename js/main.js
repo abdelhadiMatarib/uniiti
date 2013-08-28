@@ -14,6 +14,22 @@ function OuvrePopin(data, url, div) {
 
 }
 
+function ActualisePopin(data, url, div) {
+    // PRESENTATION ACTION COMMENTAIRE
+	url = siteurl + url;
+
+	$.ajax({
+		type:"POST",
+		url : url,
+		data : data,
+		success: function(html){
+			$("#" + div).html(html);
+		},
+		error: function() {alert('Erreur sur url : ' + $url);}
+	});
+
+}
+
 $(document).ready(function() {
 
     $('#recherche_avancee_button').click(function(){
