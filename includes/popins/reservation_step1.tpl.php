@@ -37,6 +37,7 @@
             
     </div>
 </div>
+<?php include'../js.php'; ?>
 <script>    
     $('.popin_close_button').click(function(e){
     e.preventDefault(); //don't go to default URL
