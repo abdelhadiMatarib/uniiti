@@ -100,6 +100,7 @@
 				</header>
 				
 				<figure>
+                                    
 					<div class="box_mark">
 						<div class="box_stars">
 							<?php for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) { ?>
@@ -108,9 +109,18 @@
 						</div>
 						<div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
 					</div>
+                                    
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<img src="img/photos_commerces/1.jpg" title="" alt="" />
+                                        <div class="overlay_push">
+                                            <div class="push_buttons_wrapper">
+                                                <div class="push_buttons_like"></div>
+                                                <div class="push_buttons_dislike"></div>
+                                                <div class="push_buttons_wishlist"></div>
+                                            </div>
+                                        </div>
 				</figure>
+                                
 				
 				<section onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/presentation_action_commentaire.tpl.php', 'default_dialog_large');">
 					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>

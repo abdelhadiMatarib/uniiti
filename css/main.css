@@ -120,7 +120,7 @@ span.index_overlay_texte{display:block;}
 .box_title{display:block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding:3px 0px; font-size: 15px;}
 .box_subtitle{font-size:12px;font-weight:bold;color:#fabe41;position:absolute; margin-top:-4px;}
 
-.box_mark{padding:5px;height:20px;background-color:#252525;}
+.box_mark{position:relative;padding:5px;height:20px;background-color:#252525;}
 .box_stars{float:left;padding:1px;}
 .box_headratings{float:right;}
 .box_headratings span{color:white;font-size:85%;}
@@ -128,12 +128,17 @@ span.index_overlay_texte{display:block;}
 .box figure img{max-width:100%;width:auto;height:auto;}
 .box figure {position:relative;height:100%; overflow:hidden;}
 .box figure > img:hover{cursor:pointer; opacity:0.9;}
+.overlay_push{display:none;position:absolute;top:0;left:0;background-color: rgba(32,32,32,0.65);height:100%;width:100%;}
+.push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
+.push_buttons_like{margin:0 10px 0 10px;float:left;width:50px;height:50px;background-color:#252525;}
+.push_buttons_dislike{margin:0 10px 0 0;float:left;width:50px;height:50px;background-color:#252525;}
+.push_buttons_wishlist{margin:0;float:left;width:50px;height:50px;background-color:#252525;}
 
 .box_localisation{bottom: 10px;z-index:90;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
 
 .box_useraction{text-align: center;margin:0 0 10px 0;}
 .box_usertext{margin:0 0 7px 0;}
-.box section{cursor:pointer;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px; margin-top:-4px;}
+.box section{position:relative;cursor:pointer;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px; margin-top:-4px;}
 .box section:hover{background-color:rgba(0, 0, 0, 0.05);}
 .box section span{font-weight: bold; color: #fabe41;}
 .box section figcaption{padding-bottom: 10px; }
@@ -449,18 +454,54 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 
 .ident_wrapper,.oublimdp_wrapper,.suggestioncommerce_wrapper,.suggestionobjet_wrapper,.parrainage_wrapper,.reservation_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
 .ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head,.couverture_head,.reservation_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;}
-.ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle,.couverture_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
+.ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle,.couverture_head span.maintitle,.reservation_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
 .ident_mdp_oublie_wrapper{float:right;}
 .ident_head span.subtitle{display:inline-block;margin:16px 15px 0 0;}
-.ident_img_container,.oublimdp_img_container,.suggestioncommerce_img_container,.suggestionobjet_img_container,.parrainage_img_container,.couverture_img_container{float:left;height:44px;width:37px;padding-top:8px;margin:0 15px 0 15px;}
+.ident_img_container,.oublimdp_img_container,.suggestioncommerce_img_container,.suggestionobjet_img_container,.parrainage_img_container,.couverture_img_container,.reservation_img_container{float:left;height:44px;width:37px;padding-top:8px;margin:0 15px 0 15px;}
 .ident_body,.oublimdp_body{height:92px;background-color:#efefef;}
 
 .parrainage_body{position:relative;}
+.reservation_body{position:relative;}
 .parrainage_option1,.parrainage_option2{float:left;width:690px;padding:5px;background-color:#73d4dc;}
-.parrainage_option1_img_container,.parrainage_option2_img_container{float:left;margin:2px 10px 0 10px;}
-.parrainage_option_txt,.parrainage_option_txt2{color:white;font-size:1.2em;text-transform:uppercase;display:inline;}
-.parrainage_option_txt{font-weight:700;}
-.parrainage_option_txt2{font-weight:300;}
+.reservation_option1,.reservation_option2{float:left;width:490px;padding:5px;background-color:#73d4dc;}
+.parrainage_option1_img_container,.parrainage_option2_img_container,.reservation_option1_img_container,.reservation_option2_img_container{float:left;margin:2px 10px 0 10px;}
+.reservation_recap_option1_img_container{margin-top:4px;}
+.parrainage_option_txt,.parrainage_option_txt2,.reservation_option_txt,.reservation_option_txt2{color:white;font-size:1.2em;text-transform:uppercase;display:inline;}
+.parrainage_option_txt,.reservation_option_txt{font-weight:700;}
+.parrainage_option_txt2,.reservation_option_txt2{font-weight:300;}
+.reservation_option1_body{background-color:#f0f0f0;float:left;width:480px;padding:10px;}
+.reservation_option1_body_txt{text-align:center;font-weight:600;}
+.reservation_option1_body_txt span{display:inline-block;margin:0 0 5px 0;}
+.reservation_option1_body_txt2 span{display:block;}
+.reservation_horaires_body,.reservation_nombre_body{float:left;width:500px;}
+.reservation_horaires_dejeuner_txt{text-align:center;padding-top:15px;float:left;width:120px;height:35px;background-color:white;}
+.reservation_nombre_body_txt{border-right:1px solid #e4e4e4;text-align: center;padding-top: 60px;float: left;width: 119px;height: 92px;background-color: white;}
+.reservation_nombre_personnes_1,.reservation_nombre_personnes_2,.reservation_nombre_personnes_3,.reservation_nombre_personnes_4,.reservation_nombre_personnes_5,.reservation_nombre_personnes_6,.reservation_nombre_personnes_7,.reservation_nombre_personnes_8,.reservation_nombre_personnes_9,.reservation_nombre_personnes_10{background-color:#f0f0f0;border-right:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;float:left;width:75px;height:50px;text-align:center;}
+.reservation_nombre_personnes_1 a,.reservation_nombre_personnes_2 a,.reservation_nombre_personnes_3 a,.reservation_nombre_personnes_4 a,.reservation_nombre_personnes_5 a,.reservation_nombre_personnes_6 a,.reservation_nombre_personnes_7 a,.reservation_nombre_personnes_8 a,.reservation_nombre_personnes_9 a,.reservation_nombre_personnes_10 a{background-color:#f0f0f0;border-right:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;float:left;width:75px;height:35px;text-align:center;padding-top:15px;}
+.reservation_nombre_body a:hover{background-color:#a4ebf1;color:white;}
+.reservation_nombre_personnes_grande_table_nbr{position:relative;float:left;}
+.reservation_nombre_personnes_grande_table_nbr .arrow_right{position:absolute;top:20px;width: 0;height: 0;border-top: 5px solid transparent;border-bottom: 5px solid transparent;border-left: 5px solid #252525;}
+.reservation_nombre_personnes_grande_table_txt{border-right:1px solid #e4e4e4;background-color:white;font-size:0.9em;float:left;height:34px;width:211px;padding:8px;text-align:center;}
+.reservation_nombre_personnes_grande_table_txt_bold{font-weight:700;}
+.reservation_nombre_personnes_grande_table_txt span{display:block;}
+.reservation_nombre_personnes_grande_table_nbr{float:left;font-size: 1.4em;width:151px;text-align:center;}
+.reservation_nombre_personnes_grande_table_nbr a{background-color:#f0f0f0;width: 151px;float: left;height: 37px;padding-top:13px;}
+.reservation_horaires_diner_txt{border-bottom:1px solid #e4e4e4;text-align:center;padding-top:40px;float:left;width:120px;height:61px;background-color:white;}
+.reservation_step2_footer{float:left;position:relative;}
+.reservation_step2_3_vertical_sep{position:absolute;top:0;left:239px;width:1px;height:40px;border-right:1px solid white;}
+.reservation_step2_footer_retour_dates{text-align:center;float:left;width:240px;}
+.reservation_step2_footer_retour_dates a{display:inline-block;width:220px;padding:10px;height:20px;;color:#252525;background-color:#a4ebf1;}
+.reservation_step2_footer_retour_dates a:hover{background-color:#73d4dc;color:white;}
+.reservation_step2_footer_etape_suivante{text-align:center;float:left;width:240px;}
+.reservation_step2_footer_etape_suivante a{display:inline-block;width:240px;padding:10px;height:20px;;color:#252525;background-color:#a4ebf1;}
+.reservation_step2_footer_etape_suivante a:hover{background-color:#73d4dc;color:white;}
+.reservation_horaires_dejeuner_nbr_12,.reservation_horaires_dejeuner_nbr_12_30,.reservation_horaires_dejeuner_nbr_13,.reservation_horaires_dejeuner_nbr_13_30,.reservation_horaires_dejeuner_nbr_14,.reservation_horaires_diner_nbr_19,.reservation_horaires_diner_nbr_19_30,.reservation_horaires_diner_nbr_20,.reservation_horaires_diner_nbr_20_30,.reservation_horaires_diner_nbr_21,.reservation_horaires_diner_nbr_21_30,.reservation_horaires_diner_nbr_22,.reservation_horaires_diner_nbr_default{background-color:#f0f0f0;border-right:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;float:left;width:75px;height:50px;text-align:center;}
+.reservation_horaires_dejeuner_nbr_12 a,.reservation_horaires_dejeuner_nbr_12_30 a,.reservation_horaires_dejeuner_nbr_13 a,.reservation_horaires_dejeuner_nbr_13_30 a,.reservation_horaires_dejeuner_nbr_14 a,.reservation_horaires_diner_nbr_19 a,.reservation_horaires_diner_nbr_19_30 a,.reservation_horaires_diner_nbr_20 a,.reservation_horaires_diner_nbr_20_30 a,.reservation_horaires_diner_nbr_21 a,.reservation_horaires_diner_nbr_21_30 a,.reservation_horaires_diner_nbr_22 a,.reservation_horaires_diner_nbr_default a{background-color:#f0f0f0;border-right:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;float:left;width:75px;height:35px;text-align:center;padding-top:15px;}
+.reservation_horaires_body a:hover{background-color:#a4ebf1;color:white;}
+.reservation_recap_body_txt{text-align:center;width:480px;padding:10px;float:left;background-color:#f0f0f0;}
+span.reservation_recap_body_txt_bold{display:block;font-weight:700;}
+.reservation_recap_body_txt_normal,.reservation_recap_body_txt_bleu{display:inline;}
+.reservation_recap_body_txt_bleu{color:#73d4dc;font-weight:700;}
 .parrainage_destinataires_txt,.parrainage_objet_txt{border-right:1px solid #e4e4e4;font-size:0.9em;padding:15px 10px;text-align:center;float:left;width:29px;height:20px;}
 .parrainage_destinataires_txt{border-bottom:1px solid #e4e4e4;height:19px;}
 .parrainage_message_txt{border-right:1px solid #e4e4e4;font-size:0.9em;padding:30px 10px;text-align:center;float:left;width:50px;height:40px;}
@@ -472,6 +513,20 @@ textarea.parrainage_input_message{resize:none;}
 .parrainage_option1_body_left{border-right:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;width:350px;float:left;}
 .parrainage_option1_body_right{border-bottom:1px solid #e4e4e4;width:349px;float:left;}
 .parrainage_option2_body_centered{float:left;width:700px;padding:10px 0;text-align:center;}
+.reservation_option2_body_centered{float:left;width:500px;padding:10px 0;text-align:center;}
+.reservation_step1_footer,.reservation_step4_footer{text-align:center;float:left;width:500px;}
+.reservation_step1_footer a,.reservation_step4_footer a{color:#252525;background-color:#a4ebf1;padding:10px;height:20px;display:inline-block;width:480px;}
+.reservation_step1_footer a:hover,.reservation_step4_footer a:hover{color:white;background-color:#73d4dc;}
+.reservation_option2_body_centered{background-color:white;}
+.reservation_recap_formulaire{position:relative;float:left;}
+.resa_recap_vertical_sep{position:absolute;right:250px;top:0;width:1px;height:100px;border-left:1px solid #e4e4e4;}
+.reservation_recap_formulaire input[type="text"]{border-top:1px solid #e4e4e4;padding:10px;background-color:#f0f0f0;width:250px;float:left;height:50px;}
+textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;background-color:#f0f0f0;width:500px;height:100px;padding:10px;resize:none;}
+.reservation_recap_cgu_wrap{background-color:white;font-size:0.8em;float:left;padding:10px;width:480px;}
+.resa_recap_cgu_1{float:left;}
+.resa_recap_cgu_2{float:left;}
+#resa_recap_infos{margin:0 5px 0 0;}
+#resa_recap_cgu{margin:0 5px 0 0;}
 .parrainage_option2_body_socials{text-align:center;background-color:white;width:700px;border-top:1px solid #e4e4e4;float:left;}
 .parrainage_fb_img_container{background-color:#f0f0f0;float:left;}
 .parrainage_option2_body_socials_fb{background-color:#f0f0f0;width:179px;float:left;}
@@ -554,8 +609,9 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .ident_inputs input[type="text"],.ident_inputs input[type="password"]{font-size:1.1em;width:204px;height:45px;background-color:#efefef;border-bottom:1px solid #e4e4e4;}
 .oublimdp_inputs input[type="mail"]{font-size:1.1em;width:410px;height:45px;bakground-color:#efefef;}
 .ident_inscription_wrap,.ident_connexion_wrap{padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
-.oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{width:500px;background-color:#a4ebf1;padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
-
+.oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{width:500px;font-size:1.1em;text-align:center;float:left;}
+.oublimdp_valider_wrap a,.suggestioncommerce_valider_wrap a,.suggestionobjet_valider_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
+.oublimdp_valider_wrap a:hover,.suggestioncommerce_valider_wrap a:hover,.suggestionobjet_valider_wrap a:hover{color:white;background-color:#73d4dc;}
 .ident_inscription_wrap{width:250px;background-color:#a4ebf1;}
 .ident_connexion_wrap{width:249px;border-left:1px solid #e4e4e4;background-color:#89c1c6;}
 .ident_inscription_wrap a,.oublimdp_valider_wrap a{display:inline-block;height:100%;width:100%;color:#252525;}

@@ -73,6 +73,12 @@ $(document).ready(function() {
         defaultdialog.load(siteurl+'/includes/popins/ident.tpl.php').dialog('open');
     });
   
+    // Push image box
+    $('.box figure > img').click(function(e){
+        e.preventDefault();//don't go to default URL
+        $( this ).next('.overlay_push').css('display','block');
+    });
+  
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {
 $('.inscription_field_sexe_button_f').removeClass('inscription_field_sexe_bg');
