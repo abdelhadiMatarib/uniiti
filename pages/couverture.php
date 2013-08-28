@@ -60,8 +60,8 @@
 						if(img.offsetHeight) {height=img.offsetHeight;}
 						else if(img.style.pixelHeight){height=img.style.pixelHeight;}
 						
-						var Newheight = Math.round(500 + (height - 500) * 2);
-						var Newtop = - Math.round((Newheight - 500) / 2);
+						var Newheight = Math.round(194 + (height - 194) * 2);
+						var Newtop = - Math.round((Newheight - 194) / 2);
 						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
 						$('#ImageTemp').val(e.target.result);
 			
@@ -104,16 +104,16 @@
 		</script>
 	
 		<style>
-			#fenetre {opacity:0; position:absolute; top:-250px;	left:50px; width: 1700px; height: 1000px;}
-			#selection {overflow:hidden; position:absolute; top:0px; left:50px;	width: 1700px; height: 500px; border: 2px dashed #000000;}
+			#fenetre {opacity:0; position:absolute; top:-250px;	left:50px; width: 660px; height: 194px;}
+			#selection {overflow:hidden; position:absolute; top:0px; left:50px;	width: 660px; height: 194px; border: 2px dashed #000000;}
 			#selection:hover {cursor:n-resize;box-shadow: inset 0 3px 4px #888;}
-			#upload {position: absolute; top:500px;left:50px;width:1000px; height:200px;border: 2px dashed #000000;}
+			#upload {position: absolute; top:200px;left:50px;width:660px; height:200px;border: 2px dashed #000000;}
 		</style>
 
 		<div id="fenetre"></div>
 		<div id="selection">
 			<div class="draggable">
-				<img id="image" src="<?php echo $src;?>" width="1700" />
+				<img id="image" src="<?php echo $src;?>" width="660" />
 			</div>
 		</div>
 		<form id="upload" action="couverture.php" method="POST" enctype="multipart/form-data">
