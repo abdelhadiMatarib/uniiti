@@ -50,7 +50,7 @@
             <div class="liseret_gris"></div>
             <div class="objet_head">
                 <div class="objet_head_desc">
-                    <div class="utilisateur_head_desc_title"><div class="img_container"><img src="../img/pictos_utilisateurs/avatar.png" height="28" width="28" title="" alt="" /></div><h2><?php echo $prenom_contributeur . " " . $nom_contributeur; ?></h2></div>
+                    <div class="utilisateur_head_desc_title"><div class="img_container"><img src="../img/pictos_utilisateurs/avatar.png" height="28" width="28" title="" alt="" /></div><h2><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></h2></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>

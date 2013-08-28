@@ -49,7 +49,7 @@
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
 			// Avis
-			$commentaire             = str_replace(PHP_EOL ,'<BR>', stripslashes($row['commentaire']));
+			$commentaire             = str_replace(PHP_EOL , "", stripslashes($row['commentaire']));
 			$commentaire			 = str_replace("\r" , "", $commentaire);
 			$commentaire			 = str_replace("\n" , "", $commentaire);
 			if ($commentaire == "") {$commentaire = "pas de commentaire";}
@@ -113,7 +113,7 @@
             
             <section onclick="OuvrePopin(<?php echo $data; ?>);">
                 <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
-                <div class="box_usertext"><figcaption><span>3/5 |</span> <?php echo $commentaire; ?></figcaption></div>
+                <div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span> <?php echo $commentaire; ?></figcaption></div>
             <div class="arrow_up"></div>
             </section>
             
