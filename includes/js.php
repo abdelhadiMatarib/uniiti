@@ -116,7 +116,7 @@
 						}
 						else {
 							$url = "includes/requete.php";
-							$data = {lastid: "\"" + $(".box:last").attr("id") + "\"", site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
 						}
 						$.ajax({
 							type:"POST",

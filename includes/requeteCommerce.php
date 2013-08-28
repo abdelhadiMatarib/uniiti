@@ -49,7 +49,7 @@
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
 			// Avis
-			$commentaire             = stripslashes($row['commentaire']);
+			$commentaire             = str_replace(PHP_EOL ,'<BR>', stripslashes($row['commentaire']));
 			if ($commentaire == "") {$commentaire = "pas de commentaire";}
 			$appreciation            = $row['appreciation'];
 			$note                    = $row['note'];
@@ -93,7 +93,7 @@
                     <span class="box_title" title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span>
                     <span class="box_subtitle">355/3000 - Confirmé</span>
                 </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
+                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
             </header>
             
             <figure>

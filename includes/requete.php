@@ -31,7 +31,7 @@
 								ON t5.id_enseigne = t4.enseignes_id_enseigne
 								INNER JOIN types_enseigne AS t6
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne ";
-		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . stripslashes($_POST['lastid']);}
+		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,50";
 
 		$req2 = $bdd->prepare($sql2);
@@ -51,7 +51,7 @@
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
 			// Avis
-			$commentaire             = stripslashes($row['commentaire']);
+			$commentaire             = str_replace(PHP_EOL ,'<BR>', stripslashes($row['commentaire']));
 			if ($commentaire == "") {$commentaire = "pas de commentaire";}
 			$appreciation            = $row['appreciation'];
 			$note                    = $row['note'];
@@ -78,7 +78,7 @@
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
-				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
+				. "commentaire : '" . addslashes($commentaire) . "',"
 				. "delai_avis : '" . $delai_avis . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
 				. "note :" . $note . ","

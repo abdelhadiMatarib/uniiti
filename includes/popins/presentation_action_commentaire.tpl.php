@@ -15,7 +15,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             
             <div class="presentation_action_left_head_img_container_picto_categorie"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
             <div class="presentation_action_left_head_categorie_wrap">    
-                <span class="presentation_action_left_head_titre"><?php echo tronque($_POST['nom_enseigne']); ?></span>
+                <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
                 <span class="presentation_action_left_head_categorie">Restauration</span>
             </div>   
             
@@ -47,7 +47,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             <span class="presentation_action_left_body_username"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action">a laissé un avis</span>
             <div class="presentation_action_commentaire_left_body_message">
-                <span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo $_POST['commentaire']; ?></span>
+                <span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span>
             </div>
             <div class="arrow_up"></div>
         </div>
