@@ -100,6 +100,7 @@
 						resizable: false,
 					}
 				});
+                                
 	
 				$(window).scroll(function() {
 					if ( $(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
@@ -137,7 +138,7 @@
 				});
 			});
  
-			$(window).smartresize(function(){
+                                $(window).smartresize(function(){
 				// check if columns has changed
 				var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
 				if ( currentColumns !== columns ) {
@@ -148,7 +149,8 @@
 					.isotope('reLayout');
 				}
 
-			}).smartresize(); // trigger resize to set container width
+                                }).smartresize(); // trigger resize to set container width
+			
   
 	});    
 });

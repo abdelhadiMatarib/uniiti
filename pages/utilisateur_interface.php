@@ -50,11 +50,22 @@
             <div class="liseret_gris"></div>
             <div class="objet_head">
                 <div class="objet_head_desc">
-                    <div class="utilisateur_head_desc_title"><div class="img_container"><img src="../img/pictos_utilisateurs/avatar.png" height="28" width="28" title="" alt="" /></div><h2><?php echo $prenom_contributeur . " " . $nom_contributeur; ?></h2></div>
+                    <div class="utilisateur_head_desc_title">
+                        <div class="img_container">
+                            <img src="../img/pictos_utilisateurs/avatar.png" height="28" width="28" title="" alt="" />
+                            </div>
+                        <h2><?php echo $prenom_contributeur . " " . $nom_contributeur; ?></h2>
+                    </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="utilisateur_head_desc_avatar"><div class="img_container"><img src="../img/avatars/3.jpg" title="" alt="" height="120" width="120"/></div></div>
+                    <div class="utilisateur_head_desc_avatar">
+                        <div class="img_container">
+                            <img src="../img/avatars/3.jpg" title="" alt="" height="120" width="120"/>
+                            <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin({step:1}, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
+                        
+                        </div>
+                    </div>
                     <div class="utilisateur_head_desc_desc"><div class="img_container"><img src="../img/marker_map.png" title="" alt="" height="23" width="15"/></div><span><?php switch ($sexe_contributeur) {case 1: echo "Homme";break; case 0: echo "Femme";break;}?></span><span class="utilisateur_head_desc_desc_lastcat"><?php echo $age; ?></span></div>
                     <div class="utilisateur_head_desc_desc2"><div class="img_container"><img src="../img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></div><span>Restaurateur</span><span class="utilisateur_head_desc_desc2_lastcat">Paris</span></div>
                     </div>
@@ -76,7 +87,11 @@
                     <div class="objet_head_infos_services"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></div>
                     
                     <div class="objet_head_infos_infos"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_infos_text"><span class="objet_head_infos_infos_text_fin">Classement</span><span class="objet_head_infos_infos_text_couleur">Sport</span></div><span class="objet_head_infos_infos_classement">85<sup>ème</sup></span></div>
-                    <div class="objet_head_infos_suivre"><span class="objet_head_infos_suivre_firstcat">Suivre</span><span class="objet_head_infos_suivre_lastcat"><?php echo $prenom_contributeur; ?></span><div class="img_container"><img src="../img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></div>
+                    <div class="utilisateur_head_infos_suggestion">
+                        <div class="utilisateur_suggerer_commerce"><a href="#" title=""><span class="utilisateur_suggerer_commerce_firstcat">Suggérer</span><span class="utilisateur_suggerer_commerce_lastcat"> commerce</span></a></div>
+                        <div class="clearfix"></div>
+                        <div class="utilisateur_suggerer_objet"><a href="#" title=""><span class="utilisateur_suggerer_objet_firstcat">Suggérer</span><span class="utilisateur_suggerer_objet_lastcat"> objet</span></a></div>
+                    </div>
                 </div>
             </div>
             <div class="commerce_head2">
@@ -89,9 +104,9 @@
                 <div class="ligne_verticale4"></div>
                 <div class="ligne_verticale5"></div>
                 <img src="../img/photos_commerces/couv3.jpg" title="" alt="" />
-                <div class="commerce_concept"><span>Description</span><p>En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
-                <div class="commerce_gerant"><div class="gerant_title"><p>Son commerce</p></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
-            
+                <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
+                <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
+                
                 <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin({step:1}, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
                 
             </div>

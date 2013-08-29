@@ -133,11 +133,12 @@
                 <div class="ligne_verticale1"></div>
                 <div class="ligne_verticale2"></div>
                 <img src="<?php echo SITE_URL; ?>/img/photos_commerces/couv.jpg" title="" alt="" />
-                <div class="commerce_concept"><span>Le concept</span><p><?php echo $descriptif ?></p></div>
-                <div class="commerce_gerant"><div class="gerant_title"><p>Le gérant</p></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
                 
-                <div class="commerce_recos"><span>Recommandations</span><img src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="19" height="23" title="" alt="" /><p>guide michelin</div>
-                <div class="commerce_labels"><span>Labels captain</span><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="23" height="23" title="" alt="" /><p>bio</p></div>
+                <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
+                <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
+                
+                <div class="commerce_recos"><a class="button_show_recos" href="#" title=""><span>Recommandations</span><div class="commerce_recos_arrow recos_arrow_up"></div><div class="commerce_recos_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="19" height="23" title="" alt="" /><p>guide michelin</p></div></a></div>
+                <div class="commerce_labels"><a class="button_show_labels" href="#" title=""><span>Labels captain</span><div class="commerce_labels_arrow labels_arrow_up"></div><div class="commerce_labels_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="23" height="23" title="" alt="" /><p>bio</p></div></a></div>
                 
                 <div class="wrapper_boutons">
                 <div class="boutons not_signedin"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_OK.png" height="22" width="27"/></a></div>

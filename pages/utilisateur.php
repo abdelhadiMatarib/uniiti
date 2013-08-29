@@ -89,8 +89,8 @@
                 <div class="ligne_verticale4"></div>
                 <div class="ligne_verticale5"></div>
                 <img src="../img/photos_commerces/couv3.jpg" title="" alt="" />
-                <div class="commerce_concept"><span>Description</span><p>En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
-                <div class="commerce_gerant"><div class="gerant_title"><p>Son commerce</p></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
+                <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
+                <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
                 
             </div>
            
