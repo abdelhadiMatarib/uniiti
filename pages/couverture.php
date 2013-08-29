@@ -108,6 +108,7 @@
 			#selection {overflow:hidden; position:absolute; top:0px; left:50px;	width: 660px; height: 194px; border: 2px dashed #000000;}
 			#selection:hover {cursor:n-resize;box-shadow: inset 0 3px 4px #888;}
 			#upload {position: absolute; top:200px;left:50px;width:660px; height:200px;border: 2px dashed #000000;}
+			#fileselect {opacity:0; position: absolute; top:-1000px;}
 		</style>
 
 		<div id="fenetre"></div>

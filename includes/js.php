@@ -4,11 +4,12 @@
 	<script type="text/javascript">
         var siteurl = '<?php echo SITE_URL; ?>';
         </script>
-        <script src="<?php echo SITE_URL; ?>/js/main.js" type="text/javascript"></script>
+    <script src="<?php echo SITE_URL; ?>/js/main.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.infinitescroll.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
-        <script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+	<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+	<script src="<?php echo SITE_URL; ?>/js/jquery.easydrag.dialog.min.js"></script>
 	
         <!--<script>
             $(document).ready(function() {                
