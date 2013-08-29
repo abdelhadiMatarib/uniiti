@@ -99,6 +99,19 @@
 						resizable: false,
 					}
 				});
+                                
+                                $(window).smartresize(function(){
+				// check if columns has changed
+				var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
+				if ( currentColumns !== columns ) {
+					// set new column count
+					columns = currentColumns;
+					// apply width to container manually, then trigger relayout
+					$container.width( columns * colW )
+					.isotope('reLayout');
+				}
+
+                                }).smartresize(); // trigger resize to set container width
 	
 				$(window).scroll(function() {
 					if ( $(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
@@ -136,18 +149,7 @@
 				});
 			});
  
-			$(window).smartresize(function(){
-				// check if columns has changed
-				var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
-				if ( currentColumns !== columns ) {
-					// set new column count
-					columns = currentColumns;
-					// apply width to container manually, then trigger relayout
-					$container.width( columns * colW )
-					.isotope('reLayout');
-				}
-
-			}).smartresize(); // trigger resize to set container width
+			
   
 	});    
 });

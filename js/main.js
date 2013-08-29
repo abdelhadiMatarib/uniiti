@@ -99,6 +99,32 @@ $('#close_button_home').click(function() {
        $('#header_menu').stop().slideToggle(150);
     });
     
+    // Couverture commerce Toggle des divs
+    $(".button_show_concept").click(function(e){
+        e.preventDefault();
+        $(".gerant_photo").stop().slideToggle();
+        $(".concept_content").stop().slideToggle();
+        $('.commerce_concept_arrow').toggleClass("concept_arrow_down").toggleClass("concept_arrow_up");
+    });
+     // Couverture utilisateur Toggle des divs
+    $(".button_show_concept_utilisateur").click(function(e){
+        e.preventDefault();
+        $(".utilisateur_gerant_photo").stop().slideToggle();
+        $(".concept_content").stop().slideToggle();
+        $('.commerce_concept_arrow').toggleClass("concept_arrow_down").toggleClass("concept_arrow_up");
+    });
+    // Recos commerce Toggle des divs
+    $(".button_show_recos").click(function(e){
+        e.preventDefault();
+        $(".commerce_recos_wrap").stop().slideToggle();
+        $('.commerce_recos_arrow').toggleClass("recos_arrow_down").toggleClass("recos_arrow_up");
+    });
+    // Labels commerce Toggle des divs
+    $(".button_show_labels").click(function(e){
+        e.preventDefault();
+        $(".commerce_labels_wrap").stop().slideToggle();
+        $('.commerce_labels_arrow').toggleClass("labels_arrow_down").toggleClass("labels_arrow_up");
+    });
      $(window).load(function(){resizeboxContainer()});
      $(window).resize(function(){
         clearTimeout(this.id);
@@ -213,11 +239,11 @@ $('#close_button_home').click(function() {
             $('.commerce_head2_text2').css('margin-left',15);
             $('.commerce_head2_text3').css('margin-right',15);
             $('.commerce_head2_text3_end').css('margin-right',15);
-            $('.commerce_recos').css('width','140px').css('height','55px');
-            $('.commerce_labels').css('width','130px').css('right','160px').css('height','55px');
+            $('.commerce_recos').css('width','150px');
+            $('.commerce_labels').css('width','150px').css('right','160px');
             $('.commerce_recos span').css('font-size','85%');
             $('.commerce_labels span').css('font-size','85%');
-            $('.commerce_concept').css('width','272px').css('font-size','11px').css('line-height','12px').css('height','55px');
+            $('.commerce_concept').css('width','272px').css('font-size','11px');
             $('.commerce_gerant').css('left','292px');
             $('.gerant_photo').css('width','75px');
             $('.gerant_title').css('font-size','75%').css('height','15px');
@@ -260,7 +286,7 @@ $('#close_button_home').click(function() {
             $('.ligne_verticale3').css('left','602px').css('height','210px');
             
             //PAGE UTILISATEUR
-            $('.utilisateur_head_desc_avatar .img_container img').css('height','80px').css('width','80px');
+            $('.utilisateur_head_desc_avatar .img_container+img').css('height','80px').css('width','80px');
             $('.utilisateur_head_desc_desc').css('padding-left','100px').css('width','75px').css('font-size','80%');
             $('.utilisateur_head_desc_desc2').css('width','110px').css('font-size','80%');
             $('.utilisateur_gerant_photo').css('width','145px');
@@ -293,9 +319,9 @@ $('#close_button_home').click(function() {
             $('.commerce_head_infos .separateur').css('display','block');
             $('.clearfix_infosrapides').css('display','none');
             
-            $('.commerce_concept').css('font-size','1em').css('line-height','1em').css('height','75px');
-            $('.commerce_recos').css('width','180px').css('height','75px');
-            $('.commerce_labels').css('width','180px').css('right','200px').css('height','75px');
+            $('.commerce_concept').css('font-size','1em');
+            $('.commerce_recos').css('width','200px');
+            $('.commerce_labels').css('width','200px').css('right','200px');
             
             $('.commerce_head_desc_title').css('font-size','85%');
             $('.commerce_head_desc_social').removeClass('ipad_portrait_social');
@@ -338,6 +364,11 @@ $('#close_button_home').click(function() {
             $('.objet_head_desc_social span').css('display','none');
             $('.objet_head_infos_services,.objet_head_infos_infos').css('width',150);
             $('.objet_head_infos_suivre').css('width',70);
+            
+            $('.utilisateur_head_infos_suggestion').css('width',75);
+            $('.utilisateur_suggerer_commerce a').css('font-size',"0.85em");
+            $('.utilisateur_suggerer_objet a').css('font-size',"0.85em");
+            
             $('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('margin-top','10px').css('margin-left','0').css('margin-right','0').css('font-size','95%').css('width','80px').css('text-align','left');
             //$('.objet_head_infos_services_text_fin,.objet_head_infos_infos_text_fin').css("font-size","0.8em");
             $('.objet_head_infos_services .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
@@ -360,7 +391,7 @@ $('#close_button_home').click(function() {
             //PAGE UTILISATEUR
             $('.utilisateur_head_desc_desc').css('width','120px').css('padding-left','150px').css('font-size','1em');
             $('.utilisateur_head_desc_desc2').css('width','140px').css('font-size','1em');
-            $('.utilisateur_head_desc_avatar .img_container img').css('height','120px').css('width','120px');
+            $('.utilisateur_head_desc_avatar .img_container+img').css('height','120px').css('width','120px');
             $('.objet_head_infos .separateur').css('width','416px');
 
             //RECHERCHE AVANCÉE
@@ -391,9 +422,9 @@ $('#close_button_home').click(function() {
             $('.commerce_head_desc_social img').css('display','inline-block');
             $('.commerce_head_desc_social span').css('display','none');
             
-            $('.commerce_concept').css('font-size','1em').css('line-height','1em').css('height','75px');
-            $('.commerce_recos').css('width','180px').css('height','75px');
-            $('.commerce_labels').css('width','180px').css('right','200px').css('height','75px');
+            $('.commerce_concept').css('font-size','1em');
+            $('.commerce_recos').css('width','200px');
+            $('.commerce_labels').css('width','200px').css('right','200px');
             
             $('.commerce_head_infos .clearfix').css('display','block');
             $('.commerce_head_infos .separateur').css('display','block');
@@ -474,9 +505,9 @@ $('#close_button_home').click(function() {
             $('.commerce_head_desc_social img').css('display','inline-block');
             $('.commerce_head_desc_social span').css('display','none');
             
-            $('.commerce_concept').css('font-size','1em').css('line-height','1em').css('height','75px');
-            $('.commerce_recos').css('width','180px').css('height','75px');
-            $('.commerce_labels').css('width','180px').css('right','200px').css('height','75px');
+            $('.commerce_concept').css('font-size','1em');
+            $('.commerce_recos').css('width','200px');
+            $('.commerce_labels').css('width','200px').css('right','200px');
             
             $('.commerce_head_infos .clearfix').css('display','block');
             $('.commerce_head_infos .separateur').css('display','block');
