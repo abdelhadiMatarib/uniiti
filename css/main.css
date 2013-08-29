@@ -607,8 +607,8 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .couverture_step2_resize_infos_img_container{margin-right:5px;float:left;}
 .couverture_step2_resize_infos span{display:inline-block;}
 .couverture_step1_wrap_buttons{cursor:pointer;position:absolute;bottom:5px;right:5px;}
-.couverture_step1_button_valider{margin-top:5px;border:1px dashed #69eb76;height:40px;width:40px;background:url('../img/pictos_popins/sprite_validation_suppression.png') no-repeat 8 -35 rgba(32,32,32,0.45);}
-.couverture_step1_button_supprimer{border:1px dashed #f07070;height:40px;width:40px;background:url('../img/pictos_popins/sprite_validation_suppression.png') no-repeat 8 8 rgba(32,32,32,0.45);}
+.couverture_step1_button_valider{margin-top:5px;border:1px dashed #69eb76;height:40px;width:40px;background:url('../img/pictos_popins/sprite_validation_suppression.png') no-repeat 8px -35px rgba(32,32,32,0.45);}
+.couverture_step1_button_supprimer{border:1px dashed #f07070;height:40px;width:40px;background:url('../img/pictos_popins/sprite_validation_suppression.png') no-repeat 8px 8px rgba(32,32,32,0.45);}
 .couverture_img_items_wrapper{position:relative;margin:30px auto;width:680px;height:135px;}
 .couverture_img_item{overflow:hidden;position:relative;margin:0 15px 15px 0;float:left;width:210px;height:60px;background-color:#f0f0f0;}
 .couverture_img_item img{max-width:100%;}
