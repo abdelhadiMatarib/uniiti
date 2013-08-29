@@ -114,9 +114,9 @@
 					<img src="img/photos_commerces/1.jpg" title="" alt="" />
                                         <div class="overlay_push">
                                             <div class="push_buttons_wrapper">
-                                                <div class="push_buttons_like"></div>
-                                                <div class="push_buttons_dislike"></div>
-                                                <div class="push_buttons_wishlist"></div>
+                                                <div class="push_buttons_like"><a href="#" title=""></a></div>
+                                                <div class="push_buttons_dislike"><a href="#" title=""></a></div>
+                                                <div class="push_buttons_wishlist"><a href="#" title=""></a></div>
                                             </div>
                                         </div>
 				</figure>

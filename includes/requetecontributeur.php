@@ -70,6 +70,17 @@
 			$result = $req->fetch(PDO::FETCH_ASSOC);
 			$count_avis_enseigne     = $result['count_avis'];
 			$note_arrondi = number_format($result['moyenne'],1);	
+                        
+                        $data = "{id_contributeur :" . $id_contributeur . ","
+				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
+				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
+				. "id_enseigne :" . $id_enseigne . ","
+				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
+				/*. "delai_avis : '" . $delai_avis . "',"*/
+				. "count_avis_enseigne :" . $count_avis_enseigne . ","
+				. "note :" . $note . ","
+				. "note_arrondi :" . $note_arrondi . "}";
 	?>
 
                       <!-- VIGNETTE TYPE -->
@@ -105,7 +116,7 @@
                                         </div>
 				</figure>
 				
-				<section>
+				<section onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');">
 					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
 					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div>
 				<div class="arrow_up"></div>

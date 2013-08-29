@@ -133,6 +133,7 @@ span.index_overlay_texte{display:block;}
 .push_buttons_like{margin:0 10px 0 10px;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aime.png');}
 .push_buttons_dislike{margin:0 10px 0 0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aimepas.png');}
 .push_buttons_wishlist{margin:0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/listesouhaits.png');}
+.push_buttons_like a,.push_buttons_dislike a,.push_buttons_wishlist a{display:inline-block;height:100%;width:100%;pre}
 
 .box_localisation{bottom: 10px;z-index:90;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
 
@@ -725,6 +726,33 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .presentation_action_left_avis_utile_reponse_wrap{text-align:center;height:30px;width:102px;float:right;}
 .presentation_action_left_avis_utile_reponse_wrap a{border-left:1px solid #e4e4e4;color:white;font-size:1.1em;padding-top:5px;height:25px;width:50px;display:inline-block;}
 .presentation_action_left_avis_utile_reponse_wrap a:hover{background-color:#e4e4e4;color:#252525;}
+
+/* UTILISATEUR INTERFACE POPIN MODIFS */
+
+.utilisateur_interface_modifs_modifier_note{float:left;text-align:center;}
+.utilisateur_interface_modifs_modifier_note a{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
+.utilisateur_interface_modifs_modifier_note a:hover{background-color:#e0e0e0;}
+.utilisateur_interface_modifs_modifier_note_inside_img_container{margin:10px auto;height: 26px;}
+.utilisateur_interface_modifs_modifier_note_inside{float:left;width:230px;padding: 10px;background-color: #e0e0e0;}
+
+.utilisateur_interface_modifs_modifier_commentaire{float:left;text-align:center;}
+.utilisateur_interface_modifs_modifier_commentaire a{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
+.utilisateur_interface_modifs_modifier_commentaire a:hover{background-color:#e0e0e0;}
+.utilisateur_interface_modifs_modifier_commentaire_inside_img_container{font-size:0.85em;font-weight:700;margin:10px auto;}
+.utilisateur_interface_modifs_modifier_commentaire_inside{float:left;padding: 10px;background-color: #e0e0e0;}
+
+.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
+input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
+
+.utilisateur_interface_modifs_modifier_avis{float:left;text-align:center;}
+.utilisateur_interface_modifs_modifier_avis a{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
+.utilisateur_interface_modifs_modifier_avis a:hover{background-color:#e0e0e0;}
+.utilisateur_interface_modifs_modifier_avis_inside_img_container{margin:10px auto;}
+.utilisateur_interface_modifs_modifier_avis_inside{float:left;padding: 10px;background-color: #e0e0e0;}
+
+.modif_input_float_left{float:left;width:230px;}
+
+.utilisateur_interface_modifs_txt_bold{display:block;font-weight:700;}
 
 /* RECHERCHE AVANCEE */
 .recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background-color:#a4ebf1;}
