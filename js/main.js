@@ -99,6 +99,11 @@ $('#close_button_home').click(function() {
        $('#header_menu').stop().slideToggle(150);
     });
     
+    // On empêche le comportement par défaut des liens au clic sur les boutons d'action de la vignette (like, dislike, wishlit)
+    $('.push_buttons_like a,.push_buttons_dislike a,.push_buttons_wishlist a').click(function(e){
+        e.preventDefault();
+    });
+    
     // Couverture commerce Toggle des divs
     $(".button_show_concept").click(function(e){
         e.preventDefault();
