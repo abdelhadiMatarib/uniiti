@@ -130,9 +130,9 @@ span.index_overlay_texte{display:block;}
 .box figure > img:hover{cursor:pointer; opacity:0.9;}
 .overlay_push{display:none;position:absolute;top:0;left:0;background-color: rgba(32,32,32,0.65);height:100%;width:100%;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
-.push_buttons_like{margin:0 10px 0 10px;float:left;width:50px;height:50px;background-color:#252525;}
-.push_buttons_dislike{margin:0 10px 0 0;float:left;width:50px;height:50px;background-color:#252525;}
-.push_buttons_wishlist{margin:0;float:left;width:50px;height:50px;background-color:#252525;}
+.push_buttons_like{margin:0 10px 0 10px;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aime.png');}
+.push_buttons_dislike{margin:0 10px 0 0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aimepas.png');}
+.push_buttons_wishlist{margin:0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/listesouhaits.png');}
 
 .box_localisation{bottom: 10px;z-index:90;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
 
