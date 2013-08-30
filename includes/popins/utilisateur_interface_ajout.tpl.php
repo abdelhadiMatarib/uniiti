@@ -51,7 +51,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             </div>
             <div class="arrow_up"></div>
         </div>
-                    
                 <div class="presentation_action_left_footer">
             <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL; ?>/img/avatars/1.png"/></figure></div>
             <div class="presentation_action_left_footer_timing"><span><img src="<?php echo SITE_URL; ?>/img/pictos_actions/clock.png"/>Il y a <strong><?php echo $_POST['delai_avis'];  ?></strong></span></div>
@@ -66,7 +65,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
     <div class="presentation_action_right">
        
         <div class="utilisateur_interface_modifs_modifier_note">
-            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Modifier</span><span> ma note</span></a>
+            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Ajouter</span><span> ma note</span></a>
             <div class="utilisateur_interface_modifs_modifier_note_inside">
                 <div class="utilisateur_interface_modifs_modifier_note_inside_img_container">
                     <img src="<?php echo SITE_URL; ?>/img/pictos_popins/modifier_note_icon_star0.png" title="" alt="" height="26" width="28" />
@@ -78,31 +77,19 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             </div>
         </div>
         <div class="utilisateur_interface_modifs_modifier_commentaire">
-            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Modifier</span><span> mon commentaire</span></a>
+            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Ajouter</span><span> mon commentaire</span></a>
             <div class="utilisateur_interface_modifs_modifier_commentaire_inside">
-                <div class="utilisateur_interface_modifs_modifier_commentaire_inside_img_container">
-                    <span>Nous vous remercions de bien vouloir indiquer les motifs de cette modification :</span>
-                </div>
-                <div class="utilisateur_interface_modifs_modifier_commentaire_inputs">
-                    <form>
-                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Saisie incorrecte de mon avis</label></div>
-                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Mon opinion sur ce commerçant a évolué</label></div>
-                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Je souhaite préciser ou compléter certains points</label></div>
-                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_pas_auteur"/><label for="modifier_commentaire_input_pas_auteur">Je ne suis pas l'auteur de ce texte</label></div>
-                    </form>
-                </div>
-                
-                
+                <textarea placeholder="Ajouter un commentaire"></textarea>
             </div>
         </div>
         <div class="utilisateur_interface_modifs_modifier_avis">
-            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Supprimer</span><span> mon avis</span></a>
+            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Ne pas donner</span><span> mon avis</span></a>
             <div class="utilisateur_interface_modifs_modifier_avis_inside">
                 <div class="utilisateur_interface_modifs_modifier_avis_inside_img_container">
-                    <span>Êtes-vous certain de vouloir supprimer cet avis ?</span>
+                    <span>Êtes-vous certain de ne pas vouloir donner d'avis ?</span>
                 </div>
-                <div class="utilisateur_interface_modifs_modifier_avis_inside_choice_oui"><a href="#" title="" class="modif_avis_choice_oui"><span>OUI</span></a></div>
-                <div class="utilisateur_interface_modifs_modifier_avis_inside_choice_non"><a href="#" title="" class="modif_avis_choice_non"><span>NON</span></a></div>
+                <div class="utilisateur_interface_modifs_modifier_avis_inside_choice_oui"><a href="#" title=""><span>OUI</span></a></div>
+                <div class="utilisateur_interface_modifs_modifier_avis_inside_choice_non"><a href="#" title=""><span>NON</span></a></div>
             </div>
         </div>
             
@@ -118,13 +105,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
 </div>
 <script>
 // Box utilisateur modifier interface modifier note
-
-    // On annule le comportement par défaut du clic sur le lien (scroll)
-    $("a").click(function(e){
-       e.preventDefault(); 
-    });
-    
-    // NOTE
     $(".utilisateur_interface_modifs_modifier_note a.maintitle").click(function(e){
        e.preventDefault();
        
@@ -134,8 +114,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
            $(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
        };
     });
-    
-    // COMMENTAIRE
     $(".utilisateur_interface_modifs_modifier_commentaire a.maintitle").click(function(e){
        e.preventDefault();
        
@@ -145,8 +123,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
            $(".utilisateur_interface_modifs_modifier_note_inside,.utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
        };
     });
-    
-    // AVIS
     $(".utilisateur_interface_modifs_modifier_avis a.maintitle").click(function(e){
        e.preventDefault();
        

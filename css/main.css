@@ -654,7 +654,7 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .ident_inscription_wrap a,.ident_connexion_wrap a{display:inline-block;}
 input.ident_input_username{padding-left:45px;background:url('../img/pictos_utilisateurs/avatar_small.png') no-repeat 10px 12px;}
 input.ident_input_password{padding-left:45px;background:url('../img/pictos_utilisateurs/clef.png') no-repeat 10px 16px;}
-.popin_close_button{z-index:999;position:absolute;top:10px;right:-45px;cursor:pointer;}
+.popin_close_button{z-index:999;position:absolute;top:10px;right:-40px;cursor:pointer;}
 .popin_close_button_img_container{height:30px;width:30px;background:url('../img/pictos_popins/close_button.png') no-repeat 0 0;}
 .popin_close_button_img_container:hover{background-position: 0 -30px;}
 
@@ -729,7 +729,10 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .presentation_action_left_avis_utile_reponse_wrap a{border-left:1px solid #e4e4e4;color:white;font-size:1.1em;padding-top:5px;height:25px;width:50px;display:inline-block;}
 .presentation_action_left_avis_utile_reponse_wrap a:hover{background-color:#e4e4e4;color:#252525;}
 
-/* UTILISATEUR INTERFACE POPIN MODIFS */
+/* UTILISATEUR INTERFACE & POPIN MODIFS */
+
+.utilisateur_interface_engrenage{float:right;}
+.utilisateur_interface_engrenage_img_container{height:20px;width:20px;margin:15px;}
 
 .utilisateur_interface_modifs_modifier_note{float:left;text-align:center;}
 .utilisateur_interface_modifs_modifier_note a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
@@ -766,6 +769,8 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_non{float:left;width:80px;margin:0 17px;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_non a{border-radius:3px;display:block;height:100%;width:70px;font-weight:700;color:white;padding:5px;background-color:#f07070;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_non a:hover{background-color:#c76161;}
+
+.utilisateur_interface_modifs_modifier_commentaire_inside textarea{padding:10px;resize:none;width:210px;height:110px;}
 /* RECHERCHE AVANCEE */
 .recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background-color:#a4ebf1;}
 .recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}
@@ -782,3 +787,4 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:5px;}
 .utilisateur_interface_modifier_couv a{color:#252525;display:inline-block;}
 .utilisateur_interface_modifier_icon_noir{float:right;margin-left:5px;}
+.utilisateur_interface_modifier_icon_blanc{float:left;margin-right:10px;}
