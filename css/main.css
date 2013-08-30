@@ -97,6 +97,10 @@ span.index_overlay_texte{display:block;}
 .header_button_search > button {background:url('../img/loupe.png') no-repeat center;background-color:#A4EBF1;height:30px;width:30px;}
 .header_button_plus > button {font-size:1.4em;margin-right:7px;height:30px;width:30px;}
 
+
+/* FOOTER */
+.uniiti_footer{background-color:#e3e3e3;z-index:51;position: relative;padding:0;height:70px;}
+.uniiti_footer_loader{width:70px;margin:0 auto;}
 /* FILTRES */
 
 .filters{margin: 14px 0 14px 0;-webkit-border-radius: 3px;border-radius: 3px;background-color:white;}

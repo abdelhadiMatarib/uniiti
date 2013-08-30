@@ -109,6 +109,9 @@
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
     </div><!-- FIN BIGGY -->
+        <div class="uniiti_footer">
+        <div class="uniiti_footer_loader"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/></div>
+    </div>
         <?php include'../includes/js.php' ?>
     </body>
 </html>

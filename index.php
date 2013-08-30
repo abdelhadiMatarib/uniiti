@@ -36,9 +36,9 @@
         
 		<div class="biggymarginer">
 			<div class="big_wrapper">   
-				<!-- FILTRES DE TRI -->
-				<?php include'includes/filters.php' ?>
-				<!-- FIN FILTRES DE TRI -->
+                        <!-- FILTRES DE TRI -->
+                        <?php include'includes/filters.php' ?>
+                        <!-- FIN FILTRES DE TRI -->
 			</div>
 			<!-- CONTENU PRINCIPAL -->
 			<div id="box_container" class="content">
@@ -47,6 +47,8 @@
 			<!-- FIN CONTENU PRINCIPAL -->
 			<?php include'includes/js.php' ?>
         </div><!-- FIN DU BIGGY -->
-
+            <div class="uniiti_footer">
+        <div class="uniiti_footer_loader"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/></div>
+            </div>
 	</body>
 </html>
