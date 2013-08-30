@@ -61,7 +61,7 @@ $(document).ready(function() {
 		draggable:false,
 		resizable:false,
 		width: '760px',
-		height: 549
+		height: 'auto'
 	});	
 	
 	
@@ -130,6 +130,7 @@ $('#close_button_home').click(function() {
         $(".commerce_labels_wrap").stop().slideToggle();
         $('.commerce_labels_arrow').toggleClass("labels_arrow_down").toggleClass("labels_arrow_up");
     });
+    
      $(window).load(function(){resizeboxContainer()});
      $(window).resize(function(){
         clearTimeout(this.id);
