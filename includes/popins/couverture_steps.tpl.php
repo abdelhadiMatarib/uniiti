@@ -119,8 +119,8 @@
 				</div>
 				
 				<div class="couverture_step1_wrap_buttons">
-					<div class="couverture_step1_button_supprimer"></div>
-					<div class="couverture_step1_button_valider" onClick="javascript:EnregistreImageTmp()"></div>
+					<div class="couverture_step1_button_supprimer" onclick="javascript:SupprimeImageTmp()"></div>
+					<div class="couverture_step1_button_valider" onclick="javascript:EnregistreImageTmp()"></div>
 				</div>
 				<div class="couverture_step2_resize_infos">
 					<div class="couverture_step2_resize_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_resize_icon.png" title="" alt="" height="18" width="10" /></div>
@@ -130,6 +130,11 @@
 
 			<input type="file" name="fileselect" id="fileselect" multiple accept="image/*" />
 			<input type="hidden" name="y" value="" id="y" />
+			<input type="hidden" name="y1" value="" id="y1" />
+			<input type="hidden" name="y2" value="" id="y2" />
+			<input type="hidden" name="y3" value="" id="y3" />
+			<input type="hidden" name="y4" value="" id="y4" />
+			<input type="hidden" name="y5" value="" id="y5" />
 			<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
 			<input type="hidden" name="ImageTemp1" value="" id="ImageTemp1" />
 			<input type="hidden" name="ImageTemp2" value="" id="ImageTemp2" />
@@ -240,13 +245,16 @@
 			};
 			
 			var CompteImageErg = 0;
+			var NumImageSel = 1;
 			function EnregistreImageTmp() {
 				if (CompteImageErg < 5) {
 					var NumImage = ++CompteImageErg;
 					$("#image" + NumImage).addClass("is_valid");
 					$('#ImageTemp' + NumImage).val($('#ImageTemp').val());
+					$('#y' + NumImage).val($('#y').val());
 					$("#image" + NumImage).click(function(e){
 						e.preventDefault();
+						NumImageSel = NumImage;
 						$("#image").attr("src", $('#ImageTemp' + NumImage).val());
 						$("#image").css({display : "block"});
 						var img = document.getElementById('image');
@@ -257,10 +265,32 @@
 						DecalageSelectionTop = 20;
 						var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
 						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
-					});					
+					});
+					$("#image").attr("src", "");
+					$("#image").css({display : "block"});
+					$(".couverture_step1_dropzone_img_container").css({display : "block"});
+					$(".couverture_step1_dropzone_txt").css({display : "block"});
+					$(".couverture_step1_wrap_buttons").css({display : "none"});
+					$(".couverture_step2_resize_infos").css({display : "none"});
+					$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
 				}
 				else {alert ("Il y a déjà 5 images dans votre gallerie")}
 
+			};
+			
+			function SupprimeImageTmp() {
+				var NumImage = NumImageSel;
+				for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
+					$('#ImageTemp' + (i - 1)).val($('#ImageTemp' + i).val());
+					$('#y' + (i - 1)).val($('#y' + i).val());
+				}
+				$('#ImageTemp' + CompteImageErg).val("");
+				$('#y' + CompteImageErg).val("");
+				$("#image" + CompteImageErg).removeClass("is_valid");
+				$("#image" + CompteImageErg).unbind('click');
+				CompteImageErg--;
+				$("#image").attr("src", $('#ImageTemp' + NumImage).val());
+				$("#image").css({display : "block"});
 			};
 			
 			function EtapeSuivante() {
@@ -270,10 +300,14 @@
 							image2 : $('#ImageTemp2').val(),
 							image3 : $('#ImageTemp3').val(),
 							image4 : $('#ImageTemp4').val(),
-							image5 : $('#ImageTemp5').val()
+							image5 : $('#ImageTemp5').val(),
+							y1 : $('#y1').val(),
+							y2 : $('#y2').val(),
+							y3 : $('#y3').val(),
+							y4 : $('#y4').val(),
+							y5 : $('#y5').val()
 						};
 				ActualisePopin(data, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');
-			
 			};
 			
 			
@@ -291,7 +325,7 @@
 				}				
 			};
 			
-			Init();
+			<?php if ($step == 1) { ?>Init();<?php } ?>
 
 		</script>
 
