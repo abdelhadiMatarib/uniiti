@@ -56,6 +56,7 @@
 			$note                    = $row['note'];
 			$origine                 = $row['origine'];
 			$datetime                = $row['date_avis'];
+			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
 			// Enseigne
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
@@ -71,13 +72,13 @@
 			$count_avis_enseigne     = $result['count_avis'];
 			$note_arrondi = number_format($result['moyenne'],1);	
                         
-                        $data = "{id_contributeur :" . $id_contributeur . ","
+			$data = "{id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
 				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
-				/*. "delai_avis : '" . $delai_avis . "',"*/
+				. "delai_avis : '" . $delai_avis . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
@@ -109,9 +110,9 @@
 					<img src="../img/photos_commerces/1.jpg" title="" alt="" />
                                         <div class="overlay_push">
                                             <div class="push_buttons_wrapper">
-                                                <div onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+                                                <div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
+                                                <div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
+                                                <div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
                                             </div>
                                         </div>
 				</figure>
@@ -126,7 +127,7 @@
 					
 					<div class="box_foot">
 						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="../img/avatars/1.png" title="" alt="" /></a></div>
-						<div class="box_posttime"><time>Il y a <strong><?php echo EcartDate($Maintenant[0]['Maintenant'], $datetime);  ?></strong></time></div>
+						<div class="box_posttime"><time>Il y a <strong><?php echo $delai_avis ?></strong></time></div>
 						<div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
 					</div>
 				</footer>

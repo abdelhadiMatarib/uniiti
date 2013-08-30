@@ -45,7 +45,6 @@
 				<?php include 'includes/requete.php' ?>
 			</div>
 			<!-- FIN CONTENU PRINCIPAL -->
-			<?php include'includes/js.php' ?>
         </div><!-- FIN DU BIGGY -->
         <!-- FOOTER -->
         <div class="uniiti_footer big_wrapper">
@@ -55,5 +54,6 @@
             </div>
         </div>
         <!-- FIN FOOTER -->
+		<?php include'includes/js.php' ?>
 	</body>
 </html>
