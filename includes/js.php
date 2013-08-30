@@ -138,9 +138,9 @@
 				});
 			});
  
-                                $(window).smartresize(function(){
+			$(window).smartresize(function(){
 				// check if columns has changed
-				var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
+				var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
 				if ( currentColumns !== columns ) {
 					// set new column count
 					columns = currentColumns;
@@ -148,8 +148,7 @@
 					$container.width( columns * colW )
 					.isotope('reLayout');
 				}
-
-                                }).smartresize(); // trigger resize to set container width
+			}).smartresize(); // trigger resize to set container width
 			
   
 	});    

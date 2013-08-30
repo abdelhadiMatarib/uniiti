@@ -1,5 +1,4 @@
 function OuvrePopin(data, url, div) {
-    // PRESENTATION ACTION COMMENTAIRE
 	url = siteurl + url;
 
 	$.ajax({
@@ -15,7 +14,6 @@ function OuvrePopin(data, url, div) {
 }
 
 function ActualisePopin(data, url, div) {
-    // PRESENTATION ACTION COMMENTAIRE
 	url = siteurl + url;
 
 	$.ajax({
@@ -52,7 +50,17 @@ $(document).ready(function() {
         draggable:false,
         resizable:false,
         width: '560px',
-        height: 'auto'
+        height: 'auto',
+		open: function() {
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#default_dialog').dialog('close');
+			});
+			$('.popin_close_button').click(function(e){
+				e.preventDefault(); //don't go to default URL
+				var defaultdialog = $("#default_dialog").dialog();
+				defaultdialog.dialog('close');
+			});
+		}
     });
 
 	var defaultdialog_large = $("#default_dialog_large").dialog({ 
@@ -61,10 +69,19 @@ $(document).ready(function() {
 		draggable:false,
 		resizable:false,
 		width: '760px',
-		height: 'auto'
-	});	
-	
-	
+		height: 'auto',
+		open: function() {
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#default_dialog_large').dialog('close');
+			})
+			$('.popin_close_button').click(function(e){
+				e.preventDefault(); //don't go to default URL
+				var defaultdialog_large = $("#default_dialog_large").dialog();
+				defaultdialog_large.dialog('close');
+			});
+		}
+	});
+
     // call dialogs
     // non-connecté
     $('.not_signedin').click(function(e){

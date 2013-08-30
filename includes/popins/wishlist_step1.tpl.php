@@ -10,11 +10,4 @@
         <span class="wishlist_wrapper_footer_txt_normal">Vous avez <span class="wishlist_wrapper_footer_txt_bold">ajouté</span> ce commerce</span>
     </div>
 </div>
-<script>    
-    $('.popin_close_button').click(function(e){
-    e.preventDefault(); //don't go to default URL
-    var defaultdialog = $("#default_dialog").dialog();
-    defaultdialog.dialog('close');
-    });
-</script>
 </html>

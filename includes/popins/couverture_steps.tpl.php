@@ -231,11 +231,7 @@
 		<script language="javascript" src="../../js/jquery.easydrag.min.js"></script>
 -->
 		<script>    
-			$('.popin_close_button').click(function(e){
-			e.preventDefault(); //don't go to default URL
-			var defaultdialog = $("#default_dialog_large").dialog();
-			defaultdialog.dialog('close');
-			});
+
 
 			$( "#sortable" ).sortable({revert: true});
 			
