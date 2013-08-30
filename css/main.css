@@ -100,7 +100,8 @@ span.index_overlay_texte{display:block;}
 
 /* FOOTER */
 .uniiti_footer{background-color:#e3e3e3;z-index:51;position: relative;padding:0;height:70px;}
-.uniiti_footer_loader{width:70px;margin:0 auto;}
+.uniiti_footer_loader{position:relative;width:70px;margin:0 auto;}
+.uniiti_footer_loader_barre_horizontale{position: absolute;top: 35px;border-bottom: 1px solid #252525;height: 1px;width: 100%;}
 /* FILTRES */
 
 .filters{margin: 14px 0 14px 0;-webkit-border-radius: 3px;border-radius: 3px;background-color:white;}
