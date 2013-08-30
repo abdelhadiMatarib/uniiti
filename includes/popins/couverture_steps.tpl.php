@@ -63,9 +63,8 @@
 			ul {list-style-type: none;}
 			#fileselect {display: none;}
 			.couverture_step2_resize_infos {display : none;}
-			.couverture_step1_wrap_buttons {z-index:1; display : none;}
-			.couverture_champs_action {z-index:1}
-			.couverture_step1_dropzone_txt2	{z-index:1}		
+			.couverture_step1_wrap_buttons {display : none;}
+			.couverture_step1_dropzone_txt2	{}		
 			#image {position:absolute;}
 
 		</style>
@@ -243,6 +242,24 @@
 			function ChercherFichier() {
 				$("#fileselect").click();
 			};
+
+			function AfficheBtnES() {
+				$id("MessageInfo").innerHTML = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
+				$(".couverture_step1_dropzone_img_container").css({display : "none"});
+				$(".couverture_step1_dropzone_txt").css({display : "none"});
+				$(".couverture_step1_wrap_buttons").css({display : "block"});
+				$(".couverture_step2_resize_infos").css({display : "block"});
+			};
+			
+			function AfficheChercheImage() {
+					$("#image").attr("src", "");
+					$(".couverture_step1_dropzone_img_container").css({display : "block"});
+					$(".couverture_step1_dropzone_txt").css({display : "block"});
+					$(".couverture_step1_wrap_buttons").css({display : "none"});
+					$(".couverture_step2_resize_infos").css({display : "none"});
+					$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
+					$("#image").css({display : "block"});
+			};
 			
 			var CompteImageErg = 0;
 			var NumImageSel = 1;
@@ -256,7 +273,7 @@
 						e.preventDefault();
 						NumImageSel = NumImage;
 						$("#image").attr("src", $('#ImageTemp' + NumImage).val());
-						$("#image").css({display : "block"});
+
 						var img = document.getElementById('image');
 						var height;
 						if(img.offsetHeight) {height=img.offsetHeight;}
@@ -265,14 +282,10 @@
 						DecalageSelectionTop = 20;
 						var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
 						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
+						AfficheBtnES();
+						$("#image").css({display : "block"});
 					});
-					$("#image").attr("src", "");
-					$("#image").css({display : "block"});
-					$(".couverture_step1_dropzone_img_container").css({display : "block"});
-					$(".couverture_step1_dropzone_txt").css({display : "block"});
-					$(".couverture_step1_wrap_buttons").css({display : "none"});
-					$(".couverture_step2_resize_infos").css({display : "none"});
-					$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
+					AfficheChercheImage();
 				}
 				else {alert ("Il y a déjà 5 images dans votre gallerie")}
 
@@ -280,17 +293,18 @@
 			
 			function SupprimeImageTmp() {
 				var NumImage = NumImageSel;
-				for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
-					$('#ImageTemp' + (i - 1)).val($('#ImageTemp' + i).val());
-					$('#y' + (i - 1)).val($('#y' + i).val());
+				if ((CompteImageErg > 0) && (NumImage <= CompteImageErg)) {
+					for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
+						$('#ImageTemp' + (i - 1)).val($('#ImageTemp' + i).val());
+						$('#y' + (i - 1)).val($('#y' + i).val());
+					}
+					$('#ImageTemp' + CompteImageErg).val("");
+					$('#y' + CompteImageErg).val("");
+					$("#image" + CompteImageErg).removeClass("is_valid");
+					$("#image" + CompteImageErg).unbind('click');
+					CompteImageErg--;
 				}
-				$('#ImageTemp' + CompteImageErg).val("");
-				$('#y' + CompteImageErg).val("");
-				$("#image" + CompteImageErg).removeClass("is_valid");
-				$("#image" + CompteImageErg).unbind('click');
-				CompteImageErg--;
-				$("#image").attr("src", $('#ImageTemp' + NumImage).val());
-				$("#image").css({display : "block"});
+				AfficheChercheImage();
 			};
 			
 			function EtapeSuivante() {
@@ -324,7 +338,88 @@
 					DragInit = true;
 				}				
 			};
+
+			// getElementById
+			function $id(id) {return document.getElementById(id);}
+
+			// output information
+			function Output(msg) {
+				var m = $id("messages");
+				m.innerHTML = "<p>Information</p>" + msg;
+			}
+
+			// file drag hover
+			function selectionHover(e) {
+				e.stopPropagation();
+				e.preventDefault();
+//				e.target.className = (e.type == "dragover" ? "hover" : "");
+			}
+
+			// file selection
+			function FileSelectHandler(e) {
+				// cancel event and hover styling
+				selectionHover(e);
+				// fetch FileList object
+				var files = e.target.files || e.dataTransfer.files;
+				// process all File objects
+				for (var i = 0, f; f = files[i]; i++) {
+					ParseFile(f);
+				}
+			}
+				// output file information
+			function ParseFile(file) {
+				// display an image
+				if (file.type.indexOf("image") == 0) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						$("#image").attr("src", e.target.result);
+						InitDrag();
+						$("#image").css({display : "block"});
+						AfficheBtnES();
+						alert("cliquez sur l'image pour la déplacer verticalement");
+						var img = document.getElementById('image');
+						var height;
+						if(img.offsetHeight) {height=img.offsetHeight;}
+						else if(img.style.pixelHeight){height=img.style.pixelHeight;}
+						var Newheight = Math.round(189 + (height - 189) * 2);
+						DecalageSelectionTop = 20;
+						var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
+						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
+						$('#ImageTemp').val(e.target.result);
+						NumImageSel = CompteImageErg+1;
 			
+/*						Output(
+							"<p>Fichier: <strong>" + file.name +
+							"</strong> type: <strong>" + file.type +
+							"</strong> size: <strong>" + file.size +
+							"</strong> bytes</p>"
+						);*/
+					}
+					reader.readAsDataURL(file);
+				}
+			}
+			
+			// initialize
+			function Init() {
+				var image = $id("image"),
+					fileselect = $id("fileselect"),
+					selection = $id("selection"),
+					submitbutton = $id("submitbutton");
+				// file select
+				fileselect.addEventListener("change", FileSelectHandler, false);
+				// is XHR2 available?
+				
+				var xhr = new XMLHttpRequest();
+				if (xhr.upload) {
+					// file drop
+					selection.addEventListener("dragover", selectionHover, false);
+					selection.addEventListener("dragleave", selectionHover, false);
+					selection.addEventListener("drop", FileSelectHandler, false);
+					
+					// remove submit button
+					submitbutton.style.display = "none";
+				}
+			}			
 			<?php if ($step == 1) { ?>Init();<?php } ?>
 
 		</script>
