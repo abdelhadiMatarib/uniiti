@@ -43,6 +43,7 @@
 ?>
 <body>    
     <div id="default_dialog_large"></div>
+    <div id="default_dialog"></div>
         <?php include'../includes/header.php'; ?>
     <div class="biggymarginer">
         <div class="big_wrapper">

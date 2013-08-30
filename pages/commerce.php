@@ -63,9 +63,9 @@
 ?>
 
     <body>
-        <?php include'../includes/header.php'; ?>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
+        <?php include'../includes/header.php'; ?>
         <div class="biggymarginer">
         <div class="big_wrapper" id="test">
             <div class="liseret_orange"></div>
