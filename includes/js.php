@@ -136,7 +136,7 @@
 							data : $data,
 							success: function(html){
 								if (html) {
-									$container.append( $(decodeURIComponent(html))).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 								}
 								else {
 									alert('Il n\'y a plus d\'enregistrements');
