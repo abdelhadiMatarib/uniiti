@@ -30,6 +30,19 @@ function ActualisePopin(data, url, div) {
 	$("#dialog_overlay").css({display: "none"});
 }
 
+function CreerOverlayPush() {
+    // Push image box
+    $('.box figure > img').click(function(e){
+        e.preventDefault();//don't go to default URL
+		var overlay_push = $(this).next('.overlay_push');
+		overlay_push.click(function(e){
+			e.preventDefault();//don't go to default URL
+			overlay_push.css('display','none');
+		});
+		overlay_push.css('display','block');
+    });
+}
+
 $(document).ready(function() {
 
     $('#recherche_avancee_button').click(function(){
@@ -83,20 +96,6 @@ $(document).ready(function() {
 			});
 		}
 	});
-
-    // call dialogs
-    // non-connecté
-    $('.not_signedin').click(function(e){
-        e.preventDefault(); //don't go to default URL
-        // load content and open dialog
-        defaultdialog.load(siteurl+'/includes/popins/ident.tpl.php').dialog('open');
-    });
-  
-    // Push image box
-    $('.box figure > img').click(function(e){
-        e.preventDefault();//don't go to default URL
-        $( this ).next('.overlay_push').css('display','block');
-    });
   
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {

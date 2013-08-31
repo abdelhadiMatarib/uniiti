@@ -112,13 +112,13 @@
                                     
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<img src="img/photos_commerces/1.jpg" title="" alt="" />
-                                        <div class="overlay_push">
-                                            <div class="push_buttons_wrapper">
-                                                <div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
-                                            </div>
-                                        </div>
+					<div class="overlay_push">
+						<div class="push_buttons_wrapper">
+							<div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
+							<div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
+							<div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+						</div>
+					</div>
 				</figure>
                                 
 				

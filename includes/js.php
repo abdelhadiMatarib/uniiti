@@ -88,8 +88,10 @@
 	$(window).load(function() {
 		$(function(){
   
+			CreerOverlayPush();
+  
 			var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
-	
+			
 			$container.imagesLoaded(function(){
 				$container.isotope({
 					// disable window resizing
@@ -102,13 +104,14 @@
 				});
                                 
 				var isloading = false;
-				var CptScrollIndex = 0, CptScrollCommerce = 0, CptScrollContributeur = 0;
+				var CptScroll = 0;
 				var DisableScroll = false;
 
 				$(window).scroll(function() {
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
 					else {$("#ScrollToTop").css({display: "none"});}
-					if ( !isloading
+					if ( (CptScroll < 20)
+						&&!isloading
 						&& !DisableScroll
 						&& ($(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
 						)
@@ -119,18 +122,16 @@
 						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecommerce.php";
 							$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
-							CptScrollCommerce++;
 						}
 						else if (<?php if (isset($Contributeur)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecontributeur.php";
 							$data = {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
-							CptScrollContributeur++;
 						}
 						else {
 							$url = "includes/requete.php";
 							$data = {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
-							CptScrollIndex++;
 						}
+						CptScroll++;
 						isloading = true;
 						$(".uniiti_footer_loader").css({display : "block"});
 						$.ajax({
@@ -142,8 +143,10 @@
 									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 
 								} else {alert('Il n\'y a plus d\'enregistrements');}
-								if (html.search('box') == -1) {$(".uniiti_footer_loader").css({display : "none"});DisableScroll = true;}
+								if (html.search('box') == -1) {DisableScroll = true;}
+								$(".uniiti_footer_loader").css({display : "none"});
 								isloading = false;
+								CreerOverlayPush();
 							},
 							error: function() {alert('Erreur sur url : ' + $url);}
 						});
