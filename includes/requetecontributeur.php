@@ -1,4 +1,4 @@
-	<?php 
+<?php 
 		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_contributeur'])) {$id_contributeur = urldecode($_POST['id_contributeur']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}

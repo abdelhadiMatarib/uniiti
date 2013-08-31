@@ -103,11 +103,13 @@
                                 
 				var isloading = false;
 				var CptScrollIndex = 0, CptScrollCommerce = 0, CptScrollContributeur = 0;
+				var DisableScroll = false;
 
 				$(window).scroll(function() {
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
 					else {$("#ScrollToTop").css({display: "none"});}
 					if ( !isloading
+						&& !DisableScroll
 						&& ($(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
 						)
 					{
@@ -130,6 +132,7 @@
 							CptScrollIndex++;
 						}
 						isloading = true;
+						$(".uniiti_footer_loader").css({display : "block"});
 						$.ajax({
 							type:"POST",
 							url : $url,
@@ -137,10 +140,9 @@
 							success: function(html){
 								if (html) {
 									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-								}
-								else {
-									alert('Il n\'y a plus d\'enregistrements');
-								}
+
+								} else {alert('Il n\'y a plus d\'enregistrements');}
+								if (html.search('box') == -1) {$(".uniiti_footer_loader").css({display : "none"});DisableScroll = true;}
 								isloading = false;
 							},
 							error: function() {alert('Erreur sur url : ' + $url);}

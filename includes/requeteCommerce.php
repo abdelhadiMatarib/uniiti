@@ -1,4 +1,4 @@
-	<?php 
+<?php 
 		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
@@ -85,9 +85,7 @@
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
 			
-	?>
-
-        <!-- VIGNETTE TYPE -->
+?>	<!-- VIGNETTE TYPE -->
         <div class="box" id="<?php echo $datetime; ?>">
             
             <header>
@@ -128,10 +126,10 @@
             </footer>
             
         </div>
-		<!-- FIN VIGNETTE TYPE -->
-	<?php
+	<!-- FIN VIGNETTE TYPE -->
+<?php
 		} // Fin du while
 
 		$req->closeCursor();    // Ferme la connexion du serveur
 		$bdd = null;            // Détruit l'objet PDO
-	?>
+?>
