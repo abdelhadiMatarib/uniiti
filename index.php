@@ -13,6 +13,14 @@
     <body>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
+        <div id="dialog_overlay">
+			<div class="index_overlay"></div>
+			<div class="dialog_overlay_wrap_content">
+				<div class="dialog_footer_loader">
+					<img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
+				</div>
+			</div>
+        </div>
 		<?php
 			if (empty($_COOKIE["UNIITI"])) {
 			setcookie("UNIITI", "Premierefois");

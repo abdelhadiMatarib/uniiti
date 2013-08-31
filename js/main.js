@@ -1,7 +1,9 @@
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
+	$("#dialog_overlay").css({display: "block"});
 	$.ajax({
-		type:"POST",
+		async : false,
+		type :"POST",
 		url : url,
 		data : data,
 		success: function(html){
@@ -9,11 +11,14 @@ function OuvrePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
+	$("#dialog_overlay").css({display: "none"});
 }
 
 function ActualisePopin(data, url, div) {
 	url = siteurl + url;
+	$("#dialog_overlay").css({display: "block"});
 	$.ajax({
+		async : false,
 		type:"POST",
 		url : url,
 		data : data,
@@ -22,6 +27,7 @@ function ActualisePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
+	$("#dialog_overlay").css({display: "none"});
 }
 
 $(document).ready(function() {
