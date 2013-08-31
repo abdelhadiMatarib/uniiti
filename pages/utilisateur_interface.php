@@ -127,19 +127,11 @@
    			<?php $Contributeur = 1; include '../includes/requetecontributeur.php' ?>
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
+	</div><!-- FIN BIGGY -->
         <!-- FOOTER -->
-        <div class="uniiti_footer big_wrapper">
-            <div class="uniiti_footer_loader_barre_horizontale"></div>
-            <div class="uniiti_footer_loader">
-                <img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
-            </div>
-        </div>
+			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
-        
-        <!-- FIN BIGGY -->
-
-    </div>
-        <?php include'../includes/js.php' ?>
+		<?php include'../includes/js.php' ?>
 		
     </body>
 </html>

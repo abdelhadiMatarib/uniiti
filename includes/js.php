@@ -101,25 +101,35 @@
 					}
 				});
                                 
-	
+				var isloading = false;
+				var CptScrollIndex = 0, CptScrollCommerce = 0, CptScrollContributeur = 0;
+
 				$(window).scroll(function() {
-					if ( $(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
+					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
+					else {$("#ScrollToTop").css({display: "none"});}
+					if ( !isloading
+						&& ($(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
+						)
 					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
 						var $idcontributeur = '<?php echo $id_contributeur; ?>';
 						var $url, $data;
 						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecommerce.php";
-							$data = {id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							CptScrollCommerce++;
 						}
 						else if (<?php if (isset($Contributeur)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecontributeur.php";
-							$data = {id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							CptScrollContributeur++;
 						}
 						else {
 							$url = "includes/requete.php";
-							$data = {lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							CptScrollIndex++;
 						}
+						isloading = true;
 						$.ajax({
 							type:"POST",
 							url : $url,
@@ -131,6 +141,7 @@
 								else {
 									alert('Il n\'y a plus d\'enregistrements');
 								}
+								isloading = false;
 							},
 							error: function() {alert('Erreur sur url : ' + $url);}
 						});

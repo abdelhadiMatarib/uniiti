@@ -1,6 +1,5 @@
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
-
 	$.ajax({
 		type:"POST",
 		url : url,
@@ -10,12 +9,10 @@ function OuvrePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
-
 }
 
 function ActualisePopin(data, url, div) {
 	url = siteurl + url;
-
 	$.ajax({
 		type:"POST",
 		url : url,
@@ -25,7 +22,6 @@ function ActualisePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
-
 }
 
 $(document).ready(function() {
@@ -650,4 +646,4 @@ $('#close_button_home').click(function() {
             $('.ligne_verticale3').css('left','1562px').css('height','496px');
         }
   
-}   
+	}   
