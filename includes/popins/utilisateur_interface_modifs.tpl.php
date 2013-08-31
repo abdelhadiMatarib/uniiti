@@ -120,9 +120,9 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
 // Box utilisateur modifier interface modifier note
 
     // On annule le comportement par défaut du clic sur le lien (scroll)
-    $("a").click(function(e){
+/*    $("a").click(function(e){
        e.preventDefault(); 
-    });
+    });*/ //             FF ==> ATTENTION : LORQUE L'ON FERME LA DIALOG BOX, PLUS AUCUN LIEN NE FONCTIONNE : est-ce vraiment nécessaire ?
     
     // NOTE
     $(".utilisateur_interface_modifs_modifier_note a.maintitle").click(function(e){
