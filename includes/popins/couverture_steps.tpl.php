@@ -370,9 +370,9 @@
 					reader.onload = function(e) {
 						$("#image").attr("src", e.target.result);
 						InitDrag();
+						alert("cliquez sur l'image pour la déplacer verticalement");
 						$("#image").css({display : "block"});
 						AfficheBtnES();
-						alert("cliquez sur l'image pour la déplacer verticalement");
 						var img = document.getElementById('image');
 						var height;
 						if(img.offsetHeight) {height=img.offsetHeight;}
@@ -383,8 +383,9 @@
 						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
 						$('#ImageTemp').val(e.target.result);
 						NumImageSel = CompteImageErg+1;
-			
-/*						Output(
+//						$("#image").offset({top: $("#selection").offset().top,left: $("#selection").offset().left});
+
+						/*						Output(
 							"<p>Fichier: <strong>" + file.name +
 							"</strong> type: <strong>" + file.type +
 							"</strong> size: <strong>" + file.size +

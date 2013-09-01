@@ -10,6 +10,11 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.easydrag.dialog.min.js"></script>
+<!-- POUR RIGOLER -->
+    <script src="<?php echo SITE_URL; ?>/js/jquery.imagesloaded.min.js"></script>
+    <script src="<?php echo SITE_URL; ?>/js/bigvideo.js"></script>
+	<script src="<?php echo SITE_URL; ?>/js/video.js"></script>
+<!-- FIN POUR RIGOLER -->
 	
         <!--<script>
             $(document).ready(function() {                
@@ -87,7 +92,12 @@
 	<script>
 	$(window).load(function() {
 		$(function(){
-  
+			// DEBUT RIGOLER
+			var BV = new $.BigVideo();
+			BV.init();
+			BV.show(siteurl+'/img/videos/Jump Around.flv');
+			// FIN RIGOLER
+			
 			CreerOverlayPush();
   
 			var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
