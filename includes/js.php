@@ -92,11 +92,11 @@
 	<script>
 	$(window).load(function() {
 		$(function(){
-			// DEBUT RIGOLER
+			/* DEBUT RIGOLER
 			var BV = new $.BigVideo();
 			BV.init();
 			BV.show(siteurl+'/img/videos/Jump Around.flv');
-			// FIN RIGOLER
+			FIN RIGOLER */
 			
 			CreerOverlayPush();
   
