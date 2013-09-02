@@ -6,7 +6,7 @@
     <div class="suggestioncommerce_head">
         <div class="suggestioncommerce_img_container">
             <img src="<?php echo SITE_URL; ?>/img/pictos_popins/sugg_objet_icon.png" title="" alt="" height="44" width="37" />
-        </div><span class="maintitle">Avis en attente - Signalement</span>
+        </div><span class="maintitle">Avis en attente - Commentaire</span>
     </div>   
     <div class="suggestioncommerce_body">
             

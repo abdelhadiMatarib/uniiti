@@ -24,8 +24,8 @@
         <div class="header_rightnav">
 
             <div class="header_yourcity">
-                <div class="header_img_container"><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></div>
-                <aside>Votre ville :</aside>
+                <div class="header_img_container"><img src="<?php echo SITE_URL; ?>/img/icon_home_ville.png" title="" alt="" height="30" width="30"/></div>
+                <aside>Votre ville</aside>
                 <div class="header_choixvilles"><a id="header_choixvilles" href="#">Paris 15<sup>ème</sup></a></div>
                 <div class="header_flechebas"><a id="header_choixvilles2" href="#"></a></div>
             </div>

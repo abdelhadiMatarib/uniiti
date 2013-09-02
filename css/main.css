@@ -81,14 +81,14 @@ span.index_overlay_texte{display:block;}
 .header_logo > a{display:inline-block;background:url('../img/logo.png') no-repeat center;width:88px;height:26px;margin-top:2px;}
 
 .header_yourcity{float:left;line-height:30px;margin-right:14px;}
-.header_yourcity > aside{float:left;display:inline-block;}
+.header_yourcity > aside{float:left;display:inline-block;margin-left: 10px;}
 .header_img_container{float:left;height:30px;width:30px;text-align:center;}
 .header_choixvilles{float:left;font-weight:bold;margin:0 10px 0 10px;}
 .header_user{float:left;line-height:30px;}
 .header_usermenu{float:left;font-weight:bold;margin:0 10px 0 10px;}
 .header_flechebas{float:left;background:url('../img/flechebas.png');height:6px;width:12px;margin:12px 0 0 0;}
 .header_flechebas a{display:block;height:6px;width:12px;}
-.header_yourcity img{vertical-align:middle;}
+.header_yourcity img{}
 .header_user img{vertical-align:middle;}
 .header_user_menulist{background-color:#A4EBF1;z-index:50;position:absolute;right:0;top:37px;width: 170px;}
 .header_user_menulist ul{}
@@ -144,7 +144,7 @@ span.index_overlay_texte{display:block;}
 .push_buttons_like{margin:0 10px 0 10px;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aime.png');}
 .push_buttons_dislike{margin:0 10px 0 0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aimepas.png');}
 .push_buttons_wishlist{margin:0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/listesouhaits.png');}
-.push_buttons_like a,.push_buttons_dislike a,.push_buttons_wishlist a{display:inline-block;height:100%;width:100%;pre}
+.push_buttons_like a,.push_buttons_dislike a,.push_buttons_wishlist a{display:inline-block;height:100%;width:100%;}
 
 .box_localisation{bottom: 10px;z-index:90;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
 
@@ -214,12 +214,16 @@ span.index_overlay_texte{display:block;}
 
 .commerce_head_infos{float:left;height:155px;}
 .commerce_head_infos_services{-webkit-border-radius: 3px;border-radius: 3px;float:left;height:82px;margin:10px 10px 0 10px;border:1px solid #eaeaea;width:178px;}
+.commerce_head_infos_services a{color:#252525;display: inline-block;height: 100%;width: 100%;}
+.commerce_head_infos_services a:hover{background-color:#f0f0f0;}
 .commerce_head_infos_services_text{float:left;text-transform: uppercase;margin: 20px 0 0 0;font-size: 1.1em;}
 .commerce_head_infos_services_text span{display:block;}
 .commerce_head_infos_services_text_fin{font-weight:300;}
 .commerce_head_infos_services_text_couleur{font-weight:bold;color:#fabe41;}
 .commerce_head_infos_services .img_container{float:left;padding:22px;height:35px;width:35px;}
 .commerce_head_infos_infos{-webkit-border-radius: 3px;border-radius: 3px;float:left;width:178px;height:82px;margin:10px 10px 0 0;border:1px solid #eaeaea;}
+.commerce_head_infos_infos a{color:#252525;display: inline-block;height: 100%;width: 100%;}
+.commerce_head_infos_infos a:hover{background-color:#f0f0f0;}
 .commerce_head_infos_infos_text{float:left;text-transform: uppercase;margin: 20px 0 0 0;font-size: 1.1em;}
 .commerce_head_infos_infos_text span{display:block;}
 .commerce_head_infos_infos_text_fin{font-weight:300;}
@@ -725,7 +729,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .img_container_payment_options3{height:34px;width:48px;background-position:-100px 0px;}
 .img_container_payment_options4{height:34px;width:52px;background-position:-150px 0px;}
 .img_container_payment_options5{height:34px;width:55px;background-position:-205px 0px;}
-.menutarifs_body{overflow-y:scroll;height:600px;}
+.menutarifs_body{overflow-y:scroll;height:500px;}
 .menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:680px;padding:10px;}
 .menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
 .menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:579px;}
