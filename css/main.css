@@ -669,7 +669,9 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 
 .suggestioncommerce_body select,.suggestionobjet_body select{padding:0 0 0 5px;}
 .suggestioncommerce_body textarea,.suggestionobjet_body textarea{padding-top:10px;}
-.suggestioncommerce_nom,.suggestioncommerce_categorie,.suggestioncommerce_souscategorie,.suggestioncommerce_description,.suggestioncommerce_ville,.suggestionobjet_nom,.suggestionobjet_categorie,.suggestionobjet_souscategorie,.suggestionobjet_description{font-size:1.2em;font-weight:300;float:left;width:500px;}
+.suggestioncommerce_nom,.suggestioncommerce_categorie,.suggestioncommerce_souscategorie,.suggestioncommerce_description,.suggestioncommerce_ville,.suggestionobjet_nom,.suggestionobjet_description{font-size:1.2em;font-weight:300;float:left;width:490px;}
+.suggestionobjet_categorie,.suggestionobjet_souscategorie{font-size:1.2em;font-weight:300;float:left;width:500px;}
+.suggestioncommerce_categorie,.suggestioncommerce_souscategorie{font-size:1.2em;font-weight:300;float:left;width:500px;}
 textarea.suggestioncommerce_description,textarea.suggestionobjet_description{height:90px;resize:none;}
 .ident_explications{float:left;width:250px;border-bottom:1px solid #e4e4e4;height:91px;}
 .oublimdp_explications{width:500px;border-bottom:1px solid #e4e4e4;height:25px;padding:10px 0 10px 0;text-align:center;}
