@@ -1,5 +1,8 @@
 /* GENERAL */
 #default_dialog,#default_dialog_large{overflow:hidden;}
+#dialog_overlay{display:none;}
+.dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
+
 .overlay{
     display:none;
     position: fixed;
@@ -100,7 +103,7 @@ span.index_overlay_texte{display:block;}
 
 /* FOOTER */
 .uniiti_footer{background-color:#e3e3e3;z-index:51;position: relative;padding:0;height:70px;}
-.uniiti_footer_loader{position:relative;width:70px;margin:0 auto;}
+.uniiti_footer_loader{display:none;position:relative;width:70px;margin:0 auto;}
 .uniiti_footer_loader_barre_horizontale{position: absolute;top: 35px;border-bottom: 1px solid #252525;height: 1px;width: 100%;}
 /* FILTRES */
 

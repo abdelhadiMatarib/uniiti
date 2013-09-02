@@ -1,9 +1,9 @@
 function OuvrePopin(data, url, div) {
-    // PRESENTATION ACTION COMMENTAIRE
 	url = siteurl + url;
-
+	$("#dialog_overlay").css({display: "block"});
 	$.ajax({
-		type:"POST",
+		async : false,
+		type :"POST",
 		url : url,
 		data : data,
 		success: function(html){
@@ -11,14 +11,14 @@ function OuvrePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
-
+	$("#dialog_overlay").css({display: "none"});
 }
 
 function ActualisePopin(data, url, div) {
-    // PRESENTATION ACTION COMMENTAIRE
 	url = siteurl + url;
-
+	$("#dialog_overlay").css({display: "block"});
 	$.ajax({
+		async : false,
 		type:"POST",
 		url : url,
 		data : data,
@@ -27,7 +27,20 @@ function ActualisePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
+	$("#dialog_overlay").css({display: "none"});
+}
 
+function CreerOverlayPush() {
+    // Push image box
+    $('.box figure > img').click(function(e){
+        e.preventDefault();//don't go to default URL
+		var overlay_push = $(this).next('.overlay_push');
+		overlay_push.click(function(e){
+			e.preventDefault();//don't go to default URL
+			overlay_push.css('display','none');
+		});
+		overlay_push.css('display','block');
+    });
 }
 
 $(document).ready(function() {
@@ -52,7 +65,17 @@ $(document).ready(function() {
         draggable:false,
         resizable:false,
         width: '560px',
-        height: 'auto'
+        height: 'auto',
+		open: function() {
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#default_dialog').dialog('close');
+			});
+			$('.popin_close_button').click(function(e){
+				e.preventDefault(); //don't go to default URL
+				var defaultdialog = $("#default_dialog").dialog();
+				defaultdialog.dialog('close');
+			});
+		}
     });
 
 	var defaultdialog_large = $("#default_dialog_large").dialog({ 
@@ -61,23 +84,18 @@ $(document).ready(function() {
 		draggable:false,
 		resizable:false,
 		width: '760px',
-		height: 'auto'
-	});	
-	
-	
-    // call dialogs
-    // non-connecté
-    $('.not_signedin').click(function(e){
-        e.preventDefault(); //don't go to default URL
-        // load content and open dialog
-        defaultdialog.load(siteurl+'/includes/popins/ident.tpl.php').dialog('open');
-    });
-  
-    // Push image box
-    $('.box figure > img').click(function(e){
-        e.preventDefault();//don't go to default URL
-        $( this ).next('.overlay_push').css('display','block');
-    });
+		height: 'auto',
+		open: function() {
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#default_dialog_large').dialog('close');
+			})
+			$('.popin_close_button').click(function(e){
+				e.preventDefault(); //don't go to default URL
+				var defaultdialog_large = $("#default_dialog_large").dialog();
+				defaultdialog_large.dialog('close');
+			});
+		}
+	});
   
     // Boutons choix sexe formulaire d'inscription
 $('#button_homme').click(function() {
@@ -633,4 +651,4 @@ $('#close_button_home').click(function() {
             $('.ligne_verticale3').css('left','1562px').css('height','496px');
         }
   
-}   
+	}   

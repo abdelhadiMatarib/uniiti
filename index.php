@@ -13,6 +13,14 @@
     <body>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
+        <div id="dialog_overlay">
+			<div class="index_overlay"></div>
+			<div class="dialog_overlay_wrap_content">
+				<div class="dialog_footer_loader">
+					<img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
+				</div>
+			</div>
+        </div>
 		<?php
 			if (empty($_COOKIE["UNIITI"])) {
 			setcookie("UNIITI", "Premierefois");
@@ -23,7 +31,7 @@
 			<div class="index_overlay_wrap_content">
 				<div class="index_overlay_logo"><img src="img/logo_L.png" height="81" width="283" title="" alt="" /></div>
 				<div class="index_overlay_texte_wrap"><span class="index_overlay_texte">Bienvenue ! C'est votre première visite ?</span><span class="index_overlay_texte"> Laissez-vous guider...</span></div>
-				<div class="index_overlay_button"><a href="#" title="">Visite guidée</a></div>
+				<div class="index_overlay_button"><a href="http://www.ultimedia.com/deliver/musique/iframe/mdtk/01497444/article/3klms/zone/" title="">Visite guidée</a></div>
 			</div>
         </div>
 		<?php
@@ -45,15 +53,11 @@
 				<?php include 'includes/requete.php' ?>
 			</div>
 			<!-- FIN CONTENU PRINCIPAL -->
-			<?php include'includes/js.php' ?>
         </div><!-- FIN DU BIGGY -->
+		
         <!-- FOOTER -->
-        <div class="uniiti_footer big_wrapper">
-            <div class="uniiti_footer_loader_barre_horizontale"></div>
-            <div class="uniiti_footer_loader">
-                <img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
-            </div>
-        </div>
+			<?php include 'includes/footer.php' ?>
         <!-- FIN FOOTER -->
+		<?php include'includes/js.php' ?>
 	</body>
 </html>

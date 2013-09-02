@@ -10,6 +10,11 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.easydrag.dialog.min.js"></script>
+<!-- POUR RIGOLER -->
+    <script src="<?php echo SITE_URL; ?>/js/jquery.imagesloaded.min.js"></script>
+    <script src="<?php echo SITE_URL; ?>/js/bigvideo.js"></script>
+	<script src="<?php echo SITE_URL; ?>/js/video.js"></script>
+<!-- FIN POUR RIGOLER -->
 	
         <!--<script>
             $(document).ready(function() {                
@@ -87,9 +92,16 @@
 	<script>
 	$(window).load(function() {
 		$(function(){
+			// DEBUT RIGOLER
+			var BV = new $.BigVideo();
+			BV.init();
+			BV.show(siteurl+'/img/videos/Jump Around.flv');
+			// FIN RIGOLER
+			
+			CreerOverlayPush();
   
 			var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
-	
+			
 			$container.imagesLoaded(function(){
 				$container.isotope({
 					// disable window resizing
@@ -101,36 +113,50 @@
 					}
 				});
                                 
-	
+				var isloading = false;
+				var CptScroll = 0;
+				var DisableScroll = false;
+
 				$(window).scroll(function() {
-					if ( $(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
+					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
+					else {$("#ScrollToTop").css({display: "none"});}
+					if ( (CptScroll < 20)
+						&&!isloading
+						&& !DisableScroll
+						&& ($(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
+						)
 					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
 						var $idcontributeur = '<?php echo $id_contributeur; ?>';
 						var $url, $data;
 						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecommerce.php";
-							$data = {id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
 						}
 						else if (<?php if (isset($Contributeur)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecontributeur.php";
-							$data = {id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
 						}
 						else {
 							$url = "includes/requete.php";
-							$data = {lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
 						}
+						CptScroll++;
+						isloading = true;
+						$(".uniiti_footer_loader").css({display : "block"});
 						$.ajax({
 							type:"POST",
 							url : $url,
 							data : $data,
 							success: function(html){
 								if (html) {
-									$container.append( $(decodeURIComponent(html))).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-								}
-								else {
-									alert('Il n\'y a plus d\'enregistrements');
-								}
+									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+
+								} else {alert('Il n\'y a plus d\'enregistrements');}
+								if (html.search('box') == -1) {DisableScroll = true;}
+								$(".uniiti_footer_loader").css({display : "none"});
+								isloading = false;
+								CreerOverlayPush();
 							},
 							error: function() {alert('Erreur sur url : ' + $url);}
 						});
@@ -138,9 +164,9 @@
 				});
 			});
  
-                                $(window).smartresize(function(){
+			$(window).smartresize(function(){
 				// check if columns has changed
-				var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
+				var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
 				if ( currentColumns !== columns ) {
 					// set new column count
 					columns = currentColumns;
@@ -148,8 +174,7 @@
 					$container.width( columns * colW )
 					.isotope('reLayout');
 				}
-
-                                }).smartresize(); // trigger resize to set container width
+			}).smartresize(); // trigger resize to set container width
 			
   
 	});    

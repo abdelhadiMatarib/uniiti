@@ -1,7 +1,7 @@
-
-	<?php
+<?php
 		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
+		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -32,7 +32,7 @@
 								INNER JOIN types_enseigne AS t6
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne ";
 		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);}
-		$sql2 .= " ORDER BY date_avis DESC LIMIT 0,50";
+		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
 		$req2 = $bdd->prepare($sql2);
 		$req2->execute();
@@ -112,13 +112,13 @@
                                     
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<img src="img/photos_commerces/1.jpg" title="" alt="" />
-                                        <div class="overlay_push">
-                                            <div class="push_buttons_wrapper">
-                                                <div onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
-                                            </div>
-                                        </div>
+					<div class="overlay_push">
+						<div class="push_buttons_wrapper">
+							<div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
+							<div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
+							<div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+						</div>
+					</div>
 				</figure>
                                 
 				

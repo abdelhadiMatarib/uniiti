@@ -47,11 +47,4 @@
             
     </div>
 </div>
-<script>    
-    $('.popin_close_button').click(function(e){
-    e.preventDefault(); //don't go to default URL
-    var defaultdialog = $("#default_dialog").dialog();
-    defaultdialog.dialog('close');
-    });
-</script>
 </html>

@@ -27,7 +27,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
                 
             <div class="presentation_action_left_head_note_wrap">
 				<?php for ($i = 1 ; $i <= round($_POST['note_arrondi'] / 2) ; $i++) { ?>
-					<img src="img/pictos_commerces/star_0.png" title="" alt="" />
+					<img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" title="" alt="" />
 				<?php } /* Fin du for */ ?>
                 <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $_POST['count_avis_enseigne']; ?> Avis</span>
             </div>
@@ -175,11 +175,4 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         </div>
     
 </div>
-<script>    
-    $('.popin_close_button').click(function(e){
-    e.preventDefault(); //don't go to default URL
-    var defaultdialog_large = $("#default_dialog_large").dialog();
-    defaultdialog_large.dialog('close');
-    });
-</script>
 </html>
