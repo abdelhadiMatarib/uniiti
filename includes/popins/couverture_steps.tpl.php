@@ -14,24 +14,11 @@
 		if (!empty($_GET['step'])) {$step = $_GET['step'];}
 		else {$step = $_POST['step'];}
 		
-		if (!empty($_POST['image1'])) {$image1 = $_POST['image1'];}
-		else {$image1 = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";}
-		if (!empty($_POST['image2'])) {$image2 = $_POST['image2'];}
-		else {$image2 = "";}
-		if (!empty($_POST['image3'])) {$image3 = $_POST['image3'];}
-		else {$image3 = "";}
-		if (!empty($_POST['image4'])) {$image4 = $_POST['image4'];}
-		else {$image4 = "";}
-		if (!empty($_POST['image5'])) {$image5 = $_POST['image5'];}
-		else {$image5 = "";}
-		
-		
-		function CreerImageCouverture ($image, $CheminImageRecalibree, $y) {
-
-			$couv = $CheminImageRecalibree . "couv.png";
+		function CompresserImage ($image, $ImageRecalibree) {
+			$couv = $ImageRecalibree;
 			list($imagewidth, $imageheight, $imageType) = getimagesize($image);
-			$scale = $imagewidth / 1700;
-			$newImage = imagecreatetruecolor(1700,500);
+			$scale = $imagewidth / 1750;
+			$newImage = imagecreatetruecolor(1750, $imageheight / $scale);
 			$imageType = image_type_to_mime_type($imageType);
 			switch($imageType) {
 				case "image/gif":
@@ -47,10 +34,56 @@
 					$source=imagecreatefrompng($image); 
 					break;
 			}
-			imagecopyresampled($newImage,$source,0,0,0,-$y * $scale,1700,500,$imagewidth,500 * $scale);
-			imagepng($newImage, $couv);
-			echo "Image sauvegardée dans " . $CheminImageRecalibree;			
+			imagecopyresampled($newImage, $source, 0, 0, 0, 0, 1750, $imageheight / $scale, $imagewidth, $imageheight);
+			imagejpeg($newImage, $couv, 70);		
 		}
+		
+		function CreerImageCouverture ($image, $ImageRecalibree, $y) {
+
+			$couv = $ImageRecalibree;
+			list($imagewidth, $imageheight, $imageType) = getimagesize($image);
+			$scale = $imagewidth / 1750;
+			$scaley = 500 / 189;
+			$newImage = imagecreatetruecolor(1750,500);
+			$imageType = image_type_to_mime_type($imageType);
+			switch($imageType) {
+				case "image/gif":
+					$source=imagecreatefromgif($image); 
+					break;
+				case "image/pjpeg":
+				case "image/jpeg":
+				case "image/jpg":
+					$source=imagecreatefromjpeg($image); 
+					break;
+				case "image/png":
+				case "image/x-png":
+					$source=imagecreatefrompng($image); 
+					break;
+			}
+			imagecopyresampled($newImage, $source, 0, 0, 0, $y * $scale * $scaley, 1750, 500, $imagewidth, 500 * $scale);
+			imagepng($newImage, $couv);
+//			echo "Image sauvegardée dans " . $ImageRecalibree;			
+		}
+		
+		$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+		if (!empty($_POST['image1'])) {
+			$image1 = $CheminImageRecalibree . "couv1.png";
+			CompresserImage ($_POST['image1'], $CheminImageRecalibree . "comp1.jpg");
+			CreerImageCouverture($_POST['image1'], $image1, $_POST['y1']);
+			$image1 = SITE_URL . "/img/tmp/couv1.png";
+			}
+		else {$image1 = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";}
+		if (!empty($_POST['image2'])) {$image2 = $_POST['image2'];}
+		else {$image2 = "";}
+		if (!empty($_POST['image3'])) {$image3 = $_POST['image3'];}
+		else {$image3 = "";}
+		if (!empty($_POST['image4'])) {$image4 = $_POST['image4'];}
+		else {$image4 = "";}
+		if (!empty($_POST['image5'])) {$image5 = $_POST['image5'];}
+		else {$image5 = "";}
+		
+		
+
 
 ?>
 
@@ -231,7 +264,8 @@
 		<script>    
 
 
-			$( "#sortable" ).sortable({revert: true});
+			$( "#sortable" ).sortable();
+			$( "#sortable" ).disableSelection();
 			
 			function ChercherFichier() {
 				$("#fileselect").click();

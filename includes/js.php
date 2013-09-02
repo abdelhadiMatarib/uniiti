@@ -10,6 +10,7 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.easydrag.dialog.min.js"></script>
+	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <!-- POUR RIGOLER -->
     <script src="<?php echo SITE_URL; ?>/js/jquery.imagesloaded.min.js"></script>
     <script src="<?php echo SITE_URL; ?>/js/bigvideo.js"></script>
