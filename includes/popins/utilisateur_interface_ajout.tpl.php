@@ -18,7 +18,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
                 <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
                 <span class="presentation_action_left_head_categorie">Restauration</span>
             </div>
-            
             <div class="presentation_action_left_head_likes_wrap">
                 <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
                 <span class="presentation_action_left_head_nombrelikes"><strong>15756</strong></span>
@@ -80,6 +79,9 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Ajouter</span><span> mon commentaire</span></a>
             <div class="utilisateur_interface_modifs_modifier_commentaire_inside">
                 <textarea placeholder="Ajouter un commentaire"></textarea>
+            <div class="wrap_buttons_valider_supprimer">
+                <div class="button_valider"></div>
+            </div>
             </div>
         </div>
         <div class="utilisateur_interface_modifs_modifier_avis">
