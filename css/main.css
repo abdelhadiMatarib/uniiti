@@ -697,7 +697,8 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 
 /* PRESENTATION ACTION */
 
-.presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;}
+.presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;}
+.menutarifs_head{width:700px;}
 .presentation_action_wrapper{background-color:transparent;}
 .couverture_wrapper{background-color:white;}
 .presentation_action_left,.presentation_action_right{float:left;}
