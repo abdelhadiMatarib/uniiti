@@ -51,6 +51,7 @@
 			<!-- CONTENU PRINCIPAL -->
 			<div id="box_container" class="content">
 				<?php include 'includes/requete.php' ?>
+                            <div class="corner-stamp"></div>
 			</div>
 			<!-- FIN CONTENU PRINCIPAL -->
         </div><!-- FIN DU BIGGY -->

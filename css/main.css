@@ -65,6 +65,9 @@ span.index_overlay_texte{display:block;}
 	line-height: 0;
 	height: 0;
 }
+/* BOUTON VALIDER GENERIQUE */
+.wrap_buttons_valider_supprimer{cursor:pointer;position:absolute;bottom:10px;right:-45px;}
+.button_valider{margin-top:5px;border:1px dashed #69eb76;height:40px;width:40px;background:url('../img/pictos_popins/sprite_validation_suppression.png') no-repeat 8px -35px rgba(32,32,32,0.45);}
 /* HEADER */
 .header{position:relative;z-index:51;margin:0 0 14px 0;background-color:#FFF;padding:7px 40px;height:30px;-webkit-box-shadow:0px 0px 2px 2px rgba(0, 0, 0, 0.15); box-shadow:0px 0px 2px 2px rgba(0, 0, 0, 0.15);}
 .header input[type="text"]{padding:0 0 0 10px;background-color:#EDEDED;margin-right:7px;height:30px;}
@@ -523,7 +526,7 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 .ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle,.couverture_head span.maintitle,.reservation_head span.maintitle,.utilisateur_infospersos_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
 .ident_mdp_oublie_wrapper{float:right;}
 .ident_head span.subtitle{display:inline-block;margin:16px 15px 0 0;}
-.ident_img_container,.oublimdp_img_container,.suggestioncommerce_img_container,.suggestionobjet_img_container,.parrainage_img_container,.couverture_img_container,.reservation_img_container,.utilisateur_infospersos_img_container{float:left;height:44px;width:37px;padding-top:8px;margin:0 15px 0 15px;}
+.ident_img_container,.oublimdp_img_container,.suggestioncommerce_img_container,.suggestionobjet_img_container,.parrainage_img_container,.couverture_img_container,.reservation_img_container,.utilisateur_infospersos_img_container{float:left;height:40px;width:37px;padding-top:8px;margin:0 15px 0 15px;}
 .ident_body,.oublimdp_body{height:92px;background-color:#efefef;}
 
 .utilisateur_infospersos_body{float:left;}
@@ -662,7 +665,9 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 
 .suggestioncommerce_body select,.suggestionobjet_body select{padding:0 0 0 5px;}
 .suggestioncommerce_body textarea,.suggestionobjet_body textarea{padding-top:10px;}
-.suggestioncommerce_nom,.suggestioncommerce_categorie,.suggestioncommerce_souscategorie,.suggestioncommerce_description,.suggestioncommerce_ville,.suggestionobjet_nom,.suggestionobjet_categorie,.suggestionobjet_souscategorie,.suggestionobjet_description{font-size:1.2em;font-weight:300;float:left;width:500px;}
+.suggestioncommerce_nom,.suggestioncommerce_categorie,.suggestioncommerce_souscategorie,.suggestioncommerce_description,.suggestioncommerce_ville,.suggestionobjet_nom,.suggestionobjet_description{font-size:1.2em;font-weight:300;float:left;width:490px;}
+.suggestionobjet_categorie,.suggestionobjet_souscategorie{font-size:1.2em;font-weight:300;float:left;width:500px;}
+.suggestioncommerce_categorie,.suggestioncommerce_souscategorie{font-size:1.2em;font-weight:300;float:left;width:500px;}
 textarea.suggestioncommerce_description,textarea.suggestionobjet_description{height:90px;resize:none;}
 .ident_explications{float:left;width:250px;border-bottom:1px solid #e4e4e4;height:91px;}
 .oublimdp_explications{width:500px;border-bottom:1px solid #e4e4e4;height:25px;padding:10px 0 10px 0;text-align:center;}
@@ -694,7 +699,55 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 /* PRESENTATION ACTION */
 
 .presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;}
-.menutarifs_head{width:700px;}
+.menutarifs_head{width:700px;height:50px;background-color:#252525;color:white;}
+.menutarifs_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
+.menutarifs_body,.menutarifs_body_entrees,.menutarifs_body_plats,.menutarifs_body_desserts,.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{float:left;}
+.infospratiques_body_horaires,.infospratiques_body_metro,.infospratiques_body_autolib,.infospratiques_body_velib,.infospratiques_body_paiements,.infospratiques_body_parking,.infospratiques_body_voiturier{float:left;}
+.infospratiques_head_img_container{float:left;height:22px;width:22px;margin:0 8px 0 0;}
+.horaires_commerces_ouvert{background-color:#c6eeca !important;}
+.horaires_commerces_ferme{background-color:#eac3c3 !important;}
+.horaires_commerces_ouvert span{font-weight:600;}
+.horaires_commerces_ferme span{font-weight:600;}
+.prix_generique_infospratiques{font-weight:600;}
+.menutarifs_body_entrees_prix_generique span a{display:inline-block;}
+.infospratiques_textebleu{color:#73d4dc;font-weight:600;}
+.infospratiques_body_voiturier{text-align:center;background-color:white;float:left;}
+.infospratiques_body_voiturier_inside{width:680px;padding:10px;}
+.infospratiques_body_voiturier span{display:block;}
+.paiement_generique1{width:61px !important;border-right:1px solid #e4e4e4;}
+.paiement_generique2{width:37px !important;border-right:1px solid #e4e4e4;}
+.paiement_generique3{width:53px !important;border-right:1px solid #e4e4e4;}
+.paiement_generique4{width:53px !important;border-right:1px solid #e4e4e4;}
+.paiement_generique5{width:56px !important;border-right:1px solid #e4e4e4;}
+.img_container_payment_options{float:left;background:url('../img/pictos_popins/icon_infospratiques_paiements_sprite.png') no-repeat;}
+.img_container_payment_options1{height:34px;width:59px;}
+.img_container_payment_options2{height:34px;width:42px;background-position:-59px 0px;}
+.img_container_payment_options3{height:34px;width:48px;background-position:-100px 0px;}
+.img_container_payment_options4{height:34px;width:52px;background-position:-150px 0px;}
+.img_container_payment_options5{height:34px;width:55px;background-position:-205px 0px;}
+.menutarifs_body{overflow-y:scroll;height:600px;}
+.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:680px;padding:10px;}
+.menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
+.menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:579px;}
+.menutarifs_body_entrees_prix_generique{border-top:1px solid #e4e4e4;text-align:center;padding:10px;float:left;background-color:#f0f0f0;width:80px;}
+.ajout_liencommerce_infos_txt{float:left;text-align:center;width:480px;padding:10px;background-color:white;}
+.ajout_liencommerce_infos_txt span{display:inline-block;}
+.ajout_liencommerce_infos_txt a{color:#73d4dc;}
+.ajout_liencommerce_input_centered{border-top:1px solid #e4e4e4;text-align:center;}
+textarea.demande_modifs_input_centered{height:150px;width:500px;padding:10px;resize:none;}
+.left_head_avisenattente{border-bottom:1px solid #e4e4e4;}
+.interface_avisenattente_txt_colored{color:#fabe41;}
+.utilisateur_interface_avisenattente_haut{text-align:center;text-transform: uppercase;}
+.utilisateur_interface_avisenattente_haut a.maintitle{text-transform: uppercase;
+color: #252525;
+font-size: 0.8em;
+background-color: white;
+display: inline-block;
+width: 226px;
+padding: 12px;
+height: 26px;}
+.utilisateur_interface_modifs_txt_restauration{color:#fabe41;font-weight:700;display:block;}
+.user_txt_avisenattente{color:#252525 !important;font-weight:300 !important;}
 .presentation_action_wrapper{background-color:transparent;}
 .couverture_wrapper{background-color:white;}
 .presentation_action_left,.presentation_action_right{float:left;}
@@ -717,7 +770,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .presentation_action_left_body .arrow_up{margin-top:17px;}
 .presentation_action_left_footer{overflow:hidden;height:49px;float:left;border-top:1px solid #e4e4e4;background-color:#FFFFFF;}
 .presentation_action_left_footer_img_container{float:left;width:50px;}
-.presentation_action_left_footer_timing{height:20px;padding:15px 0 15px 0;text-align:center;float:left;width:350px;}
+.presentation_action_left_footer_timing{height:20px;padding:15px 0 15px 0;text-align:center;float:left;width:349px;}
 .presentation_action_left_footer_timing span{display:inline-block;}
 .presentation_action_left_footer_timing span img{margin-right:5px;vertical-align:middle;}
 .presentation_action_left_footer_picto_action{background-color:#fabe41;float:left;width:50px;height:50px;}
@@ -771,14 +824,14 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .utilisateur_interface_modifs_modifier_note a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_note a.maintitle:active{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_note_inside_img_container{margin:10px auto;height: 26px;}
-.utilisateur_interface_modifs_modifier_note_inside{display:none;float:left;width:230px;padding: 10px;background-color: #e0e0e0;}
+.utilisateur_interface_modifs_modifier_note_inside{position:relative;display:none;float:left;width:230px;padding: 10px;background-color: #e0e0e0;}
 
 .utilisateur_interface_modifs_modifier_commentaire{float:left;text-align:center;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle:active{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire_inside_img_container{text-align:center;font-size:0.85em;font-weight:700;margin:10px auto;}
-.utilisateur_interface_modifs_modifier_commentaire_inside{display:none;text-align:left;float:left;padding: 10px;background-color: #e0e0e0;}
+.utilisateur_interface_modifs_modifier_commentaire_inside{position:relative;display:none;text-align:left;float:left;padding: 10px;background-color: #e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 
@@ -787,7 +840,7 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle:active{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_avis_inside_img_container{font-size:0.85em;margin:10px auto;}
-.utilisateur_interface_modifs_modifier_avis_inside{display:none;float:left;padding: 10px;background-color: #e0e0e0;}
+.utilisateur_interface_modifs_modifier_avis_inside{position:relative;display:none;float:left;padding: 10px;background-color: #e0e0e0;}
 
 .modif_input_float_left{float:left;width:230px;}
 .modif_input_float_left input[type='radio']{margin:0 10px 0 0;}
@@ -796,13 +849,16 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifs_txt_bold{display:block;font-weight:700;}
 
 .utilisateur_interface_modifs_modifier_avis_inside_choice_oui{float:left;width:80px;margin:0 17px;}
-.utilisateur_interface_modifs_modifier_avis_inside_choice_oui a{border-radius:3px;display:block;height:100%;width:70px;font-weight:700;color:white;padding:5px;background-color:#69eb76;}
+.utilisateur_interface_modifs_modifier_avis_inside_choice_oui a{border-radius:3px;display:block;height:20px;width:70px;font-weight:700;color:white;padding:5px;background-color:#69eb76;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_oui a:hover{background-color:#5bc366;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_non{float:left;width:80px;margin:0 17px;}
-.utilisateur_interface_modifs_modifier_avis_inside_choice_non a{border-radius:3px;display:block;height:100%;width:70px;font-weight:700;color:white;padding:5px;background-color:#f07070;}
+.utilisateur_interface_modifs_modifier_avis_inside_choice_non a{border-radius:3px;display:block;height:20px;width:70px;font-weight:700;color:white;padding:5px;background-color:#f07070;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_non a:hover{background-color:#c76161;}
 
-.utilisateur_interface_modifs_modifier_commentaire_inside textarea{padding:10px;resize:none;width:210px;height:110px;}
+.utilisateur_interface_modifs_modifier_commentaire_inside textarea{padding:10px;resize:none;width:230px;height:110px;}
+.utilisateur_interface_modifs_modifier_note_inside textarea{padding:10px;resize:none;width:230px;height:110px;}
+input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;width:230px;}
+
 /* RECHERCHE AVANCEE */
 .recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background-color:#a4ebf1;}
 .recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}

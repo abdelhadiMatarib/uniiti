@@ -109,13 +109,21 @@
 					masonry: {
 						itemSelector : '.box',
 						columnWidth: colW,
-						resizable: false,
+						resizable: false
 					}
 				});
                                 
 				var isloading = false;
 				var CptScroll = 0;
 				var DisableScroll = false;
+                                
+                                $('#container').isotope({
+                                itemSelector: '.item',
+                                masonry: {
+                                  columnWidth: 120,
+                                  cornerStampSelector: '.corner-stamp'
+                                }
+                                });
 
 				$(window).scroll(function() {
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
