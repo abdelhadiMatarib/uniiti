@@ -57,7 +57,7 @@
 	<body>
 
 		<style>
-			#fenetre {border:1px dashed #252525; opacity:0; position:absolute; top:-50px; left:20px; width: 660px; height: 300px;}
+			#fenetre {opacity:0; position:absolute; top:-50px; left:20px; width: 660px; height: 300px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
 			ul {list-style-type: none;}
@@ -118,8 +118,8 @@
 				</div>
 				
 				<div class="couverture_step1_wrap_buttons">
-					<div class="couverture_step1_button_supprimer" onclick="javascript:SupprimeImageTmp()"></div>
-					<div class="couverture_step1_button_valider" onclick="javascript:EnregistreImageTmp()"></div>
+					<div class="couverture_step1_button_supprimer"></div>
+					<div class="couverture_step1_button_valider"></div>
 				</div>
 				<div class="couverture_step2_resize_infos">
 					<div class="couverture_step2_resize_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_resize_icon.png" title="" alt="" height="18" width="10" /></div>
@@ -158,39 +158,37 @@
 			case 2: ?>
 
 			<div class="couverture_img_items_wrapper">
-				<div class="couverture_img_container_center1">
-					<ul id="sortable">
-						<li id="couverture_img_item1" class="couverture_img_item">
-							<div class="couverture_img_item_nbr_img_txt"><span>1</span></div>
-							<img src="<?php echo $image1 ?>" title="" alt=""/>
-							<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-						</li>
+				<ul id="sortable">
+					<li id="couverture_img_item1" class="couverture_img_item">
+						<div class="couverture_img_item_nbr_img_txt"><span>1</span></div>
+						<img src="<?php echo $image1 ?>" title="" alt=""/>
+						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
+					</li>
 
-						<li id="couverture_img_item2" class="couverture_img_item">
-							<div class="couverture_img_item_nbr_img_txt"><span>2</span></div>
-							<img src="<?php echo $image2 ?>" title="" alt=""/>
-							<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-						</li>
+					<li id="couverture_img_item2" class="couverture_img_item">
+						<div class="couverture_img_item_nbr_img_txt"><span>2</span></div>
+						<img src="<?php echo $image2 ?>" title="" alt=""/>
+						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
+					</li>
 
-						<li id="couverture_img_item3" class="couverture_img_item">
-							<div class="couverture_img_item_nbr_img_txt"><span>3</span></div>
-							<img src="<?php echo $image3 ?>" title="" alt=""/>
-							<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-						</li>
+					<li id="couverture_img_item3" class="couverture_img_item">
+						<div class="couverture_img_item_nbr_img_txt"><span>3</span></div>
+						<img src="<?php echo $image3 ?>" title="" alt=""/>
+						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
+					</li>
 
-						<li id="couverture_img_item4" class="couverture_img_item">
-							<div class="couverture_img_item_nbr_img_txt"><span>4</span></div>
-							<img src="<?php echo $image4 ?>" title="" alt=""/>
-							<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-						</li>
-						
-						<li id="couverture_img_item5" class="couverture_img_item">
-							<div class="couverture_img_item_nbr_img_txt"><span>5</span></div>
-							<img src="<?php echo $image5 ?>" title="" alt=""/>
-							<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div> 
-						</li>
-					</ul>
-				</div>
+					<li id="couverture_img_item4" class="couverture_img_item">
+						<div class="couverture_img_item_nbr_img_txt"><span>4</span></div>
+						<img src="<?php echo $image4 ?>" title="" alt=""/>
+						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
+					</li>
+					
+					<li id="couverture_img_item5" class="couverture_img_item">
+						<div class="couverture_img_item_nbr_img_txt"><span>5</span></div>
+						<img src="<?php echo $image5 ?>" title="" alt=""/>
+						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div> 
+					</li>
+				</ul>
 			</div>
 				
 				<?php break;
@@ -256,38 +254,33 @@
 					$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
 					$("#image").css({display : "block"});
 			};
-			
+
 			var CompteImageErg = 0;
 			var NumImageSel = 1;
-			function EnregistreImageTmp() {
+			$('.couverture_step1_button_valider').click(function(e){
+				e.preventDefault();
+				e.stopPropagation();
 				if (CompteImageErg < 5) {
-					var NumImage = ++CompteImageErg;
+					CompteImageErg++;
+					var NumImage = CompteImageErg;
 					$("#image" + NumImage).addClass("is_valid");
 					$('#ImageTemp' + NumImage).val($('#ImageTemp').val());
 					$('#y' + NumImage).val($('#y').val());
 					$("#image" + NumImage).click(function(e){
 						e.preventDefault();
+						e.stopPropagation();
 						NumImageSel = NumImage;
 						$("#image").attr("src", $('#ImageTemp' + NumImage).val());
-
-						var img = document.getElementById('image');
-						var height;
-						if(img.offsetHeight) {height=img.offsetHeight;}
-						else if(img.style.pixelHeight){height=img.style.pixelHeight;}
-						var Newheight = Math.round(189 + (height - 189) * 2);
-						DecalageSelectionTop = 20;
-						var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
-						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
-						AfficheBtnES();
-						$("#image").css({display : "block"});
 					});
 					AfficheChercheImage();
 				}
 				else {alert ("Il y a déjà 5 images dans votre gallerie")}
 
-			};
+			});
 			
-			function SupprimeImageTmp() {
+			$('.couverture_step1_button_supprimer').click(function(e){
+				e.preventDefault();
+				e.stopPropagation();
 				var NumImage = NumImageSel;
 				if ((CompteImageErg > 0) && (NumImage <= CompteImageErg)) {
 					for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
@@ -298,11 +291,29 @@
 					$('#y' + CompteImageErg).val("");
 					$("#image" + CompteImageErg).removeClass("is_valid");
 					$("#image" + CompteImageErg).unbind('click');
+					$('#y').val(0);
 					CompteImageErg--;
 				}
 				AfficheChercheImage();
-			};
-			
+			});
+
+			$("#image").load(function() {
+				var img = document.getElementById('image');
+				var height;
+				if(img.offsetHeight) {height=img.offsetHeight;}
+				else if(img.style.pixelHeight){height=img.style.pixelHeight;}
+				var Newheight = Math.round(189 + (height - 189) * 2);
+				DecalageSelectionTop = 20;
+				var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
+				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
+				AfficheBtnES();
+				var decalage = 0;
+				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val();}
+//				alert(NumImageSel+' '+$('#y' + NumImageSel).val());
+				$(".draggable").css({top: decalage+'px'});
+				$("#image").css({display : "block"});
+			});
+
 			function EtapeSuivante() {
 			var data = {
 							step : 2,
@@ -328,7 +339,7 @@
 						'container': $('#fenetre'),
 						'axis': 'y',
 						drag: function(){
-							$('#y').val($(this).offset().top);
+							$('#y').val($('#selection').offset().top - $(this).offset().top);
 						}
 					});
 					DragInit = true;
@@ -368,22 +379,13 @@
 				if (file.type.indexOf("image") == 0) {
 					var reader = new FileReader();
 					reader.onload = function(e) {
+						NumImageSel = CompteImageErg+1;
 						$("#image").attr("src", e.target.result);
 						InitDrag();
-						alert("cliquez sur l'image pour la déplacer verticalement");
-						$("#image").css({display : "block"});
-						AfficheBtnES();
-						var img = document.getElementById('image');
-						var height;
-						if(img.offsetHeight) {height=img.offsetHeight;}
-						else if(img.style.pixelHeight){height=img.style.pixelHeight;}
-						var Newheight = Math.round(189 + (height - 189) * 2);
-						DecalageSelectionTop = 20;
-						var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
-						$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
+						$(".draggable").css({top: '0px'});
+						$('#y').val(0);
+//						alert("cliquez sur l'image pour la déplacer verticalement");
 						$('#ImageTemp').val(e.target.result);
-						NumImageSel = CompteImageErg+1;
-//						$("#image").offset({top: $("#selection").offset().top,left: $("#selection").offset().left});
 
 						/*						Output(
 							"<p>Fichier: <strong>" + file.name +
