@@ -56,11 +56,11 @@
         </div>
        
     </div>
-    <div class="ident_footer">
-        
-        <div class="ident_inscription_wrap"><a href="#">Inscription</a></div>
-        <div class="ident_connexion_wrap"><a href="#">Connexion</a></div>
-        
-    </div>
-</div>
+<script>    
+    $('.popin_close_button').click(function(e){
+    e.preventDefault(); //don't go to default URL
+    var defaultdialog = $("#default_dialog").dialog();
+    defaultdialog.dialog('close');
+    });
+</script>
 </html>
