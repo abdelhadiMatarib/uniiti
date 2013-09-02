@@ -11,48 +11,48 @@
     <div class="menutarifs_body">
         <div class="menutarifs_body_entrees">
             <div class="menutarifs_body_entrees_head">
-                <span>Suggestions d'entrées</span>
+                <span>Suggestions d'entrÃ©es</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
         </div>
         <div class="menutarifs_body_plats">
             <div class="menutarifs_body_plats_head">
                 <span>Suggestions de plats principaux</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
         </div>
         <div class="menutarifs_body_desserts">
             <div class="menutarifs_body_desserts_head">
                 <span>Suggestions de desserts</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagné de sa flûte de Champagne</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span>50€</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>En-K de caviar 15g accompagnÃ© de sa flÃ»te de Champagne</span></div>
+            <div class="menutarifs_body_entrees_prix_generique"><span>50â‚¬</span></div>
         </div>
        
     </div>
