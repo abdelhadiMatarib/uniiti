@@ -17,23 +17,9 @@
 		<script type="text/javascript" src="../Slider/demo/demo.js"></script>
 		<script language="javascript" src="../js/jquery.easydrag.min.js"></script>
 	
-		<script>
-			function ChangeAvatar(src) {
-				$("#Avatar").attr("src", src);
-			}
-			
-			$(function() {
-				$( ".draggable" ).easyDrag({ axis: "x", revert: true});
-				$( ".inscription_upload_button" ).droppable({
-				drop: function( event, ui ) {
-					$("#Avatar").attr("src", $(ui.draggable).find("img").attr("src"));
-				}
-				});
-
-			});
-			
-		</script>
-	
+		<style>
+			#filedrag:hover {box-shadow: inset 0 3px 4px #888;}
+		</style>	
         <?php include'../includes/header.php'; ?>
         <div class="biggymarginer">
         <div class="big_wrapper">
@@ -52,42 +38,23 @@
                 <div class="inscription_choisir_image_texte"><span>Choisissez-en une dans la Uniiti galerie</span></div>
             </div>
             <div class="inscription_fields_left">
-                <div class="inscription_upload_image_container"><span>Ou cliquez pour en choisir une sur votre ordinateur</span>
 				
-
-
-					<form id="upload" action="inscription2.php" method="POST" enctype="multipart/form-data">
-						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-						<div>
-							<div id="filedrag" class="inscription_upload_button">or drop files here</div>
-							<input type="file" id="inscription_upload" name="inscription_upload[]" multiple="multiple" />
-						</div>
-						<div id="submitbutton">
-							<button type="submit">Upload Files</button>
-						</div>
-					</form>
-					<div id="messages">
-						<p>Status Messages</p>
-					</div>				
-				
-				
-<!--					<form id="upload" action="inscription2.php" method="POST" enctype="multipart/form-data">
+				<form id="upload" action="inscription2.php" method="POST" enctype="multipart/form-data">
 					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-						<div id="filedrag" class="inscription_upload_button">
+						<div class="inscription_upload_image_container"><span>Ou cliquez pour en choisir une sur votre ordinateur</span>
+							<div class="inscription_upload_button" id="filedrag"></div>
+							<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
 							<input type="file" id="inscription_upload" name="inscription_upload[]" multiple="multiple" />
 						</div>
-						<div id="submitbutton">
-							<button type="submit">Upload Files</button>
-						</div>
-					</form>
-					<div id="messages">
-						<p>Status Messages</p>
+
+					<div id="submitbutton">
+						<button type="submit">Upload Files</button>
 					</div>
--->					
-					
-					
-					
-				</div>
+				</form>
+				<div id="messages">
+					<p>Status Messages</p>
+				</div>				
+				
             </div>
             <div class="inscription_fields_right">
                 <div class="inscription_choisir_image_container">
@@ -111,6 +78,102 @@
         </div><!-- FIN BIG WRAPPER -->
         </div><!-- FIN BIGGY -->
 		
-		<script type="text/javascript" src="../js/filedrag.js"></script>
+		<script type="text/javascript">
+			function ChangeAvatar(src) {
+				$("#Avatar").attr("src", src);
+			}
+
+			$("#filedrag").click( function(e) {
+				e.stopPropagation();
+				$("#inscription_upload").click();
+			});
+			
+			// getElementById
+			function $id(id) {
+				return document.getElementById(id);
+			}
+
+			// output information
+			function Output(msg) {
+				var m = $id("messages");
+				m.innerHTML = "<p>Information</p>" + msg;
+			}
+
+			// file drag hover
+			function FileDragHover(e) {
+				e.stopPropagation();
+				e.preventDefault();
+		//		e.target.className = (e.type == "dragover" ? "hover" : "");
+			}
+
+			// file selection
+			function FileSelectHandler(e) {
+
+				// cancel event and hover styling
+				FileDragHover(e);
+
+				// fetch FileList object
+				var files = e.target.files || e.dataTransfer.files;
+
+				// process all File objects
+				for (var i = 0, f; f = files[i]; i++) {
+					ParseFile(f);
+				}
+
+			}
+
+			// output file information
+			function ParseFile(file) {
+				// display an image
+				if (file.type.indexOf("image") == 0) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+						ChangeAvatar(e.target.result);
+		//				$("#image").attr("src", e.target.result);
+					}
+					reader.readAsDataURL(file);
+				}
+				Output(
+					"<p>Fichier: <strong>" + file.name +
+					"</strong> type: <strong>" + file.type +
+					"</strong> size: <strong>" + file.size +
+					"</strong> bytes</p>"
+				);
+
+			}
+
+			// initialize
+			function Init() {
+
+				var fileselect = $id("inscription_upload"),
+					filedrag = $id("filedrag"),
+					submitbutton = $id("submitbutton");
+
+				// file select
+				fileselect.addEventListener("change", FileSelectHandler, false);
+
+				// is XHR2 available?
+				var xhr = new XMLHttpRequest();
+				if (xhr.upload) {
+
+					// file drop
+					filedrag.addEventListener("dragover", FileDragHover, false);
+					filedrag.addEventListener("dragleave", FileDragHover, false);
+					filedrag.addEventListener("drop", FileSelectHandler, false);
+					filedrag.style.display = "block";
+
+					// remove submit button
+					submitbutton.style.display = "none";
+				}
+
+			}
+
+
+		Init();
+
+			
+		</script>
+		
+		
     </body>
 </html>

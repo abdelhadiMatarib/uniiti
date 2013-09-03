@@ -135,6 +135,11 @@
 				$(".couverture_step2_resize_infos").css({display : "block"});
 			};
 			
+			function CacheBtnES() {
+				$(".couverture_step1_wrap_buttons").css({display : "none"});
+				$(".couverture_step2_resize_infos").css({display : "none"});
+			};
+			
 			function AfficheChercheImage() {
 				$("#image").attr("src", "");
 				$(".couverture_step1_dropzone_img_container").css({display : "block"});
@@ -228,9 +233,11 @@
 					$( ".draggable" ).easyDrag({
 						'container': $('#fenetre'),
 						'axis': 'y',
+						start: function() {CacheBtnES();},
 						drag: function(){
 							$('#y').val(($('#selection').offset().top - $(this).offset().top)*500/189);
-						}
+						},
+						stop: function() {AfficheBtnES();}
 					});
 					DragInit = true;
 				}				
