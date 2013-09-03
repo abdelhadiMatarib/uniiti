@@ -64,14 +64,14 @@ include'../js.php';
             <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration">Signaler</span><span> le commentaire</span></a>
             <div class="utilisateur_interface_modifs_modifier_commentaire_inside">
                 <div class="utilisateur_interface_modifs_modifier_commentaire_inside_img_container">
-                    <span>Nous vous remercions de bien vouloir indiquer les motifs de cette modification :</span>
+                    <span>Nous vous remercions de bien vouloir indiquer les motifs de ce signalement :</span>
                 </div>
                 <div class="utilisateur_interface_modifs_modifier_commentaire_inputs">
                     <form>
                     <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Avis à caractère diffamatoire ou injurieux</label></div>
                     <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Avis incohérent ou sans intérêt</label></div>
                     <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Spam</label></div>
-                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_pas_auteur"/><label for="modifier_commentaire_input_pas_auteur">Autre motif</label></div>
+                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_preciser_motif"/><label for="modifier_commentaire_input_pas_auteur">Autre motif</label></div>
                     <div class="modif_input_float_left"><input type="text" class="input_avisenattente_precisezmotif" placeholder="Précisez le motif"/></div>
                     </form>
                 </div>

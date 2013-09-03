@@ -810,7 +810,7 @@ height: 26px;}
 /* PRESENTATION ACTION COMMENTAIRE */
 .presentation_action_wrapper_footer{float:left;}
 .presentation_action_commentaire_wrapper{position:relative;margin:0;}
-.presentation_action_commentaire_left_body{position:relative;width:430px;padding:10px;}
+.presentation_action_commentaire_left_body{position:relative;width:430px;padding:10px;float:left;}
 .presentation_action_commentaire_left_body_message{margin:10px 0 10px 0;text-align:left;}
 .presentation_action_commentaire_left_body .arrow_up{position: absolute;left: 210px;bottom: 0;}
 .presentation_action_left_avis_utile_wrap{float:left;color:white;width:450px;height:30px;background-color:#252525;}
@@ -864,6 +864,7 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifs_modifier_commentaire_inside textarea{padding:10px;resize:none;width:230px;height:110px;}
 .utilisateur_interface_modifs_modifier_note_inside textarea{padding:10px;resize:none;width:230px;height:110px;}
 input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;width:230px;}
+.input_avisenattente_precisezmotif{display:none;}
 
 /* RECHERCHE AVANCEE */
 .recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background-color:#a4ebf1;}
