@@ -109,7 +109,7 @@
 					</div>
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<div class="box_push_et_img">
-                                        <img src="img/photos_commerces/1.jpg" title="" alt="" />
+                                        <img src="../img/photos_commerces/1.jpg" title="" alt="" />
                                         <div class="box_push"></div>
                                         </div>
                                         <div class="overlay_push">
