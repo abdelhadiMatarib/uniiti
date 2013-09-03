@@ -636,6 +636,12 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .parrainage_bouton_envoyer img{margin: 9px 5px 5px 5px;}
 .parrainage_bouton_envoyer_txt{background-color:#a4ebf1;padding:2px 5px;font-size:0.85em;text-transform:uppercase;position:absolute;top:-30px;left:-8px;}
 .fleche_parrainage{position:absolute;bottom:-5px;right:25px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid #a4ebf1;}
+
+.vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:189px;width:405px;margin:20px auto;background-color:#f0f0f0;}
+.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:95px;padding:5px;}
+.vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
+.vignette_step1_dropzone_img_container{margin: 65px 20px 65px 30px;float:left;}
+
 .couverture_step1_body{position:relative;float:left;width: 700px;}
 .couverture_step1_dropzone{position:relative;border:1px dashed #252525;height:189px;width:660px;margin:20px auto;background-color:#f0f0f0;}
 .couverture_step1_footer{position:relative;border-top: 1px solid #e4e4e4;padding:10px;float:left;width:680px;}
