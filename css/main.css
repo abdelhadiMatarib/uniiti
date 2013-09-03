@@ -498,6 +498,18 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 
 /* POPINS */
 
+/* SIGNALEMENT DANS PRESENTATION ACTION COMM */
+.presentation_action_signalement_flag{cursor:pointer;border-radius:3px;position:absolute;height:16px;width:16px;background-color:#d3d3d3;top:5px;right:10px;padding:2px;}
+.presentation_action_signalement_body{display:none;}
+.input_float_left{float:left;margin-left: 15px;}
+.input_float_right{float:right;margin-right: 15px;}
+.input_float_left input[type="text"]{background-color:#f0f0f0;}
+.input_float_left label{margin-left:10px;}
+.presentation_action_signalement_txt{font-weight:600;width: 430px;display: inline-block;margin:10px 0;}
+.bouton_signaler a{border-radius:3px;color:white;font-weight:600;text-transform:uppercase;margin:10px 0;display:inline-block;padding:3px;width:80px;height:20px;background-color:#de5b30;}
+input.input_signalement_motif{width:290px;}
+.signalement_button_background{background-color:#252525;}
+
 /* LIKE DISLIKE WISHLIST */
 .like_wrapper{padding:21px;z-index:998;position:relative;border-radius:3px;width:458px;background-color:#252525;}
 .like_wrapper_body_img{width:147px;margin:0 auto;}

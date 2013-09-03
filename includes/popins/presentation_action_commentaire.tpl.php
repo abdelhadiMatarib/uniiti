@@ -45,29 +45,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
             <div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
-            <style>
-                .presentation_action_signalement_flag{cursor:pointer;border-radius:3px;position:absolute;height:16px;width:16px;background-color:#d3d3d3;top:5px;right:10px;padding:2px;}
-                .presentation_action_signalement_body{display:none;}
-                .input_float_left{float:left;margin-left: 15px;}
-                .input_float_right{float:right;margin-right: 15px;}
-                .input_float_left input[type="text"]{background-color:#f0f0f0;}
-                .input_float_left label{margin-left:10px;}
-                .presentation_action_signalement_txt{font-weight:600;width: 430px;display: inline-block;margin:10px 0;}
-                .bouton_signaler a{border-radius:3px;color:white;font-weight:600;text-transform:uppercase;margin:10px 0;display:inline-block;padding:3px;width:80px;height:20px;background-color:#de5b30;}
-                input.input_signalement_motif{width:290px;}
-                .signalement_button_background{background-color:#252525;}
-            </style>
-            <script>
-            $('#modifier_commentaire_input_preciser_motif').click(function(){
-                $('.input_avisenattente_precisezmotif').slideToggle();
-            });
-            $('.presentation_action_signalement_flag').click(function(){
-               $(this).toggleClass('signalement_button_background');
-               $('.presentation_action_commentaire_left_body_message').slideToggle();
-               $('.presentation_action_signalement_body').slideToggle();
-               
-            });
-            </script>
             <span class="presentation_action_left_body_username"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action">a laissé un avis</span>
             <div class="presentation_action_commentaire_left_body_message">
