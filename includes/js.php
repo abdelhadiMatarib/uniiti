@@ -10,6 +10,8 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.isotope.perfectmasonry.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.easydrag.dialog.min.js"></script>
+	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
 <!-- POUR RIGOLER -->
     <script src="<?php echo SITE_URL; ?>/js/jquery.imagesloaded.min.js"></script>
     <script src="<?php echo SITE_URL; ?>/js/bigvideo.js"></script>
@@ -102,6 +104,7 @@
   
 			var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
 			
+
 			$container.imagesLoaded(function(){
 				$container.isotope({
 					// disable window resizing
@@ -112,18 +115,18 @@
 						resizable: false
 					}
 				});
-                                
+								
 				var isloading = false;
 				var CptScroll = 0;
 				var DisableScroll = false;
-                                
-                                $('#container').isotope({
-                                itemSelector: '.item',
-                                masonry: {
-                                  columnWidth: 120,
-                                  cornerStampSelector: '.corner-stamp'
-                                }
-                                });
+								
+								$('#container').isotope({
+								itemSelector: '.item',
+								masonry: {
+								  columnWidth: 120,
+								  cornerStampSelector: '.corner-stamp'
+								}
+								});
 
 				$(window).scroll(function() {
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
@@ -170,23 +173,20 @@
 						});
 					}
 				});
-			});
- 
-			$(window).smartresize(function(){
-				// check if columns has changed
-				var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
-				if ( currentColumns !== columns ) {
-					// set new column count
-					columns = currentColumns;
-					// apply width to container manually, then trigger relayout
-					$container.width( columns * colW )
-					.isotope('reLayout');
-				}
-			}).smartresize(); // trigger resize to set container width
 			
-  
-	});    
-});
+ 				$(window).smartresize(function(){
+					// check if columns has changed
+					var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
+					if ( currentColumns !== columns ) {
+						// set new column count
+						columns = currentColumns;
+						// apply width to container manually, then trigger relayout
+						$container.width( columns * colW ).isotope('reLayout');
+					}
+				}).smartresize(); // trigger resize to set container width
+			});
+		});    
+	});
 
     </script>
 	<script>

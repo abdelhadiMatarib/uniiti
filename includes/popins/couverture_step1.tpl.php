@@ -13,45 +13,9 @@
 	else {
 		if (!empty($_GET['step'])) {$step = $_GET['step'];}
 		else {$step = $_POST['step'];}
-		
-		if (!empty($_POST['image1'])) {$image1 = $_POST['image1'];}
-		else {$image1 = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";}
-		if (!empty($_POST['image2'])) {$image2 = $_POST['image2'];}
-		else {$image2 = "";}
-		if (!empty($_POST['image3'])) {$image3 = $_POST['image3'];}
-		else {$image3 = "";}
-		if (!empty($_POST['image4'])) {$image4 = $_POST['image4'];}
-		else {$image4 = "";}
-		if (!empty($_POST['image5'])) {$image5 = $_POST['image5'];}
-		else {$image5 = "";}
-		
-		
-		function CreerImageCouverture ($image, $CheminImageRecalibree, $y) {
-
-			$couv = $CheminImageRecalibree . "couv.png";
-			list($imagewidth, $imageheight, $imageType) = getimagesize($image);
-			$scale = $imagewidth / 1700;
-			$newImage = imagecreatetruecolor(1700,500);
-			$imageType = image_type_to_mime_type($imageType);
-			switch($imageType) {
-				case "image/gif":
-					$source=imagecreatefromgif($image); 
-					break;
-				case "image/pjpeg":
-				case "image/jpeg":
-				case "image/jpg":
-					$source=imagecreatefromjpeg($image); 
-					break;
-				case "image/png":
-				case "image/x-png":
-					$source=imagecreatefrompng($image); 
-					break;
-			}
-			imagecopyresampled($newImage,$source,0,0,0,-$y * $scale,1700,500,$imagewidth,500 * $scale);
-			imagepng($newImage, $couv);
-			echo "Image sauvegardée dans " . $CheminImageRecalibree;			
-		}
-
+		$MessageAction = "Étape suivante";
+		$MessageInfo = "Une fois le chargement de/des images effectué, vous pourrez les ajuster pour un affichage optimal.";
+		$Step = "{step: 2}";
 ?>
 
 	<body>
@@ -68,25 +32,7 @@
 			#image {position:absolute;}
 
 		</style>
-	
-<?php
 
-		switch($step) {
-			case 1:
-				$MessageAction = "Étape suivante";
-				$MessageInfo = "Une fois le chargement de/des images effectué, vous pourrez les ajuster pour un affichage optimal.";
-				$Step = "{step: 2}";
-				break;
-			case 2:
-				$MessageAction = "Enregistrer";
-				$MessageInfo = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
-				$Step = "{step: 1}";
-				break;
-			default :
-				$Erreur = true;
-				break;
-		}
-?>
 <div class="couverture_wrapper">
 	<div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
 	<div class="couverture_head">
@@ -96,9 +42,6 @@
 	</div>   
 	<div class="couverture_step1_body">
 		
-<?php	switch($step) {
-			case 1:
-				?>
 		<form id="upload" action="javascript:ActualisePopin(<?php echo $Step ?>, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');" method="POST" enctype="multipart/form-data">
 			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="3000000" />
 			
@@ -113,7 +56,7 @@
 					</div>
 					<div class="couverture_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
-						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="" onclick="ChercherFichier();">votre ordinateur</a></span>
+						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="">votre ordinateur</a></span>
 					</div>
 				</div>
 				
@@ -142,85 +85,31 @@
 			<input type="hidden" name="ImageTemp5" value="" id="ImageTemp5" />
 			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
 
-			<div id="messages">
-				<?php
-			
-				$src = "";
-				if (isset($_POST["submitted"])) {
-					$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
-					CreerImageCouverture ($_POST["ImageTemp"], $CheminImageRecalibree, $_POST['y']);
-				}
-				?>
-			</div>	
 		</form>
 							
-				<?php break;
-			case 2: ?>
+	</div>
+	<div class="couverture_step1_footer">
+		<div class="couverture_step1_footer_vertical_sep"></div>
+		<div class="couverture_step1_infos"><div class="couverture_step_1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span id="MessageInfo"><?php echo $MessageInfo ?></span></div>
 
-			<div class="couverture_img_items_wrapper">
-				<ul id="sortable">
-					<li id="couverture_img_item1" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>1</span></div>
-						<img src="<?php echo $image1 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-
-					<li id="couverture_img_item2" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>2</span></div>
-						<img src="<?php echo $image2 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-
-					<li id="couverture_img_item3" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>3</span></div>
-						<img src="<?php echo $image3 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-
-					<li id="couverture_img_item4" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>4</span></div>
-						<img src="<?php echo $image4 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-					
-					<li id="couverture_img_item5" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>5</span></div>
-						<img src="<?php echo $image5 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div> 
-					</li>
+		<div class="couverture_arianne">
+			<div class="couverture_arianne_txt">
+			<span class="arianne_txt_1">Vos </span>
+			<span class="arianne_txt_2">images</span>
+			</div>
+			<div class="couverture_arianne_nbr">
+				<ul class="couverture_arianne_nbr_liste">
+					<li><a id="image1" href="#" alt="">1</a></li>
+					<li><a id="image2" href="#" alt="">2</a></li>
+					<li><a id="image3" href="#" alt="">3</a></li>
+					<li><a id="image4" href="#" alt="">4</a></li>
+					<li><a id="image5" href="#" alt="">5</a></li>                    
 				</ul>
 			</div>
-				
-				<?php break;
-			default:
-				echo "vous ne pouvez pas à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>";
-				break;
-		}
-?>
-
 		</div>
-			<div class="couverture_step1_footer">
-				<div class="couverture_step1_footer_vertical_sep"></div>
-				<div class="couverture_step1_infos"><div class="couverture_step_1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span id="MessageInfo"><?php echo $MessageInfo ?></span></div>
-
-				<div class="couverture_arianne">
-					<div class="couverture_arianne_txt">
-					<span class="arianne_txt_1">Vos </span>
-					<span class="arianne_txt_2">images</span>
-					</div>
-					<div class="couverture_arianne_nbr">
-						<ul class="couverture_arianne_nbr_liste">
-							<li><a id="image1" href="#" alt="">1</a></li>
-							<li><a id="image2" href="#" alt="">2</a></li>
-							<li><a id="image3" href="#" alt="">3</a></li>
-							<li><a id="image4" href="#" alt="">4</a></li>
-							<li><a id="image5" href="#" alt="">5</a></li>                    
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="couverture_champs_action"><a href="#" title="" onclick="EtapeSuivante();"><span><?php echo $MessageAction ?></span></a></div>
-		</div>
+	</div>
+	<div class="couverture_champs_action"><a href="#" title="" onclick="EtapeSuivante();"><span><?php echo $MessageAction ?></span></a></div>
+</div>
 <?php		
 	}
 ?>
@@ -229,14 +118,15 @@
 		<script language="javascript" src="../../js/jquery.easydrag.min.js"></script>
 -->
 		<script>    
-
-
-			$( "#sortable" ).sortable({revert: true});
 			
 			function ChercherFichier() {
 				$("#fileselect").click();
 			};
 
+			$("#selection").click( function() {
+				if ($(".couverture_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
+			});
+			
 			function AfficheBtnES() {
 				$id("MessageInfo").innerHTML = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
 				$(".couverture_step1_dropzone_img_container").css({display : "none"});
@@ -246,13 +136,13 @@
 			};
 			
 			function AfficheChercheImage() {
-					$("#image").attr("src", "");
-					$(".couverture_step1_dropzone_img_container").css({display : "block"});
-					$(".couverture_step1_dropzone_txt").css({display : "block"});
-					$(".couverture_step1_wrap_buttons").css({display : "none"});
-					$(".couverture_step2_resize_infos").css({display : "none"});
-					$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
-					$("#image").css({display : "block"});
+				$("#image").attr("src", "");
+				$(".couverture_step1_dropzone_img_container").css({display : "block"});
+				$(".couverture_step1_dropzone_txt").css({display : "block"});
+				$(".couverture_step1_wrap_buttons").css({display : "none"});
+				$(".couverture_step2_resize_infos").css({display : "none"});
+				$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
+				$("#image").css({display : "block"});
 			};
 
 			var CompteImageErg = 0;
@@ -308,7 +198,7 @@
 				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
 				AfficheBtnES();
 				var decalage = 0;
-				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val();}
+				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val()*189/500;}
 //				alert(NumImageSel+' '+$('#y' + NumImageSel).val());
 				$(".draggable").css({top: decalage+'px'});
 				$("#image").css({display : "block"});
@@ -328,7 +218,7 @@
 							y4 : $('#y4').val(),
 							y5 : $('#y5').val()
 						};
-				ActualisePopin(data, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');
+				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
 			};
 			
 			
@@ -339,7 +229,7 @@
 						'container': $('#fenetre'),
 						'axis': 'y',
 						drag: function(){
-							$('#y').val($('#selection').offset().top - $(this).offset().top);
+							$('#y').val(($('#selection').offset().top - $(this).offset().top)*500/189);
 						}
 					});
 					DragInit = true;
@@ -384,7 +274,6 @@
 						InitDrag();
 						$(".draggable").css({top: '0px'});
 						$('#y').val(0);
-//						alert("cliquez sur l'image pour la déplacer verticalement");
 						$('#ImageTemp').val(e.target.result);
 
 						/*						Output(

@@ -47,7 +47,7 @@ function ActualisePopin(data, url, div) {
 		url : url,
 		data : data,
 		success: function(html){
-			$("#" + div).html(html);
+			$("#" + div).dialog('close').html(html).dialog('open');
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
@@ -61,8 +61,9 @@ function CreerOverlayPush() {
 		var overlay_push = $(this).next('.overlay_push');
 		overlay_push.click(function(e){
 			e.preventDefault();//don't go to default URL
-			overlay_push.css('display','none');
+			$('.overlay_push').css('display','none');
 		});
+		$('.overlay_push').css('display','none');
 		overlay_push.css('display','block');
     });
 }
