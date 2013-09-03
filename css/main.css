@@ -440,7 +440,7 @@ span.index_overlay_texte{display:block;}
 .inscription_separation_ou span{display:block;padding:5px;text-transform:uppercase;}
 .inscription_upload_image_container,.inscription_choisir_image_container{padding:40px;text-align:center;background-color:white;height:270px;}
 .inscription_upload_image_container{position:relative;border-right:1px solid #e4e4e4;}
-.inscription_upload_image_container span{position:absolute;top:150px;left: 180px;width: 200px;}
+.inscription_upload_image_container span{position:absolute;top:150px;left: 110px;width: 200px;}
 .inscription_choisir_image_container{background-color:#f0f0f0;}
 .inscription_wrap_next_step2{border-top:1px solid #e4e4e4;height:49px;background-color:white;width:1130px;float:left;position:relative;}
 .inscription_next_step2{bottom:12px;right:10px;position:absolute;width:115px;padding:10px 0 0 0;}

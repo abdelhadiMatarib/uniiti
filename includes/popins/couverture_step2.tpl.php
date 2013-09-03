@@ -60,31 +60,36 @@
 	}
 		
 		$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+		$NbImages = 1;
 		if (!empty($_POST['image1'])) {
 			CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
 //			$image1 = $CheminImageRecalibree . "couv1.png";
 //			CreerImageCouverture($_POST['image1'], $image1, $_POST['y1']);
-			$image1 = SITE_URL . "/img/tmp/couv1.jpg";
+			$image[1] = SITE_URL . "/img/tmp/couv1.jpg";
 			}
-		else {$image1 = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";}
+		else {$image[1] = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";}
 		if (!empty($_POST['image2'])) {
 			CompresserImage ($_POST['image2'], $CheminImageRecalibree . "couv2.jpg", 1750);
-			$image2 = SITE_URL . "/img/tmp/couv2.jpg";
+			$image[2] = SITE_URL . "/img/tmp/couv2.jpg";
+			$NbImages = 2;
 			}
 		else {$image2 = "";}
 		if (!empty($_POST['image3'])) {
 			CompresserImage ($_POST['image3'], $CheminImageRecalibree . "couv3.jpg", 1750);
-			$image3 = SITE_URL . "/img/tmp/couv3.jpg";
+			$image[3] = SITE_URL . "/img/tmp/couv3.jpg";
+			$NbImages = 3;
 			}
 		else {$image3 = "";}
 		if (!empty($_POST['image4'])) {
 			CompresserImage ($_POST['image4'], $CheminImageRecalibree . "couv4.jpg", 1750);
-			$image4 = SITE_URL . "/img/tmp/couv4.jpg";
+			$image[4] = SITE_URL . "/img/tmp/couv4.jpg";
+			$NbImages = 4;
 			}
 		else {$image4 = "";}
 		if (!empty($_POST['image5'])) {
 			CompresserImage ($_POST['image5'], $CheminImageRecalibree . "couv5.jpg", 1750);
-			$image5 = SITE_URL . "/img/tmp/couv5.jpg";
+			$image[5] = SITE_URL . "/img/tmp/couv5.jpg";
+			$NbImages = 5;
 			}
 		else {$image5 = "";}
 
@@ -105,35 +110,13 @@
 	<div class="couverture_step1_body">
 		<div class="couverture_img_items_wrapper">
 				<ul id="sortable">
-					<li id="couverture_img_item1" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>1</span></div>
-						<img src="<?php echo $image1 ?>" title="" alt=""/>
+					<?php for ($i = 1 ; $i <= $NbImages ; $i++) { ?>
+					<li id="couverture_img_item<?php echo $i; ?>" class="couverture_img_item">
+						<div class="couverture_img_item_nbr_img_txt"><span><?php echo $i; ?></span></div>
+						<img src="<?php echo $image[$i] ?>" title="" alt=""/>
 						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
 					</li>
-
-					<li id="couverture_img_item2" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>2</span></div>
-						<img src="<?php echo $image2 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-
-					<li id="couverture_img_item3" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>3</span></div>
-						<img src="<?php echo $image3 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-
-					<li id="couverture_img_item4" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>4</span></div>
-						<img src="<?php echo $image4 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
-					</li>
-					
-					<li id="couverture_img_item5" class="couverture_img_item">
-						<div class="couverture_img_item_nbr_img_txt"><span>5</span></div>
-						<img src="<?php echo $image5 ?>" title="" alt=""/>
-						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div> 
-					</li>
+					<?php } ?>
 				</ul>
 			</div>
 		</div>				
