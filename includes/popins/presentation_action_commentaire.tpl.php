@@ -191,4 +191,15 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         </div>
     
 </div>
+<script>
+    // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
+    $('#modifier_commentaire_input_preciser_motif').click(function(){
+    $('.input_avisenattente_precisezmotif').stop().slideToggle();
+    });
+    $('.presentation_action_signalement_flag').click(function(){
+       $(this).toggleClass('signalement_button_background');
+       $('.presentation_action_commentaire_left_body_message').stop().slideToggle();
+       $('.presentation_action_signalement_body').stop().slideToggle();
+    });
+</script>
 </html>

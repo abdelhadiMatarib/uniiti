@@ -56,7 +56,7 @@ function ActualisePopin(data, url, div) {
 
 function CreerOverlayPush() {
     // Push image box
-    $('.box figure > img').click(function(e){
+    $('.box_push_et_img').click(function(e){
         e.preventDefault();//don't go to default URL
 		var overlay_push = $(this).next('.overlay_push');
 		overlay_push.click(function(e){
@@ -70,16 +70,7 @@ function CreerOverlayPush() {
 
 $(document).ready(function() {
     
-    // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
-    $('#modifier_commentaire_input_preciser_motif').click(function(){
-    $('.input_avisenattente_precisezmotif').slideToggle();
-    });
-    $('.presentation_action_signalement_flag').click(function(){
-       $(this).toggleClass('signalement_button_background');
-       $('.presentation_action_commentaire_left_body_message').slideToggle();
-       $('.presentation_action_signalement_body').slideToggle();
 
-    });
 
     $('#recherche_avancee_button').click(function(){
         if(
@@ -191,7 +182,6 @@ $('#close_button_home').click(function() {
         this.id = setTimeout(resizeboxContainer, 200);
         $("#default_dialog").dialog("option", "position", "center");
     });
-});
         // Respond
         
         $('.presentation_action_right_voirplus_txt a').click(function(e){
@@ -688,3 +678,4 @@ $('#close_button_home').click(function() {
         }
   
 	}   
+});
