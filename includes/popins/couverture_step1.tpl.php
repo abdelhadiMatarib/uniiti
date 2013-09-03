@@ -56,7 +56,7 @@
 					</div>
 					<div class="couverture_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
-						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="" onclick="ChercherFichier();">votre ordinateur</a></span>
+						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="">votre ordinateur</a></span>
 					</div>
 				</div>
 				
@@ -123,6 +123,10 @@
 				$("#fileselect").click();
 			};
 
+			$("#selection").click( function() {
+				if ($(".couverture_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
+			});
+			
 			function AfficheBtnES() {
 				$id("MessageInfo").innerHTML = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
 				$(".couverture_step1_dropzone_img_container").css({display : "none"});
@@ -132,13 +136,13 @@
 			};
 			
 			function AfficheChercheImage() {
-					$("#image").attr("src", "");
-					$(".couverture_step1_dropzone_img_container").css({display : "block"});
-					$(".couverture_step1_dropzone_txt").css({display : "block"});
-					$(".couverture_step1_wrap_buttons").css({display : "none"});
-					$(".couverture_step2_resize_infos").css({display : "none"});
-					$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
-					$("#image").css({display : "block"});
+				$("#image").attr("src", "");
+				$(".couverture_step1_dropzone_img_container").css({display : "block"});
+				$(".couverture_step1_dropzone_txt").css({display : "block"});
+				$(".couverture_step1_wrap_buttons").css({display : "none"});
+				$(".couverture_step2_resize_infos").css({display : "none"});
+				$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
+				$("#image").css({display : "block"});
 			};
 
 			var CompteImageErg = 0;
@@ -194,7 +198,7 @@
 				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
 				AfficheBtnES();
 				var decalage = 0;
-				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val();}
+				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val()*189/500;}
 //				alert(NumImageSel+' '+$('#y' + NumImageSel).val());
 				$(".draggable").css({top: decalage+'px'});
 				$("#image").css({display : "block"});
@@ -270,7 +274,6 @@
 						InitDrag();
 						$(".draggable").css({top: '0px'});
 						$('#y').val(0);
-//						alert("cliquez sur l'image pour la déplacer verticalement");
 						$('#ImageTemp').val(e.target.result);
 
 						/*						Output(
