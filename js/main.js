@@ -1,3 +1,27 @@
+function filter(){
+        $('.rang2 li,.rang3 li,.rang4 li').hide();
+        
+        $('.rang0 li').click(function(){
+            $('.rang1 li').show('slideUp');
+            $('.rang2 li,.rang3 li,.rang4 li').hide('slideDown');
+        });
+        $('.rang1 li').click(function(){
+           $(this).siblings().hide('slideDown');
+           $('.rang2 li').show('slideUp');
+           $('.rang3 li,.rang4 li').hide('slideDown');
+        });
+        $('.rang2 li').click(function(){
+           $(this).siblings().hide('slideDown');
+           $('.rang3 li').show('slideUp');
+           $('.rang4 li').hide('slideDown');
+        });
+        $('.rang3 li').click(function(){
+           $(this).siblings().hide('slideDown');
+           $('.rang4 li').show('slideUp');
+        });
+    }
+    filter();
+    
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
 	$("#dialog_overlay").css({display: "block"});
@@ -32,7 +56,7 @@ function ActualisePopin(data, url, div) {
 
 function CreerOverlayPush() {
     // Push image box
-    $('.box figure > img').click(function(e){
+    $('.box_push_et_img').click(function(e){
         e.preventDefault();//don't go to default URL
 		var overlay_push = $(this).next('.overlay_push');
 		overlay_push.click(function(e){
@@ -45,6 +69,8 @@ function CreerOverlayPush() {
 }
 
 $(document).ready(function() {
+    
+
 
     $('#recherche_avancee_button').click(function(){
         if(
@@ -156,7 +182,6 @@ $('#close_button_home').click(function() {
         this.id = setTimeout(resizeboxContainer, 200);
         $("#default_dialog").dialog("option", "position", "center");
     });
-});
         // Respond
         
         $('.presentation_action_right_voirplus_txt a').click(function(e){
@@ -653,3 +678,4 @@ $('#close_button_home').click(function() {
         }
   
 	}   
+});

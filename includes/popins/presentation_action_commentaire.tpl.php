@@ -44,10 +44,26 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             <figure><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_popin.jpg"/></figure>
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
+            <div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
             <span class="presentation_action_left_body_username"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action">a laissé un avis</span>
             <div class="presentation_action_commentaire_left_body_message">
                 <span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span>
+            </div>
+            <div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
+                <span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>
+                    <form>
+                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Avis à caractère diffamatoire ou injurieux</label></div>
+                        <br/>
+                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Avis incohérent ou sans intérêt</label></div>
+                        <br/>
+                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Spam</label></div>
+                        <br/>
+                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_preciser_motif"/><label for="modifier_commentaire_input_preciser_motif">Autre motif</label></div>
+                        <br/>
+                        <div class="input_float_left"><input type="text" class="input_avisenattente_precisezmotif input_signalement_motif" placeholder="Précisez le motif"/></div>
+                        <div class="input_float_right bouton_signaler"><a href="#" title=""><span>Signaler</span></a></div>
+                    </form>
             </div>
             <div class="arrow_up"></div>
         </div>
@@ -175,4 +191,15 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         </div>
     
 </div>
+<script>
+    // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
+    $('#modifier_commentaire_input_preciser_motif').click(function(){
+    $('.input_avisenattente_precisezmotif').stop().slideToggle();
+    });
+    $('.presentation_action_signalement_flag').click(function(){
+       $(this).toggleClass('signalement_button_background');
+       $('.presentation_action_commentaire_left_body_message').stop().slideToggle();
+       $('.presentation_action_signalement_body').stop().slideToggle();
+    });
+</script>
 </html>

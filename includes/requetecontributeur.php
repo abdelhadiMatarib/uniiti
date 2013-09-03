@@ -108,7 +108,10 @@
 						<div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
 					</div>
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
-					<img src="../img/photos_commerces/1.jpg" title="" alt="" />
+					<div class="box_push_et_img">
+                                        <img src="img/photos_commerces/1.jpg" title="" alt="" />
+                                        <div class="box_push"></div>
+                                        </div>
                                         <div class="overlay_push">
                                             <div class="push_buttons_wrapper">
                                                 <div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
