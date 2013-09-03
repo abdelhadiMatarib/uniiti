@@ -1,3 +1,27 @@
+function filter(){
+        $('.rang2 li,.rang3 li,.rang4 li').hide();
+        
+        $('.rang0 li').click(function(){
+            $('.rang1 li').show('slideUp');
+            $('.rang2 li,.rang3 li,.rang4 li').hide('slideDown');
+        });
+        $('.rang1 li').click(function(){
+           $(this).siblings().hide('slideDown');
+           $('.rang2 li').show('slideUp');
+           $('.rang3 li,.rang4 li').hide('slideDown');
+        });
+        $('.rang2 li').click(function(){
+           $(this).siblings().hide('slideDown');
+           $('.rang3 li').show('slideUp');
+           $('.rang4 li').hide('slideDown');
+        });
+        $('.rang3 li').click(function(){
+           $(this).siblings().hide('slideDown');
+           $('.rang4 li').show('slideUp');
+        });
+    }
+    filter();
+    
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
 	$("#dialog_overlay").css({display: "block"});

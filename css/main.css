@@ -108,16 +108,18 @@ span.index_overlay_texte{display:block;}
 .uniiti_footer{background-color:#e3e3e3;z-index:51;position: relative;padding:0;height:70px;}
 .uniiti_footer_loader{display:none;position:relative;width:70px;margin:0 auto;}
 .uniiti_footer_loader_barre_horizontale{position: absolute;top: 35px;border-bottom: 1px solid #252525;height: 1px;width: 100%;}
-/* FILTRES */
 
+/* FILTRES */
 .filters{margin: 14px 0 14px 0;-webkit-border-radius: 3px;border-radius: 3px;background-color:white;}
-.filters ul{height:45px;}
-.filters ul li{margin-right:1px;display:inline-block;height:45px;width:45px;}
-.filters ul li.filtreALL{-webkit-border-radius: 3px 0 0 3px;border-radius: 3px 0 0 3px;background:url('../img/sprite_filtre.png') no-repeat 10px 10px;background-color:#A4EBF1;}
-.filters ul li.filtrepouceOK{background:url('../img/sprite_filtre.png') no-repeat -35px 10px;background-color:#A4EBF1;}
-.filters ul li.filtrepouceNOK{background:url('../img/sprite_filtre.png') no-repeat -80px 10px;background-color:#A4EBF1;}
-.filters ul li.filtrewishlist{background:url('../img/sprite_filtre.png') no-repeat -125px 10px;background-color:#A4EBF1;}
-.filters ul li.filtreAvis{background:url('../img/sprite_filtre.png') no-repeat -170px 10px;background-color:#A4EBF1;}
+.filters{height:45px;}
+.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{float:left;display:inline-block;}
+.rang0,.rang1,.rang2,.rang3,.rang4{float:left;}
+.rang0 ul li,.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{list-style:none;cursor:pointer;margin-right:1px;height:45px;width:45px;font-size:0.9em;text-align:center;background-color:#A4EBF1;color:white;}
+.button_all{-webkit-border-radius: 3px 0 0 3px;border-radius: 3px 0 0 3px;background: url('../img/sprite_filtre.png') no-repeat 10px 10px;}
+.button_avis{background: url('../img/sprite_filtre.png') no-repeat -170px 10px;}
+.button_like{background: url('../img/sprite_filtre.png') no-repeat -35px 10px;}
+.button_dislike{background:url('../img/sprite_filtre.png') no-repeat -80px 10px;}
+.button_wishlist{background: url('../img/sprite_filtre.png') no-repeat -125px 10px;}
 
 /* BOXES GENERIQUES */
 .box{position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:236px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
