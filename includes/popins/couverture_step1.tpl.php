@@ -43,7 +43,7 @@
 	<div class="couverture_step1_body">
 		
 		<form id="upload" action="javascript:ActualisePopin(<?php echo $Step ?>, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');" method="POST" enctype="multipart/form-data">
-			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="3000000" />
+			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 			
 			<div id="fenetre"></div>
 			<div id="selection" class="couverture_step1_dropzone">
@@ -315,7 +315,7 @@
 					submitbutton.style.display = "none";
 				}
 			}			
-			<?php if ($step == 1) { ?>Init();<?php } ?>
+			Init();
 
 		</script>
 
