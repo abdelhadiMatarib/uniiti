@@ -100,7 +100,7 @@
             <figure>
                 <div class="box_mark">
                     <div class="box_stars">
-						<?php echo AfficheTrusts(6); ?>
+						<?php echo AfficheTrusts(5.5); ?>
 					</div>
                     <div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
                 </div>

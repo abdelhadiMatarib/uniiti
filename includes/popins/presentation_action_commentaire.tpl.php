@@ -26,7 +26,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             </div>
                 
             <div class="presentation_action_left_head_note_wrap">
-				<?php echo AfficheEtoiles($note_arrondi); ?>
+				<?php echo AfficheEtoiles($_POST['note_arrondi']); ?>
                 <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $_POST['count_avis_enseigne']; ?> Avis</span>
             </div>
             
