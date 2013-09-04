@@ -12,16 +12,16 @@ function filter(){
         });
         $('.rang2 li').click(function(){
            $(this).siblings().hide('slideDown');
-           $('.rang3 li').show('slideUp');
+           $('.rang3 li.'+$(this).attr('class')).show('slideUp');
            $('.rang4 li').hide('slideDown');
         });
         $('.rang3 li').click(function(){
            $(this).siblings().hide('slideDown');
-           $('.rang4 li').show('slideUp');
+           $('.rang4 li.'+$(this).attr('class').replace(" ", ".")).show('slideUp');
         });
     }
     filter();
-    
+
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
 	$("#dialog_overlay").css({display: "block"});
