@@ -1,6 +1,6 @@
 function filter(){
         $('.rang2 li,.rang3 li,.rang4 li').hide();
-        
+        $(".filters").css({display: "block"});
         $('.rang0 li').click(function(){
             $('.rang1 li').show('slideUp');
             $('.rang2 li,.rang3 li,.rang4 li').hide('slideDown');
