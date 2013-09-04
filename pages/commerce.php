@@ -103,8 +103,10 @@
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
                     <div class="commerce_head_note_reservation">
-                        <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
-                        <div class="commerce_head_note_reserver"><a href="#" title=""><span><strong>Réserver</strong> une table</span></a></div>
+                        <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');">
+                            <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
+                            <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
+                        </a>
                     </div>
                 </div>
                 <div class="commerce_head_infos">

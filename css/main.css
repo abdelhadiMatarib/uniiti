@@ -110,13 +110,13 @@ span.index_overlay_texte{display:block;}
 .filters{margin: 14px 0 14px 0;-webkit-border-radius: 3px;border-radius: 3px;background-color:white;}
 .filters{height:45px;}
 .rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{float:left;display:inline-block;}
-.rang0,.rang1,.rang2,.rang3,.rang4{float:left;}
+.rang0,.rang1,.rang2,.rang3,.rang4{float:left;position:relative;}
 .rang0 ul li,.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{list-style:none;cursor:pointer;margin-right:1px;height:45px;width:45px;font-size:0.9em;text-align:center;background-color:#A4EBF1;color:white;}
 .button_all{-webkit-border-radius: 3px 0 0 3px;border-radius: 3px 0 0 3px;background: url('../img/sprite_filtre.png') no-repeat 10px 10px;}
-.button_avis{background: url('../img/sprite_filtre.png') no-repeat -170px 10px;}
-.button_like{background: url('../img/sprite_filtre.png') no-repeat -35px 10px;}
-.button_dislike{background:url('../img/sprite_filtre.png') no-repeat -80px 10px;}
-.button_wishlist{background: url('../img/sprite_filtre.png') no-repeat -125px 10px;}
+.button_avis{position:relative;background: url('../img/sprite_filtre.png') no-repeat -170px 10px;}
+.button_like{position:relative;background: url('../img/sprite_filtre.png') no-repeat -35px 10px;}
+.button_dislike{position:relative;background:url('../img/sprite_filtre.png') no-repeat -80px 10px;}
+.button_wishlist{position:relative;background: url('../img/sprite_filtre.png') no-repeat -125px 10px;}
 
 /* BOXES GENERIQUES */
 .box{position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:236px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
@@ -189,7 +189,7 @@ span.index_overlay_texte{display:block;}
 .commerce_head_desc_social{margin: 10px 5px 0 0;float:right;}
 .commerce_head_desc_social span{display:none;}
 .commerce_head_desc_social img{margin:0 10px 0 0;}
-.commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices{float:left;width:232px;padding:8px 0 0 10px;}
+.commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices{float:left;width:232px;padding:6px 0 0 10px;}
 .commerce_head_desc_address address{display:block;font-style:normal;}
 .commerce_head_desc_address span{display:block;font-weight:bold;}
 .commerce_head_desc_ariane span{display:block;}
@@ -210,8 +210,9 @@ span.index_overlay_texte{display:block;}
 .commerce_head_note_note10{display:inline;font-size:1.6em;color:white;}
 .commerce_head_note_avis{display:block;font-size:85%;text-align:center;color:white;padding:5px 0 13px 0;}
 .commerce_head_note_reservation{float:left;background-color:#fabe41;height:49px;width:150px;}
-.img_container_reservation{float:left;height:25px;width:55px;text-align:center;padding: 15px 0 0 0;}
-.commerce_head_note_reserver{font-size: 1.2em;margin: 4px 0 0 63px;}
+.img_container_reservation{float:left;height:25px;width:55px;text-align:center;padding: 10px 0 0 0;}
+.commerce_head_note_reserver{font-size: 1.2em;}
+.commerce_reserver_button{display:inline-block;padding:4px;width:95%;}
 
 .commerce_head_infos{float:left;height:155px;}
 .commerce_head_infos_services{-webkit-border-radius: 3px;border-radius: 3px;float:left;height:82px;margin:10px 10px 0 10px;border:1px solid #eaeaea;width:178px;}
@@ -352,6 +353,10 @@ span.index_overlay_texte{display:block;}
 .utilisateur_head_infos_suggestion{float:left;}
 .utilisateur_suggerer_commerce{line-height:14px;text-align:center;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;height:36px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
 .utilisateur_suggerer_objet{line-height:14px;text-align:center;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;height:36px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
+
+.commerce_reservation_commerce{padding:5px;line-height:14px;text-align:center;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;height:25px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
+.commerce_optin_commerce{padding:5px;line-height:14px;text-align:center;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;height:25px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
+
 
 .objet_head_infos_suivre_lastcat{color:white;font-size:1.1em;text-align:center;display:block;font-weight:300;text-transform: uppercase;margin:0 0 3px 0;}
 .objet_head_infos_suivre_firstcat{margin:4px 0 0 0;color:white;display:block;text-align:center;font-weight:bold;font-size:1.1em;text-transform: uppercase;}
@@ -760,7 +765,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .ajout_liencommerce_infos_txt span{display:inline-block;}
 .ajout_liencommerce_infos_txt a{color:#73d4dc;}
 .ajout_liencommerce_input_centered{border-top:1px solid #e4e4e4;text-align:center;}
-textarea.demande_modifs_input_centered{height:150px;width:500px;padding:10px;resize:none;}
+textarea.demande_modifs_input_centered{height:150px;width:480px;padding:10px;resize:none;}
 .left_head_avisenattente{border-bottom:1px solid #e4e4e4;}
 .interface_avisenattente_txt_colored{color:#fabe41;}
 .utilisateur_interface_avisenattente_haut{text-align:center;text-transform: uppercase;}
@@ -903,3 +908,36 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .utilisateur_interface_modifier_couv a{color:#252525;display:inline-block;}
 .utilisateur_interface_modifier_icon_noir{float:right;margin-left:5px;}
 .utilisateur_interface_modifier_icon_blanc{float:left;margin-right:10px;}
+
+/* MODULE RESERVATION */
+.module_reservation_body{float:left;width:500px;}
+.module_reservation_left{float:left;width:199px;border-right:1px solid #e4e4e4;}
+.module_reservation_left_head1,.module_reservation_left_head2{line-height:14px;text-align:center;width:189px;float:left;padding:5px;background-color:#73d4dc;color:white;}
+.module_reservation_left_head1 span,.module_reservation_left_head2 span{width:155px;text-transform:uppercase;display:inline-block;font-size:0.9em;font-weight:700;height:28px;}
+
+.module_reservation_left_head1_oui,.module_reservation_left_head1_non{text-align:center;float:left;}
+.module_reservation_left_head2_rdv,.module_reservation_left_head2_reservation{text-align:center;float:left;}
+
+.module_reservation_left_head1_oui a{text-transform:uppercase;color:#cbcbcb;font-size:2em;font-weight:600;display:inline-block;width:79px;padding:20px 10px;background-color:#f0f0f0;border-right:1px solid #e4e4e4;}
+.module_reservation_left_head1_non a{text-transform:uppercase;color:#cbcbcb;font-size:2em;font-weight:600;display:inline-block;width:79px;padding:20px 10px;background-color:#f0f0f0;}
+.module_reservation_left_head1_oui a:hover{color:white;background-color:#a4ebf1;}
+.module_reservation_left_head1_non a:hover{color:white;background-color:#a4ebf1;}
+
+.module_reservation_left_head2_rdv a{height:36px;text-transform:uppercase;color:#cbcbcb;font-size:1em;font-weight:600;display:inline-block;width:79px;padding:25px 10px;background-color:#f0f0f0;border-right:1px solid #e4e4e4;}
+.module_reservation_left_head2_reservation a{height:36px;text-transform:uppercase;color:#cbcbcb;font-size:1em;font-weight:600;display:inline-block;width:79px;padding:25px 10px;background-color:#f0f0f0;}
+.module_reservation_left_head2_rdv a:hover{color:white;background-color:#a4ebf1;}
+.module_reservation_left_head2_reservation a:hover{color:white;background-color:#a4ebf1;}
+
+.module_reservation_right{float:left;width:300px;}
+.module_reservation_right_head1{background-color:#73d4dc;text-align:center;float:left;padding:10px;width:280px;height:18px;}
+.module_reservation_right_head1 span{text-transform:uppercase;color:white;font-weight:700;font-size:0.9em;}
+.module_reservation_right_content{background-color:white;padding-top:13px;float:left;width:300px;}
+.module_reservation_right_content input{float:left;}
+.module_reservation_right_content label{float:left;}
+.module_reservation_right_content span{display:block;font-size:0.8em;}
+input#resa_get_notifs_mail{border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;padding:0 0 0 10px;width:290px;height:36px;margin:0;background-color:#f0f0f0;}
+input#resa_get_notifs_sms{border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;padding:0 0 0 10px;width:290px;height:36px;margin:0;background-color:#f0f0f0;}
+input#resa_infos_affichage{margin:2px 5px 0 0;}
+input#resa_infos_notifs_mail,input#resa_infos_notifs_sms{margin:20px 5px 0 0;}
+.infos_resa_espacement{margin:10px 0;}
+.input_resa_float{float:left;padding-left:15px;width:285px;}
