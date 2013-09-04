@@ -544,7 +544,7 @@ function resizeboxContainer(){
 		
 		$('.ligne_verticale3').css('left','1562px').css('height','496px');
 	}
-
+	if ($(".content").css("display") == "none") {$(".content").css({display: "block"});}
 }
 	
 

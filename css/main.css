@@ -28,7 +28,7 @@ font-weight: 700;}
 body{color:#252525;background-color:#f0f0f0;/*text-rendering: optimizeLegibility;*/}
 .biggymarginer{margin:0 auto;padding:0 40px;}
 .big_wrapper{margin:0 auto;}
-.content{margin:0 auto;height:100%;}
+.content{display:none;margin:0 auto;height:100%;}
 .header_leftnav input[type="text"],input[type="email"],input[type="textarea"],input[type="submit"],button{-webkit-border-radius: 3px;border-radius: 3px;}
 .index_overlay{display:block;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background:url('../img/overlay.png') repeat;z-index:100;color:#FFFFFF;}
 .index_overlay_wrap_content{z-index:101;text-align:center;color:white;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;height:160px;width:283px;}
