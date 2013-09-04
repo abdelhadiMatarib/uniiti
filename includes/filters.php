@@ -1,7 +1,4 @@
 <?php
-		include_once 'config/configPDO.inc.php';
-		include_once 'includes/fonctions.inc.php';
-		
 		$sql = "SELECT * FROM categories";
 		$req = $bdd->prepare($sql);
 		$req->execute();
