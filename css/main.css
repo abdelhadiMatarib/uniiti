@@ -120,7 +120,7 @@ span.index_overlay_texte{display:block;}
 
 /* BOXES GENERIQUES */
 .box{position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:236px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
-.box:hover{border: 1px solid #fabe41; margin:0px 7px 14px 6px; -webkit-box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0); box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0);}
+/*.box:hover{border: 1px solid #fabe41; margin:0px 7px 14px 6px; -webkit-box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0); box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0);}*/
 .box_of_day{height:400px;width:420px;background-color:blue}
 
 .box_desc{padding:6px 0px 0px 57px;height:44px;}
