@@ -1,4 +1,5 @@
 <?php
+
 // Affichage ... si texte trop long
 function tronque($str, $nb = 30) {
     // Si le nombre de caractères présents dans la chaine est supérieur au nombre 
@@ -118,4 +119,21 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
     }
     return $url;
 }
+
+function AfficheEtoiles($note_arrondi) {
+	$html = "";
+	for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) {
+		$html .= "<img src=\"" . SITE_URL . "/img/pictos_actions/star.png\" title=\"\" alt=\"\" />";
+	}
+	return $html;
+}
+
+function AfficheTrusts($note_arrondi) {
+	$html = "";
+	for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) {
+		$html .= "<img src=\"" . SITE_URL . "/img/pictos_utilisateurs/trust.png\" title=\"\" alt=\"\" />";
+	}
+	return $html;
+}
+
 ?>

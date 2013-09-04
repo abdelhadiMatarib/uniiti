@@ -1,5 +1,5 @@
 <?php 
-		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['lastid'])) {include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
@@ -100,12 +100,8 @@
             <figure>
                 <div class="box_mark">
                     <div class="box_stars">
-                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                        <img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/trust.png" title="" alt="" />
-                    </div>
+						<?php echo AfficheTrusts(6); ?>
+					</div>
                     <div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
                 </div>
             </figure>

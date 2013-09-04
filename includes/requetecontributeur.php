@@ -1,5 +1,5 @@
 <?php 
-		if (!empty($_POST['lastid'])) {include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['lastid'])) {include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_contributeur'])) {$id_contributeur = urldecode($_POST['id_contributeur']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
@@ -101,9 +101,7 @@
 				<figure>
 					<div class="box_mark">
 						<div class="box_stars">
-							<?php for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) { ?>
-								<img src="../img/pictos_actions/star.png" title="" alt="" />
-							<?php } /* Fin du for */ ?>
+							<?php echo AfficheEtoiles($note_arrondi); ?>
 						</div>
 						<div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
 					</div>
