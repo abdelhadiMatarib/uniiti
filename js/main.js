@@ -148,6 +148,15 @@ function resizeboxContainer(){
 		
 		$('.ligne_verticale4').css('left','427px').css('height','210px');
 		$('.ligne_verticale5').css('left','573px').css('height','210px');
+                
+                // COMMERCE INTERFACE
+                $('.commerce_reservation_commerce').css('width','60px');
+                $('.commerce_reservation_commerce').css('height','28px');
+                $('.commerce_reservation_commerce').css('font-size','0.7em');
+                $('.commerce_optin_commerce').css('width','60px');
+                $('.commerce_optin_commerce').css('height','28px');
+                $('.commerce_optin_commerce').css('font-size','0.8em');
+                $('.commerce_optin_commerce span').css('margin-top','0px');
 					
 		//PAGE OBJET
 		$('.objet_head_desc_social').addClass('ipad_portrait_social');
@@ -248,6 +257,15 @@ function resizeboxContainer(){
 		
 		$('.ligne_verticale4').css('left','616px').css('height','280px');
 		$('.ligne_verticale5').css('left','801px').css('height','280px');
+                
+                // COMMERCE INTERFACE
+                $('.commerce_reservation_commerce').css('width','75px');
+                $('.commerce_reservation_commerce').css('font-size','0.8em');
+                $('.commerce_reservation_commerce').css('height','25px');
+                $('.commerce_optin_commerce').css('width','75px');
+                $('.commerce_optin_commerce').css('height','25px');
+                $('.commerce_optin_commerce').css('font-size','0.8em');
+                $('.commerce_optin_commerce span').css('margin-top','0px');
 		
 		// PAGE OBJET
 		$('.objet_head_desc_social').removeClass('ipad_portrait_social');
@@ -350,6 +368,15 @@ function resizeboxContainer(){
 		
 		$('.ligne_verticale4').css('left','866px').css('height','352px');
 		$('.ligne_verticale5').css('left','1051px').css('height','352px');
+                
+                // COMMERCE INTERFACE
+                $('.commerce_reservation_commerce').css('width','75px');
+                $('.commerce_reservation_commerce').css('height','25px');
+                $('.commerce_reservation_commerce').css('font-size','0.8em');
+                $('.commerce_optin_commerce').css('width','75px');
+                $('.commerce_optin_commerce').css('height','25px');
+                $('.commerce_optin_commerce').css('font-size','0.8em');
+                $('.commerce_optin_commerce span').css('margin-top','0px');
 	
 		//PAGE OBJET
 		$('.objet_head_desc').css('width',545);
