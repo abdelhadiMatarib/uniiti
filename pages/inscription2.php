@@ -164,6 +164,7 @@
 
 					// remove submit button
 					submitbutton.style.display = "none";
+					fileselect.style.display = "none";
 				}
 
 			}
