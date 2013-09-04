@@ -40,7 +40,7 @@
             <div class="inscription_fields_left">
 				
 				<form id="upload" action="inscription2.php" method="POST" enctype="multipart/form-data">
-					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 						<div class="inscription_upload_image_container"><span>Ou cliquez pour en choisir une sur votre ordinateur</span>
 							<div class="inscription_upload_button" id="filedrag"></div>
 							<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />

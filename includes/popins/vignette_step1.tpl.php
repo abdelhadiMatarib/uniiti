@@ -21,14 +21,14 @@
 	<body>
 
 		<style>
-			#fenetre {opacity:0; position:absolute; top:-50px; left:20px; width: 660px; height: 300px;}
+			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 405px; height: 189px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
 			ul {list-style-type: none;}
 			#fileselect {display: none;}
-			.couverture_step2_resize_infos {display : none;}
+			.vignette_step2_resize_infos {display : none;}
 			.couverture_step1_wrap_buttons {display : none;}
-			.couverture_step1_dropzone_txt2	{}		
+			.vignette_step1_dropzone_txt2	{}		
 			#image {position:absolute;}
 
 		</style>
@@ -38,7 +38,7 @@
 	<div class="couverture_head">
 		<div class="couverture_img_container">
 			<img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_icon.png" title="" alt="" height="37" width="37" />
-		</div><span class="maintitle">Images de couverture</span>
+		</div><span class="maintitle">Vignette du commerce</span>
 	</div>   
 	<div class="couverture_step1_body">
 		
@@ -46,15 +46,15 @@
 			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 			
 			<div id="fenetre"></div>
-			<div id="selection" class="couverture_step1_dropzone">
+			<div id="selection" class="vignette_step1_dropzone">
 				<div class="draggable">
-					<img id="image" src="" width="660" />
+					<img id="image" src="" height="189" />
 				</div>
 				<div id="Interaction1">
-					<div class="couverture_step1_dropzone_img_container">
+					<div class="vignette_step1_dropzone_img_container">
 						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="50" width="51" />
 					</div>
-					<div class="couverture_step1_dropzone_txt">
+					<div class="vignette_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
 						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="">votre ordinateur</a></span>
 					</div>
@@ -64,25 +64,17 @@
 					<div class="couverture_step1_button_supprimer"></div>
 					<div class="couverture_step1_button_valider"></div>
 				</div>
-				<div class="couverture_step2_resize_infos">
+				<div class="vignette_step2_resize_infos">
 					<div class="couverture_step2_resize_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_resize_icon.png" title="" alt="" height="18" width="10" /></div>
 					<span>cliquez pour repositionner l'image</span>
 				</div>
 			</div>
 
 			<input type="file" name="fileselect" id="fileselect" multiple accept="image/*" />
-			<input type="hidden" name="y" value="" id="y" />
-			<input type="hidden" name="y1" value="" id="y1" />
-			<input type="hidden" name="y2" value="" id="y2" />
-			<input type="hidden" name="y3" value="" id="y3" />
-			<input type="hidden" name="y4" value="" id="y4" />
-			<input type="hidden" name="y5" value="" id="y5" />
+			<input type="hidden" name="x" value="" id="x" />
+			<input type="hidden" name="x1" value="" id="x1" />
 			<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
 			<input type="hidden" name="ImageTemp1" value="" id="ImageTemp1" />
-			<input type="hidden" name="ImageTemp2" value="" id="ImageTemp2" />
-			<input type="hidden" name="ImageTemp3" value="" id="ImageTemp3" />
-			<input type="hidden" name="ImageTemp4" value="" id="ImageTemp4" />
-			<input type="hidden" name="ImageTemp5" value="" id="ImageTemp5" />
 			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
 
 		</form>
@@ -94,16 +86,12 @@
 
 		<div class="couverture_arianne">
 			<div class="couverture_arianne_txt">
-			<span class="arianne_txt_1">Vos </span>
-			<span class="arianne_txt_2">images</span>
+			<span class="arianne_txt_1">Votre </span>
+			<span class="arianne_txt_2">image</span>
 			</div>
 			<div class="couverture_arianne_nbr">
 				<ul class="couverture_arianne_nbr_liste">
 					<li><a id="image1" href="#" alt="">1</a></li>
-					<li><a id="image2" href="#" alt="">2</a></li>
-					<li><a id="image3" href="#" alt="">3</a></li>
-					<li><a id="image4" href="#" alt="">4</a></li>
-					<li><a id="image5" href="#" alt="">5</a></li>                    
 				</ul>
 			</div>
 		</div>
@@ -124,29 +112,29 @@
 			};
 
 			$("#selection").click( function() {
-				if ($(".couverture_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
+				if ($(".vignette_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
 			});
 			
 			function AfficheBtnES() {
 				$id("MessageInfo").innerHTML = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
-				$(".couverture_step1_dropzone_img_container").css({display : "none"});
-				$(".couverture_step1_dropzone_txt").css({display : "none"});
+				$(".vignette_step1_dropzone_img_container").css({display : "none"});
+				$(".vignette_step1_dropzone_txt").css({display : "none"});
 				$(".couverture_step1_wrap_buttons").css({display : "block"});
-				$(".couverture_step2_resize_infos").css({display : "block"});
+				$(".vignette_step2_resize_infos").css({display : "block"});
 			};
 			
 			function CacheBtnES() {
 				$(".couverture_step1_wrap_buttons").css({display : "none"});
-				$(".couverture_step2_resize_infos").css({display : "none"});
+				$(".vignette_step2_resize_infos").css({display : "none"});
 			};
 			
 			function AfficheChercheImage() {
 				$("#image").attr("src", "");
-				$(".couverture_step1_dropzone_img_container").css({display : "block"});
-				$(".couverture_step1_dropzone_txt").css({display : "block"});
+				$(".vignette_step1_dropzone_img_container").css({display : "block"});
+				$(".vignette_step1_dropzone_txt").css({display : "block"});
 				$(".couverture_step1_wrap_buttons").css({display : "none"});
-				$(".couverture_step2_resize_infos").css({display : "none"});
-				$('#fenetre').css({height: 189 + 'px', top: 20 + 'px'});
+				$(".vignette_step2_resize_infos").css({display : "none"});
+				$('#fenetre').css({width: 405 + 'px', left: 140 + 'px', top: 20 + 'px'});
 				$("#image").css({display : "block"});
 			};
 
@@ -155,12 +143,12 @@
 			$('.couverture_step1_button_valider').click(function(e){
 				e.preventDefault();
 				e.stopPropagation();
-				if (CompteImageErg < 5) {
+				if (CompteImageErg < 1) {
 					CompteImageErg++;
 					var NumImage = CompteImageErg;
 					$("#image" + NumImage).addClass("is_valid");
 					$('#ImageTemp' + NumImage).val($('#ImageTemp').val());
-					$('#y' + NumImage).val($('#y').val());
+					$('#x' + NumImage).val($('#x').val());
 					$("#image" + NumImage).click(function(e){
 						e.preventDefault();
 						e.stopPropagation();
@@ -169,7 +157,7 @@
 					});
 					AfficheChercheImage();
 				}
-				else {alert ("Il y a déjà 5 images dans votre gallerie")}
+				else {alert ("Vous ne pouvez enregistrer qu'une image")}
 
 			});
 			
@@ -180,13 +168,13 @@
 				if ((CompteImageErg > 0) && (NumImage <= CompteImageErg)) {
 					for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
 						$('#ImageTemp' + (i - 1)).val($('#ImageTemp' + i).val());
-						$('#y' + (i - 1)).val($('#y' + i).val());
+						$('#x' + (i - 1)).val($('#x' + i).val());
 					}
 					$('#ImageTemp' + CompteImageErg).val("");
-					$('#y' + CompteImageErg).val("");
+					$('#x' + CompteImageErg).val("");
 					$("#image" + CompteImageErg).removeClass("is_valid");
 					$("#image" + CompteImageErg).unbind('click');
-					$('#y').val(0);
+					$('#x').val(0);
 					CompteImageErg--;
 				}
 				AfficheChercheImage();
@@ -194,18 +182,19 @@
 
 			$("#image").load(function() {
 				var img = document.getElementById('image');
-				var height;
-				if(img.offsetHeight) {height=img.offsetHeight;}
-				else if(img.style.pixelHeight){height=img.style.pixelHeight;}
-				var Newheight = Math.round(189 + (height - 189) * 2);
-				DecalageSelectionTop = 20;
-				var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
-				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
+				var width;
+				if(img.offsetWidth) {width=img.offsetWidth;}
+				else if(img.style.pixelWidth){width=img.style.pixelWidth;}
+				var Newwidth = Math.round(405 + (Math.max(width, 405) - 405) * 2);
+				DecalageSelectionLeft = 148;
+				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 405) / 2);
+				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px'});
 				AfficheBtnES();
-				var decalage = 0;
-				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val()*189/500;}
-//				alert(NumImageSel+' '+$('#y' + NumImageSel).val());
-				$(".draggable").css({top: decalage+'px'});
+				if ($('#x' + NumImageSel).val() != "") {
+					var decalage = -$('#x' + NumImageSel).val()*405/450;
+//				alert(NumImageSel+' '+$('#x' + NumImageSel).val());
+				$(".draggable").css({left: decalage+'px'});
+				}
 				$("#image").css({display : "block"});
 			});
 
@@ -213,15 +202,7 @@
 			var data = {
 							step : 2,
 							image1 : $('#ImageTemp1').val(),
-							image2 : $('#ImageTemp2').val(),
-							image3 : $('#ImageTemp3').val(),
-							image4 : $('#ImageTemp4').val(),
-							image5 : $('#ImageTemp5').val(),
-							y1 : $('#y1').val(),
-							y2 : $('#y2').val(),
-							y3 : $('#y3').val(),
-							y4 : $('#y4').val(),
-							y5 : $('#y5').val()
+							x1 : $('#x1').val(),
 						};
 				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
 			};
@@ -232,10 +213,10 @@
 				if (!DragInit) {
 					$( ".draggable" ).easyDrag({
 						'container': $('#fenetre'),
-						'axis': 'y',
+						'axis': 'x',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#y').val(($('#selection').offset().top - $(this).offset().top)*500/189);
+							$('#x').val(($('#selection').offset().left - $(this).offset().left)*450/405);
 						},
 						stop: function() {AfficheBtnES();}
 					});
@@ -279,8 +260,8 @@
 						NumImageSel = CompteImageErg+1;
 						$("#image").attr("src", e.target.result);
 						InitDrag();
-						$(".draggable").css({top: '0px'});
-						$('#y').val(0);
+						$(".draggable").css({left: '0px'});
+						$('#x').val(0);
 						$('#ImageTemp').val(e.target.result);
 
 						/*						Output(

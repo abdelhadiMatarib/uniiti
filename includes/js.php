@@ -183,6 +183,7 @@
 						// apply width to container manually, then trigger relayout
 						$container.width( columns * colW ).isotope('reLayout');
 					}
+					resizeboxContainer();
 				}).smartresize(); // trigger resize to set container width
 			});
 		});    
