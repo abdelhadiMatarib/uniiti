@@ -6,17 +6,11 @@
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="suggestioncommerce_head">
         <div class="suggestioncommerce_img_container">
-            <img src="<?php echo SITE_URL; ?>/img/pictos_popins/sugg_objet_icon.png" title="" alt="" height="44" width="37" />
+            <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_followers.png" title="" alt="" height="36" width="37" />
         </div><span class="maintitle">Ils suivent ce commerce</span>
     </div>  
     <style>
-        .follower{float:left;width:250px;border-bottom:1px solid #e4e4e4;}
-        .follower_img{float:left;}
-        .follower_content{float:left;padding:7px;background-color:#f0f0f0;}
-        .follower_identity_txt{font-size:0.9em;}
-        span.follower_identity_txt{display:block;}
-        span.follower_identity_txt_avis{font-size:0.9em;font-weight:600;display:inline-block;}
-        span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;display:inline-block;}
+
     </style>
     <div class="suggestioncommerce_body">
         <div class="follower">

@@ -97,7 +97,7 @@
                 </div>
                 <div class="objet_head_infos">
                     <div class="separateur"></div>
-                    <div class="objet_head_infos_services"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></div>
+                    <div class="objet_head_infos_services"><a href="#" onclick="OuvrePopin({}, '/includes/popins/classement_utilisateur.tpl.php', 'default_dialog');"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></a></div>
                     
                     <div class="objet_head_infos_infos"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_infos_text"><span class="objet_head_infos_infos_text_fin">Classement</span><span class="objet_head_infos_infos_text_couleur">Sport</span></div><span class="objet_head_infos_infos_classement">85<sup>ème</sup></span></div>
                     <div class="utilisateur_head_infos_suggestion">
@@ -126,7 +126,7 @@
            
         
 			<!-- FILTRE DE TRI -->
-			<?php include'../includes/filters.php' ?>
+			<?php include'../includes/filters_utilisateur_interface.php' ?>
 			<!-- FIN FILTRE DE TRI -->
 		</div>
     

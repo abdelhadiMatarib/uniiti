@@ -65,6 +65,7 @@
                             </a>
                         </div>
 			</div>
+                        
 			<!-- CONTENU PRINCIPAL -->
 			<div id="box_container" class="content">
 				<?php include 'includes/requete.php' ?>
