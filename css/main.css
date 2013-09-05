@@ -422,6 +422,7 @@ span.index_overlay_texte{display:block;}
 .inscription_field_sexe_button_f{background:url('../img/pictos_inscription/sexe_f.png') no-repeat;background-color:#f0f0f0;background-position-x:20px;background-position-y:5px;}
 .inscription_field_sexe_bg{background-color:#a4ebf1;}
 .inscription_field_input_text{padding:5px 0 5px 10px;font-size:1.2em;font-weight:600;width:335px;border:0 none;height:30px;background-color:#f0f0f0;}
+.inscription_field_input_chiffre{float:left;padding:10px 0 5px 20px;font-size:1.2em;font-weight:600;width:115px;border:0 none;height:40px;background-color:#f0f0f0;}
 
 .inscription_charte{float:left;height:145px;width:995px;background-color:white;}
 .inscription_charte .img_container{float:left;height:64px;width:56px;padding:40px;}

@@ -6,8 +6,11 @@
         <?php
         include_once '../config/configuration.inc.php'; ?>
     <body>
+		<div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
         <div class="biggymarginer">
+		
         <div class="big_wrapper">
+		
             <div class="liseret_bleu"></div>
             <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_fb_wrap">
@@ -25,40 +28,79 @@
                 <div class="inscription_step2"><h3>Choix de l'avatar</h3></div>
                 <div class="inscription_step3"><h3>Vos centres d'intérêts</h3></div>
             </div>
-            <div class="inscription_fields_left">
-                <div class="inscription_field_sexe inscription_border_bottomright">Sexe *</div>
-                <button class="inscription_field_sexe_button inscription_field_sexe_button_h" id="button_homme">Homme</button><button class="inscription_field_sexe_button inscription_field_sexe_button_f" id="button_femme">Femme</button>
-                <div class="clearfix"></div>
-                <div class="inscription_field_nom inscription_border_bottomright">Nom *</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_prenom inscription_border_bottomright">Prénom *</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_mail inscription_border_bottomright">Adresse mail *</div>
-                <input class="inscription_field_input_text" type="mail"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_confirmmail inscription_border_bottomright">Confirmation *</div>
-                <input class="inscription_field_input_text" type="mail"/>
-                <div class="clearfix"></div>
-            </div>
-            <div class="inscription_fields_right">
-                <div class="inscription_field_pseudo inscription_border_bottomright">Pseudo *</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_parrain inscription_border_bottomright">Parrain</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_cp inscription_border_bottomright">Code postal *</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_mdp inscription_border_bottomright">Mot de passe *</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-                <div class="inscription_field_confirmmdp inscription_border_bottomright">Confirmation *</div>
-                <input class="inscription_field_input_text" type="text"/>
-                <div class="clearfix"></div>
-            </div>
+			<form action="<?php echo SITE_URL; ?>/pages/inscription.php" method="post"  autocomplete="off">
+				<div class="inscription_fields_left">
+					<div class="inscription_field_sexe inscription_border_bottomright">Sexe *</div>
+					<button class="inscription_field_sexe_button inscription_field_sexe_button_h" id="button_homme">Homme</button><button class="inscription_field_sexe_button inscription_field_sexe_button_f" id="button_femme">Femme</button>
+					<div class="clearfix"></div>
+					<div class="inscription_field_nom inscription_border_bottomright">Nom *</div>
+					<input name="nom" id="nom" class="inscription_field_input_text" required="required" type="text"/>
+					<div class="clearfix"></div>
+					<div class="inscription_field_prenom inscription_border_bottomright">Prénom *</div>
+					<input name="prenom" id="prenom" class="inscription_field_input_text" required="required" type="text"/>
+					<div class="clearfix"></div>
+					
+					<div class="inscription_field_prenom inscription_border_bottomright">Date de naissance *</div>
+					<select name="date_naissance_jour" id="date_naissance_jour" class="inscription_field_input_chiffre" required="required">
+                        <option>Jour...</option>
+                        <?php 
+                        for ($jour = 1; $jour < 32; $jour++) {
+                            echo '<option value="'. $jour .'">'. $jour .'</option>';
+                        } 
+                        ?>
+                    </select>
+                    <select name="date_naissance_mois" id="date_naissance_mois" class="inscription_field_input_chiffre" required="required">
+                        <option>Mois...</option>
+                        <?php 
+                        for ($mois = 1; $mois < 13; $mois++) {
+                            echo '<option value="'. $mois .'">'. $mois .'</option>';
+                        } 
+                        ?>
+                    </select>
+                    <select name="date_naissance_annee" id="date_naissance_annee" class="inscription_field_input_chiffre" required="required">
+                        <option>Année...</option>
+                        <?php
+                        for ($annee = (date('Y')-120); $annee <= date('Y'); $annee++) {
+                            echo '<option value="'. $annee .'">'. $annee .'</option>';
+                        } 
+                        ?>
+                    </select>
+					<div class="clearfix"></div>
+										
+					<div class="inscription_field_mail inscription_border_bottomright">Adresse mail *</div>
+					<input name="email-login" id="email_login" class="inscription_field_input_text" required="required" type="mail"/>
+					<div class="clearfix"></div>
+					<div class="inscription_field_confirmmail inscription_border_bottomright">Confirmation *</div>
+					<input name="email-login2" id="email_login2" class="inscription_field_input_text" required="required" type="mail"/>
+					<div class="clearfix"></div>
+				</div>
+				<div class="inscription_fields_right">
+					<div class="inscription_field_pseudo inscription_border_bottomright">Pseudo *</div>
+					<input class="inscription_field_input_text" required="required" type="text"/>
+					<div class="clearfix"></div>
+					<div class="inscription_field_parrain inscription_border_bottomright">Parrain</div>
+					<input name="parrain" id="parrain" class="inscription_field_input_text" type="text"/>
+					<div class="clearfix"></div>
+					<div class="inscription_field_cp inscription_border_bottomright">Code postal *</div>
+					<input name="codepostal" id="codepostal" class="inscription_field_input_text" required="required" type="text"/>
+					<div class="clearfix"></div>
+					<div class="inscription_field_mdp inscription_border_bottomright">Mot de passe *</div>
+					<input name="password" id="mdp" class="inscription_field_input_text" required="required" type="text"/>
+					<div class="clearfix"></div>
+					<div class="inscription_field_confirmmdp inscription_border_bottomright">Confirmation *</div>
+					<input name="password2" id="mdp2" class="inscription_field_input_text" required="required" type="text"/>
+					<div class="clearfix"></div>
+					
+					<input type="hidden" name="ville" id="ville" required="required" placeholder="Saisir votre ville" value="Paris"/>
+                    <input type="hidden" name="pays" id="pays" required="required" placeholder="Saisir votre code postal" value="France"/>
+                    <input type="hidden" name="telephone_contributeur" id="telephone" placeholder="Saisir votre telephone" value=""/>
+                    <input type="hidden" name="newsletter" id="newsletter" value="non">
+                    <input type="hidden" name="bonus" id="bonus" value="non">
+					
+				</div>
+				
+				<button id="submitbutton" type="submit" role="button" class="css3button" style="display:none">Envoyer</button>
+			</form>
             <div class="inscription_charte">
                 <div class="img_container"><img src="../img/pictos_inscription/charte.png" height="64" width="56" title="" alt=""/></div>
                 <div class="inscription_charte_texte">
@@ -75,9 +117,50 @@
             <div class="inscription_footer">
                 <h4 class="inscription_footer_highlight">Nous nous engageons à protéger votre vie privée et votre adresse e-mail ne sera jamais vendue ni louée.</h4> 
                 <h4 class="inscription_footer_text">En cliquant sur suivant, vous indiquez que vous acceptez notre Charte de confidentialité et nos Conditions d'utilisation.</h4>
-                <div class="inscription_next_step_button"><a href="#" onclick="ActualisePopin({}, '/pages/inscription2.php', 'default_dialog_inscription');" title="">Suivant</a></div>
+                <div class="inscription_next_step_button"><a href="#" onclick="VerifieEtErg();" title="">Suivant</a></div>
             </div>
         </div><!-- FIN BIG WRAPPER -->
         </div><!-- FIN BIGGY -->
+
+	<script>
+		// Boutons choix sexe formulaire d'inscription
+	$('#button_homme').click(function() {
+		$('.inscription_field_sexe_button_f').removeClass('inscription_field_sexe_bg');
+		$('.inscription_field_sexe_button_h').toggleClass('inscription_field_sexe_bg');
+	});
+	$('#button_femme').click(function() {
+		$('.inscription_field_sexe_button_h').removeClass('inscription_field_sexe_bg');
+		$('.inscription_field_sexe_button_f').toggleClass('inscription_field_sexe_bg');
+	});
+
+	// getElementById
+	function $id(id) {return document.getElementById(id);}
+	
+	function VerifieEtErg() {
+
+		if ($id("mdp").value != $id("mdp2").value) {alert("les deux mots de passe ne correspondent pas !");return;}
+		if ($id("email_login").value != $id("email_login2").value) {alert("les deux emails ne correspondent pas !");return;}
+//		submitbutton.click();
+/*		var data = {
+		        'email-login' : $id("email_login").value,
+                prenom : $id("prenom").value,
+                nom : $id("nom").value,
+                'date-naissance-jour' : $id("date_naissance_jour").value,
+                'date-naissance-mois' : $id("date_naissance_mois").value,
+                'date-naissance-annee' : $id("date_naissance_annee").value,
+                sexe : 1,
+                password : $id("mdp").value,
+                ville : $id("ville").value,
+                codepostal : $id("codepostal").value,
+                pays : $id("pays").value,
+                telephone_contributeur : $id("telephone_contributeur").value
+		};*/
+		ActualisePopin({}, '/pages/enregistrer_inscription.php', 'default_dialog_inscription');
+	};	
+	
+	
+	
+	</script>
+		
     </body>
 </html>

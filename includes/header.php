@@ -59,31 +59,27 @@
             </div>
 
             <div class="header_user">
-                <div class="header_img_container"><img src="<?php echo SITE_URL; ?>/img/userpic.png" title="" alt="" height="30" width="30"/></div>
+                <div class="header_img_container"><img src="<?php if ($Connecte) {echo SITE_URL; ?>/img/userpic.png" <?php } ?>title="" alt="" height="30" width="30"/></div>
                 <div class="header_usermenu">
-					<a id="header_usermenu" href="#">
-						<?php if ($Connecte) {echo $prenom_contributeur . " " . $nom_contributeur;} else {echo "Vous n'êtes pas connecté";}?>
+					<a id="header_usermenu" href="#" <?php if (!$Connecte) { ?>onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');<?php } ?>">
+						<?php if ($Connecte) {echo $prenom_contributeur . " " . $nom_contributeur;} else {echo "Inscription | Connexion";}?>
 					</a>
 				</div>
-                <div id="header_flechebas_usermenu" class="header_flechebas"><a id="header_usermenu2" href="#"></a></div>
-            </div>
-            <div id="header_menu" class="header_user_menulist">
 				<?php if ($Connecte) { ?>
+                <div id="header_flechebas_usermenu" class="header_flechebas"><a id="header_usermenu2" href="#"></a></div>
+				<?php } ?>
+            </div>
+				<?php if ($Connecte) { ?>
+            <div id="header_menu" class="header_user_menulist">
                 <ul>
                     <li><a href="<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=" . $_SESSION['SESS_MEMBER_ID'];?>" title="">Mon profil perso</a></li>
                     <li><a href="#" title="">Mon restaurant</a></li>
-                    <li><a href="#" title="">Suggérer un commerce</a></li>
-                    <li><a href="#" title="">Suggérer un objet</a></li>
+                    <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');">Suggérer un commerce</a></li>
+                    <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');">Suggérer un objet</a></li>
                     <li><a href="<?php echo SITE_URL . "/acces/logout.php" ?>" title="">Déconnexion</a></li>
                 </ul>
-				<?php }
-				else { ?>
-                <ul>
-                    <li><a href="#" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');">S'inscrire / Se connecter</a></li>
-                </ul>				
-				<?php } ?>
             </div>
-
+				<?php } ?>
         </div>
         <div class="recherche_avancee_wrapper big_wrapper"></div>
     </header>
