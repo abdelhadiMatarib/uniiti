@@ -118,7 +118,7 @@
                     <div class="utilisateur_head_infos_suggestion">
                         <div class="commerce_reservation_commerce"><a href="#" onclick="OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');" title=""><span class="utilisateur_suggerer_commerce_firstcat">Réservation</span></a></div>
                         <div class="clearfix"></div>
-                        <div class="commerce_optin_commerce"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');"><span class="utilisateur_suggerer_objet_firstcat">Campagne opt-in</span></a></div>
+                        <div class="commerce_optin_commerce"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');"><span class="utilisateur_suggerer_objet_firstcat">Campagne opt-in</span></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -141,7 +141,7 @@
                 <div class="commerce_head2_right">
                 <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>2</span></div>
                 <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
-                <div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span>1258</span></div>
+                <a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog');"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span>1258</span></div></a>
                 </div>
             </div>
             <div class="commerce_couv">

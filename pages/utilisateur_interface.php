@@ -125,7 +125,7 @@
            
         
 			<!-- FILTRE DE TRI -->
-			<?php include'../includes/filters.php' ?>
+			<?php include'../includes/filters_utilisateur_interface.php' ?>
 			<!-- FIN FILTRE DE TRI -->
 		</div>
     
