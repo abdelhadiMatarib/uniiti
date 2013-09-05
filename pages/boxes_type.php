@@ -55,6 +55,58 @@ include'../includes/js.php';?>
 
                         </div>
                         <!-- FIN VIGNETTE TYPE -->
+<h1>BOX CLASSEMENT</h1>
+<!-- VIGNETTE TYPE -->
+                        <div class="box" id="">
+
+                                <header>
+                                        <div class="box_icon"><img src="../img/pictos_commerces/restaurant.png" title="" alt="" /></div>
+<!--					<div class="box_desc" onclick="location.href='.html';">
+                                                <div class="box_desc" onclick="location.href='/.html';">
+-->					<div class="box_desc" onclick="location.href=''">
+                                                        <span class="box_title" title=""></span>
+                                                        <span class="box_subtitle">Restauration</span>
+                                        </div>
+                                </header>
+
+                                <figure>
+                                        <div class="box_mark">
+                                                <div class="box_stars">
+                                                        
+                                                </div>
+                                                <div class="box_headratings"><span> avis</span></div>
+                                        </div>
+
+                                        <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
+                                        <div class="box_push_et_img">
+                                        <img src="../img/photos_commerces/1.jpg" title="" alt="" />
+                                        <div class="box_push"></div>
+                                        </div>
+                                        <div class="overlay_push">
+                                            <div class="push_buttons_wrapper">
+                                                    <div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
+                                                    <div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
+                                                    <div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+                                            </div>
+                                        </div>
+                                </figure>
+
+
+                                
+
+                                <footer>
+
+                                        <div class="box_foot">
+                                            <div class="box_foot_classement">
+                                                <div class="arrow_up"></div>
+                                                <span class="box_foot_classement_nbr">1</span>
+                                            </div>   
+                                        </div>
+                                </footer>
+
+                        </div>
+                        <!-- FIN VIGNETTE TYPE -->
+                        
 <h1>BOX RECOMMANDATIONS v</h1>
 <!-- VIGNETTE TYPE -->
                         <div class="box" id="">
@@ -106,6 +158,9 @@ include'../includes/js.php';?>
                                 .box_new_item{padding:0px 7px 2px 7px;background-color:#ff4343;font-size:12px;color:white;font-weight:400;border-radius:3px;}
                                 .box_avis_attente_commercant_wrap{padding:10px 0;text-align:center;}
                                 .box_avis_attente_commercant_wrap span{display:block;}
+                                .box_foot_classement{background-color: #fabe41;text-align:center;height:50px;width:50px;margin: auto;position: absolute;top: -20px; left: 0; bottom: 0; right: 0;}
+                                .box_foot_classement .arrow_up{position:absolute;top:-5px;right:20px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid #fabe41;}
+                                .box_foot_classement_nbr{font-size:2.8em;color:white;font-weight:700;}
                             </style>
 
                                 <footer>
