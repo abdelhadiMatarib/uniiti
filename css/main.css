@@ -399,10 +399,10 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .utilisateur_head_desc_title h2{font-size: 1.7em;font-weight: 300;margin: 9px 0 0 0;display: inline-block;}
 .utilisateur_head_desc_avatar{position: absolute;top: 50px;z-index: 1;left: 10px;}
 .utilisateur_head_desc_avatar img{border:1px solid white;}
-.utilisateur_head_desc_desc{float:left;width:140px;padding:8px 0 0 175px;}
+.utilisateur_head_desc_desc{float:left;width:140px;padding:6px 0 0 175px;}
 .utilisateur_head_desc_desc span{display:block;}
 .utilisateur_head_desc_desc_lastcat{font-weight:bold;text-transform: uppercase;}
-.utilisateur_head_desc_desc2{float:left;width:160px;padding:8px 0 0 10px;}
+.utilisateur_head_desc_desc2{float:left;width:160px;padding:6px 0 0 10px;}
 .utilisateur_head_desc_desc2 span{display:block;}
 .utilisateur_head_desc_desc2_lastcat{font-weight:bold;text-transform: uppercase;}
 .utilisateur_head2_avis{float:left;text-align:center;margin: 4px 0 0 10px;border-left:1px solid #444444;}
