@@ -28,11 +28,11 @@
 	?>
 			<div class="inscription_box">
 				<div class="inscription_box_head">
-					<div class="inscription_box_head_img_container categorie_restauration_img"><img src="../img/pictos_commerces/restauration_s.png" /></div>
+					<div class="inscription_box_head_img_container categorie_restauration_img"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_s.png" /></div>
 					<div class="inscription_box_head_desc"><span class="categorie_titre" title="<?php echo $nom_enseigne; ?>"><?php echo tronqueName($nom_enseigne, 20); ?></span><span class="categorie_restauration_texte">Restauration</span></div>
 				</div>
 				<div class="inscription_box_body_img">
-					<figure><img src="../img/photos_commerces/p1.jpg" title="" alt="" /></figure>
+					<figure><img src="<?php echo SITE_URL; ?>/img/photos_commerces/p1.jpg" title="" alt="" /></figure>
 				</div>
 			</div>
 	<?php

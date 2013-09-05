@@ -33,7 +33,7 @@ function OuvrePopin(data, url, div) {
 		success: function(html){
 			$("#" + div).html(html).dialog('open');
 		},
-		error: function() {alert('Erreur sur url : ' + $url);}
+		error: function() {alert('Erreur sur url : ' + url);}
 	});
 	$("#dialog_overlay").css({display: "none"});
 }
@@ -49,9 +49,14 @@ function ActualisePopin(data, url, div) {
 		success: function(html){
 			$("#" + div).dialog('close').html(html).dialog('open');
 		},
-		error: function() {alert('Erreur sur url : ' + $url);}
+		error: function() {alert('Erreur sur url : ' + url);}
 	});
 	$("#dialog_overlay").css({display: "none"});
+}
+
+function Inscription(data) {
+	$("#default_dialog").dialog('close');
+	OuvrePopin(data, '/pages/inscription.php', 'default_dialog_inscription');
 }
 
 function CreerOverlayPush() {
@@ -601,6 +606,25 @@ $(document).ready(function() {
 				e.preventDefault(); //don't go to default URL
 				var defaultdialog_large = $("#default_dialog_large").dialog();
 				defaultdialog_large.dialog('close');
+			});
+		}
+	});
+	
+	var defaultdialog_inscription = $("#default_dialog_inscription").dialog({ 
+		autoOpen: false,
+		modal:true,
+		draggable:false,
+		resizable:false,
+		width: '1300px',
+		height: 'auto',
+		open: function() {
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#default_dialog_inscription').dialog('close');
+			})
+			$('.popin_close_button').click(function(e){
+				e.preventDefault(); //don't go to default URL
+				var defaultdialog_inscription = $("#default_dialog_inscription").dialog();
+				defaultdialog_inscription.dialog('close');
 			});
 		}
 	});

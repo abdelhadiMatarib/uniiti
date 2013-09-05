@@ -1,5 +1,8 @@
 <?php
-        include_once '../../config/configuration.inc.php';?>
+        include_once '../../config/configuration.inc.php';
+		$urlTo = FALSE; // Déclaration variable pour login_access destination
+		$data = "{}";
+?>
 <div class="ident_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="ident_head">
@@ -16,15 +19,26 @@
         
         </div>
         <div class="ident_inputs">
-            <input class="ident_input_username" type="text" /><input class="ident_input_password" type="password" />
+			<form action="<?php echo SITE_URL; ?>/acces/login_access.php" method="post" autocomplete="off">
+                <input class="ident_input_username" type="text" name="email-login" id="email-login" />
+
+                <input class="ident_input_password" type="password" name="password" id="password" />
+                
+                <input type="hidden" name="urlTo" readonly value="<?php echo $urlTo; ?>" />
+
+                <button id="submitbutton" type="submit" role="button" class="css3button" style="display:none;">Se connecter</button>
+            </form>
         </div> 
             
     </div>
     <div class="ident_footer">
         
-        <div class="ident_inscription_wrap"><a href="#">Inscription</a></div>
-        <div class="ident_connexion_wrap"><a href="#">Connexion</a></div>
+        <div class="ident_inscription_wrap" onclick="Inscription(<?php echo $data; ?>);"><a href="#">Inscription</a></div>
+        <div class="ident_connexion_wrap" onclick="$('#submitbutton').click();"><a href="#">Connexion</a></div>
         
     </div>
 </div>
+<script>
+
+</script>
 </html>

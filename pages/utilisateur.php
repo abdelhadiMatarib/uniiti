@@ -4,6 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
         <?php
+		include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
         include_once '../config/configuration.inc.php';
         include'../includes/head.php';
 		include_once '../includes/fonctions.inc.php';
