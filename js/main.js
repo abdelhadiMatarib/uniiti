@@ -1,6 +1,6 @@
 function filter(){
         $('.rang2 li,.rang3 li,.rang4 li').hide();
-        
+        $(".filters").css({display: "block"});
         $('.rang0 li').click(function(){
             $('.rang1 li').show('slideUp');
             $('.rang2 li,.rang3 li,.rang4 li').hide('slideDown');
@@ -544,7 +544,7 @@ function resizeboxContainer(){
 		
 		$('.ligne_verticale3').css('left','1562px').css('height','496px');
 	}
-
+	if ($(".content").css("display") == "none") {$(".content").css({display: "block"});}
 }
 	
 

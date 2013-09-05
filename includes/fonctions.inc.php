@@ -1,4 +1,5 @@
 <?php
+
 // Affichage ... si texte trop long
 function tronque($str, $nb = 30) {
     // Si le nombre de caractères présents dans la chaine est supérieur au nombre 
@@ -118,4 +119,33 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
     }
     return $url;
 }
+
+function AfficheEtoiles($note_arrondi) {
+	$html = "";
+	$reste = $note_arrondi / 2 - round($note_arrondi / 2);
+	if ($reste <= -0.25) {$nbpleines = round($note_arrondi / 2) - 1;}
+	else {$nbpleines = round($note_arrondi / 2);}
+	for ($i = 1 ; $i <= $nbpleines ; $i++) {
+	$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -76px\"></div>";
+	}
+	if (($reste <= -0.25) or ($reste >= 0.25)) {
+		$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -19px -76px\"></div>";	
+	}
+	return $html;
+}
+
+function AfficheTrusts($note_arrondi) {
+	$html = "";
+	$reste = $note_arrondi / 2 - round($note_arrondi / 2);
+	if ($reste <= -0.25) {$nbpleines = round($note_arrondi / 2) - 1;}
+	else {$nbpleines = round($note_arrondi / 2);}
+	for ($i = 1 ; $i <= $nbpleines ; $i++) {
+	$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -38px -76px\"></div>";
+	}
+	if (($reste <= -0.25) or ($reste >= 0.25)) {
+		$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -57px -76px\"></div>";	
+	}
+	return $html;
+}
+
 ?>
