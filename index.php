@@ -4,7 +4,8 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
-        <?php 
+        <?php
+		include_once 'acces/auth.inc.php';                 // Gestion accès à la page - incluant la session		
 		header("Cache-Control: no-cache");
         include_once 'config/configuration.inc.php';
         include 'includes/head.php';
@@ -13,6 +14,7 @@
     <body>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
+        <div id="default_dialog_inscription"></div>
         <div id="dialog_overlay">
 			<div class="index_overlay"></div>
 			<div class="dialog_overlay_wrap_content">

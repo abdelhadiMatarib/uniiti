@@ -1,0 +1,20 @@
+<?php
+define ('CONTRIBUTEUR', 0x01);       // Définition des constantes - 1 constante = 1 droit
+define ('PROFESSIONNEL', 0x02);
+define ('MODERATEUR', 0x04);
+define ('ADMINISTRATEUR', 0x08);
+
+// Constante
+//0x10
+//0x20
+//0x40
+//0x80
+//0x100
+//0x200
+//0x400
+//0x800
+//0x1000
+//0x2000
+//0x4000
+//0x8000
+?>

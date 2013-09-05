@@ -5,26 +5,26 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
         <?php
-        include_once '../config/configuration.inc.php';
-        include'../includes/head.php'; ?>
+        include_once '../config/configuration.inc.php';?>
     <body>		
 		<!-- Required -->
+		        <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/main.css">
+		
 		<link type="text/css" href="../Slider/css/fancymoves.css" media="screen" charset="utf-8" rel="stylesheet"  />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="../Slider/js/slider.js" charset="utf-8"></script>
-		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+		<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 		<!-- Demo only -->
 		<script type="text/javascript" src="../Slider/demo/demo.js"></script>
-		<script language="javascript" src="../js/jquery.easydrag.min.js"></script>
 	
 		<style>
 			#filedrag:hover {box-shadow: inset 0 3px 4px #888;}
 		</style>	
-        <?php include'../includes/header.php'; ?>
         <div class="biggymarginer">
         <div class="big_wrapper">
             <div class="liseret_bleu"></div>
-            <div class="inscription_head"><h2><img src="../img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_head2">
                 <div class="inscription_step1"><h3>Informations générales</h3></div>
                 <div class="inscription_step2 inscription_current_step_texte_head"><h3>Choix de l'avatar</h3></div>
@@ -61,7 +61,7 @@
 				<!-- Slider --><div id="wrapper">
 					<div id="slider-one">
 						<?php for ($i = 1 ; $i < 10 ; $i++) { ?>
-							<div class="draggable"><img onclick="ChangeAvatar('../Slider/images/demo-images/img<?php echo $i; ?>.jpg');" src="../Slider/images/demo-images/img<?php echo $i; ?>.jpg" alt="" /></div>
+							<div class="draggable"><img onclick="ChangeAvatar('../Slider/images/demo-images/img<?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/Slider/images/demo-images/img<?php echo $i; ?>.jpg" alt="" /></div>
 						<?php } ?>
 					</div></div>
 				<!-- /Slider -->
@@ -70,9 +70,9 @@
             <div class="inscription_wrap_next_step2">
             <div class="inscription_next_step2">
                 <div class="inscription_current_step"><span class="inscription_current_step_number">2</span><span class="inscription_current_step_etape_texte">étape</span></div>
-                <div class="inscription_next_step_button2"><a href="<?php echo SITE_URL . "/pages/inscription3.php"?>" title="">Suivant</a></div>
+                <div class="inscription_next_step_button2"><a href="#" onclick="ActualisePopin({}, '/pages/inscription3.php', 'default_dialog_inscription');" title="">Suivant</a></div>
             </div>
-                <div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><img id="Avatar" src="../img/avatars/6.png" height="120" width="120" title="" alt="" /></div>
+                <div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><img id="Avatar" src="<?php echo SITE_URL; ?>/img/avatars/6.png" height="120" width="120" title="" alt="" /></div>
             </div>
             
         </div><!-- FIN BIG WRAPPER -->

@@ -4,14 +4,12 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
         <?php
-        include_once '../config/configuration.inc.php';
-        include'../includes/head.php'; ?>
+        include_once '../config/configuration.inc.php'; ?>
     <body>
-        <?php include'../includes/header.php'; ?>
         <div class="biggymarginer">
         <div class="big_wrapper">
             <div class="liseret_bleu"></div>
-            <div class="inscription_head"><h2><img src="../img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_fb_wrap">
                 <div class="inscription_fb_plus"><a href="#" title=""><img src="../img/pictos_inscription/plus_fb.png" height="48" width="48" title="" alt=""/></a></div>
                 <a class="fb_connect_pourquoi" href="#" title="Pourquoi se connecter avec Facebook ?">Pourquoi ?</a>
@@ -77,10 +75,9 @@
             <div class="inscription_footer">
                 <h4 class="inscription_footer_highlight">Nous nous engageons à protéger votre vie privée et votre adresse e-mail ne sera jamais vendue ni louée.</h4> 
                 <h4 class="inscription_footer_text">En cliquant sur suivant, vous indiquez que vous acceptez notre Charte de confidentialité et nos Conditions d'utilisation.</h4>
-                <div class="inscription_next_step_button"><a href="<?php echo SITE_URL . "/pages/inscription2.php"?>" title="">Suivant</a></div>
+                <div class="inscription_next_step_button"><a href="#" onclick="ActualisePopin({}, '/pages/inscription2.php', 'default_dialog_inscription');" title="">Suivant</a></div>
             </div>
         </div><!-- FIN BIG WRAPPER -->
         </div><!-- FIN BIGGY -->
- <?php include'../includes/js.php' ?>
     </body>
 </html>

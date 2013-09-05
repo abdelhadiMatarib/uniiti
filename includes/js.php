@@ -11,6 +11,15 @@
 	<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.easydrag.dialog.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+			<!-- Required -->
+		<link type="text/css" href="/Slider/css/fancymoves.css" media="screen" charset="utf-8" rel="stylesheet"  />
+		<script type="text/javascript" src="/Slider/js/slider.js" charset="utf-8"></script>
+
+		<!-- Demo only -->
+		<script type="text/javascript" src="/Slider/demo/demo.js"></script>
+	
+	
 
 <!-- POUR RIGOLER -->
     <script src="<?php echo SITE_URL; ?>/js/jquery.imagesloaded.min.js"></script>
