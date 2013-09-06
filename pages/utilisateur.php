@@ -46,6 +46,7 @@
 <body>    
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
+	<div id="default_dialog_inscription"></div>
 	<div id="dialog_overlay">
 		<div class="index_overlay"></div>
 		<div class="dialog_overlay_wrap_content">

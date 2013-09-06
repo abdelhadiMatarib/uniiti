@@ -95,6 +95,16 @@
 				. "count_likes :" . $count_likes . ","
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
+				
+			if(isset($_SESSION['SESS_MEMBER_ID'])) {
+				$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . "}";
+				$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
+				$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
+				$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+			} else {
+				$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+			}
+				
 	?>
 
                       <!-- VIGNETTE TYPE -->
@@ -119,16 +129,16 @@
 					</div>
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<div class="box_push_et_img">
-                                        <img src="../img/photos_commerces/1.jpg" title="" alt="" />
-                                        <div class="box_push"></div>
-                                        </div>
-                                        <div class="overlay_push">
-                                            <div class="push_buttons_wrapper">
-                                                <div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
-                                                <div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
-                                            </div>
-                                        </div>
+						<img src="../img/photos_commerces/1.jpg" title="" alt="" />
+						<div class="box_push"></div>
+					</div>
+					<div class="overlay_push">
+						<div class="push_buttons_wrapper">
+							<div onclick="<?php echo $like_step1; ?>" class="push_buttons_like"><a href="#" title=""></a></div>
+							<div onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike"><a href="#" title=""></a></div>
+							<div onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+						</div>
+					</div>
 				</figure>
 				
 				<section onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');">

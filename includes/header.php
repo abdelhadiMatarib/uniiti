@@ -14,15 +14,15 @@
 
 		$req_header_contrib = $bdd->prepare($sql_header_contrib);
 
-		$id_contributeur = $_SESSION['SESS_MEMBER_ID'];
-		$req_header_contrib->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
+		$id_contributeurActif = $_SESSION['SESS_MEMBER_ID'];
+		$req_header_contrib->bindParam(':id_contributeur', $id_contributeurActif, PDO::PARAM_INT);
 
 		$req_header_contrib->execute();
 		$result_header_contrib = $req_header_contrib->fetch(PDO::FETCH_ASSOC);
 		
-		$photo_contributeur  = $result_header_contrib['photo_contributeur'];
-		$prenom_contributeur = $result_header_contrib['prenom_contributeur'];
-		$nom_contributeur = $result_header_contrib['nom_contributeur'];
+		$photo_contributeurActif  = $result_header_contrib['photo_contributeur'];
+		$prenom_contributeurActif = $result_header_contrib['prenom_contributeur'];
+		$nom_contributeurActif = $result_header_contrib['nom_contributeur'];
 		
 		$req_header_contrib->closeCursor();    // Ferme la connexion du serveur
 	}
@@ -62,7 +62,7 @@
                 <div class="header_img_container"><img src="<?php if ($Connecte) {echo SITE_URL; ?>/img/userpic.png" <?php } ?>title="" alt="" height="30" width="30"/></div>
                 <div class="header_usermenu">
 					<a id="header_usermenu" href="#" <?php if (!$Connecte) { ?>onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');<?php } ?>">
-						<?php if ($Connecte) {echo $prenom_contributeur . " " . $nom_contributeur;} else {echo "Inscription | Connexion";}?>
+						<?php if ($Connecte) {echo $prenom_contributeurActif . " " . $nom_contributeurActif;} else {echo "Inscription | Connexion";}?>
 					</a>
 				</div>
 				<?php if ($Connecte) { ?>
