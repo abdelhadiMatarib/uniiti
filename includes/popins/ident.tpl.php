@@ -33,7 +33,7 @@
     </div>
     <div class="ident_footer">
         
-        <div class="ident_inscription_wrap" onclick="Inscription(<?php echo $data; ?>);"><a href="#">Inscription</a></div>
+        <div class="ident_inscription_wrap" onclick="OuvrePopinInscription(<?php echo $data; ?>);"><a href="#">Inscription</a></div>
         <div class="ident_connexion_wrap" onclick="$('#submitbutton').click();"><a href="#">Connexion</a></div>
         
     </div>

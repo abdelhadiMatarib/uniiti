@@ -59,7 +59,7 @@ function ActualisePopin(data, url, div) {
 	$("#dialog_overlay").css({display: "none"});
 }
 
-function Inscription(data) {
+function OuvrePopinInscription(data) {
 	$("#default_dialog").dialog('close');
 	OuvrePopin(data, '/pages/inscription.php', 'default_dialog_inscription');
 }

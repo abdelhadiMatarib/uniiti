@@ -17,16 +17,17 @@
 		$req->execute();
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		
+		$Compteur = 0;
 		foreach ($result as $row) {
+			$Compteur++;
 			// Enseigne
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
 			$url                     = $row['url'];
-
 	?>
-			<div class="inscription_box">
+			<div class="inscription_box" id="<?php echo $id_enseigne;?>">
 				<div class="inscription_box_head">
 					<div class="inscription_box_head_img_container categorie_restauration_img"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_s.png" /></div>
 					<div class="inscription_box_head_desc"><span class="categorie_titre" title="<?php echo $nom_enseigne; ?>"><?php echo tronqueName($nom_enseigne, 20); ?></span><span class="categorie_restauration_texte">Restauration</span></div>
@@ -36,6 +37,6 @@
 				</div>
 			</div>
 	<?php
-	}
+		}
 	?>
 </html>
