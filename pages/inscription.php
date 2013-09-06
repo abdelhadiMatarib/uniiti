@@ -28,7 +28,7 @@
                 <div class="inscription_step2"><h3>Choix de l'avatar</h3></div>
                 <div class="inscription_step3"><h3>Vos centres d'intérêts</h3></div>
             </div>
-			<form id="FormInscription" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/pages/enregistrer_inscription.php" method="post"  autocomplete="off">
+			<form id="FormInscription" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/pages/inscription2.php" method="post"  autocomplete="off">
 				<div class="inscription_fields_left">
 					<div class="inscription_field_sexe inscription_border_bottomright">Sexe *</div>
 					<input type="hidden" name="sexe" id="sexe" value="2"/>
@@ -58,7 +58,7 @@
                         } 
                         ?>
                     </select>
-                    <select name="date-naissance-annee" id="date_naissance_annee" class="inscription_field_input_chiffre" required="required">
+                    <select name="date_naissance_annee" id="date_naissance_annee" class="inscription_field_input_chiffre" required="required">
                         <option>Année...</option>
                         <?php
                         for ($annee = (date('Y')-120); $annee <= date('Y'); $annee++) {
@@ -74,7 +74,7 @@
 				</div>
 				<div class="inscription_fields_right">
 					<div class="inscription_field_parrain inscription_border_bottomright">Téléphone</div>
-					<input type="text" name="telephone_contributeur" id="telephone_contributeur" class="inscription_field_input_text" placeholder="Saisir votre numéro de téléphone" value=""/>
+					<input type="text" name="telephone_contributeur" id="telephone_contributeur" class="inscription_field_input_text" placeholder="Saisir votre numéro de téléphone"/>
 					<div class="clearfix"></div>
 					<div class="inscription_field_mail inscription_border_bottomright">Adresse mail *</div>
 					<input name="email-login" id="email_login" class="inscription_field_input_text" required="required" type="mail"/>
@@ -83,10 +83,10 @@
 					<input name="email-login2" id="email_login2" class="inscription_field_input_text" required="required" type="mail"/>
 					<div class="clearfix"></div>					
 					<div class="inscription_field_mdp inscription_border_bottomright">Mot de passe *</div>
-					<input name="password" id="mdp" class="inscription_field_input_text" required="required" type="password"/>
+					<input name="mdp" id="mdp" class="inscription_field_input_text" required="required" type="password"/>
 					<div class="clearfix"></div>
 					<div class="inscription_field_confirmmdp inscription_border_bottomright">Confirmation *</div>
-					<input name="password2" id="mdp2" class="inscription_field_input_text" required="required" type="password"/>
+					<input name="mdp2" id="mdp2" class="inscription_field_input_text" required="required" type="password"/>
 					<div class="clearfix"></div>
 					
 <!--				<div class="inscription_field_pseudo inscription_border_bottomright">Pseudo *</div>		-->
@@ -155,20 +155,20 @@
 		if ($id("email_login").value != $id("email_login2").value) {alert("les deux emails ne correspondent pas");return false;}
 		if (!VerifEmail($id("email_login").value)) {alert("format de l'email invalide");return false;}
 		var data = {
-		        'email-login' : $id("email_login").value,
+		        'email_login' : $id("email_login").value,
                 prenom : $id("prenom").value,
                 nom : $id("nom").value,
-                'date-naissance-jour' : $id("date_naissance_jour").value,
-                'date-naissance-mois' : $id("date_naissance_mois").value,
-                'date-naissance-annee' : $id("date_naissance_annee").value,
-                sexe : 1,
-                password : $id("mdp").value,
+                'date_naissance_jour' : $id("date_naissance_jour").value,
+                'date_naissance_mois' : $id("date_naissance_mois").value,
+                'date_naissance_annee' : $id("date_naissance_annee").value,
+                sexe : $id("sexe").value,
+                mdp : $id("mdp").value,
                 ville : $id("ville").value,
                 codepostal : $id("codepostal").value,
                 pays : $id("pays").value,
                 telephone_contributeur : $id("telephone_contributeur").value
 		};
-		ActualisePopin(data, '/pages/enregistrer_inscription.php', 'default_dialog_inscription');
+		ActualisePopin(data, '/pages/inscription2.php', 'default_dialog_inscription');
 		return false; // si false l action du form ne sera pas appelé
 	};	
 	

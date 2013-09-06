@@ -455,7 +455,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .inscription_footer h4{margin:0;}
 .inscription_footer_text{font-weight:400;}
 .inscription_footer_highlight{font-weight:700;}
-.inscription_next_step_button{padding:7px 0 0 0;text-align:center;color:white;position:absolute;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
+.inscription_next_step_button{padding:2px 0 0 0;text-align:center;color:white;position:absolute;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
 
 #inscription_upload{cursor:pointer;opacity:0;width:340px;height:190px;}
 .inscription_upload_button{border:1px dashed #AAAAAA;background:url('../img/pictos_inscription/upload_img.png') no-repeat 140px 40px;background-color:#f0f0f0;width:340px;height:190px;}
@@ -471,7 +471,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .inscription_choisir_image_container{background-color:#f0f0f0;}
 .inscription_wrap_next_step2{border-top:1px solid #e4e4e4;height:49px;background-color:white;width:1130px;float:left;position:relative;}
 .inscription_next_step2{bottom:12px;right:10px;position:absolute;width:115px;padding:10px 0 0 0;}
-.inscription_next_step_button2{padding:7px 0 0 0;text-align:center;color:white;float:left;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
+.inscription_next_step_button2{border:none;cursor:pointer;padding:0;text-align:center;color:white;float:left;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
 .inscription_avatar_selected{position:absolute;left:50%;margin-left:-60px;bottom:18px;}
 .inscription_avatar_selected_texte{text-transform:uppercase;text-align:center;background-color:#a4ebf1;}
 .inscription_avatar_selected_texte span{display:block;font-weight:700;}
@@ -481,6 +481,8 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_interets_aimepas_texte_highlight{font-weight:700;}
 .inscription_centres_interets_aime_wrap,.inscription_centres_interets_aimepas_wrap{width:995px;float:left;height:450px;background-color:#f0f0f0;}
 .inscription_box{float:left;width:198px;height:150px;background-color:white;border-right:1px solid #e4e4e4;border-top:1px solid #e4e4e4;}
+.inscription_box:hover{cursor:pointer;}
+.inscription_box.is_valid{opacity:0.6;}
 .inscription_box_head{float:left;}
 .inscription_box_head_img_container{float:left;width:36px;height:36px;text-align:center;}
 .inscription_box_head_img_container img{vertical-align:middle;}
