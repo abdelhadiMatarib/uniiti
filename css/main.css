@@ -1,4 +1,5 @@
 /* GENERAL */
+*{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
 #default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
 #dialog_overlay{display:none;}
 .dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
@@ -349,6 +350,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .objet_head_note_avis{display:block;font-size:85%;text-align:center;color:white;padding:5px 0 15px 0;}
 
 .objet_head_infos{position:relative;float:left;height:100px;}
+.contact_bandeau_confiance{z-index:2;position: relative;background-color: white;-webkit-border-radius: 3px;border-radius: 3px;float:left;width:500px;height:82px;margin:10px;border:1px solid #eaeaea;}
 
 .objet_head_infos .separateur{position: absolute;top: 50px;height: 1px;border-bottom: 1px solid #EAEAEA;width: 490px;z-index: 1;}
 .objet_head_desc .separateur{border-bottom:1px solid #EAEAEA;height:5px;}
@@ -733,6 +735,9 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .oublimdp_inputs input[type="mail"]{font-size:1.1em;width:410px;height:45px;bakground-color:#efefef;}
 .ident_inscription_wrap,.ident_connexion_wrap{padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
 .oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{width:500px;font-size:1.1em;text-align:center;float:left;}
+.bouton_envoyer_contact_wrap{width:100%;font-size:1.1em;text-align:center;float:left;}
+.bouton_envoyer_contact_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
+.bouton_envoyer_contact_wrap a:hover{color:white;background-color:#73d4dc;}
 .oublimdp_valider_wrap a,.suggestioncommerce_valider_wrap a,.suggestionobjet_valider_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
 .oublimdp_valider_wrap a:hover,.suggestioncommerce_valider_wrap a:hover,.suggestionobjet_valider_wrap a:hover{color:white;background-color:#73d4dc;}
 .ident_inscription_wrap{width:250px;background-color:#a4ebf1;}
