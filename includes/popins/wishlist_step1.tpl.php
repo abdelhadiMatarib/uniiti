@@ -1,6 +1,66 @@
 <?php
         include_once '../../config/configuration.inc.php';
         include'../head.php'?>
+<?php
+include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
+?>
+		
+<?php
+include_once '../../config/configPDO.inc.php';
+
+$id_enseigne        = $_POST['id_enseigne'];
+$date               = date('Y-m-d H:i:s');
+$id_contributeur    = $_SESSION['SESS_MEMBER_ID'];
+
+try
+{
+	// Requete
+	$bdd->beginTransaction(); // Début transaction pour requetes multiples
+
+		// Vérification si le contributeur a déjà ajouté l'enseigne à sa wishlist
+		$sqlCheck = "SELECT contributeurs_id_contributeur
+					 FROM contributeurs_wish_enseignes
+					 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne
+					";
+
+		$reqCheck = $bdd->prepare($sqlCheck);
+		$reqCheck->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_STR);
+		$reqCheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$reqCheck->execute();
+		$resultCheck = $reqCheck->fetch(PDO::FETCH_ASSOC);
+
+		if (!$resultCheck) {
+			$sql = "INSERT INTO contributeurs_wish_enseignes
+					(contributeurs_id_contributeur, enseignes_id_enseigne, date_wish) 
+					VALUES (:id_contributeur, :id_enseigne, :date_wish)";
+		} else {
+			$sql = "UPDATE contributeurs_wish_enseignes SET date_wish=:date_wish 
+					WHERE contributeurs_id_contributeur=:id_contributeur AND enseignes_id_enseigne=:id_enseigne";
+		}
+		$req = $bdd->prepare($sql);
+		$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
+		$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$req->bindParam(':date_wish', $date, PDO::PARAM_INT);
+		$req->execute();
+
+	$bdd->commit(); // Validation de la transaction / des requetes
+	
+	$reqCheck->closeCursor();
+	$req->closeCursor();						    // Ferme la connexion du serveur
+	$bdd = null;            // Détruit l'objet PDO
+
+//echo 'BDD Fermée';
+}
+// Gestion des erreurs
+catch (PDOException $erreur)
+{
+	$bdd->rollBack(); // Erreur => annulation transaction / des requetes    
+	die ('Erreur : ' .$erreur->getMessage());
+	exit;
+}
+?>
+
+
 <div class="wishlist_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="wishlist_wrapper_body_img">

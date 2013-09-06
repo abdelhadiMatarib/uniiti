@@ -4,9 +4,21 @@
 		$req->execute();
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($result as $row) {
-			$Lien1Categories[$row['categorie_principale']] = $row['categorie_principale'];
-			$Lien2Categories[$row['categorie_principale']][$row['sous_categorie']] = $row['sous_categorie'];
-			$Lien3Categories[$row['categorie_principale']][$row['sous_categorie']][$row['sous_categorie2']] = $row['sous_categorie2'];
+			$Lien1Categories[$row['id_categorie']] = $row['categorie_principale'];
+		}
+		$sql = "SELECT * FROM sous_categories";
+		$req = $bdd->prepare($sql);
+		$req->execute();
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($result as $row) {
+			$Lien2Categories[$Lien1Categories[$row['id_categorie']]][$row['id_sous_categorie']] = $row['sous_categorie'];
+		}
+		$sql = "SELECT * FROM sous_categories2";
+		$req = $bdd->prepare($sql);
+		$req->execute();
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($result as $row) {
+			$Lien3Categories[$Lien1Categories[$row['id_categorie']]][$Lien2Categories[$Lien1Categories[$row['id_categorie']]][$row['id_sous_categorie']]][$row['id_sous_categorie2']] = $row['sous_categorie2'];
 		}
 ?>
 

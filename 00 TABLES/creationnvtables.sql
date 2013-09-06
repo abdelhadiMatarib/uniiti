@@ -3,21 +3,135 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
 DROP TABLE IF EXISTS `categories` ;
-
 DROP TABLE IF EXISTS `sous_categories` ;
-
 DROP TABLE IF EXISTS `sous_categories2` ;
+
+DROP TABLE IF EXISTS `contributeurs_aiment_enseignes` ;
+DROP TABLE IF EXISTS `contributeurs_aiment_pas_enseignes` ;
+DROP TABLE IF EXISTS `contributeurs_wish_enseignes` ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categories`
+--
 
 CREATE TABLE IF NOT EXISTS `categories` (
   `id_categorie` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `categorie_principale` varchar(50) DEFAULT NULL,
   `couleur` varchar(50) DEFAULT NULL,
-  `posx` int(10) signed DEFAULT NULL,
-  `posy` int(10) signed DEFAULT NULL,
+  `posx` int(10) DEFAULT NULL,
+  `posy` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sous_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `sous_categories` (
+  `id_sous_categorie` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_categorie` int(10) unsigned NOT NULL,
+  `sous_categorie` varchar(50) DEFAULT NULL,
+  `posx` int(10) DEFAULT NULL,
+  `posy` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_sous_categorie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sous_categories2`
+--
+
+CREATE TABLE IF NOT EXISTS `sous_categories2` (
+  `id_sous_categorie2` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_sous_categorie` int(10) unsigned NOT NULL,
+  `id_categorie` int(10) unsigned NOT NULL,
+  `sous_categorie2` varchar(50) DEFAULT NULL,
+  `posx` int(10) DEFAULT NULL,
+  `posy` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_sous_categorie2`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contributeurs_aiment_enseignes`
+--
+
+CREATE TABLE IF NOT EXISTS `contributeurs_aiment_enseignes` (
+  `contributeurs_id_contributeur` int(10) unsigned NOT NULL,
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+   `date_aime` datetime DEFAULT NULL,
+  PRIMARY KEY (`contributeurs_id_contributeur`,`enseignes_id_enseigne`),
+  KEY `fk_enseignes_has_aime_enseignes1` (`enseignes_id_enseigne`),
+  KEY `fk_contributeurs_has_aime_contributeurs1` (`contributeurs_id_contributeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contraintes pour la table `contributeurs_aiment_enseignes`
+--
+ALTER TABLE `contributeurs_aiment_enseignes`
+  ADD CONSTRAINT `fk_enseignes_has_aime_enseignes1` FOREIGN KEY (`enseignes_id_enseigne`) REFERENCES `enseignes` (`id_enseigne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_contributeurs_has_aime_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+  -- --------------------------------------------------------
+
+--
+-- Structure de la table `contributeurs_aiment_pas_enseignes`
+--
+
+CREATE TABLE IF NOT EXISTS `contributeurs_aiment_pas_enseignes` (
+  `contributeurs_id_contributeur` int(10) unsigned NOT NULL,
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `date_aime_pas` datetime DEFAULT NULL,
+  PRIMARY KEY (`contributeurs_id_contributeur`,`enseignes_id_enseigne`),
+  KEY `fk_enseignes_has_aime_pas_enseignes1` (`enseignes_id_enseigne`),
+  KEY `fk_contributeurs_has_aime_pas_contributeurs1` (`contributeurs_id_contributeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contraintes pour la table `contributeurs_aiment_pas_enseignes`
+--
+ALTER TABLE `contributeurs_aiment_pas_enseignes`
+  ADD CONSTRAINT `fk_enseignes_has_aime_pas_enseignes1` FOREIGN KEY (`enseignes_id_enseigne`) REFERENCES `enseignes` (`id_enseigne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_contributeurs_has_aime_pas_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contributeurs_wish_enseignes`
+--
+
+CREATE TABLE IF NOT EXISTS `contributeurs_wish_enseignes` (
+  `contributeurs_id_contributeur` int(10) unsigned NOT NULL,
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `date_wish` datetime DEFAULT NULL,
+  PRIMARY KEY (`contributeurs_id_contributeur`,`enseignes_id_enseigne`),
+  KEY `fk_enseignes_has_wish_enseignes1` (`enseignes_id_enseigne`),
+  KEY `fk_contributeurs_has_wish_contributeurs1` (`contributeurs_id_contributeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contraintes pour la table `contributeurs_wish_enseignes`
+--
+ALTER TABLE `contributeurs_wish_enseignes`
+  ADD CONSTRAINT `fk_enseignes_has_wish_enseignes1` FOREIGN KEY (`enseignes_id_enseigne`) REFERENCES `enseignes` (`id_enseigne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_contributeurs_has_wish_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ 
+  
+  
+  
+  -- --------------------------------------------------------
+
+--
+-- Contenu de la table `categories`
+--
 
 INSERT INTO `categories` (`id_categorie`, `categorie_principale`,  `couleur`, `posx`, `posy`) VALUES
 (1, 'Cuisine', '#fabe41', NULL, NULL),
@@ -29,14 +143,9 @@ INSERT INTO `categories` (`id_categorie`, `categorie_principale`,  `couleur`, `p
 (7, 'Sport', '#4ebde8', NULL, NULL),
 (8, 'Services et inclassables', '#a1679a', NULL, NULL) ;
 
-CREATE TABLE IF NOT EXISTS `sous_categories` (
-  `id_sous_categorie` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_categorie` int(10) unsigned NOT NULL,
-  `sous_categorie` varchar(50) DEFAULT NULL,
-  `posx` int(10) DEFAULT NULL,
-  `posy` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id_sous_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+--
+-- Contenu de la table `sous_categories`
+--
 
 INSERT INTO `sous_categories` (`id_sous_categorie`, `id_categorie`, `sous_categorie`, `posx`, `posy`) VALUES
 (1, '1', 'Restaurant cuisine  française', NULL, NULL),
@@ -204,15 +313,9 @@ INSERT INTO `sous_categories` (`id_sous_categorie`, `id_categorie`, `sous_catego
 (163, '8', 'Sexshop', NULL, NULL),
 (164, '8', 'Clubs privés', NULL, NULL);
 
-CREATE TABLE IF NOT EXISTS `sous_categories2` (
-  `id_sous_categorie2` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_sous_categorie` int(10) unsigned NOT NULL,
-  `id_categorie` int(10) unsigned NOT NULL,
-  `sous_categorie2` varchar(50) DEFAULT NULL,
-  `posx` int(10) DEFAULT NULL,
-  `posy` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id_sous_categorie2`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+--
+-- Contenu de la table `sous_categories2`
+--
 
 INSERT INTO `sous_categories2` (`id_sous_categorie2`, `id_sous_categorie`, `id_categorie`, `sous_categorie2`, `posx`, `posy`) VALUES
 (1, 1, 1, 'Bistrots, brasseries et bars à vin', NULL, NULL),
