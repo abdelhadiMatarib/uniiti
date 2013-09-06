@@ -194,7 +194,7 @@
             <span class="commerce_prefs_stats_item_titre">Nombre d'abonnés</span>
         </div>
         <div class="commerce_prefs_stats_item item_gestion_site">
-            <a href="#" title="">
+            <a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/gestion_minisite.tpl.php', 'default_dialog');">
                 <span><strong>Gestion</strong></span>
                 <span>de votre</span>
                 <span><strong>Site web</strong></span>
@@ -213,7 +213,7 @@
             <span class="commerce_prefs_stats_item_titre">Nombre de j'aime</span>
         </div>
         <div class="commerce_prefs_stats_item item_gestion_site">
-            <a href="#" title="">
+            <a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/gestion_minisite.tpl.php', 'default_dialog');">
                 <span><strong>Gestion</strong></span>
                 <span>de votre</span>
                 <span><strong>Site web</strong></span>
