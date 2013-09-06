@@ -1,8 +1,3 @@
-$('a').click(function(e){
-   e.preventDefault();
-});
-
-
 function filter(){
         $('.rang2 li,.rang3 li,.rang4 li').hide();
         $(".filters").css({display: "block"});
