@@ -2,8 +2,17 @@
 
 include_once '../../config/configuration.inc.php';
 include_once '../fonctions.inc.php';
+include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
 
 if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+if(isset($_SESSION['SESS_MEMBER_ID'])) {
+	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $_POST['id_enseigne'] . "}";
+	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
+	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
+	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+} else {
+	$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+}	
 		
 ?>
 	
@@ -21,7 +30,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             
             <div class="presentation_action_left_head_likes_wrap">
                 <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
-                <span class="presentation_action_left_head_nombrelikes"><strong>15756</strong></span>
+                <span class="presentation_action_left_head_nombrelikes"><strong><?php echo $_POST['count_likes']; ?></strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>
                 
@@ -33,9 +42,9 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         </div>
         <div class="presentation_action_left_figure">
             <div class="wrapper_boutons_popin">
-                <div class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_OK_popin.png"/></div>
-                <div class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
-                <div class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
+                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_OK_popin.png"/></div>
+                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
+                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
             </div>
             <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
             

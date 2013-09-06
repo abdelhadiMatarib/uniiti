@@ -46,7 +46,7 @@
         </div>
 
         <div class="header_logo">
-            <a href="<?php echo SITE_URL; ?>" title="UNIITI"></a>
+            <a href="<?php echo SITE_URL . "/timeline.php"; ?>" title="UNIITI"></a>
         </div>
 
         <div class="header_rightnav">

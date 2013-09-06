@@ -23,6 +23,6 @@ include_once '../config/configuration.inc.php';
 <h1><p align="center">Deconnexion</p></h1>
 <p align="center">&nbsp;</p>
 <p align="center" class="err">Vous avez été déconnecté(e).</p>
-<p align="center"><a href="../index.php">revenir à la timeline</a></p>
+<p align="center"><a href="../timeline.php">revenir à la timeline</a></p>
 </body>
 </html>

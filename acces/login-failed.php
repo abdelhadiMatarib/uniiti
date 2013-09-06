@@ -11,8 +11,7 @@
 <p align="center">&nbsp;</p>
 <p align="center" class="err">Veuillez vérifier votre login et votre mot de passe</p>
 <p align="center">&nbsp;
-<a href="../pages/index.php">Retour au formulaire de connexion</a>
-<p align="center">ou <a href="../index.php">revenir à la timeline</a></p>
+<p align="center">ou <a href="../timeline.php">revenir à la timeline</a></p>
 </p>
 </body>
 </html>

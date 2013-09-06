@@ -18,6 +18,12 @@
 					";
 		$req = $bdd->prepare($sql);
 
+		$sql3 = "SELECT COUNT(contributeurs_id_contributeur) AS count_likes
+				FROM contributeurs_aiment_enseignes AS t1
+				WHERE enseignes_id_enseigne = :id_enseigne
+				";
+		$req3 = $bdd->prepare($sql3);		
+		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
 				FROM avis AS t1
@@ -75,14 +81,20 @@
 			$count_avis_enseigne     = $result['count_avis'];
 			$note_arrondi = number_format($result['moyenne'],1);
 
+			$req3->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req3->execute();
+			$result3 = $req3->fetch(PDO::FETCH_ASSOC);
+			$count_likes = $result3['count_likes'];					
+			
 			$data = "{id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
-				. "commentaire : '" . addslashes($commentaire) . "',"
+				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
 				. "delai_avis : '" . $delai_avis . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
+				. "count_likes :" . $count_likes . ","
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
 				

@@ -96,7 +96,7 @@
                                 
                             } else {
                                 
-                                header("location: ../index.php");
+                                header("location: ../timeline.php");
                                 
                             }
                             
