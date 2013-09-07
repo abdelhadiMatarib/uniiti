@@ -60,7 +60,7 @@
                         <div class="home_newsfeed">
                             <a href="#" title="">
                             <div class="home_newsfeed_centered">
-                                <span class="home_newsfeed_number">5</span><span>nouveaux éléments</span>
+                                <span class="home_newsfeed_number">0</span><span>nouveaux éléments</span>
                             </div>
                             </a>
                         </div>

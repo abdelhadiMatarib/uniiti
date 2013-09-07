@@ -130,16 +130,16 @@
 					</div>
                                     
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
-                                        <div class="box_push_et_img">
-                                        <img src="img/photos_commerces/1.jpg" title="" alt="" />
-                                        <div class="box_push"></div>
-                                        </div>
-                                        <div class="overlay_push">
-                                            <div class="push_buttons_wrapper">
-                                                    <div onclick="<?php echo $like_step1; ?>" class="push_buttons_like"><a href="#" title=""></a></div>
-                                                    <div onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike"><a href="#" title=""></a></div>
-                                                    <div onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist"><a href="#" title=""></a></div>
-                                            </div>
+					<div class="box_push_et_img">
+						<img src="img/photos_commerces/1.jpg" title="" alt="" />
+						<div class="box_push"></div>
+					</div>
+					<div class="overlay_push">
+						<div class="push_buttons_wrapper">
+							<div onclick="<?php echo $like_step1; ?>" class="push_buttons_like"><a href="#" title=""></a></div>
+							<div onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike"><a href="#" title=""></a></div>
+							<div onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+						</div>
 					</div>
 				</figure>
                                 

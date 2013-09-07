@@ -7,7 +7,14 @@ $data = "{}";
 
 $sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
-
+			INNER JOIN enseignes_recoient_avis AS t2
+			ON t1.id_avis = t2.avis_id_avis
+			INNER JOIN enseignes AS t3
+				ON t2.enseignes_id_enseigne = t3.id_enseigne
+				INNER JOIN contributeurs_donnent_avis AS t4
+					ON t1.id_avis = t4.avis_id_avis
+					INNER JOIN contributeurs AS t5
+						ON t4.contributeurs_id_contributeur = t5.id_contributeur
 			";
 $req = $bdd->prepare($sql);
 $req->execute();

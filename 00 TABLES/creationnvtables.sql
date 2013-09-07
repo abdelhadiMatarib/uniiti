@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS `sous_categories2` ;
 DROP TABLE IF EXISTS `contributeurs_aiment_enseignes` ;
 DROP TABLE IF EXISTS `contributeurs_aiment_pas_enseignes` ;
 DROP TABLE IF EXISTS `contributeurs_wish_enseignes` ;
-DROP TABLE IF EXISTS `contributeurs_wish_contributeurs` ;
+DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
+DROP TABLE IF EXISTS `contributeurs_follow_enseignes` ;
 
 -- --------------------------------------------------------
 
@@ -124,6 +125,29 @@ ALTER TABLE `contributeurs_wish_enseignes`
   ADD CONSTRAINT `fk_enseignes_has_wish_enseignes1` FOREIGN KEY (`enseignes_id_enseigne`) REFERENCES `enseignes` (`id_enseigne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_contributeurs_has_wish_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
  
+ -- --------------------------------------------------------
+
+--
+-- Structure de la table `contributeurs_follow_enseignes`
+--
+
+CREATE TABLE IF NOT EXISTS `contributeurs_follow_enseignes` (
+  `contributeurs_id_contributeur` int(10) unsigned NOT NULL,
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `date_follow` datetime DEFAULT NULL,
+  PRIMARY KEY (`contributeurs_id_contributeur`,`enseignes_id_enseigne`),
+  KEY `fk_contributeurs_has_follow_enseignes1` (`contributeurs_id_contributeur`),
+  KEY `fk_enseignes_has_follow_contributeurs1` (`enseignes_id_enseigne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contraintes pour la table `contributeurs_follow_enseignes`
+--
+ALTER TABLE `contributeurs_follow_enseignes`
+  ADD CONSTRAINT `fk_contributeurs_has_follow_enseignes1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_enseignes_has_follow_enseignes1` FOREIGN KEY (`enseignes_id_enseigne`) REFERENCES `enseignes` (`id_enseigne`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ 
+  
 -- --------------------------------------------------------
 
 --
@@ -132,19 +156,19 @@ ALTER TABLE `contributeurs_wish_enseignes`
 
 CREATE TABLE IF NOT EXISTS `contributeurs_follow_contributeurs` (
   `contributeurs_id_contributeur` int(10) unsigned NOT NULL,
-  `contributeurs_id_contributeurwish` int(10) unsigned NOT NULL,
-  `date_wish` datetime DEFAULT NULL,
-  PRIMARY KEY (`contributeurs_id_contributeur`,`contributeurs_id_contributeurwish`),
-  KEY `fk_contributeurs_has_wish_contributeurs1` (`contributeurs_id_contributeur`),
-  KEY `fk_contributeurs_has_wish_contributeurs2` (`contributeurs_id_contributeurwish`)
+  `contributeurs_id_contributeurfollow` int(10) unsigned NOT NULL,
+  `date_follow` datetime DEFAULT NULL,
+  PRIMARY KEY (`contributeurs_id_contributeur`,`contributeurs_id_contributeurfollow`),
+  KEY `fk_contributeurs_has_follow_contributeurs1` (`contributeurs_id_contributeur`),
+  KEY `fk_contributeurs_has_follow_contributeurs2` (`contributeurs_id_contributeurfollow`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contraintes pour la table `contributeurs_wish_contributeurs`
+-- Contraintes pour la table `contributeurs_follow_contributeurs`
 --
-ALTER TABLE `contributeurs_wish_contributeurs`
-  ADD CONSTRAINT `fk_contributeurs_has_wish_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_contributeurs_has_wish_contributeurs2` FOREIGN KEY (`contributeurs_id_contributeurwish`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `contributeurs_follow_contributeurs`
+  ADD CONSTRAINT `fk_contributeurs_has_follow_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_contributeurs_has_follow_contributeurs2` FOREIGN KEY (`contributeurs_id_contributeurfollow`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
  
     
   

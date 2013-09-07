@@ -9,7 +9,7 @@
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
-	
+
 	$sql2 = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, note_moyenne, satisfaction_pourcent, certification_pro, code_visible, avis_visible, nom_type_enseigne, btn_donner_avis_visible, url
 			FROM enseignes AS t1
 			INNER JOIN types_enseigne AS t2
@@ -22,6 +22,16 @@
 	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
 	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 
+	if(isset($_SESSION['SESS_MEMBER_ID'])) {
+		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . "}";
+		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
+		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
+		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/SUIVRE_step1.tpl.php', 'default_dialog_large');";
+	} else {
+		$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	}		
+	
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
 	$req2->execute();
@@ -61,6 +71,17 @@
 	$result = $req->fetch(PDO::FETCH_ASSOC);
 	$count_avis_enseigne     = $result['count_avis'];
 	$note_arrondi = number_format($result['moyenne'],1);
+	
+	$sql3 = "SELECT COUNT(contributeurs_id_contributeur) AS count_abonnes
+			FROM contributeurs_follow_enseignes AS t1
+			WHERE enseignes_id_enseigne = :id_enseigne
+			";
+	$req3 = $bdd->prepare($sql3);
+	$req3->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req3->execute();
+	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
+	$count_abonnes = $result3['count_abonnes'];
+	
 ?>
 
     <body>
@@ -142,7 +163,7 @@
                 <div class="commerce_head2_right">
                 <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>2</span></div>
                 <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
-                <a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog');"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span>1258</span></div></a>
+                <a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog');"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></a>
                 </div>
             </div>
             <div class="commerce_couv">

@@ -108,6 +108,7 @@
 			BV.init();
 			BV.show(siteurl+'/img/videos/Jump Around.flv');
 			FIN RIGOLER */
+			setInterval("NouveauxElements()", 10000);
 			
 			CreerOverlayPush();
   

@@ -1,26 +1,50 @@
+
+datanvelements = {init:1};
+function NouveauxElements(data) {
+
+	$.ajax({
+		type: "POST",
+		url: "includes/requeteintervalle.php",
+		data: datanvelements,
+		dataType: "json",
+	    beforeSend: function(x) {
+	        if(x && x.overrideMimeType) {
+            x.overrideMimeType("application/json;charset=UTF-8");
+	        }
+	    },
+		success: function(data) {
+					if (datanvelements.init) {datanvelements = data;}
+					else if (data.total > datanvelements.total) {
+						$(".home_newsfeed_number").html(data.total - datanvelements.total);
+					}
+				},
+		error: function() {alert('Erreur sur url : ' + url);}
+	});
+}
+
 function filter(){
-        $('.rang2 li,.rang3 li,.rang4 li').hide();
-        $(".filters").css({display: "block"});
-        $('.rang0 li').click(function(){
-            $('.rang1 li').show('slideUp');
-            $('.rang2 li,.rang3 li,.rang4 li').hide('slideDown');
-        });
-        $('.rang1 li').click(function(){
-           $(this).siblings().hide('slideDown');
-           $('.rang2 li').show('slideUp');
-           $('.rang3 li,.rang4 li').hide('slideDown');
-        });
-        $('.rang2 li').click(function(){
-           $(this).siblings().hide('slideDown');
-           $('.rang3 li.'+$(this).attr('class')).show('slideUp');
-           $('.rang4 li').hide('slideDown');
-        });
-        $('.rang3 li').click(function(){
-           $(this).siblings().hide('slideDown');
-           $('.rang4 li.'+$(this).attr('class').replace(" ", ".")).show('slideUp');
-        });
-    }
-    filter();
+	$('.rang2 li,.rang3 li,.rang4 li').hide();
+	$(".filters").css({display: "block"});
+	$('.rang0 li').click(function(){
+		$('.rang1 li').show('slideUp');
+		$('.rang2 li,.rang3 li,.rang4 li').hide('slideDown');
+	});
+	$('.rang1 li').click(function(){
+	   $(this).siblings().hide('slideDown');
+	   $('.rang2 li').show('slideUp');
+	   $('.rang3 li,.rang4 li').hide('slideDown');
+	});
+	$('.rang2 li').click(function(){
+	   $(this).siblings().hide('slideDown');
+	   $('.rang3 li.'+$(this).attr('class')).show('slideUp');
+	   $('.rang4 li').hide('slideDown');
+	});
+	$('.rang3 li').click(function(){
+	   $(this).siblings().hide('slideDown');
+	   $('.rang4 li.'+$(this).attr('class').replace(" ", ".")).show('slideUp');
+	});
+}
+filter();
 
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
