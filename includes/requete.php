@@ -1,5 +1,5 @@
 <?php
-		if (!empty($_POST['lastid'])) {include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['lastid'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
@@ -22,10 +22,12 @@
 				FROM contributeurs_aiment_enseignes AS t1
 				WHERE enseignes_id_enseigne = :id_enseigne
 				";
-		$req3 = $bdd->prepare($sql3);		
-		
-		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
+		$req3 = $bdd->prepare($sql3);
+
+		$sql4 = "SELECT id_avis, commentaire, appreciation, note, origine, date_avis FROM avis WHERE id_avis = :id_avis";
+		$req4 = $bdd->prepare($sql4);
+
+/* SELECT id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
 				FROM avis AS t1
 				INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
@@ -36,7 +38,32 @@
 							INNER JOIN enseignes AS t5
 								ON t5.id_enseigne = t4.enseignes_id_enseigne
 								INNER JOIN types_enseigne AS t6
-									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne ";
+									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne */
+		
+		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
+		$sql2 = "SELECT provenance, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
+				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					FROM avis AS t1
+					INNER JOIN contributeurs_donnent_avis AS t2
+					ON t1.id_avis = t2.avis_id_avis
+						INNER JOIN enseignes_recoient_avis AS t3
+						ON t1.id_avis = t3.avis_id_avis
+				UNION
+					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					FROM contributeurs_aiment_enseignes AS t4
+				UNION
+					SELECT 'aime pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					FROM contributeurs_aiment_pas_enseignes AS t5
+				UNION
+					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					FROM contributeurs_wish_enseignes AS t6
+				) AS t7
+				INNER JOIN contributeurs AS t8
+				ON t7.contributeurs_id_contributeur = t8.id_contributeur
+					INNER JOIN enseignes AS t9
+					ON t7.enseignes_id_enseigne = t9.id_enseigne
+						INNER JOIN types_enseigne AS t10
+							ON t10.id_type_enseigne = t9.types_enseigne_id_type_enseigne ";
 		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
@@ -49,6 +76,53 @@
 
 		while ($row = $req2->fetch(PDO::FETCH_ASSOC))
 		{
+			// Provenances des avis
+			$type = $row['type'];
+			$provenance = $row['provenance'];
+			$datetime = $row['date_avis'];
+			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
+			$id_avis = $row['id_avis'];			
+			// Avis
+			switch ($provenance) {
+				case "avis":
+					$req4->bindParam(':id_avis', $id_avis, PDO::PARAM_INT);
+					$req4->execute();
+					$result4 = $req4->fetch(PDO::FETCH_ASSOC);
+					$commentaire             = str_replace(PHP_EOL ,"", stripslashes($result4['commentaire']));
+					$commentaire			 = str_replace("\r" , "", $commentaire);
+					$commentaire			 = str_replace("\n" , "", $commentaire);
+					if ($commentaire == "") {$commentaire = "pas de commentaire";}
+					$appreciation            = $result4['appreciation'];
+					$note                    = $result4['note'];
+					$origine                 = $result4['origine'];
+					$action = "a noté";
+					$affichecommentaire = true;
+					break;
+				case "aime":
+					$note = "''";
+					$commentaire = "''";
+					$action = "a aimé";
+					$affichecommentaire = false;
+					break;
+				case "aime pas":
+					$note = "''";
+					$commentaire = "''";
+					$action = "n'a pas aimé";
+					$affichecommentaire = false;
+					break;
+				case "wish":
+					$note = "''";
+					$commentaire = "''";
+					$action = "a ajouté à sa wishlist";
+					$affichecommentaire = false;
+					break;
+				default :
+					$note = "''";
+					$commentaire = "''";
+					$action = "";
+					$affichecommentaire = false;
+					break;
+			}
 			// Contributeurs
 			//$pseudo_contributeur    = $row['pseudo_contributeur'];
 			$id_contributeur		 = $row['id_contributeur'];
@@ -56,16 +130,6 @@
 			$photo_contributeur      = $row['photo_contributeur'];
 			$prenom_contributeur     = $row['prenom_contributeur'];
 			$nom_contributeur        = $row['nom_contributeur'];
-			// Avis
-			$commentaire             = str_replace(PHP_EOL ,"", stripslashes($row['commentaire']));
-			$commentaire			 = str_replace("\r" , "", $commentaire);
-			$commentaire			 = str_replace("\n" , "", $commentaire);
-			if ($commentaire == "") {$commentaire = "pas de commentaire";}
-			$appreciation            = $row['appreciation'];
-			$note                    = $row['note'];
-			$origine                 = $row['origine'];
-			$datetime                = $row['date_avis'];
-			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
 			// Enseigne
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
@@ -143,10 +207,9 @@
 					</div>
 				</figure>
                                 
-				
 				<section onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/presentation_action_commentaire.tpl.php', 'default_dialog_large');">
-					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> a noté</div>
-					<div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div>
+					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
+					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
 				<div class="arrow_up"></div>
 				</section>
 				

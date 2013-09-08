@@ -72,10 +72,22 @@ function EcartDate($Maintenant, $Date){
 	case ($Secondes < 86400):
 		$Heures = round($Secondes /60 / 60);
 		$html .= $Heures . " h.";
-		break;		
+		break;
+	case ($Secondes < 2592000):
+		$Heures = round($Secondes /60 / 60 /24);
+		$html .= $Heures . " j.";
+		break;	
+	case ($Secondes < 31104000):
+		$Heures = round($Secondes /60 / 60 /24 /30);
+		$html .= $Heures . " mois";
+		break;
+	case ($Secondes < 746496000):
+		$Heures = round($Secondes /60 / 60 /24 /30 /12);
+		$html .= $Heures . " an";
+		break;				
 	default :
-		$Jours = round($Secondes /60 / 60 / 24 );
-		$html .= $Jours . " j.";
+		$Jours = round($Secondes /60 / 60 /24 /30 /12 );
+		$html .= $Jours . " ans";
 		break;			
 	}
 	return $html;

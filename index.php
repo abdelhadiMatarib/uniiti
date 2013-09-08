@@ -25,7 +25,7 @@ $nbnouveauxinscrits = 0;
 
 ?>
 <style>
-    body{position:relative;margin:0;}
+    body{position:relative;margin:0;max-width:100%;max-height:100%}
     .splash_ombre{background:url('../img/pictos_splash/ombre.png') no-repeat 20px;z-index:99;position:absolute;height:705px;padding:5px;width:554px;margin:auto;top:0;left:0;bottom:0;right:0;}
     body > img{max-width:100%;min-height:90%;position:absolute;top:0;left:0;z-index:98;}
     .splash_big_wrapper{position:relative;z-index:99;}
