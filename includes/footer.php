@@ -4,7 +4,7 @@
 #ScrollToTop {
 	display:none;
 	position:fixed;
-	bottom:0;
+	bottom:10px;
 	right:10px;
 	width:55px;
 	height:70px;
