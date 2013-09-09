@@ -27,7 +27,9 @@ $nbnouveauxinscrits = 0;
 <body>
     <div id="default_dialog_inscription"></div>
     <div class="splash_ombre"></div>
-    <img src="img/pictos_splash/splash_img2.jpg" id="bg"/>
+    <div id="bg" style="background-image:url('img/pictos_splash/splash_img2.jpg');">
+        <img src="img/pictos_splash/splash_img2.jpg" id="bg_img"/>
+    </div>
     <div class="splash_big_wrapper">
     <div class="splash_head_wrapper">
         <div class="splash_head">

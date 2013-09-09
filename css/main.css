@@ -971,13 +971,10 @@ input#resa_infos_notifs_mail,input#resa_infos_notifs_sms{margin:20px 5px 0 0;}
 .input_resa_float{float:left;padding-left:15px;width:285px;}
 
 /* SPLASH SCREEN */
-body{/*position:relative;margin:0;max-width:100%;max-height:100%*/ overflow-x: hidden;}
+body{overflow-x: hidden;}
 .splash_ombre{background:url('../img/pictos_splash/ombre.png') no-repeat 20px;z-index:99;position:absolute;height:705px;padding:5px;width:554px;margin:auto;top:0;left:0;bottom:0;right:0;}
-/*body > img{max-width:100%;min-height:90%;position:absolute;top:0;left:0;z-index:98;}*/
-#bg { position: fixed; top: 0; left: 0; }
-.bgwidth { width: 100%; }
-.bgheight { height: 100%; }
-
+#bg {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
+#bg_img {display: none;}
 .splash_big_wrapper{position:relative;z-index:99;}
 .splash_head_wrapper{height:70px; width:100%;}
 .splash_head{width:723px; height: 70px;margin:0 auto;}
@@ -995,12 +992,12 @@ body{/*position:relative;margin:0;max-width:100%;max-height:100%*/ overflow-x: h
 ::-moz-placeholder { color:#fff; } /* firefox 19+ */
 :-ms-input-placeholder { color:#fff; } /* ie */
 input:-moz-placeholder { color:#fff; }
-input:focus {outline: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.08);}
+input:focus.splash_input_login, input:focus.splash_input_password {outline: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.08);}
 .splash_input_password{background:url('../img/pictos_splash/icon_clef.png') no-repeat 5px 15px; margin-top:-1px;}
 .splash_input_button{background-color:transparent;border:1px dashed white;width:185px;padding:5px 10px;color:white;font-size:1.4em;font-weight:300;margin-top:14px;}
 .splash_input_button:hover{background-color: rgba(255,255,255,0.1);}
 .splash_link_create_account{font-weight:600;color:white;}
-.splash_footer_wrapper{bottom:0; height: 76px; width:100%; position: absolute; margin: 10px auto; text-align: center; z-index:800;}
+.splash_footer_wrapper{bottom:0; height: 76px; width:100%; position: absolute; margin: 10px auto; text-align: center; z-index:99;}
 .splash_footer{width:185px;margin:0 auto;}
 .splash_footer_nav{width:240px;margin:0 auto;margin-top:10px;text-shadow: 0px 1px 1px #252525;filter: dropshadow(color=#252525, offx=0, offy=1);}
 .splash_footer_nav ul li{display:inline;}

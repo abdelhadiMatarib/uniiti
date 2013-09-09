@@ -197,23 +197,6 @@
 				}).smartresize(); // trigger resize to set container width
 			});
 		});
-		
-		var fenetre = $(window),
-	    $bg = $("#bg"),
-	    aspectRatio = $bg.width() / $bg.height();
-	 	    		
-			function resizeBg() {
-				if ( (fenetre.width() / fenetre.height()) < aspectRatio ) {
-				    $bg
-				    	.removeClass()
-				    	.addClass('bgheight');
-				} else {
-				    $bg
-				    	.removeClass()
-				    	.addClass('bgwidth');
-				}			
-			}              			
-			fenetre.resize(resizeBg).trigger("resize");
 	});
 
     </script>
