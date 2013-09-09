@@ -8,13 +8,15 @@
     <body>
 		<div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
         <div class="biggymarginer">
-		
         <div class="big_wrapper">
-		
-            <div class="liseret_bleu"></div>
-            <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head">
+            	<div class="liseret_bleu"></div>
+            	<h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span>
+            	</h2>
+            </div>
+            
             <div class="inscription_fb_wrap">
-                <div class="inscription_fb_plus"><a href="#" title=""><img src="../img/pictos_inscription/plus_fb.png" height="48" width="48" title="" alt=""/></a></div>
+                <div class="inscription_fb_plus"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/plus_fb.png" height="48" width="48" title="" alt=""/></a></div>
                 <a class="fb_connect_pourquoi" href="#" title="Pourquoi se connecter avec Facebook ?">Pourquoi ?</a>
                 <div class="fb_connect_button">
                     <div class="fb_connect_button_wrap_text">
@@ -74,7 +76,7 @@
 				</div>
 				<div class="inscription_fields_right">
 					<div class="inscription_field_parrain inscription_border_bottomright">Téléphone</div>
-					<input type="text" name="telephone_contributeur" id="telephone_contributeur" class="inscription_field_input_text" placeholder="Saisir votre numéro de téléphone"/>
+					<input type="text" name="telephone_contributeur" id="telephone_contributeur" class="inscription_field_input_text .inscription_border_bottomright" />
 					<div class="clearfix"></div>
 					<div class="inscription_field_mail inscription_border_bottomright">Adresse mail *</div>
 					<input name="email-login" id="email_login" class="inscription_field_input_text" required="required" type="mail"/>
@@ -104,7 +106,7 @@
 				
 
 				<div class="inscription_charte">
-					<div class="img_container"><img src="../img/pictos_inscription/charte.png" height="64" width="56" title="" alt=""/></div>
+					<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/charte.png" height="64" width="56" title="" alt=""/></div>
 					<div class="inscription_charte_texte">
 						<p><strong>CHARTE DE CONFIDENTIALITÉ & CONDITIONS D’UTILISATION</strong></p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet lorem pretium, blandit eros in, cursus nisl. Donec pharetra nisi massa. Nunc vitae leo sagittis, laoreet eros at, porttitor nibh. Mauris eleifend commodo lorem. Sed a pretium diam, ut volutpat mauris. Quisque adipiscing dui sit amet neque aliquet congue. Phasellus non mi lectus. Sed sit amet quam ac leo sodales ultrices.</p>
