@@ -27,7 +27,7 @@ $nbnouveauxinscrits = 0;
 <body>
     <div id="default_dialog_inscription"></div>
     <div class="splash_ombre"></div>
-    <img src="img/pictos_splash/splash_img2.jpg"/>
+    <img src="img/pictos_splash/splash_img2.jpg" id="bg"/>
     <div class="splash_big_wrapper">
     <div class="splash_head_wrapper">
         <div class="splash_head">
@@ -51,12 +51,13 @@ $nbnouveauxinscrits = 0;
 			</form>
         </div>
     </div>
-    <div class="splash_footer_wrapper">
-        <div class="splash_commerce_title"><span>Restaurant <a href="#" title="">La Folie Indienne</a></span></div>
+    </div>
+        <div class="splash_footer_wrapper">
+        <div class="splash_commerce_title"><span>Cinéma <a href="#" title="">Iron Man 3</a></span></div>
         <div class="splash_footer">
-		<form action="timeline.php">
-			<input class="splash_input_button" type="submit" value="entrer sans s'inscrire"/>
-		</form>
+        <form action="timeline.php">
+            <input class="splash_input_button" type="submit" value="entrer sans s'inscrire"/>
+        </form>
             
         </div>
         <div class="splash_footer_nav">
@@ -72,7 +73,6 @@ $nbnouveauxinscrits = 0;
                 </ul>
             </nav>
         </div>
-    </div> 
     </div>
 	<?php include'includes/js.php'; ?>
 </body>
