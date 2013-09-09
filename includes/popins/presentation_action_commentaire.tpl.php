@@ -5,6 +5,37 @@ include_once '../fonctions.inc.php';
 include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
 
 if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+$provenance = $_POST['provenance'];
+switch ($provenance) {
+	case "avis":
+		$action = "a noté";
+		$affichecommentaire = true;
+		break;
+	case "aime":
+		$note = "''";
+		$commentaire = "''";
+		$action = "a aimé";
+		$affichecommentaire = false;
+		break;
+	case "aime pas":
+		$note = "''";
+		$commentaire = "''";
+		$action = "n'a pas aimé";
+		$affichecommentaire = false;
+		break;
+	case "wish":
+		$note = "''";
+		$commentaire = "''";
+		$action = "a ajouté à sa wishlist";
+		$affichecommentaire = false;
+		break;
+	default :
+		$note = "''";
+		$commentaire = "''";
+		$action = "";
+		$affichecommentaire = false;
+		break;
+}
 if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $_POST['id_enseigne'] . "}";
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
@@ -53,9 +84,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
             <div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
             <span class="presentation_action_left_body_username"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
-            <span class="presentation_action_left_body_action">a laissé un avis</span>
+            <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
-                <span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span>
+                <?php if ($affichecommentaire) { ?><span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
             </div>
             <div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
                 <span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>

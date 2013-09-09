@@ -150,7 +150,8 @@
 			$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 			$count_likes = $result3['count_likes'];					
 			
-			$data = "{id_contributeur :" . $id_contributeur . ","
+			$data = "{provenance :'" . addslashes($provenance) . "',"
+				. "id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","

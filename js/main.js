@@ -1,5 +1,6 @@
 
 datanvelements = {init:1};
+$(".home_newsfeed").css({'display': 'none'});
 function NouveauxElements(data) {
 
 	$.ajax({
@@ -16,6 +17,7 @@ function NouveauxElements(data) {
 					if (datanvelements.init) {datanvelements = data;}
 					else if (data.total > datanvelements.total) {
 						$(".home_newsfeed_number").html(data.total - datanvelements.total);
+						$(".home_newsfeed").css({'display': 'block'});
 					}
 				},
 		error: function() {alert('Erreur sur url : ' + url);}

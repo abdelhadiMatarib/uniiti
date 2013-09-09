@@ -45,10 +45,8 @@ try
 			$sql = "INSERT INTO contributeurs_aiment_enseignes
 					(contributeurs_id_contributeur, enseignes_id_enseigne, date_aime) 
 					VALUES (:id_contributeur, :id_enseigne, :date_aime)";
-		} else {
-			$sql = "UPDATE contributeurs_aiment_enseignes SET date_aime=:date_aime 
-					WHERE contributeurs_id_contributeur=:id_contributeur AND enseignes_id_enseigne=:id_enseigne";
 		}
+		
 		$req = $bdd->prepare($sql);
 		$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
 		$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
@@ -67,7 +65,7 @@ try
 	
 	$reqCheck->closeCursor();
 	$reqCheck2->closeCursor();
-	$req->closeCursor();						    // Ferme la connexion du serveur
+	if ($resultCheck) {$req->closeCursor();}	  // Ferme la connexion du serveur
 	if ($resultCheck2) {$req2->closeCursor();}    // Ferme la connexion du serveur
 	$bdd = null;            // Détruit l'objet PDO
 
