@@ -12,8 +12,7 @@
 ?>
 
     <body>
-        <div class="bg_dashboard">
-        <div id="default_dialog"></div>
+                <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="dialog_overlay">
         <div class="index_overlay"></div>
@@ -23,6 +22,7 @@
                     </div>
             </div>
         </div>
+        <div class="bg_dashboard">
         <?php include'../includes/header.php'; ?>
         <div class="biggymarginer">
             <div class="big_wrapper" id="test">
@@ -39,7 +39,7 @@
                 .dashboard_content_nomargintop{min-height:40px;}
                 .form_content{height:940px;}
                 .form_content span{display:inline-block;font-size:1.4em;font-weight:600;}
-                .dashboard_cube_ariane{width:228px;height:228px;margin:0 auto;margin-top:40px;}
+                .dashboard_cube_ariane{width:228px;height:190px;margin:0 auto;margin-top:40px;}
                 .dashboard_cube_ariane a{cursor:default;}
                 
                 .dashboard_cube_item{position:relative;line-height:1.85em;text-align:center;float:left;}
@@ -104,10 +104,13 @@
                 div#dashboard_form_avis_frequence{width:123px;height:40px;border:1px dashed #252525;text-align:center;}
                 div#dashboard_form_avis_frequence select{background-color:white;list-style:none;display:block;padding:8px;font-size:1.4em;}
             
-                .dashboard_form_input_submit_wrap{margin:0 auto;width:355px;}
-                input.dashboard_form_input_submit{margin-top:20px;font-size:1.4em;padding:10px 40px;background-color:#a4ebf1;border:1px dashed #252525;}
+                .dashboard_form_input_submit_wrap{margin:0 auto;width:441px;}
+                input.dashboard_form_input_submit{margin-top:20px;font-size:1.4em;padding:10px 120px;background-color:#a4ebf1;border:1px dashed #252525;}
+                input:hover.dashboard_form_input_submit{border:1px dashed white;color:white;}
                 
                 /* COMMERCE INSIDE DASHBOARD */
+                
+                .submit_commerce{margin-bottom:40px;}
 
                 .dashboard_wrap .commerce_couv{height:363px;}
                 .dashboard_wrap .commerce_head_note_reservation{background-color:#a4ebf1;}
@@ -118,13 +121,34 @@
                 .dashboard_wrap .gerant_title{background-color:#a4ebf1;}
                 .dashboard_wrap .boutons{width: 44px;height: 45px;background: url("../img/pictos_dashboard/boutons.png") no-repeat center;}
             
+                .dashboard_commerce_couv{position:absolute;left:270px;top:80px;}
+                .dashboard_couverture_img_title{text-align:center;margin:0 auto;width:685px;margin-bottom:20px;}
+                .dashboard_couverture_gestion_couverture,.dashboard_couverture_gestion_popin,.dashboard_couverture_gestion_box{float:left;text-align:center;}
+                .dashboard_couverture_gestion_couverture,.dashboard_couverture_gestion_popin{margin-right:10px;}
+                .dashboard_couverture_gestion_couverture a,.dashboard_couverture_gestion_popin a,.dashboard_couverture_gestion_box a{color:#252525;display:inline-block;font-size:1.2em;font-weight:600;padding:10px 10px;width:203px;height:20px;border:1px dashed #252525;}
+                .dashboard_couverture_gestion_couverture a:hover,.dashboard_couverture_gestion_popin a:hover,.dashboard_couverture_gestion_box a:hover{color:#acacac;border:1px dashed #acacac;}
+                span.dashboard_couv_subtitle{display:block;text-transform:uppercase;}
+                
+                .dashboard_couv_ombre_grande{width:1201px;margin:0 auto;}
+                .dashboard_ombre_small{width:269px;height:61px;margin:0 auto;}
             </style>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
+                <div id="default_dialog"></div>
+        <div id="default_dialog_large"></div>
+        <div id="dialog_overlay">
+			<div class="index_overlay"></div>
+			<div class="dialog_overlay_wrap_content">
+				<div class="dialog_footer_loader">
+					<img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
+				</div>
+			</div>
+        </div>
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_f"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un commerce</span></a></div>
             </div>
+            <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
             <div class="dashboard_content dashboard_content_nomargintop">
                 <h2>Ajouter un nouveau commerce</h2>
             </div>
@@ -132,7 +156,7 @@
             <div class="liseret_bleu"></div>
             <div class="commerce_head">
                 <div class="commerce_head_desc">
-                    <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2><?php /*echo $nom_enseigne*/?></h2></div>
+                    <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2>Nom entreprise<?php /*echo $nom_enseigne*/?></h2></div>
                     <div class="commerce_head_desc_social"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -158,7 +182,7 @@
                     </div>
                     <span class="commerce_head_note_avis"><?php /*echo $count_avis_enseigne; */?>0 Avis</span>
                     <div class="commerce_head_note_reservation">
-                        <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');">
+                        <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');">
                             <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                             <div class="commerce_head_note_reserver"><span><strong>Module</strong> résa/rdv</span></div>
                         </a>
@@ -193,8 +217,15 @@
                 </div>
             </div>
             <div class="commerce_couv">
-                <div class="ligne_verticale1"></div>
-                <div class="ligne_verticale2"></div>
+                <div class="dashboard_commerce_couv">
+                    <div class="dashboard_couverture_img_title">
+                        <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/logo.png"/>
+                        <span class="dashboard_couv_subtitle">Gestionnaire des images</span>
+                    </div>
+                    <div class="dashboard_couverture_gestion_couverture"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');">Gestion des couvertures</a></div>
+                    <div class="dashboard_couverture_gestion_popin"><a href="#" title="">Gestion de la popin</a></div>
+                    <div class="dashboard_couverture_gestion_box"><a href="#" title="">Gestion de la box</a></div>
+                </div>
                 <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/couv_dash.jpg" title="" alt="" />
                 
                 <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php /*echo $descriptif */?></p></div>
@@ -210,6 +241,10 @@
                 </div>
             </div>
                 </div><!-- FIN BIG WRAPPER -->
+                <div class="dashboard_couv_ombre_grande"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_grande.png"/></div>
+                <div class="dashboard_form_input_submit_wrap submit_commerce">
+                     <input type="submit" class="dashboard_form_input_submit" value="Enregistrer ce commerce" />
+                </div>
         </div><!-- FIN DASH WRAP -->
         <!-- FIN CONTENU PRINCIPAL -->
         </div><!-- FIN BIGGY -->

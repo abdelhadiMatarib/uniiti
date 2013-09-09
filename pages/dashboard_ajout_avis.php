@@ -38,7 +38,7 @@
                 .dashboard_panel,.dashboard_content{width:694px;min-height:460px;margin:0 auto;}
                 .form_content{height:940px;}
                 .form_content span{display:inline-block;font-size:1.4em;font-weight:600;}
-                .dashboard_cube_ariane{width:228px;height:228px;margin:0 auto;margin-top:40px;}
+                .dashboard_cube_ariane{width:228px;height:190px;margin:0 auto;margin-top:40px;}
                 .dashboard_cube_ariane a{cursor:default;}
                 
                 .dashboard_cube_item{position:relative;line-height:1.85em;text-align:center;float:left;}
@@ -105,6 +105,7 @@
             
                 .dashboard_form_input_submit_wrap{margin:0 auto;width:355px;}
                 input.dashboard_form_input_submit{margin-top:20px;font-size:1.4em;padding:10px 40px;background-color:#a4ebf1;border:1px dashed #252525;}
+                .dashboard_ombre_small{width:269px;height:61px;margin:0 auto;}
             </style>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
@@ -112,6 +113,7 @@
             <div class="dashboard_cube_ariane">
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_c"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">des avis</span></a></div>
             </div>
+            <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
             <div class="dashboard_content form_content">
                 <h2>Saisir un avis</h2>
                     <div class="dashboard_form_wrap">
