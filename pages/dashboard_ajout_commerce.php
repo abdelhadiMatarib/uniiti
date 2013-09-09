@@ -248,7 +248,7 @@
         </div><!-- FIN DASH WRAP -->
         <!-- FIN CONTENU PRINCIPAL -->
         </div><!-- FIN BIGGY -->
-        <?php include'../includes/js.php' ?>
+     <?php //include'../includes/js.php' ?> 
         </div>
         <script>
         function moveToNext(field,nextFieldID){

@@ -33,17 +33,17 @@ function filter(){
 	});
 	$('.rang1 li').click(function(){
 	   $(this).siblings().hide('slideDown');
-	   $('.rang2 li').show('slideUp');
+	   $('.rang2 li.'+$(this).attr('class').split(' ')[0]).show('slideUp');
 	   $('.rang3 li,.rang4 li').hide('slideDown');
 	});
 	$('.rang2 li').click(function(){
 	   $(this).siblings().hide('slideDown');
-	   $('.rang3 li.'+$(this).attr('class')).show('slideUp');
+	   $('.rang3 li.'+$(this).attr('class').replace(" ", ".")).show('slideUp');
 	   $('.rang4 li').hide('slideDown');
 	});
 	$('.rang3 li').click(function(){
 	   $(this).siblings().hide('slideDown');
-	   $('.rang4 li.'+$(this).attr('class').replace(" ", ".")).show('slideUp');
+	   $('.rang4 li.'+$(this).attr('class').replace(" ", ".").replace(" ", ".")).show('slideUp');
 	});
 }
 filter();

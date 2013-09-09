@@ -110,7 +110,7 @@
 			$req->bindParam(':reception_newsletter', $newsletter_result, PDO::PARAM_INT);
 			$req->bindParam(':reception_bonus', $bonus_result, PDO::PARAM_INT);
 			$req->bindParam(':groupes_permissions_id_permission', $groupe_permission, PDO::PARAM_INT);
-//			$req->execute();              ON DESACTIVE POUR NE PAS POLLUER LA BASE DE PROD
+			$req->execute();
 
 			if($req) {}
 			else {}				// ERREUR A GERER
