@@ -131,18 +131,20 @@
                 
                 .dashboard_couv_ombre_grande{width:1201px;margin:0 auto;}
                 .dashboard_ombre_small{width:269px;height:61px;margin:0 auto;}
+                
+                .commerce_head_desc_modif{position:absolute;top:0;left:0;height:}
             </style>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
-                <div id="default_dialog"></div>
+        <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="dialog_overlay">
-			<div class="index_overlay"></div>
-			<div class="dialog_overlay_wrap_content">
-				<div class="dialog_footer_loader">
-					<img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
-				</div>
-			</div>
+            <div class="index_overlay"></div>
+            <div class="dialog_overlay_wrap_content">
+                <div class="dialog_footer_loader">
+                   <img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
+                </div>
+            </div>
         </div>
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
@@ -156,6 +158,7 @@
             <div class="liseret_bleu"></div>
             <div class="commerce_head">
                 <div class="commerce_head_desc">
+                    <a href="#" class="commerce_head_desc_modif"></a>
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2>Nom entreprise<?php /*echo $nom_enseigne*/?></h2></div>
                     <div class="commerce_head_desc_social"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
                     <div class="clearfix"></div>
@@ -168,6 +171,7 @@
                     <div class="clearfix"></div>
                     <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span>Téléphone<?php /*if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');*/?></span><a href="#" title="">Lien site Internet</a></div></div>
                     <div class="commerce_head_desc_prices"><div class="img_container" id="commerce_head_desc_prices_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></a></div><div id="commerce_head_desc_prices_wrap"><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /></div></div>
+                    
                 </div>
                 <div class="commerce_head_note">
                     <div class="commerce_head_note_stars">
@@ -210,10 +214,10 @@
                 <div class="commerce_head2_coinvideo">
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
-                <div class="commerce_head2_right">
-                <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>0</span></div>
-                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>0<?php /*echo $count_avis_enseigne; */?></span></div>
-                <div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span>0<?php /*echo $count_abonnes; */?></span></div>
+                    <div class="commerce_head2_right">
+                    <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>0</span></div>
+                    <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>0<?php /*echo $count_avis_enseigne; */?></span></div>
+                    <div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span>0<?php /*echo $count_abonnes; */?></span></div>
                 </div>
             </div>
             <div class="commerce_couv">
