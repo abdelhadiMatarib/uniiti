@@ -4,18 +4,11 @@
 #ScrollToTop {
 	display:none;
 	position:fixed;
-	bottom:10px;
+	bottom:0;
 	right:10px;
 	width:55px;
 	height:60px;
-	background: linear-gradient(rgb(250, 250, 250), rgb(235, 235, 235)) repeat scroll 0% 0% rgb(242, 242, 242);
-	box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.5);
-	border-radius: 3px 3px 3px 3px;
-	font-family: 'Helvetica',sans-serif;
-	font-weight: bold;
-	text-shadow: 0px 1px rgba(255, 255, 255, 0.9);
-	border: 1px solid rgba(153, 153, 153, 0.4);
-	color: rgb(119, 119, 119);
+	background: url('<?php echo SITE_URL; ?>/img/pictos_actions/scrolltop.png');
 }
 
 .textContainer {
