@@ -7,7 +7,7 @@
 	bottom:0;
 	right:10px;
 	width:55px;
-	height:60px;
+	height:70px;
 	background: url('<?php echo SITE_URL; ?>/img/pictos_actions/scrolltop.png');
 }
 
@@ -25,10 +25,7 @@
 }
 
 </style>
-<button id="ScrollToTop" onclick="javascript:window.scrollTo(0,0);">
-	<div class="textContainer">Retour en haut</div>
-</button>
-
+<button id="ScrollToTop"></button>
 
 <div class="uniiti_footer big_wrapper">
 	<div class="uniiti_footer_loader_barre_horizontale"></div>

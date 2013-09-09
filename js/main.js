@@ -749,4 +749,11 @@ $('#close_button_home').click(function() {
         
         }
         content_message_suggestion_height()
+
+        $('#ScrollToTop').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 800);
+			return false;
+		});
 });
