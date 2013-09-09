@@ -112,7 +112,7 @@ span.index_overlay_texte{display:block;}
 .filters{height:45px;}
 .rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{float:left;display:inline-block;}
 .rang0,.rang1,.rang2,.rang3,.rang4{float:left;position:relative;}
-.rang0 ul li,.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{list-style:none;cursor:pointer;margin-right:1px;height:45px;width:45px;font-size:0.9em;text-align:center;background-color:#A4EBF1;color:white;}
+.rang0 ul li,.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{position:relative;list-style:none;cursor:pointer;margin-right:1px;height:45px;width:45px;font-size:0.9em;text-align:center;background-color:#A4EBF1;color:white;}
 .button_all{-webkit-border-radius: 3px 0 0 3px;border-radius: 3px 0 0 3px;background: url('../img/sprite_filtre.png') no-repeat 10px 10px;}
 .button_avis{position:relative;background: url('../img/sprite_filtre.png') no-repeat -170px 10px;}
 .button_like{position:relative;background: url('../img/sprite_filtre.png') no-repeat -35px 10px;}
