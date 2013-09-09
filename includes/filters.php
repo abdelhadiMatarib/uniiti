@@ -115,10 +115,18 @@ ON t1.id_categorie = t3.id_categorie */
         </div>
         <div class="rang1">
             <ul>
-                <li class="avis button_avis"><div class="notifs_filter"><span><?php echo $CompteurProvenance['avis'] ?></span></div></li>
-                <li class="aime button_like"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime'] ?></span></div></li>
-                <li class="aime_pas button_dislike"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime_pas'] ?></span></div></li>
-                <li class="wish button_wishlist"><div class="notifs_filter"><span><?php echo $CompteurProvenance['wish'] ?></span></div></li>
+				<?php if (!empty($CompteurProvenance['avis'])) { ?>
+                <li class="avis button_avis"><div class="notifs_filter"><span><?php echo $CompteurProvenance['avis']; ?></span></div></li>
+				<?php } 
+				if (!empty($CompteurProvenance['aime'])) { ?>
+                <li class="aime button_like"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime']; ?></span></div></li>
+				<?php }
+				if (!empty($CompteurProvenance['aime_pas'])) { ?>
+                <li class="aime_pas button_dislike"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime_pas']; ?></span></div></li>
+				<?php }
+				if (!empty($CompteurProvenance['wish'])) { ?>
+                <li class="wish button_wishlist"><div class="notifs_filter"><span><?php echo $CompteurProvenance['wish']; ?></span></div></li>
+				<?php } ?>
             </ul> 
         </div>
         <div class="rang2">
