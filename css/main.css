@@ -746,6 +746,11 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .oublimdp_inputs input[type="mail"]{font-size:1.1em;width:410px;height:45px;bakground-color:#efefef;}
 .ident_inscription_wrap,.ident_connexion_wrap{padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
 .oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{width:500px;font-size:1.1em;text-align:center;float:left;}
+
+.valider_dialog_large{width:700px;font-size:1.1em;text-align:center;float:left;}
+.valider_dialog_large a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
+.valider_dialog_large a:hover{color:white;background-color:#73d4dc;}
+
 .bouton_envoyer_contact_wrap{width:100%;font-size:1.1em;text-align:center;float:left;}
 .bouton_envoyer_contact_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
 .bouton_envoyer_contact_wrap a:hover{color:white;background-color:#73d4dc;}
@@ -1019,3 +1024,143 @@ input.splash_input_login:focus.splash_input_login, input.splash_input_password:f
 /* DASHBOARD COMMERCE */
 a.commerce_head_desc_modif{position: absolute;top: 50px;left: 0;display: inline-block;height: 105px;width: 545px;}
 a.commerce_head_infos_modif_clefs{position: absolute;top: 0;left: 0;display: inline-block;height: 50px;width: 545px;}
+
+/* DASHBOARD */
+
+.bg_dashboard{background-color:white;height:100%;}
+.dashboard_wrap{margin:0 auto;}
+.dashboard_title_wrap{text-transform:uppercase;margin:0 auto;text-align:center;width:630px;}
+.dashboard_title_wrap h1{font-weight:300;margin:40px 0;}
+.dashboard_title_wrap h1 span{font-weight:600;}
+
+.dashboard_panel,.dashboard_content{width:694px;min-height:460px;margin:0 auto;}
+.dashboard_content_nomargintop{min-height:40px;}
+.form_content{height:940px;}
+.form_content span{display:inline-block;font-size:1.4em;font-weight:600;}
+.dashboard_cube_ariane{width:228px;height:190px;margin:0 auto;margin-top:40px;}
+.dashboard_cube_ariane a{cursor:default;}
+
+.dashboard_cube_item{position:relative;line-height:1.85em;text-align:center;float:left;}
+.dashboard_cube_item_margin_right{margin-right:5px;}
+.dashboard_cube_item_haut{z-index:2;}
+.dashboard_cube_item_bas{z-index:1;}
+.dashboard_cube_item_margin_top{margin-top:-7px;}
+
+.dashboard_cube_item_c{background:url('../img/pictos_dashboard/cube_c.png');}
+.dashboard_cube_item_f{background:url('../img/pictos_dashboard/cube_f.png');}
+.dashboard_cube_item span{display:block;font-size:1.7em;font-weight:400;text-transform:uppercase;}
+.dashboard_cube_item span.dashboard_txt_bold{font-weight:700;}
+.dashboard_cube_item a{color:white;display:inline-block;padding-top:75px;height:115px;width:228px;}
+.dashboard_cube_item a.dashboard_cube_item_last{padding-top:90px;height:100px;}
+.dashboard_cube_item a:hover{color:#acacac;}
+
+.dashboard_cube_ombre{float:left;margin:-15px -25px 0 0;width:736px;height:93px;background:url('../img/pictos_dashboard/ombre_cube.png');}
+
+.dashboard_content h2{margin-top:0;text-transform:uppercase;font-size:1.7em;font-weight:600;border-bottom:1px solid #252525;}
+.dashboard_content span{display:inline-block;font-size:1.4em;}
+.dashboard_content span.dashboard_txt_bold{font-weight:700;margin-left:20px;}
+
+.dashboard_form_wrap{float:left;height:700px;}
+.dashboard_form_txt{float:left;}
+.dashboard_form_txt span{display:inline-block;}
+.dashboard_form_input{float:left;margin-bottom:15px;}
+.dashboard_form_input_right{float:right;margin-bottom:15px;}
+.dashboard_form_input input,.dashboard_form_input_right input{height:40px;border:1px dashed #252525;font-size:1.4em;font-weight:600;color:#acacac;}
+.dashboard_form_input textarea{resize:none;height:198px;width:674px;border:1px dashed #252525;padding:10px;font-size:1.4em;font-weight:600;color:#acacac;}
+.dashboard_form_input_radio{margin-top:7px;}
+
+.dashboard_form_avis_date{height:33px;padding-top:7px;margin-right:20px;}
+input#dashboard_form_avis_date{width:155px;padding-left:10px;}
+.dashboard_form_avis_heure{height:33px;padding-top:7px;margin-right:20px;margin-left:60px;}
+input#dashboard_form_avis_heure{width:155px;padding-left:10px;}
+.dashboard_form_avis_commerce{height:33px;padding-top:7px;margin-right:20px;}
+input#dashboard_form_avis_commerce{width:570px;padding-left:10px;}
+.dashboard_form_avis_commentaire{height:33px;margin-right:20px;}
+.dashboard_form_avis_note{height:33px;padding-top:7px;margin-right:20px;}
+.dashboard_form_avis_nom{height:33px;padding-top:7px;margin-right:20px;}
+input#dashboard_form_avis_nom{width:520px;padding-left:10px;}
+.dashboard_form_avis_prenom{height:33px;padding-top:7px;margin-right:20px;}
+input#dashboard_form_avis_prenom{width:520px;padding-left:10px;}
+.dashboard_form_avis_ddn{height:33px;padding-top:7px;margin-right:20px;}
+.dashboard_form_avis_ddn_dd{text-align:center;width:155px;padding-left:10px;}
+.dashboard_form_avis_ddn_mm{text-align:center;width:155px;padding-left:10px;}
+.dashboard_form_avis_ddn_yyyy{text-align:center;width:155px;padding-left:10px;}
+
+.dashboard_form_avis_email{height:33px;padding-top:7px;margin-right:20px;}
+input#dashboard_form_avis_email{width:520px;padding-left:10px;}
+.dashboard_form_avis_tel{height:33px;padding-top:7px;margin-right:20px;}
+input#dashboard_form_avis_tel{width:520px;padding-left:10px;}
+
+.dashboard_form_note_wrap{margin:0 0 0 220px;}
+a.note_avis_etoile{background:url('../img/pictos_dashboard/etoile_avis.png');display:inline-block;margin-right:10px;height:45px;width:48px;}
+a:hover.note_avis_etoile{background-position:0 -45px;}
+
+.dashboard_form_avis_invitations{margin-right:120px;height:33px;padding-top:7px;}
+input#dashboard_form_avis_invitations{margin:0 10px;height:13px;}
+input#dashboard_form_avis_invitations_non{margin:0 10px 0 40px;height:13px;}
+.dashboard_form_avis_frequence{margin-left:85px;height:33px;padding-top:7px;margin-right:20px;}
+div#dashboard_form_avis_frequence{width:123px;height:40px;border:1px dashed #252525;text-align:center;}
+div#dashboard_form_avis_frequence select{background-color:white;list-style:none;display:block;padding:8px;font-size:1.4em;}
+
+.dashboard_form_input_submit_wrap{margin:0 auto;width:441px;}
+input.dashboard_form_input_submit{margin-top:20px;font-size:1.4em;padding:10px 120px;background-color:#a4ebf1;border:1px dashed #252525;}
+input:hover.dashboard_form_input_submit{border:1px dashed white;color:white;}
+
+/* COMMERCE INSIDE DASHBOARD */
+
+.submit_commerce{margin-bottom:40px;}
+
+.dashboard_wrap .commerce_couv{height:363px;}
+.dashboard_wrap .commerce_head_note_reservation{background-color:#a4ebf1;}
+.dashboard_wrap .commerce_head_infos_services_text_couleur,.dashboard_wrap .commerce_head_infos_infos_text_couleur{color:#a4ebf1;}
+.dashboard_wrap .commerce_head_infos_infos,.dashboard_wrap .commerce_head_infos_services{width:230px;}
+.dashboard_wrap .commerce_head2_text2{color:#a4ebf1;}
+.dashboard_wrap .commerce_head2_text2_1{color:#a4ebf1;}
+.dashboard_wrap .gerant_title{background-color:#a4ebf1;}
+.dashboard_wrap .boutons{width: 44px;height: 45px;background: url("../img/pictos_dashboard/boutons.png") no-repeat center;}
+
+.dashboard_commerce_couv{position:absolute;left:270px;top:80px;}
+.dashboard_couverture_img_title{text-align:center;margin:0 auto;width:685px;margin-bottom:20px;}
+.dashboard_couverture_gestion_couverture,.dashboard_couverture_gestion_popin,.dashboard_couverture_gestion_box{float:left;text-align:center;}
+.dashboard_couverture_gestion_couverture,.dashboard_couverture_gestion_popin{margin-right:10px;}
+.dashboard_couverture_gestion_couverture a,.dashboard_couverture_gestion_popin a,.dashboard_couverture_gestion_box a{color:#252525;display:inline-block;font-size:1.2em;font-weight:600;padding:10px 10px;width:203px;height:20px;border:1px dashed #252525;}
+.dashboard_couverture_gestion_couverture a:hover,.dashboard_couverture_gestion_popin a:hover,.dashboard_couverture_gestion_box a:hover{color:#acacac;border:1px dashed #acacac;}
+span.dashboard_couv_subtitle{display:block;text-transform:uppercase;}
+
+.dashboard_couv_ombre_grande{width:1201px;margin:0 auto;}
+.dashboard_ombre_small{width:269px;height:61px;margin:0 auto;}
+
+.infos_gene_title{float:left;width:480px;background-color:#73d4dc;padding:5px 10px;;}
+.infos_gene_title span{text-transform:uppercase;color:white;font-size:1.2em;font-weight:600;}
+.infos_gene_input{float:left;}
+.infos_gene_input_img{float:left;text-align:center;width:480px;padding:10px;background-color:#f0f0f0;}
+.infos_gene_input input{width:480px;padding:10px;background-color:#f0f0f0;color:#252525;}
+.infos_gene_input select{width:166.5px;height:30px;}
+/**/
+.input_infos_horaires{float:left;}
+.input_infos_horaires input{float:left;width:50px;border:1px dashed #252525;text-align:center;}
+.infospratiques_body_horaires span{margin:0 5px;display:inline-block;float:left;}
+.bouton_commerce_ferme{cursor:pointer;float:right;height:17px;width:17px;background:url('../img/pictos_dashboard/bouton_commerce_ferme.png');}
+.bouton_commerce_ouvert{cursor:pointer;float:right;height:17px;width:17px;background:url('../img/pictos_dashboard/bouton_commerce_ouvert.png');}
+
+.input_parking{width:500px;height:10px;padding:10px;}
+input.input_parking{border:1px dashed #252525;}
+.input_parking_mini{height:10px;padding:10px;width:30px;}
+input.input_parking_mini{border:1px dashed #252525;}
+
+.input_prix_mini{height:20px;padding:2px;width: 36px;text-align:center;}
+input.input_prix_mini{border:1px dashed #252525;}
+
+input.input_menustarifs{height:30px;padding:10px;width:560px;}
+
+span.span_float_left{float:left;margin: 6px 0 0 10px;}
+span.span_float_left_prix{float:left;margin: 6px 5px;}
+
+.prix_generique_bouton_map_wrap{padding-top:20px;}
+
+.paiement_selected{background-color:#acacac !important;}
+input.button_voiturier_choix{text-transform:uppercase;padding:10px 40px;background-color:white;border:1px dashed #252525;}
+input.button_voiturier_choix:hover{background-color:#f0f0f0;border:1px dashed #acacac;}
+
+.dashboard_menutarifs_nopadding{padding:0 !important;}
+.dashboard_menutarifs_largerprice{width:100px !important;}

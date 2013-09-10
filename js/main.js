@@ -1,6 +1,3 @@
-$('a').click(function(e){
-   e.preventDefault(); 
-});
 datanvelements = {init:1};
 $(".home_newsfeed").css({'display': 'none'});
 function NouveauxElements(data) {
