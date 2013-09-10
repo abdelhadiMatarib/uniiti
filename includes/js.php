@@ -108,7 +108,9 @@ function SetFiltre(data) {
 	$Filtre.categorie = data.categorie;
 	$Filtre.scategorie = data.scategorie;
 	$Filtre.sscategorie = data.sscategorie;
+	$("#dialog_overlay").css({display: "block"});
 	$.ajax({
+		async : false,
 		type:"POST",
 		url : "includes/requete.php",
 		data : $.extend($Filtre, {site_url: '<?php echo SITE_URL ; ?>'}),
@@ -120,6 +122,7 @@ function SetFiltre(data) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
+	$("#dialog_overlay").css({display: "none"});
 }	
 	
 	$(window).load(function() {
