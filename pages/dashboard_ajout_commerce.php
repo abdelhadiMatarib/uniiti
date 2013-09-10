@@ -131,8 +131,7 @@
                 
                 .dashboard_couv_ombre_grande{width:1201px;margin:0 auto;}
                 .dashboard_ombre_small{width:269px;height:61px;margin:0 auto;}
-                
-                .commerce_head_desc_modif{position:absolute;top:0;left:0;height:}
+
             </style>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
@@ -149,7 +148,7 @@
             <div class="liseret_bleu"></div>
             <div class="commerce_head">
                 <div class="commerce_head_desc">
-                    <a href="#" class="commerce_head_desc_modif"></a>
+                    <a href="#" class="commerce_head_desc_modif" onclick="OuvrePopin({}, '/includes/popins/dashboard_infos_generales.tpl.php', 'default_dialog');"></a>
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2>Nom entreprise<?php /*echo $nom_enseigne*/?></h2></div>
                     <div class="commerce_head_desc_social"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
                     <div class="clearfix"></div>
@@ -162,7 +161,6 @@
                     <div class="clearfix"></div>
                     <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span>Téléphone<?php /*if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');*/?></span><a href="#" title="">Lien site Internet</a></div></div>
                     <div class="commerce_head_desc_prices"><div class="img_container" id="commerce_head_desc_prices_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></a></div><div id="commerce_head_desc_prices_wrap"><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /><img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" /></div></div>
-                    
                 </div>
                 <div class="commerce_head_note">
                     <div class="commerce_head_note_stars">
@@ -185,12 +183,13 @@
                 </div>
                 <div class="commerce_head_infos">
                     <div class="commerce_head_infos_services"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Menu</span><span class="commerce_head_infos_services_text_couleur">& Tarifs</span></div></a></div>
-                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></a></div>
+                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></a></div>
                     <div class="commerce_head_infos_suivre"><a href="#" title="" onclick="<?php /*echo $follow_step1; */?>"><span>Suivre</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
                     <div class="commerce_head_infos_infosrapides">
+                        <a href="#" class="commerce_head_infos_modif_clefs" "title="" onclick="OuvrePopin({}, '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');"></a>
                         <div class="infosrapides1"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides1.png" alt="" title="" height="26" width="21" /></div><span></span><span>Mot-clefs 1</span><span></span></div>
                         <div class="infosrapides2"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div><span></span><span>Mots-clefs 2</span><span></span></div>
                         <div class="clearfix_infosrapides"></div>

@@ -75,7 +75,7 @@
         </div><!-- FIN DU BIGGY -->
 		
         <!-- FOOTER -->
-			<?php include 'includes/footer.php' ?>
+		<?php include 'includes/footer.php' ?>
         <!-- FIN FOOTER -->
 		<?php include'includes/js.php' ?>
 	</body>

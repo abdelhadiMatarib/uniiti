@@ -1,4 +1,6 @@
-
+$('a').click(function(e){
+   e.preventDefault(); 
+});
 datanvelements = {init:1};
 $(".home_newsfeed").css({'display': 'none'});
 function NouveauxElements(data) {
@@ -103,8 +105,6 @@ function CreerOverlayPush() {
     });
 }
 
-
-        
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
 function resizeboxContainer(){        
 	var boxcontainersize = $('#box_container').width();
