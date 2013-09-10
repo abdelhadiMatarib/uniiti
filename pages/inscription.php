@@ -37,10 +37,10 @@
 					<button class="inscription_field_sexe_button inscription_field_sexe_button_h" id="button_homme">Homme</button><button class="inscription_field_sexe_button inscription_field_sexe_button_f" id="button_femme">Femme</button>
 					<div class="clearfix"></div>
 					<div class="inscription_field_nom inscription_border_bottomright">Nom *</div>
-					<input name="nom" id="nom" class="inscription_field_input_text" required="required" type="text"/>
+					<input name="nom" id="nom" class="inscription_field_input_text" required="required" type="text" placeholder="Votre nom"/>
 					<div class="clearfix"></div>
 					<div class="inscription_field_prenom inscription_border_bottomright">Prénom *</div>
-					<input name="prenom" id="prenom" class="inscription_field_input_text" required="required" type="text"/>
+					<input name="prenom" id="prenom" class="inscription_field_input_text" required="required" type="text" placeholder="Votre prénom"/>
 					<div class="clearfix"></div>
 
 					<div class="inscription_field_prenom inscription_border_bottomright">Date de naissance *</div>
@@ -70,25 +70,25 @@
                     </select>
 					<div class="clearfix"></div>				
 					<div class="inscription_field_cp inscription_border_bottomright">Code postal *</div>
-					<input name="codepostal" id="codepostal" class="inscription_field_input_text" required="required" type="text"/>
+					<input name="codepostal" id="codepostal" class="inscription_field_input_text" required="required" type="text" placeholder="Votre code postal"/>
 					<div class="clearfix"></div>
 					
 				</div>
 				<div class="inscription_fields_right">
 					<div class="inscription_field_parrain inscription_border_bottomright">Téléphone</div>
-					<input type="text" name="telephone_contributeur" id="telephone_contributeur" class="inscription_field_input_text .inscription_border_bottomright" />
+					<input type="text" name="telephone_contributeur" id="telephone_contributeur" class="inscription_field_input_text .inscription_border_bottomright" placeholder="Votre numéro de téléphone"/>
 					<div class="clearfix"></div>
 					<div class="inscription_field_mail inscription_border_bottomright">Adresse mail *</div>
-					<input name="email-login" id="email_login" class="inscription_field_input_text" required="required" type="mail"/>
+					<input name="email-login" id="email_login" class="inscription_field_input_text" required="required" type="mail" placeholder="Votre email"/>
 					<div class="clearfix"></div>
 					<div class="inscription_field_confirmmail inscription_border_bottomright">Confirmation *</div>
-					<input name="email-login2" id="email_login2" class="inscription_field_input_text" required="required" type="mail"/>
+					<input name="email-login2" id="email_login2" class="inscription_field_input_text" required="required" type="mail" placeholder="Confirmer votre email"/>
 					<div class="clearfix"></div>					
 					<div class="inscription_field_mdp inscription_border_bottomright">Mot de passe *</div>
-					<input name="mdp" id="mdp" class="inscription_field_input_text" required="required" type="password"/>
+					<input name="mdp" id="mdp" class="inscription_field_input_text" required="required" type="password" placeholder="Votre mot de passe"/>
 					<div class="clearfix"></div>
 					<div class="inscription_field_confirmmdp inscription_border_bottomright">Confirmation *</div>
-					<input name="mdp2" id="mdp2" class="inscription_field_input_text" required="required" type="password"/>
+					<input name="mdp2" id="mdp2" class="inscription_field_input_text" required="required" type="password" placeholder="Confirmer votre mot de passe"/>
 					<div class="clearfix"></div>
 					
 <!--				<div class="inscription_field_pseudo inscription_border_bottomright">Pseudo *</div>		-->
