@@ -1009,19 +1009,11 @@ body{overflow-x: hidden;}
 .splash_body h1{display:block;margin:14px 0;color:white;font-size:1em;font-weight:300;color:white;}
 .splash_input_login,.splash_input_password{color: white; height:40px;width:185px;padding:5px 5px 5px 35px;background-color:transparent;color:white;font-size:1.1em;}
 .splash_input_login{border-bottom:1px solid #fff;background:url('../img/pictos_splash/icon_user.png') no-repeat 5px 10px;}
-<<<<<<< HEAD
 input.splash_input_login::-webkit-input-placeholder, input.splash_input_password::-webkit-input-placeholder { color:#fff; }
 input.splash_input_login::-moz-placeholder, input.splash_input_password::-moz-placeholderd { color:#fff; } /* firefox 19+ */
 input.splash_input_login:-ms-input-placeholder, input.splash_input_password:-ms-input-placeholder{ color:#fff; } /* ie */
 input.splash_input_login:-moz-placeholder.splash_input_login, input.splash_input_password:-moz-placeholder { color:#fff; }
 input:focus.splash_input_login, input:focus.splash_input_password {outline: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.08);}
-=======
-input.splash_input_login::-webkit-input-placeholder,input.splash_input_password::-webkit-input-placeholder { color:#fff; }
-input.splash_input_login::-moz-placeholder,input.splash_input_password::-webkit-input-placeholder { color:#fff; } /* firefox 19+ */
-input.splash_input_login:-ms-input-placeholder,input.splash_input_password::-webkit-input-placeholder { color:#fff; } /* ie */
-input.splash_input_login:-moz-placeholder,input.splash_input_password:-moz-placeholder { color:#fff; }
-input.splash_input_login:focus.splash_input_login, input.splash_input_password:focus.splash_input_password {outline: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.08);}
->>>>>>> 92175a03a118ec43019fb39ff322ce925654bfb1
 .splash_input_password{background:url('../img/pictos_splash/icon_clef.png') no-repeat 5px 15px; margin-top:-1px;}
 .splash_input_button{background-color:transparent;border:1px dashed white;width:185px;padding:5px 10px;color:white;font-size:1.4em;font-weight:300;margin-top:14px;}
 .splash_input_button:hover{background-color: rgba(255,255,255,0.1);}
