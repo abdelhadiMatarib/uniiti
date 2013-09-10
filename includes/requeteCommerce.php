@@ -39,7 +39,7 @@
 					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_enseignes AS t4
 				UNION
-					SELECT 'aime pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_pas_enseignes AS t5
 				UNION
 					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
@@ -91,7 +91,7 @@
 					$action = "a aimé";
 					$affichecommentaire = false;
 					break;
-				case "aime pas":
+				case "aime_pas":
 					$note = "''";
 					$commentaire = "''";
 					$action = "n'a pas aimé";

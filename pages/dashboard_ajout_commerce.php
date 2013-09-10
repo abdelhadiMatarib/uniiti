@@ -12,7 +12,7 @@
 ?>
 
     <body>
-                <div id="default_dialog"></div>
+        <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="dialog_overlay">
         <div class="index_overlay"></div>
@@ -136,16 +136,7 @@
             </style>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
-        <div id="default_dialog"></div>
-        <div id="default_dialog_large"></div>
-        <div id="dialog_overlay">
-            <div class="index_overlay"></div>
-            <div class="dialog_overlay_wrap_content">
-                <div class="dialog_footer_loader">
-                   <img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="70" width="70"/>
-                </div>
-            </div>
-        </div>
+
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_f"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un commerce</span></a></div>
@@ -252,7 +243,7 @@
         </div><!-- FIN DASH WRAP -->
         <!-- FIN CONTENU PRINCIPAL -->
         </div><!-- FIN BIGGY -->
-     <?php //include'../includes/js.php' ?> 
+     <?php include'../includes/js.php' ?> 
         </div>
         <script>
         function moveToNext(field,nextFieldID){

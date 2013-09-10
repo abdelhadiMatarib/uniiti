@@ -110,22 +110,22 @@ ON t1.id_categorie = t3.id_categorie */
 <div class="filters">
         <div class="rang0">
             <ul>
-                <li class="button_all"><div class="notifs_filter"><span><?php echo $CompteurTotal ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'all'});" class="button_all"><div class="notifs_filter"><span><?php echo $CompteurTotal ?></span></div></li>
             </ul>
         </div>
         <div class="rang1">
             <ul>
 				<?php if (!empty($CompteurProvenance['avis'])) { ?>
-                <li class="avis button_avis"><div class="notifs_filter"><span><?php echo $CompteurProvenance['avis']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'avis'});" class="avis button_avis"><div class="notifs_filter"><span><?php echo $CompteurProvenance['avis']; ?></span></div></li>
 				<?php } 
 				if (!empty($CompteurProvenance['aime'])) { ?>
-                <li class="aime button_like"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'aime'});" class="aime button_like"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime']; ?></span></div></li>
 				<?php }
 				if (!empty($CompteurProvenance['aime_pas'])) { ?>
-                <li class="aime_pas button_dislike"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime_pas']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'aime_pas'});" class="aime_pas button_dislike"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime_pas']; ?></span></div></li>
 				<?php }
 				if (!empty($CompteurProvenance['wish'])) { ?>
-                <li class="wish button_wishlist"><div class="notifs_filter"><span><?php echo $CompteurProvenance['wish']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'wish'});" class="wish button_wishlist"><div class="notifs_filter"><span><?php echo $CompteurProvenance['wish']; ?></span></div></li>
 				<?php } ?>
             </ul> 
         </div>
@@ -137,7 +137,7 @@ ON t1.id_categorie = t3.id_categorie */
 					if (!empty($CompteurCategorie['all'][$Key])) {
 						foreach ($ProvAvis as $provenance) {
 							if (!empty($CompteurCategorie[$provenance][$Key])) { ?>
-								<li class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="notifs_filter"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
+								<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="notifs_filter"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
 				<?php 		}
 						}
 					}
@@ -153,7 +153,7 @@ ON t1.id_categorie = t3.id_categorie */
 							if (!empty($CompteurSousCategorie['all'][$Key2])) {
 								foreach ($ProvAvis as $provenance) {
 									if (!empty($CompteurSousCategorie[$provenance][$Key2])) { ?>
-                <li class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="notifs_filter"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="notifs_filter"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
 				<?php 				}
 								}
 							}
@@ -172,7 +172,7 @@ ON t1.id_categorie = t3.id_categorie */
 									foreach ($ProvAvis as $provenance) {
 										if (!empty($CompteurSousCategorie2[$provenance][$Key3])) { 								
 											if ($SousCategorie2 != "") { ?>
-                <li class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="notifs_filter"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="notifs_filter"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
 				<?php						}
 										}
 									}

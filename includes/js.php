@@ -101,6 +101,28 @@
             });
         </script>-->
 	<script>
+	
+$Filtre = {};
+function SetFiltre(data) {
+	$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
+	$Filtre.categorie = data.categorie;
+	$Filtre.scategorie = data.scategorie;
+	$Filtre.sscategorie = data.sscategorie;
+	$.ajax({
+		type:"POST",
+		url : "includes/requete.php",
+		data : $.extend($Filtre, {nbitems: 20, site_url: '<?php echo SITE_URL ; ?>'}),
+		success: function(html){
+			if (html) {
+				$('#box_container').html( $(html));
+				resizeboxContainer();
+
+			} else {alert('Il n\'y a plus d\'enregistrements');}
+		},
+		error: function() {alert('Erreur sur url : ' + $url);}
+	});
+}	
+	
 	$(window).load(function() {
 		$(function(){
 			/* DEBUT RIGOLER
@@ -160,7 +182,7 @@
 						}
 						else {
 							$url = "includes/requete.php";
-							$data = {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							$data = $.extend($Filtre, {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
 						}
 						CptScroll++;
 						isloading = true;

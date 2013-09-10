@@ -1,5 +1,5 @@
-<?php
-		if (!empty($_POST['lastid'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+<?php 
+		if (!empty($_POST['lastid']) || !empty($_POST['provenance'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
@@ -41,7 +41,7 @@
 									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne */
 		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT provenance, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
+		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -52,7 +52,7 @@
 					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_enseignes AS t4
 				UNION
-					SELECT 'aime pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_pas_enseignes AS t5
 				UNION
 					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
@@ -62,9 +62,19 @@
 				ON t7.contributeurs_id_contributeur = t8.id_contributeur
 					INNER JOIN enseignes AS t9
 					ON t7.enseignes_id_enseigne = t9.id_enseigne
-						INNER JOIN types_enseigne AS t10
-							ON t10.id_type_enseigne = t9.types_enseigne_id_type_enseigne ";
+						INNER JOIN sous_categories2 AS t10
+							ON t10.id_sous_categorie2 = t9.sscategorie_enseigne
+							INNER JOIN sous_categories AS t11
+							ON t10.id_sous_categorie = t11.id_sous_categorie
+								INNER JOIN categories AS t12
+								ON t10.id_categorie = t12.id_categorie ";
 		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);}
+		if (!empty($_POST['provenance'])) {
+			if (urldecode($_POST['provenance']) != "all") {$sql2 .= " WHERE provenance = " . urldecode($_POST['provenance']);}
+		}
+		if (!empty($_POST['categorie'])) {$sql2 .= " AND t10.id_categorie = " . $_POST['categorie'];}
+		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
+		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
 		$req2 = $bdd->prepare($sql2);
@@ -104,7 +114,7 @@
 					$action = "a aimé";
 					$affichecommentaire = false;
 					break;
-				case "aime pas":
+				case "aime_pas":
 					$note = "''";
 					$commentaire = "''";
 					$action = "n'a pas aimé";
@@ -135,7 +145,7 @@
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
-			$nom_type_enseigne       = $row['nom_type_enseigne'];
+//			$nom_type_enseigne       = $row['nom_type_enseigne'];
 			$url                     = $row['url'];
 			$btn_donner_avis_visible = $row['btn_donner_avis_visible'];
 			
