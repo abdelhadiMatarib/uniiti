@@ -20,6 +20,10 @@ function NouveauxElements(data) {
 					else if (data.total > datanvelements.total) {
 						$(".home_newsfeed_number").html(data.total - datanvelements.total);
 						$(".home_newsfeed").css({'display': 'block'});
+						$(".home_newsfeed").click(function(){
+							window.location.reload()
+							$(".home_newsfeed").css({'display': 'none'});
+						});
 					}
 				},
 		error: function() {alert('Erreur sur url : ' + url);}

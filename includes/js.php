@@ -133,7 +133,7 @@ function SetFiltre(data) {
 			BV.init();
 			BV.show(siteurl+'/img/videos/Jump Around.flv');
 			FIN RIGOLER */
-			setInterval("NouveauxElements()", 10000);
+			setInterval("NouveauxElements()", 1000);
 			
 			CreerOverlayPush();
   
