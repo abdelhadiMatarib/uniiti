@@ -68,11 +68,20 @@
 							ON t10.id_sous_categorie = t11.id_sous_categorie
 								INNER JOIN categories AS t12
 								ON t10.id_categorie = t12.id_categorie ";
-		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);}
+		$ClauseWhere = false;
+		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);$ClauseWhere = true;}
 		if (!empty($_POST['provenance'])) {
-			if (urldecode($_POST['provenance']) != "all") {$sql2 .= " WHERE provenance = " . urldecode($_POST['provenance']);}
+			if (urldecode($_POST['provenance']) != "\"all\"") {
+				if ($ClauseWhere) {$sql2 .= " AND ";}
+				else {$sql2 .= " WHERE ";$ClauseWhere = true;}
+				$sql2 .= "provenance = " . urldecode($_POST['provenance']);
+			}
 		}
-		if (!empty($_POST['categorie'])) {$sql2 .= " AND t10.id_categorie = " . $_POST['categorie'];}
+		if (!empty($_POST['categorie'])) {
+				if ($ClauseWhere) {$sql2 .= " AND ";}
+				else {$sql2 .= " WHERE ";$ClauseWhere = true;}
+				$sql2 .= "t10.id_categorie = " . $_POST['categorie'];
+		}
 		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
 		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;

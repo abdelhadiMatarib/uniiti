@@ -111,11 +111,12 @@ function SetFiltre(data) {
 	$.ajax({
 		type:"POST",
 		url : "includes/requete.php",
-		data : $.extend($Filtre, {nbitems: 20, site_url: '<?php echo SITE_URL ; ?>'}),
+		data : $.extend($Filtre, {site_url: '<?php echo SITE_URL ; ?>'}),
 		success: function(html){
 			if (html) {
-				$('#box_container').html( $(html));
-				resizeboxContainer();
+				$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this))});
+				$('#box_container').append( $(html)).isotope( 'addItems', $(html) );
+
 
 			} else {alert('Il n\'y a plus d\'enregistrements');}
 		},
