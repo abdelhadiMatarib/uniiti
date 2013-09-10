@@ -122,6 +122,7 @@ function SetFiltre(data) {
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
 	});
+	CreerOverlayPush();
 	$("#dialog_overlay").css({display: "none"});
 }	
 	
