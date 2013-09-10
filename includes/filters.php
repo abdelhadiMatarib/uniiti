@@ -35,7 +35,11 @@
 		foreach ($resultprovenance as $row) {
 			$CompteurProvenance[$row['provenance']] = $row['compteur'];
 		}
-		$CompteurTotal = $CompteurProvenance['avis'] + $CompteurProvenance['aime'] + $CompteurProvenance['aime_pas'] + $CompteurProvenance['wish'] ;
+		$CompteurTotal = $CompteurProvenance['avis'];
+		if (!empty($CompteurProvenance['aime'])) {$CompteurTotal += $CompteurProvenance['aime'];}
+		if (!empty($CompteurProvenance['aime_pas'])) {$CompteurTotal += $CompteurProvenance['aime_pas'];}
+		if (!empty($CompteurProvenance['wish'])) {$CompteurTotal += $CompteurProvenance['wish'];}		
+		
 		$sqlcategorie = "SELECT provenance, t10.id_categorie, COUNT(id_avis) as compteur" . $sqldroite  . " GROUP BY provenance, t10.id_categorie";
 		$reqcategorie = $bdd->prepare($sqlcategorie);
 		$reqcategorie->execute();

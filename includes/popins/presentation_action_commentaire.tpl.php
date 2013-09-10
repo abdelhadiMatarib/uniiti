@@ -17,7 +17,7 @@ switch ($provenance) {
 		$action = "a aimé";
 		$affichecommentaire = false;
 		break;
-	case "aime pas":
+	case "aime_pas":
 		$note = "''";
 		$commentaire = "''";
 		$action = "n'a pas aimé";
@@ -56,7 +56,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <div class="presentation_action_left_head_img_container_picto_categorie"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
             <div class="presentation_action_left_head_categorie_wrap">    
                 <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
-                <span class="presentation_action_left_head_categorie">Restauration</span>
+                <span class="presentation_action_left_head_categorie"><?php echo stripslashes($_POST['scategorie']); ?></span>
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
