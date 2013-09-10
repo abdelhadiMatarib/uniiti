@@ -217,8 +217,8 @@
                         <span class="dashboard_couv_subtitle">Gestionnaire des images</span>
                     </div>
                     <div class="dashboard_couverture_gestion_couverture"><a href="#" title="" onclick="OuvrePopin({step:1}, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');">Gestion des couvertures</a></div>
-                    <div class="dashboard_couverture_gestion_popin"><a href="#" title="">Gestion de la popin</a></div>
-                    <div class="dashboard_couverture_gestion_box"><a href="#" title="">Gestion de la box</a></div>
+                    <div class="dashboard_couverture_gestion_popin"><a href="#" title="" onclick="OuvrePopin({step:1}, '/includes/popins/vignette_step1.tpl.php', 'default_dialog_large');">Gestion de la popin</a></div>
+                    <div class="dashboard_couverture_gestion_box"><a href="#" title="" onclick="OuvrePopin({step:1}, '/includes/popins/box_step1.tpl.php', 'default_dialog_large');">Gestion de la box</a></div>
                 </div>
                 <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/couv_dash.jpg" title="" alt="" />
                 

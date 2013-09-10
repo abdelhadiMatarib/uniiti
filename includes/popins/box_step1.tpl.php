@@ -38,7 +38,7 @@
 	<div class="couverture_head">
 		<div class="couverture_img_container">
 			<img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_icon.png" title="" alt="" height="37" width="37" />
-		</div><span class="maintitle">Image de popin</span>
+		</div><span class="maintitle">Image de box</span>
 	</div>   
 	<div class="couverture_step1_body">
 		
@@ -46,25 +46,25 @@
 			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 			
 			<div id="fenetre"></div>
-			<div id="selection" class="vignette_step1_dropzone">
+			<div id="selection" class="box_step1_dropzone">
 				<div class="draggable">
 					<img id="image" src="" height="189" />
 				</div>
 				<div id="Interaction1">
-					<div class="vignette_step1_dropzone_img_container">
+					<div class="box_step1_dropzone_img_container">
 						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="50" width="51" />
 					</div>
-					<div class="vignette_step1_dropzone_txt">
+					<div class="box_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
 						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="">votre ordinateur</a></span>
 					</div>
 				</div>
 				
-				<div class="couverture_step1_wrap_buttons">
+				<div class="couverture_step1_wrap_buttons box_wrap_buttons">
 					<div class="couverture_step1_button_supprimer"></div>
 					<div class="couverture_step1_button_valider"></div>
 				</div>
-				<div class="vignette_step2_resize_infos">
+				<div class="box_step2_resize_infos">
 					<div class="couverture_step2_resize_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_resize_icon.png" title="" alt="" height="18" width="10" /></div>
 					<span>cliquez pour repositionner l'image</span>
 				</div>
