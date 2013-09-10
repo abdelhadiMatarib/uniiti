@@ -35,7 +35,11 @@
 		foreach ($resultprovenance as $row) {
 			$CompteurProvenance[$row['provenance']] = $row['compteur'];
 		}
-		$CompteurTotal = $CompteurProvenance['avis'] + $CompteurProvenance['aime'] + $CompteurProvenance['aime_pas'] + $CompteurProvenance['wish'] ;
+		$CompteurTotal = $CompteurProvenance['avis'];
+		if (!empty($CompteurProvenance['aime'])) {$CompteurTotal += $CompteurProvenance['aime'];}
+		if (!empty($CompteurProvenance['aime_pas'])) {$CompteurTotal += $CompteurProvenance['aime_pas'];}
+		if (!empty($CompteurProvenance['wish'])) {$CompteurTotal += $CompteurProvenance['wish'];}		
+		
 		$sqlcategorie = "SELECT provenance, t10.id_categorie, COUNT(id_avis) as compteur" . $sqldroite  . " GROUP BY provenance, t10.id_categorie";
 		$reqcategorie = $bdd->prepare($sqlcategorie);
 		$reqcategorie->execute();
@@ -104,28 +108,30 @@ ON t1.id_categorie = t3.id_categorie */
 		foreach ($result as $row) {
 			$Lien3Categories[$row['id_categorie']][$row['id_sous_categorie']][$row['id_sous_categorie2']] = $row['sous_categorie2'];
 		}
+		$notifmoins100 = "notifs_filter";
+		$notifplus100 = "notifs_filter2";
 ?>
 
 <!--<nav>-->
 <div class="filters">
         <div class="rang0">
             <ul>
-                <li onclick="SetFiltre({provenance:'all'});" class="button_all"><div class="notifs_filter"><span><?php echo $CompteurTotal ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'all'});" class="button_all"><div class="<?php if ($CompteurTotal > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurTotal ?></span></div></li>
             </ul>
         </div>
         <div class="rang1">
             <ul>
 				<?php if (!empty($CompteurProvenance['avis'])) { ?>
-                <li onclick="SetFiltre({provenance:'avis'});" class="avis button_avis"><div class="notifs_filter"><span><?php echo $CompteurProvenance['avis']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'avis'});" class="avis button_avis"><div class="<?php if ($CompteurProvenance['avis'] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurProvenance['avis']; ?></span></div></li>
 				<?php } 
 				if (!empty($CompteurProvenance['aime'])) { ?>
-                <li onclick="SetFiltre({provenance:'aime'});" class="aime button_like"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'aime'});" class="aime button_like"><div class="<?php if ($CompteurProvenance['aime'] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurProvenance['aime']; ?></span></div></li>
 				<?php }
 				if (!empty($CompteurProvenance['aime_pas'])) { ?>
-                <li onclick="SetFiltre({provenance:'aime_pas'});" class="aime_pas button_dislike"><div class="notifs_filter"><span><?php echo $CompteurProvenance['aime_pas']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'aime_pas'});" class="aime_pas button_dislike"><div class="<?php if ($CompteurProvenance['aime_pas'] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurProvenance['aime_pas']; ?></span></div></li>
 				<?php }
 				if (!empty($CompteurProvenance['wish'])) { ?>
-                <li onclick="SetFiltre({provenance:'wish'});" class="wish button_wishlist"><div class="notifs_filter"><span><?php echo $CompteurProvenance['wish']; ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'wish'});" class="wish button_wishlist"><div class="<?php if ($CompteurProvenance['wish'] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurProvenance['wish']; ?></span></div></li>
 				<?php } ?>
             </ul> 
         </div>
@@ -137,7 +143,7 @@ ON t1.id_categorie = t3.id_categorie */
 					if (!empty($CompteurCategorie['all'][$Key])) {
 						foreach ($ProvAvis as $provenance) {
 							if (!empty($CompteurCategorie[$provenance][$Key])) { ?>
-								<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="notifs_filter"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
+								<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
 				<?php 		}
 						}
 					}
@@ -153,7 +159,7 @@ ON t1.id_categorie = t3.id_categorie */
 							if (!empty($CompteurSousCategorie['all'][$Key2])) {
 								foreach ($ProvAvis as $provenance) {
 									if (!empty($CompteurSousCategorie[$provenance][$Key2])) { ?>
-                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="notifs_filter"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
 				<?php 				}
 								}
 							}
@@ -172,7 +178,7 @@ ON t1.id_categorie = t3.id_categorie */
 									foreach ($ProvAvis as $provenance) {
 										if (!empty($CompteurSousCategorie2[$provenance][$Key3])) { 								
 											if ($SousCategorie2 != "") { ?>
-                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="notifs_filter"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
+                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
 				<?php						}
 										}
 									}
