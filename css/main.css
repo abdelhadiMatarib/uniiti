@@ -195,7 +195,7 @@ span.index_overlay_texte{display:block;}
 
 .commerce_head_desc .img_container{padding: 8px 0 0 0;float:left;height:34px;width:35px;}
 .commerce_head{height:155px;background-color:white;}
-.commerce_head_desc{float:left;}
+.commerce_head_desc{float:left;position:relative;}
 .commerce_head_desc_title{float:left;padding: 0 0 5px 10px;}
 .commerce_head_desc_title h2{font-size: 1.7em;font-weight: 300;margin: 9px 0 0 0;display: inline-block;}
 .commerce_head_desc_social{margin: 10px 5px 0 0;float:right;}
@@ -246,7 +246,7 @@ span.index_overlay_texte{display:block;}
 .commerce_head_infos_suivre{-webkit-border-radius: 3px;border-radius: 3px;float:left;width:88px;height:82px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
 .commerce_head_infos_suivre span{margin:12px 0 12px 0;color:white;display:block;text-align:center;font-weight:bold;font-size:1.1em;text-transform: uppercase;}
 .commerce_head_infos_suivre .img_container{text-align:center;}
-.commerce_head_infos_infosrapides{float:left;height:50px;line-height:12px;}
+.commerce_head_infos_infosrapides{position:relative;float:left;height:50px;line-height:12px;}
 .commerce_head_infos_infosrapides .img_container{padding: 4px 0 0 0;float:left;height:35px;width:45px;}
 .infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4{float:left;width:110px;}
 .infosrapides1{margin:7px 10px 0 10px;}
@@ -989,11 +989,11 @@ body{overflow-x: hidden;}
 .splash_body h1{display:block;margin:14px 0;color:white;font-size:1em;font-weight:300;color:white;}
 .splash_input_login,.splash_input_password{color: white; height:40px;width:185px;padding:5px 5px 5px 35px;background-color:transparent;color:white;font-size:1.1em;}
 .splash_input_login{border-bottom:1px solid #fff;background:url('../img/pictos_splash/icon_user.png') no-repeat 5px 10px;}
-::-webkit-input-placeholder { color:#fff; }
-::-moz-placeholder { color:#fff; } /* firefox 19+ */
-:-ms-input-placeholder { color:#fff; } /* ie */
-input:-moz-placeholder { color:#fff; }
-input:focus.splash_input_login, input:focus.splash_input_password {outline: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.08);}
+input.splash_input_login::-webkit-input-placeholder,input.splash_input_password::-webkit-input-placeholder { color:#fff; }
+input.splash_input_login::-moz-placeholder,input.splash_input_password::-webkit-input-placeholder { color:#fff; } /* firefox 19+ */
+input.splash_input_login:-ms-input-placeholder,input.splash_input_password::-webkit-input-placeholder { color:#fff; } /* ie */
+input.splash_input_login:-moz-placeholder,input.splash_input_password:-moz-placeholder { color:#fff; }
+input.splash_input_login:focus.splash_input_login, input.splash_input_password:focus.splash_input_password {outline: 1px solid rgba(255,255,255,0.3); background-color: rgba(255,255,255,0.08);}
 .splash_input_password{background:url('../img/pictos_splash/icon_clef.png') no-repeat 5px 15px; margin-top:-1px;}
 .splash_input_button{background-color:transparent;border:1px dashed white;width:185px;padding:5px 10px;color:white;font-size:1.4em;font-weight:300;margin-top:14px;}
 .splash_input_button:hover{background-color: rgba(255,255,255,0.1);}
@@ -1007,3 +1007,7 @@ input:focus.splash_input_login, input:focus.splash_input_password {outline: 1px 
 .splash_commerce_title{position:absolute;bottom:0;right:20px;}
 .splash_commerce_title span{color:white;text-shadow: 0px 1px 1px #252525;filter: dropshadow(color=#252525, offx=0, offy=1);}
 .splash_commerce_title span a{color:white; font-weight: bold;}
+
+/* DASHBOARD COMMERCE */
+a.commerce_head_desc_modif{position: absolute;top: 50px;left: 0;display: inline-block;height: 105px;width: 545px;}
+a.commerce_head_infos_modif_clefs{position: absolute;top: 0;left: 0;display: inline-block;height: 50px;width: 545px;}

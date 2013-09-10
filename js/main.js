@@ -99,8 +99,6 @@ function CreerOverlayPush() {
     });
 }
 
-
-        
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
 function resizeboxContainer(){        
 	var boxcontainersize = $('#box_container').width();
