@@ -114,10 +114,8 @@ function SetFiltre(data) {
 		data : $.extend($Filtre, {site_url: '<?php echo SITE_URL ; ?>'}),
 		success: function(html){
 			if (html) {
-				$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this))});
-				$('#box_container').append( $(html)).isotope( 'addItems', $(html) );
-
-
+				$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
+				$('#box_container').isotope( 'insert', $(html) );
 			} else {alert('Il n\'y a plus d\'enregistrements');}
 		},
 		error: function() {alert('Erreur sur url : ' + $url);}
