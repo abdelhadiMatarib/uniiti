@@ -33,18 +33,17 @@ try
 			$sql = "INSERT INTO contributeurs_wish_enseignes
 					(contributeurs_id_contributeur, enseignes_id_enseigne, date_wish) 
 					VALUES (:id_contributeur, :id_enseigne, :date_wish)";
+			$req = $bdd->prepare($sql);
+			$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':date_wish', $date, PDO::PARAM_INT);
+			$req->execute();
 		}
-		
-		$req = $bdd->prepare($sql);
-		$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
-		$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
-		$req->bindParam(':date_wish', $date, PDO::PARAM_INT);
-		$req->execute();
 
 	$bdd->commit(); // Validation de la transaction / des requetes
 	
 	$reqCheck->closeCursor();
-	if ($resultCheck) {$req->closeCursor();}	  // Ferme la connexion du serveur
+	if (!$resultCheck) {$req->closeCursor();}	  // Ferme la connexion du serveur
 	$bdd = null;            // Détruit l'objet PDO
 
 //echo 'BDD Fermée';

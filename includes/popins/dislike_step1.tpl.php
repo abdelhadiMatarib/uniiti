@@ -45,14 +45,12 @@ try
 			$sql = "INSERT INTO contributeurs_aiment_pas_enseignes
 					(contributeurs_id_contributeur, enseignes_id_enseigne, date_aime_pas) 
 					VALUES (:id_contributeur, :id_enseigne, :date_aime_pas)";
-		}
-		
-		$req = $bdd->prepare($sql);
-		$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
-		$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
-		$req->bindParam(':date_aime_pas', $date, PDO::PARAM_INT);
-		$req->execute();	
-			
+			$req = $bdd->prepare($sql);
+			$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':date_aime_pas', $date, PDO::PARAM_INT);
+			$req->execute();	
+		}			
 		if ($resultCheck2) {
 			$sql2 = "DELETE FROM contributeurs_aiment_enseignes WHERE contributeurs_id_contributeur=:id_contributeur AND enseignes_id_enseigne=:id_enseigne";
 			$req2 = $bdd->prepare($sql2);
@@ -65,7 +63,7 @@ try
 	
 	$reqCheck->closeCursor();
 	$reqCheck2->closeCursor();
-	if ($resultCheck) {$req->closeCursor();}	  // Ferme la connexion du serveur
+	if (!$resultCheck) {$req->closeCursor();}	  // Ferme la connexion du serveur
 	if ($resultCheck2) {$req2->closeCursor();}    // Ferme la connexion du serveur
 	$bdd = null;            // Détruit l'objet PDO
 

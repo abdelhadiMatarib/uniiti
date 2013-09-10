@@ -1,4 +1,3 @@
-
 datanvelements = {init:1};
 $(".home_newsfeed").css({'display': 'none'});
 function NouveauxElements(data) {
@@ -18,6 +17,10 @@ function NouveauxElements(data) {
 					else if (data.total > datanvelements.total) {
 						$(".home_newsfeed_number").html(data.total - datanvelements.total);
 						$(".home_newsfeed").css({'display': 'block'});
+						$(".home_newsfeed").click(function(){
+							window.location.reload()
+							$(".home_newsfeed").css({'display': 'none'});
+						});
 					}
 				},
 		error: function() {alert('Erreur sur url : ' + url);}
@@ -99,8 +102,6 @@ function CreerOverlayPush() {
     });
 }
 
-
-        
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
 function resizeboxContainer(){        
 	var boxcontainersize = $('#box_container').width();

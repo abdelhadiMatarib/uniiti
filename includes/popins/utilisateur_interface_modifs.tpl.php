@@ -2,8 +2,48 @@
 
 include_once '../../config/configuration.inc.php';
 include_once '../fonctions.inc.php';
+include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
 
 if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+$provenance = $_POST['provenance'];
+switch ($provenance) {
+	case "avis":
+		$action = "a noté";
+		$affichecommentaire = true;
+		break;
+	case "aime":
+		$note = "''";
+		$commentaire = "''";
+		$action = "a aimé";
+		$affichecommentaire = false;
+		break;
+	case "aime_pas":
+		$note = "''";
+		$commentaire = "''";
+		$action = "n'a pas aimé";
+		$affichecommentaire = false;
+		break;
+	case "wish":
+		$note = "''";
+		$commentaire = "''";
+		$action = "a ajouté à sa wishlist";
+		$affichecommentaire = false;
+		break;
+	default :
+		$note = "''";
+		$commentaire = "''";
+		$action = "";
+		$affichecommentaire = false;
+		break;
+}
+if(isset($_SESSION['SESS_MEMBER_ID'])) {
+	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $_POST['id_enseigne'] . "}";
+	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
+	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
+	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+} else {
+	$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+}	
 		
 ?>
 	
@@ -16,28 +56,26 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
             <div class="presentation_action_left_head_img_container_picto_categorie"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
             <div class="presentation_action_left_head_categorie_wrap">    
                 <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
-                <span class="presentation_action_left_head_categorie">Restauration</span>
+                <span class="presentation_action_left_head_categorie"><?php echo stripslashes($_POST['scategorie']); ?></span>
             </div>
             
             <div class="presentation_action_left_head_likes_wrap">
                 <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
-                <span class="presentation_action_left_head_nombrelikes"><strong>15756</strong></span>
+                <span class="presentation_action_left_head_nombrelikes"><strong><?php echo $_POST['count_likes']; ?></strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>
                 
             <div class="presentation_action_left_head_note_wrap">
-				<?php for ($i = 1 ; $i <= round($_POST['note_arrondi'] / 2) ; $i++) { ?>
-					<img src="img/pictos_commerces/star_0.png" title="" alt="" />
-				<?php } /* Fin du for */ ?>
+				<?php echo AfficheEtoiles($_POST['note_arrondi']); ?>
                 <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $_POST['count_avis_enseigne']; ?> Avis</span>
             </div>
             
         </div>
         <div class="presentation_action_left_figure">
             <div class="wrapper_boutons_popin">
-                <div class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_OK_popin.png"/></div>
-                <div class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
-                <div class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
+                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_OK_popin.png"/></div>
+                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
+                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
             </div>
             <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
             
@@ -45,9 +83,9 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
             <span class="presentation_action_left_body_username"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
-            <span class="presentation_action_left_body_action">a laissé un avis</span>
+            <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
-                <span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span>
+                <?php if ($affichecommentaire) { ?><span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
             </div>
             <div class="arrow_up"></div>
         </div>

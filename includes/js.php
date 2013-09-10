@@ -11,6 +11,7 @@
 	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.slides.min.js"></script>
 	<script>
+<<<<<<< HEAD
 	$Filtre = {};
 		function SetFiltre(data) {
 			$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
@@ -35,6 +36,42 @@
 	$(window).load(function() {
 		$(function(){
 			setInterval("NouveauxElements()", 10000);
+=======
+	
+$Filtre = {};
+function SetFiltre(data) {
+	$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
+	$Filtre.categorie = data.categorie;
+	$Filtre.scategorie = data.scategorie;
+	$Filtre.sscategorie = data.sscategorie;
+	$("#dialog_overlay").css({display: "block"});
+	$.ajax({
+		async : false,
+		type:"POST",
+		url : "includes/requete.php",
+		data : $.extend($Filtre, {site_url: '<?php echo SITE_URL ; ?>'}),
+		success: function(html){
+			if (html) {
+				$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
+				$('#box_container').isotope( 'insert', $(html) );
+			} else {alert('Il n\'y a plus d\'enregistrements');}
+		},
+		error: function() {alert('Erreur sur url : ' + $url);}
+	});
+	CreerOverlayPush();
+	$("#dialog_overlay").css({display: "none"});
+}	
+	
+	$(window).load(function() {
+		$(function(){
+			/* DEBUT RIGOLER
+			var BV = new $.BigVideo();
+			BV.init();
+			BV.show(siteurl+'/img/videos/Jump Around.flv');
+			FIN RIGOLER */
+			setInterval("NouveauxElements()", 1000);
+			
+>>>>>>> 92175a03a118ec43019fb39ff322ce925654bfb1
 			CreerOverlayPush();
   
 				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
@@ -63,6 +100,7 @@
 				});
 
 				$(window).scroll(function() {
+<<<<<<< HEAD
 						if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
 						else {$("#ScrollToTop").css({display: "none"});}
 						if ( (CptScroll < 20)
@@ -76,6 +114,23 @@
 					var $idcontributeur = '<?php echo $id_contributeur; ?>';
 					var $url, $data;
 
+=======
+				
+					$("#default_dialog_large").dialog( "option", "position", { my: "center", at: "center", of: window });
+					$("#default_dialog").dialog( "option", "position", { my: "center", at: "center", of: window });
+					$("#default_dialog_inscription").dialog( "option", "position", { my: "center", at: "center", of: window });
+					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
+					else {$("#ScrollToTop").css({display: "none"});}
+					if ( (CptScroll < 20)
+						&&!isloading
+						&& !DisableScroll
+						&& ($(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
+						)
+					{
+						var $idenseigne = '<?php echo $id_enseigne; ?>';
+						var $idcontributeur = '<?php echo $id_contributeur; ?>';
+						var $url, $data;
+>>>>>>> 92175a03a118ec43019fb39ff322ce925654bfb1
 						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
 							$url = "../includes/requetecommerce.php";
 							$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};

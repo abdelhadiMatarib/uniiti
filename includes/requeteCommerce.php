@@ -28,7 +28,7 @@
 		$req4 = $bdd->prepare($sql4);
 		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT provenance, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
+		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -49,8 +49,12 @@
 				ON t7.contributeurs_id_contributeur = t8.id_contributeur
 					INNER JOIN enseignes AS t9
 					ON t7.enseignes_id_enseigne = t9.id_enseigne
-						INNER JOIN types_enseigne AS t10
-							ON t10.id_type_enseigne = t9.types_enseigne_id_type_enseigne WHERE id_enseigne = " . $id_enseigne;
+						INNER JOIN sous_categories2 AS t10
+							ON t10.id_sous_categorie2 = t9.sscategorie_enseigne
+							INNER JOIN sous_categories AS t11
+							ON t10.id_sous_categorie = t11.id_sous_categorie
+								INNER JOIN categories AS t12
+								ON t10.id_categorie = t12.id_categorie WHERE id_enseigne = " . $id_enseigne;
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
@@ -121,7 +125,10 @@
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
-			$nom_type_enseigne       = $row['nom_type_enseigne'];
+			$categorie				 = $row['categorie_principale'];
+			$sous_categorie          = $row['sous_categorie'];
+			$sous_categorie2         = $row['sous_categorie2'];
+//			$nom_type_enseigne       = $row['nom_type_enseigne'];
 			$url                     = $row['url'];
 			$btn_donner_avis_visible = $row['btn_donner_avis_visible'];
 			
@@ -136,17 +143,29 @@
 			$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 			$count_likes = $result3['count_likes'];					
 			
-			$data = "{id_contributeur :" . $id_contributeur . ","
+			$data = "{provenance :'" . addslashes($provenance) . "',"
+				. "id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "categorie : '" . addslashes($categorie) . "',"
+				. "scategorie : '" . addslashes($sous_categorie) . "',"
+				. "sscategorie : '" . addslashes($sous_categorie2) . "',"
 				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
 				. "delai_avis : '" . $delai_avis . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
 				. "count_likes :" . $count_likes . ","
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
+			if(isset($_SESSION['SESS_MEMBER_ID'])) {
+				if ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) {
+					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');";
+				} 
+				else {$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";}
+			} else {
+				$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";
+			}	
 			
 ?>	<!-- VIGNETTE TYPE -->
         <div class="box" id="<?php echo $datetime; ?>">
@@ -169,7 +188,7 @@
                 </div>
             </figure>
             
-            <section onclick="OuvrePopin(<?php echo $data; ?>, '/includes/popins/presentation_action_commentaire.tpl.php', 'default_dialog_large');">
+            <section onclick="<?php echo $presoumodif; ?>">
                 <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
 					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
             <div class="arrow_up"></div>
