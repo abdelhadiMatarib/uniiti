@@ -138,14 +138,14 @@ function AfficheEtoiles($note_arrondi) {
 	if ($reste <= -0.25) {$nbpleines = round($note_arrondi / 2) - 1;}
 	else {$nbpleines = round($note_arrondi / 2);}
 	for ($i = 1 ; $i <= $nbpleines ; $i++) {
-	$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -76px\"></div>";
+	$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -76px\"></div>";
 	}
 	if (($reste <= -0.25) or ($reste >= 0.25)) {
-		$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -19px -76px\"></div>";
+		$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -19px -76px\"></div>";
 		$nbpleines++;
 	}
 	for ($i = $nbpleines ; $i < 5 ; $i++) {
-		$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -152px\"></div>";
+		$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -152px\"></div>";
 	}
 	return $html;
 }

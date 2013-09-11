@@ -1122,7 +1122,9 @@ input:hover.dashboard_form_input_submit{border:1px dashed white;color:white;}
 .dashboard_wrap .commerce_head_infos_services_text_couleur,.dashboard_wrap .commerce_head_infos_infos_text_couleur{color:#a4ebf1;}
 .dashboard_wrap .commerce_head_infos_infos,.dashboard_wrap .commerce_head_infos_services{width:230px;}
 .dashboard_wrap .commerce_head2_text2{color:#a4ebf1;}
+.dashboard_wrap .objet_head2_text2{color:#a4ebf1;}
 .dashboard_wrap .commerce_head2_text2_1{color:#a4ebf1;}
+.dashboard_wrap .objet_head2_text2_1{color:#a4ebf1;}
 .dashboard_wrap .gerant_title{background-color:#a4ebf1;}
 .dashboard_wrap .boutons{width: 44px;height: 45px;background: url("../img/pictos_dashboard/boutons.png") no-repeat center;}
 
@@ -1171,3 +1173,19 @@ input.button_voiturier_choix:hover{background-color:#f0f0f0;border:1px dashed #a
 
 .dashboard_menutarifs_nopadding{padding:0 !important;}
 .dashboard_menutarifs_largerprice{width:100px !important;}
+
+/* OBJET INSIDE DASHBORD */
+
+.objet_head_desc_modif{position: absolute;top: 50px;left: 0;display: inline-block;height: 55px;width: 545px;}
+
+/* BOXES TYPES */
+.box_useraction_recommandations span{display:block;}
+.box_useraction_recommandations span.reco_txt_normal{color:#252525;font-weight:normal;}
+.box_useraction_recommandations{text-align:center;}
+.box_posttime_new{padding:15px 0 0 26px;float: left;width: 84px;vertical-align: middle; text-align:center;color:#252525;height: 35px;}
+.box_new_item{padding:0px 7px 2px 7px;background-color:#ff4343;font-size:12px;color:white;font-weight:400;border-radius:3px;}
+.box_avis_attente_commercant_wrap{padding:10px 0;text-align:center;}
+.box_avis_attente_commercant_wrap span{display:block;}
+.box_foot_classement{background-color: #fabe41;text-align:center;height:50px;width:50px;margin: auto;position: absolute;top: -20px; left: 0; bottom: 0; right: 0;}
+.box_foot_classement .arrow_up{position:absolute;top:-5px;right:20px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid #fabe41;}
+.box_foot_classement_nbr{font-size:2.8em;color:white;font-weight:700;}

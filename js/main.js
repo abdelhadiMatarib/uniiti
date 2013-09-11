@@ -344,7 +344,7 @@ function resizeboxContainer(){
 		$('.recherche_avancee_img_container img').css('height','55.5px').css('width','56px');
 	}
 	/////////////////////////////////////////////////////////////////////////////////
-	/* 5 */else if ($('.big_wrapper').width() == 1236 || 1269){
+	/* 5 */else if ($('.big_wrapper').width() == 1236){
 		
 		// HEADER
 		

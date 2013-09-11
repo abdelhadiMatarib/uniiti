@@ -148,21 +148,7 @@ include'../includes/js.php';?>
                                     <div class="box_useraction_recommandations"><span>Recommandé pour vous</span><span class="reco_txt_normal">car vous avez noté le</span><span>Restaurant Positano</span></div>
                                         <div class="box_usertext"><figcaption><span></span></figcaption></div>
                                 <div class="arrow_up"></div>
-                                </section>
-                            
-                            <style>
-                                .box_useraction_recommandations span{display:block;}
-                                .box_useraction_recommandations span.reco_txt_normal{color:#252525;font-weight:normal;}
-                                .box_useraction_recommandations{text-align:center;}
-                                .box_posttime_new{padding:15px 0 0 26px;float: left;width: 84px;vertical-align: middle; text-align:center;color:#252525;height: 35px;}
-                                .box_new_item{padding:0px 7px 2px 7px;background-color:#ff4343;font-size:12px;color:white;font-weight:400;border-radius:3px;}
-                                .box_avis_attente_commercant_wrap{padding:10px 0;text-align:center;}
-                                .box_avis_attente_commercant_wrap span{display:block;}
-                                .box_foot_classement{background-color: #fabe41;text-align:center;height:50px;width:50px;margin: auto;position: absolute;top: -20px; left: 0; bottom: 0; right: 0;}
-                                .box_foot_classement .arrow_up{position:absolute;top:-5px;right:20px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid #fabe41;}
-                                .box_foot_classement_nbr{font-size:2.8em;color:white;font-weight:700;}
-                            </style>
-
+                                </section>                       
                                 <footer>
 
                                         <div class="box_foot">
