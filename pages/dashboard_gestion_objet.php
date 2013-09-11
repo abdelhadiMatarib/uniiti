@@ -32,13 +32,13 @@
         <!-- CONTENU PRINCIPAL -->
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
-                <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_c"><a href="#" title=""><span>Gestion des</span><span class="dashboard_txt_bold">commerces</span></a></div>
-                <div class="dashboard_notif"><span>5</span></div>
+                <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_c"><a href="#" title=""><span>Gestion des</span><span class="dashboard_txt_bold">objets</span></a></div>
+                <div class="dashboard_notif"><span>2</span></div>
             </div>
             <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
             <div class="dashboard_retour_wrapper"><a href="javascript:history.back()">Retour</a>|<a href="dashboard_index.php">ACCUEIL</a></div>
             <div class="dashboard_content gestion_content">
-                <div class="dashboard_center_title"><h2><a href="#" title="" class="load_notif_commerce">Notifications commerces </a></h2><h2>|<a href="#" title="" class="load_sugg_commerce"> Suggestions commerces</a></h2></div>
+                <div class="dashboard_center_title"><h2><a href="#" title="" class="load_notif_commerce">Notifications objets </a></h2><h2>|<a href="#" title="" class="load_sugg_commerce"> Suggestions objets</a></h2></div>
                     <div class="dashboard_notif_wrap">
                         
                         <div class="dashboard_load_notifs">
@@ -48,10 +48,10 @@
                         </div>
                         <!-- DASHBOARD LOAD NOTIFS -->
                         
-                        <h2 class="h2_suppr_commerce">Suppression d'un commerce</h2>
+                        <h2 class="h2_suppr_commerce">Suppression d'un objet</h2>
                         <div class="suppression_commerce_wrap">
                         <span class="suppression_warning">Attention cette action est définitive</span>
-                        <input class="input_dashboard_large" type="text" placeholder="NOM DU COMMERCE"/>
+                        <input class="input_dashboard_large" type="text" placeholder="NOM DE L'OBJET"/>
                         <div class="input_dashboard_large_suppression">
                             <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/>
                         </div>
@@ -74,11 +74,11 @@
     $(document).ready(
         $('.load_sugg_commerce').click(function(e){
             e.preventDefault();
-           $('.dashboard_load_notifs').slideUp().load('../includes/popins/dashboard_gestion_commerce_suggestions.tpl.php').slideDown();
+           $('.dashboard_load_notifs').slideUp().load('../includes/popins/dashboard_gestion_objet_suggestions.tpl.php').slideDown();
         }),
         $('.load_notif_commerce').click(function(e){
             e.preventDefault();
-           $('.dashboard_load_notifs').slideUp().load('../includes/popins/dashboard_gestion_commerce_notifications.tpl.php').slideDown();
+           $('.dashboard_load_notifs').slideUp().load('../includes/popins/dashboard_gestion_objet_notifications.tpl.php').slideDown();
         }),
         $('.dashboard_notif_bouton_suppr').click(function(e){
             e.preventDefault();

@@ -14,10 +14,9 @@
 
     </style>
     <div class="ident_body">
-        <div class="infos_gene_title"><span>Adresse | Ville | Code postal</span></div>
-        <div class="infos_gene_input"><input type="text" placeholder="Adresse du commerce" /></div>
-        <div class="infos_gene_input"><input type="text" placeholder="Ville du commerce" /></div>
-        <div class="infos_gene_input"><input type="text" placeholder="Code postal du commerce" /></div>
+        <div class="infos_gene_title"><span>Localisation | Ville </span></div>
+        <div class="infos_gene_input"><input type="text" placeholder="Où trouver l'objet" /></div>
+        <div class="infos_gene_input"><input type="text" placeholder="Ville" /></div>
         <div class="infos_gene_title"><span>Catégorie | Sous-catégorie | Sous-sous-catégorie</span></div>
         <div class="infos_gene_input"><select><option>Catégorie</option></select></div>
         <div class="infos_gene_input"><select><option>Sous-Catégorie</option></select></div>

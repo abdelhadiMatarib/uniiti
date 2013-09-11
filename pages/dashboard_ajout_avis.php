@@ -35,6 +35,7 @@
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_c"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">des avis</span></a></div>
             </div>
             <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
+            <div class="dashboard_retour_wrapper"><a href="javascript:history.back()">Retour</a>|<a href="dashboard_index.php">ACCUEIL</a></div>
             <div class="dashboard_content form_content">
                 <h2>Saisir un avis</h2>
                     <div class="dashboard_form_wrap">

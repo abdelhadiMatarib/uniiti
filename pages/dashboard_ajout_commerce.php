@@ -36,6 +36,7 @@
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_f"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un commerce</span></a></div>
             </div>
             <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
+            <div class="dashboard_retour_wrapper"><a href="javascript:history.back()">Retour</a>|<a href="dashboard_index.php">ACCUEIL</a></div>
             <div class="dashboard_content dashboard_content_nomargintop">
                 <h2>Ajouter un nouveau commerce</h2>
             </div>

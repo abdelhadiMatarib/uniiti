@@ -36,6 +36,7 @@
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_f"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un objet</span></a></div>
             </div>
             <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
+            <div class="dashboard_retour_wrapper"><a href="javascript:history.back()">Retour</a>|<a href="dashboard_index.php">ACCUEIL</a></div>
             <div class="dashboard_content dashboard_content_nomargintop">
                 <h2>Ajouter un nouvel objet</h2>
             </div>
@@ -103,7 +104,7 @@
                 </div><!-- FIN BIG WRAPPER -->
                 <div class="dashboard_couv_ombre_grande"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_grande.png"/></div>
                 <div class="dashboard_form_input_submit_wrap submit_commerce">
-                     <input type="submit" class="dashboard_form_input_submit" value="Enregistrer ce commerce" />
+                     <input type="submit" class="dashboard_form_input_submit" value="Enregistrer cet objet" />
                 </div>
         </div><!-- FIN DASH WRAP -->
         <!-- FIN CONTENU PRINCIPAL -->

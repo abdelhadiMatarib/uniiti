@@ -18,7 +18,7 @@
                     if ($(this).hasClass('bouton_commerce_ferme')){
                         $(this).removeClass('bouton_commerce_ferme');
                         $(this).addClass('bouton_commerce_ouvert');
-                        $(this).parent().find('input').attr('disabled','disabled');
+                        $(this).parent().find('input').attr('disabled','disabled').val('');
                         $(this).parent().next(':first').removeClass('horaires_commerces_ouvert');
                         $(this).parent().next(':first').addClass('horaires_commerces_ferme');
                     }
@@ -36,17 +36,33 @@
                 <div class="input_infos_horaires">
                     <input id="Lh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="Lh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="Lh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Lh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="Lh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Lh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="Lh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh1')" />
+                    <input id="Lh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh8')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Lh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh1')" />
                 </div>
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
@@ -58,17 +74,33 @@
                 <div class="input_infos_horaires">
                     <input id="Mh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="Mh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="Mh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Mh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="Mh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Mh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="Mh4" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh1')" />
+                    <input id="Mh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh8')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Mh8" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh1')" />
                 </div>
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
@@ -80,18 +112,34 @@
                 <div class="input_infos_horaires">
                     <input id="MMh1" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="MMh2" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="MMh3" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="MMh4" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="MMh5" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="MMh6" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="MMh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh1')" />
+                    <input id="MMh7" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh8')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="MMh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh1')" />
+                </div>                
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
@@ -102,17 +150,33 @@
                 <div class="input_infos_horaires">
                     <input id="Jh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="Jh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="Jh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Jh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="Jh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Jh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="Jh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh1')" />
+                    <input id="Jh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh8')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Jh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh1')" />
                 </div>
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
@@ -124,17 +188,33 @@
                 <div class="input_infos_horaires">
                     <input id="Vh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="Vh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="Vh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Vh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="Vh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Vh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="Vh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh1')" />
+                    <input id="Vh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh8')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Vh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh1')" />
                 </div>
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
@@ -146,17 +226,33 @@
                 <div class="input_infos_horaires">
                     <input id="Sh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="Sh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="Sh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Sh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="Sh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Sh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="Sh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh1')" />
+                    <input id="Sh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh8')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Sh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh1')" />
                 </div>
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
@@ -168,17 +264,33 @@
                 <div class="input_infos_horaires">
                     <input id="Dh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh2')"/>
                 </div>
-                <span> à </span>
+                <span>h.</span>
                 <div class="input_infos_horaires">
                     <input id="Dh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh3')" />
                 </div>
-                <span> et de </span>
+                <span> à </span>
                 <div class="input_infos_horaires">
                     <input id="Dh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh4')" />
                 </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Dh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh5')" />
+                </div>
+                <span> et de </span>
+                <div class="input_infos_horaires">
+                    <input id="Dh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh6')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Dh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh7')" />
+                </div>
                 <span> à </span>
                 <div class="input_infos_horaires">
-                    <input id="Dh4" type="text" maxlength=2 />
+                    <input id="Dh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh8')" />
+                </div>
+                <span>h.</span>
+                <div class="input_infos_horaires">
+                    <input id="Dh8" type="text" maxlength=2 />
                 </div>
                 <div class="bouton_infos_modif bouton_commerce_ferme"></div>
             </div>
