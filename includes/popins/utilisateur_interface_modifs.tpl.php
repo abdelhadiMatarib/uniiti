@@ -92,7 +92,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                     
                 <div class="presentation_action_left_footer">
             <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL; ?>/img/avatars/1.png"/></figure></div>
-            <div class="presentation_action_left_footer_timing"><span><img src="<?php echo SITE_URL; ?>/img/pictos_actions/clock.png"/><?php echo stripslashes($_POST['delai_avis']); ?></strong></span></div>
+            <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
             <div class="presentation_action_left_footer_picto_action"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png"/></div>
         
         </div>
