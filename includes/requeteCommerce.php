@@ -28,7 +28,7 @@
 		$req4 = $bdd->prepare($sql4);
 		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
+		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -199,7 +199,7 @@
                 <div class="box_foot">
                     <div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo $SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
                     <div class="box_user_time"><?php echo $delai_avis;  ?></div>
-                    <div class="box_posttype"><img src="<?php echo $SITE_URL; ?>/img/pictos_actions/notation.png" title="" alt="" /></div>
+                    <div class="box_posttype" <?php echo AfficheProvenance($provenance, $categorie); ?>></div>
                 </div>
             </footer>
             

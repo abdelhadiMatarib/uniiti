@@ -66,7 +66,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>
                 
             <div class="presentation_action_left_head_note_wrap">
-				<?php echo AfficheEtoiles($_POST['note_arrondi']); ?>
+				<?php echo AfficheEtoiles($_POST['note_arrondi'], $_POST['categorie']); ?>
                 <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $_POST['count_avis_enseigne']; ?> Avis</span>
             </div>
             

@@ -28,7 +28,7 @@
 		$req4 = $bdd->prepare($sql4);
 		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
+		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -178,26 +178,26 @@
 			<div class="box" id="<?php echo $datetime; ?>">
 				
 				<header>
-					<div class="box_icon"><img src="../img/pictos_commerces/restaurant.png" title="" alt="" /></div>
+					<div class="box_icon"style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $posx . "px" . " " . $posy . "px"?>"></div>
 <!--					<div class="box_desc" onclick="location.href='<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 -->					<div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">
 							<span class="box_title" title="<?php echo $nom_enseigne; ?>"><?php echo tronque($nom_enseigne); ?></span>
-							<span class="box_subtitle">Restauration</span>
+							<span class="box_subtitle" style="color:<?php echo $couleur; ?>;"><?php if ($sous_categorie2 == NULL) {echo $sous_categorie;} else {echo $sous_categorie2;} ?></span>
 					</div>
 				</header>
 				
 				<figure>
 					<div class="box_mark">
 						<div class="box_stars">
-							<?php echo AfficheEtoiles($note_arrondi); ?>
+							<?php echo AfficheEtoiles($note_arrondi, $categorie); ?>
 						</div>
 						<div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
 					</div>
 					<div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
 					<div class="box_push_et_img">
 						<img src="../img/photos_commerces/1.jpg" title="" alt="" />
-						<div class="box_push"></div>
+						<div class="box_push" <?php echo AffichePush($categorie); ?>></div>
 					</div>
 					<div class="overlay_push">
 						<div class="push_buttons_wrapper">
@@ -209,7 +209,7 @@
 				</figure>
 				
 				<section onclick="<?php echo $presoumodif; ?>">
-					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
+					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
 					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
 				<div class="arrow_up"></div>
 				</section>
@@ -219,7 +219,7 @@
 					<div class="box_foot">
 						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="../img/avatars/1.png" title="" alt="" /></a></div>
 						<div class="box_user_time"><?php echo $delai_avis;  ?></div>
-						<div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
+						<div class="box_posttype" <?php echo AfficheProvenance($provenance, $categorie); ?>></div>
 					</div>
 				</footer>
             

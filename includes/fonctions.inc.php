@@ -132,21 +132,133 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
     return $url;
 }
 
-function AfficheEtoiles($note_arrondi) {
+function AfficheEtoiles($note_arrondi, $categorie) {
+	switch ($categorie) {
+		case ("Cuisine"):
+			$posy = "-76px";
+		break;
+		case ("Beauté et bien être"):
+			$posy = "-38px";
+		break;
+		case ("Culture"):
+			$posy = "-133px";
+		break;
+		case ("Mode et design"):
+			$posy = "-95px";
+		break;
+		case ("Santé"):
+			$posy = "-114px";
+		break;
+		case ("Sorties, voyages et loisirs"):
+			$posy = "-19px";
+		break;
+		case ("Sport"):
+			$posy = "0px";
+		break;
+		case ("Services et inclassables"):
+			$posy = "-57px";
+		break;
+	}
 	$html = "";
 	$reste = $note_arrondi / 2 - round($note_arrondi / 2);
 	if ($reste <= -0.25) {$nbpleines = round($note_arrondi / 2) - 1;}
 	else {$nbpleines = round($note_arrondi / 2);}
 	for ($i = 1 ; $i <= $nbpleines ; $i++) {
-	$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -76px\"></div>";
+	$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px " . $posy . "\"></div>";
 	}
 	if (($reste <= -0.25) or ($reste >= 0.25)) {
-		$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -19px -76px\"></div>";
+		$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -19px " . $posy . "\"></div>";
 		$nbpleines++;
 	}
 	for ($i = $nbpleines ; $i < 5 ; $i++) {
 		$html .= "<div style=\"float:left;margin-right:3px;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') 0px -152px\"></div>";
 	}
+	return $html;
+}
+
+function AffichePush($categorie) {
+	switch ($categorie) {
+		case ("Cuisine"):
+			$posx = "-126px";
+			$posy = "-19px";
+		break;
+		case ("Beauté et bien être"):
+			$posx = "-76px";
+			$posy = "-119px";
+		break;
+		case ("Culture"):
+			$posx = "-126px";
+			$posy = "-169px";
+		break;
+		case ("Mode et design"):
+			$posx = "-126px";
+			$posy = "-69px";
+		break;
+		case ("Santé"):
+			$posx = "-126px";
+			$posy = "-119px";
+		break;
+		case ("Sorties, voyages et loisirs"):
+			$posx = "-76px";
+			$posy = "-69px";
+		break;
+		case ("Sport"):
+			$posx = "-76px";
+			$posy = "-19px";
+		break;
+		case ("Services et inclassables"):
+			$posx = "-76px";
+			$posy = "-169px";
+		break;
+	}
+	$html = "style=\"background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') " . $posx . " " . $posy . "\"";
+	
+	return $html;
+}
+
+function AfficheProvenance($provenance, $categorie) {
+	switch ($provenance) {
+		case ("avis") :
+			$posy = "-169px";
+		break;
+		case ("aime") :
+			$posy = "-19px";
+		break;
+		case ("aime_pas") :
+			$posy = "-69px";
+		break;
+		case ("wish") :
+			$posy = "-119px";
+		break;
+	}
+	switch ($categorie) {
+		case ("Cuisine"):
+			$posx = "-376px";
+		break;
+		case ("Beauté et bien être"):
+			$posx = "-276px";
+		break;
+		case ("Culture"):
+			$posx = "-526px";
+		break;
+		case ("Mode et design"):
+			$posx = "-426px";
+		break;
+		case ("Santé"):
+			$posx = "-476px";
+		break;
+		case ("Sorties, voyages et loisirs"):
+			$posx = "-226px";
+		break;
+		case ("Sport"):
+			$posx = "-176px";
+		break;
+		case ("Services et inclassables"):
+			$posx = "-326px";
+		break;
+	}
+
+	$html = "style=\"background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') " . $posx . " " . $posy . "\"";
 	return $html;
 }
 
