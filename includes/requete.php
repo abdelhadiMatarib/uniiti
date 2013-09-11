@@ -248,7 +248,7 @@
 					
 					<div class="box_foot">
 						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src=<?php echo get_gravatar( $email_contributeur, 50, 'monsterid');?> title="" alt="" /></a></div>
-						<?php echo $delai_avis;  ?>
+						<div class="box_user_time"><?php echo $delai_avis;  ?></div>
 						<div class="box_posttype"><img src="img/pictos_actions/notation.png" title="" alt="" /></div>
 					</div>
 				</footer>
