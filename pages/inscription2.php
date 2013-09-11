@@ -19,15 +19,12 @@
 		<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>   -->
 		<!-- Demo only  
 		<script type="text/javascript" src="../Slider/demo/demo.js"></script>  -->
-	
-		<style>
-			#filedrag:hover {box-shadow: inset 0 3px 4px #888;}
-		</style>	
+
         <div class="biggymarginer">
         <div class="big_wrapper">
-            <div class="liseret_bleu"></div>
             <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
-            <div class="inscription_head2">
+           <div class="liseret_bleu"></div>
+           <div class="inscription_head2">
                 <div class="inscription_step1"><h3>Informations générales</h3></div>
                 <div class="inscription_step2 inscription_current_step_texte_head"><h3>Choix de l'avatar</h3></div>
                 <div class="inscription_step3"><h3>Vos centres d'intérêts</h3></div>
@@ -42,7 +39,7 @@
 			<form id="upload" onsubmit="return EtapeSuivante();" action="<?php echo SITE_URL; ?>/pages/inscription3.php" method="POST" enctype="multipart/form-data">
 				<div class="inscription_fields_left">
 					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
-						<div class="inscription_upload_image_container"><span>Ou cliquez pour en choisir une sur votre ordinateur</span>
+						<div class="inscription_upload_image_container">
 							<div class="inscription_upload_button" id="filedrag"></div>
 							<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
 							<input type="file" id="inscription_upload" name="inscription_upload[]" multiple="multiple" />
@@ -52,19 +49,24 @@
 					<input type="hidden" id="<?php echo $Key; ?>" name="<?php echo $Key; ?>" value="<?php echo $Value; ?>" />
 					<?php } ?>
 					
-					<div id="messages">
+<!-- 					<div id="messages">
 						<p>Status Messages</p>
-					</div>				
+					</div>	 -->			
 				
 				</div>
 				<div class="inscription_fields_right">
 					<div class="inscription_choisir_image_container">
-					<!-- Slider --><div id="wrapper">
-						<div id="slider-one">
-							<?php for ($i = 1 ; $i < 10 ; $i++) { ?>
-								<div class="draggable"><img onclick="ChangeAvatar('../Slider/images/demo-images/img<?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/Slider/images/demo-images/img<?php echo $i; ?>.jpg" alt="" /></div>
-							<?php } ?>
-						</div></div>
+					<!-- Slider -->
+						  <div id="slider">
+  							<div class="container">
+    							<div id="slides">
+    								<?php for ($i = 1 ; $i < 10 ; $i++) { ?>
+										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/img/avatars/av<?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/img/avatars/av<?php echo $i; ?>.jpg" alt="" />
+									<?php } ?>
+    							</div>
+ 							 </div>
+  							<div id="ombre"></div>
+  						</div>
 					<!-- /Slider -->
 					</div>
 				</div>
@@ -80,8 +82,9 @@
         </div><!-- FIN BIGGY -->
 		
 		<script type="text/javascript">
-		
-			function EtapeSuivante() {
+		/* Initilisation du mini slider de choix d'avatar */
+    	$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
+    		function EtapeSuivante() {
 				var data = {
 						'email_login' : $id("email_login").value,
 						prenom : $id("prenom").value,

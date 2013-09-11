@@ -188,5 +188,13 @@ ON t1.id_categorie = t3.id_categorie */
 					  }	?>
             </ul>            
         </div>
+    <div class="leflux_wrapper">
+        <a href="#" title=""><span>filtrer le flux</span></a>
+    </div>
+    <style>
+        .leflux_wrapper{float:right;padding:10px;}
+        .leflux_wrapper span{font-size:1.4em;}
+        .leflux_wrapper a{color:#252525;}
+    </style>
 </div>
 <!--</nav>-->

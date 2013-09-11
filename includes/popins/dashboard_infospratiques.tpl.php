@@ -13,26 +13,6 @@
             <div class="menutarifs_body_entrees_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="22" width="22" /></div><span>Horaires d'ouverture</span>
             </div>
-            <style>
-                .input_infos_horaires{float:left;}
-                .input_infos_horaires input{float:left;width:50px;border:1px dashed #252525;text-align:center;}
-                .infospratiques_body_horaires span{margin:0 5px;display:inline-block;float:left;}
-                .bouton_commerce_ferme{cursor:pointer;float:right;height:17px;width:17px;background:url('<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_commerce_ferme.png');}
-                .bouton_commerce_ouvert{cursor:pointer;float:right;height:17px;width:17px;background:url('<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_commerce_ouvert.png');}
-                
-                .input_parking{width:500px;height:10px;padding:10px;}
-                input.input_parking{border:1px dashed #252525;}
-                .input_parking_mini{height:10px;padding:10px;width:30px;}
-                input.input_parking_mini{border:1px dashed #252525;}
-                
-                span.span_float_left{float:left;margin: 6px 0 0 10px;}
-            
-                .prix_generique_bouton_map_wrap{padding-top:20px;}
-                
-                .paiement_selected{background-color:#acacac !important;}
-                input.button_voiturier_choix{text-transform:uppercase;padding:10px 40px;background-color:white;border:1px dashed #252525;}
-                input.button_voiturier_choix:hover{background-color:#f0f0f0;border:1px dashed #acacac;}
-            </style>
             <script>
                 $('.bouton_infos_modif').click(function(){
                     if ($(this).hasClass('bouton_commerce_ferme')){
