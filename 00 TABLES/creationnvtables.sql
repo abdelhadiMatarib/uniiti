@@ -19,20 +19,7 @@ DROP TABLE IF EXISTS `objets` ;
 DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
 
 
-ALTER TABLE `enseignes` DROP `categorie_enseigne`
-, DROP `scategorie_enseigne`
-, DROP `sscategorie_enseigne`
-, DROP `budget_enseigne`
-, DROP `slide1_enseigne`
-, DROP `slide2_enseigne`
-, DROP `slide3_enseigne`
-, DROP `slide4_enseigne`
-, DROP `slide5_enseigne`
-, DROP `thumnail_enseigne`
-, DROP `video_enseigne`
-, DROP `fb_enseigne`
-, DROP `tw_enseigne`
-, DROP `goog_enseigne` ;
+
 -- , DROP `titreservice1_enseigne`
 -- , DROP `contenu1service1_enseigne`
 -- , DROP `prixcontenu1service1_enseigne`
@@ -302,15 +289,7 @@ ALTER TABLE `enseignes` DROP `categorie_enseigne`
 -- , DROP `autolib_enseigne`
 -- , DROP `popin_enseigne` ;
 
-ALTER TABLE `contributeurs` DROP `date_inscription`
-, DROP `slide1_contributeur`
-, DROP `slide2_contributeur`
-, DROP `slide3_contributeur`
-, DROP `slide4_contributeur`
-, DROP `slide5_contributeur`
-, DROP `profession_contributeur`
-, DROP `descriptif_contributeur`
-, DROP `categorieage_contributeur` ;
+
 
 ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `slide1_contributeur` varchar(45) DEFAULT NULL
