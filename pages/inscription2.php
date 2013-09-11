@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
         <?php
         include_once '../config/configuration.inc.php';
 
 		?>
-    <body>		
-		<!-- Required 
-		        <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/main.css">
-		
-		<link type="text/css" href="../Slider/css/fancymoves.css" media="screen" charset="utf-8" rel="stylesheet"  />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" charset="utf-8"></script>
-		<script type="text/javascript" src="../Slider/js/slider.js" charset="utf-8"></script>
-		
-		<script src="<?php echo SITE_URL; ?>/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>   -->
-		<!-- Demo only  
-		<script type="text/javascript" src="../Slider/demo/demo.js"></script>  -->
-
-        <div class="biggymarginer">
-        <div class="big_wrapper">
-            <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
-           <div class="liseret_bleu"></div>
+            <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
            <div class="inscription_head2">
                 <div class="inscription_step1"><h3>Informations générales</h3></div>
                 <div class="inscription_step2 inscription_current_step_texte_head"><h3>Choix de l'avatar</h3></div>
@@ -77,13 +56,9 @@
 				</div>
 					<div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><img id="Avatar" src="<?php echo SITE_URL; ?>/img/avatars/6.png" height="120" width="120" title="" alt="" /></div>
 				</div>
-           </form> 
-        </div><!-- FIN BIG WRAPPER -->
-        </div><!-- FIN BIGGY -->
+           </form>
 		
 		<script type="text/javascript">
-		/* Initilisation du mini slider de choix d'avatar */
-    	$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
     		function EtapeSuivante() {
 				var data = {
 						'email_login' : $id("email_login").value,
@@ -200,7 +175,3 @@
 
 			
 		</script>
-		
-		
-    </body>
-</html>

@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
         <?php
         include_once '../config/configuration.inc.php';
 		
@@ -34,11 +29,7 @@
 		}
 		
 		?>
-    <body>
-        <div class="biggymarginer">
-        <div class="big_wrapper">
-          <div class="liseret_bleu"></div>
-            <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_head2">
                 <div class="inscription_step1"><h3>Informations générales</h3></div>
                 <div class="inscription_step2"><h3>Choix de l'avatar</h3></div>
@@ -82,8 +73,6 @@
 					</div>
 				</div>
 			</form>
-        </div><!-- FIN BIG WRAPPER -->
-        </div><!-- FIN BIGGY -->
 			
 		<script type="text/javascript">
 			var CompteurSelection = 0;
@@ -137,5 +126,3 @@
 				return false; // si false l action du form ne sera pas appelé
 			};
 		</script>
-	</body>
-</html>
