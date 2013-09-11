@@ -18,19 +18,22 @@
 			$Filtre.categorie = data.categorie;
 			$Filtre.scategorie = data.scategorie;
 			$Filtre.sscategorie = data.sscategorie;
+			$("#dialog_overlay").css({display: "block"});
 			$.ajax({
-				type:"POST",
+				async : false,
+				type :"POST",
 				url : "includes/requete.php",
-				data : $.extend($Filtre, {nbitems: 20, site_url: '<?php echo SITE_URL ; ?>'}),
-				success: function(html){
+				data : $.extend($Filtre, {site_url: '<?php echo SITE_URL ; ?>'}),
+				success : function(html){
 					if (html) {
-						$('#box_container').html( $(html));
-						resizeboxContainer();
-
+						$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
+						$('#box_container').isotope( 'insert', $(html) );
 					} else {alert('Il n\'y a plus d\'enregistrements');}
 				},
 				error: function() {alert('Erreur sur url : ' + $url);}
 			});
+			CreerOverlayPush();
+			$("#dialog_overlay").css({display: "none"});
 		}	
 	
 	$(window).load(function() {
