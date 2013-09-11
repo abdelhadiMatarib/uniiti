@@ -181,9 +181,12 @@
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "couleur : '" . $couleur . "',"
 				. "categorie : '" . addslashes($categorie) . "',"
 				. "scategorie : '" . addslashes($sous_categorie) . "',"
 				. "sscategorie : '" . addslashes($sous_categorie2) . "',"
+				. "posx : " . $posx .","
+				. "posy : " . $posy .","
 				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
 				. "delai_avis : '" . htmlspecialchars($delai_avis) . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
@@ -210,7 +213,7 @@
 			<div class="box" id="<?php echo $datetime; ?>">
 				
 				<header>
-					<div class="box_icon"style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $posx . "px" . " " . $posy . "px"?>"></div>
+					<div class="box_icon" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $posx . "px" . " " . $posy . "px"?>"></div>
 <!--					<div class="box_desc" onclick="location.href='<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 -->					<div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">
@@ -244,7 +247,7 @@
 				<section onclick="<?php echo $presoumodif; ?>">
 					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
 					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span style="color:<?php echo $couleur; ?>;"><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
-				<div class="arrow_up"></div>
+				<div class="arrow_up" style="border-bottom:5px solid <?php echo $couleur; ?>;"></div>
 				</section>
 				
 				<footer>

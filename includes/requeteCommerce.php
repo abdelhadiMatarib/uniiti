@@ -152,9 +152,12 @@
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "couleur : '" . $couleur . "',"
 				. "categorie : '" . addslashes($categorie) . "',"
 				. "scategorie : '" . addslashes($sous_categorie) . "',"
 				. "sscategorie : '" . addslashes($sous_categorie2) . "',"
+				. "posx : " . $posx .","
+				. "posy : " . $posy .","
 				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
 				. "delai_avis : '" . htmlspecialchars($delai_avis) . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
@@ -177,7 +180,7 @@
                 <div class="box_icon"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
                 <div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>'">
                     <span class="box_title" title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span>
-                    <span class="box_subtitle">355/3000 - Confirmé</span>
+                    <span class="box_subtitle"style="color:<?php echo $couleur; ?>;">355/3000 - Confirmé</span>
                 </div>
                 <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
             </header>
@@ -185,16 +188,16 @@
             <figure>
                 <div class="box_mark">
                     <div class="box_stars">
-						<?php echo AfficheTrusts(5.5); ?>
+						<?php echo AfficheTrusts(5.5, $categorie); ?>
 					</div>
                     <div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
                 </div>
             </figure>
             
             <section onclick="<?php echo $presoumodif; ?>">
-                <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
-					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
-            <div class="arrow_up"></div>
+                <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
+					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span style="color:<?php echo $couleur; ?>;"><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
+            <div class="arrow_up" style="border-bottom:5px solid <?php echo $couleur; ?>;"></div>
             </section>
             
             <footer>

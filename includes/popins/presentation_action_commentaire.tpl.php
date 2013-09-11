@@ -52,11 +52,10 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     
     <div class="presentation_action_left">
         <div class="presentation_action_left_head">
-            
-            <div class="presentation_action_left_head_img_container_picto_categorie"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
+            <div class="presentation_action_left_head_img_container_picto_categorie" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $_POST['posx'] . "px" . " " . $_POST['posy'] . "px"?>"></div>
             <div class="presentation_action_left_head_categorie_wrap">    
                 <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
-                <span class="presentation_action_left_head_categorie"><?php echo stripslashes($_POST['scategorie']); ?></span>
+                <span class="presentation_action_left_head_categorie" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo stripslashes($_POST['scategorie']); ?></span>
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
@@ -83,10 +82,10 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
             <div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
-            <span class="presentation_action_left_body_username"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
+            <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
-                <?php if ($affichecommentaire) { ?><span><?php echo $_POST['note'] / 2; ?>/5 | <?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
+                <?php if ($affichecommentaire) { ?><span style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['note'] / 2; ?>/5 | </span><span><?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
             </div>
             <div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
                 <span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>
@@ -103,7 +102,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                         <div class="input_float_right bouton_signaler"><a href="#" title=""><span>Signaler</span></a></div>
                     </form>
             </div>
-            <div class="arrow_up"></div>
+            <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
         
     </div>
@@ -218,7 +217,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         <div class="presentation_action_left_footer">
             <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL; ?>/img/avatars/1.png"/></figure></div>
             <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
-            <div class="presentation_action_left_footer_picto_action"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/notation.png"/></div>
+            <div class="presentation_action_left_footer_picto_action" <?php echo AfficheProvenance($_POST['provenance'], $_POST['categorie']); ?>></div>
         
         </div>
 
