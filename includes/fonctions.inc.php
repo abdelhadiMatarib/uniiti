@@ -67,27 +67,27 @@ function EcartDate($Maintenant, $Date){
 		break;
 	case ($Secondes < 3600):
 		$Minutes = round($Secondes / 60);
-		$html .= "<div class=\"box_posttime\"><time><img src=\"img/pictos_actions/clock.png\"/>Il y a <strong>" . $Minutes . " min.</strong></time></div>";
+		$html .= "<div class=\"box_posttime\"><time><img src=\"" . SITE_URL . "/img/pictos_actions/clock.png\"/>Il y a <strong>" . $Minutes . " min.</strong></time></div>";
 		break;
 	case ($Secondes < 86400):
 		$Heures = round($Secondes /60 / 60);
-		$html .= "<div class=\"box_posttime\"><time><img src=\"img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " h.</strong></time></div>";
+		$html .= "<div class=\"box_posttime\"><time><img src=\"" . SITE_URL . "/img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " h.</strong></time></div>";
 		break;
 	case ($Secondes < 2592000):
 		$Heures = round($Secondes /60 / 60 /24);
-		$html .= "<div class=\"box_posttime\"><time><img src=\"img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " j.</strong></time></div>";
+		$html .= "<div class=\"box_posttime\"><time><img src=\"" . SITE_URL . "/img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " j.</strong></time></div>";
 		break;	
 	case ($Secondes < 31104000):
 		$Heures = round($Secondes /60 / 60 /24 /30);
-		$html .= "<div class=\"box_posttime\"><time><img src=\"img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " mois</strong></time></div>";
+		$html .= "<div class=\"box_posttime\"><time><img src=\"" . SITE_URL . "/img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " mois</strong></time></div>";
 		break;
 	case ($Secondes < 746496000):
 		$Heures = round($Secondes /60 / 60 /24 /30 /12);
-		$html .= "<div class=\"box_posttime\"><time><img src=\"img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " an</strong></time></div>";
+		$html .= "<div class=\"box_posttime\"><time><img src=\"" . SITE_URL . "/img/pictos_actions/clock.png\"/>Il y a <strong>" . $Heures . " an</strong></time></div>";
 		break;				
 	default :
 		$Jours = round($Secondes /60 / 60 /24 /30 /12 );
-		$html .= "<div class=\"box_posttime\"><time><img src=\"img/pictos_actions/clock.png\"/>Il y a <strong>" . $Jours . " ans</strong></time></div>";
+		$html .= "<div class=\"box_posttime\"><time><img src=\"" . SITE_URL . "/img/pictos_actions/clock.png\"/>Il y a <strong>" . $Jours . " ans</strong></time></div>";
 		break;			
 	}
 	return $html;
