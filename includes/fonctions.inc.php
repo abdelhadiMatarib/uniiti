@@ -62,7 +62,7 @@ function EcartDate($Maintenant, $Date){
 	$html = "";
 	$Secondes = strtotime($Maintenant) - strtotime($Date);
 	switch ($Secondes) {
-	case ($Secondes < 240):
+	case ($Secondes < 1800):
 		$html .= "<div class=\"box_posttime\" style=\"background:none;\"><time><span class=\"box_new_item\">nouveau</span></time></div>";
 		break;
 	case ($Secondes < 3600):
