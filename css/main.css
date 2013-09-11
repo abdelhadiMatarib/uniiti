@@ -175,7 +175,7 @@ span.index_overlay_texte{display:block;}
 .box_userpic:hover{float:left;height:50px;width:50px; opacity:0.9; }
 .box_posttime{padding:15px 0 0 0;float: left;width: 100%;vertical-align: middle;text-align:center;color:#252525;height: 35px;}
 .box_posttype{float:right;height:50px;width:50px;background-color:#fabe41; text-align: center; vertical-align: middle;}
-.box_posttype img{vertical-align:middle;margin-right:2px;margin-bottom:3px;}
+.box_posttime img{vertical-align:middle;margin-right:2px;margin-bottom:3px;}
 
 .arrow_up {margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid #fabe41;}
 .arrow_down {margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid #fabe41;}
