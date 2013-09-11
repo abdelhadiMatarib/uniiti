@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<?php
 	include_once '../config/configuration.inc.php';
 	// Connection à la base
@@ -119,12 +114,7 @@
 	$reqCheck->closeCursor();
 	$bdd = null;					// Détruit l'objet PDO
 	?>		
-		
-    <body>
-        <div class="biggymarginer">
-        <div class="big_wrapper">
-            <div class="liseret_bleu"></div>
-            <div class="inscription_head"><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_fields_left inscription_final_step_left">
                 <div class="inscription_final_step_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user_created.png" height="197" width="190" title="" alt="" /></div>
                 <div class="inscription_final_step_txt_container">
@@ -136,7 +126,3 @@
             <div class="inscription_fields_left inscription_final_step_right"><div class="AbsoluteCenter"><a href="<?php echo SITE_URL?>"><span class="inscription_final_step_right_texte">Retour à la</span><span class="inscription_final_step_right_texte_highlight">page d'accueil</span></a></div></div>
             <div class="containing_rondou"><div class="inscription_final_step_rondou"><span>Ou</span></div></div>
             <div class="inscription_fields_left inscription_final_step_right2"><div class="AbsoluteCenter"><a href="utilisateur.php"><span class="inscription_final_step_right_texte">Accéder à</span><span class="inscription_final_step_right_texte_highlight">votre profil</span></a></div></div>
-        </div><!-- FIN BIG WRAPPER -->
-        </div><!-- FIN BIGGY -->
-    </body>
-</html>

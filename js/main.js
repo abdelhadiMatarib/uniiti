@@ -88,6 +88,7 @@ function OuvrePopinInscription(data) {
 	OuvrePopin(data, '/pages/inscription.php', 'default_dialog_inscription');
 }
 
+
 function CreerOverlayPush() {
     // Push image box
     $('.box_push_et_img').click(function(e){
@@ -643,7 +644,7 @@ $(document).ready(function() {
 		modal:true,
 		draggable:false,
 		resizable:false,
-		width: '1300px',
+		width: '1193px',
 		height: 'auto',
 		open: function() {
 			jQuery('.ui-widget-overlay').bind('click', function() {

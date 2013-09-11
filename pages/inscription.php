@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-        <?php
-        include_once '../config/configuration.inc.php'; ?>
-    <body>
+<?php include_once '../config/configuration.inc.php'; ?>
+
 		<div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
-        <div class="biggymarginer">
-        <div class="big_wrapper">
             <div class="inscription_head">
             	<div class="liseret_bleu"></div>
             	<h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span>
@@ -30,7 +22,7 @@
                 <div class="inscription_step2"><h3>Choix de l'avatar</h3></div>
                 <div class="inscription_step3"><h3>Vos centres d'intérêts</h3></div>
             </div>
-			<form id="FormInscription" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/pages/inscription2.php" method="post"  autocomplete="off">
+			<form id="FormInscription" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/pages/inscription2.php" method="post"  autocomplete="on">
 				<div class="inscription_fields_left">
 					<div class="inscription_field_sexe inscription_border_bottomright">Sexe *</div>
 					<input type="hidden" name="sexe" id="sexe" value="2"/>
@@ -63,7 +55,7 @@
                     <select name="date_naissance_annee" id="date_naissance_annee" class="inscription_field_input_chiffre" required="required">
                         <option>Année...</option>
                         <?php
-                        for ($annee = (date('Y')-120); $annee <= date('Y'); $annee++) {
+                        for ($annee = date('Y') ; $annee >= (date('Y')-120); $annee--) {
                             echo '<option value="'. $annee .'">'. $annee .'</option>';
                         } 
                         ?>
@@ -103,7 +95,6 @@
                     <input type="hidden" name="bonus" id="bonus" value="0">
 					
 				</div>
-				
 
 				<div class="inscription_charte">
 					<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/charte.png" height="64" width="56" title="" alt=""/></div>
@@ -124,9 +115,6 @@
 					<button class="inscription_next_step_button" id="submitbutton" type="submit" role="button" class="css3button" >Suivant</button>
 				</div>
 			</form>
-        </div><!-- FIN BIG WRAPPER -->
-        </div><!-- FIN BIGGY -->
-
 	<script>
 		// Boutons choix sexe formulaire d'inscription
 	$('#button_homme').click(function() {
@@ -171,10 +159,8 @@
                 telephone_contributeur : $id("telephone_contributeur").value
 		};
 		ActualisePopin(data, '/pages/inscription2.php', 'default_dialog_inscription');
+		/* Initilisation du mini slider de choix d'avatar */
+		$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
 		return false; // si false l action du form ne sera pas appelé
 	};	
-	
-	</script>
-		
-    </body>
-</html>
+</script>
