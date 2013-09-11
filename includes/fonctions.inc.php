@@ -62,32 +62,32 @@ function EcartDate($Maintenant, $Date){
 	$html = "";
 	$Secondes = strtotime($Maintenant) - strtotime($Date);
 	switch ($Secondes) {
-	case ($Secondes < 60):
-		$html .= $Secondes . " sec.";
+	case ($Secondes < 240):
+		$html .= "<span class=\"box_new_item\">nouveau</span>";
 		break;
 	case ($Secondes < 3600):
 		$Minutes = round($Secondes / 60);
-		$html .= $Minutes . " min.";
+		$html .= "Il y a <strong>" . $Minutes . " min.</strong>";
 		break;
 	case ($Secondes < 86400):
 		$Heures = round($Secondes /60 / 60);
-		$html .= $Heures . " h.";
+		$html .= "Il y a <strong>" . $Heures . " h.</strong>";
 		break;
 	case ($Secondes < 2592000):
 		$Heures = round($Secondes /60 / 60 /24);
-		$html .= $Heures . " j.";
+		$html .= "Il y a <strong>" . $Heures . " j.</strong>";
 		break;	
 	case ($Secondes < 31104000):
 		$Heures = round($Secondes /60 / 60 /24 /30);
-		$html .= $Heures . " mois";
+		$html .= "Il y a <strong>" . $Heures . " mois</strong>";
 		break;
 	case ($Secondes < 746496000):
 		$Heures = round($Secondes /60 / 60 /24 /30 /12);
-		$html .= $Heures . " an";
+		$html .= "Il y a <strong>" . $Heures . " an</strong>";
 		break;				
 	default :
 		$Jours = round($Secondes /60 / 60 /24 /30 /12 );
-		$html .= $Jours . " ans";
+		$html .= "Il y a <strong>" . $Jours . " ans</strong>";
 		break;			
 	}
 	return $html;

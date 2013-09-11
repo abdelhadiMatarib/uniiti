@@ -152,7 +152,7 @@
 				. "scategorie : '" . addslashes($sous_categorie) . "',"
 				. "sscategorie : '" . addslashes($sous_categorie2) . "',"
 				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
-				. "delai_avis : '" . $delai_avis . "',"
+				. "delai_avis : '" . addslashes($delai_avis) . "',"
 				. "count_avis_enseigne :" . $count_avis_enseigne . ","
 				. "count_likes :" . $count_likes . ","
 				. "note :" . $note . ","
@@ -218,7 +218,7 @@
 					
 					<div class="box_foot">
 						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="../img/avatars/1.png" title="" alt="" /></a></div>
-						<div class="box_posttime"><time>Il y a <strong><?php echo $delai_avis ?></strong></time></div>
+						<div class="box_posttime"><time><?php echo $delai_avis;  ?></time></div>
 						<div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
 					</div>
 				</footer>
