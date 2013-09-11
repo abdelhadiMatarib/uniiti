@@ -173,7 +173,7 @@ span.index_overlay_texte{display:block;}
 .box_userpic{float:left;height:50px;width:50px;overflow:hidden;display:block;}
 .box_userpic img{max-width:90px;margin:auto;}
 .box_userpic:hover{float:left;height:50px;width:50px; opacity:0.9; }
-.box_posttime{padding:15px 0 0 26px;float: left;width: 84px;background:url('../img/pictos_actions/clock.png') 5px no-repeat;vertical-align: middle; text-align:center;color:#252525;height: 35px;}
+.box_posttime{padding:15px 0 0 0;float: left;width: 100%;vertical-align: middle;text-align:center;color:#252525;height: 35px;}
 .box_posttype{float:right;height:50px;width:50px;background-color:#fabe41; text-align: center; vertical-align: middle;}
 
 .arrow_up {margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid #fabe41;}
@@ -841,8 +841,8 @@ height: 26px;}
 .presentation_action_left_head_img_container_picto_likes{float:left;width:30px;height:30px;margin:0 -5px 0 5px;}
 .presentation_action_left_head_nombrelikes,.presentation_action_left_head_nombrelikes_txt{display:block;text-align:center;}
 .presentation_action_left_head_nombrelikes_txt{font-weight:300;}
-.presentation_action_left_head_note_wrap{font-size:0.9em;line-height:16px;padding-top:8px;padding-top:8px;height:42px;color:white;text-align:center;float:left;width:120px;background-color:#252525;}
-.presentation_action_left_head_note_txt{display:block;}
+.presentation_action_left_head_note_wrap{font-size:0.9em;line-height:16px;padding-top:8px;height:42px;color:white;text-align:center;float:left;padding-left:7px;width:113px;background-color:#252525;}
+.presentation_action_left_head_note_txt{display: inline-block;margin-top: 3px;}
 .presentation_action_left_figure{position:relative;border-top:1px solid #e4e4e4;}
 .presentation_action_left_body{padding:15px 0 15px 0;text-align:center;width:450px;}
 .presentation_action_left_body_username,.presentation_action_left_body_action{display:inline-block;}
@@ -850,7 +850,7 @@ height: 26px;}
 .presentation_action_left_body .arrow_up{margin-top:17px;}
 .presentation_action_left_footer{overflow:hidden;height:49px;float:left;border-top:1px solid #e4e4e4;background-color:#FFFFFF;}
 .presentation_action_left_footer_img_container{float:left;width:50px;}
-.presentation_action_left_footer_timing{height:20px;padding:15px 0 15px 0;text-align:center;float:left;width:349px;}
+.presentation_action_left_footer_timing{height:20px;padding:0;text-align:center;float:left;width:349px;}
 .presentation_action_left_footer_timing span{display:inline-block;}
 .presentation_action_left_footer_timing span img{margin-right:5px;vertical-align:middle;}
 .presentation_action_left_footer_picto_action{background-color:#fabe41;float:left;width:50px;height:50px;}
@@ -1189,3 +1189,5 @@ input.button_voiturier_choix:hover{background-color:#f0f0f0;border:1px dashed #a
 .box_foot_classement{background-color: #fabe41;text-align:center;height:50px;width:50px;margin: auto;position: absolute;top: -20px; left: 0; bottom: 0; right: 0;}
 .box_foot_classement .arrow_up{position:absolute;top:-5px;right:20px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 5px solid #fabe41;}
 .box_foot_classement_nbr{font-size:2.8em;color:white;font-weight:700;}
+
+.box_user_time{float:left;width:136px;}

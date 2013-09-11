@@ -11,7 +11,7 @@
 	include_once '../config/configPDO.inc.php';
 ?>
 
-    <body>
+    <body class="dashboard">
         <div class="bg_dashboard">
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
@@ -31,7 +31,8 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <style>
-            .gestion_content h2{display:block;}
+            body.dashboard{background-color:white;}
+            .gestion_content h2{display:inline-block;}
             .dashboard_center_title{text-align:center;}
             .dashboard_center_title h2{display:inline;}
             .dashboard_center_title a{color:#252525;}
@@ -52,8 +53,10 @@
             span.dashboard_notif_txt_normal{font-size:1em;font-weight:normal;display:inline-block;}
             span.dashboard_notif_txt_bold{margin-left:5px;font-size:1em;font-weight:700;display:inline-block;}
             span.suppression_warning{margin-bottom:10px;color:#ff3f3f;font-size:1.2em;font-weight:700;text-transform:uppercase;}
-            input.input_dashboard_large{position:relative;width:100%;height:20px;border:1px solid #acacac;padding:5px 10px;}
-            input_dashboard_large_suppression{position:absolute;top:0;right:0;}
+            input.input_dashboard_large{position:relative;margin-bottom:40px;color:#acacac;font-size:1.2em;font-weight:700;width:600px;height:30px;border:1px solid #acacac;padding:5px 10px;}
+            .input_dashboard_large_suppression{cursor:pointer;position: absolute;top: 34px;right: 2px;}
+            .suppression_commerce_wrap{position:relative;}
+            h2.h2_suppr_commerce{margin-top:20px;}
         </style>
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
@@ -108,11 +111,37 @@
                             </div>
                         </div>
                         <!-- ITEM -->
-                        <h2>Suppression d'un commerce</h2>
+                                                                   <!-- ITEM -->
+                        <div class="dashboard_notif_item">
+                            <div class="dashboard_notif_item_head">
+                                <div class="dashboard_notif_item_head_img_container">
+                                    <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/photo_notif.jpg"/>
+                                </div>
+                                <div class="dashboard_notif_item_head_desc">
+                                    <span class="dashboard_notif_nom_commerce">Restaurant Positano</span>
+                                    <span class="dashboard_notif_motif">Demande de suppression d'un avis</span>
+                                    <span class="dashboard_notif_temps">Il y a 4 jours</span>
+                                </div>
+                                <div class="dashboard_notif_item_head_buttons">
+                                    <a href="#" class="first_img_margin" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/></a>
+                                    <a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/></a>
+                                </div>
+                            </div>
+                            <div class="dashboard_notif_item_body">
+                                <div class="dashboard_notif_item_body_small_head">
+                                <span class="dashboard_notif_txt_normal">Commentaire laissé par Arnaud K.</span><span class="dashboard_notif_txt_bold">Motif de suppression : Avis à caractère diffamatoire</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus sed est sit amet laoreet. Donec enim neque, cursus vitae euismod at, faucibus nec neque. Etiam diam magna, ultrices ac commodo a, sodales non odio. Aliquam vel aliquet libero. Ut pellentesque odio nibh, eget euismod magna mollis quis. Sed lectus leo, mollis in sollicitudin quis, egestas a lorem.</p>
+                            </div>
+                        </div>
+                        <!-- ITEM -->
+                        <h2 class="h2_suppr_commerce">Suppression d'un commerce</h2>
+                        <div class="suppression_commerce_wrap">
                         <span class="suppression_warning">Attention cette action est définitive</span>
                         <input class="input_dashboard_large" type="text" placeholder="NOM DU COMMERCE"/>
                         <div class="input_dashboard_large_suppression">
                             <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/>
+                        </div>
                         </div>
                     </div>
             </div>
