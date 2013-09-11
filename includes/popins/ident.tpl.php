@@ -8,10 +8,9 @@
     <div class="ident_head">
         <div class="ident_img_container">
             <img src="<?php echo SITE_URL; ?>/img/pictos_popins/ident_icon.png" title="" alt="" height="36" width="37" />
-        </div><span class="maintitle">Identification</span><div class="ident_mdp_oublie_wrapper"><span class="subtitle oublimdp_link">Identifiants oubliés ?</span></div>
+        </div><span class="maintitle">Identification</span><div class="ident_mdp_oublie_wrapper" onclick="OuvrePopinMotDePasseOublie({});"><span class="subtitle oublimdp_link">Mot de passe oublié ?</span></div>
     </div>   
     <div class="ident_body">
-            
         <div class="ident_explications">
             
             <span class="ident_big_data">3</span>
@@ -20,9 +19,9 @@
         </div>
         <div class="ident_inputs">
 			<form action="<?php echo SITE_URL; ?>/acces/login_access.php" method="post" autocomplete="off">
-                <input class="ident_input_username" type="text" name="email-login" id="email-login" />
+                <input class="ident_input_username" type="text" name="email-login" id="email-login" placeholder="votre login"/>
 
-                <input class="ident_input_password" type="password" name="password" id="password" />
+                <input class="ident_input_password" type="password" name="password" id="password" placeholder="votre mot de passe"/>
                 
                 <input type="hidden" name="urlTo" readonly value="<?php echo $urlTo; ?>" />
 

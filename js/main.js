@@ -88,6 +88,10 @@ function OuvrePopinInscription(data) {
 	OuvrePopin(data, '/pages/inscription.php', 'default_dialog_inscription');
 }
 
+function OuvrePopinMotDePasseOublie(data) {
+	$("#default_dialog").dialog('close');
+	OuvrePopin(data, '/includes/popins/oublimdp.tpl.php', 'default_dialog');
+}
 
 function CreerOverlayPush() {
     // Push image box

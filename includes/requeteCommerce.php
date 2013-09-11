@@ -125,9 +125,12 @@
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
+			$couleur 				 = $row['couleur'];
 			$categorie				 = $row['categorie_principale'];
 			$sous_categorie          = $row['sous_categorie'];
 			$sous_categorie2         = $row['sous_categorie2'];
+			$posx					 = $row['posx'];
+			$posy					 = $row['posy'];
 //			$nom_type_enseigne       = $row['nom_type_enseigne'];
 			$url                     = $row['url'];
 			$btn_donner_avis_visible = $row['btn_donner_avis_visible'];
