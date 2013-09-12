@@ -833,24 +833,24 @@ height: 26px;}
 .presentation_action_wrapper{background-color:transparent;}
 .couverture_wrapper{background-color:white;}
 .presentation_action_left,.presentation_action_right{float:left;}
-.presentation_action_left{background-color: white;width: 449px;border-right: 1px solid #e4e4e4;}
+.presentation_action_left{background-color: white;width: 449px;border-right: 1px solid #e4e4e4; border-radius: 4px 0 0 0;}
 .presentation_action_left_head{width:450px;height:50px;}
 .presentation_action_left_head_categorie_wrap{line-height:14px;float:left;width:200px;}
-.presentation_action_left_head_img_container_picto_categorie{float:left;height:50px;width:50px;background-color:#fabe41;}
-.presentation_action_left_head_titre{font-size:1.1em;margin-top:11px;margin-left:10px;display:block;}
-.presentation_action_left_head_categorie{font-size:1em;color:#fabe41;font-weight:bold;margin-left:10px;display:block;}
+.presentation_action_left_head_img_container_picto_categorie{float:left;height:50px;width:50px;background-color:#fabe41; border-radius: 4px 0 0 0;}
+.presentation_action_left_head_titre{font-size:1.1em;margin-top:11px;margin-left:10px;display:block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.presentation_action_left_head_categorie{font-size:12px;font-weight:600;margin-left:10px;display:block;margin-top: 3px;}
 .presentation_action_left_head_likes_wrap{font-size:0.8em;border-left:1px solid #e4e4e4;line-height:12px;height:37px;padding-top:13px;float:left;width:79px;background-color:#f0f0f0;}
-.presentation_action_left_head_img_container_picto_likes{float:left;width:30px;height:30px;margin:0 -5px 0 5px;}
+.presentation_action_left_head_img_container_picto_likes{float:left;width:30px;height:30px;margin: 0 -1px 0 10px;}
 .presentation_action_left_head_nombrelikes,.presentation_action_left_head_nombrelikes_txt{display:block;text-align:center;}
 .presentation_action_left_head_nombrelikes_txt{font-weight:300;}
 .presentation_action_left_head_note_wrap{font-size:0.9em;line-height:16px;padding-top:8px;height:42px;color:white;text-align:center;float:left;padding-left:7px;width:113px;background-color:#252525;}
 .presentation_action_left_head_note_txt{display: inline-block;margin-top: 3px;}
-.presentation_action_left_figure{position:relative;border-top:1px solid #e4e4e4;}
+.presentation_action_left_figure{position:relative;}
 .presentation_action_left_body{padding:15px 0 15px 0;text-align:center;width:450px;}
 .presentation_action_left_body_username,.presentation_action_left_body_action{display:inline-block;}
 .presentation_action_left_body_username{color:#fabe41;font-weight:bold;}
 .presentation_action_left_body .arrow_up{margin-top:17px;}
-.presentation_action_left_footer{overflow:hidden;height:49px;float:left;border-top:1px solid #e4e4e4;background-color:#FFFFFF;}
+.presentation_action_left_footer{overflow:hidden;height:49px;float:left;border-top:1px solid #e4e4e4;background-color:#FFFFFF;border-radius: 0 0 0 4px;}
 .presentation_action_left_footer_img_container{float:left;width:50px;}
 .presentation_action_left_footer_timing{height:20px;padding:0;text-align:center;float:left;width:349px;}
 .presentation_action_left_footer_timing span{display:inline-block;}
@@ -862,26 +862,24 @@ height: 26px;}
 .presentation_action_right_suggestions_note_reelle{font-size:1.2em;font-weight:700;}
 
 .presentation_action_right{width:250px;}
-.presentation_action_right_head{line-height:16px;float:left;border-bottom:1px solid #e4e4e4;padding-top:9px;height:41px;text-align:center;text-transform:uppercase;width:250px;background-color:#f0f0f0;}
+.presentation_action_right_head{line-height:16px;float:left;border-bottom:1px solid #e4e4e4;padding-top:9px;height:41px;text-align:center;text-transform:uppercase;width:250px;background-color:#f0f0f0; border-radius: 0 4px 0 0;}
 .presentation_action_right_head span{display:block;}
 
-.presentation_action_right_suggestions{float:left;width:250px;overflow-y:scroll;height:280px;background-color:white;}
+.presentation_action_right_suggestions{float:left;width:250px;height:280px;background-color:white;}
 .presentation_action_right_suggestions_img_container{border-bottom:1px solid #e4e4e4;float:left;height:46px;width:50px;background-color:#fabe41;}
-.presentation_action_right_suggestions_content{border-bottom:1px solid #e4e4e4;line-height:14px;float: left;height: 36px;width: 112px;padding: 10px 10px 0 10px;}
+.presentation_action_right_suggestions_content{border-bottom:1px solid #e4e4e4;line-height:14px;float: left;height: 36px;width: 130px;padding: 10px 10px 0 10px;}
 .presentation_action_right_suggestions_content_titre{font-size:0.9em;display:block;}
 .presentation_action_right_suggestions_content_categorie{color:#fabe41;font-weight:bold;font-size:0.9em;display:block;}
 .presentation_action_right_suggestions_note{text-align:center;border-bottom:1px solid #e4e4e4;float:left;padding-top:12px;height:34px;width:50px;background-color:#252525;}
 
-.presentation_action_right_voirplus{text-align:center;text-transform:uppercase;float:left;width:250px;background-color:#f0f0f0;height:30px;}
-.presentation_action_right_voirplus_txt a{display:inline-block;width:250px;height:25px;padding-top:5px;}
-.presentation_action_right_suivre{line-height:16px;text-transform:uppercase;float:left;width:250px;background-color:#252525;height:50px;}
+.presentation_action_right_suivre{line-height:16px;text-transform:uppercase;float:left;width:250px;background-color:#252525;height:50px;border-radius: 0 0 4px 0;border-top: 1px solid #e4e4e4;}
 .presentation_action_right_suivre_img_container{margin:10px 15px 0 30px;height:39px;width:50px;float:left;}
 .presentation_action_right_suivre span{font-size:1.2em;display:block;}
 .presentation_action_right_suivre_txt_1{margin-top:8px;font-weight:300;color:white;}
 .presentation_action_right_suivre_txt_2{font-weight:700;color:#fabe41;}
 
-.wrapper_boutons_popin{z-index:998;position:absolute;top: 25px;left: -5px;}
-.boutons_action_popin{cursor:pointer;height: 27px;width: 32px;background: url('../img/pictos_popins/boutons_inverse.png');padding: 13px 0px 0 5px;}
+.wrapper_boutons_popin{z-index: 30;position: absolute;left: 0px;height: 210px;width: 50px;background-color: rgba(0,0,0,0.5);}
+.boutons_action_popin{cursor:pointer;height: 50px;width: 50px;}
 
 /* PRESENTATION ACTION COMMENTAIRE */
 .presentation_action_wrapper_footer{float:left;}

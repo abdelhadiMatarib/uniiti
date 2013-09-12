@@ -104,7 +104,22 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
+        <div class="presentation_action_left_avis_utile_wrap">
+            
+            <div class="presentation_action_left_avis_utile_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png"/></div>
+            <span>Trouvez-vous cet avis utile ?</span>
+            <div class="presentation_action_left_avis_utile_reponse_wrap">
+                <a href="#" title="">OUI</a><a href="#" title="">NON</a>
+            </div>
+            
+        </div>
         
+        <div class="presentation_action_left_footer">
+            <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL; ?>/img/avatars/1.png"/></figure></div>
+            <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
+            <div class="presentation_action_left_footer_picto_action" <?php echo AfficheProvenance($_POST['provenance'], $_POST['categorie']); ?>></div>
+        
+        </div>
     </div>
     
     <div class="presentation_action_right">
@@ -196,37 +211,13 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>
             </div>
             <!-- FIN 1 BOX DE SUGGESTION -->
-            
         </div>
-        
-    </div>
-    <div class="clearfix"></div>
-
-        <div class="presentation_action_left_avis_utile_wrap">
-            
-            <div class="presentation_action_left_avis_utile_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png"/></div>
-            <span>Trouvez-vous cet avis utile ?</span>
-            <div class="presentation_action_left_avis_utile_reponse_wrap">
-                <a href="#" title="">OUI</a><a href="#" title="">NON</a>
+                             <div class="presentation_action_right_suivre">
+                <div class="presentation_action_right_suivre_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
+                <span class="presentation_action_right_suivre_txt_1">Suivre cet</span><span class="presentation_action_right_suivre_txt_2">utilisateur</span>
             </div>
-            
-        </div>
-    <div class="presentation_action_right_voirplus">
-            <span class="presentation_action_right_voirplus_txt"><a href="#" title=""><strong>Voir plus</strong> de suggestions</a></span>
-        </div>
-        <div class="presentation_action_left_footer">
-            <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL; ?>/img/avatars/1.png"/></figure></div>
-            <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
-            <div class="presentation_action_left_footer_picto_action" <?php echo AfficheProvenance($_POST['provenance'], $_POST['categorie']); ?>></div>
-        
-        </div>
-
-        
-        <div class="presentation_action_right_suivre">
-            <div class="presentation_action_right_suivre_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
-            <span class="presentation_action_right_suivre_txt_1">Suivre cet</span><span class="presentation_action_right_suivre_txt_2">utilisateur</span>
-        </div>
-    
+    </div>
+    <div class="clearfix"></div>    
 </div>
 <script>
     // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
