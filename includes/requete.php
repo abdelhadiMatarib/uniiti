@@ -27,21 +27,8 @@
 		$sql4 = "SELECT id_avis, commentaire, appreciation, note, origine, date_avis FROM avis WHERE id_avis = :id_avis";
 		$req4 = $bdd->prepare($sql4);
 
-/* SELECT id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_avis, commentaire, appreciation, note, origine, date_avis, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, nom_type_enseigne, btn_donner_avis_visible
-				FROM avis AS t1
-				INNER JOIN contributeurs_donnent_avis AS t2
-					ON t1.id_avis = t2.avis_id_avis
-					INNER JOIN contributeurs AS t3
-						ON t3.id_contributeur = t2.contributeurs_id_contributeur
-						INNER JOIN enseignes_recoient_avis AS t4
-							ON t1.id_avis = t4.avis_id_avis
-							INNER JOIN enseignes AS t5
-								ON t5.id_enseigne = t4.enseignes_id_enseigne
-								INNER JOIN types_enseigne AS t6
-									ON t6.id_type_enseigne = t5.types_enseigne_id_type_enseigne */
-		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
+		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -160,9 +147,7 @@
 			$sous_categorie2         = $row['sous_categorie2'];
 			$posx					 = $row['posx'];
 			$posy					 = $row['posy'];
-//			$nom_type_enseigne       = $row['nom_type_enseigne'];
 			$url                     = $row['url'];
-			$btn_donner_avis_visible = $row['btn_donner_avis_visible'];
 			
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->execute();

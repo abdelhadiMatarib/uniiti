@@ -10,10 +10,14 @@
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
 
-	$sql2 = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, note_moyenne, satisfaction_pourcent, certification_pro, code_visible, avis_visible, nom_type_enseigne, btn_donner_avis_visible, url
+	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url
 			FROM enseignes AS t1
-			INNER JOIN types_enseigne AS t2
-				ON t1.types_enseigne_id_type_enseigne = t2.id_type_enseigne
+				INNER JOIN sous_categories2 AS t2
+				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
+					INNER JOIN sous_categories AS t3
+					ON t2.id_sous_categorie = t3.id_sous_categorie
+						INNER JOIN categories AS t4
+						ON t2.id_categorie = t4.id_categorie
 			WHERE id_enseigne = :id_enseigne
 		";
 
@@ -35,22 +39,20 @@
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
 	$req2->execute();
-	$result = $req2->fetch(PDO::FETCH_ASSOC);
+	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
            
-	$nom_enseigne            = $result['nom_enseigne'];
-	$logotype_enseigne       = $result['logotype_enseigne'];
-	$adresse1_enseigne       = $result['adresse1_enseigne'];
-	$code_postal             = $result['cp_enseigne'];
-	$ville_enseigne          = $result['ville_enseigne'];
-	$pays_enseigne           = $result['pays_enseigne'];
-	$telephone_enseigne      = $result['telephone_enseigne'];
-	$descriptif              = $result['descriptif'];
-	$certification_pro       = $result['certification_pro'];
-	$code_visible            = $result['code_visible'];
-	$avis_visible            = $result['avis_visible'];
-	$nom_type_enseigne       = $result['nom_type_enseigne'];
-	$btn_donner_avis_visible = $result['btn_donner_avis_visible'];
-	$url                     = $result['url'];
+	$nom_enseigne            = $result2['nom_enseigne'];
+	$logotype_enseigne       = $result2['logotype_enseigne'];
+	$adresse1_enseigne       = $result2['adresse1_enseigne'];
+	$code_postal             = $result2['cp_enseigne'];
+	$ville_enseigne          = $result2['ville_enseigne'];
+	$pays_enseigne           = $result2['pays_enseigne'];
+	$telephone_enseigne      = $result2['telephone_enseigne'];
+	$descriptif              = $result2['descriptif'];
+	$categorie				 = $result2['categorie_principale'];
+	$sous_categorie          = $result2['sous_categorie'];
+	$sous_categorie2         = $result2['sous_categorie2'];
+	$url                     = $result2['url'];
 
 	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
@@ -110,7 +112,7 @@
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
                     <div class="commerce_head_desc_address"><div class="img_container" id="commerce_head_desc_address_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></a></div><div id="commerce_head_desc_address_wrap"><address><?php echo $adresse1_enseigne; ?></address><span><?php echo $code_postal; ?> <?php echo $ville_enseigne; ?></span></div></div>
-                    <div class="commerce_head_desc_ariane"><div class="img_container" id="commerce_head_desc_ariane_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></a></div><div id="commerce_head_desc_ariane_wrap"><span>Commerce > Restauration</span><span class="commerce_head_desc_ariane_lastcat">Cuisine Asiatique - Chinoise</span></div></div>
+                    <div class="commerce_head_desc_ariane"><div class="img_container" id="commerce_head_desc_ariane_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></a></div><div id="commerce_head_desc_ariane_wrap"><span>Commerce > <?php echo $categorie; ?> > <?php echo $sous_categorie; ?></span><span class="commerce_head_desc_ariane_lastcat"><?php echo $sous_categorie2; ?></span></div></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
@@ -119,9 +121,7 @@
                 </div>
                 <div class="commerce_head_note">
                     <div class="commerce_head_note_stars">
-						<?php for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) { ?>
-							<img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" title="" alt="" height="17" width="18" />
-						<?php } /* Fin du for */ ?>
+						<?php echo AfficheEtoiles($note_arrondi, $categorie); ?>
                     </div>
                     <div class="center_note">
                     <span class="commerce_head_note_note"><?php echo $note_arrondi; ?></span><span class="commerce_head_note_note10">/10</span>

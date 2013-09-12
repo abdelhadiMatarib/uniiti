@@ -3,6 +3,8 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+DROP TABLE IF EXISTS `arrondissement` ;
+DROP TABLE IF EXISTS `quartier` ;
 DROP TABLE IF EXISTS `budget` ;
 DROP TABLE IF EXISTS `categories` ;
 DROP TABLE IF EXISTS `sous_categories` ;
@@ -19,10 +21,9 @@ DROP TABLE IF EXISTS `objets` ;
 DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
 
 
-ALTER TABLE `enseignes` DROP `categorie_enseigne`
-, DROP `scategorie_enseigne`
-, DROP `sscategorie_enseigne`
-, DROP `budget_enseigne`
+ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
+, DROP `id_quartier`
+, DROP `id_budget`
 , DROP `slide1_enseigne`
 , DROP `slide2_enseigne`
 , DROP `slide3_enseigne`
@@ -322,10 +323,9 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `descriptif_contributeur` longtext DEFAULT NULL
 , ADD `categorieage_contributeur` varchar(45) DEFAULT NULL ;
 
-ALTER TABLE `enseignes` ADD `categorie_enseigne` int(10) unsigned NOT NULL
-, ADD `scategorie_enseigne` int(10) unsigned NOT NULL
-, ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
-, ADD `budget_enseigne` int(10) unsigned NOT NULL
+ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
+, ADD `id_quartier` int(10) unsigned NOT NULL
+, ADD `id_budget` int(10) unsigned NOT NULL
 , ADD `slide1_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide2_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide3_enseigne` varchar(45) DEFAULT NULL
@@ -604,266 +604,400 @@ ALTER TABLE `enseignes` ADD `categorie_enseigne` int(10) unsigned NOT NULL
 -- , ADD `velib_enseigne` longtext DEFAULT NULL
 -- , ADD `autolib_enseigne` longtext DEFAULT NULL
 -- , ADD `popin_enseigne` longtext DEFAULT NULL ;
-UPDATE `enseignes` SET sscategorie_enseigne =301 WHERE id_enseigne=1 ;
-UPDATE `enseignes` SET sscategorie_enseigne =68 WHERE id_enseigne=2 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=3 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=4 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=5 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=6 ;
-UPDATE `enseignes` SET sscategorie_enseigne =183 WHERE id_enseigne=7 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=8 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=9 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=10 ;
-UPDATE `enseignes` SET sscategorie_enseigne =183 WHERE id_enseigne=11 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=12 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=13 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=14 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=15 ;
-UPDATE `enseignes` SET sscategorie_enseigne =4 WHERE id_enseigne=16 ;
-UPDATE `enseignes` SET sscategorie_enseigne =4 WHERE id_enseigne=17 ;
-UPDATE `enseignes` SET sscategorie_enseigne =301 WHERE id_enseigne=18 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=19 ;
-UPDATE `enseignes` SET sscategorie_enseigne =58 WHERE id_enseigne=20 ;
-UPDATE `enseignes` SET sscategorie_enseigne =48 WHERE id_enseigne=21 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=22 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=23 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=24 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=25 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=26 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=27 ;
-UPDATE `enseignes` SET sscategorie_enseigne =58 WHERE id_enseigne=28 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=29 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=30 ;
-UPDATE `enseignes` SET sscategorie_enseigne =292 WHERE id_enseigne=31 ;
-UPDATE `enseignes` SET sscategorie_enseigne =620 WHERE id_enseigne=32 ;
-UPDATE `enseignes` SET sscategorie_enseigne =17 WHERE id_enseigne=33 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=34 ;
-UPDATE `enseignes` SET sscategorie_enseigne =78 WHERE id_enseigne=35 ;
-UPDATE `enseignes` SET sscategorie_enseigne =331 WHERE id_enseigne=36 ;
-UPDATE `enseignes` SET sscategorie_enseigne =237 WHERE id_enseigne=37 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=38 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=39 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=40 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=41 ;
-UPDATE `enseignes` SET sscategorie_enseigne =48 WHERE id_enseigne=42 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=43 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=44 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=45 ;
-UPDATE `enseignes` SET sscategorie_enseigne =221 WHERE id_enseigne=46 ;
-UPDATE `enseignes` SET sscategorie_enseigne =45 WHERE id_enseigne=47 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=48 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=49 ;
-UPDATE `enseignes` SET sscategorie_enseigne =653 WHERE id_enseigne=50 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=51 ;
-UPDATE `enseignes` SET sscategorie_enseigne =164 WHERE id_enseigne=52 ;
-UPDATE `enseignes` SET sscategorie_enseigne =150 WHERE id_enseigne=53 ;
-UPDATE `enseignes` SET sscategorie_enseigne =612 WHERE id_enseigne=54 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=55 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=56 ;
-UPDATE `enseignes` SET sscategorie_enseigne =653 WHERE id_enseigne=57 ;
-UPDATE `enseignes` SET sscategorie_enseigne =637 WHERE id_enseigne=58 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=59 ;
-UPDATE `enseignes` SET sscategorie_enseigne =216 WHERE id_enseigne=60 ;
-UPDATE `enseignes` SET sscategorie_enseigne =54 WHERE id_enseigne=61 ;
-UPDATE `enseignes` SET sscategorie_enseigne =229 WHERE id_enseigne=62 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=63 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=64 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=65 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=66 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=67 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=68 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=69 ;
-UPDATE `enseignes` SET sscategorie_enseigne =101 WHERE id_enseigne=70 ;
-UPDATE `enseignes` SET sscategorie_enseigne =32 WHERE id_enseigne=71 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=72 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=73 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=74 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=75 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=76 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=77 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=78 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=79 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=80 ;
-UPDATE `enseignes` SET sscategorie_enseigne =109 WHERE id_enseigne=81 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=82 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=83 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=84 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=85 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=86 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=87 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=88 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=89 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=90 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=91 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=92 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=93 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=94 ;
-UPDATE `enseignes` SET sscategorie_enseigne =288 WHERE id_enseigne=95 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=96 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=97 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=98 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=99 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=100 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=101 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=102 ;
-UPDATE `enseignes` SET sscategorie_enseigne =58 WHERE id_enseigne=103 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=104 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=105 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=106 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=107 ;
-UPDATE `enseignes` SET sscategorie_enseigne =13 WHERE id_enseigne=108 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=109 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=110 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=111 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=112 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=113 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=114 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=115 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=116 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=117 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=118 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=119 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=120 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=121 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=122 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=123 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=124 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=125 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=126 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=127 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=128 ;
-UPDATE `enseignes` SET sscategorie_enseigne =9 WHERE id_enseigne=129 ;
-UPDATE `enseignes` SET sscategorie_enseigne =40 WHERE id_enseigne=130 ;
-UPDATE `enseignes` SET sscategorie_enseigne =21 WHERE id_enseigne=131 ;
-UPDATE `enseignes` SET sscategorie_enseigne =43 WHERE id_enseigne=132 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=133 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=134 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=135 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=136 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=137 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=138 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=139 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=140 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=141 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=142 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=143 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=144 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=145 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=146 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=147 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=148 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=149 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=150 ;
-UPDATE `enseignes` SET sscategorie_enseigne =32 WHERE id_enseigne=151 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=152 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=153 ;
-UPDATE `enseignes` SET sscategorie_enseigne =40 WHERE id_enseigne=154 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=155 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=156 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=157 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=158 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=159 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=160 ;
-UPDATE `enseignes` SET sscategorie_enseigne =301 WHERE id_enseigne=161 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=162 ;
-UPDATE `enseignes` SET sscategorie_enseigne =18 WHERE id_enseigne=163 ;
-UPDATE `enseignes` SET sscategorie_enseigne =4 WHERE id_enseigne=164 ;
-UPDATE `enseignes` SET sscategorie_enseigne =4 WHERE id_enseigne=165 ;
-UPDATE `enseignes` SET sscategorie_enseigne =99 WHERE id_enseigne=166 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=167 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=168 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=169 ;
-UPDATE `enseignes` SET sscategorie_enseigne =153 WHERE id_enseigne=170 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=171 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=172 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=173 ;
-UPDATE `enseignes` SET sscategorie_enseigne =78 WHERE id_enseigne=174 ;
-UPDATE `enseignes` SET sscategorie_enseigne =48 WHERE id_enseigne=175 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=176 ;
-UPDATE `enseignes` SET sscategorie_enseigne =78 WHERE id_enseigne=177 ;
-UPDATE `enseignes` SET sscategorie_enseigne =2 WHERE id_enseigne=178 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=179 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=180 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=181 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=182 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=183 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=184 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=185 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=186 ;
-UPDATE `enseignes` SET sscategorie_enseigne =19 WHERE id_enseigne=187 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=188 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=189 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=190 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=191 ;
-UPDATE `enseignes` SET sscategorie_enseigne =39 WHERE id_enseigne=192 ;
-UPDATE `enseignes` SET sscategorie_enseigne =657 WHERE id_enseigne=193 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=194 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=195 ;
-UPDATE `enseignes` SET sscategorie_enseigne =31 WHERE id_enseigne=196 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=197 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=198 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=199 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=200 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=201 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=202 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=203 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=204 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=205 ;
-UPDATE `enseignes` SET sscategorie_enseigne =347 WHERE id_enseigne=206 ;
-UPDATE `enseignes` SET sscategorie_enseigne =4 WHERE id_enseigne=207 ;
-UPDATE `enseignes` SET sscategorie_enseigne =4 WHERE id_enseigne=208 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=209 ;
-UPDATE `enseignes` SET sscategorie_enseigne =31 WHERE id_enseigne=210 ;
-UPDATE `enseignes` SET sscategorie_enseigne =34 WHERE id_enseigne=211 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=212 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=213 ;
-UPDATE `enseignes` SET sscategorie_enseigne =289 WHERE id_enseigne=214 ;
-UPDATE `enseignes` SET sscategorie_enseigne =31 WHERE id_enseigne=215 ;
-UPDATE `enseignes` SET sscategorie_enseigne =21 WHERE id_enseigne=216 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=217 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=218 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=219 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=220 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=221 ;
-UPDATE `enseignes` SET sscategorie_enseigne =341 WHERE id_enseigne=222 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=223 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=224 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=225 ;
-UPDATE `enseignes` SET sscategorie_enseigne =39 WHERE id_enseigne=226 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=227 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=228 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=229 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=230 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=231 ;
-UPDATE `enseignes` SET sscategorie_enseigne =3 WHERE id_enseigne=232 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=233 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=234 ;
-UPDATE `enseignes` SET sscategorie_enseigne =289 WHERE id_enseigne=235 ;
-UPDATE `enseignes` SET sscategorie_enseigne =300 WHERE id_enseigne=236 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=237 ;
-UPDATE `enseignes` SET sscategorie_enseigne =26 WHERE id_enseigne=238 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=239 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=240 ;
-UPDATE `enseignes` SET sscategorie_enseigne =41 WHERE id_enseigne=241 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=242 ;
-UPDATE `enseignes` SET sscategorie_enseigne =17 WHERE id_enseigne=243 ;
-UPDATE `enseignes` SET sscategorie_enseigne =653 WHERE id_enseigne=244 ;
-UPDATE `enseignes` SET sscategorie_enseigne =1 WHERE id_enseigne=245 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=246 ;
-UPDATE `enseignes` SET sscategorie_enseigne =10 WHERE id_enseigne=247 ;
-UPDATE `enseignes` SET sscategorie_enseigne =110 WHERE id_enseigne=248 ;
-UPDATE `enseignes` SET sscategorie_enseigne =78 WHERE id_enseigne=249 ;
-UPDATE `enseignes` SET sscategorie_enseigne =16 WHERE id_enseigne=250 ;
-UPDATE `enseignes` SET sscategorie_enseigne =39 WHERE id_enseigne=251 ;
-UPDATE `enseignes` SET sscategorie_enseigne =17 WHERE id_enseigne=252 ;
-UPDATE `enseignes` SET sscategorie_enseigne =635 WHERE id_enseigne=253 ;
-UPDATE `enseignes` SET sscategorie_enseigne =19 WHERE id_enseigne=254 ;
-UPDATE `enseignes` SET sscategorie_enseigne =40 WHERE id_enseigne=255 ;
-UPDATE `enseignes` SET sscategorie_enseigne =17 WHERE id_enseigne=256 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=257 ;
-UPDATE `enseignes` SET sscategorie_enseigne =11 WHERE id_enseigne=258 ;
+UPDATE `enseignes` SET sscategorie_enseigne =301, id_quartier=1, id_budget=4 WHERE id_enseigne=1 ;
+UPDATE `enseignes` SET sscategorie_enseigne =68, id_quartier=1, id_budget=4 WHERE id_enseigne=2 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=4, id_budget=4 WHERE id_enseigne=3 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=7, id_budget=4 WHERE id_enseigne=4 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=13, id_budget=4 WHERE id_enseigne=5 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=14, id_budget=4 WHERE id_enseigne=6 ;
+UPDATE `enseignes` SET sscategorie_enseigne =183, id_quartier=17, id_budget=4 WHERE id_enseigne=7 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=21, id_budget=4 WHERE id_enseigne=8 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=27, id_budget=4 WHERE id_enseigne=9 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=31, id_budget=4 WHERE id_enseigne=10 ;
+UPDATE `enseignes` SET sscategorie_enseigne =183, id_quartier=31, id_budget=1 WHERE id_enseigne=11 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=40, id_budget=4 WHERE id_enseigne=12 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=41, id_budget=4 WHERE id_enseigne=13 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=46, id_budget=4 WHERE id_enseigne=14 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=54, id_budget=4 WHERE id_enseigne=15 ;
+UPDATE `enseignes` SET sscategorie_enseigne =4, id_quartier=27, id_budget=1 WHERE id_enseigne=16 ;
+UPDATE `enseignes` SET sscategorie_enseigne =4, id_quartier=27, id_budget=1 WHERE id_enseigne=17 ;
+UPDATE `enseignes` SET sscategorie_enseigne =301, id_quartier=17, id_budget=2 WHERE id_enseigne=18 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=17, id_budget=3 WHERE id_enseigne=19 ;
+UPDATE `enseignes` SET sscategorie_enseigne =58, id_quartier=1, id_budget=2 WHERE id_enseigne=20 ;
+UPDATE `enseignes` SET sscategorie_enseigne =48, id_quartier=1, id_budget=2 WHERE id_enseigne=21 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=1, id_budget=2 WHERE id_enseigne=22 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=1, id_budget=2 WHERE id_enseigne=23 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=3 WHERE id_enseigne=24 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=25 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=26 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=1, id_budget=2 WHERE id_enseigne=27 ;
+UPDATE `enseignes` SET sscategorie_enseigne =58, id_quartier=1, id_budget=3 WHERE id_enseigne=28 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=4, id_budget=3 WHERE id_enseigne=29 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=7, id_budget=2 WHERE id_enseigne=30 ;
+UPDATE `enseignes` SET sscategorie_enseigne =292, id_quartier=13, id_budget=2 WHERE id_enseigne=31 ;
+UPDATE `enseignes` SET sscategorie_enseigne =620, id_quartier=14, id_budget=2 WHERE id_enseigne=32 ;
+UPDATE `enseignes` SET sscategorie_enseigne =17, id_quartier=17, id_budget=2 WHERE id_enseigne=33 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=21, id_budget=2 WHERE id_enseigne=34 ;
+UPDATE `enseignes` SET sscategorie_enseigne =78, id_quartier=27, id_budget=2 WHERE id_enseigne=35 ;
+UPDATE `enseignes` SET sscategorie_enseigne =331, id_quartier=31, id_budget=2 WHERE id_enseigne=36 ;
+UPDATE `enseignes` SET sscategorie_enseigne =237, id_quartier=40, id_budget=2 WHERE id_enseigne=37 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=41, id_budget=2 WHERE id_enseigne=38 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=46, id_budget=2 WHERE id_enseigne=39 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=1, id_budget=2 WHERE id_enseigne=40 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=41 ;
+UPDATE `enseignes` SET sscategorie_enseigne =48, id_quartier=1, id_budget=2 WHERE id_enseigne=42 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=43 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=1, id_budget=2 WHERE id_enseigne=44 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=45 ;
+UPDATE `enseignes` SET sscategorie_enseigne =221, id_quartier=1, id_budget=2 WHERE id_enseigne=46 ;
+UPDATE `enseignes` SET sscategorie_enseigne =45, id_quartier=1, id_budget=2 WHERE id_enseigne=47 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=1, id_budget=2 WHERE id_enseigne=48 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=1, id_budget=2 WHERE id_enseigne=49 ;
+UPDATE `enseignes` SET sscategorie_enseigne =653, id_quartier=1, id_budget=2 WHERE id_enseigne=50 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=1, id_budget=2 WHERE id_enseigne=51 ;
+UPDATE `enseignes` SET sscategorie_enseigne =164, id_quartier=1, id_budget=2 WHERE id_enseigne=52 ;
+UPDATE `enseignes` SET sscategorie_enseigne =150, id_quartier=1, id_budget=2 WHERE id_enseigne=53 ;
+UPDATE `enseignes` SET sscategorie_enseigne =612, id_quartier=1, id_budget=2 WHERE id_enseigne=54 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=1, id_budget=2 WHERE id_enseigne=55 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=1, id_budget=2 WHERE id_enseigne=56 ;
+UPDATE `enseignes` SET sscategorie_enseigne =653, id_quartier=1, id_budget=2 WHERE id_enseigne=57 ;
+UPDATE `enseignes` SET sscategorie_enseigne =637, id_quartier=1, id_budget=2 WHERE id_enseigne=58 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=59 ;
+UPDATE `enseignes` SET sscategorie_enseigne =216, id_quartier=1, id_budget=2 WHERE id_enseigne=60 ;
+UPDATE `enseignes` SET sscategorie_enseigne =54, id_quartier=1, id_budget=2 WHERE id_enseigne=61 ;
+UPDATE `enseignes` SET sscategorie_enseigne =229, id_quartier=1, id_budget=2 WHERE id_enseigne=62 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=49, id_budget=3 WHERE id_enseigne=63 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=61, id_budget=2 WHERE id_enseigne=64 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=24, id_budget=3 WHERE id_enseigne=65 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=64, id_budget=2 WHERE id_enseigne=66 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=32, id_budget=2 WHERE id_enseigne=67 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=13, id_budget=2 WHERE id_enseigne=68 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=15, id_budget=2 WHERE id_enseigne=69 ;
+UPDATE `enseignes` SET sscategorie_enseigne =101, id_quartier=19, id_budget=2 WHERE id_enseigne=70 ;
+UPDATE `enseignes` SET sscategorie_enseigne =32, id_quartier=7, id_budget=2 WHERE id_enseigne=71 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=69, id_budget=3 WHERE id_enseigne=72 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=54, id_budget=2 WHERE id_enseigne=73 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=42, id_budget=2 WHERE id_enseigne=74 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=25, id_budget=2 WHERE id_enseigne=75 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=78, id_budget=2 WHERE id_enseigne=76 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=48, id_budget=2 WHERE id_enseigne=77 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=56, id_budget=2 WHERE id_enseigne=78 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=59, id_budget=2 WHERE id_enseigne=79 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=79, id_budget=2 WHERE id_enseigne=80 ;
+UPDATE `enseignes` SET sscategorie_enseigne =109, id_quartier=26, id_budget=2 WHERE id_enseigne=81 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=17, id_budget=2 WHERE id_enseigne=82 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=19, id_budget=3 WHERE id_enseigne=83 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=45, id_budget=2 WHERE id_enseigne=84 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=55, id_budget=2 WHERE id_enseigne=85 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=79, id_budget=2 WHERE id_enseigne=86 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=17, id_budget=2 WHERE id_enseigne=87 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=42, id_budget=2 WHERE id_enseigne=88 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=77, id_budget=2 WHERE id_enseigne=89 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=78, id_budget=2 WHERE id_enseigne=90 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=59, id_budget=2 WHERE id_enseigne=91 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=83, id_budget=2 WHERE id_enseigne=92 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=61, id_budget=3 WHERE id_enseigne=93 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=22, id_budget=3 WHERE id_enseigne=94 ;
+UPDATE `enseignes` SET sscategorie_enseigne =288, id_quartier=79, id_budget=2 WHERE id_enseigne=95 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=51, id_budget=2 WHERE id_enseigne=96 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=18, id_budget=2 WHERE id_enseigne=97 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=84, id_budget=2 WHERE id_enseigne=98 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=13, id_budget=2 WHERE id_enseigne=99 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=60, id_budget=2 WHERE id_enseigne=100 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=71, id_budget=2 WHERE id_enseigne=101 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=68, id_budget=3 WHERE id_enseigne=102 ;
+UPDATE `enseignes` SET sscategorie_enseigne =58, id_quartier=24, id_budget=2 WHERE id_enseigne=103 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=20, id_budget=2 WHERE id_enseigne=104 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=2, id_budget=2 WHERE id_enseigne=105 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=61, id_budget=2 WHERE id_enseigne=106 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=31, id_budget=2 WHERE id_enseigne=107 ;
+UPDATE `enseignes` SET sscategorie_enseigne =13, id_quartier=35, id_budget=2 WHERE id_enseigne=108 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=41, id_budget=2 WHERE id_enseigne=109 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=45, id_budget=2 WHERE id_enseigne=110 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=17, id_budget=2 WHERE id_enseigne=111 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=78, id_budget=2 WHERE id_enseigne=112 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=43, id_budget=1 WHERE id_enseigne=113 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=38, id_budget=1 WHERE id_enseigne=114 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=82, id_budget=2 WHERE id_enseigne=115 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=13, id_budget=3 WHERE id_enseigne=116 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=41, id_budget=3 WHERE id_enseigne=117 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=82, id_budget=2 WHERE id_enseigne=118 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=3, id_budget=2 WHERE id_enseigne=119 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=83, id_budget=2 WHERE id_enseigne=120 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=71, id_budget=2 WHERE id_enseigne=121 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=57, id_budget=2 WHERE id_enseigne=122 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=45, id_budget=2 WHERE id_enseigne=123 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=60, id_budget=2 WHERE id_enseigne=124 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=67, id_budget=2 WHERE id_enseigne=125 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=67, id_budget=2 WHERE id_enseigne=126 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=8, id_budget=2 WHERE id_enseigne=127 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=60, id_budget=2 WHERE id_enseigne=128 ;
+UPDATE `enseignes` SET sscategorie_enseigne =9, id_quartier=70, id_budget=2 WHERE id_enseigne=129 ;
+UPDATE `enseignes` SET sscategorie_enseigne =40, id_quartier=15, id_budget=2 WHERE id_enseigne=130 ;
+UPDATE `enseignes` SET sscategorie_enseigne =21, id_quartier=57, id_budget=2 WHERE id_enseigne=131 ;
+UPDATE `enseignes` SET sscategorie_enseigne =43, id_quartier=16, id_budget=2 WHERE id_enseigne=132 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=41, id_budget=2 WHERE id_enseigne=133 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=4, id_budget=2 WHERE id_enseigne=134 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=5, id_budget=2 WHERE id_enseigne=135 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=42, id_budget=3 WHERE id_enseigne=136 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=3, id_budget=2 WHERE id_enseigne=137 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=2, id_budget=3 WHERE id_enseigne=138 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=19, id_budget=3 WHERE id_enseigne=139 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=34, id_budget=3 WHERE id_enseigne=140 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=60, id_budget=2 WHERE id_enseigne=141 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=4, id_budget=2 WHERE id_enseigne=142 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=16, id_budget=2 WHERE id_enseigne=143 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=9, id_budget=2 WHERE id_enseigne=144 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=22, id_budget=3 WHERE id_enseigne=145 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=76, id_budget=2 WHERE id_enseigne=146 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=58, id_budget=2 WHERE id_enseigne=147 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=76, id_budget=3 WHERE id_enseigne=148 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=61, id_budget=2 WHERE id_enseigne=149 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=61, id_budget=3 WHERE id_enseigne=150 ;
+UPDATE `enseignes` SET sscategorie_enseigne =32, id_quartier=26, id_budget=3 WHERE id_enseigne=151 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=40, id_budget=2 WHERE id_enseigne=152 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=8, id_budget=2 WHERE id_enseigne=153 ;
+UPDATE `enseignes` SET sscategorie_enseigne =40, id_quartier=83, id_budget=2 WHERE id_enseigne=154 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=27, id_budget=2 WHERE id_enseigne=155 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=34, id_budget=2 WHERE id_enseigne=156 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=2, id_budget=2 WHERE id_enseigne=157 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=21, id_budget=2 WHERE id_enseigne=158 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=81, id_budget=2 WHERE id_enseigne=159 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=76, id_budget=2 WHERE id_enseigne=160 ;
+UPDATE `enseignes` SET sscategorie_enseigne =301, id_quartier=43, id_budget=2 WHERE id_enseigne=161 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=56, id_budget=3 WHERE id_enseigne=162 ;
+UPDATE `enseignes` SET sscategorie_enseigne =18, id_quartier=60, id_budget=2 WHERE id_enseigne=163 ;
+UPDATE `enseignes` SET sscategorie_enseigne =4, id_quartier=67, id_budget=2 WHERE id_enseigne=164 ;
+UPDATE `enseignes` SET sscategorie_enseigne =4, id_quartier=67, id_budget=2 WHERE id_enseigne=165 ;
+UPDATE `enseignes` SET sscategorie_enseigne =99, id_quartier=30, id_budget=2 WHERE id_enseigne=166 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=3, id_budget=3 WHERE id_enseigne=167 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=58, id_budget=3 WHERE id_enseigne=168 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=67, id_budget=2 WHERE id_enseigne=169 ;
+UPDATE `enseignes` SET sscategorie_enseigne =153, id_quartier=50, id_budget=1 WHERE id_enseigne=170 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=19, id_budget=2 WHERE id_enseigne=171 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=1, id_budget=2 WHERE id_enseigne=172 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=3, id_budget=3 WHERE id_enseigne=173 ;
+UPDATE `enseignes` SET sscategorie_enseigne =78, id_quartier=62, id_budget=2 WHERE id_enseigne=174 ;
+UPDATE `enseignes` SET sscategorie_enseigne =48, id_quartier=60, id_budget=1 WHERE id_enseigne=175 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=24, id_budget=3 WHERE id_enseigne=176 ;
+UPDATE `enseignes` SET sscategorie_enseigne =78, id_quartier=24, id_budget=2 WHERE id_enseigne=177 ;
+UPDATE `enseignes` SET sscategorie_enseigne =2, id_quartier=22, id_budget=2 WHERE id_enseigne=178 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=33, id_budget=2 WHERE id_enseigne=179 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=41, id_budget=3 WHERE id_enseigne=180 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=34, id_budget=2 WHERE id_enseigne=181 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=39, id_budget=2 WHERE id_enseigne=182 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=31, id_budget=2 WHERE id_enseigne=183 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=53, id_budget=2 WHERE id_enseigne=184 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=39, id_budget=2 WHERE id_enseigne=185 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=13, id_budget=2 WHERE id_enseigne=186 ;
+UPDATE `enseignes` SET sscategorie_enseigne =19, id_quartier=3, id_budget=2 WHERE id_enseigne=187 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=61, id_budget=2 WHERE id_enseigne=188 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=50, id_budget=2 WHERE id_enseigne=189 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=20, id_budget=3 WHERE id_enseigne=190 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=41, id_budget=2 WHERE id_enseigne=191 ;
+UPDATE `enseignes` SET sscategorie_enseigne =39, id_quartier=18, id_budget=2 WHERE id_enseigne=192 ;
+UPDATE `enseignes` SET sscategorie_enseigne =657, id_quartier=28, id_budget=3 WHERE id_enseigne=193 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=20, id_budget=3 WHERE id_enseigne=194 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=16, id_budget=2 WHERE id_enseigne=195 ;
+UPDATE `enseignes` SET sscategorie_enseigne =31, id_quartier=60, id_budget=2 WHERE id_enseigne=196 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=63, id_budget=3 WHERE id_enseigne=197 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=62, id_budget=2 WHERE id_enseigne=198 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=71, id_budget=3 WHERE id_enseigne=199 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=71, id_budget=3 WHERE id_enseigne=200 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=3, id_budget=3 WHERE id_enseigne=201 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=12, id_budget=3 WHERE id_enseigne=202 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=71, id_budget=4 WHERE id_enseigne=203 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=79, id_budget=2 WHERE id_enseigne=204 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=26, id_budget=3 WHERE id_enseigne=205 ;
+UPDATE `enseignes` SET sscategorie_enseigne =347, id_quartier=58, id_budget=2 WHERE id_enseigne=206 ;
+UPDATE `enseignes` SET sscategorie_enseigne =4, id_quartier=67, id_budget=2 WHERE id_enseigne=207 ;
+UPDATE `enseignes` SET sscategorie_enseigne =4, id_quartier=67, id_budget=2 WHERE id_enseigne=208 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=35, id_budget=2 WHERE id_enseigne=209 ;
+UPDATE `enseignes` SET sscategorie_enseigne =31, id_quartier=26, id_budget=3 WHERE id_enseigne=210 ;
+UPDATE `enseignes` SET sscategorie_enseigne =34, id_quartier=18, id_budget=2 WHERE id_enseigne=211 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=19, id_budget=3 WHERE id_enseigne=212 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=22, id_budget=2 WHERE id_enseigne=213 ;
+UPDATE `enseignes` SET sscategorie_enseigne =289, id_quartier=60, id_budget=2 WHERE id_enseigne=214 ;
+UPDATE `enseignes` SET sscategorie_enseigne =31, id_quartier=54, id_budget=2 WHERE id_enseigne=215 ;
+UPDATE `enseignes` SET sscategorie_enseigne =21, id_quartier=20, id_budget=2 WHERE id_enseigne=216 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=41, id_budget=3 WHERE id_enseigne=217 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=2, id_budget=2 WHERE id_enseigne=218 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=35, id_budget=2 WHERE id_enseigne=219 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=29, id_budget=3 WHERE id_enseigne=220 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=64, id_budget=2 WHERE id_enseigne=221 ;
+UPDATE `enseignes` SET sscategorie_enseigne =341, id_quartier=34, id_budget=2 WHERE id_enseigne=222 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=81, id_budget=2 WHERE id_enseigne=223 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=48, id_budget=2 WHERE id_enseigne=224 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=67, id_budget=2 WHERE id_enseigne=225 ;
+UPDATE `enseignes` SET sscategorie_enseigne =39, id_quartier=42, id_budget=2 WHERE id_enseigne=226 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=45, id_budget=2 WHERE id_enseigne=227 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=20, id_budget=2 WHERE id_enseigne=228 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=20, id_budget=3 WHERE id_enseigne=229 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=4, id_budget=3 WHERE id_enseigne=230 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=56, id_budget=2 WHERE id_enseigne=231 ;
+UPDATE `enseignes` SET sscategorie_enseigne =3, id_quartier=58, id_budget=2 WHERE id_enseigne=232 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=30, id_budget=2 WHERE id_enseigne=233 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=3, id_budget=3 WHERE id_enseigne=234 ;
+UPDATE `enseignes` SET sscategorie_enseigne =289, id_quartier=66, id_budget=3 WHERE id_enseigne=235 ;
+UPDATE `enseignes` SET sscategorie_enseigne =300, id_quartier=33, id_budget=2 WHERE id_enseigne=236 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=38, id_budget=2 WHERE id_enseigne=237 ;
+UPDATE `enseignes` SET sscategorie_enseigne =26, id_quartier=55, id_budget=2 WHERE id_enseigne=238 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=14, id_budget=2 WHERE id_enseigne=239 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=83, id_budget=2 WHERE id_enseigne=240 ;
+UPDATE `enseignes` SET sscategorie_enseigne =41, id_quartier=56, id_budget=2 WHERE id_enseigne=241 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=46, id_budget=2 WHERE id_enseigne=242 ;
+UPDATE `enseignes` SET sscategorie_enseigne =17, id_quartier=2, id_budget=2 WHERE id_enseigne=243 ;
+UPDATE `enseignes` SET sscategorie_enseigne =653, id_quartier=66, id_budget=2 WHERE id_enseigne=244 ;
+UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=21, id_budget=3 WHERE id_enseigne=245 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=66, id_budget=2 WHERE id_enseigne=246 ;
+UPDATE `enseignes` SET sscategorie_enseigne =10, id_quartier=60, id_budget=2 WHERE id_enseigne=247 ;
+UPDATE `enseignes` SET sscategorie_enseigne =110, id_quartier=66, id_budget=2 WHERE id_enseigne=248 ;
+UPDATE `enseignes` SET sscategorie_enseigne =78, id_quartier=62, id_budget=2 WHERE id_enseigne=249 ;
+UPDATE `enseignes` SET sscategorie_enseigne =16, id_quartier=55, id_budget=2 WHERE id_enseigne=250 ;
+UPDATE `enseignes` SET sscategorie_enseigne =39, id_quartier=76, id_budget=2 WHERE id_enseigne=251 ;
+UPDATE `enseignes` SET sscategorie_enseigne =17, id_quartier=44, id_budget=2 WHERE id_enseigne=252 ;
+UPDATE `enseignes` SET sscategorie_enseigne =635, id_quartier=66, id_budget=3 WHERE id_enseigne=253 ;
+UPDATE `enseignes` SET sscategorie_enseigne =19, id_quartier=84, id_budget=2 WHERE id_enseigne=254 ;
+UPDATE `enseignes` SET sscategorie_enseigne =40, id_quartier=56, id_budget=2 WHERE id_enseigne=255 ;
+UPDATE `enseignes` SET sscategorie_enseigne =17, id_quartier=34, id_budget=2 WHERE id_enseigne=256 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=14, id_budget=2 WHERE id_enseigne=257 ;
+UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=66, id_budget=3 WHERE id_enseigne=258 ;
 
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `arrondissement`
+--
+
+CREATE TABLE IF NOT EXISTS `arrondissement` (
+  `id_arrondissement` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `arrondissement` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_arrondissement`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+
+INSERT INTO `arrondissement` (`id_arrondissement`, `arrondissement`) VALUES
+(1, 'Paris 1er'), 
+(2, 'Paris 2e'), 
+(3, 'Paris 3e'), 
+(4, 'Paris 4e'), 
+(5, 'Paris 5e'), 
+(6, 'Paris 6e'), 
+(7, 'Paris 7e'), 
+(8, 'Paris 8e'), 
+(9, 'Paris 9e'), 
+(10, 'Paris 10e'), 
+(11, 'Paris 11e'), 
+(12, 'Paris 12e'), 
+(13, 'Paris 13e'), 
+(14, 'Paris 14e'), 
+(15, 'Paris 15e'), 
+(16, 'Paris 16e'), 
+(17, 'Paris 17e'), 
+(18, 'Paris 18e'), 
+(19, 'Paris 19e'), 
+(20, 'Paris 20e') ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quartier`
+--
+
+CREATE TABLE IF NOT EXISTS `quartier` (
+  `id_quartier` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_arrondissement` int(10) unsigned NOT NULL,
+  `quartier` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_quartier`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+
+INSERT INTO `quartier` (`id_quartier`, `id_arrondissement`, `quartier`) VALUES
+(1, 1, 'Châtelet - les Halles'), 
+(2, 1, 'Louvre - Rivoli'), 
+(3, 1, 'Pyramides'), 
+(4, 2, 'Bourse'), 
+(5, 2, 'Montorgueil'), 
+(6, 2, 'Sentier'), 
+(7, 3, 'Rambuteau'), 
+(8, 3, 'République'), 
+(9, 3, 'Temple'), 
+(10, 4, 'Cité'), 
+(11, 4, 'Hôtel de Ville'), 
+(12, 4, 'Île Saint-Louis'), 
+(13, 4, 'Marais'), 
+(14, 5, 'Jardin des plantes'), 
+(15, 5, 'Monge / Mouffetard'), 
+(16, 5, 'Quartier latin'), 
+(17, 6, 'Luxembourg'), 
+(18, 6, 'Odéon'), 
+(19, 6, 'Saint-Germain'), 
+(20, 6, 'Vavin'), 
+(21, 7, 'Invalides'), 
+(22, 7, 'Rue du Bac'), 
+(23, 7, 'Solférino'), 
+(24, 7, 'Tour Eiffel'), 
+(25, 7, 'Vaneau'), 
+(26, 8, 'Champs Elysées'), 
+(27, 8, 'Concorde'), 
+(28, 8, 'Etoile'), 
+(29, 8, 'Madeleine'), 
+(30, 8, 'Monceau'), 
+(31, 9, 'Grands Boulevards'), 
+(32, 9, 'La Fayette'), 
+(33, 9, 'Montmartre'), 
+(34, 9, 'Notre Dame de Lorette'), 
+(35, 9, 'Opéra'), 
+(36, 10, 'Canal St Martin'), 
+(37, 10, 'Louis Blanc'), 
+(38, 10, 'Magenta'), 
+(39, 10, 'Saint-Louis'), 
+(40, 10, 'Saint-Martin'), 
+(41, 11, 'Bastille / Roquette'), 
+(42, 11, 'Faidherbe-Chaligny'), 
+(43, 11, 'Oberkampf'), 
+(44, 11, 'Parmentier'), 
+(45, 11, 'Voltaire'), 
+(46, 12, 'Bercy'), 
+(47, 12, 'Cour Saint-Emilion'), 
+(48, 12, 'Daumesnil'), 
+(49, 12, 'Gare de Lyon'), 
+(50, 12, 'Nation'), 
+(51, 13, 'Bibliothèque François Mitterand'), 
+(52, 13, 'Butte aux Cailles'), 
+(53, 13, 'Gobelins'), 
+(54, 13, 'Place d''Italie'), 
+(55, 13, 'Olympiades / quartier chinois'), 
+(56, 14, 'Alesia'), 
+(57, 14, 'Denfert Rochereau'), 
+(58, 14, 'Montparnasse'), 
+(59, 15, 'Commerce'), 
+(60, 15, 'Javel'), 
+(61, 15, 'Vaugirard'), 
+(62, 16, 'Auteuil'), 
+(63, 16, 'Chaillot'), 
+(64, 16, 'Passy'), 
+(65, 16, 'Trocadéro'), 
+(66, 16, 'Victor Hugo'), 
+(67, 17, 'Batignolles'), 
+(68, 17, 'Brochant'), 
+(69, 17, 'Charles de Gaulle - Etoile'), 
+(70, 17, 'Courcelles'), 
+(71, 17, 'Pereire'), 
+(72, 17, 'Place de Clichy'), 
+(73, 17, 'Ternes'), 
+(74, 17, 'Buttes Chaumont'), 
+(75, 18, 'Abbesses'), 
+(76, 18, 'Blanche'), 
+(77, 18, 'Goutte d''Or'), 
+(78, 18, 'Lamarck-Caulaincourt'), 
+(79, 18, 'Simplon / Jules Joffrin'), 
+(80, 19, 'Belleville'), 
+(81, 19, 'Buttes-Chaumont'), 
+(82, 19, 'La Villette'), 
+(83, 20, 'Avron'), 
+(84, 20, 'Maraîchers'), 
+(85, 20, 'Père Lachaise') ;
 
 
 -- --------------------------------------------------------

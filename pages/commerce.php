@@ -10,7 +10,7 @@
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
 
-	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, note_moyenne, satisfaction_pourcent, certification_pro, code_visible, avis_visible, btn_donner_avis_visible, url
+	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -18,6 +18,7 @@
 					ON t2.id_sous_categorie = t3.id_sous_categorie
 						INNER JOIN categories AS t4
 						ON t2.id_categorie = t4.id_categorie
+			WHERE id_enseigne = :id_enseigne
 		";
 
 	$req2 = $bdd->prepare($sql2);
@@ -38,25 +39,20 @@
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
 	$req2->execute();
-	$result = $req2->fetch(PDO::FETCH_ASSOC);
+	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
            
-	$nom_enseigne            = $result['nom_enseigne'];
-	$logotype_enseigne       = $result['logotype_enseigne'];
-	$adresse1_enseigne       = $result['adresse1_enseigne'];
-	$code_postal             = $result['cp_enseigne'];
-	$ville_enseigne          = $result['ville_enseigne'];
-	$pays_enseigne           = $result['pays_enseigne'];
-	$telephone_enseigne      = $result['telephone_enseigne'];
-	$descriptif              = $result['descriptif'];
-	$certification_pro       = $result['certification_pro'];
-	$code_visible            = $result['code_visible'];
-	$avis_visible            = $result['avis_visible'];
-	$categorie				 = $result['categorie_principale'];
-	$sous_categorie          = $result['sous_categorie'];
-	$sous_categorie2         = $result['sous_categorie2'];
-//	$nom_type_enseigne       = $result['nom_type_enseigne'];
-	$btn_donner_avis_visible = $result['btn_donner_avis_visible'];
-	$url                     = $result['url'];
+	$nom_enseigne            = $result2['nom_enseigne'];
+	$logotype_enseigne       = $result2['logotype_enseigne'];
+	$adresse1_enseigne       = $result2['adresse1_enseigne'];
+	$code_postal             = $result2['cp_enseigne'];
+	$ville_enseigne          = $result2['ville_enseigne'];
+	$pays_enseigne           = $result2['pays_enseigne'];
+	$telephone_enseigne      = $result2['telephone_enseigne'];
+	$descriptif              = $result2['descriptif'];
+	$categorie				 = $result2['categorie_principale'];
+	$sous_categorie          = $result2['sous_categorie'];
+	$sous_categorie2         = $result2['sous_categorie2'];
+	$url                     = $result2['url'];
 
 	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
@@ -87,9 +83,8 @@
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
-	
-?>
 
+?>
     <body>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
@@ -122,9 +117,7 @@
                 </div>
                 <div class="commerce_head_note">
                     <div class="commerce_head_note_stars">
-						<?php for ($i = 1 ; $i <= round($note_arrondi / 2) ; $i++) { ?>
-							<img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" title="" alt="" height="17" width="18" />
-						<?php } /* Fin du for */ ?>
+							<?php echo AfficheEtoiles($note_arrondi, $categorie); ?>
                     </div>
                     <div class="center_note">
                     <span class="commerce_head_note_note"><?php echo $note_arrondi; ?></span><span class="commerce_head_note_note10">/10</span>
