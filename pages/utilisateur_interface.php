@@ -67,7 +67,7 @@
                         <h2><?php echo $prenom_contributeur . " " . $nom_contributeur; ?></h2>
                     </div>
                     <div class="utilisateur_interface_engrenage">
-                        <div class="utilisateur_interface_engrenage_img_container"><img src="../img/pictos_utilisateurs/utilisateur_interface_engrenage_icon.png" height="20" width="20" title="" alt=""/></div>
+                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin({}, '/includes/popins/utilisateur_interface_infos_persos.tpl.php', 'default_dialog');"></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
