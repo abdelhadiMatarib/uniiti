@@ -77,14 +77,17 @@
 		<script type="text/javascript">
 			var CompteurSelection = 0;
 			$(".inscription_box").click(function() {
-				if ($(this).hasClass('is_valid')) {
-					$(this).removeClass('is_valid');
+				if ($(this).children(".valid_box").hasClass('ok')) {
+					$(this).children(".valid_box").removeClass('ok').animate({opacity: 0}).hide(100);
+					var poucenormal = siteurl + '/img/pictos_inscription/choix_centresinterets.png';
+					$("#pouce"+CompteurSelection).attr('src', ''+poucenormal+'');
 					CompteurSelection--;
 				}
 				else if (CompteurSelection < 5) {
-					$(this).addClass('is_valid');
+					$(this).children(".valid_box").addClass('ok').show().delay(100).animate({opacity: 1});
 					CompteurSelection++;
-					$("pouce"+CompteurSelection).css("color", "#a4ebf1");   // il faut changer l'aspect des pouces
+					var pouceok = siteurl + '/img/pictos_inscription/choix_centresinterets_ok.png';
+					$("#pouce"+CompteurSelection).attr('src', ''+pouceok+'');   // changement de l'aspect des pouces
 				}
 				$("#NbChoix").html(5-CompteurSelection+' choix');
 			});

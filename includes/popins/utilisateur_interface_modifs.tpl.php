@@ -76,7 +76,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                 <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
                 <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
             </div>
-            <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
+            <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
             
             <figure><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_popin.jpg"/></figure>
         </div>

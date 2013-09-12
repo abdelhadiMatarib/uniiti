@@ -1,4 +1,4 @@
-<?php 
+<?php
 		if (!empty($_POST['lastid'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
@@ -27,8 +27,15 @@
 		$sql4 = "SELECT id_avis, commentaire, appreciation, note, origine, date_avis FROM avis WHERE id_avis = :id_avis";
 		$req4 = $bdd->prepare($sql4);
 		
+		$sql5 = "SELECT quartier, arrondissement FROM quartier AS t1
+					INNER JOIN arrondissement AS t2
+					ON t1.id_arrondissement = t2.id_arrondissement WHERE t1.id_quartier = :id_quartier";
+		$req5 = $bdd->prepare($sql5);
+		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
-		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url, btn_donner_avis_visible
+		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
+						couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
+						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, id_quartier, ville_enseigne, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -131,9 +138,13 @@
 			$sous_categorie2         = $row['sous_categorie2'];
 			$posx					 = $row['posx'];
 			$posy					 = $row['posy'];
-//			$nom_type_enseigne       = $row['nom_type_enseigne'];
 			$url                     = $row['url'];
-			$btn_donner_avis_visible = $row['btn_donner_avis_visible'];
+			
+			$req5->bindParam(':id_quartier', $row['id_quartier'], PDO::PARAM_INT);
+			$req5->execute();
+			$result5 = $req5->fetch(PDO::FETCH_ASSOC);
+			if ($result5) {$arrondissement = $result5['arrondissement'];}
+			else {$arrondissement = $ville_enseigne;}
 			
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->execute();
@@ -156,6 +167,7 @@
 				. "categorie : '" . addslashes($categorie) . "',"
 				. "scategorie : '" . addslashes($sous_categorie) . "',"
 				. "sscategorie : '" . addslashes($sous_categorie2) . "',"
+				. "arrondissement : '" . htmlspecialchars($arrondissement) . "',"
 				. "posx : " . $posx .","
 				. "posy : " . $posy .","
 				. "commentaire : '" . str_replace(PHP_EOL ,'\n', addslashes($commentaire)) . "',"
