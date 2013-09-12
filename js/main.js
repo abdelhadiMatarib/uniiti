@@ -648,7 +648,7 @@ $(document).ready(function() {
 		modal:true,
 		draggable:false,
 		resizable:false,
-		width: '1193px',
+		width: '1230px',
 		height: 'auto',
 		open: function() {
 			jQuery('.ui-widget-overlay').bind('click', function() {
