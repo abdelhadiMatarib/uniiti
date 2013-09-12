@@ -1,6 +1,8 @@
 /* GENERAL */
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
-#default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
+#default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);
+        
+        box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
 #dialog_overlay{display:none;}
 .dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
 
@@ -152,7 +154,7 @@ span.index_overlay_texte{display:block;}
 .box footer{position:relative;}
 .box figure {position:relative;overflow:hidden;}
 .box_push_et_img > img:hover{cursor:pointer; opacity:0.9;}
-.overlay_push{display:none;position:absolute;top:0;left:0;background-color: rgba(32,32,32,0.65);height:99.2%;width:100%;}
+.overlay_push{display:none;position:absolute;top:0;left:0;background-color: rgba(32,32,32,0.65);height:100%;width:100%;}
 .box_push{position:absolute;right:0;bottom:0;height:50px;width:50px;background:url('../img/pictos_commerces/sprite.png') -126px -19px;}
 .box_push_et_img{cursor:pointer;margin-bottom:-4px;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
@@ -598,8 +600,8 @@ input.input_signalement_motif{width:290px;}
 
 .utilisateur_infospersos_body{float:left;}
 .utilisateur_infospersos_input_pseudo,.utilisateur_infospersos_input_ddn,.utilisateur_infospersos_input_profession,.utilisateur_infospersos_input_ville,.utilisateur_infospersos_input_mdp,.utilisateur_infospersos_input_confirmmdp,.utilisateur_infospersos_input_email,.utilisateur_infospersos_input_confirmemail,.utilisateur_infospersos_input_tel{float:left;}
-.utilisateur_infospersos_body input{padding:10px;background-color:#f0f0f0;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;width:250px;height:50px;}
-.utilisateur_infospersos_body span{border-bottom:1px solid #e4e4e4;background-color:white;font-size:1.2em;float:left;width:222px;height:21px;padding:14px;}
+.utilisateur_infospersos_body input{padding:10px;background-color:#f0f0f0;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;width: 269px;height: 20px;}
+.utilisateur_infospersos_body span{border-bottom:1px solid #e4e4e4;background-color:white;font-size:1.2em;float:left;width:190px;height:20px;padding:10px;}
 .parrainage_body{position:relative;}
 .reservation_body{position:relative;}
 .parrainage_option1,.parrainage_option2{float:left;width:690px;padding:5px;background-color:#73d4dc;}
@@ -904,7 +906,9 @@ height: 26px;}
 /* UTILISATEUR INTERFACE & POPIN MODIFS */
 
 .utilisateur_interface_engrenage{float:right;}
-.utilisateur_interface_engrenage_img_container{height:20px;width:20px;margin:15px;}
+.utilisateur_interface_engrenage_img_container{height:20px;width:20px;margin:15px;background:url('../img/pictos_utilisateurs/utilisateur_interface_engrenage_icon.png') no-repeat top;}
+.utilisateur_interface_engrenage_img_container:hover{background-position:bottom;}
+a.link_engrenage_button{display:inline-block;height:20px;width:20px;}
 
 .utilisateur_interface_modifs_modifier_note{float:left;text-align:center;}
 .utilisateur_interface_modifs_modifier_note a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}

@@ -10,15 +10,15 @@
         </div><span class="maintitle">Informations personnelles</span>
     </div>   
     <div class="utilisateur_infospersos_body">
-          <span>Pseudo</span><div class="utilisateur_infospersos_input_pseudo"><input type="text" /></div>
-          <span>Date de naissance</span><div class="utilisateur_infospersos_input_ddn"><input type="text" /></div>
-          <span>Ville</span><div class="utilisateur_infospersos_input_ville"><input type="text" /></div>
-          <span>Profession</span><div class="utilisateur_infospersos_input_profession"><input type="text" /></div>
-          <span>Mot de passe</span><div class="utilisateur_infospersos_input_mdp"><input type="text" /></div>
-          <span>Validation mot de passe</span><div class="utilisateur_infospersos_input_confirmmdp"><input type="text" /></div>
-          <span>Email</span><div class="utilisateur_infospersos_input_email"><input type="text" /></div>
-          <span>Validation email</span><div class="utilisateur_infospersos_input_confirmemail"><input type="text" /></div>
-          <span>Téléphone</span><div class="utilisateur_infospersos_input_tel"><input type="text" /></div>
+          <span>Pseudo</span><div class="utilisateur_infospersos_input_pseudo"><input type="text" placeholder="$Pseudo"/></div>
+          <span>Date de naissance</span><div class="utilisateur_infospersos_input_ddn"><input type="text" placeholder="$DDN"/></div>
+          <span>Ville</span><div class="utilisateur_infospersos_input_ville"><input type="text" placeholder="$Ville"/></div>
+          <span>Profession</span><div class="utilisateur_infospersos_input_profession"><input type="text" placeholder="$Profession"/></div>
+          <span>Mot de passe</span><div class="utilisateur_infospersos_input_mdp"><input type="password" placeholder="$Mot de passe"/></div>
+          <span>Validation mot de passe</span><div class="utilisateur_infospersos_input_confirmmdp"><input type="password" placeholder="Confirmez votre mot de passe"/></div>
+          <span>Email</span><div class="utilisateur_infospersos_input_email"><input type="text" placeholder="$Email"/></div>
+          <span>Validation email</span><div class="utilisateur_infospersos_input_confirmemail"><input type="text" placeholder="Confirmez votre email"/></div>
+          <span>Téléphone</span><div class="utilisateur_infospersos_input_tel"><input type="text" placeholder="$Tel"/></div>
     </div>
     <div class="suggestioncommerce_footer">
         
