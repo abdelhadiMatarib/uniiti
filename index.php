@@ -21,7 +21,13 @@ $req->execute();
 $result = $req->fetch(PDO::FETCH_ASSOC);
 $nbavis     = $result['count_avis'];
 
-$nbnouveauxinscrits = 0;
+$sql2 = "SELECT COUNT(id_contributeur) AS count_nouveaux
+			FROM contributeurs WHERE date_inscription > \"" . date('Y-m-d H:i:s', strtotime('today')) . "\"";
+$req2 = $bdd->prepare($sql2);
+$req2->execute();
+$result2 = $req2->fetch(PDO::FETCH_ASSOC);
+$nbnouveauxinscrits = $result2['count_nouveaux'];
+
 
 ?>
 <body>
