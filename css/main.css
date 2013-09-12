@@ -1,6 +1,7 @@
 /* GENERAL */
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
 #default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
+#default_dialog_inscription .popin_close_button{z-index: 999;position: absolute;top: 10px;right: 5px;cursor: pointer;}
 #dialog_overlay{display:none;}
 .dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
 
@@ -421,11 +422,11 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 /* INSCRIPTION */
 input:focus.inscription_field_input_text, input:focus.inscription_field_input_text {outline: none; background-color: #E6E4E4;}
 .liseret_bleu{background-color:#A4EBF1;height:5px;}
-.inscription_head{position:relative;border-radius:3px 3px 0 0;height:90px;background-color:white;text-align:center;overflow: hidden;}
+.inscription_head{ width: 1168px;position:relative;border-radius:3px 3px 0 0;height:90px;background-color:white;text-align:center;overflow: hidden;}
 .inscription_head img{vertical-align:middle;margin:0 10px 0 0;}
 .inscription_head h2{margin:0;padding:15px 0 0 0;font-size:2.1em;font-weight:100;}
 .inscription_head span{display:inline-block;font-weight:400;}
-.inscription_fb_wrap{overflow:hidden;position:relative;height:38px;background-color:#f0f0f0;padding:5px;}
+.inscription_fb_wrap{width: 1158px; overflow:hidden;position:relative;height:38px;background-color:#f0f0f0;padding:5px;}
 .inscription_fb_plus{position:absolute;right:0;top:0;}
 .inscription_fb_plus a{display:block;}
 .fb_connect_button{cursor:pointer;margin:0 auto;background:url('../img/pictos_actions/fb_connect.png') no-repeat;height:37px;width:246px;}
@@ -435,7 +436,7 @@ input:focus.inscription_field_input_text, input:focus.inscription_field_input_te
 .fb_connect_button_text{font-weight:100;}
 .fb_connect_button_highlight{font-weight:600;}
 
-.inscription_head2{position:relative;border-radius:3px 3px 0 0;height:35px;background-color:#252525;}
+.inscription_head2{width: 1168px; position:relative;border-radius:3px 3px 0 0;height:35px;background-color:#252525;}
 .inscription_head2 h3{font-size:1.4em;margin:0;font-weight:100;}
 .inscription_step1,.inscription_step2,.inscription_step3{padding:5px 0 0 0;color:white;float:left;width:388px;height:30px;text-align:center;}
 .inscription_current_step_texte_head > h3{color:#a4ebf1;font-weight:600;}
