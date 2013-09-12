@@ -262,16 +262,42 @@ function AfficheProvenance($provenance, $categorie) {
 	return $html;
 }
 
-function AfficheTrusts($note_arrondi) {
+function AfficheTrusts($note_arrondi, $categorie) {
+	switch ($categorie) {
+		case ("Cuisine"):
+			$posy = "-76px";
+		break;
+		case ("Beauté et bien être"):
+			$posy = "-38px";
+		break;
+		case ("Culture"):
+			$posy = "-133px";
+		break;
+		case ("Mode et design"):
+			$posy = "-95px";
+		break;
+		case ("Santé"):
+			$posy = "-114px";
+		break;
+		case ("Sorties, voyages et loisirs"):
+			$posy = "-19px";
+		break;
+		case ("Sport"):
+			$posy = "0px";
+		break;
+		case ("Services et inclassables"):
+			$posy = "-57px";
+		break;
+	}
 	$html = "";
 	$reste = $note_arrondi / 2 - round($note_arrondi / 2);
 	if ($reste <= -0.25) {$nbpleines = round($note_arrondi / 2) - 1;}
 	else {$nbpleines = round($note_arrondi / 2);}
 	for ($i = 1 ; $i <= $nbpleines ; $i++) {
-	$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -38px -76px\"></div>";
+	$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -38px " . $posy . "\"></div>";
 	}
 	if (($reste <= -0.25) or ($reste >= 0.25)) {
-		$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -57px -76px\"></div>";
+		$html .= "<div style=\"float:left;height:19px;width:19px;background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') -57px " . $posy . "\"></div>";
 		$nbpleines++;		
 	}
 	for ($i = $nbpleines ; $i < 5 ; $i++) {
