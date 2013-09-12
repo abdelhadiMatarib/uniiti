@@ -717,7 +717,7 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .couverture_champs_action{position:relative;float:left;background-color:#a4ebf1;width:700px;text-align:center;}
 .couverture_champs_action a{color:#252525;padding:10px;display:inline-block;width:100%;}
 .couverture_champs_action span{font-size:1.3em;}
-.couverture_step1_dropzone_img_container{margin: 65px 55px 65px 130px;float:left;}
+.couverture_step1_dropzone_img_container{margin: 40px 40px 65px 60px;float:left;}
 .couverture_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
 .couverture_step1_dropzone_txt1{display:block;font-size:1.6em;}
 .couverture_step1_dropzone_txt2{display:block;font-size:0.9em;}
@@ -952,12 +952,14 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .input_avisenattente_precisezmotif{display:none;}
 
 /* RECHERCHE AVANCEE */
-.recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background-color:#a4ebf1;}
-.recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}
-.recherche_avancee_right{float:right;margin:10px 40px 10px 20px;}
+.recherche_avancee_wrapper{position:absolute;top:44px;left:0;width:100%;display:none;text-align:center;background-color:#a4ebf1;}
+.recherche_avancee_left{position:relative;margin: 40px auto;line-height: 2.5em;width: 1000px;}
+.recherche_avancee_right{position:absolute;margin:12px 40px 12px 20px;top:40px;right:40px;}
+.recherche_avancee_right_cliquez_wrap{position:absolute;top: 30px;right: 110px;}
+.recherche_avancee_right a{color:#252525;}
 .recherche_avancee_img_container{height:96px;width:96px;}
-.recherche_avancee_left span{display:block;font-size:2.1em;font-weight:300;}
-.recherche_avancee_left a{height:44px;border-bottom:1px dashed #252525;color:#252525;font-weight:400;display:inline-block;margin:0 10px;}
+.recherche_avancee_left span{display:inline-block;font-size:2.1em;font-weight:300;}
+.recherche_avancee_left a{height:30px;border-bottom:1px dashed #252525;color:#252525;font-weight:400;display:inline-block;margin:0 10px;}
 .recherche_avancee_right_txt{margin-top:5px;text-align:center;}
 .recherche_avancee_right span{text-transform:uppercase;font-size:1.2em;display:block;}
 .recherche_avancee_right_txt1{font-weight:300;}
