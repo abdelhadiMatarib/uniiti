@@ -502,13 +502,15 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 .inscription_centres_interets_aime_wrap,.inscription_centres_interets_aimepas_wrap{width:995px;float:left;height:450px;background-color:#f0f0f0;}
 .inscription_box{float:left;width:198px;height:150px;background-color:white;border-right:1px solid #e4e4e4;border-top:1px solid #e4e4e4;}
 .inscription_box:hover{cursor:pointer;}
-.inscription_box.is_valid{opacity:0.6;}
+
+.valid_box{opacity:0;display:none;width: 199px;height: 150px;position: absolute;background: url('../img/pictos_popins/valid_box.png') 50% 50% no-repeat rgba(0,0,0,0.56)}
+
 .inscription_box_head{float:left;}
 .inscription_box_head_img_container{float:left;width:36px;height:36px;text-align:center;}
 .inscription_box_head_img_container img{vertical-align:middle;}
 .inscription_box_head_desc{float:left;padding: 4px 5px 0 5px;line-height: 1.2em;}
 .inscription_box_head_desc span{display:block;}
-.categorie_restauration_texte{color:#fabe41;font-weight: 600;font-size: 95%;font-style: italic;}
+.categorie_restauration_texte{color:#fabe41;font-weight: 600;font-size: 0.88em;}
 .categorie_restauration_img{background-color:#fabe41;}
 .inscription_box_body_img{float:left;}
 
