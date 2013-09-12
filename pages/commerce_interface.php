@@ -105,7 +105,7 @@
                 <div class="commerce_head_desc">
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2><?php echo $nom_enseigne; ?></h2></div>
                     <div class="utilisateur_interface_engrenage">
-                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog');"><img src="../img/pictos_utilisateurs/utilisateur_interface_engrenage_icon.png" height="20" width="20" title="" alt=""/></a></div>
+                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog');"></a></div>
                     </div>
                     <div class="commerce_head_desc_social"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
                     <div class="clearfix"></div>
