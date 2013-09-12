@@ -9,6 +9,7 @@
 	width:55px;
 	height:70px;
 	background: url('<?php echo SITE_URL; ?>/img/pictos_actions/scrolltop.png');
+        z-index:95;
 }
 
 .textContainer {

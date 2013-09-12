@@ -81,8 +81,9 @@
             </div>
 				<?php } ?>
         </div>
-        <div class="recherche_avancee_wrapper big_wrapper"></div>
+        
     </header>
     </div>
+    <div class="recherche_avancee_wrapper"></div>
 </div>
 <!-- FIN DU HEADER -->

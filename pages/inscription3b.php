@@ -25,7 +25,7 @@
 					</div>
 				</div><!-- FIN CENTRES INTERETS BIG WRAP -->
 				 <div class="inscription_centres_interets_aimepas_wrap2">
-					 <span class="inscription_centres_interets_choix_texte">X choix</span>
+					 <span id="NbChoix" class="inscription_centres_interets_choix_texte">5 choix</span>
 					 <span class="inscription_centres_interets_choix_texte_highlight">restants</span>
 					 <ul>
 						<li><img id="pouce1" src="<?php echo SITE_URL; ?>/img/pictos_inscription/choix_centresinterets.png" height="37" width="45" title="" alt=""/></li>
@@ -48,14 +48,17 @@
 
 			var CompteurSelection = 0;
 			$(".inscription_box").click(function() {
-				if ($(this).hasClass('is_valid')) {
-					$(this).removeClass('is_valid');
+				if ($(this).children(".valid_box").hasClass('ok')) {
+					$(this).children(".valid_box").removeClass('ok').animate({opacity: 0}).hide(100);
+					var poucenormal = siteurl + '/img/pictos_inscription/choix_centresinterets.png';
+					$("#pouce"+CompteurSelection).attr('src', ''+poucenormal+'');
 					CompteurSelection--;
 				}
 				else if (CompteurSelection < 5) {
-					$(this).addClass('is_valid');
+					$(this).children(".valid_box").addClass('ok').show().delay(100).animate({opacity: 1});
 					CompteurSelection++;
-					$("pouce"+CompteurSelection).css("color", "#a4ebf1");   // il faut changer l'aspect des pouces
+					var pouceok = siteurl + '/img/pictos_inscription/choix_centresinterets_ok.png';
+					$("#pouce"+CompteurSelection).attr('src', ''+pouceok+'');   // changement de l'aspect des pouces
 				}
 				$("#NbChoix").html(5-CompteurSelection+' choix');
 			});

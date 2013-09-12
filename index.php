@@ -41,14 +41,14 @@ $nbnouveauxinscrits = 0;
             <div class="splash_login_img_container"><img src="img/pictos_splash/logo_splash.png"/></div>
             <h1>Les avis, nouvelle génération</h1>
             <form action="<?php echo SITE_URL; ?>/acces/login_access.php" method="post" autocomplete="off">
-				<input class="splash_input_login" type="text" placeholder="login" name="email-login" id="email-login"/>
-				<input class="splash_input_password" type="password" placeholder="mot de passe" name="password" id="password"/>
-				<input type="hidden" name="urlTo" readonly value="<?php echo $urlTo; ?>" />
-				<br />
-				<input class="splash_input_button" type="submit" value="connexion">
-				<br />
-				<span>ou <a class="splash_link_create_account" href="#" onclick="OuvrePopin(<?php echo $data; ?>, '/pages/inscription.php', 'default_dialog_inscription');" title="">créer un compte</a></span>
-			</form>
+                    <input class="splash_input_login" type="text" placeholder="login" name="email-login" id="email-login"/>
+                    <input class="splash_input_password" type="password" placeholder="mot de passe" name="password" id="password"/>
+                    <input type="hidden" name="urlTo" readonly value="<?php echo $urlTo; ?>" />
+                    <br />
+                    <input class="splash_input_button" type="submit" value="connexion">
+                    <br />
+                    <span>ou <a class="splash_link_create_account" href="#" onclick="OuvrePopin(<?php echo $data; ?>, '/pages/inscription.php', 'default_dialog_inscription');" title="">créer un compte</a></span>
+            </form>
         </div>
     </div>
     </div>
