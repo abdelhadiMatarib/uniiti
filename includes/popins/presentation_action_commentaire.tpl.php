@@ -62,7 +62,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
-                <div class="presentation_action_left_head_img_container_picto_likes"></div>
+                <div class="presentation_action_left_head_img_container_picto_likes" > <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
                 <span class="presentation_action_left_head_nombrelikes"><strong><?php echo $_POST['count_likes']; ?></strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>
@@ -84,7 +84,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <figure><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_popin.jpg"/></figure>
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
-			<?php if ($provenance == 'avis') { ?>
+			<?php if (($provenance == 'avis') && ($_POST['commentaire'] != "pas de commentaire")) { ?>
 				<div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
 			<?php } ?>
             <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
@@ -111,7 +111,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			<?php } ?>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
-		<?php if ($provenance == 'avis') { ?>
+		<?php if (($provenance == 'avis') && ($_POST['commentaire'] != "pas de commentaire")) { ?>
 			<div class="presentation_action_left_avis_utile_wrap">
 				
 				<div class="presentation_action_left_avis_utile_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png"/></div>

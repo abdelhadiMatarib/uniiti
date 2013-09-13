@@ -80,7 +80,7 @@
 
 			session_write_close();
 			
-			if (((int)$_SESSION['droits'] & CONTRIBUTEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL) OR ((int)$_SESSION['droits'] & ADMINISTRATEUR))
+			if (((int)$_SESSION['droits'] & CONTRIBUTEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL))
 			{
                             // Detecter si login_access doit renvoyer vers une page spécifique
                             // Dans le cas particulier d'un avis à donner sur un sujet
@@ -101,11 +101,8 @@
                             }
                             
 			}
-			
-//			if (((int)$_SESSION['droits'] & GESTION_ADMIN) OR ((int)$_SESSION['droits'] & GESTION_COMPTE) )
-//			{
-//				header("location: admin_index.php");
-//			}
+
+			if ((int)$_SESSION['droits'] & ADMINISTRATEUR)	{header("location: ../pages/dashboard_index.php");}
 			
 			exit();
 		} else {

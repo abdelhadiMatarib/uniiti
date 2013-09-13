@@ -58,6 +58,9 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `descriptif_contributeur` longtext DEFAULT NULL
 , ADD `categorieage_contributeur` varchar(45) DEFAULT NULL ;
 
+UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 2825 ;
+UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 4866 ;
+
 ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `id_quartier` int(10) unsigned DEFAULT NULL
 , ADD `id_budget` int(10) unsigned NOT NULL
