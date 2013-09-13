@@ -658,15 +658,45 @@ $(document).ready(function() {
 		width: '760px',
 		height: 'auto',
 		open: function() {
-			jQuery('.ui-widget-overlay').bind('click', function() {
-				jQuery('#default_dialog_large').dialog('close');
-			})
-			$('.popin_close_button').click(function(e){
-				e.preventDefault(); //don't go to default URL
-				var defaultdialog_large = $("#default_dialog_large").dialog();
-				defaultdialog_large.dialog('close');
-			});
+		function appendsuggest() { 
+			var widthleft = $('.presentation_action_left').height();
+		    var changewidthsuggest = widthleft - 101;
+		    $('.presentation_action_right_suggestions').height(changewidthsuggest);
+		    var heightright = $('.presentation_action_left').height();
+		    var appendcount = Math.ceil((heightright - 101)/48);
+			for (var i=1; i<=appendcount; i++) {
+			$("\
+				<div id='posts'>\
+		        <div class='presentation_action_right_suggestions_img_container'><img src='"+siteurl+"/img/pictos_commerces/restaurant.png'/></div>\
+		            <div class='presentation_action_right_suggestions_content'>\
+		                <span class='presentation_action_right_suggestions_content_titre'>Au bon goût de...</span>\
+		                <span class='presentation_action_right_suggestions_content_categorie'>Restauration</span>\
+        			</div>\
+		            <div class='presentation_action_right_suggestions_note'>\
+		                <span class='presentation_action_right_suggestions_note_reelle'>7</span>\
+		                <span class='presentation_action_right_suggestions_note_base'>/10</span>\
+		            </div>\
+        		</div>\
+        		" ).appendTo( ".presentation_action_right_suggestions" );
+		    }
+		    var newheightright = (appendcount*47);
+		    var heightrightafterresize = $('.presentation_action_right').height();
+			var newheightleft = newheightright-254;
+			$('.presentation_action_right_suggestions').height(newheightright);
+			$('.presentation_action_commentaire_left_body').height(newheightleft);
 		}
+		appendsuggest();
+
+
+		jQuery('.ui-widget-overlay').bind('click', function() {
+			jQuery('#default_dialog_large').dialog('close');
+		})
+		$('.popin_close_button').click(function(e){
+			e.preventDefault(); //don't go to default URL
+			var defaultdialog_large = $("#default_dialog_large").dialog();
+			defaultdialog_large.dialog('close');
+		});
+	}
 	});
 	
 	var defaultdialog_inscription = $("#default_dialog_inscription").dialog({ 
