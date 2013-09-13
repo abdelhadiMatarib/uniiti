@@ -2,11 +2,40 @@
         include_once '../../config/configuration.inc.php';?>
     <div class="recherche_avancee_left">
         
-            <span class="recherche_avancee_1">Je recherche un <a href="#" title="">Commerce</a></span>
-            <span class="recherche_avancee_2">près de <a href="#" title="">Paris 15<sup>ème</sup></a></span>
-            <span class="recherche_avancee_3">dans la catégorie <a href="#" title="">Insolite et Inclassable</a></span>
-            <span class="recherche_avancee_4">et plus précisemment <a href="#">Une station-service</a></span>
-            <span class="recherche_avancee_5">pour un prix <a href="#" title="">Peu élevé</a></span>
+            <span class="recherche_avancee_1">Je recherche un 
+                <ul>
+                    <li><a href="#" title="">Commerce</a></li>
+                </ul>
+            </span>
+            
+            
+            <span class="recherche_avancee_2">près de 
+                <ul>
+                    <li><a href="#" title="">Paris 15<sup>ème</sup></a></li>
+                </ul>
+            </span>
+        
+            <span class="recherche_avancee_3">dans la catégorie 
+                <ul>
+                    <li><a href="#" title="">Cuisine</a></li>
+                </ul>       
+            </span>
+            <span class="recherche_avancee_4">et plus précisemment 
+                <ul>
+                    <li><a href="#">Cuisine française</a></li>
+                </ul>
+            </span>
+            <span class="recherche_avancee_5">c'est à dire 
+                <ul>
+                    <li><a href="#">Cuisine Corse</a></li>
+                </ul>        
+            </span>
+            <span class="recherche_avancee_6">pour un prix 
+                <ul>
+                    <li><a href="#" title="">Peu élevé</a></li>
+                </ul>
+            </span>
+
 
     </div>
     <div class="recherche_avancee_right">
@@ -19,12 +48,20 @@
 
 <style>
     span.recherche_avancee_2 p{float:left;margin:0;}
+    .recherche_avancee_wrapper{left:0;width:100%;}
+    .recherche_avancee_left span{display:inline-block;font-size:1.8em;}
+    .recherche_avancee_left{float:none;}
+    .recherche_avancee_right{position:absolute;right:10px;}
+    .recherche_avancee_right_cliquez_wrap{position:absolute;top:30px;right:105px;}
+    
+    .recherche_avancee_left ul{margin:0;padding:0;display:inline-block;}
+    .recherche_avancee_left ul li{list-style:none;display:inline-block;}
 </style>
 <script>
-$('span.recherche_avancee_2,span.recherche_avancee_3,span.recherche_avancee_4,span.recherche_avancee_5,.recherche_avancee_right').css('display','none');
-$('.recherche_avancee_left span a').click(function(e){
+$('span.recherche_avancee_2,span.recherche_avancee_3,span.recherche_avancee_4,span.recherche_avancee_5,span.recherche_avancee_6,.recherche_avancee_right').css('display','none');
+$('.recherche_avancee_left span ul li a').click(function(e){
     e.preventDefault();
-    var lol = $(this).parent().next().slideDown();
+    var lol = $(this).parent().parent().parent().next().slideDown();
     console.log(lol);
 });
 $('.recherche_avancee_left span a:last').click(function(e){
@@ -36,7 +73,7 @@ $('.recherche_avancee_left span a:last').click(function(e){
     
     //RECHERCHE AVANCÉE
     $('.recherche_avancee_left').css('line-height','2.2em').css('width','600px').css('margin','20px auto');
-    $('.recherche_avancee_right').css('top','5px');
+    $('.recherche_avancee_right').css('top','10px');
     $('.recherche_avancee_left span').css('font-size','1.4em');
     $('.recherche_avancee_left a').css('height','25px');
     $('.recherche_avancee_img_container').css('height','60px');
@@ -56,8 +93,8 @@ $('.recherche_avancee_left span a:last').click(function(e){
     
     //RECHERCHE AVANCÉE
     $('.recherche_avancee_left').css('line-height','2.5em').css('width','1000px').css('margin','40px auto');
-    $('.recherche_avancee_right').css('top','40px');
-    $('.recherche_avancee_left span').css('font-size','2.1em');
+    $('.recherche_avancee_right').css('top','10px');
+    $('.recherche_avancee_left span').css('font-size','1.7em');
     $('.recherche_avancee_left a').css('height','30px');
     $('.recherche_avancee_img_container').css('height','96px');
     $('.recherche_avancee_img_container img').css('height','96px').css('width','95px');

@@ -56,6 +56,13 @@
                             <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/>
                         </div>
                         </div>
+                        <div class="suppression_commerce_wrap">
+                        <h2 class="h2_suppr_commerce">Modification d'un commerce</h2>
+                         <input class="input_dashboard_large" type="text" placeholder="NOM DU COMMERCE"/>
+                        <div class="input_dashboard_large_validation">
+                            <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/>
+                        </div>
+                        </div>
                     </div>
             </div>
         </div><!-- FIN DASH WRAP -->
