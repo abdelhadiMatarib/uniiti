@@ -3,6 +3,8 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+DROP TABLE IF EXISTS `suggestions` ;
+DROP TABLE IF EXISTS `statuts` ;
 DROP TABLE IF EXISTS `arrondissement` ;
 DROP TABLE IF EXISTS `quartier` ;
 DROP TABLE IF EXISTS `budget` ;
@@ -34,274 +36,6 @@ ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `fb_enseigne`
 , DROP `tw_enseigne`
 , DROP `goog_enseigne` ;
--- , DROP `titreservice1_enseigne`
--- , DROP `contenu1service1_enseigne`
--- , DROP `prixcontenu1service1_enseigne`
--- , DROP `affichecontenu1service1_enseigne`
--- , DROP `contenu2service1_enseigne`
--- , DROP `prixcontenu2service1_enseigne`
--- , DROP `affichecontenu2service1_enseigne`
--- , DROP `contenu3service1_enseigne`
--- , DROP `prixcontenu3service1_enseigne`
--- , DROP `affichecontenu3service1_enseigne`
--- , DROP `contenu4service1_enseigne`
--- , DROP `prixcontenu4service1_enseigne`
--- , DROP `affichecontenu4service1_enseigne`
--- , DROP `contenu5service1_enseigne`
--- , DROP `prixcontenu5service1_enseigne`
--- , DROP `affichecontenu5service1_enseigne`
--- , DROP `contenu6service1_enseigne`
--- , DROP `prixcontenu6service1_enseigne`
--- , DROP `affichecontenu6service1_enseigne`
--- , DROP `contenu7service1_enseigne`
--- , DROP `prixcontenu7service1_enseigne`
--- , DROP `affichecontenu7service1_enseigne`
--- , DROP `contenu8service1_enseigne`
--- , DROP `prixcontenu8service1_enseigne`
--- , DROP `affichecontenu8service1_enseigne`
--- , DROP `contenu9service1_enseigne`
--- , DROP `prixcontenu9service1_enseigne`
--- , DROP `affichecontenu9service1_enseigne`
--- , DROP `contenu10service1_enseigne`
--- , DROP `prixcontenu10service1_enseigne`
--- , DROP `affichecontenu10service1_enseigne`
--- , DROP `contenu11service1_enseigne`
--- , DROP `prixcontenu11service1_enseigne`
--- , DROP `affichecontenu11service1_enseigne`
--- , DROP `contenu12service1_enseigne`
--- , DROP `prixcontenu12service1_enseigne`
--- , DROP `affichecontenu12service1_enseigne`
--- , DROP `contenu13service1_enseigne`
--- , DROP `prixcontenu13service1_enseigne1`
--- , DROP `affichecontenu13service1_enseigne1`
--- , DROP `contenu14service1_enseigne`
--- , DROP `prixcontenu14service1_enseigne`
--- , DROP `affichecontenu14service1_enseigne`
--- , DROP `contenu15service1_enseigne`
--- , DROP `prixcontenu15service1_enseigne`
--- , DROP `affichecontenu15service1_enseigne`
--- , DROP `titreservice2_enseigne`
--- , DROP `contenu1service2_enseigne`
--- , DROP `prixcontenu1service2_enseigne`
--- , DROP `affichecontenu1service2_enseigne`
--- , DROP `contenu2service2_enseigne`
--- , DROP `prixcontenu2service2_enseigne`
--- , DROP `affichecontenu2service2_enseigne`
--- , DROP `contenu3service2_enseigne`
--- , DROP `prixcontenu3service2_enseigne`
--- , DROP `affichecontenu3service2_enseigne`
--- , DROP `contenu4service2_enseigne`
--- , DROP `prixcontenu4service2_enseigne`
--- , DROP `affichecontenu4service2_enseigne`
--- , DROP `contenu5service2_enseigne`
--- , DROP `prixcontenu5service2_enseigne`
--- , DROP `affichecontenu5service2_enseigne`
--- , DROP `contenu6service2_enseigne`
--- , DROP `prixcontenu6service2_enseigne`
--- , DROP `affichecontenu6service2_enseigne`
--- , DROP `contenu7service2_enseigne`
--- , DROP `prixcontenu7service2_enseigne`
--- , DROP `affichecontenu7service2_enseigne`
--- , DROP `contenu8service2_enseigne`
--- , DROP `prixcontenu8service2_enseigne`
--- , DROP `affichecontenu8service2_enseigne`
--- , DROP `contenu9service2_enseigne`
--- , DROP `prixcontenu9service2_enseigne`
--- , DROP `affichecontenu9service2_enseigne`
--- , DROP `contenu10service2_enseigne`
--- , DROP `prixcontenu10service2_enseigne`
--- , DROP `affichecontenu10service2_enseigne`
--- , DROP `contenu11service2_enseigne`
--- , DROP `prixcontenu11service2_enseigne`
--- , DROP `affichecontenu11service2_enseigne`
--- , DROP `contenu12service2_enseigne`
--- , DROP `prixcontenu12service2_enseigne`
--- , DROP `affichecontenu12service2_enseigne`
--- , DROP `contenu13service2_enseigne`
--- , DROP `prixcontenu13service2_enseigne`
--- , DROP `affichecontenu13service2_enseigne`
--- , DROP `contenu14service2_enseigne`
--- , DROP `prixcontenu14service2_enseigne`
--- , DROP `affichecontenu14service2_enseigne`
--- , DROP `contenu15service2_enseigne`
--- , DROP `prixcontenu15service2_enseigne`
--- , DROP `affichecontenu15service2_enseigne`
--- , DROP `titreservice3_enseigne`
--- , DROP `contenu1service3_enseigne`
--- , DROP `prixcontenu1service3_enseigne`
--- , DROP `affichecontenu1service3_enseigne`
--- , DROP `contenu2service3_enseigne`
--- , DROP `prixcontenu2service3_enseigne`
--- , DROP `affichecontenu2service3_enseigne`
--- , DROP `contenu3service3_enseigne`
--- , DROP `prixcontenu3service3_enseigne`
--- , DROP `affichecontenu3service3_enseigne`
--- , DROP `contenu4service3_enseigne`
--- , DROP `prixcontenu4service3_enseigne`
--- , DROP `affichecontenu4service3_enseigne`
--- , DROP `contenu5service3_enseigne`
--- , DROP `prixcontenu5service3_enseigne`
--- , DROP `affichecontenu5service3_enseigne`
--- , DROP `contenu6service3_enseigne`
--- , DROP `prixcontenu6service3_enseigne`
--- , DROP `affichecontenu6service3_enseigne`
--- , DROP `contenu7service3_enseigne`
--- , DROP `prixcontenu7service3_enseigne`
--- , DROP `affichecontenu7service3_enseigne`
--- , DROP `contenu8service3_enseigne`
--- , DROP `prixcontenu8service3_enseigne`
--- , DROP `affichecontenu8service3_enseigne`
--- , DROP `contenu9service3_enseigne`
--- , DROP `prixcontenu9service3_enseigne`
--- , DROP `affichecontenu9service3_enseigne`
--- , DROP `contenu10service3_enseigne`
--- , DROP `prixcontenu10service3_enseigne`
--- , DROP `affichecontenu10service3_enseigne`
--- , DROP `contenu11service3_enseigne`
--- , DROP `prixcontenu11service3_enseigne`
--- , DROP `affichecontenu11service3_enseigne`
--- , DROP `contenu12service3_enseigne`
--- , DROP `prixcontenu12service3_enseigne`
--- , DROP `affichecontenu12service3_enseigne`
--- , DROP `contenu13service3_enseigne`
--- , DROP `prixcontenu13service3_enseigne`
--- , DROP `affichecontenu13service3_enseigne`
--- , DROP `contenu14service3_enseigne`
--- , DROP `prixcontenu14service3_enseigne`
--- , DROP `affichecontenu14service3_enseigne`
--- , DROP `contenu15service3_enseigne`
--- , DROP `prixcontenu15service3_enseigne`
--- , DROP `affichecontenu15service3_enseigne`
--- , DROP `titreservice4_enseigne`
--- , DROP `contenu1service4_enseigne`
--- , DROP `prixcontenu1service4_enseigne`
--- , DROP `affichecontenu1service4_enseigne`
--- , DROP `contenu2service4_enseigne`
--- , DROP `prixcontenu2service4_enseigne`
--- , DROP `affichecontenu2service4_enseigne`
--- , DROP `contenu3service4_enseigne`
--- , DROP `prixcontenu3service4_enseigne`
--- , DROP `affichecontenu3service4_enseigne`
--- , DROP `contenu4service4_enseigne`
--- , DROP `prixcontenu4service4_enseigne`
--- , DROP `affichecontenu4service4_enseigne`
--- , DROP `contenu5service4_enseigne`
--- , DROP `prixcontenu5service4_enseigne`
--- , DROP `affichecontenu5service4_enseigne`
--- , DROP `contenu6service4_enseigne`
--- , DROP `prixcontenu6service4_enseigne`
--- , DROP `affichecontenu6service4_enseigne`
--- , DROP `contenu7service4_enseigne`
--- , DROP `prixcontenu7service4_enseigne`
--- , DROP `affichecontenu7service4_enseigne`
--- , DROP `contenu8service4_enseigne`
--- , DROP `prixcontenu8service4_enseigne`
--- , DROP `affichecontenu8service4_enseigne`
--- , DROP `contenu9service4_enseigne`
--- , DROP `prixcontenu9service4_enseigne`
--- , DROP `affichecontenu9service4_enseigne`
--- , DROP `contenu10service4_enseigne`
--- , DROP `prixcontenu10service4_enseigne`
--- , DROP `affichecontenu10service4_enseigne`
--- , DROP `contenu11service4_enseigne`
--- , DROP `prixcontenu11service4_enseigne`
--- , DROP `affichecontenu11service4_enseigne`
--- , DROP `contenu12service4_enseigne`
--- , DROP `prixcontenu12service4_enseigne`
--- , DROP `affichecontenu12service4_enseigne`
--- , DROP `contenu13service4_enseigne`
--- , DROP `prixcontenu13service4_enseigne`
--- , DROP `affichecontenu13service4_enseigne`
--- , DROP `contenu14service4_enseigne`
--- , DROP `prixcontenu14service4_enseigne`
--- , DROP `affichecontenu14service4_enseigne`
--- , DROP `contenu15service4_enseigne`
--- , DROP `prixcontenu15service4_enseigne`
--- , DROP `affichecontenu15service4_enseigne`
--- , DROP `titreservice5_enseigne`
--- , DROP `contenu1service5_enseigne`
--- , DROP `prixcontenu1service5_enseigne`
--- , DROP `affichecontenu1service5_enseigne`
--- , DROP `contenu2service5_enseigne`
--- , DROP `prixcontenu2service5_enseigne`
--- , DROP `affichecontenu2service5_enseigne`
--- , DROP `contenu3service5_enseigne`
--- , DROP `prixcontenu3service5_enseigne`
--- , DROP `affichecontenu3service5_enseigne`
--- , DROP `contenu4service5_enseigne`
--- , DROP `prixcontenu4service5_enseigne`
--- , DROP `affichecontenu4service5_enseigne`
--- , DROP `contenu5service5_enseigne`
--- , DROP `prixcontenu5service5_enseigne`
--- , DROP `affichecontenu5service5_enseigne`
--- , DROP `contenu6service5_enseigne`
--- , DROP `prixcontenu6service5_enseigne`
--- , DROP `affichecontenu6service5_enseigne`
--- , DROP `contenu7service5_enseigne`
--- , DROP `prixcontenu7service5_enseigne`
--- , DROP `affichecontenu7service5_enseigne`
--- , DROP `contenu8service5_enseigne`
--- , DROP `prixcontenu8service5_enseigne`
--- , DROP `affichecontenu8service5_enseigne`
--- , DROP `contenu9service5_enseigne`
--- , DROP `prixcontenu9service5_enseigne`
--- , DROP `affichecontenu9service5_enseigne`
--- , DROP `contenu10service5_enseigne`
--- , DROP `prixcontenu10service5_enseigne`
--- , DROP `affichecontenu10service5_enseigne`
--- , DROP `contenu11service5_enseigne`
--- , DROP `prixcontenu11service5_enseigne`
--- , DROP `affichecontenu11service5_enseigne`
--- , DROP `contenu12service5_enseigne`
--- , DROP `prixcontenu12service5_enseigne`
--- , DROP `affichecontenu12service5_enseigne`
--- , DROP `contenu13service5_enseigne`
--- , DROP `prixcontenu13service5_enseigne`
--- , DROP `affichecontenu13service5_enseigne`
--- , DROP `contenu14service5_enseigne`
--- , DROP `prixcontenu14service5_enseigne`
--- , DROP `affichecontenu14service5_enseigne`
--- , DROP `contenu15service5_enseigne`
--- , DROP `prixcontenu15service5_enseigne`
--- , DROP `affichecontenu15service5_enseigne`
--- , DROP `voiturier_enseigne`
--- , DROP `couverts_enseigne`
--- , DROP `salaries_enseigne`
--- , DROP `reservation_enseigne`
--- , DROP `horairelundimatin_enseigne`
--- , DROP `horairelundimidi_enseigne`
--- , DROP `horairelundiaprem_enseigne`
--- , DROP `horairelundisoir_enseigne`
--- , DROP `horairemardimatin_enseigne`
--- , DROP `horairemardimidi_enseigne`
--- , DROP `horairemardiaprem_enseigne`
--- , DROP `horairemardisoir_enseigne`
--- , DROP `horairemercredimatin_enseigne`
--- , DROP `horairemercredimidi_enseigne`
--- , DROP `horairemercrediaprem_enseigne`
--- , DROP `horairemercredisoir_enseigne`
--- , DROP `horairejeudimatin_enseigne`
--- , DROP `horairejeudimidi_enseigne`
--- , DROP `horairejeudiaprem_enseigne`
--- , DROP `horairejeudisoir_enseigne`
--- , DROP `horairevendredimatin_enseigne`
--- , DROP `horairevendredimidi_enseigne`
--- , DROP `horairevendrediaprem_enseigne`
--- , DROP `horairevendredisoir_enseigne`
--- , DROP `horairesamedimatin_enseigne`
--- , DROP `horairesamedimidi_enseigne`
--- , DROP `horairesamediaprem_enseigne`
--- , DROP `horairesamedisoir_enseigne`
--- , DROP `horairedimanchematin_enseigne`
--- , DROP `horairedimanchemidi_enseigne`
--- , DROP `horairedimancheaprem_enseigne`
--- , DROP `horairedimanchesoir_enseigne`
--- , DROP `metro_enseigne`
--- , DROP `ligne_enseigne`
--- , DROP `parking_enseigne`
--- , DROP `velib_enseigne`
--- , DROP `autolib_enseigne`
--- , DROP `popin_enseigne` ;
 
 ALTER TABLE `contributeurs` DROP `date_inscription`
 , DROP `slide1_contributeur`
@@ -336,274 +70,7 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `fb_enseigne` varchar(255) DEFAULT NULL
 , ADD `tw_enseigne` varchar(255) DEFAULT NULL
 , ADD `goog_enseigne` varchar(255) DEFAULT NULL ;
--- , ADD `titreservice1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu1service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu1service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu1service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu2service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu2service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu2service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu3service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu3service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu3service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu4service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu4service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu4service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu5service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu5service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu5service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu6service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu6service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu6service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu7service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu7service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu7service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu8service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu8service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu8service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu9service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu9service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu9service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu10service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu10service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu10service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu11service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu11service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu11service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu12service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu12service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu12service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu13service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu13service1_enseigne1` longtext DEFAULT NULL
--- , ADD `affichecontenu13service1_enseigne1` longtext DEFAULT NULL
--- , ADD `contenu14service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu14service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu14service1_enseigne` longtext DEFAULT NULL
--- , ADD `contenu15service1_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu15service1_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu15service1_enseigne` longtext DEFAULT NULL
--- , ADD `titreservice2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu1service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu1service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu1service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu2service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu2service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu2service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu3service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu3service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu3service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu4service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu4service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu4service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu5service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu5service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu5service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu6service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu6service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu6service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu7service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu7service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu7service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu8service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu8service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu8service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu9service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu9service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu9service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu10service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu10service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu10service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu11service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu11service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu11service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu12service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu12service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu12service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu13service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu13service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu13service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu14service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu14service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu14service2_enseigne` longtext DEFAULT NULL
--- , ADD `contenu15service2_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu15service2_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu15service2_enseigne` longtext DEFAULT NULL
--- , ADD `titreservice3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu1service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu1service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu1service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu2service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu2service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu2service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu3service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu3service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu3service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu4service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu4service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu4service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu5service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu5service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu5service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu6service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu6service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu6service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu7service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu7service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu7service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu8service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu8service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu8service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu9service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu9service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu9service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu10service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu10service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu10service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu11service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu11service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu11service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu12service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu12service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu12service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu13service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu13service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu13service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu14service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu14service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu14service3_enseigne` longtext DEFAULT NULL
--- , ADD `contenu15service3_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu15service3_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu15service3_enseigne` longtext DEFAULT NULL
--- , ADD `titreservice4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu1service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu1service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu1service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu2service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu2service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu2service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu3service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu3service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu3service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu4service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu4service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu4service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu5service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu5service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu5service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu6service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu6service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu6service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu7service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu7service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu7service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu8service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu8service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu8service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu9service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu9service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu9service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu10service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu10service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu10service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu11service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu11service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu11service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu12service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu12service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu12service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu13service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu13service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu13service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu14service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu14service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu14service4_enseigne` longtext DEFAULT NULL
--- , ADD `contenu15service4_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu15service4_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu15service4_enseigne` longtext DEFAULT NULL
--- , ADD `titreservice5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu1service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu1service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu1service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu2service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu2service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu2service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu3service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu3service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu3service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu4service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu4service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu4service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu5service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu5service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu5service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu6service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu6service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu6service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu7service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu7service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu7service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu8service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu8service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu8service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu9service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu9service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu9service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu10service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu10service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu10service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu11service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu11service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu11service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu12service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu12service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu12service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu13service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu13service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu13service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu14service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu14service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu14service5_enseigne` longtext DEFAULT NULL
--- , ADD `contenu15service5_enseigne` longtext DEFAULT NULL
--- , ADD `prixcontenu15service5_enseigne` longtext DEFAULT NULL
--- , ADD `affichecontenu15service5_enseigne` longtext DEFAULT NULL
--- , ADD `voiturier_enseigne` longtext DEFAULT NULL
--- , ADD `couverts_enseigne` longtext DEFAULT NULL
--- , ADD `salaries_enseigne` longtext DEFAULT NULL
--- , ADD `reservation_enseigne` longtext DEFAULT NULL
--- , ADD `horairelundimatin_enseigne` longtext DEFAULT NULL
--- , ADD `horairelundimidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairelundiaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairelundisoir_enseigne` longtext DEFAULT NULL
--- , ADD `horairemardimatin_enseigne` longtext DEFAULT NULL
--- , ADD `horairemardimidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairemardiaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairemardisoir_enseigne` longtext DEFAULT NULL
--- , ADD `horairemercredimatin_enseigne` longtext DEFAULT NULL
--- , ADD `horairemercredimidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairemercrediaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairemercredisoir_enseigne` longtext DEFAULT NULL
--- , ADD `horairejeudimatin_enseigne` longtext DEFAULT NULL
--- , ADD `horairejeudimidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairejeudiaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairejeudisoir_enseigne` longtext DEFAULT NULL
--- , ADD `horairevendredimatin_enseigne` longtext DEFAULT NULL
--- , ADD `horairevendredimidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairevendrediaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairevendredisoir_enseigne` longtext DEFAULT NULL
--- , ADD `horairesamedimatin_enseigne` longtext DEFAULT NULL
--- , ADD `horairesamedimidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairesamediaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairesamedisoir_enseigne` longtext DEFAULT NULL
--- , ADD `horairedimanchematin_enseigne` longtext DEFAULT NULL
--- , ADD `horairedimanchemidi_enseigne` longtext DEFAULT NULL
--- , ADD `horairedimancheaprem_enseigne` longtext DEFAULT NULL
--- , ADD `horairedimanchesoir_enseigne` longtext DEFAULT NULL
--- , ADD `metro_enseigne` longtext DEFAULT NULL
--- , ADD `ligne_enseigne` longtext DEFAULT NULL
--- , ADD `parking_enseigne` longtext DEFAULT NULL
--- , ADD `velib_enseigne` longtext DEFAULT NULL
--- , ADD `autolib_enseigne` longtext DEFAULT NULL
--- , ADD `popin_enseigne` longtext DEFAULT NULL ;
+
 UPDATE `enseignes` SET sscategorie_enseigne =301, id_quartier=1, id_budget=4 WHERE id_enseigne=1 ;
 UPDATE `enseignes` SET sscategorie_enseigne =68, id_quartier=NULL, id_budget=4 WHERE id_enseigne=2 ;
 UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=NULL, id_budget=4 WHERE id_enseigne=3 ;
@@ -864,8 +331,6 @@ UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=14, id_budget=2 WHE
 UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=66, id_budget=3 WHERE id_enseigne=258 ;
 
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -1060,6 +525,43 @@ CREATE TABLE IF NOT EXISTS `objets` (
   PRIMARY KEY (`id_objet`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `suggestions`
+--
+
+CREATE TABLE IF NOT EXISTS `suggestions` (
+  `id_suggestion` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_contributeur` int(10) unsigned NOT NULL,
+  `date_suggestion` datetime NOT NULL,
+  `type_suggestion` varchar(10) NOT NULL,
+  `nom_suggestion` varchar(45) DEFAULT NULL,
+  `id_categorie` int(10) NOT NULL,
+  `id_sous_categorie` int(10) NOT NULL,
+  `description` longtext DEFAULT NULL,
+  `id_statut` int(10) NOT NULL,
+  `cp_ou_ville` varchar(45) DEFAULT NULL,  
+  PRIMARY KEY (`id_suggestion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `statuts`
+--
+
+CREATE TABLE IF NOT EXISTS `statuts` (
+  `id_statut` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `statut` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_statut`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+INSERT INTO `statuts` (`id_statut`, `statut`) VALUES
+(1, 'En attente'),
+(2, 'Validé'),
+(3, 'Invalidé') ;
 
 -- --------------------------------------------------------
 
