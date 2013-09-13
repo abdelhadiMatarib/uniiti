@@ -886,7 +886,7 @@ height: 26px;}
 .presentation_action_commentaire_wrapper{position:relative;margin:0;}
 .presentation_action_commentaire_left_body{position:relative;width:430px;padding:10px;float:left;}
 .presentation_action_commentaire_left_body_message{margin:10px 0 10px 0;text-align:left;}
-.presentation_action_commentaire_left_body_message span{font-size: 600;}
+.presentation_action_commentaire_left_body_message span{font-size: 6px;}
 .presentation_action_commentaire_left_body .arrow_up{position: absolute;left: 210px;bottom: 0;}
 .presentation_action_left_avis_utile_wrap{float:left;color:white;width:450px;height:30px;background-color:#252525;}
 .presentation_action_left_avis_utile_img_container{margin:6px;float:left;height:17px;}
