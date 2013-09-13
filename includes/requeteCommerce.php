@@ -177,12 +177,14 @@
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
 			if(isset($_SESSION['SESS_MEMBER_ID'])) {
+				$follow_step1 = "OuvrePopin(" . $data . ", '/includes/popins/suivre_utilisateur_step1.tpl.php', 'default_dialog_large');";
 				if ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) {
 					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');";
 				} 
 				else {$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";}
 			} else {
 				$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";
+				$follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 			}	
 			
 ?>	<!-- VIGNETTE TYPE -->
@@ -192,9 +194,9 @@
                 <div class="box_icon"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
                 <div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>'">
                     <span class="box_title" title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span>
-                    <span class="box_subtitle"style="color:<?php echo $couleur; ?>;">355/3000 - Confirmé</span>
+                    <span class="box_subtitle" style="color:<?php echo $couleur; ?>;">355/3000 - Confirmé</span>
                 </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
+                <div class="box_suivre_user" onclick="<?php echo $follow_step1; ?>"><a href="#" title="Suivre"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
             </header>
             
             <figure>
