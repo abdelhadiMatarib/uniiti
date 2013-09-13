@@ -1,5 +1,5 @@
 <?php
-		if (!empty($_POST['lastid'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['lastid']) || !empty($_POST['provenance'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
@@ -62,9 +62,16 @@
 							ON t10.id_sous_categorie = t11.id_sous_categorie
 								INNER JOIN categories AS t12
 								ON t10.id_categorie = t12.id_categorie WHERE id_enseigne = " . $id_enseigne;
-		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
-		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
+		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
+		if (!empty($_POST['provenance'])) {
+			if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
+		}
+		if (!empty($_POST['categorie'])) {$sql2 .= " AND t10.id_categorie = " . $_POST['categorie'];}
+		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
+		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
+		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;		
+		
 		$req2 = $bdd->prepare($sql2);
 		$req2->execute();
 

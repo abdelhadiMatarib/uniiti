@@ -3,12 +3,14 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-        <?php
-		include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
-        include_once '../config/configuration.inc.php';
-        include'../includes/head.php';
-		include_once '../includes/fonctions.inc.php';
-		include_once '../config/configPDO.inc.php';
+<?php
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../config/configuration.inc.php';
+	include'../includes/head.php';
+	include_once '../includes/fonctions.inc.php';
+	include_once '../config/configPDO.inc.php';
+		
+	$PAGE = "Utilisateur"; 
 
 	if (!empty($_GET['id_contributeur'])) {$id_contributeur = $_GET['id_contributeur'];}
 	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
@@ -133,7 +135,7 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content">
-   			<?php $Contributeur = 1; include '../includes/requetecontributeur.php' ?>
+   			<?php include '../includes/requetecontributeur.php' ?>
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
 	</div><!-- FIN BIGGY -->
