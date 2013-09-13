@@ -72,9 +72,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
         <div class="presentation_action_left_figure">
             <div class="wrapper_boutons_popin">
-                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_OK_popin.png"/></div>
-                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
-                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
+                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
             </div>
             <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
             

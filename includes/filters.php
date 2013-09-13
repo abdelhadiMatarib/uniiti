@@ -144,59 +144,61 @@ ON t1.id_categorie = t3.id_categorie */
 				<?php } ?>
             </ul> 
         </div>
-        <div class="rang2">
-            <ul>
-				<?php 
-				$Compteur = 0;
-				foreach ($Lien1Categories as $Key => $Categorie) { 
-					if (!empty($CompteurCategorie['all'][$Key])) {
-						foreach ($ProvAvis as $provenance) {
-							if (!empty($CompteurCategorie[$provenance][$Key])) { ?>
-								<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
-				<?php 		}
-						}
-					}
-				} ?>
-            </ul>            
-        </div>
-        <div class="rang3">
-            <ul>
-				<?php 
+		<?php if ($PAGE != "Commerce") { ?>
+			<div class="rang2">
+				<ul>
+					<?php 
 					$Compteur = 0;
-					foreach ($Lien2Categories as $Key => $Categorie) { 
-						foreach ($Lien2Categories[$Key] as $Key2 => $SousCategorie) { 
-							if (!empty($CompteurSousCategorie['all'][$Key2])) {
-								foreach ($ProvAvis as $provenance) {
-									if (!empty($CompteurSousCategorie[$provenance][$Key2])) { ?>
-                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
-				<?php 				}
-								}
+					foreach ($Lien1Categories as $Key => $Categorie) { 
+						if (!empty($CompteurCategorie['all'][$Key])) {
+							foreach ($ProvAvis as $provenance) {
+								if (!empty($CompteurCategorie[$provenance][$Key])) { ?>
+									<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
+					<?php 		}
 							}
 						}
-					  }	?>
-            </ul>            
-        </div>
-        <div class="rang4">
-            <ul>
-				<?php 
-					$Compteur = 0;
-					foreach ($Lien3Categories as $Key => $Categorie) {
-						foreach ($Lien3Categories[$Key] as $Key2 => $SousCategorie) {
-							foreach ($Lien3Categories[$Key][$Key2] as $Key3 => $SousCategorie2) {
-								if (!empty($CompteurSousCategorie2['all'][$Key3])) {
+					} ?>
+				</ul>            
+			</div>
+			<div class="rang3">
+				<ul>
+					<?php 
+						$Compteur = 0;
+						foreach ($Lien2Categories as $Key => $Categorie) { 
+							foreach ($Lien2Categories[$Key] as $Key2 => $SousCategorie) { 
+								if (!empty($CompteurSousCategorie['all'][$Key2])) {
 									foreach ($ProvAvis as $provenance) {
-										if (!empty($CompteurSousCategorie2[$provenance][$Key3])) { 								
-											if ($SousCategorie2 != "") { ?>
-                <li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
-				<?php						}
+										if (!empty($CompteurSousCategorie[$provenance][$Key2])) { ?>
+					<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
+					<?php 				}
+									}
+								}
+							}
+						  }	?>
+				</ul>            
+			</div>
+			<div class="rang4">
+				<ul>
+					<?php 
+						$Compteur = 0;
+						foreach ($Lien3Categories as $Key => $Categorie) {
+							foreach ($Lien3Categories[$Key] as $Key2 => $SousCategorie) {
+								foreach ($Lien3Categories[$Key][$Key2] as $Key3 => $SousCategorie2) {
+									if (!empty($CompteurSousCategorie2['all'][$Key3])) {
+										foreach ($ProvAvis as $provenance) {
+											if (!empty($CompteurSousCategorie2[$provenance][$Key3])) { 								
+												if ($SousCategorie2 != "") { ?>
+					<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
+					<?php						}
+											}
 										}
 									}
 								}
 							}
-						}
-					  }	?>
-            </ul>            
-        </div>
+						  }	?>
+				</ul>            
+			</div>
+		<?php } ?>
     <div class="leflux_wrapper">
         <a href="#" title=""><span>filtrer le flux</span></a>
     </div>

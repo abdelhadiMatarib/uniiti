@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS `categories` ;
 DROP TABLE IF EXISTS `sous_categories` ;
 DROP TABLE IF EXISTS `sous_categories2` ;
 
+DROP TABLE IF EXISTS `contributeurs_avis_utiles` ;
 DROP TABLE IF EXISTS `contributeurs_aiment_enseignes` ;
 DROP TABLE IF EXISTS `contributeurs_aiment_pas_enseignes` ;
 DROP TABLE IF EXISTS `contributeurs_wish_enseignes` ;
@@ -608,6 +609,21 @@ CREATE TABLE IF NOT EXISTS `sous_categories2` (
   `posy` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_sous_categorie2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=665 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contributeurs_avis_utiles`
+--
+
+CREATE TABLE IF NOT EXISTS `contributeurs_avis_utiles` (
+  `id_avis_utile` int(10) unsigned NOT NULL,
+  `id_contributeur_avis_utile` int(10) unsigned NOT NULL,
+  `avis_utile` tinyint(1) NOT NULL,
+  `date_avis_utile` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_avis_utile`,`id_contributeur_avis_utile`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

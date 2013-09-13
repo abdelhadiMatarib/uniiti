@@ -3,8 +3,10 @@
 include_once '../../config/configuration.inc.php';
 include_once '../fonctions.inc.php';
 include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
+include_once '../../config/configPDO.inc.php';
 
 if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+
 $provenance = $_POST['provenance'];
 switch ($provenance) {
 	case "avis":
@@ -105,16 +107,17 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
-        <div class="presentation_action_left_avis_utile_wrap">
-            
-            <div class="presentation_action_left_avis_utile_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png"/></div>
-            <span>Trouvez-vous cet avis utile ?</span>
-            <div class="presentation_action_left_avis_utile_reponse_wrap">
-                <a href="#" title="">OUI</a><a href="#" title="">NON</a>
-            </div>
-            
-        </div>
-        
+		<?php if ($provenance == 'avis') { ?>
+			<div class="presentation_action_left_avis_utile_wrap">
+				
+				<div class="presentation_action_left_avis_utile_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/trust.png"/></div>
+				<span id="TexteAvisUtile">Trouvez-vous cet avis utile ?</span>
+				<div class="presentation_action_left_avis_utile_reponse_wrap">
+					<a id="AvisUtile" href="#" title="">OUI</a><a id="AvisPasUtile" href="#" title="">NON</a>
+				</div>
+
+			</div>
+        <?php } ?>
         <div class="presentation_action_left_footer">
             <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL; ?>/img/avatars/1.png"/></figure></div>
             <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
@@ -230,5 +233,72 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
        $('.presentation_action_commentaire_left_body_message').stop().slideToggle();
        $('.presentation_action_signalement_body').stop().slideToggle();
     });
+
+	function AfficheAvisUtile(data, idselect) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requeteavisutile.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					if (result.avisutile == 1) {
+						$('#TexteAvisUtile').html('Vous trouvez cet avis utile');
+						$('#AvisUtile').addClass('is_valid');
+						$('#AvisPasUtile').removeClass('is_valid');
+					}
+					else {
+						$('#TexteAvisUtile').html('Vous ne trouvez pas cet avis utile');
+						$('#AvisPasUtile').addClass('is_valid');
+						$('#AvisUtile').removeClass('is_valid');
+					}
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	var $idavis = '<?php echo $_POST['id_avis']; ?>';
+	var $idcontributeur = '<?php echo $_POST['id_contributeur']; ?>';
+	var data = {check : 1, id_contributeur : $idcontributeur, id_avis : $idavis};
+	AfficheAvisUtile(data);
+
+	$('#AvisUtile').click(function() {
+		if (!$(this).hasClass('is_valid')) {
+			data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 1};
+			AfficheAvisUtile(data);
+		}
+	});
+	$('#AvisPasUtile').click(function() {
+		if (!$(this).hasClass('is_valid')) {
+			data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 0};
+			AfficheAvisUtile(data);
+		}
+	});
 </script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

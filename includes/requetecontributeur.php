@@ -164,6 +164,7 @@
 			$count_likes = $result3['count_likes'];	
 			
 			$data = "{provenance :'" . addslashes($provenance) . "',"
+				. "id_avis :" . $id_avis . ","
 				. "id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
