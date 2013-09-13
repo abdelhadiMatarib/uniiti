@@ -27,6 +27,15 @@
 							ON t10.id_sous_categorie = t11.id_sous_categorie
 								INNER JOIN categories AS t12
 								ON t10.id_categorie = t12.id_categorie";
+
+		switch ($PAGE) {
+			case "Commerce" :
+				$sqldroite .= " WHERE enseignes_id_enseigne = " . $id_enseigne;
+			break;
+			case "Utilisateur" :
+				$sqldroite .= " WHERE contributeurs_id_contributeur = " . $id_contributeur;
+			break;
+		}
 								
 		$sqlprovenance = "SELECT provenance, COUNT(id_avis) as compteur" . $sqldroite . " GROUP BY provenance";
 		$reqprovenance = $bdd->prepare($sqlprovenance);
@@ -35,7 +44,7 @@
 		foreach ($resultprovenance as $row) {
 			$CompteurProvenance[$row['provenance']] = $row['compteur'];
 		}
-		$CompteurTotal = $CompteurProvenance['avis'];
+		if (isset($CompteurProvenance['avis'])) {$CompteurTotal = $CompteurProvenance['avis'];} else {$CompteurTotal = 0;}
 		if (!empty($CompteurProvenance['aime'])) {$CompteurTotal += $CompteurProvenance['aime'];}
 		if (!empty($CompteurProvenance['aime_pas'])) {$CompteurTotal += $CompteurProvenance['aime_pas'];}
 		if (!empty($CompteurProvenance['wish'])) {$CompteurTotal += $CompteurProvenance['wish'];}		

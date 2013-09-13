@@ -9,6 +9,8 @@
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+	
+	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 					logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
@@ -198,7 +200,7 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content utilisateur_boxes">
-			<?php $Commerce = 1; include '../includes/requetecommerce.php' ?>
+			<?php include '../includes/requetecommerce.php' ?>
 		</div>
         
         </div>
