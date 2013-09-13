@@ -1,5 +1,5 @@
 <?php
-		if (!empty($_POST['lastid'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
+		if (!empty($_POST['lastid']) || !empty($_POST['provenance'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
@@ -62,9 +62,16 @@
 							ON t10.id_sous_categorie = t11.id_sous_categorie
 								INNER JOIN categories AS t12
 								ON t10.id_categorie = t12.id_categorie WHERE id_enseigne = " . $id_enseigne;
-		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
-		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
+		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
+		if (!empty($_POST['provenance'])) {
+			if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
+		}
+		if (!empty($_POST['categorie'])) {$sql2 .= " AND t10.id_categorie = " . $_POST['categorie'];}
+		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
+		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
+		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;		
+		
 		$req2 = $bdd->prepare($sql2);
 		$req2->execute();
 
@@ -177,12 +184,14 @@
 				. "note :" . $note . ","
 				. "note_arrondi :" . $note_arrondi . "}";
 			if(isset($_SESSION['SESS_MEMBER_ID'])) {
+				$follow_step1 = "OuvrePopin(" . $data . ", '/includes/popins/suivre_utilisateur_step1.tpl.php', 'default_dialog_large');";
 				if ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) {
 					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');";
 				} 
 				else {$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";}
 			} else {
 				$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";
+				$follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 			}	
 			
 ?>	<!-- VIGNETTE TYPE -->
@@ -192,9 +201,9 @@
                 <div class="box_icon"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/user.png" height="50" width="50" title="" alt="" /></div>
                 <div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>'">
                     <span class="box_title" title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span>
-                    <span class="box_subtitle"style="color:<?php echo $couleur; ?>;">355/3000 - Confirmé</span>
+                    <span class="box_subtitle" style="color:<?php echo $couleur; ?>;">355/3000 - Confirmé</span>
                 </div>
-                <div class="box_suivre_user"><a href="#" title="Suivre"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
+                <div class="box_suivre_user" onclick="<?php echo $follow_step1; ?>"><a href="#" title="Suivre"><img src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></a></div>
             </header>
             
             <figure>

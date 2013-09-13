@@ -208,7 +208,7 @@ span.index_overlay_texte{display:block;}
 .commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices{float:left;width:232px;padding:6px 0 0 10px;}
 .commerce_head_desc_address address{display:block;font-style:normal;}
 .commerce_head_desc_address span{display:block;font-weight:bold;}
-.commerce_head_desc_ariane span{display:block;}
+.commerce_head_desc_ariane span{display:inline;}
 .commerce_head_desc_ariane_lastcat{font-weight:bold;text-transform: uppercase;}
 .commerce_head_desc_identity span{display:block;}
 .commerce_head_desc_identity a{display:block;font-size:90%;}
@@ -224,8 +224,8 @@ span.index_overlay_texte{display:block;}
 .center_note{text-align: center;}
 
 .commerce_head_note_note10{display:inline;font-size:1.6em;color:white;}
-.commerce_head_note_avis{display:block;font-size:85%;text-align:center;color:white;padding:5px 0 13px 0;}
-.commerce_head_note_reservation{float:left;background-color:#fabe41;height:49px;width:150px;}
+.commerce_head_note_avis{display:block;font-size:85%;text-align:center;color:white;padding:5px 0 14px 0;}
+.commerce_head_note_reservation{float:left;background-color:#fabe41;height:50px;width:150px;}
 .img_container_reservation{float:left;height:25px;width:55px;text-align:center;padding: 10px 0 0 0;}
 .commerce_head_note_reserver{font-size: 1.2em;}
 .commerce_reserver_button{display:inline-block;padding:4px;width:95%;}
@@ -307,10 +307,10 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .labels_arrow_down{margin:5px auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid white;}
 
 .button_show_concept{}
-.commerce_recos_wrap{float:left;width:180px;display:none;margin:10px 0;text-align: center;}
-.commerce_labels_wrap{float:left;width:180px;display:none;margin:10px 0;text-align: center;}
+.commerce_recos_wrap{display:none;margin:10px 0;text-align: center;}
+.commerce_labels_wrap{display:none;margin:10px 0;text-align: center;}
 .commerce_gerant{position:absolute;bottom:0;left:370px;}
-.gerant_title{width:100px;text-transform:uppercase;background-color:#fabe41;}
+.gerant_title{width:100%;text-transform:uppercase;background-color:#fabe41;}
 .gerant_title_utilisateur{width:186px;}
 .gerant_title p{text-align:center;padding:5px 10px;font-weight:bold;margin:0;}
 .gerant_photo{width:100px;display:none;}
@@ -375,7 +375,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .objet_head_infos_services_classement{font-size: 1.2em;display: block;text-align: center;width: 80px;}
 .objet_head_infos_infos_classement{font-size: 1.2em;display: block;text-align: center;width: 80px;}
 
-.objet_head_infos_suivre{z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;width:88px;height:82px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
+.objet_head_infos_suivre{cursor:pointer;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;width:88px;height:82px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
 .utilisateur_head_infos_suggestion{float:left;}
 .utilisateur_suggerer_commerce{line-height:14px;text-align:center;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;height:36px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
 .utilisateur_suggerer_objet{line-height:14px;text-align:center;z-index:2;position: relative;-webkit-border-radius: 3px;border-radius: 3px;float:left;height:36px;background-color:#252525;margin:10px 10px 0 0;border:1px solid #252525;}
@@ -873,7 +873,8 @@ height: 26px;}
 .presentation_action_right_suggestions_content_categorie{color:#fabe41;font-weight:bold;font-size:0.9em;display:block;}
 .presentation_action_right_suggestions_note{text-align:center;border-bottom:1px solid #e4e4e4;float:left;padding-top:12px;height:34px;width:50px;background-color:#252525;}
 
-.presentation_action_right_suivre{line-height:16px;text-transform:uppercase;float:left;width:250px;background-color:#252525;height:50px;border-radius: 0 0 4px 0;}
+.presentation_action_right_suivre{cursor:pointer;line-height:16px;text-transform:uppercase;float:left;width:250px;background-color:#252525;height:50px;border-radius: 0 0 4px 0;border-top: 1px solid #e4e4e4;}
+
 .presentation_action_right_suivre_img_container{margin:10px 15px 0 30px;height:39px;width:50px;float:left;}
 .presentation_action_right_suivre span{font-size:1.2em;display:block;}
 .presentation_action_right_suivre_txt_1{margin-top:8px;font-weight:300;color:white;}

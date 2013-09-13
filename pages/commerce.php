@@ -9,6 +9,8 @@
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+	
+	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 					logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
@@ -32,7 +34,7 @@
 		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/SUIVRE_step1.tpl.php', 'default_dialog_large');";
+		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/suivre_enseigne_step1.tpl.php', 'default_dialog_large');";
 	} else {
 		$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 	}		
@@ -141,7 +143,7 @@
                     </div>
                 </div>
                 <div class="commerce_head_infos">
-                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Menu</span><span class="commerce_head_infos_services_text_couleur">& Tarifs</span></div></a></div>
+                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur">& Tarifs</span></div></a></div>
                     <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></a></div>
                     <div class="commerce_head_infos_suivre"><a href="#" title="" onclick="<?php echo $follow_step1; ?>"><span>Suivre</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
                     <div class="clearfix"></div>
@@ -193,7 +195,7 @@
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content utilisateur_boxes">
-			<?php $Commerce = 1; include '../includes/requetecommerce.php' ?>
+			<?php include '../includes/requetecommerce.php' ?>
 		</div>
         
         </div>

@@ -10,7 +10,10 @@
         include_once 'config/configuration.inc.php';
         include 'includes/head.php';
 		include_once 'config/configPDO.inc.php';
-		include_once 'includes/fonctions.inc.php'; ?>
+		include_once 'includes/fonctions.inc.php'; 
+		
+		$PAGE = "Timeline"; ?>
+		
     <body>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
@@ -47,7 +50,7 @@
 		<div class="biggymarginer">
 			<div class="big_wrapper">   
                         <!-- FILTRES DE TRI -->
-                        <?php include'includes/filters.php' ?>
+                        <?php $PAGE = "Timeline"; include'includes/filters.php' ?>
                         <!-- FIN FILTRES DE TRI -->
                         <style>
                             .home_newsfeed{border-radius:3px;margin-bottom:10px;background-color:#a4ebf1;width:100%;height:25px;}

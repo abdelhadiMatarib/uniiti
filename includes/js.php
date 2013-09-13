@@ -11,34 +11,55 @@
 	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.slides.min.js"></script>
 	<script>
-
-	$Filtre = {};
-		function SetFiltre(data) {
-			$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
-			$Filtre.categorie = data.categorie;
-			$Filtre.scategorie = data.scategorie;
-			$Filtre.sscategorie = data.sscategorie;
-			$("#dialog_overlay").css({display: "block"});
-			$.ajax({
-				async : false,
-				type :"POST",
-				url : "includes/requete.php",
-				data : $.extend($Filtre, {site_url: '<?php echo SITE_URL ; ?>'}),
-				success : function(html){
-					if (html) {
-						$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
-						$('#box_container').isotope( 'insert', $(html) );
-					} else {alert('Il n\'y a plus d\'enregistrements');}
-				},
-				error: function() {alert('Erreur sur url : ' + $url);}
-			});
-			CreerOverlayPush();
-			$("#dialog_overlay").css({display: "none"});
-		}	
 	
+	$Filtre = {};
+	function SetFiltre(data) {
+		var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
+		var $idenseigne = '<?php echo $id_enseigne; ?>';
+		var $idcontributeur = '<?php echo $id_contributeur; ?>';
+		
+		$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
+		$Filtre.categorie = data.categorie;
+		$Filtre.scategorie = data.scategorie;
+		$Filtre.sscategorie = data.sscategorie;
+		
+		$("#dialog_overlay").css({display: "block"});
+		
+		switch ($Page) {
+			case "Commerce" :
+				$url = "/includes/requetecommerce.php";
+				$data = {id_enseigne: encodeURIComponent($idenseigne)};
+			break;
+			case "Utilisateur" :
+				$url = "/includes/requetecontributeur.php";
+				$data = {id_contributeur: encodeURIComponent($idcontributeur)};
+			break;
+			case "Timeline" :
+				$url = "/includes/requete.php";
+				$data = {};
+			break;
+		}
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl + $url,
+			data : $.extend($Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
+			success : function(html){
+				if (html) {
+					$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
+					$('#box_container').isotope( 'insert', $(html) );
+				} else {alert('Il n\'y a plus d\'enregistrements');}
+			},
+			error: function() {alert('Erreur sur url : ' + $url);}
+		});
+		CreerOverlayPush();
+		$("#dialog_overlay").css({display: "none"});
+	}
+
 	$(window).load(function() {
 		$(function(){
-			setInterval("NouveauxElements()", 10000);
+			var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
+			if ($Page == "Timeline") {setInterval("NouveauxElements()", 1000);}
 			CreerOverlayPush();
   
 				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
@@ -74,27 +95,31 @@
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
 					else {$("#ScrollToTop").css({display: "none"});}
 					if ( (CptScroll < 20)
-						&&!isloading
+						&& !isloading
 						&& !DisableScroll
 						&& ($(window).scrollTop() >= 0.5 * ($(document).height() - $(window).height()))
+						&& ($Page != "")
 						)
 					{
 						var $idenseigne = '<?php echo $id_enseigne; ?>';
 						var $idcontributeur = '<?php echo $id_contributeur; ?>';
 						var $url, $data;
+						
+						switch ($Page) {
+							case "Commerce" :
+								$url = "../includes/requetecommerce.php";
+								$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							break;
+							case "Utilisateur" :
+								$url = "../includes/requetecontributeur.php";
+								$data = {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+							break;
+							case "Timeline" :
+								$url = "includes/requete.php";
+								$data = $.extend($Filtre, {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
+							break;
+						}
 
-						if (<?php if (isset($Commerce)) {echo 1;} else {echo 0;} ?>) {
-							$url = "../includes/requetecommerce.php";
-							$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
-						}
-						else if (<?php if (isset($Contributeur)) {echo 1;} else {echo 0;} ?>) {
-							$url = "../includes/requetecontributeur.php";
-							$data = {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
-						}
-						else {
-							$url = "includes/requete.php";
-							$data = $.extend($Filtre, {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
-						}
 						CptScroll++;
 						isloading = true;
 						$(".uniiti_footer_loader").css({display : "block"});

@@ -41,8 +41,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+	$follow_step1 = "OuvrePopin({id_contributeur :" . $_POST['id_contributeur'] . "}, '/includes/popins/suivre_utilisateur_step1.tpl.php', 'default_dialog_large');";
 } else {
-	$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 }	
 		
 ?>
@@ -129,7 +130,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         <div class="presentation_action_right_suggestions">
         <!-- INSERTION DES DIVS DE SUGGESTIONS ICI-->
         </div>
-                             <div class="presentation_action_right_suivre">
+            <div class="presentation_action_right_suivre" onclick="<?php echo $follow_step1; ?>">
                 <div class="presentation_action_right_suivre_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
                 <span class="presentation_action_right_suivre_txt_1">Suivre cet</span><span class="presentation_action_right_suivre_txt_2" style="color:<?php echo $_POST['couleur']; ?>;">utilisateur</span>
             </div>
