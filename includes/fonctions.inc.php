@@ -262,6 +262,49 @@ function AfficheProvenance($provenance, $categorie) {
 	return $html;
 }
 
+function AfficheAction($provenance, $categorie) {
+	switch ($provenance) {
+		case ("aime") :
+			$posy = "-19px";
+		break;
+		case ("aime_pas") :
+			$posy = "-69px";
+		break;
+		case ("wish") :
+			$posy = "-119px";
+		break;
+	}
+	switch ($categorie) {
+		case ("Cuisine"):
+			$posx = "-776px";
+		break;
+		case ("Beauté et bien être"):
+			$posx = "-676px";
+		break;
+		case ("Culture"):
+			$posx = "-926px";
+		break;
+		case ("Mode et design"):
+			$posx = "-826px";
+		break;
+		case ("Santé"):
+			$posx = "-876px";
+		break;
+		case ("Sorties, voyages et loisirs"):
+			$posx = "-626px";
+		break;
+		case ("Sport"):
+			$posx = "-576px";
+		break;
+		case ("Services et inclassables"):
+			$posx = "-726px";
+		break;
+	}
+
+	$html = "style=\"background:url('" . SITE_URL . "/img/pictos_commerces/sprite.png') " . $posx . " " . $posy . "\"";
+	return $html;
+}
+
 function AfficheTrusts($note_arrondi, $categorie) {
 	switch ($categorie) {
 		case ("Cuisine"):

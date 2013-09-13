@@ -73,9 +73,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
         <div class="presentation_action_left_figure">
             <div class="wrapper_boutons_popin">
-                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_OK_popin.png"/></div>
-                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/pouce_NOK_popin.png"/></div>
-                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/wishlist_popin.png"/></div>
+                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
             </div>
             <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
             
@@ -86,7 +86,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
-                <?php if ($affichecommentaire) { ?><span style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['note'] / 2; ?>/5 | </span><span><?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
+                <?php if ($affichecommentaire) { ?><span style="color:<?php echo $_POST['couleur']; ?>;font-weight: bold;"><?php echo $_POST['note'] / 2; ?>/5 | </span><span><?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
             </div>
             <div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
                 <span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>
@@ -215,7 +215,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
             <div class="presentation_action_right_suivre" onclick="<?php echo $follow_step1; ?>">
                 <div class="presentation_action_right_suivre_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
-                <span class="presentation_action_right_suivre_txt_1">Suivre cet</span><span class="presentation_action_right_suivre_txt_2">utilisateur</span>
+                <span class="presentation_action_right_suivre_txt_1">Suivre cet</span><span class="presentation_action_right_suivre_txt_2" style="color:<?php echo $_POST['couleur']; ?>;">utilisateur</span>
             </div>
     </div>
     <div class="clearfix"></div>    
