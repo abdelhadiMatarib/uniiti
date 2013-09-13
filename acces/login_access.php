@@ -73,6 +73,9 @@
 			$_SESSION['SESS_FIRST_NAME'] = $member['prenom_contributeur'];
 			$_SESSION['SESS_LAST_NAME']  = $member['nom_contributeur'];
             $_SESSION['SESS_PHOTO']      = $member['photo_contributeur'];
+			$_SESSION['CONTRIBUTEUR'] = 0x01;										// FF
+			$_SESSION['ADMINISTRATEUR'] = 0x08;										// FF
+
 			//$_SESSION['SESS_COMPANY'] = $member['company'];
 			
 			//$_SESSION['login'] = $member['pseudo_contributeur'];				// Add by Christophe Malo - Gestion recup droits

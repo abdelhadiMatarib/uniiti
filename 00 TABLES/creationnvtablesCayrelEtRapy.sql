@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS `categories` ;
 DROP TABLE IF EXISTS `sous_categories` ;
 DROP TABLE IF EXISTS `sous_categories2` ;
 
+DROP TABLE IF EXISTS `contributeurs_avis_utiles` ;
 DROP TABLE IF EXISTS `contributeurs_aiment_enseignes` ;
 DROP TABLE IF EXISTS `contributeurs_aiment_pas_enseignes` ;
 DROP TABLE IF EXISTS `contributeurs_wish_enseignes` ;
@@ -34,6 +35,9 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `profession_contributeur` varchar(45) DEFAULT NULL
 , ADD `descriptif_contributeur` longtext DEFAULT NULL
 , ADD `categorieage_contributeur` varchar(45) DEFAULT NULL ;
+
+UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 2825 ;
+UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 4866 ;
 
 ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `id_quartier` int(10) unsigned DEFAULT NULL
@@ -586,6 +590,21 @@ CREATE TABLE IF NOT EXISTS `sous_categories2` (
   `posy` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_sous_categorie2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=665 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contributeurs_avis_utiles`
+--
+
+CREATE TABLE IF NOT EXISTS `contributeurs_avis_utiles` (
+  `id_avis_utile` int(10) unsigned NOT NULL,
+  `id_contributeur_avis_utile` int(10) unsigned NOT NULL,
+  `avis_utile` tinyint(1) NOT NULL,
+  `date_avis_utile` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_avis_utile`,`id_contributeur_avis_utile`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
