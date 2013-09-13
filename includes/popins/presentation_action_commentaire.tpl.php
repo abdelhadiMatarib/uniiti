@@ -60,7 +60,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
-                <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
+                <div class="presentation_action_left_head_img_container_picto_likes"></div>
                 <span class="presentation_action_left_head_nombrelikes"><strong><?php echo $_POST['count_likes']; ?></strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>
