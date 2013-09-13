@@ -84,27 +84,31 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <figure><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_popin.jpg"/></figure>
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
-            <div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
+			<?php if ($provenance == 'avis') { ?>
+				<div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
+			<?php } ?>
             <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
                 <?php if ($affichecommentaire) { ?><span style="color:<?php echo $_POST['couleur']; ?>;font-weight: bold;"><?php echo $_POST['note'] / 2; ?>/5 | </span><span><?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
             </div>
-            <div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
-                <span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>
-                    <form>
-                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Avis à caractère diffamatoire ou injurieux</label></div>
-                        <br/>
-                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Avis incohérent ou sans intérêt</label></div>
-                        <br/>
-                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Spam</label></div>
-                        <br/>
-                        <div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_preciser_motif"/><label for="modifier_commentaire_input_preciser_motif">Autre motif</label></div>
-                        <br/>
-                        <div class="input_float_left"><input type="text" class="input_avisenattente_precisezmotif input_signalement_motif" placeholder="Précisez le motif"/></div>
-                        <div class="input_float_right bouton_signaler"><a href="#" title=""><span>Signaler</span></a></div>
-                    </form>
-            </div>
+			<?php if ($provenance == 'avis') { ?>
+				<div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
+					<span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>
+						<form>
+							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Avis à caractère diffamatoire ou injurieux</label></div>
+							<br/>
+							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Avis incohérent ou sans intérêt</label></div>
+							<br/>
+							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Spam</label></div>
+							<br/>
+							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_preciser_motif"/><label for="modifier_commentaire_input_preciser_motif">Autre motif</label></div>
+							<br/>
+							<div class="input_float_left"><input type="text" class="input_avisenattente_precisezmotif input_signalement_motif" placeholder="Précisez le motif"/></div>
+							<div class="input_float_right bouton_signaler"><a href="#" title=""><span>Signaler</span></a></div>
+						</form>
+				</div>
+			<?php } ?>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
 		<?php if ($provenance == 'avis') { ?>
@@ -171,7 +175,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         }
     });
 
-	function AfficheAvisUtile(data, idselect) {
+	function AfficheAvisUtile(data) {
 
 		$.ajax({
 			type: "POST",
@@ -200,21 +204,23 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			error: function() {alert('Erreur sur url : ' + url);}
 		});
 	}
-	var $idavis = '<?php echo $_POST['id_avis']; ?>';
-	var $idcontributeur = '<?php echo $_POST['id_contributeur']; ?>';
+	var $idavis = <?php echo $_POST['id_avis']; ?>;
+	var $idcontributeur = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
 	var data = {check : 1, id_contributeur : $idcontributeur, id_avis : $idavis};
-	AfficheAvisUtile(data);
+	if ($idcontributeur != 0) {AfficheAvisUtile(data);}
 
 	$('#AvisUtile').click(function() {
-		if (!$(this).hasClass('is_valid')) {
-			data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 1};
-			AfficheAvisUtile(data);
-		}
+		if ($idcontributeur == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+		else if (!$(this).hasClass('is_valid')) {
+				data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 1};
+				AfficheAvisUtile(data);
+			}
 	});
 	$('#AvisPasUtile').click(function() {
-		if (!$(this).hasClass('is_valid')) {
-			data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 0};
-			AfficheAvisUtile(data);
-		}
+		if ($idcontributeur == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+		else if (!$(this).hasClass('is_valid')) {
+				data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 0};
+				AfficheAvisUtile(data);
+			}
 	});
 </script>

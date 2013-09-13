@@ -53,7 +53,7 @@ try
 	$bdd->commit(); // Validation de la transaction / des requetes
 	
 	$reqCheck->closeCursor();
-	if ($req) {$req->closeCursor();}    // Ferme la connexion du serveur
+	if (!$_POST['check']) {$req->closeCursor();}    // Ferme la connexion du serveur
 	$bdd = null;            // Détruit l'objet PDO
 	
 	echo json_encode($data);
