@@ -40,7 +40,7 @@
   							<div class="container">
     							<div id="slides">
     								<?php for ($i = 1 ; $i < 10 ; $i++) { ?>
-										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/img/avatars/av<?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/img/avatars/av<?php echo $i; ?>.jpg" alt="" />
+										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $i; ?>.jpg" alt="" />
 									<?php } ?>
     							</div>
  							 </div>

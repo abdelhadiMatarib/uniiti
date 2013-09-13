@@ -18,6 +18,8 @@
 	$codepostal             = htmlspecialchars($_POST['codepostal']);             // Code postal
 	$pays                   = htmlspecialchars($_POST['pays']);                   // Pays
 	$telephone_contributeur = htmlspecialchars($_POST['telephone_contributeur']); // Telephone
+	
+	$date               = date('Y-m-d H:i:s');
 
 	// Newsletter
 	if(!empty($_POST['newsletter'])) {$newsletter_result = 1;} else {$newsletter_result = 0;}
@@ -65,7 +67,8 @@
 															certification_contributeur, 
 															reception_newsletter, 
 															reception_bonus, 
-															groupes_permissions_id_permission
+															groupes_permissions_id_permission,
+															date_inscription
 															) 
 											VALUES(
 															:email_contributeur, 
@@ -84,7 +87,8 @@
 															:certification_contributeur, 
 															:reception_newsletter, 
 															:reception_bonus, 
-															:groupes_permissions_id_permission
+															:groupes_permissions_id_permission,
+															:date_inscription
 													)');
 
 			$req->bindParam(':email_contributeur', $email_login, PDO::PARAM_STR);
@@ -105,6 +109,7 @@
 			$req->bindParam(':reception_newsletter', $newsletter_result, PDO::PARAM_INT);
 			$req->bindParam(':reception_bonus', $bonus_result, PDO::PARAM_INT);
 			$req->bindParam(':groupes_permissions_id_permission', $groupe_permission, PDO::PARAM_INT);
+			$req->bindParam(':date_inscription', $date, PDO::PARAM_STR);
 			$req->execute();
 
 			if($req) {}
