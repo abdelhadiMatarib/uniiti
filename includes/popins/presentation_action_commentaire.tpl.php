@@ -62,7 +62,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
-                <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
+                <div class="presentation_action_left_head_img_container_picto_likes"></div>
                 <span class="presentation_action_left_head_nombrelikes"><strong><?php echo $_POST['count_likes']; ?></strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>
@@ -131,90 +131,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <span class="presentation_action_right_head_txt"><strong>Vous pourriez</strong><span>également aimer ...</span></span>
         </div>
         <div class="presentation_action_right_suggestions">
-            
-            <!-- 1 BOX DE SUGGESTION -->
-            <div id="posts">
-            <div class="presentation_action_right_suggestions_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
-            <div class="presentation_action_right_suggestions_content">
-                <span class="presentation_action_right_suggestions_content_titre">Au bon goût de...</span>
-                <span class="presentation_action_right_suggestions_content_categorie">Restauration</span>
-            </div>
-            <div class="presentation_action_right_suggestions_note">
-                <span class="presentation_action_right_suggestions_note_reelle">7</span>
-                <span class="presentation_action_right_suggestions_note_base">/10</span>
-            </div>
-            </div>
-            <!-- FIN 1 BOX DE SUGGESTION -->
-            
-            <!-- 1 BOX DE SUGGESTION -->
-            <div id="posts">
-            <div class="presentation_action_right_suggestions_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
-            <div class="presentation_action_right_suggestions_content">
-                <span class="presentation_action_right_suggestions_content_titre">Au bon goût de...</span>
-                <span class="presentation_action_right_suggestions_content_categorie">Restauration</span>
-            </div>
-            <div class="presentation_action_right_suggestions_note">
-                <span class="presentation_action_right_suggestions_note_reelle">8</span>
-                <span class="presentation_action_right_suggestions_note_base">/10</span>
-            </div>
-            </div>
-            <!-- FIN 1 BOX DE SUGGESTION -->
-            
-            <!-- 1 BOX DE SUGGESTION -->
-            <div id="posts">
-            <div class="presentation_action_right_suggestions_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
-            <div class="presentation_action_right_suggestions_content">
-                <span class="presentation_action_right_suggestions_content_titre">Au bon goût de...</span>
-                <span class="presentation_action_right_suggestions_content_categorie">Restauration</span>
-            </div>
-            <div class="presentation_action_right_suggestions_note">
-                <span class="presentation_action_right_suggestions_note_reelle">8</span>
-                <span class="presentation_action_right_suggestions_note_base">/10</span>
-            </div>
-            </div>
-            <!-- FIN 1 BOX DE SUGGESTION -->
-            
-            <!-- 1 BOX DE SUGGESTION -->
-            <div id="posts">
-            <div class="presentation_action_right_suggestions_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
-            <div class="presentation_action_right_suggestions_content">
-                <span class="presentation_action_right_suggestions_content_titre">Au bon goût de...</span>
-                <span class="presentation_action_right_suggestions_content_categorie">Restauration</span>
-            </div>
-            <div class="presentation_action_right_suggestions_note">
-                <span class="presentation_action_right_suggestions_note_reelle">8</span>
-                <span class="presentation_action_right_suggestions_note_base">/10</span>
-            </div>
-            </div>
-            <!-- FIN 1 BOX DE SUGGESTION -->
-            
-            <!-- 1 BOX DE SUGGESTION -->
-            <div id="posts">
-            <div class="presentation_action_right_suggestions_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
-            <div class="presentation_action_right_suggestions_content">
-                <span class="presentation_action_right_suggestions_content_titre">Au bon goût de...</span>
-                <span class="presentation_action_right_suggestions_content_categorie">Restauration</span>
-            </div>
-            <div class="presentation_action_right_suggestions_note">
-                <span class="presentation_action_right_suggestions_note_reelle">8</span>
-                <span class="presentation_action_right_suggestions_note_base">/10</span>
-            </div>
-            </div>
-            <!-- FIN 1 BOX DE SUGGESTION -->
-            
-            <!-- 1 BOX DE SUGGESTION -->
-            <div id="posts">
-            <div class="presentation_action_right_suggestions_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
-            <div class="presentation_action_right_suggestions_content">
-                <span class="presentation_action_right_suggestions_content_titre">Au bon goût de...</span>
-                <span class="presentation_action_right_suggestions_content_categorie">Restauration</span>
-            </div>
-            <div class="presentation_action_right_suggestions_note">
-                <span class="presentation_action_right_suggestions_note_reelle">8</span>
-                <span class="presentation_action_right_suggestions_note_base">/10</span>
-            </div>
-            </div>
-            <!-- FIN 1 BOX DE SUGGESTION -->
+        <!-- INSERTION DES DIVS DE SUGGESTIONS ICI-->
         </div>
             <div class="presentation_action_right_suivre" onclick="<?php echo $follow_step1; ?>">
                 <div class="presentation_action_right_suivre_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
@@ -225,13 +142,33 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 </div>
 <script>
     // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
+    var activemodif = false;
     $('#modifier_commentaire_input_preciser_motif').click(function(){
-    $('.input_avisenattente_precisezmotif').stop().slideToggle();
+        if(activemodif == false){
+            $('.input_avisenattente_precisezmotif').stop().slideToggle();
+            activemodif = true;
+        }
     });
+    var active = false;
+    var heighttemp = 0;
     $('.presentation_action_signalement_flag').click(function(){
-       $(this).toggleClass('signalement_button_background');
-       $('.presentation_action_commentaire_left_body_message').stop().slideToggle();
-       $('.presentation_action_signalement_body').stop().slideToggle();
+        if (active == false){
+            heighttemp = $('.presentation_action_commentaire_left_body').height();
+            $('.presentation_action_commentaire_left_body').stop().animate({height: "175px"}, {duration: 800,specialEasing: {width: "linear",height: "easeOutBounce"}});
+            $(this).delay(2000).toggleClass('signalement_button_background');
+            $('.presentation_action_commentaire_left_body_message').stop().slideToggle();
+            $('.presentation_action_signalement_body').stop().slideToggle();
+            active = true;
+            console.log(heighttemp);
+        }
+        else if (active == true) {
+            $(this).toggleClass('signalement_button_background');
+            $('.presentation_action_commentaire_left_body_message').stop().slideToggle();
+            $('.presentation_action_commentaire_left_body').stop().animate({height: heighttemp}, {duration: 800,specialEasing: {width: "linear",height: "easeOutBounce"}})
+            $('.presentation_action_signalement_body').stop().slideToggle();
+            active = false;
+            console.log(active);
+        }
     });
 
 	function AfficheAvisUtile(data, idselect) {
@@ -281,24 +218,3 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		}
 	});
 </script>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

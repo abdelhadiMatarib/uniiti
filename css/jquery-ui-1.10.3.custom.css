@@ -298,7 +298,7 @@ button.ui-button::-moz-focus-inner {
 	padding: 0;
 }
 .ui-datepicker {
-	width: 17em;
+	width: 99%;
 	padding: .2em .2em 0;
 	display: none;
 }
@@ -369,12 +369,13 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker td {
 	border: 0;
 	padding: 1px;
+        height:30px;
 }
 .ui-datepicker td span,
 .ui-datepicker td a {
 	display: block;
 	padding: .2em;
-	text-align: right;
+	text-align: center;
 	text-decoration: none;
 }
 .ui-datepicker .ui-datepicker-buttonpane {

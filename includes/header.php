@@ -59,7 +59,9 @@
             </div>
 
             <div class="header_user">
+                <?php if ($Connecte) { ?>
                 <div class="header_img_container"><img src="<?php if ($Connecte) {echo SITE_URL; ?>/img/userpic.png" <?php } ?>title="" alt="" height="30" width="30"/></div>
+                <?php } ?>
                 <div class="header_usermenu">
 					<a id="header_usermenu" href="#" <?php if (!$Connecte) { ?>onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');<?php } ?>">
 						<?php if ($Connecte) {echo $prenom_contributeurActif . " " . $nom_contributeurActif;} else {echo "Inscription | Connexion";}?>
