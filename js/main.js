@@ -181,7 +181,7 @@ function resizeboxContainer(){
                 
 		$('.commerce_concept').css('width','272px').css('font-size','11px');
                 $('.commerce_concept a').css('width','250px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','160px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','160px');
                 
 		$('.commerce_gerant').css('left','272px');
 		$('.gerant_photo').css('width','80px');
@@ -270,7 +270,7 @@ function resizeboxContainer(){
                 
 		$('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','230px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','230px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
@@ -278,6 +278,8 @@ function resizeboxContainer(){
                 
                 $('.commerce_recos span').css('font-size','1em');
 		$('.commerce_labels span').css('font-size','1em');
+                
+                $('.commerce_gerant').css('left','370px');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','12px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social');
@@ -396,11 +398,13 @@ function resizeboxContainer(){
 
                 $('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','300px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','300px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
                 $('.commerce_labels a').css('width','170px');
+                
+                $('.commerce_gerant').css('left','370px');
                 
                 $('.commerce_recos span').css('font-size','1em');
 		$('.commerce_labels span').css('font-size','1em');
@@ -504,6 +508,8 @@ function resizeboxContainer(){
                 $('.commerce_recos a').css('width','150px');
 		$('.commerce_labels').css('width','190px').css('right','172px');
                 $('.commerce_labels a').css('width','170px');
+                
+                $('.commerce_gerant').css('left','370px');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
 		$('.commerce_head_infos .separateur').css('display','block');
