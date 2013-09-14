@@ -78,6 +78,12 @@
 		}
 		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
 		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
+		if (!empty($_POST['quoi'])) {
+			$sql2 .= " AND (nom_enseigne LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";
+			$sql2 .= " OR categorie_principale LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";
+			$sql2 .= " OR sous_categorie LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";		
+			$sql2 .= " OR sous_categorie2 LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%')";		
+		}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
 		$req2 = $bdd->prepare($sql2);

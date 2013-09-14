@@ -907,7 +907,15 @@ $('#close_button_home').click(function() {
 		if (jQuery.trim(inputSearch.val()) == "") {suggestionsContainer.addClass("display-none");}
 		else{suggestionsContainer.removeClass("display-none");}
 	}
+
+	$('#ButtonFiltre').click(function() {
+		var data = {provenance:'all'};
+		var quoi = inputSearch1.val(), lieu = inputSearch1.val();
 		
+		if (quoi != '') {$.extend(data, {'quoi':encodeURIComponent(quoi)});}
+		if (location.href != siteurl+"/timeline.php") {window.location.assign(siteurl+"/timeline.php");}
+		else {SetFiltre(data);}
+	});
 }); // fin function ready
 
 function callback (suggestionsContainer, inputSearch, suggestionList) {
@@ -940,6 +948,6 @@ var lastRequestI, lastRequestT;
 
 function timeLoadSuggestions(search, suggestionsContainer, inputSearch, suggestionList){
 	if(lastRequestI){clearTimeout(lastRequestI);}
-	lastRequestI = setTimeout(function () loadSuggestions(search, suggestionsContainer, inputSearch, suggestionList), 500);
+	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, suggestionList)}, 500);
 }
 
