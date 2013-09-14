@@ -80,6 +80,6 @@
         <!-- FOOTER -->
 		<?php include 'includes/footer.php' ?>
         <!-- FIN FOOTER -->
-		<?php include'includes/js.php' ?>
+		<?php include 'includes/js.php' ?>
 	</body>
 </html>

@@ -30,6 +30,28 @@
 
 
 <!-- DEBUT DU HEADER -->
+<style>
+.display-none {display:none;}
+#suggestionsContainer {
+	position: relative;
+	background-color:#f0f0f0;
+	width: 172px; 
+	top: 0px; 
+	left: 0px;
+}
+	#suggestionList li {
+		padding: 3px 0 3px 3px;
+	}
+	#suggestionList li.active {
+		background-color: #E2F2F6;
+	}
+	ul {
+		list-style-type: none;
+	}
+
+
+</style>
+
 <div class="overlay"></div>
 <div class="header">
     <div class="big_wrapper">
@@ -38,8 +60,12 @@
         <div class="header_leftnav">
 
             <div class="header_button_menu"><button type="button"></button></div>
-            <div class="header_searchbar1"><input type="text" value="Quoi" placeholder="Quoi"/></div>
-            <div class="header_searchbar2"><input type="text" value="Où" placeholder="Où"/></div>
+            <div class="header_searchbar1"><input type="text" value="" placeholder="Quoi"/>
+				<div class="display-none"><ul><li>&nbsp;</li></ul></div>
+			</div>
+            <div class="header_searchbar2"><input id="inputSearch" type="text" value="" placeholder="Où"/>
+				<div id="suggestionsContainer" class="display-none"><ul id="suggestionList"><li>&nbsp;</li></ul></div>
+			</div>
             <div class="header_button_plus" id="recherche_avancee_button"><button type="button">+</button></div>
             <div class="header_button_search"><button type="button"></button></div>
 

@@ -15,8 +15,8 @@
 	$Filtre = {};
 	function SetFiltre(data) {
 		var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
-		var $idenseigne = '<?php echo $id_enseigne; ?>';
-		var $idcontributeur = '<?php echo $id_contributeur; ?>';
+		var $idenseigne = '<?php if (isset($id_enseigne)) {echo $id_enseigne;} else {echo '0';} ?>';
+		var $idcontributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo '0';} ?>';
 		
 		$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
 		$Filtre.categorie = data.categorie;
@@ -59,7 +59,7 @@
 	$(window).load(function() {
 		$(function(){
 			var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
-			if ($Page == "Timeline") {setInterval("NouveauxElements()", 1000);}
+			if ($Page == "Timeline") {setInterval("NouveauxElements()", 100000);}
 			CreerOverlayPush();
   
 				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
@@ -101,8 +101,8 @@
 						&& ($Page != "")
 						)
 					{
-						var $idenseigne = '<?php echo $id_enseigne; ?>';
-						var $idcontributeur = '<?php echo $id_contributeur; ?>';
+						var $idenseigne = '<?php if (isset($id_enseigne)) {echo $id_enseigne;} else {echo '0';} ?>';
+						var $idcontributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo '0';} ?>';
 						var $url, $data;
 						
 						switch ($Page) {

@@ -820,4 +820,130 @@ $('#close_button_home').click(function() {
 			}, 800);
 			return false;
 		});
+		
+		// Concernce le filtre du header
+		var inputSearch = $("input#inputSearch"),
+		suggestionList = $("#suggestionList"),
+		clickSuggestion = -1;
+
+		document.showSuggestions = function (listData) {
+			suggestionsContainer.removeClass("display-none");
+			var toSend = '';
+			for (k in listData) {toSend += '<li>'+listData[k].nom_ville+'</li>';}
+	/*		for(i=0; i < listData.length; i++){
+				toSend += '<li>'+listData[i]+'</li>';
+			}*/
+			suggestionList.html(toSend);
+			$("#suggestionList li").on("mouseenter" , function(){
+				$("#suggestionList li").removeClass("active");
+				$(this).addClass("active");
+			}).on("click" , function() {
+				inputSearch.val($(this).html());
+				$("#suggestionsContainer").addClass("display-none");
+				$('form#search_form').trigger('submit');
+			});
+		};
+
+		document.selectSuggestion  = function (keyCode , suggestionListLenght) {
+			var suggestionListLi = suggestionList.children();
+			switch (keyCode) {
+				case 38:
+					clickSuggestion -= 1;
+					if (clickSuggestion < 0) {
+						clickSuggestion = 0;
+					}
+					break;
+
+				case 40:
+					clickSuggestion += 1;
+					if (clickSuggestion > suggestionListLenght) {
+						clickSuggestion = suggestionListLenght;
+					}
+					break;
+
+				case 13:
+					$('form#search_form').trigger('submit');
+					break;
+				case 27:
+					clickSuggestion = -1;
+					$("div#suggestionsContainer").addClass("display-none");
+					break;
+			}
+
+			if(keyCode == 38 || keyCode == 40) {
+				suggestionListLi
+					.removeClass("active")
+					.eq(clickSuggestion).addClass("active");
+				inputSearch.val(suggestionListLi.eq(clickSuggestion).html());
+			}else{
+			   clickSuggestion = -1;
+			}
+		}
+		
+		$(document).click(function(event) {
+			if( $("#suggestionsContainer").is(":visible") === true ) {
+				$("#suggestionsContainer").hide();
+			}
+		});
+
+		function arrowsAction (keyCode) {
+			var suggestionListLenght = suggestionList.children().size() - 1;
+			document.selectSuggestion (keyCode , suggestionListLenght);
+			return false;
+		}
+
+		inputSearch.keydown(function (e) {
+			var keyCode = e.keyCode || e.which;
+			if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
+				arrowsAction (keyCode);
+				return false;
+			}
+
+			if($("#suggestionsContainer").is(":visible") === false) {
+				$("#suggestionsContainer").show();
+			}
+			emptyInput();
+		});
+
+		inputSearch.keyup(function (e) {
+			var keyCode = e.keyCode || e.which;
+			if(keyCode != 13 && keyCode != 38 && keyCode != 40 && keyCode != 27){
+				timeLoadSuggestions();
+			}
+			emptyInput();
+		});
+
+		function emptyInput(){
+		if(jQuery.trim(inputSearch.val()) == "") {
+				document.suggestionsContainer.addClass("display-none");
+			}else{
+				suggestionsContainer.removeClass("display-none");
+			}
+		}
+		
 });
+
+function loadSuggestions(){
+	query = $('input#inputSearch').val();
+	query = query.toLowerCase();
+
+	if(query.length == 0){return;}
+
+	query = encodeURIComponent(query);
+
+	res = $.getJSON(siteurl+'/includes/requetesearch.php?key=' + query, document.showSuggestions);
+	console.log(res);
+}
+
+function timeLoadSuggestions(){
+	if(lastRequestI){
+		clearTimeout(lastRequestI);
+	}
+	lastRequestI = setTimeout(loadSuggestions, 500);
+}
+
+var lastRequestI,
+	lastRequestT,
+	suggestionsContainer = $("#suggestionsContainer");
+
+document.suggestionsContainer = $("#suggestionsContainer");
