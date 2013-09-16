@@ -207,7 +207,7 @@ function resizeboxContainer(){
                 
 		$('.commerce_concept').css('width','272px').css('font-size','11px');
                 $('.commerce_concept a').css('width','250px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','160px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','160px');
 		$('.commerce_gerant').css('left','272px');
 		$('.gerant_photo').css('width','80px');
 		$('.gerant_title').css('font-size','11px');
@@ -296,7 +296,7 @@ function resizeboxContainer(){
 		$('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','230px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','230px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
@@ -422,7 +422,7 @@ function resizeboxContainer(){
 		$('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','300px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','300px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
