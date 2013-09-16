@@ -738,6 +738,10 @@ $(document).ready(function() {
 			var newheightleft = newheightright-254;
 			$('.presentation_action_right_suggestions').height(newheightright);
 			$('.presentation_action_commentaire_left_body').height(newheightleft);
+			var ifaction = $('.presentation_action_commentaire_left_body').height();
+			if (ifaction == 28) {
+				$('.presentation_action_commentaire_left_body').css( "padding-top", "+=15").css( "padding-bottom", "+=15");
+			}
 		}
 		appendsuggest();
 
