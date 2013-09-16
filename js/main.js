@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 datanvelements = {init:1};
 $(".home_newsfeed").css({'display': 'none'});
 function NouveauxElements(data) {
@@ -3050,5 +3049,3 @@ function timeLoadSuggestions(search, suggestionsContainer, inputSearch, inputSea
 	if(lastRequestI){clearTimeout(lastRequestI);}
 	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 500);
 }
-
->>>>>>> branch 'master' of https://github.com/antoinerapy/uniiti.git
