@@ -43,9 +43,8 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-	$follow_step1 = "OuvrePopin({id_contributeur :" . $_POST['id_contributeur'] . "}, '/includes/popins/suivre_utilisateur_step1.tpl.php', 'default_dialog_large');";
 } else {
-	$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 }	
 		
 ?>
@@ -137,9 +136,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         <div class="presentation_action_right_suggestions">
         <!-- INSERTION DES DIVS DE SUGGESTIONS ICI-->
         </div>
-            <div class="presentation_action_right_suivre" onclick="<?php echo $follow_step1; ?>">
-                <div class="presentation_action_right_suivre_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
-                <span class="presentation_action_right_suivre_txt_1">Suivre cet</span><span class="presentation_action_right_suivre_txt_2" style="color:<?php echo $_POST['couleur']; ?>;">utilisateur</span>
+            <div class="presentation_action_right_suivre" id="SuivrePopin">
+                <div class="presentation_action_right_suivre_img_container"><img id="ImageSuivrePopin" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png"/></div>
+                <span class="presentation_action_right_suivre_txt_1" id="TexteSuivrePopin">Suivre cet</span><span class="presentation_action_right_suivre_txt_2" style="color:<?php echo $_POST['couleur']; ?>;">utilisateur</span>
             </div>
     </div>
     <div class="clearfix"></div>    
@@ -205,22 +204,61 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		});
 	}
 	var $idavis = <?php echo $_POST['id_avis']; ?>;
-	var $idcontributeur = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
-	var data = {check : 1, id_contributeur : $idcontributeur, id_avis : $idavis};
-	if ($idcontributeur != 0) {AfficheAvisUtile(data);}
+	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
+	var $idcontributeur = <?php echo $_POST['id_contributeur']; ?>;
+	var data = {check : 1, id_contributeur : $idcontributeurACTIF, id_avis : $idavis};
+	if ($idcontributeurACTIF != 0) {AfficheAvisUtile(data);}
 
-	$('#AvisUtile').click(function() {
-		if ($idcontributeur == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+	$('#AvisUtile').click(function(e) {
+		e.preventDefault(); //don't go to default URL
+		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
 		else if (!$(this).hasClass('is_valid')) {
-				data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 1};
+				data = {check : 0, id_contributeur : $idcontributeurACTIF, id_avis : $idavis, avis_utile : 1};
 				AfficheAvisUtile(data);
 			}
 	});
-	$('#AvisPasUtile').click(function() {
-		if ($idcontributeur == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+	$('#AvisPasUtile').click(function(e) {
+		e.preventDefault(); //don't go to default URL
+		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
 		else if (!$(this).hasClass('is_valid')) {
-				data = {check : 0, id_contributeur : $idcontributeur, id_avis : $idavis, avis_utile : 0};
+				data = {check : 0, id_contributeur : $idcontributeurACTIF, id_avis : $idavis, avis_utile : 0};
 				AfficheAvisUtile(data);
+			}
+	});
+	
+	function AfficheFollow(data) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetefollowcontributeur.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					$('#TexteSuivrePopin').html('Vous suivez cet');
+					$('#ImageSuivrePopin').attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+				} else {
+					$('#TexteSuivrePopin').html('Suivre cet');
+					$('#ImageSuivrePopin').attr('src', siteurl+'/img/pictos_commerces/suivre.png');				
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+
+	data = {check : 1, id_contributeurACTIF : $idcontributeurACTIF, id_contributeur : $idcontributeur};
+	AfficheFollow(data);
+
+	$('#SuivrePopin').click(function() {
+		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+		else {
+				data = {check : 0, id_contributeurACTIF : $idcontributeurACTIF, id_contributeur : $idcontributeur};
+				AfficheFollow(data);
 			}
 	});
 </script>
