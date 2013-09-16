@@ -61,7 +61,7 @@
 	$(window).load(function() {
 		$(function(){
 			var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
-			if ($Page == "Timeline") {setInterval("NouveauxElements()", 100000);}
+			if ($Page == "Timeline") {setInterval("NouveauxElements()", 1000);}
 			CreerOverlayPush();
   
 				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;

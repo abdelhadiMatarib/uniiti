@@ -111,6 +111,7 @@ function CreerOverlayPush() {
            e.preventDefault();
        $(this).css('float','left');
        $(this).siblings('.button_moving').css('float','right').slideDown();
+	   if ($(this).hasClass('flux_utilisateur')) {SetFiltre({provenance:'all'});}
     });
     
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
