@@ -298,8 +298,8 @@ button.ui-button::-moz-focus-inner {
 	padding: 0;
 }
 .ui-datepicker {
-	width: 99%;
-	padding: .2em .2em 0;
+	width: 499px;
+	padding: 1px 0 0 1px;
 	display: none;
 }
 .ui-datepicker .ui-datepicker-header {
@@ -319,21 +319,19 @@ button.ui-button::-moz-focus-inner {
         height:16px;
         width:16px;
 }
-.ui-datepicker .ui-datepicker-prev-hover,
-.ui-datepicker .ui-datepicker-next-hover {
-	left: 1px;
+.ui-datepicker .ui-datepicker-prev-hover{
+	
+}
+.ui-datepicker .ui-datepicker-next-hover{
+	
 }
 .ui-datepicker .ui-datepicker-prev {
 	left: 2px;
+        background-position:0px 0px;
 }
 .ui-datepicker .ui-datepicker-next {
 	right: 2px;
-}
-.ui-datepicker .ui-datepicker-prev-hover {
-	left: 1px;
-}
-.ui-datepicker .ui-datepicker-next-hover {
-	right: 1px;
+        background-position:-16px 0px;
 }
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
@@ -361,28 +359,39 @@ button.ui-button::-moz-focus-inner {
 	width: 49%;
 }
 .ui-datepicker table {
-	width: 100%;
 	font-size: .9em;
 	border-collapse: collapse;
-	margin: 0 0 .4em;
+	margin: 0;
 }
 .ui-datepicker th {
 	padding: .7em .3em;
 	text-align: center;
 	font-weight: bold;
+        font-size:0.8em;
 	border: 0;
+        text-transform:uppercase;
+        border-bottom:1px solid #e4e4e4;
 }
 .ui-datepicker td {
-	border: 0;
-	padding: 1px;
+	border-right: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+}
+.ui-datepicker td:last-child{
+        border-right:0px;
 }
 .ui-datepicker td span,
 .ui-datepicker td a {
-	display: block;
-	padding: .2em;
-	text-align: center;
-	text-decoration: none;
+    display: inline-block;  
+    font-weight: 400;  
+    text-align: center;  
+    width: 70px;
+    padding-top:10px;
+    height: 40px;  
+    line-height: 30px;  
+    color: #252525;
 }
+.ui-datepicker-calendar .ui-state-hover{background-color:#a4ebf1;}
+.ui-datepicker-calendar .ui-state-active{background-color:#a4ebf1;font-weight:600;}
 .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
 	margin: .7em 0 0 0;

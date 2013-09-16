@@ -203,7 +203,7 @@ span.index_overlay_texte{display:block;}
 .commerce_head_desc{float:left;position:relative;}
 .commerce_head_desc_title{float:left;padding: 0 0 5px 10px;}
 .commerce_head_desc_title h2{font-size: 1.7em;font-weight: 300;margin: 9px 0 0 0;display: inline-block;}
-.commerce_head_desc_social{margin: 10px 5px 0 0;float:right;}
+.commerce_head_desc_social{margin: 8px 5px 0 0;float:right;}
 .commerce_head_desc_social span{display:none;}
 .commerce_head_desc_social img{margin:3px 10px 0 0;}
 .commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices{float:left;width:232px;padding:6px 0 0 10px;}
@@ -650,6 +650,7 @@ textarea.parrainage_input_message{resize:none;}
 .parrainage_option1_body_right{border-bottom:1px solid #e4e4e4;width:349px;float:left;}
 .parrainage_option2_body_centered{float:left;width:700px;padding:10px 0;text-align:center;}
 .reservation_option2_body_centered{float:left;width:500px;padding:10px 0;text-align:center;}
+.body_calendrier{padding:0 !important;background-color:#f0f0f0 !important;}
 .reservation_step1_footer,.reservation_step4_footer{text-align:center;float:left;width:500px;}
 .reservation_step1_footer a,.reservation_step4_footer a{color:#252525;background-color:#a4ebf1;padding:10px;height:20px;display:inline-block;width:480px;}
 .reservation_step1_footer a:hover,.reservation_step4_footer a:hover{color:white;background-color:#73d4dc;}

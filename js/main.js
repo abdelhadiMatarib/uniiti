@@ -180,7 +180,7 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_prices').css('width','40px');
 		$('#commerce_head_desc_prices_wrap').css('display','none');
 		$('#commerce_head_desc_prices_button').css('float','right');
-		$('.commerce_head_desc_social').addClass('ipad_portrait_social');
+		$('.commerce_head_desc_social').css('margin-top','14px').addClass('ipad_portrait_social');
 		$('.commerce_head_desc_social span').css('display','block');
 		$('.commerce_head_desc_social img').css('display','none');
                 $('.commerce_head_desc_title h2').css('font-size','1em').css('margin-top','15px');
@@ -307,7 +307,7 @@ function resizeboxContainer(){
 		$('.commerce_labels span').css('font-size','1em');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','12px');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		$('.commerce_head_infos_infosrapides').css('margin-left','0px');
@@ -416,7 +416,7 @@ function resizeboxContainer(){
 		$('.gerant_title').css('font-size','1em');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
@@ -442,7 +442,7 @@ function resizeboxContainer(){
 		$('.commerce_head_desc').css('width',545);
 		$('.commerce_head_desc_address').css('width','250px').css('font-size','1em');
 		$('.commerce_head_desc_ariane').css('width','260px').css('font-size','1em');
-                $('.commerce_head_desc_ariane span').css('font-size','0.9em');
+                $('.commerce_head_desc_ariane span').css('font-size','0.8em');
 		$('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('#commerce_head_desc_prices_wrap').css('display','block');
@@ -522,7 +522,7 @@ function resizeboxContainer(){
 		$('.wrapper_boutons').css('top','100px');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.6em');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
@@ -601,7 +601,7 @@ function resizeboxContainer(){
 		$('.wrapper_boutons').css('top','140px');
 		
                 $('.commerce_head_desc_title h2').css('font-size','1.6em');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
@@ -1015,4 +1015,3 @@ function timeLoadSuggestions(search, suggestionsContainer, inputSearch, inputSea
 	if(lastRequestI){clearTimeout(lastRequestI);}
 	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 500);
 }
-
