@@ -1,4 +1,3 @@
-config/configuration.inc.php
-config/configPDO.inc.php
+config/*
 .DS_Store
 
