@@ -157,7 +157,7 @@
 			success: function(result) {
 				if (result.existe == 1) {
 					$('#TexteSuivre').html('Suivi');
-					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_utilisateurs/icon_user_suivi.png');
+					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
 				} else {
 					$('#TexteSuivre').html('Suivre');
 					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_commerces/suivre.png');				
