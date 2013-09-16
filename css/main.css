@@ -157,9 +157,9 @@ span.index_overlay_texte{display:block;}
 .box_push{position:absolute;right:0;bottom:0;height:50px;width:50px;background:url('../img/pictos_commerces/sprite.png') -126px -19px;}
 .box_push_et_img{cursor:pointer;margin-bottom:-4px;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
-.push_buttons_like{margin:0 10px 0 10px;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aime.png');}
-.push_buttons_dislike{margin:0 10px 0 0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/aimepas.png');}
-.push_buttons_wishlist{margin:0;float:left;width:45px;height:45px;background:url('../img/pictos_actions/listesouhaits.png');}
+.push_buttons_like{cursor: pointer;margin:0 10px 0 10px;float:left;width:50px;height:50px;background:url('../img/pictos_actions/aime.png');}
+.push_buttons_dislike{cursor: pointer;margin:0 10px 0 0;float:left;width:50px;height:50px;background:url('../img/pictos_actions/aimepas.png');}
+.push_buttons_wishlist{cursor: pointer;margin:0;float:left;width:50px;height:50px;background:url('../img/pictos_actions/listesouhaits.png');}
 .push_buttons_like a,.push_buttons_dislike a,.push_buttons_wishlist a{display:inline-block;height:100%;width:100%;}
 
 .box_localisation{bottom: 20px;z-index:90;color:white;padding:5px;position:absolute;text-align:center;height:20px;background-color:#252525;}
