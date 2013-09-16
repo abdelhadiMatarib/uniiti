@@ -6,7 +6,7 @@
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="suggestioncommerce_head">
         <div class="suggestioncommerce_img_container">
-            <img src="<?php echo SITE_URL; ?>/img/pictos_popins/sugg_objet_icon.png" title="" alt="" height="44" width="37" />
+            <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_modifs.png" title="" alt="" height="44" width="37" />
         </div><span class="maintitle">Modification de vos données</span>
     </div>   
     <div class="suggestioncommerce_body">

@@ -25,14 +25,15 @@
 <!--<nav>-->
 <div class="filters">
     <style>
-        .quoideneuf_utilisateur,.recommandations_utilisateur,.avisenattente_utilisateur,.flux_utilisateur{float:left;}
+        .flux_utilisateur{float:left;}
+        .quoideneuf_utilisateur,.recommandations_utilisateur,.avisenattente_utilisateur{float:right;}
         .quoideneuf_utilisateur a,.recommandations_utilisateur a,.avisenattente_utilisateur a,.flux_utilisateur a{display:inline-block;color:white;height:21px;margin-right:1px;padding:12px;background-color:#CBCBCB;}
         .quoideneuf_utilisateur a:hover,.recommandations_utilisateur a:hover,.avisenattente_utilisateur a:hover,.flux_utilisateur a:hover{color:white;background-color:#ADADAD;}
     </style>
-    <div class="quoideneuf_utilisateur"><a href="#" title="">Quoi de neuf ?</a></div>
-    <div class="recommandations_utilisateur"><a href="#" title="">Recommandations</a></div>
-    <div class="avisenattente_utilisateur"><a href="#" title="">Avis en attente</a></div>
-    <div class="flux_utilisateur"><a href="#" title="">Mon flux</a></div>
+    <div class="quoideneuf_utilisateur button_moving"><a href="#" title="">Quoi de neuf ?</a></div>
+    <div class="recommandations_utilisateur button_moving"><a href="#" title="">Recommandations</a></div>
+    <div class="avisenattente_utilisateur button_moving"><a href="#" title="">Avis en attente</a></div>
+    <div class="flux_utilisateur button_moving"><a href="#" title="">Mon flux</a></div>
         <div class="rang0">
             <ul>
                 <li class="button_all"></li>
