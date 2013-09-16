@@ -106,7 +106,13 @@ function CreerOverlayPush() {
 		overlay_push.css('display','block');
     });
 }
-
+    // FLUX UTILISATEUR SWITCH BOUTONS
+       $('.button_moving').click(function(e){
+           e.preventDefault();
+       $(this).css('float','left');
+       $(this).siblings('.button_moving').css('float','right').slideDown();
+    });
+    
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
 function resizeboxContainer(){        
 	var boxcontainersize = $('#box_container').width();
@@ -142,6 +148,7 @@ function resizeboxContainer(){
 		$('.infosrapides3,.infosrapides4').css('display','none');
 		$('.infosrapides1,.infosrapides2').css('margin-top','10px');
 		$('.infosrapides1').css('margin-right','20px');
+                $('.infosrapides2').css('margin-right','0').css('width','110px');
 		$('.commerce_head_desc').css('width','294px');
 		$('.commerce_head_desc_address').css('width','230px');
 		$('.commerce_head_desc_identity').css('width','230px');
@@ -160,7 +167,7 @@ function resizeboxContainer(){
 		$('.commerce_head_infos_suivre').css('width',70).css('height',88);
 		$('.commerce_head_infos_suivre span').css('margin-bottom',15).css('margin-top',15);
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('text-align','center').css('margin','0');
-		$('.commerce_head_infos_infos .img_container,.commerce_head_infos_services .img_container').css('padding-bottom',5).css('width',60).css('text-align','center').css('padding-top',10).css('height','35px');
+		$('.commerce_head_infos_infos .img_container,.commerce_head_infos_services .img_container').css('padding-bottom',5).css('padding-right','5px').css('padding-left','5px').css('width',80).css('text-align','center').css('padding-top',10).css('height','35px');
 		$('.commerce_head_infos .separateur').css('display','none');
 		$('.commerce_head_infos_infosrapides').css('margin-left','18px');
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('font-size','90%').css('width',90).css('margin-top','2px');
@@ -172,18 +179,20 @@ function resizeboxContainer(){
                 
 		$('.commerce_recos').css('width','130px');
                 $('.commerce_recos a').css('width','110px');
-		$('.commerce_labels').css('width','140px').css('right','130px');
+		$('.commerce_labels').css('width','141px').css('right','130px');
                 $('.commerce_labels a').css('width','120px');
                 
 		$('.commerce_recos span').css('font-size','0.7em');
 		$('.commerce_labels span').css('font-size','0.7em');
                 
 		$('.commerce_concept').css('width','272px').css('font-size','11px');
+                $('.commerce_concept a').css('width','250px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','160px');
 		$('.commerce_gerant').css('left','272px');
-		$('.gerant_photo').css('width','75px');
-		$('.gerant_title').css('font-size','0.7em');
+		$('.gerant_photo').css('width','80px');
+		$('.gerant_title').css('font-size','11px');
 		$('.wrapper_boutons .boutons').addClass('boutons_ipad');
-		$('.wrapper_boutons').css('top','15px');
+		$('.wrapper_boutons').css('top','35px');
 		$('.commerce_head_note_reserver').css('font-size','1.1em')
 		
 		
@@ -258,16 +267,19 @@ function resizeboxContainer(){
 		// PAGE COMMERCE
 		
 		$('.wrapper_boutons .boutons').removeClass('boutons_ipad');
-		$('.wrapper_boutons').css('top','35px');
+		$('.wrapper_boutons').css('top','55px');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
 		$('.commerce_head_infos .separateur').css('display','block');
 		$('.clearfix_infosrapides').css('display','none');
 		
-		$('.commerce_concept').css('font-size','1em');
+		$('.commerce_concept').css('font-size','1em').css('width','370px');
+                $('.commerce_gerant').css('left','370px');
+                $('.commerce_concept a').css('width','350px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','230px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
-		$('.commerce_labels').css('width','190px').css('right','174px');
+		$('.commerce_labels').css('width','185px').css('right','174px');
                 $('.commerce_labels a').css('width','170px');
                 
                 $('.commerce_recos span').css('font-size','1em');
@@ -278,7 +290,7 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		$('.commerce_head_infos_infosrapides').css('margin-left','0px');
-		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',92).css('display','block').css('font-size','1em').css('margin-top','8px').css('margin-right','10px');
+		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',92).css('display','block').css('font-size','1em').css('margin-top','6px').css('margin-right','10px');
 		$('.infosrapides1').css('margin-right','10px')
 		$('.commerce_head_desc').css('width',418);
 		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','100px');
@@ -301,10 +313,12 @@ function resizeboxContainer(){
 		
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text2').css('margin-left','38px');
+		$('.commerce_head2_text1').css('margin-left',38);
+                $('.commerce_head2_text3_end').css('margin-right',36);
+                $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
 		
-		$('.ligne_verticale1').css('left','622px').css('height','280px');
+		$('.ligne_verticale1').css('left','627px').css('height','280px');
 		$('.ligne_verticale2').css('left','812px').css('height','280px');
 		
 		$('.ligne_verticale4').css('left','616px').css('height','280px');
@@ -377,7 +391,7 @@ function resizeboxContainer(){
 		// PAGE COMMERCE
 		
 		$('.wrapper_boutons .boutons').removeClass('boutons_ipad');
-		$('.wrapper_boutons').css('top','70px');
+		$('.wrapper_boutons').css('top','90px');
 		$('.gerant_title').css('font-size','1em');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px');
@@ -385,10 +399,13 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
-		$('.commerce_concept').css('font-size','1em');
+		$('.commerce_concept').css('font-size','1em').css('width','370px');
+                $('.commerce_gerant').css('left','370px');
+                $('.commerce_concept a').css('width','350px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('height','300px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
-		$('.commerce_labels').css('width','190px').css('right','174px');
+		$('.commerce_labels').css('width','185px').css('right','174px');
                 $('.commerce_labels a').css('width','170px');
                 
                 $('.commerce_recos span').css('font-size','1em');
@@ -398,12 +415,12 @@ function resizeboxContainer(){
 		$('.commerce_head_infos .separateur').css('display','block');
 		$('.clearfix_infosrapides').css('display','none');
 		
-		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',122).css('font-size','1em').css('margin-top','7px').css('display','block');
+		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',122).css('font-size','1em').css('margin-top','6px').css('display','block');
 		$('.infosrapides1,.infosrapides2,.infosrapides3').css('margin-right','12px');
-                $('.infosrapides4').css('margin-right','0');
+                $('.infosrapides4').css('margin-right','0').css('width','110px');
 		$('.commerce_head_desc').css('width',545);
 		$('.commerce_head_desc_address').css('width','250px').css('font-size','1em');
-		$('.commerce_head_desc_ariane').css('width','270px').css('font-size','1em');
+		$('.commerce_head_desc_ariane').css('width','260px').css('font-size','1em');
                 $('.commerce_head_desc_ariane span').css('font-size','0.9em');
 		$('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
@@ -412,8 +429,8 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_identity').css('width','250px').css('font-size','1em');
 		$('.commerce_head_desc_prices').css('width','270px').css('font-size','1em');;
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200).css('height','82px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',20);
-		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em');
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10);
+		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
 		$('.commerce_head_infos_suivre').css('width','88px').css('height','82px');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px');
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
@@ -421,10 +438,12 @@ function resizeboxContainer(){
 		
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text2').css('margin-left','38px');
+		$('.commerce_head2_text1').css('margin-left',38);
+                $('.commerce_head2_text3_end').css('margin-right',36);
+                $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
 		
-		$('.ligne_verticale1').css('left','872px').css('height','352px');
+		$('.ligne_verticale1').css('left','877px').css('height','352px');
                 
 		$('.ligne_verticale2').css('left','1062px').css('height','352px');
 		
@@ -487,39 +506,44 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_social span').css('display','none');
 		
 		$('.commerce_concept').css('font-size','1em');
-		$('.commerce_recos').css('width','200px');
-		$('.commerce_labels').css('width','200px').css('right','200px');
+                $('.commerce_gerant').css('left','370px');
+		$('.commerce_recos').css('width','172px');
+                $('.commerce_recos a').css('width','150px');
+		$('.commerce_labels').css('width','190px').css('right','172px');
+                $('.commerce_labels a').css('width','170px');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
 		$('.commerce_head_infos .separateur').css('display','block');
 		$('.clearfix_infosrapides').css('display','none');
 		
 		$('.commerce_head_desc').css('width','670px');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','350px').css('font-size','1em');;
-		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','300px').css('font-size','1em');;
+		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','350px').css('font-size','1em');
+		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','280px').css('font-size','1em');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
                 $('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('#commerce_head_desc_prices_wrap').css('display','block');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width','266px').css('height','82px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',10).css('padding-right',10);
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',70).css('padding-right',10);
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em');;
 		$('.commerce_head_infos_suivre').css('width','88px').css('height','82px');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px');
 		$('.infosrapides1').css('margin-right','50px');
 		$('.infosrapides2,.infosrapides3').css('margin-right','50px');
-		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('margin-top','8px').css('display','block');
+		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('margin-top','6px').css('display','block');
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
 		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');
 		
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text2').css('margin-left','38px');
+		$('.commerce_head2_text1').css('margin-left',38);
+                $('.commerce_head2_text3_end').css('margin-right',36);
+                $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
 		
-		$('.ligne_verticale1').css('left','1086px').css('height','424px');
-		$('.ligne_verticale2').css('left','1284px').css('height','424px');
+		$('.ligne_verticale1').css('left','1124px').css('height','424px');
+		$('.ligne_verticale2').css('left','1313px').css('height','424px');
 		
 		// PAGE UTILISATEUR
 		$('.objet_head_desc').css('width','665px');
@@ -560,9 +584,16 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_social img').css('display','inline-block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
-		$('.commerce_head_desc').css('width','795px');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','400px').css('font-size','1em');;
-		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','360px').css('font-size','1em');;
+                $('.commerce_concept').css('font-size','1em');
+                $('.commerce_gerant').css('left','370px');
+                $('.commerce_recos').css('width','172px');
+                $('.commerce_recos a').css('width','150px');
+                $('.commerce_labels').css('width','190px').css('right','172px');
+                $('.commerce_labels a').css('width','170px');
+		
+                $('.commerce_head_desc').css('width','795px');
+		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','400px').css('font-size','1em');
+		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','320px').css('font-size','1em');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
                 $('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
@@ -573,7 +604,7 @@ function resizeboxContainer(){
 		$('.commerce_head_infos_suivre').css('float','right');
 		$('.clearfix_infosrapides').css('display','block');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('height','133px').css('width','200px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','65px').css('padding-top','45px').css('padding-left',10).css('padding-right',10);
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','65px').css('padding-top','45px').css('padding-left',40).css('padding-right',10);
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','40px').css('font-size','1em');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px');
 		$('.infosrapides1,.infosrapides2').css('margin-top','30px').css('margin-right','10px').css('width','100px').css('display','block');
@@ -584,11 +615,13 @@ function resizeboxContainer(){
 		
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text2').css('margin-left','38px');
+		$('.commerce_head2_text1').css('margin-left',38);
+                $('.commerce_head2_text3_end').css('margin-right',36);
+                $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
 		
-		$('.ligne_verticale1').css('left','1336px').css('height','496px');
-		$('.ligne_verticale2').css('left','1535px').css('height','496px');
+		$('.ligne_verticale1').css('left','1374px').css('height','496px');
+		$('.ligne_verticale2').css('left','1563px').css('height','496px');
 
 		
 		// PAGE UTILISATEUR
@@ -950,4 +983,3 @@ function timeLoadSuggestions(search, suggestionsContainer, inputSearch, suggesti
 	if(lastRequestI){clearTimeout(lastRequestI);}
 	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, suggestionList)}, 500);
 }
-

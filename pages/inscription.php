@@ -17,6 +17,29 @@
                     </div>
                 </div>
             </div>
+                <style>
+                    .inscription_fb_why_wrap{display:none;width:1168px;background-color:#f0f0f0;height:70px;border-top:1px solid #e4e4e4;}
+                    .inscription_fb_why_left{text-align:center;float:left;width:583px;height:55px;padding-top:15px;border-right:1px solid #e4e4e4;}
+                    .inscription_fb_why_right{float:left;width:584px;height:60px;padding-top:8px;}
+                    .inscription_fb_why_left span{display:block;text-transform:uppercase;font-size:1em;}
+                    .inscription_fb_why_right span{display:inline;text-transform:uppercase;font-size:1em;}
+                    span.inscription_fb_why_txt_normal{font-weight:300;}
+                    span.inscription_fb_why_txt_bold{font-weight:700;}
+                    .inscription_fb_why_right ul{padding-left:110px;}
+                </style>
+                <div class="inscription_fb_why_wrap">
+                    <div class="inscription_fb_why_left">
+                        <span class="inscription_fb_why_txt_normal">Le moyen le plus simple pour</span>
+                        <span class="inscription_fb_why_txt_bold">profiter rapidement de Uniiti</span>
+                    </div>
+                    <div class="inscription_fb_why_right">
+                        <ul>
+                            <li><span class="inscription_fb_why_txt_normal">Un </span><span class="inscription_fb_why_txt_bold">Mot de passe en moins</span><span class="inscription_fb_why_txt_normal"> à retenir</span></li>
+                            <li><span class="inscription_fb_why_txt_bold">Accès en un clic</span><span class="inscription_fb_why_txt_normal"> une fois connecté à Facebook</span></li>
+                            <li><span class="inscription_fb_why_txt_normal">Profitez de Uniiti </span><span class="inscription_fb_why_txt_bold">sans avoir à vous inscrire</span></li>
+                        </ul>
+                    </div>
+                </div>
             <div class="inscription_head2">
                 <div class="inscription_step1 inscription_current_step_texte_head"><h3>Informations générales</h3></div>
                 <div class="inscription_step2"><h3>Choix de l'avatar</h3></div>
@@ -128,6 +151,11 @@
 		$('#sexe').val(0);
 	});
 	
+        // Bandeau "Inscription avec FB"
+        $('.fb_connect_pourquoi').click(function(){
+           $('.inscription_fb_why_wrap').stop().slideToggle();
+        });
+        
 	function VerifEmail(email) {
 		var place = email.indexOf("@",1);
 		var point = email.indexOf(".",place+1);

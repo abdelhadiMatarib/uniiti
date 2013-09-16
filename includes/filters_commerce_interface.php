@@ -1,8 +1,12 @@
 <!--<nav>-->
 <div class="filters">
-    <div class="flux_commerce">
+    <div class="flux_commerce button_moving">
         <div class="notifs_filter"><span>2</span></div>
         <a href="#" title=""><span>Le flux</span></a>
+    </div>
+    <div class="avisenattente_commerce button_moving">
+        <div class="notifs_filter"><span>2</span></div>
+        <a href="#" title=""><span>Avis en attente</span></a>
     </div>
         <div class="rang0 categorie_restauration">
         <div class="notifs_filter"><span>56</span></div>
@@ -42,9 +46,6 @@
                 <li class="ss_ss_at">Sous-Sous-Cat. 4</li>
             </ul>            
         </div>
-    <div class="avisenattente_commerce">
-        <div class="notifs_filter"><span>2</span></div>
-        <a href="#" title=""><span>Avis en attente</span></a>
-    </div>
+    
 </div>
 <!--</nav>-->

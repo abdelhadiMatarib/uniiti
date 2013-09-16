@@ -87,7 +87,7 @@ span.index_overlay_texte{display:block;}
 .header_flechebas a{display:block;height:6px;width:12px;}
 .header_yourcity img{}
 .header_user img{vertical-align:middle;}
-.header_user_menulist{background-color:#A4EBF1;z-index:50;position:absolute;right:0;top:37px;width: 170px;}
+.header_user_menulist{background-color:#A4EBF1;z-index:50;position:absolute;right:0;top:37px;width: 140px;font-size:0.9em;}
 .header_user_menulist ul{}
 .header_user_menulist ul li{color:white;border-bottom:1px solid #E4E4E4;text-align:center;list-style-type:none;}
 .header_user_menulist ul li a{color:white;padding:5px 0;display:block;height:100%;width:100%;}
@@ -224,7 +224,7 @@ span.index_overlay_texte{display:block;}
 .center_note{text-align: center;}
 
 .commerce_head_note_note10{display:inline;font-size:1.6em;color:white;}
-.commerce_head_note_avis{display:block;font-size:85%;text-align:center;color:white;padding:5px 0 15px 0;}
+.commerce_head_note_avis{display:block;font-size:85%;text-align:center;color:white;padding:5px 0 14px 0;}
 .commerce_head_note_reservation{float:left;background-color:#fabe41;height:50px;width:150px;}
 .img_container_reservation{float:left;height:25px;width:55px;text-align:center;padding: 10px 0 0 0;}
 .commerce_head_note_reserver{font-size: 1.2em;}
@@ -307,10 +307,10 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .labels_arrow_down{margin:5px auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid white;}
 
 .button_show_concept{}
-.commerce_recos_wrap{float:left;width:180px;display:none;margin:10px 0;text-align: center;}
-.commerce_labels_wrap{float:left;width:180px;display:none;margin:10px 0;text-align: center;}
+.commerce_recos_wrap{display:none;margin:10px 0;text-align: center;}
+.commerce_labels_wrap{display:none;margin:10px 0;text-align: center;}
 .commerce_gerant{position:absolute;bottom:0;left:370px;}
-.gerant_title{width:100px;text-transform:uppercase;background-color:#fabe41;}
+.gerant_title{width:100%;text-transform:uppercase;background-color:#fabe41;}
 .gerant_title_utilisateur{width:186px;}
 .gerant_title p{text-align:center;padding:5px 10px;font-weight:bold;margin:0;}
 .gerant_photo{width:100px;display:none;}
