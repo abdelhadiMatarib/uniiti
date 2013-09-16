@@ -123,6 +123,16 @@ function resizeboxContainer(){
 	
 	// RESIZING CONTENT DEPENDING ON SIZES
 	
+	/* 1 */if ($('.big_wrapper').width() == 236){
+		// HEADER
+		
+		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','none');
+		$('.header_button_menu').css('display','none');
+		$('.header_rightnav').css('display','none');
+		$('.biggymarginer').css('padding-right','9px').css('padding-left','9px');
+		$('.header').css('padding-top','7px').css('padding-bottom','7px').css('padding-right','9px').css('padding-left','9px');	
+	}
+	
 	/* 3 */if ($('.big_wrapper').width() == 736){
 		
 		// HEADER
@@ -659,7 +669,7 @@ $(document).ready(function() {
 		width: '760px',
 		height: 'auto',
 		open: function() {
-		function appendsuggest() { 
+		function appendsuggest() {
 			var widthleft = $('.presentation_action_left').height();
 		    var changewidthsuggest = widthleft - 101;
 		    $('.presentation_action_right_suggestions').height(changewidthsuggest);
@@ -687,7 +697,6 @@ $(document).ready(function() {
 			$('.presentation_action_commentaire_left_body').height(newheightleft);
 		}
 		appendsuggest();
-
 
 		jQuery('.ui-widget-overlay').bind('click', function() {
 			jQuery('#default_dialog_large').dialog('close');
@@ -825,11 +834,13 @@ $('#close_button_home').click(function() {
 	// Concerne le filtre du header //
 	//////////////////////////////////
 	
-	var suggestionsContainer1 = $("#suggestionsContainer1"), inputSearch1 = $("input#inputSearch1"), suggestionList1 = $("#suggestionList1"), clickSuggestion = -1;
-	var suggestionsContainer2 = $("#suggestionsContainer2"), inputSearch2 = $("input#inputSearch2"), suggestionList2 = $("#suggestionList2");
+	var suggestionsContainer1 = $("#suggestionsContainer1"), inputSearch1 = $("input#inputSearch1"),
+		inputSearch1Hidden = $("input#inputSearch1Hidden"), suggestionList1 = $("#suggestionList1"), clickSuggestion = -1;
+	var suggestionsContainer2 = $("#suggestionsContainer2"), inputSearch2 = $("input#inputSearch2"),
+		inputSearch2Hidden = $("input#inputSearch2Hidden"), suggestionList2 = $("#suggestionList2");
 
-	document.selectSuggestion  = function (keyCode , suggestionListLenght) {
-		var suggestionListLi = suggestionList1.children();
+	document.selectSuggestion  = function (keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden) {
+		var suggestionListLi = suggestionList.children();
 		switch (keyCode) {
 			case 38:
 				clickSuggestion -= 1;
@@ -839,8 +850,8 @@ $('#close_button_home').click(function() {
 				clickSuggestion += 1;
 				if (clickSuggestion > suggestionListLenght) {clickSuggestion = suggestionListLenght;}
 				break;
-			case 13:alert('On lance la recherche');
-				$('form#search_form').trigger('submit');
+			case 13:
+				$('#ButtonFiltre').trigger('click');
 				break;
 			case 27:
 				clickSuggestion = -1;
@@ -852,8 +863,9 @@ $('#close_button_home').click(function() {
 			suggestionListLi
 				.removeClass("active")
 				.eq(clickSuggestion).addClass("active");
-			inputSearch1.val(suggestionListLi.eq(clickSuggestion).html());
-		} else{clickSuggestion = -1;}
+			inputSearchHidden.val(suggestionListLi.eq(clickSuggestion).html());
+			inputSearch.val(suggestionListLi.eq(clickSuggestion).text());
+		} else {clickSuggestion = -1;}
 	}
 	
 	$(document).click(function(event) {
@@ -861,16 +873,16 @@ $('#close_button_home').click(function() {
 		if( suggestionsContainer2.is(":visible") === true ) {suggestionsContainer2.hide();}
 	});
 
-	function arrowsAction (keyCode, suggestionList) {
+	function arrowsAction (keyCode, suggestionList, inputSearch, inputSearchHidden) {
 		var suggestionListLenght = suggestionList.children().size() - 1;
-		document.selectSuggestion (keyCode , suggestionListLenght);
+		document.selectSuggestion (keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden);
 		return false;
 	}
 
 	inputSearch1.keydown(function (e) {
 		var keyCode = e.keyCode || e.which;
 		if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
-			arrowsAction (keyCode, suggestionList1);
+			arrowsAction (keyCode, suggestionList1, inputSearch1, inputSearch1Hidden);
 			return false;
 		}
 		if(suggestionsContainer1.is(":visible") === false) {suggestionsContainer1.show();}
@@ -880,7 +892,7 @@ $('#close_button_home').click(function() {
 	inputSearch2.keydown(function (e) {
 		var keyCode = e.keyCode || e.which;
 		if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
-			arrowsAction (keyCode, suggestionList2);
+			arrowsAction (keyCode, suggestionList2, inputSearch2, inputSearch2Hidden);
 			return false;
 		}
 		if(suggestionsContainer2.is(":visible") === false) {suggestionsContainer2.show();}
@@ -890,7 +902,7 @@ $('#close_button_home').click(function() {
 	inputSearch1.keyup(function (e) {
 		var keyCode = e.keyCode || e.which;
 		if(keyCode != 13 && keyCode != 38 && keyCode != 40 && keyCode != 27){
-			timeLoadSuggestions('quoi', suggestionsContainer1, inputSearch1, suggestionList1);
+			timeLoadSuggestions('quoi', suggestionsContainer1, inputSearch1, inputSearch1Hidden, suggestionList1);
 		}
 		emptyInput(inputSearch1, suggestionsContainer1);
 	});
@@ -898,27 +910,31 @@ $('#close_button_home').click(function() {
 	inputSearch2.keyup(function (e) {
 		var keyCode = e.keyCode || e.which;
 		if(keyCode != 13 && keyCode != 38 && keyCode != 40 && keyCode != 27){
-			timeLoadSuggestions('où', suggestionsContainer2, inputSearch2, suggestionList2);
+			timeLoadSuggestions('où', suggestionsContainer2, inputSearch2, inputSearch2Hidden, suggestionList2);
 		}
 		emptyInput(inputSearch2, suggestionsContainer2);
 	});
 
 	function emptyInput(inputSearch, suggestionsContainer){
 		if (jQuery.trim(inputSearch.val()) == "") {suggestionsContainer.addClass("display-none");}
-		else{suggestionsContainer.removeClass("display-none");}
+		else {suggestionsContainer.removeClass("display-none");}
 	}
 
 	$('#ButtonFiltre').click(function() {
 		var data = {provenance:'all'};
-		var quoi = inputSearch1.val(), lieu = inputSearch1.val();
+		var quoi = inputSearch1.val(), lieu = inputSearch2.val();
+		var CmpArrondissement =  inputSearch2Hidden.val().replace(/<sup>/gi, "");
+		CmpArrondissement =  CmpArrondissement.replace(/<\/sup>/gi, "");
+		if (inputSearch2.val() == CmpArrondissement) {lieu = inputSearch2Hidden.val();}	// traitement des arrondissements en html <sup></sup>
 		
 		if (quoi != '') {$.extend(data, {'quoi':encodeURIComponent(quoi)});}
+		if (lieu != '') {$.extend(data, {'lieu':encodeURIComponent(lieu)});}
 		if (location.href != siteurl+"/timeline.php") {window.location.assign(siteurl+"/timeline.php");}
 		else {SetFiltre(data);}
 	});
 }); // fin function ready
 
-function callback (suggestionsContainer, inputSearch, suggestionList) {
+function callback (suggestionsContainer, inputSearch, inputSearchHidden, suggestionList) {
 	return function (listData) {
 		suggestionsContainer.removeClass("display-none");
 		var toSend = '';
@@ -928,26 +944,27 @@ function callback (suggestionsContainer, inputSearch, suggestionList) {
 			suggestionList.children().removeClass("active");
 			$(this).addClass("active");
 		}).on("click" , function() {
-			inputSearch.val($(this).html());
+			inputSearchHidden.val($(this).html());
+			inputSearch.val($(this).text());
 			suggestionsContainer.addClass("display-none");
 		});
 	};
 }
 
-function loadSuggestions(search, suggestionsContainer, inputSearch, suggestionList){
+function loadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList){
 	query = inputSearch.val();
 	query = query.toLowerCase();
 
 	if(query.length == 0){return;}
 
 	query = encodeURIComponent(query);
-	res = $.getJSON(siteurl+'/includes/requetesearch.php?key='+query+'&search='+search, callback(suggestionsContainer, inputSearch, suggestionList));
+	res = $.getJSON(siteurl+'/includes/requetesearch.php?key='+query+'&search='+search, callback(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList));
 	console.log(res);
 }
 var lastRequestI, lastRequestT;
 
-function timeLoadSuggestions(search, suggestionsContainer, inputSearch, suggestionList){
+function timeLoadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList){
 	if(lastRequestI){clearTimeout(lastRequestI);}
-	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, suggestionList)}, 500);
+	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 500);
 }
 
