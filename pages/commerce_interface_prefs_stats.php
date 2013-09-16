@@ -10,11 +10,8 @@
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
 	
-	$sql2 = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, note_moyenne, satisfaction_pourcent, certification_pro, code_visible, avis_visible, nom_type_enseigne, btn_donner_avis_visible, url
-			FROM enseignes AS t1
-			INNER JOIN types_enseigne AS t2
-				ON t1.types_enseigne_id_type_enseigne = t2.id_type_enseigne
-			WHERE id_enseigne = :id_enseigne
+	$sql2 = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url
+			FROM enseignes AS t1 WHERE id_enseigne = :id_enseigne
 		";
 
 	$req2 = $bdd->prepare($sql2);
@@ -38,7 +35,7 @@
 	$certification_pro       = $result['certification_pro'];
 	$code_visible            = $result['code_visible'];
 	$avis_visible            = $result['avis_visible'];
-	$nom_type_enseigne       = $result['nom_type_enseigne'];
+//	$nom_type_enseigne       = $result['nom_type_enseigne'];
 	$btn_donner_avis_visible = $result['btn_donner_avis_visible'];
 	$url                     = $result['url'];
 

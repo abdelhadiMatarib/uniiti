@@ -59,15 +59,3 @@ catch (PDOException $erreur)
 	exit;
 }
 ?>
-
-
-<div class="wishlist_wrapper">
-    <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
-    <div class="wishlist_wrapper_body_img">
-        <img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" title="" alt="" height="147" width="147" />
-    </div>
-    <div class="wishlist_wrapper_footer_txt">
-        <span class="wishlist_wrapper_footer_txt_normal">Vous <span class="wishlist_wrapper_footer_txt_bold">suivez</span> cet utilisateur</span>
-    </div>
-</div>
-</html>
