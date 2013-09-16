@@ -3,10 +3,10 @@ $db_config = array();
 $db_config['DRIVER']        = 'mysql';
 $db_config['HOST']          = 'localhost';
 $db_config['DB_NAME']       = 'captainopinionDB';
-//$db_config['USER']          = 'root';                               // LOCAL
-$db_config['USER']        = 'captainJohanUser';                   // SERVEUR
+$db_config['USER']          = 'root';                               // LOCAL//
+//$db_config['USER']        = 'captainJohanUser';                   // SERVEUR
 //$db_config['PASSWORD']      = 'root';                               // LOCAL
-$db_config['PASSWORD']    = 'Darlot111JohannUser';                // SERVEUR
+$db_config['PASSWORD']    = '';                // SERVEUR
 $db_config['OPTIONS']       = array(
                                 // Activation des exceptions PDO :
                                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
