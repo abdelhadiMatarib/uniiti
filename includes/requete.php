@@ -27,15 +27,10 @@
 		$sql4 = "SELECT id_avis, commentaire, appreciation, note, origine, date_avis FROM avis WHERE id_avis = :id_avis";
 		$req4 = $bdd->prepare($sql4);
 		
-		$sql5 = "SELECT quartier, arrondissement FROM quartier AS t1
-					INNER JOIN arrondissement AS t2
-					ON t1.id_arrondissement = t2.id_arrondissement WHERE t1.id_quartier = :id_quartier";
-		$req5 = $bdd->prepare($sql5);
-
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 						couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, 
-						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, id_quartier, ville_enseigne, url
+						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, quartier, arrondissement, t9.id_quartier, nom_ville, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -61,7 +56,13 @@
 							INNER JOIN sous_categories AS t11
 							ON t10.id_sous_categorie = t11.id_sous_categorie
 								INNER JOIN categories AS t12
-								ON t10.id_categorie = t12.id_categorie ";
+								ON t10.id_categorie = t12.id_categorie
+									INNER JOIN villes AS t13
+									ON t13.id_ville = t9.villes_id_ville								
+										INNER JOIN quartier AS t14
+										ON t14.id_quartier = t9.id_quartier
+											INNER JOIN arrondissement AS t15
+											ON t15.id_arrondissement = t14.id_arrondissement ";
 		$ClauseWhere = false;
 		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);$ClauseWhere = true;}
 		if (!empty($_POST['provenance'])) {
@@ -83,6 +84,11 @@
 			$sql2 .= " OR categorie_principale LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";
 			$sql2 .= " OR sous_categorie LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";		
 			$sql2 .= " OR sous_categorie2 LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%')";		
+		}
+		if (!empty($_POST['lieu'])) {
+			$sql2 .= " AND (ville_enseigne LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%'";
+			$sql2 .= " OR quartier LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%'";
+			$sql2 .= " OR arrondissement LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%')";
 		}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;
 
@@ -153,7 +159,7 @@
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
-			$ville_enseigne          = $row['ville_enseigne'];
+			$ville_enseigne          = $row['nom_ville'];
 			$couleur 				 = $row['couleur'];
 			$categorie				 = $row['categorie_principale'];
 			$sous_categorie          = $row['sous_categorie'];
@@ -162,11 +168,8 @@
 			$posy					 = $row['posy'];
 			$url                     = $row['url'];
 			
-			$req5->bindParam(':id_quartier', $row['id_quartier'], PDO::PARAM_INT);
-			$req5->execute();
-			$result5 = $req5->fetch(PDO::FETCH_ASSOC);
-			if ($result5) {$arrondissement = $result5['arrondissement'];}
-			else {$arrondissement = $ville_enseigne;}
+			$arrondissement = $row['arrondissement'];
+			if ($arrondissement == "Indéfini") {$arrondissement = $ville_enseigne;}
 			
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->execute();
