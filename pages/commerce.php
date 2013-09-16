@@ -242,6 +242,40 @@
 				AfficheFollow(data);
 			}
 	});
+
+	function AfficheFollowContributeur(data) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetefollowcontributeur.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+				} else {
+					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	
+	function InitFollowContributeur() {
+		$('#box_container').find('.box_suivre_user').each(function() {
+			var contributeur = $(this).find("img").attr("id").replace(/SuivreContributeur/gi, "");
+			dataFollow = {check : 1, 
+						  id_contributeurACTIF : $idcontributeurACTIF,
+						  id_contributeur : contributeur};
+			AfficheFollowContributeur(dataFollow);		
+		});
+	}
+	InitFollowContributeur();
 	
 	</script>		
 		

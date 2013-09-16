@@ -185,7 +185,7 @@ span.index_overlay_texte{display:block;}
 .utilisateur_boxes .box_icon{background-color:#acacac;}
 .utilisateur_boxes .box_posttype{background-color:#acacac;}
 /*.utilisateur_boxes .box:hover{border: 1px solid #acacac;}*/
-.box_suivre_user{position:absolute;top:0;right:0;}
+.box_suivre_user{cursor:pointer;position:absolute;top:0;right:0;}
 
 /* BOUTONS ACTIONS JM / JM PAS / WISHLIST */
 .boutons{width:44px;height:45px;background:url("../img/pictos_actions/boutons.png") no-repeat center;}
