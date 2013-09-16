@@ -28,7 +28,7 @@ $sql = "SELECT result FROM
 			WHERE quartier LIKE '" . $_GET['key'] . "%'
 		UNION
 		SELECT arrondissement AS result FROM arrondissement
-			WHERE arrondissement LIKE '" . $_GET['key'] . "%') AS t1
+			WHERE arrondissement LIKE '%" . $_GET['key'] . "%') AS t1
 	ORDER BY result ASC LIMIT 0,10";
 }
 $req = $bdd->prepare($sql);

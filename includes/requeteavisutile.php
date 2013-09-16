@@ -16,7 +16,7 @@ try
 					";
 
 		$reqCheck = $bdd->prepare($sqlCheck);
-		$reqCheck->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_STR);
+		$reqCheck->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_INT);
 		$reqCheck->bindParam(':id_avis', $_POST['id_avis'], PDO::PARAM_INT);
 		$reqCheck->execute();
 		$resultCheck = $reqCheck->fetch(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ try
 				$req->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_INT);
 				$req->bindParam(':id_avis', $_POST['id_avis'], PDO::PARAM_INT);
 				$req->bindParam(':avis_utile', $_POST['avis_utile'], PDO::PARAM_INT);
-				$req->bindParam(':date_avis_utile', $date, PDO::PARAM_INT);
+				$req->bindParam(':date_avis_utile', $date, PDO::PARAM_STR);
 				$req->execute();
 			} else if ($resultCheck['avis_utile'] != $_POST['avis_utile']) {
 				$sql = "UPDATE contributeurs_avis_utiles SET date_avis_utile=:date_avis_utile , avis_utile=:avis_utile
@@ -39,7 +39,7 @@ try
 				$req->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_INT);
 				$req->bindParam(':id_avis', $_POST['id_avis'], PDO::PARAM_INT);
 				$req->bindParam(':avis_utile', $_POST['avis_utile'], PDO::PARAM_INT);
-				$req->bindParam(':date_avis_utile', $date, PDO::PARAM_INT);
+				$req->bindParam(':date_avis_utile', $date, PDO::PARAM_STR);
 				$req->execute();
 			}
 			$data['existe'] = 1;

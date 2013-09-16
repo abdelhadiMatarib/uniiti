@@ -17,10 +17,7 @@
 
 	if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		$dataLDW = "{id_contributeur :" . $id_contributeur . "}";
-		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/suivre_utilisateur_step1.tpl.php', 'default_dialog_large');";
-	} else {
-		$follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
-	}		
+	}
 	
 	$sql = "SELECT * FROM contributeurs WHERE id_contributeur = " . $id_contributeur;
 
@@ -108,7 +105,7 @@
                     <div class="objet_head_infos_services"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></div>
                     
                     <div class="objet_head_infos_infos"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_infos_text"><span class="objet_head_infos_infos_text_fin">Classement</span><span class="objet_head_infos_infos_text_couleur">Sport</span></div><span class="objet_head_infos_infos_classement">85<sup>ème</sup></span></div>
-                    <div class="objet_head_infos_suivre" onclick="<?php echo $follow_step1; ?>"><span class="objet_head_infos_suivre_firstcat">Suivre</span><span class="objet_head_infos_suivre_lastcat"><?php echo $prenom_contributeur; ?></span><div class="img_container"><img src="../img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></div>
+                    <div class="objet_head_infos_suivre" id="Suivre"><span id="TexteSuivre" class="objet_head_infos_suivre_firstcat">Suivre</span><span class="objet_head_infos_suivre_lastcat"><?php echo $prenom_contributeur; ?></span><div class="img_container"><img id="ImageSuivre" src="../img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></div>
                 </div>
             </div>
             <div class="commerce_head2">
@@ -143,5 +140,47 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
         <?php include'../includes/js.php' ?>
-    </body>
+
+	<script>
+	function AfficheFollow(data) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetefollowcontributeur.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					$('#TexteSuivre').html('Suivi');
+					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_utilisateurs/icon_user_suivi.png');
+				} else {
+					$('#TexteSuivre').html('Suivre');
+					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_commerces/suivre.png');				
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
+	var $idcontributeur = <?php echo $id_contributeur; ?>;
+	var data = {check : 1, id_contributeurACTIF : $idcontributeurACTIF, id_contributeur : $idcontributeur};
+	AfficheFollow(data);
+
+	$('#Suivre').click(function() {
+		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+		else {
+				data = {check : 0, id_contributeurACTIF : $idcontributeurACTIF, id_contributeur : $idcontributeur};
+				AfficheFollow(data);
+			}
+	});
+	
+	</script>
+
+
+	</body>
 </html>
