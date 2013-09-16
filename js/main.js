@@ -139,6 +139,16 @@ function resizeboxContainer(){
 		$('.header').css('padding-top','7px').css('padding-bottom','7px').css('padding-right','9px').css('padding-left','9px');	
 	}
 	
+	/* 1 */if ($('.big_wrapper').width() == 236){
+		// HEADER
+		
+		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','none');
+		$('.header_button_menu').css('display','none');
+		$('.header_rightnav').css('display','none');
+		$('.biggymarginer').css('padding-right','9px').css('padding-left','9px');
+		$('.header').css('padding-top','7px').css('padding-bottom','7px').css('padding-right','9px').css('padding-left','9px');	
+	}
+	
 	/* 3 */if ($('.big_wrapper').width() == 736){
 		
 		// HEADER
