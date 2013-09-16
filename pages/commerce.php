@@ -34,9 +34,8 @@
 		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/suivre_enseigne_step1.tpl.php', 'default_dialog_large');";
 	} else {
-		$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 	}		
 	
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
@@ -146,7 +145,7 @@
                 <div class="commerce_head_infos">
                     <div class="commerce_head_infos_services"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
                     <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></a></div>
-                    <div class="commerce_head_infos_suivre"><a href="#" title="" onclick="<?php echo $follow_step1; ?>"><span>Suivre</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
+                    <div class="commerce_head_infos_suivre" id="Suivre"><a href="#" title=""><span id="TexteSuivre">Suivre</span><div class="img_container"><img id="ImageSuivre" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
@@ -206,5 +205,46 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
         <?php include'../includes/js.php' ?>
+		
+	<script>
+	function AfficheFollow(data) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetefollowenseigne.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					$('#TexteSuivre').html('Suivi');
+					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+				} else {
+					$('#TexteSuivre').html('Suivre');
+					$('#ImageSuivre').attr('src', siteurl+'/img/pictos_commerces/suivre.png');				
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
+	var $idenseigne = <?php echo $id_enseigne; ?>;
+	var data = {check : 1, id_contributeurACTIF : $idcontributeurACTIF, id_enseigne : $idenseigne};
+	AfficheFollow(data);
+
+	$('#Suivre').click(function() {
+		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
+		else {
+				data = {check : 0, id_contributeurACTIF : $idcontributeurACTIF, id_enseigne : $idenseigne};
+				AfficheFollow(data);
+			}
+	});
+	
+	</script>		
+		
     </body>
 </html>
