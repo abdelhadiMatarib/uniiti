@@ -186,6 +186,7 @@
 				. "id_avis :" . $id_avis . ","
 				. "id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
+				. "photo_contributeur : '" . addslashes($photo_contributeur) . "',"
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
@@ -262,7 +263,7 @@
 				<footer>
 					
 					<div class="box_foot">
-						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo $SITE_URL . "/photos/utilisateurs/avatars/photo " . rand(1, 10) . ".jpg";?>" title="" alt="" /></a></div>
+						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo $SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" /></a></div>
 						<div class="box_user_time"><?php echo $delai_avis;  ?></div>
 						<div class="box_posttype" <?php echo AfficheProvenance($provenance, $categorie); ?>></div>
 					</div>

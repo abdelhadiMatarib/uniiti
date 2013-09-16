@@ -22,6 +22,11 @@
 	$result = $req->fetch(PDO::FETCH_ASSOC);
  
 	$photo_contributeur     = $result['photo_contributeur'];
+	$slide1_contributeur    = $result['slide1_contributeur'];
+	$slide2_contributeur    = $result['slide2_contributeur'];
+	$slide3_contributeur    = $result['slide3_contributeur'];
+	$slide4_contributeur    = $result['slide4_contributeur'];
+	$slide5_contributeur    = $result['slide5_contributeur'];
 	$prenom_contributeur    = $result['prenom_contributeur'];
 	$nom_contributeur       = $result['nom_contributeur'];
 	$sexe_contributeur 		= $result['sexe_contributeur'];
@@ -87,7 +92,7 @@
                     <div class="clearfix"></div>
                     <div class="utilisateur_head_desc_avatar">
                         <div class="img_container">
-                            <img src="../img/avatars/3.jpg" title="" alt="" height="120" width="120"/>
+                            <img src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
                             <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin({step:1}, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
                         
                         </div>
@@ -129,7 +134,7 @@
             <div class="commerce_couv">
                 <div class="ligne_verticale4"></div>
                 <div class="ligne_verticale5"></div>
-                <img src="../img/photos_commerces/couv3.jpg" title="" alt="" />
+                <img src="<?php echo SITE_URL . "/photos/utilisateurs/couvertures/" . $slide1_contributeur;?>" title="" alt="" />
                 <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><div class="utilisateur_interface_modifier_icon_blanc"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_b.png" title="" alt="" height="12" width="12" /></div><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
                 <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
                 
