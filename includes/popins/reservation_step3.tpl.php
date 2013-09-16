@@ -1,6 +1,7 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php'; ?>
+        include'../head.php';
+        include'../js.php';?>
 <div class="reservation_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="reservation_head">
@@ -36,11 +37,26 @@
             
             <div class="reservation_nombre_personnes_grande_table_nbr">
                 <div class="arrow_right"></div>
-                <a href="#" title="">10+</a>
+                <a class="resa_link_10plus" href="#" title="">10+</a>
             </div>
-            
+            <script>
+                $(document).ready(
+            $(function () {
+    $('.resa_link_10plus').on('click',function () {
+        var input = $('<input />', {'type': 'text', 'name': 'aname', 'value': $(this).html()});
+        $(this).parent().append(input);
+        $(this).remove();
+        input.focus();
+    });
+
+    $('input').on('focus blur',function () {
+        $(this).parent().append($('<span>test</span>').html($(this).val()));
+        $(this).remove();
+    });
+    })
+);
+            </script>
         </div>
-        
         <div class="reservation_step2_footer">
             <div class="reservation_step2_footer_retour_dates">
              <a href="#" title="">Modifier l'horaire</a>
