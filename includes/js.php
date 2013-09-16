@@ -132,6 +132,7 @@
 							success: function(html){
 								if (html) {
 									$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+									if ($Page == "Commerce") {InitFollowContributeur();}
 
 								} else {alert('Il n\'y a plus d\'enregistrements');}
 								if (html.search('box') == -1) {DisableScroll = true;}
