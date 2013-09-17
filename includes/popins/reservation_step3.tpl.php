@@ -1,7 +1,6 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php';
-        include'../js.php';?>
+        include'../head.php';?>
 <div class="reservation_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="reservation_head">
@@ -43,7 +42,7 @@
                 $(document).ready(
             $(function () {
     $('.resa_link_10plus').on('click',function () {
-        var input = $('<input />', {'type': 'text', 'name': 'aname', 'value': $(this).html()});
+        var input = $('<input />', {'type': 'text','class': 'input_resa_nbr_pers','name': 'aname', 'value': $(this).html()});
         $(this).parent().append(input);
         $(this).remove();
         input.focus();
@@ -63,7 +62,7 @@
             </div>
             <div class="reservation_step2_3_vertical_sep"></div>
             <div class="reservation_step2_footer_etape_suivante">
-             <a href="#" title="">Étape suivante</a>   
+             <a href="#" title="" onclick="EtapeSuivante();">Étape suivante</a>   
             </div>
             
         </div>
@@ -71,8 +70,14 @@
     </div>
 </div>
 <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
+function EtapeSuivante() {
+    var data = {
+                step : 4,
+                id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+                id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                chemin : ''
+                };
+            ActualisePopin(data, '/includes/popins/reservation_step4.tpl.php', 'default_dialog');
+    };
 </script>
 </html>

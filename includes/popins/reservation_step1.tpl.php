@@ -33,7 +33,7 @@
                 <div id="datepicker"></div>
             </div>
         </div>
-        <div class="reservation_step1_footer"><a href="#" title="">Étape suivante</a></div>
+        <div class="reservation_step1_footer"><a href="#" title="" onclick="EtapeSuivante();">Étape suivante</a></div>
             
     </div>
 </div>
@@ -63,5 +63,15 @@ jQuery(function($){
         $( "#datepicker" ).datepicker({selectable:true});
    });
 });
+
+function EtapeSuivante() {
+    var data = {
+                step : 2,
+                id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+                id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                chemin : ''
+                };
+            ActualisePopin(data, '/includes/popins/reservation_step2.tpl.php', 'default_dialog');
+    };
 </script>
 </html>

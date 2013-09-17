@@ -617,8 +617,9 @@ input.input_signalement_motif{width:290px;}
 .reservation_nombre_personnes_grande_table_txt{border-right:1px solid #e4e4e4;background-color:white;font-size:0.9em;float:left;height:34px;width:211px;padding:8px;text-align:center;}
 .reservation_nombre_personnes_grande_table_txt_bold{font-weight:700;}
 .reservation_nombre_personnes_grande_table_txt span{display:block;}
-.reservation_nombre_personnes_grande_table_nbr{float:left;font-size: 1.4em;width:151px;text-align:center;}
-.reservation_nombre_personnes_grande_table_nbr a{background-color:#f0f0f0;width: 151px;float: left;height: 37px;padding-top:13px;}
+.reservation_nombre_personnes_grande_table_nbr{float:left;font-size: 1.4em;width:152px;text-align:center;}
+.reservation_nombre_personnes_grande_table_nbr a{background-color:#f0f0f0;width: 152px;float: left;height: 37px;padding-top:13px;}
+.input_resa_nbr_pers{width: 152px;height: 50px;text-align: center;}
 .reservation_horaires_diner_txt{border-bottom:1px solid #e4e4e4;text-align:center;padding-top:40px;float:left;width:120px;height:61px;background-color:white;}
 .reservation_step2_footer{float:left;position:relative;}
 .reservation_step2_3_vertical_sep{position:absolute;top:0;left:239px;width:1px;height:40px;border-right:1px solid white;}
@@ -653,9 +654,9 @@ textarea.parrainage_input_message{resize:none;}
 .reservation_step1_footer a:hover,.reservation_step4_footer a:hover{color:white;background-color:#73d4dc;}
 .reservation_option2_body_centered{background-color:white;}
 .reservation_recap_formulaire{position:relative;float:left;}
-.resa_recap_vertical_sep{position:absolute;right:250px;top:0;width:1px;height:100px;border-left:1px solid #e4e4e4;}
-.reservation_recap_formulaire input[type="text"]{border-top:1px solid #e4e4e4;padding:10px;background-color:#f0f0f0;width:250px;float:left;height:50px;}
-textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;background-color:#f0f0f0;width:500px;height:100px;padding:10px;resize:none;}
+.resa_recap_vertical_sep{position:absolute;right:250px;top:0;width:1px;height:82px;border-left:1px solid #e4e4e4;}
+.reservation_recap_formulaire input[type="text"]{border-top:1px solid #e4e4e4;padding:10px;background-color:#f0f0f0;width:230px;float:left;height:20px;}
+textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;background-color:#f0f0f0;width:480px;height:100px;padding:10px;resize:none;}
 .reservation_recap_cgu_wrap{background-color:white;font-size:0.8em;float:left;padding:10px;width:480px;}
 .resa_recap_cgu_1{float:left;}
 .resa_recap_cgu_2{float:left;}
@@ -947,7 +948,7 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .input_avisenattente_precisezmotif{display:none;}
 
 /* RECHERCHE AVANCEE */
-.recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background-color:#a4ebf1;}
+.recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background:url('../img/pictos_actions/recherche_avancee_1300.png')white;max-height:175px;}
 .recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}
 .recherche_avancee_right{float:right;margin:10px 40px 10px 20px;}
 .recherche_avancee_img_container{height:96px;width:96px;}
