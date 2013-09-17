@@ -49,13 +49,19 @@
                 </div>
             </div>
         </div>
-        <div class="reservation_step4_footer"><a href="#" title="">Terminer la réservation</a></div>
+        <div class="reservation_step4_footer"><a href="#" title="" onclick="EtapeSuivante();">Terminer la réservation</a></div>
             
     </div>
 </div>
 <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
+function EtapeSuivante() {
+    var data = {
+                step : 4,
+                id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+                id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                chemin : ''
+                };
+            ActualisePopin(data, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
+    };
 </script>
 </html>

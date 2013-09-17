@@ -101,6 +101,6 @@
         
     </header>
     </div>
-    <div class="recherche_avancee_wrapper"></div>
 </div>
+<div class="recherche_avancee_wrapper"></div>
 <!-- FIN DU HEADER -->
