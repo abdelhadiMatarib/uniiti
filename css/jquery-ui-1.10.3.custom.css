@@ -391,6 +391,7 @@ button.ui-button::-moz-focus-inner {
     color: #252525;
 }
 .ui-datepicker-calendar .ui-state-hover{background-color:#a4ebf1;}
+.ui-datepicker-calendar .ui-state-disabled span{color:#acacac;}
 .ui-datepicker-calendar .ui-state-active{background-color:#a4ebf1;font-weight:600;}
 .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
