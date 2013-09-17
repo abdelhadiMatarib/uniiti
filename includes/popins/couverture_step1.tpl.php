@@ -172,6 +172,25 @@
 				else {alert ("Il y a déjà 5 images dans votre gallerie")}
 
 			});
+
+			function InitImages() {
+				for (i = 1 ; i <=5 ; i++) {
+					var NumImage = i;
+					if ($('#ImageTemp' + NumImage).val() != "") {
+						CompteImageErg++;
+						$("#image" + NumImage).addClass("is_valid");
+						
+						$("#image" + NumImage).click(function(e){
+							e.preventDefault();
+							e.stopPropagation();
+							InitDrag();
+							NumImageSel = $(this).attr("id").replace(/image/gi, "");
+							$("#image").attr("src", $('#ImageTemp' + NumImageSel).val());
+						});
+					}
+				}
+			}
+			InitImages();
 			
 			$('.couverture_step1_button_supprimer').click(function(e){
 				e.preventDefault();
@@ -209,24 +228,6 @@
 				$("#image").css({display : "block"});
 			});
 
-			function InitImages() {
-				for (i = 1 ; i <=5 ; i++) {
-					var NumImage = i;
-					if ($('#ImageTemp' + NumImage).val() != "") {
-						InitDrag();
-						CompteImageErg++;
-						$("#image" + NumImage).addClass("is_valid");
-						
-						$("#image" + NumImage).click(function(e){
-							e.preventDefault();
-							e.stopPropagation();
-							NumImageSel = $(this).attr("id").replace(/image/gi, "");
-							$("#image").attr("src", $('#ImageTemp' + NumImageSel).val());
-						});
-					}
-				}
-			}
-			InitImages();
 			
 			function EtapeSuivante() {
 			var data = {
