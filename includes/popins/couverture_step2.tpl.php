@@ -58,40 +58,76 @@
 		imagepng($newImage, $couv);
 //			echo "Image sauvegardée dans " . $ImageRecalibree;			
 	}
-		
-		$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+		if ((!empty($_POST['id_contributeur'])) && (!empty($_POST['id_enseigne']))) {
+			if ($_POST['id_contributeur'] != "") {
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
+			}
+			else if ($_POST['id_enseigne'] != "") {
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
+			}
+			else {exit;}
+		}
+		else {
+			$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+		}
 		$NbImages = 1;
 		if (!empty($_POST['image1'])) {
-			CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
+			if (substr_count($_POST['image1'], "http:") > 0) {
+				$image[1] = $_POST['image1'];
+			} else {
+				CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
+				$image[1] = SITE_URL . "/img/tmp/couv1.jpg";
+			}
+			$y[1] = $_POST['y1'];
 //			$image1 = $CheminImageRecalibree . "couv1.png";
 //			CreerImageCouverture($_POST['image1'], $image1, $_POST['y1']);
-			$image[1] = SITE_URL . "/img/tmp/couv1.jpg";
-			}
-		else {$image[1] = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";}
+
+		}
+		else {$image[1] = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";$y[1] = 0;}
 		if (!empty($_POST['image2'])) {
-			CompresserImage ($_POST['image2'], $CheminImageRecalibree . "couv2.jpg", 1750);
-			$image[2] = SITE_URL . "/img/tmp/couv2.jpg";
+			if (substr_count($_POST['image2'], "http:") > 0) {
+				$image[2] = $_POST['image2'];
+			} else {
+				CompresserImage ($_POST['image2'], $CheminImageRecalibree . "couv2.jpg", 1750);
+				$image[2] = SITE_URL . "/img/tmp/couv2.jpg";
+			}
 			$NbImages = 2;
-			}
-		else {$image2 = "";}
+			$y[2] = $_POST['y2'];
+		}
+		else {$image[2] = "";$y[2] = 0;}
 		if (!empty($_POST['image3'])) {
-			CompresserImage ($_POST['image3'], $CheminImageRecalibree . "couv3.jpg", 1750);
-			$image[3] = SITE_URL . "/img/tmp/couv3.jpg";
+			if (substr_count($_POST['image3'], "http:") > 0) {
+				$image[3] = $_POST['image3'];
+			} else {
+				CompresserImage ($_POST['image3'], $CheminImageRecalibree . "couv3.jpg", 1750);
+				$image[3] = SITE_URL . "/img/tmp/couv3.jpg";
+			}
 			$NbImages = 3;
-			}
-		else {$image3 = "";}
+			$y[3] = $_POST['y3'];
+		}
+		else {$image[3] = "";$y[3] = 0;}
 		if (!empty($_POST['image4'])) {
-			CompresserImage ($_POST['image4'], $CheminImageRecalibree . "couv4.jpg", 1750);
-			$image[4] = SITE_URL . "/img/tmp/couv4.jpg";
-			$NbImages = 4;
+			if (substr_count($_POST['image4'], "http:") > 0) {
+				$image[4] = $_POST['image4'];
+			} else {
+				CompresserImage ($_POST['image4'], $CheminImageRecalibree . "couv4.jpg", 1750);
+				$image[4] = SITE_URL . "/img/tmp/couv4.jpg";
 			}
-		else {$image4 = "";}
+			$NbImages = 4;
+			$y[4] = $_POST['y4'];
+			}
+		else {$image[4] = "";$y[4] = 0;}
 		if (!empty($_POST['image5'])) {
+			if (substr_count($_POST['image5'], "http:") > 0) {
+				$image[5] = $_POST['image5'];
+			} else {
 			CompresserImage ($_POST['image5'], $CheminImageRecalibree . "couv5.jpg", 1750);
 			$image[5] = SITE_URL . "/img/tmp/couv5.jpg";
-			$NbImages = 5;
 			}
-		else {$image5 = "";}
+			$NbImages = 5;
+			$y[5] = $_POST['y5'];
+		}
+		else {$image[5] = "";$y[5] = 0;}
 
 	
 	?>
@@ -132,12 +168,24 @@
 				</div>
 				<div class="couverture_arianne_nbr">
 					<ul class="couverture_arianne_nbr_liste">
-						<li><a id="image1" href="#" onclick="InitSortable();" alt="">1</a></li>
+						<li><a id="image1" href="#" alt="">1</a></li>
 						<li><a id="image2" href="#" alt="">2</a></li>
 						<li><a id="image3" href="#" alt="">3</a></li>
 						<li><a id="image4" href="#" alt="">4</a></li>
 						<li><a id="image5" href="#" alt="">5</a></li>                    
 					</ul>
+					<form>
+						<input id="ImageTemp1" type="hidden" name="ImageTemp1" value="<?php echo $image[1]; ?>"/>
+						<input id="ImageTemp2" type="hidden" name="ImageTemp2" value="<?php echo $image[2]; ?>"/>
+						<input id="ImageTemp3" type="hidden" name="ImageTemp3" value="<?php echo $image[3]; ?>"/>
+						<input id="ImageTemp4" type="hidden" name="ImageTemp4" value="<?php echo $image[4]; ?>"/>
+						<input id="ImageTemp5" type="hidden" name="ImageTemp5" value="<?php echo $image[5]; ?>"/>
+						<input type="hidden" name="y1" value="<?php echo $y[1]; ?>" id="y1" />
+						<input type="hidden" name="y2" value="<?php echo $y[2]; ?>" id="y2" />
+						<input type="hidden" name="y3" value="<?php echo $y[3]; ?>" id="y3" />
+						<input type="hidden" name="y4" value="<?php echo $y[4]; ?>" id="y4" />
+						<input type="hidden" name="y5" value="<?php echo $y[5]; ?>" id="y5" />
+					</form>
 				</div>
 			</div>
 		</div>
@@ -150,6 +198,41 @@
 			};
 
 			InitSortable();
+			function InitImages() {
+				for (i = 1 ; i <=5 ; i++) {
+					var NumImage = i;
+					if ($('#ImageTemp' + NumImage).val() != "") {
+						$("#image" + NumImage).addClass("is_valid");
+						$("#image" + NumImage).click(function(e){
+							e.preventDefault();
+							e.stopPropagation();
+							NumImageSel = $(this).attr("id").replace(/image/gi, "");
+							EtapePrecedente();
+						});
+					}
+				}
+			}
+			InitImages();
+			
+			function EtapePrecedente() {
+			var data = {
+							step : 1,
+							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+							chemin : '',
+							image1 : $('#ImageTemp1').val(),
+							image2 : $('#ImageTemp2').val(),
+							image3 : $('#ImageTemp3').val(),
+							image4 : $('#ImageTemp4').val(),
+							image5 : $('#ImageTemp5').val(),
+							y1 : $('#y1').val(),
+							y2 : $('#y2').val(),
+							y3 : $('#y3').val(),
+							y4 : $('#y4').val(),
+							y5 : $('#y5').val()
+						};
+				ActualisePopin(data, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');
+			};
 </script>
 
 </body>

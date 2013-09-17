@@ -59,10 +59,19 @@
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
 	
+	$datacouv = "{step : 1, "
+			. "id_contributeur : " . $id_contributeur . ", "
+			. "chemin : '" . SITE_URL . "/photos/utilisateurs/couvertures/', "
+			. "image1 : '" . $slide1_contributeur . "', "
+			. "image2 : '" . $slide2_contributeur . "', "
+			. "image3 : '" . $slide3_contributeur . "', "
+			. "image4 : '" . $slide4_contributeur . "', "
+			. "image5 : '" . $slide5_contributeur . "'}";
 ?>
 <body>    
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
+	<div id="default_dialog_inscription"></div>
 	<div id="dialog_overlay">
 		<div class="index_overlay"></div>
 		<div class="dialog_overlay_wrap_content">
@@ -93,7 +102,7 @@
                     <div class="utilisateur_head_desc_avatar">
                         <div class="img_container">
                             <img src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
-                            <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin({step:1}, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
+                            <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvreInscription2();"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
                         
                         </div>
                     </div>
@@ -138,7 +147,7 @@
                 <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><div class="utilisateur_interface_modifier_icon_blanc"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_b.png" title="" alt="" height="12" width="12" /></div><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
                 <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
                 
-                <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin({step:1}, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
+                <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
                 
             </div>
            
@@ -159,6 +168,18 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
 		<?php include'../includes/js.php' ?>
+
+	<script>
+		function OuvreInscription2() {
+			var dataavatar = {step : 'change',
+								id_contributeur : '<?php echo $id_contributeur; ?>',
+								photo_contributeur : '<?php echo addslashes($photo_contributeur); ?>'
+						};
+			OuvrePopin(dataavatar, '/pages/inscription2.php', 'default_dialog_inscription');
+			/* Initilisation du mini slider de choix d'avatar */
+			$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
+		}
+	</script>
 		
     </body>
 </html>

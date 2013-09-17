@@ -1,12 +1,14 @@
         <?php
         include_once '../config/configuration.inc.php';
+		if ((!empty($_POST['step'])) && ($_POST['step'] == "change")) {$Change = true;}
+		else {$Change = false;}
 
 		?>
-            <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+            <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" /><?php if ($Change) {echo "Changer votre";} else {echo "Créer un compte en seulement";} ?> <span><?php if ($Change) {echo "avatar";} else {echo "3 étapes";} ?></span></h2></div>
            <div class="inscription_head2">
-                <div class="inscription_step1"><h3>Informations générales</h3></div>
+				<div class="inscription_step1"><h3><?php if (!$Change) { ?>Informations générales<?php } ?></h3></div>
                 <div class="inscription_step2 inscription_current_step_texte_head"><h3>Choix de l'avatar</h3></div>
-                <div class="inscription_step3"><h3>Vos centres d'intérêts</h3></div>
+                <div class="inscription_step3"><h3><?php if (!$Change) { ?>Vos centres d'intérêts<?php } ?></h3></div>
             </div>
             <div class="inscription_fields_left">
                 <div class="inscription_upload_image_texte"><span>Glissez-déposez une image dans le cadre</span></div>
@@ -52,9 +54,12 @@
 				<div class="inscription_wrap_next_step2">
 				<div class="inscription_next_step2">
 					<div class="inscription_current_step"><span class="inscription_current_step_number">2</span><span class="inscription_current_step_etape_texte">étape</span></div>
-					<button class="inscription_next_step_button2" id="submitbutton" type="submit" role="button" class="css3button" >Suivant</button>
+					<button class="inscription_next_step_button2" id="submitbutton" type="submit" role="button" class="css3button" ><?php if ($Change) {echo "Enregistrer";} else {echo "Suivant";} ?></button>
 				</div>
-					<div class="inscription_avatar_selected"><div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div><img id="Avatar" src="<?php echo SITE_URL; ?>/img/avatars/6.png" height="120" width="120" title="" alt="" /></div>
+					<div class="inscription_avatar_selected">
+						<div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div>
+						<img id="Avatar" src="<?php if ($Change) {echo SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'];} else {echo SITE_URL; ?>/img/avatars/6.png<?php } ?>" height="120" width="120" title="" alt="" />
+					</div>
 				</div>
            </form>
 		

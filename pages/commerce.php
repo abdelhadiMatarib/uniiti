@@ -13,7 +13,7 @@
 	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
-					logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
+					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -45,6 +45,11 @@
            
 	$nom_enseigne            = $result2['nom_enseigne'];
 	$logotype_enseigne       = $result2['logotype_enseigne'];
+	$slide1_enseigne    	 = $result2['slide1_enseigne'];
+	$slide2_enseigne    	 = $result2['slide2_enseigne'];
+	$slide3_enseigne    	 = $result2['slide3_enseigne'];
+	$slide4_enseigne    	 = $result2['slide4_enseigne'];
+	$slide5_enseigne    	 = $result2['slide5_enseigne'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$ville_enseigne          = $result2['ville_enseigne'];
@@ -184,7 +189,7 @@
             <div class="commerce_couv">
                 <div class="ligne_verticale1"></div>
                 <div class="ligne_verticale2"></div>
-                <img src="<?php echo SITE_URL; ?>/img/photos_commerces/couv.jpg" title="" alt="" />
+                <img src="<?php echo SITE_URL . "/photos/utilisateurs/couvertures/" . $slide1_enseigne;?>" title="" alt="" />
                 
                 <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title" style="background-color:<?php echo $couleur; ?>;"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
