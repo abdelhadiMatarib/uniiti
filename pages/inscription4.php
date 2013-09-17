@@ -27,10 +27,6 @@
 	// Bonus
 	if(!empty($_POST['bonus'])) {$bonus_result = 1;} else {$bonus_result = 0;}
 
-	if($sexe == 0) {$photo = 'photo_contributeur_f.jpg';}
-	else if($sexe == 1) {$photo = 'photo_contributeur_h.jpg';}
-	else {$photo = 'photo_contributeur_n.jpg';}
-
 	$certification  = 0;                                            // Certification
 	$groupe_permission = 1;
 
@@ -52,7 +48,6 @@
 	} else {
 			// Preparation requete + execution pour enregistrement dans la base
 			$req = $bdd->prepare('INSERT INTO contributeurs(email_contributeur,
-															photo_contributeur, 
 															prenom_contributeur, 
 															nom_contributeur, 
 															sexe_contributeur, 
@@ -72,7 +67,6 @@
 															) 
 											VALUES(
 															:email_contributeur, 
-															:photo_contributeur,
 															:prenom_contributeur,  
 															:nom_contributeur, 
 															:sexe_contributeur, 
@@ -93,7 +87,7 @@
 
 			$req->bindParam(':email_contributeur', $email_login, PDO::PARAM_STR);
 			//$req->bindParam(':pseudo_contributeur', $pseudo, PDO::PARAM_STR);
-			$req->bindParam(':photo_contributeur', $photo, PDO::PARAM_STR);
+
 			$req->bindParam(':prenom_contributeur', $prenom, PDO::PARAM_STR);
 			$req->bindParam(':nom_contributeur', $nom, PDO::PARAM_STR);
 			$req->bindParam(':sexe_contributeur', $sexe, PDO::PARAM_INT);
@@ -111,23 +105,48 @@
 			$req->bindParam(':groupes_permissions_id_permission', $groupe_permission, PDO::PARAM_INT);
 			$req->bindParam(':date_inscription', $date, PDO::PARAM_STR);
 			$req->execute();
-
+			
+			$id_contributeur = $bdd->lastInsertId();
+			
 			if($req) {}
 			else {}				// ERREUR A GERER
 			$req->closeCursor();		// Ferme la connexion du serveur
+			
+	
+			$photo = $id_contributeur . "avatar.jpg";
+//			rename($_POST['ImageTemp'], $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/avatars/" . $photo);
+
+			
 	}
 	$reqCheck->closeCursor();
 	$bdd = null;					// Détruit l'objet PDO
 	?>		
-            <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
-            <div class="inscription_fields_left inscription_final_step_left">
-                <div class="inscription_final_step_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user_created.png" height="197" width="190" title="" alt="" /></div>
-                <div class="inscription_final_step_txt_container">
-					<span class="inscription_final_step_texte_highlight1">Bravo !</span>
-					<span class="inscription_final_step_texte_highlight2">Votre compte</span><span class="inscription_final_step_texte_highlight2">est créé</span>
-					<span class="inscription_final_step_texte_highlight3">Vous voyez, cela n'était pas si long !</span>
-                </div>
-            </div>
-            <div class="inscription_fields_left inscription_final_step_right"><div class="AbsoluteCenter"><a href="<?php echo SITE_URL?>"><span class="inscription_final_step_right_texte">Retour à la</span><span class="inscription_final_step_right_texte_highlight">page d'accueil</span></a></div></div>
-            <div class="containing_rondou"><div class="inscription_final_step_rondou"><span>Ou</span></div></div>
-            <div class="inscription_fields_left inscription_final_step_right2"><div class="AbsoluteCenter"><a href="utilisateur.php"><span class="inscription_final_step_right_texte">Accéder à</span><span class="inscription_final_step_right_texte_highlight">votre profil</span></a></div></div>
+	<div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
+	<div class="inscription_fields_left inscription_final_step_left">
+		<div class="inscription_final_step_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user_created.png" height="197" width="190" title="" alt="" /></div>
+		<div class="inscription_final_step_txt_container">
+			<span class="inscription_final_step_texte_highlight1">Bravo !</span>
+			<span class="inscription_final_step_texte_highlight2">Votre compte</span><span class="inscription_final_step_texte_highlight2">est créé</span>
+			<span class="inscription_final_step_texte_highlight3">Vous voyez, cela n'était pas si long !</span>
+		</div>
+	</div>
+	<div class="inscription_fields_left inscription_final_step_right"><div class="AbsoluteCenter"><a href="<?php echo SITE_URL?>"><span class="inscription_final_step_right_texte">Retour à la</span><span class="inscription_final_step_right_texte_highlight">page d'accueil</span></a></div></div>
+	<div class="containing_rondou"><div class="inscription_final_step_rondou"><span>Ou</span></div></div>
+	<div class="inscription_fields_left inscription_final_step_right2"><div class="AbsoluteCenter"><a href="utilisateur.php"><span class="inscription_final_step_right_texte">Accéder à</span><span class="inscription_final_step_right_texte_highlight">votre profil</span></a></div></div>
+
+	<script>
+	var data = {id_contributeur : '<?php echo $id_contributeur; ?>',
+				photo : '<?php echo $photo; ?>'
+				};
+	$.ajax({
+		async : false,
+		type :"POST",
+		url : siteurl+'/includes/requetechangeavatar.php',
+		data : data,
+		success: function(html){
+			alert("photo enregistrée");
+		},
+		error: function() {alert('Erreur sur url : ' + url);}
+	});
+	
+	</script>

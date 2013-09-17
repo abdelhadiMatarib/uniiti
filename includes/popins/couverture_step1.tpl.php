@@ -142,6 +142,7 @@
 			
 			function AfficheChercheImage() {
 				$("#image").attr("src", "");
+				$("#image").css({'width': 0});
 				$(".couverture_step1_dropzone_img_container").css({display : "block"});
 				$(".couverture_step1_dropzone_txt").css({display : "block"});
 				$(".couverture_step1_wrap_buttons").css({display : "none"});
@@ -166,6 +167,7 @@
 					$('#ImageTemp' + NumImage).val($('#ImageTemp').val());
 					$('#y' + NumImage).val($('#y').val());
 					$("#image" + NumImage).click(function(e){
+						InitDrag();
 						e.preventDefault();
 						e.stopPropagation();
 						NumImageSel = NumImage;
@@ -178,8 +180,8 @@
 			});
 
 			function InitImages() {
-				for (i = 1 ; i <=5 ; i++) {
-					var NumImage = i;
+				for (j = 1 ; j <=5 ; j++) {
+					var NumImage = j;
 					if ($('#ImageTemp' + NumImage).val() != "") {
 						CompteImageErg++;
 						$("#image" + NumImage).addClass("is_valid");
@@ -187,7 +189,7 @@
 							e.preventDefault();
 							e.stopPropagation();
 							InitDrag();
-							NumImageSel = $(this).attr("id").replace(/image/gi, "");
+							NumImageSel = Math.round($(this).attr("id").replace(/image/gi, ""));
 							$("#image").attr("src", $('#ImageTemp' + NumImageSel).val());
 						});
 					}
@@ -207,7 +209,7 @@
 				e.stopPropagation();
 				var NumImage = NumImageSel;
 				if ((CompteImageErg > 0) && (NumImage <= CompteImageErg)) {
-					for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
+					for (i = NumImage + 1; i <= CompteImageErg ; i++) {
 						$('#ImageTemp' + (i - 1)).val($('#ImageTemp' + i).val());
 						$('#y' + (i - 1)).val($('#y' + i).val());
 					}
@@ -227,6 +229,7 @@
 			});
 
 			$("#image").load(function() {
+				$("#image").css({'width': 660});
 				var img = document.getElementById('image');
 				var height;
 				if(img.offsetHeight) {height=img.offsetHeight;}
@@ -238,7 +241,6 @@
 				AfficheBtnES();
 				var decalage = 0;
 				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val()*189/500;}
-//				alert(NumImageSel+' '+$('#y' + NumImageSel).val());
 				$(".draggable").css({top: decalage+'px'});
 				$("#image").css({display : "block"});
 			});

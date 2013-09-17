@@ -22,7 +22,7 @@
 					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 						<div class="inscription_upload_image_container">
 							<div class="inscription_upload_button" id="filedrag"></div>
-							<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
+							<input type="hidden" name="ImageTemp" value="<?php if ($Change) {echo SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'];} else {echo SITE_URL; ?>/img/avatars/6.png<?php } ?>" id="ImageTemp" />
 							<input type="file" id="inscription_upload" name="inscription_upload[]" multiple="multiple" />
 						</div>
 						

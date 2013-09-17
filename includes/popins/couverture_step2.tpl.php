@@ -58,17 +58,20 @@
 		imagepng($newImage, $couv);
 //			echo "Image sauvegardée dans " . $ImageRecalibree;			
 	}
-		if ((!empty($_POST['id_contributeur'])) && (!empty($_POST['id_enseigne']))) {
+		if ((!empty($_POST['id_contributeur'])) || (!empty($_POST['id_enseigne']))) {
 			if ($_POST['id_contributeur'] != "") {
 				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
+				$CheminImageCompressee = SITE_URL . "/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
 			}
 			else if ($_POST['id_enseigne'] != "") {
 				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
+				$CheminImageCompressee = SITE_URL . "/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
 			}
 			else {exit;}
 		}
 		else {
 			$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+			$CheminImageCompressee = SITE_URL . "/img/tmp/";
 		}
 		$NbImages = 1;
 		if (!empty($_POST['image1'])) {
@@ -76,7 +79,7 @@
 				$image[1] = $_POST['image1'];
 			} else {
 				CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
-				$image[1] = SITE_URL . "/img/tmp/couv1.jpg";
+				$image[1] = $CheminImageCompressee . "couv1.jpg";
 			}
 			$y[1] = $_POST['y1'];
 //			$image1 = $CheminImageRecalibree . "couv1.png";
@@ -89,7 +92,7 @@
 				$image[2] = $_POST['image2'];
 			} else {
 				CompresserImage ($_POST['image2'], $CheminImageRecalibree . "couv2.jpg", 1750);
-				$image[2] = SITE_URL . "/img/tmp/couv2.jpg";
+				$image[2] = $CheminImageCompressee . "couv2.jpg";
 			}
 			$NbImages = 2;
 			$y[2] = $_POST['y2'];
@@ -100,7 +103,7 @@
 				$image[3] = $_POST['image3'];
 			} else {
 				CompresserImage ($_POST['image3'], $CheminImageRecalibree . "couv3.jpg", 1750);
-				$image[3] = SITE_URL . "/img/tmp/couv3.jpg";
+				$image[3] = $CheminImageCompressee . "couv3.jpg";
 			}
 			$NbImages = 3;
 			$y[3] = $_POST['y3'];
@@ -111,7 +114,7 @@
 				$image[4] = $_POST['image4'];
 			} else {
 				CompresserImage ($_POST['image4'], $CheminImageRecalibree . "couv4.jpg", 1750);
-				$image[4] = SITE_URL . "/img/tmp/couv4.jpg";
+				$image[4] = $CheminImageCompressee . "couv4.jpg";
 			}
 			$NbImages = 4;
 			$y[4] = $_POST['y4'];
@@ -122,7 +125,7 @@
 				$image[5] = $_POST['image5'];
 			} else {
 			CompresserImage ($_POST['image5'], $CheminImageRecalibree . "couv5.jpg", 1750);
-			$image[5] = SITE_URL . "/img/tmp/couv5.jpg";
+			$image[5] = $CheminImageCompressee . "couv5.jpg";
 			}
 			$NbImages = 5;
 			$y[5] = $_POST['y5'];
@@ -189,7 +192,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="couverture_champs_action"><a href="#" title="" onclick="EtapeSuivante();"><span><?php echo $MessageAction ?></span></a></div>
+		<div class="couverture_champs_action"><a href="#" title="" onclick="Enregistrer();"><span><?php echo $MessageAction ?></span></a></div>
 </div>
 <script>    
 			function InitSortable() {
@@ -233,6 +236,39 @@
 						};
 				ActualisePopin(data, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');
 			};
+			
+			function Enregistrer () {
+			
+			var lastindex = $('#ImageTemp1').val().lastIndexOf('/')+1;
+			alert(lastindex);
+			var data = {
+							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+							chemin : '',
+							image1 : $('#ImageTemp1').val(),
+							image2 : $('#ImageTemp2').val(),
+							image3 : $('#ImageTemp3').val(),
+							image4 : $('#ImageTemp4').val(),
+							image5 : $('#ImageTemp5').val(),
+							y1 : $('#y1').val(),
+							y2 : $('#y2').val(),
+							y3 : $('#y3').val(),
+							y4 : $('#y4').val(),
+							y5 : $('#y5').val()
+						};
+				$.ajax({
+					async : false,
+					type :"POST",
+					url : siteurl+'/includes/requetechangecouvertures.php',
+					data : data,
+					success: function(html){
+						alert("couvertures enregistrées");
+					},
+					error: function() {alert('Erreur sur url : ' + url);}
+				});
+			
+			}
+						
 </script>
 
 </body>
