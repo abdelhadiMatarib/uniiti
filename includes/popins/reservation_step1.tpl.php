@@ -45,6 +45,7 @@ jQuery(function($){
 		prevText: 'Précédent',
 		nextText: 'Suivant',
 		currentText: 'Aujourd\'hui',
+                minDate: 0,
 		monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
 			'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
 		monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin',
