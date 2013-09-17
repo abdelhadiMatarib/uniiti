@@ -52,7 +52,7 @@
 				</div>
 				<div id="Interaction1">
 					<div class="couverture_step1_dropzone_img_container">
-						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="95" width="199" />
+						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="70" width="100" />
 					</div>
 					<div class="couverture_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
@@ -77,12 +77,12 @@
 			<input type="hidden" name="y3" value="" id="y3" />
 			<input type="hidden" name="y4" value="" id="y4" />
 			<input type="hidden" name="y5" value="" id="y5" />
-			<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
-			<input type="hidden" name="ImageTemp1" value="" id="ImageTemp1" />
-			<input type="hidden" name="ImageTemp2" value="" id="ImageTemp2" />
-			<input type="hidden" name="ImageTemp3" value="" id="ImageTemp3" />
-			<input type="hidden" name="ImageTemp4" value="" id="ImageTemp4" />
-			<input type="hidden" name="ImageTemp5" value="" id="ImageTemp5" />
+			<input type="hidden" name="ImageTemp" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'];} ?>" id="ImageTemp" />
+			<input type="hidden" name="ImageTemp1" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'];} ?>" id="ImageTemp1" />
+			<input type="hidden" name="ImageTemp2" value="<?php if ((!empty($_POST['image2'])) && ($_POST['image2'] != '')) {echo $_POST['chemin'] . $_POST['image2'];} ?>" id="ImageTemp2" />
+			<input type="hidden" name="ImageTemp3" value="<?php if ((!empty($_POST['image3'])) && ($_POST['image3'] != '')) {echo $_POST['chemin'] . $_POST['image3'];} ?>" id="ImageTemp3" />
+			<input type="hidden" name="ImageTemp4" value="<?php if ((!empty($_POST['image4'])) && ($_POST['image4'] != '')) {echo $_POST['chemin'] . $_POST['image4'];} ?>" id="ImageTemp4" />
+			<input type="hidden" name="ImageTemp5" value="<?php if ((!empty($_POST['image5'])) && ($_POST['image5'] != '')) {echo $_POST['chemin'] . $_POST['image5'];} ?>" id="ImageTemp5" />
 			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
 
 		</form>
@@ -209,9 +209,31 @@
 				$("#image").css({display : "block"});
 			});
 
+			function InitImages() {
+				for (i = 1 ; i <=5 ; i++) {
+					var NumImage = i;
+					if ($('#ImageTemp' + NumImage).val() != "") {
+						InitDrag();
+						CompteImageErg++;
+						$("#image" + NumImage).addClass("is_valid");
+						
+						$("#image" + NumImage).click(function(e){
+							e.preventDefault();
+							e.stopPropagation();
+							NumImageSel = $(this).attr("id").replace(/image/gi, "");
+							$("#image").attr("src", $('#ImageTemp' + NumImageSel).val());
+						});
+					}
+				}
+			}
+			InitImages();
+			
 			function EtapeSuivante() {
 			var data = {
 							step : 2,
+							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+							chemin : '',
 							image1 : $('#ImageTemp1').val(),
 							image2 : $('#ImageTemp2').val(),
 							image3 : $('#ImageTemp3').val(),
