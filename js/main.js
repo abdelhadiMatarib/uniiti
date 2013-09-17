@@ -114,6 +114,12 @@ function CreerOverlayPush() {
 	   if ($(this).hasClass('flux_utilisateur')) {SetFiltre({provenance:'all'});}
     });
     
+    // Social buttons display
+    $('.commerce_head_desc_social span').click(function(){
+       $('.overlay_social_buttons').toggleClass('overlay_social_buttons_specific');
+       $('.overlay_social_buttons_specific img').css('margin-right','5px');
+    });
+    
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
 function resizeboxContainer(){        
 	var boxcontainersize = $('#box_container').width();
@@ -151,6 +157,32 @@ function resizeboxContainer(){
 	}
 	
 	/* 3 */if ($('.big_wrapper').width() == 736){
+            
+            // Alternate descs in head
+            $('#commerce_head_desc_ariane_button').click(function(){
+                $('.commerce_head_desc_address').css('width','20px');
+                $('.commerce_head_desc_ariane').css('width','240px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('display','none');
+            });
+            $('#commerce_head_desc_address_button').click(function(){
+                $('.commerce_head_desc_ariane').css('width','40px');
+                $('.commerce_head_desc_address').css('width','230px');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+                $('#commerce_head_desc_ariane_wrap').css('display','none');
+            });
+            $('#commerce_head_desc_identity_button').click(function(){
+                $('.commerce_head_desc_prices').css('width','40px');
+                $('.commerce_head_desc_identity').css('width','230px');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+                $('#commerce_head_desc_prices_wrap').css('display','none');
+            });
+            $('#commerce_head_desc_prices_button').click(function(){
+                $('.commerce_head_desc_identity').css('width','20px');
+                $('.commerce_head_desc_prices').css('width','230px');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','none');
+            });
 		
 		// HEADER
 		
@@ -168,21 +200,24 @@ function resizeboxContainer(){
 		
 		$('.infosrapides3,.infosrapides4').css('display','none');
 		$('.infosrapides1,.infosrapides2').css('margin-top','10px');
-		$('.infosrapides1').css('margin-right','20px');
+		$('.infosrapides1').css('margin-right','20px').css('width','120px');
                 $('.infosrapides2').css('margin-right','0').css('width','110px');
 		$('.commerce_head_desc').css('width','294px');
-		$('.commerce_head_desc_address').css('width','230px');
+		$('.commerce_head_desc_address').css('width','230px').css('font-size','1em');
+                $('.commerce_head_desc_address span').css('margin-top','0px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
 		$('.commerce_head_desc_identity').css('width','230px');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
 		$('.commerce_head_desc_ariane').css('width','40px');
                 $('.commerce_head_desc_ariane span').css('font-size','0.9em');
 		$('#commerce_head_desc_ariane_wrap').css('display','none');
-		$('#commerce_head_desc_ariane_button').css('float','right');
+		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('.commerce_head_desc_prices').css('width','40px');
 		$('#commerce_head_desc_prices_wrap').css('display','none');
-		$('#commerce_head_desc_prices_button').css('float','right');
-		$('.commerce_head_desc_social').css('margin-top','14px').addClass('ipad_portrait_social');
+		$('#commerce_head_desc_prices_button').css('float','left');
+		$('.commerce_head_desc_social').css('margin-top','15px').addClass('ipad_portrait_social');
 		$('.commerce_head_desc_social span').css('display','block');
-		$('.commerce_head_desc_social img').css('display','none');
+		$('.commerce_head_desc_social .overlay_social_buttons').css('display','none');
                 $('.commerce_head_desc_title h2').css('font-size','1em').css('margin-top','15px');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',88);
 		$('.commerce_head_infos_suivre').css('width',70).css('height',88);
@@ -208,12 +243,12 @@ function resizeboxContainer(){
                 
 		$('.commerce_concept').css('width','272px').css('font-size','11px');
                 $('.commerce_concept a').css('width','250px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','160px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','165px');
 		$('.commerce_gerant').css('left','272px');
 		$('.gerant_photo').css('width','80px');
 		$('.gerant_title').css('font-size','11px');
-		$('.wrapper_boutons .boutons').addClass('boutons_ipad');
-		$('.wrapper_boutons').css('top','35px');
+		$('.wrapper_boutons').css('top','12px');
+                $('.wrapper_boutons .boutons').css('margin-bottom','0px');
 		$('.commerce_head_note_reserver').css('font-size','1.1em')
 		
 		
@@ -275,7 +310,33 @@ function resizeboxContainer(){
 	}
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 4 */else if ($('.big_wrapper').width() == 986){
-		
+            
+            // Alternate descs in head
+            $('#commerce_head_desc_ariane_button').click(function(){
+                $('.commerce_head_desc_address').css('width','195px');
+                $('.commerce_head_desc_ariane').css('width','195px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_address_button').click(function(){
+                $('.commerce_head_desc_ariane').css('width','195px');
+                $('.commerce_head_desc_address').css('width','195px');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_identity_button').click(function(){
+                $('.commerce_head_desc_prices').css('width','195px');
+                $('.commerce_head_desc_identity').css('width','195px');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_prices_button').click(function(){
+                $('.commerce_head_desc_identity').css('width','195px');
+                $('.commerce_head_desc_prices').css('width','195px');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+            });
+
 		// HEADER
 		
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
@@ -287,8 +348,8 @@ function resizeboxContainer(){
 		
 		// PAGE COMMERCE
 		
-		$('.wrapper_boutons .boutons').removeClass('boutons_ipad');
-		$('.wrapper_boutons').css('top','55px');
+		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
+		$('.wrapper_boutons').css('top','32px');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
 		$('.commerce_head_infos .separateur').css('display','block');
@@ -297,7 +358,7 @@ function resizeboxContainer(){
 		$('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','230px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','234px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
@@ -308,21 +369,24 @@ function resizeboxContainer(){
 
                 $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','12px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
-		$('.commerce_head_desc_social img').css('display','inline-block');
+                $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
+		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		$('.commerce_head_infos_infosrapides').css('margin-left','0px');
 		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',92).css('display','block').css('font-size','1em').css('margin-top','6px').css('margin-right','10px');
 		$('.infosrapides1').css('margin-right','10px')
 		$('.commerce_head_desc').css('width',418);
 		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','100px');
+                $('.commerce_head_desc_address').css('font-size','0.8em');
+                $('.commerce_head_desc_address span').css('margin-top','5px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','2px').css('display','block');
 		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','120px');
-		$('.commerce_head_desc_ariane').css('font-size','80%');
-                $('.commerce_head_desc_ariane span').css('font-size','0.9em');
+                $('.commerce_head_desc_ariane span').css('font-size','0.8em');
 		$('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
 		$('#commerce_head_desc_prices_wrap').css('display','block');
 		$('#commerce_head_desc_prices_button').css('float','left');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('font-size','90%');
 		$('.commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices').css('width','195');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',142).css('height','82px');
 		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('padding',15).css('padding-top',22).css('padding-left',10).css('padding-right',10).css('width','35px');
@@ -400,6 +464,32 @@ function resizeboxContainer(){
 	}
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 5 */else if ($('.big_wrapper').width() == 1236){
+            
+            // Alternate descs in head
+            $('#commerce_head_desc_ariane_button').click(function(){
+                $('.commerce_head_desc_address').css('width','250px');
+                $('.commerce_head_desc_ariane').css('width','260px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_address_button').click(function(){
+                $('.commerce_head_desc_ariane').css('width','260px');
+                $('.commerce_head_desc_address').css('width','250px');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_identity_button').click(function(){
+                $('.commerce_head_desc_prices').css('width','270px');
+                $('.commerce_head_desc_identity').css('width','250px');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_prices_button').click(function(){
+                $('.commerce_head_desc_identity').css('width','250px');
+                $('.commerce_head_desc_prices').css('width','270px');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+            });
 		
 		// HEADER
 		
@@ -411,19 +501,20 @@ function resizeboxContainer(){
 					
 		// PAGE COMMERCE
 		
-		$('.wrapper_boutons .boutons').removeClass('boutons_ipad');
-		$('.wrapper_boutons').css('top','90px');
+		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
+		$('.wrapper_boutons').css('top','70px');
 		$('.gerant_title').css('font-size','1em');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
-		$('.commerce_head_desc_social img').css('display','inline-block');
+                $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
+		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
 		$('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','300px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','305px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
@@ -440,15 +531,18 @@ function resizeboxContainer(){
 		$('.infosrapides1,.infosrapides2,.infosrapides3').css('margin-right','12px');
                 $('.infosrapides4').css('margin-right','0').css('width','110px');
 		$('.commerce_head_desc').css('width',545);
-		$('.commerce_head_desc_address').css('width','250px').css('font-size','1em');
-		$('.commerce_head_desc_ariane').css('width','260px').css('font-size','1em');
-                $('.commerce_head_desc_ariane span').css('font-size','0.8em');
+		$('.commerce_head_desc_address').css('width','250px').css('font-size','0.9em');
+                $('.commerce_head_desc_address span').css('margin-top','2px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+		$('.commerce_head_desc_ariane').css('width','260px');
+                $('.commerce_head_desc_ariane span').css('font-size','0.9em');
 		$('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('#commerce_head_desc_prices_wrap').css('display','block');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_desc_identity').css('width','250px').css('font-size','1em');
-		$('.commerce_head_desc_prices').css('width','270px').css('font-size','1em');;
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+		$('.commerce_head_desc_prices').css('width','270px').css('font-size','1em');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200).css('height','82px');
 		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10);
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
@@ -508,6 +602,32 @@ function resizeboxContainer(){
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 6 */else if ($('.big_wrapper').width() == 1486){
 		
+            // Alternate descs in head
+            $('#commerce_head_desc_ariane_button').click(function(){
+                $('.commerce_head_desc_address').css('width','350px');
+                $('.commerce_head_desc_ariane').css('width','280px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_address_button').click(function(){
+                $('.commerce_head_desc_ariane').css('width','280px');
+                $('.commerce_head_desc_address').css('width','350px');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_identity_button').click(function(){
+                $('.commerce_head_desc_prices').css('width','280px');
+                $('.commerce_head_desc_identity').css('width','350px');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_prices_button').click(function(){
+                $('.commerce_head_desc_identity').css('width','350px');
+                $('.commerce_head_desc_prices').css('width','280px');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+            });
+                
 		// HEADER
 		
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
@@ -518,12 +638,13 @@ function resizeboxContainer(){
 		
 		// PAGE COMMERCE
 		
-		$('.wrapper_boutons .boutons').removeClass('boutons_ipad');
+		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
 		$('.wrapper_boutons').css('top','100px');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.6em');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
-		$('.commerce_head_desc_social img').css('display','inline-block');
+                $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
+		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
 		$('.commerce_concept').css('font-size','1em');
@@ -539,10 +660,13 @@ function resizeboxContainer(){
 		
 		$('.commerce_head_desc').css('width','670px');
 		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','350px').css('font-size','1em');
-		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','280px').css('font-size','1em');
+                $('.commerce_head_desc_address span').css('margin-top','0px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','280px');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
                 $('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
 		$('#commerce_head_desc_prices_wrap').css('display','block');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width','266px').css('height','82px');
@@ -586,7 +710,32 @@ function resizeboxContainer(){
 	}
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 7 */else if ($('.big_wrapper').width() == 1736){
-		
+
+            // Alternate descs in head
+            $('#commerce_head_desc_ariane_button').click(function(){
+                $('.commerce_head_desc_address').css('width','400px');
+                $('.commerce_head_desc_ariane').css('width','320px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_address_button').click(function(){
+                $('.commerce_head_desc_ariane').css('width','320px');
+                $('.commerce_head_desc_address').css('width','400px');
+                $('#commerce_head_desc_address_wrap').css('display','block');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_identity_button').click(function(){
+                $('.commerce_head_desc_prices').css('width','320px');
+                $('.commerce_head_desc_identity').css('width','400px');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+            });
+            $('#commerce_head_desc_prices_button').click(function(){
+                $('.commerce_head_desc_identity').css('width','400px');
+                $('.commerce_head_desc_prices').css('width','320px');
+                $('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
+            });
 		// HEADER
 		
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
@@ -597,12 +746,13 @@ function resizeboxContainer(){
 					
 		// PAGE COMMERCE
 		
-		$('.wrapper_boutons .boutons').removeClass('boutons_ipad');
+		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
 		$('.wrapper_boutons').css('top','140px');
 		
                 $('.commerce_head_desc_title h2').css('font-size','1.6em');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
-		$('.commerce_head_desc_social img').css('display','inline-block');
+                $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
+		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
                 $('.commerce_concept').css('font-size','1em');
@@ -614,10 +764,14 @@ function resizeboxContainer(){
 		
                 $('.commerce_head_desc').css('width','795px');
 		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','400px').css('font-size','1em');
-		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','320px').css('font-size','1em');
+                $('.commerce_head_desc_address').css('font-size','1em');
+                $('.commerce_head_desc_address span').css('margin-top','0px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','320px');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
                 $('#commerce_head_desc_ariane_wrap').css('display','block');
 		$('#commerce_head_desc_ariane_button').css('float','left');
+                $('#commerce_head_desc_identity_wrap').css('display','block');
 		$('#commerce_head_desc_prices_wrap').css('display','block');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_infos .clearfix').css('display','none');
@@ -809,6 +963,7 @@ $('#close_button_home').click(function() {
     // Recos commerce Toggle des divs
     $(".button_show_recos").click(function(e){
         e.preventDefault();
+        $(".wrapper_boutons").stop().slideToggle();
         $(".commerce_recos_wrap").stop().slideToggle();
         $('.commerce_recos_arrow').toggleClass("recos_arrow_down").toggleClass("recos_arrow_up");
     });
