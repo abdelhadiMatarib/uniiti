@@ -71,6 +71,7 @@
 <body>    
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
+	<div id="default_dialog_inscription"></div>
 	<div id="dialog_overlay">
 		<div class="index_overlay"></div>
 		<div class="dialog_overlay_wrap_content">
@@ -101,7 +102,7 @@
                     <div class="utilisateur_head_desc_avatar">
                         <div class="img_container">
                             <img src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
-                            <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
+                            <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvreInscription2();"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
                         
                         </div>
                     </div>
@@ -167,6 +168,18 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
 		<?php include'../includes/js.php' ?>
+
+	<script>
+		function OuvreInscription2() {
+			var dataavatar = {step : 'change',
+								id_contributeur : '<?php echo $id_contributeur; ?>',
+								photo_contributeur : '<?php echo addslashes($photo_contributeur); ?>'
+						};
+			OuvrePopin(dataavatar, '/pages/inscription2.php', 'default_dialog_inscription');
+			/* Initilisation du mini slider de choix d'avatar */
+			$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
+		}
+	</script>
 		
     </body>
 </html>

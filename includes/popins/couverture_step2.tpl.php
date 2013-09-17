@@ -58,11 +58,21 @@
 		imagepng($newImage, $couv);
 //			echo "Image sauvegardée dans " . $ImageRecalibree;			
 	}
-		
-		$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+		if ((!empty($_POST['id_contributeur'])) && (!empty($_POST['id_enseigne']))) {
+			if ($_POST['id_contributeur'] != "") {
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
+			}
+			else if ($_POST['id_enseigne'] != "") {
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
+			}
+			else {exit;}
+		}
+		else {
+			$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+		}
 		$NbImages = 1;
 		if (!empty($_POST['image1'])) {
-			if (preg_match("/http/i", $_POST['image1'])) {
+			if (substr_count($_POST['image1'], "http:") > 0) {
 				$image[1] = $_POST['image1'];
 			} else {
 				CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
@@ -75,7 +85,7 @@
 		}
 		else {$image[1] = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";$y[1] = 0;}
 		if (!empty($_POST['image2'])) {
-			if (preg_match("/http/i", $_POST['image2'])) {
+			if (substr_count($_POST['image2'], "http:") > 0) {
 				$image[2] = $_POST['image2'];
 			} else {
 				CompresserImage ($_POST['image2'], $CheminImageRecalibree . "couv2.jpg", 1750);
@@ -86,7 +96,7 @@
 		}
 		else {$image[2] = "";$y[2] = 0;}
 		if (!empty($_POST['image3'])) {
-			if (preg_match("/http/i", $_POST['image3'])) {
+			if (substr_count($_POST['image3'], "http:") > 0) {
 				$image[3] = $_POST['image3'];
 			} else {
 				CompresserImage ($_POST['image3'], $CheminImageRecalibree . "couv3.jpg", 1750);
@@ -97,7 +107,7 @@
 		}
 		else {$image[3] = "";$y[3] = 0;}
 		if (!empty($_POST['image4'])) {
-			if (preg_match("/http/i", $_POST['image4'])) {
+			if (substr_count($_POST['image4'], "http:") > 0) {
 				$image[4] = $_POST['image4'];
 			} else {
 				CompresserImage ($_POST['image4'], $CheminImageRecalibree . "couv4.jpg", 1750);
@@ -108,7 +118,7 @@
 			}
 		else {$image[4] = "";$y[4] = 0;}
 		if (!empty($_POST['image5'])) {
-			if (preg_match("/http/i", $_POST['image5'])) {
+			if (substr_count($_POST['image5'], "http:") > 0) {
 				$image[5] = $_POST['image5'];
 			} else {
 			CompresserImage ($_POST['image5'], $CheminImageRecalibree . "couv5.jpg", 1750);
