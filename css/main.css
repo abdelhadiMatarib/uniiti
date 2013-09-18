@@ -285,10 +285,10 @@ span.follower_identity_txt{display:block;}
 span.follower_identity_txt_avis{font-size:0.9em;font-weight:600;display:inline-block;}
 span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;display:inline-block;}
 
-.commerce_couv{position:relative;height:496px;}
+.commerce_couv{position:relative;height:496px; overflow:hidden;}
 .ligne_verticale1{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:730px;}
 .ligne_verticale2{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:925px;}
-.commerce_couv img{max-width:100%;}
+.commerce_couv img{max-width:100%; margin-top: -330px}
 .commerce_concept_title{position:absolute;}
 .commerce_concept{position:absolute;bottom:0;left:0;color:white;width:370px;background-color:rgba(37,37,37,0.90);}
 .commerce_concept span{display:inline-block;margin:0;text-transform: uppercase;font-weight:bold;text-align:left;}
