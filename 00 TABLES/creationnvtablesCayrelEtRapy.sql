@@ -24,12 +24,19 @@ DROP TABLE IF EXISTS `objets` ;
 DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
 
 
+
+
 ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `slide1_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide2_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide3_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide4_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide5_contributeur` varchar(45) DEFAULT NULL
+, ADD `y1` int(10) DEFAULT NULL
+, ADD `y2` int(10) DEFAULT NULL
+, ADD `y3` int(10) DEFAULT NULL
+, ADD `y4` int(10) DEFAULT NULL
+, ADD `y5` int(10) DEFAULT NULL
 , ADD `profession_contributeur` varchar(45) DEFAULT NULL
 , ADD `descriptif_contributeur` longtext DEFAULT NULL
 , ADD `categorieage_contributeur` varchar(45) DEFAULT NULL ;
@@ -45,6 +52,11 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `slide3_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide4_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide5_enseigne` varchar(45) DEFAULT NULL
+, ADD `y1` int(10) DEFAULT NULL
+, ADD `y2` int(10) DEFAULT NULL
+, ADD `y3` int(10) DEFAULT NULL
+, ADD `y4` int(10) DEFAULT NULL
+, ADD `y5` int(10) DEFAULT NULL
 , ADD `thumnail_enseigne` varchar(45) DEFAULT NULL
 , ADD `video_enseigne` varchar(255) DEFAULT NULL
 , ADD `fb_enseigne` varchar(255) DEFAULT NULL

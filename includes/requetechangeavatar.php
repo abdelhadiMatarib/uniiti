@@ -1,6 +1,38 @@
 <?php
 header('Content-Type: application/json');
 include_once '../config/configPDO.inc.php';
+include_once '../config/configuration.inc.php';
+
+$id_contributeur = $_POST['id_contributeur'];
+
+function CompresserImage ($image, $ImageRecalibree, $Width, $Height) {
+	$couv = $ImageRecalibree;
+	list($imagewidth, $imageheight, $imageType) = getimagesize($image);
+	$newImage = imagecreatetruecolor($Width, $Height);
+	$imageType = image_type_to_mime_type($imageType);
+	switch($imageType) {
+		case "image/gif":
+			$source=imagecreatefromgif($image); 
+			break;
+		case "image/pjpeg":
+		case "image/jpeg":
+		case "image/jpg":
+			$source=imagecreatefromjpeg($image); 
+			break;
+		case "image/png":
+		case "image/x-png":
+			$source=imagecreatefrompng($image); 
+			break;
+	}
+	imagecopyresampled($newImage, $source, 0, 0, 0, 0, $Width, $Height, $imagewidth, $imageheight);
+	imagejpeg($newImage, $couv, 70);		
+}
+
+if ($_POST['compression']) {
+	CompresserImage($_POST['photo'], $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/avatars/" . $id_contributeur . "avatar.jpg", 120, 120);
+	$photo= $id_contributeur . "avatar.jpg";
+}
+else {$photo = $_POST['photo'];}
 
 try
 {
@@ -9,8 +41,8 @@ try
 
 	$sql = "UPDATE contributeurs SET photo_contributeur = :photo WHERE id_contributeur = :id_contributeur";
 	$req = $bdd->prepare($sql);
-	$req->bindParam(':photo', $_POST['photo'], PDO::PARAM_STR);
-	$req->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_STR);
+	$req->bindParam(':photo', $photo, PDO::PARAM_STR);
+	$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_STR);
 	$req->execute();
 	$req->closeCursor();	
 

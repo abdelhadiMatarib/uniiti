@@ -1,36 +1,6 @@
         <?php
         include_once '../config/configuration.inc.php';
-		
-		function CompresserImage ($image, $ImageRecalibree, $Width, $Height) {
-			$couv = $ImageRecalibree;
-			list($imagewidth, $imageheight, $imageType) = getimagesize($image);
-			$newImage = imagecreatetruecolor($Width, $Height);
-			$imageType = image_type_to_mime_type($imageType);
-			switch($imageType) {
-				case "image/gif":
-					$source=imagecreatefromgif($image); 
-					break;
-				case "image/pjpeg":
-				case "image/jpeg":
-				case "image/jpg":
-					$source=imagecreatefromjpeg($image); 
-					break;
-				case "image/png":
-				case "image/x-png":
-					$source=imagecreatefrompng($image); 
-					break;
-			}
-			imagecopyresampled($newImage, $source, 0, 0, 0, 0, $Width, $Height, $imagewidth, $imageheight);
-			imagejpeg($newImage, $couv, 70);		
-		}
-
-		if (!substr_count($_POST['ImageTemp'], "http:") > 0) {
-			CompresserImage($_POST['ImageTemp'], $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/avatar.jpg", 120, 120);
-			$ImageTemp = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/avatar.jpg";
-		}
-		else {$ImageTemp = $_POST['ImageTemp'];}
-
-		
+	
 		?>
             <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
             <div class="inscription_head2">
@@ -107,7 +77,7 @@
 							$id("aime"+Compteur).value = $(this).attr('id');
 						}
 					});
-					$id("ImageTemp").value = '<?php echo $ImageTemp; ?>';
+
 					var data = {
 							'email_login' : $id("email_login").value,
 							prenom : $id("prenom").value,

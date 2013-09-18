@@ -3,6 +3,8 @@
 	// Connection à la base
 	include_once '../config/configPDO.inc.php';
 
+	$Inscription = 0;
+	
 	// Réception données formulaire par method post
 	$email_login            = htmlspecialchars($_POST['email_login']);            // Email login
 	//$pseudo                 = htmlspecialchars($_POST['pseudo']);               // Pseudo
@@ -112,15 +114,12 @@
 			else {}				// ERREUR A GERER
 			$req->closeCursor();		// Ferme la connexion du serveur
 			
-	
-			$photo = $id_contributeur . "avatar.jpg";
-//			rename($_POST['ImageTemp'], $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/avatars/" . $photo);
-
-			
+			$Inscription = 1;
 	}
 	$reqCheck->closeCursor();
 	$bdd = null;					// Détruit l'objet PDO
-	?>		
+	?>
+	<?php if ($Inscription) { ?>
 	<div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
 	<div class="inscription_fields_left inscription_final_step_left">
 		<div class="inscription_final_step_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user_created.png" height="197" width="190" title="" alt="" /></div>
@@ -132,21 +131,72 @@
 	</div>
 	<div class="inscription_fields_left inscription_final_step_right"><div class="AbsoluteCenter"><a href="<?php echo SITE_URL?>"><span class="inscription_final_step_right_texte">Retour à la</span><span class="inscription_final_step_right_texte_highlight">page d'accueil</span></a></div></div>
 	<div class="containing_rondou"><div class="inscription_final_step_rondou"><span>Ou</span></div></div>
-	<div class="inscription_fields_left inscription_final_step_right2"><div class="AbsoluteCenter"><a href="utilisateur.php"><span class="inscription_final_step_right_texte">Accéder à</span><span class="inscription_final_step_right_texte_highlight">votre profil</span></a></div></div>
-
+	<div class="inscription_fields_left inscription_final_step_right2"><div class="AbsoluteCenter"><a href="pages/utilisateur_interface.php?id_contributeur=<?php echo $id_contributeur; ?>"><span class="inscription_final_step_right_texte">Accéder à</span><span class="inscription_final_step_right_texte_highlight">votre profil</span></a></div></div>
+	<?php } else {?><div>Inscription interrompue. Veuillez réessayer ultérieurement ou contacter l'administrateur si le problème persiste</div><?php } ?>
 	<script>
-	var data = {id_contributeur : '<?php echo $id_contributeur; ?>',
-				photo : '<?php echo $photo; ?>'
-				};
-	$.ajax({
-		async : false,
-		type :"POST",
-		url : siteurl+'/includes/requetechangeavatar.php',
-		data : data,
-		success: function(html){
-			alert("photo enregistrée");
-		},
-		error: function() {alert('Erreur sur url : ' + url);}
-	});
+	// getElementById
+	function $id(id) {return document.getElementById(id);}
+	var $ImageTemp = '<?php if (!empty($_POST['ImageTemp'])) {echo $_POST['ImageTemp'];} else {echo 0;} ?>';
+	var $id_contributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo 0;} ?>';
+	
+	function EnregistrerAvatar() {
+		Compresser = 0;
+		if($ImageTemp.lastIndexOf("http://") == 0) {
+			var NomUrl = $ImageTemp;
+				NomImage = NomUrl.substring(NomUrl.lastIndexOf('/')+1, NomUrl.length);
+			}
+			else {NomImage = $ImageTemp; Compresser = 1;}
+		
+		var data = {id_contributeur : $id_contributeur,
+					photo : NomImage,
+					compression : Compresser
+					};
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetechangeavatar.php',
+			data : data,
+			success: function(html){
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	$Inscription = <?php echo $Inscription; ?>;
+	if ($Inscription == 1) {EnregistrerAvatar();}
+	
+	function EnregistrerCouverture () {
+
+		var NomImage = 'photo '+Math.floor((Math.random()*10)+1)+'.jpg';
+		
+		var data = {
+						id_contributeur : $id_contributeur,
+						id_enseigne :'',
+						chemin : '',
+						image1 : NomImage,
+						image2 : '',
+						image3 : '',
+						image4 : '',
+						image5 : '',
+						y1 : 0,
+						y2 : 0,
+						y3 : 0,
+						y4 : 0,
+						y5 : 0
+					};
+
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetechangecouvertures.php',
+			data : data,
+			success: function(html){
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+		
+	}
+	if ($Inscription == 1) {EnregistrerCouverture();}	
+	
+	
 	
 	</script>
