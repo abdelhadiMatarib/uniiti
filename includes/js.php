@@ -148,7 +148,6 @@
  				$(window).smartresize(function(){
 					$("#default_dialog_large").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog").dialog( "option", "position", { my: "center", at: "center", of: window });
-					$("#default_dialog_inscription").dialog( "option", "position", { my: "center", at: "center", of: window });
 					// check if columns has changed
 					var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
 					if ( currentColumns !== columns ) {
