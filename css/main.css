@@ -948,7 +948,7 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .input_avisenattente_precisezmotif{display:none;}
 
     /* RECHERCHE AVANCEE */
-.recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background:url('../img/pictos_actions/recherche_avancee_1300.png')white;max-height:175px;}
+.recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background:url('../img/pictos_actions/recherche_avancee_1300.png') center white;max-height:175px;}
 .recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}
 .recherche_avancee_right{float:right;margin:10px 40px 10px 20px;}
 .recherche_avancee_img_container{height:96px;width:96px;}

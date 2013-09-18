@@ -204,7 +204,7 @@
     a.recherche_mot_actif.recherche_avancee_categorie{color:#a1679a;margin:0 10px;border-bottom:1px dashed #a1679a;height:44px;font-weight:300;}
     a.recherche_mot_actif.recherche_avancee_sous_categorie{color:#fabe41;margin:0 10px;border-bottom:1px dashed #fabe41;height:44px;font-weight:300;}
     a.recherche_mot_actif.recherche_avancee_sous_sous_categorie{color:#46ba8f;margin:0 10px;border-bottom:1px dashed #46ba8f;height:44px;font-weight:300;}
-    a.recherche_mot_actif.recherche_avancee_prix{color:#de5b30;margin:0 10px;border-bottom:1px dashed #252525;height:44px;font-weight:300;}
+    a.recherche_mot_actif.recherche_avancee_prix{color:#de5b30;margin:0 10px;border-bottom:1px dashed #de5b30;height:44px;font-weight:300;}
     
     a.recherche_mot_inactif{float:left;color:white;font-size:0.7em;height:37px;width:169px;padding-top:3px;}
     a.recherche_mot_inactif:hover{background-color:#acacac;}
@@ -222,20 +222,25 @@
     .recherche_avancee_current_txt span{color:#252525;text-transform:uppercase;font-size:0.8em;}
     .cursor_recherche{position:absolute;left:10px;height:33px;width:44px;background:url('img/pictos_actions/cursor_recherche.png');}
     
-    .recherche_overlay_current_status{position:absolute;left:0px;height:30px;width:30px;background:url('img/pictos_actions/barre_recherche_guidelines.png') #a4ebf1 no-repeat 25px center}
+    .recherche_overlay_current_status{position:absolute;border-radius:3px 0px 0px 0px;left:0px;height:30px;width:30px;background:url('img/pictos_actions/barre_recherche_guidelines.png') #a4ebf1 no-repeat 25px center}
 
 </style>
 <script>
-    // Clic menu déroulant recherche avancée
     
+// CLICS MENU DÉROULANT RECHERCHE AVANCÉE
+
+// désaffichage de la phrase au début
 $('span.recherche_avancee_2,span.recherche_avancee_3,span.recherche_avancee_4,span.recherche_avancee_5,span.recherche_avancee_6,.recherche_avancee_right').css('display','none');
 
+// au clic sur l'élément choisit dans la phrase
 $('.recherche_mot_actif').click(function(e){
     e.preventDefault();
     $(this).parent().parent().parent().parent().find('.recherche_avancee_menu').removeClass('menu_selected').slideUp();
     $(this).parent().next().addClass('menu_selected').slideDown();
     //$(this).parent().parent().parent().find('.recherche_avancee_menu').slideUp();
 });
+
+// au clic sur un des éléments dans la liste
 $('.recherche_mot_inactif').click(function(){
     var choix = $(this).text();
     var currentTxt = $(this).parent().parent().parent().find('.recherche_text_val').text();
@@ -249,6 +254,8 @@ $('.recherche_mot_inactif').click(function(){
     $(this).parent().parent().slideUp();
     $(this).parent().parent().parent().parent().next('span:first').slideDown();
 });
+
+// déplacement du curseur + overlay bleu au choix lié
 $('.recherche_type a.recherche_mot_inactif').click(function(){
     $('.cursor_recherche').animate({left: "82px"}, 500);
     $('.recherche_overlay_current_status').animate({width: "101px"}, 500)
@@ -274,6 +281,7 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
     $('.recherche_overlay_current_status').animate({width: "415px"}, 500)
 });
 
+// Affichage du 'cliquez ici' à la fin
 /*$('.recherche_prix li a').click(function(e){
     e.preventDefault();
     $('.recherche_avancee_right_cliquez_wrap').slideDown();
@@ -282,16 +290,19 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
 /* 3 */if ($('.big_wrapper').width() == 736){
     
     //RECHERCHE AVANCÉE
+    $('.recherche_avancee_wrapper').css('background-position','-120px');
     $('.recherche_avancee_left').css('line-height','2.2em').css('width','500px').css('margin','20px auto');
     $('.recherche_avancee_right').css('top','10px');
     $('.recherche_avancee_left span').css('font-size','1.1em');
     $('.recherche_avancee_left a.recherche_mot_actif').css('height','25px');
+    $('.recherche_avancee_left a.recherche_mot_inactif').css('font-size','0.8em');
     $('.recherche_avancee_img_container').css('height','60px');
     $('.recherche_avancee_img_container img').css('height','55.5px').css('width','56px');
 }
 /* 4 */if ($('.big_wrapper').width() == 986){
     
     //RECHERCHE AVANCÉE
+    $('.recherche_avancee_wrapper').css('background-position','center');
     $('.recherche_avancee_left').css('line-height','2.5em').css('width','600px').css('margin','20px auto');
     $('.recherche_avancee_right').css('top','10px');
     $('.recherche_avancee_left span').css('font-size','1.3em');
@@ -302,6 +313,7 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
 /* 5 */else if ($('.big_wrapper').width() == 1236){
     
     //RECHERCHE AVANCÉE
+    $('.recherche_avancee_wrapper').css('background-position','center');
     $('.recherche_avancee_left').css('line-height','2.5em').css('width','700px').css('margin','20px auto');
     $('.recherche_avancee_right').css('top','10px');
     $('.recherche_avancee_left span').css('font-size','1.5em');
