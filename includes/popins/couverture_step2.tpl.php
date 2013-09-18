@@ -83,7 +83,7 @@
 			}
 			$y[1] = $_POST['y1'];
 		}
-		else {$image[1] = SITE_URL . "/photos/utilisateurs/couvertures/photo " . rand(1, 10) . ".jpg";$y[1] = 0;}
+		else {$image[1] = SITE_URL . "/photos/utilisateurs/couvertures/photo " . rand(1, 113) . ".jpg";$y[1] = 0;}
 		if (!empty($_POST['image2'])) {
 			if (substr_count($_POST['image2'], "http:") > 0) {
 				$image[2] = $_POST['image2'];

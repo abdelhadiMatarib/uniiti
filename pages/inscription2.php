@@ -41,7 +41,7 @@
 						  <div id="slider">
   							<div class="container">
     							<div id="slides">
-    								<?php for ($i = 1 ; $i < 10 ; $i++) { ?>
+    								<?php for ($i = 1 ; $i < 100 ; $i++) { ?>
 										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $i; ?>.jpg" alt="" />
 									<?php } ?>
     							</div>

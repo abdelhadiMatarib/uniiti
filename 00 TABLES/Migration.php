@@ -19,8 +19,8 @@ try
 		$sql = "UPDATE contributeurs SET photo_contributeur = :photo, slide1_contributeur = :couv, y1 = 0 
 				WHERE id_contributeur = :id_contributeur";
 		$req = $bdd->prepare($sql);
-		$photo = "photo " . rand(1, 10) . ".jpg";
-		$couv = "photo " . rand(1, 10) . ".jpg";
+		$photo = "photo " . rand(1, 100) . ".jpg";
+		$couv = "photo " . rand(1, 113) . ".jpg";
 		$id_contributeur = $row['id_contributeur'];
 		$req->bindParam(':photo', $photo, PDO::PARAM_STR);
 		$req->bindParam(':couv', $couv, PDO::PARAM_STR);
