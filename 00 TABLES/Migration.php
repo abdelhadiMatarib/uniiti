@@ -16,7 +16,7 @@ try
 	$result1 = $req1->fetchAll(PDO::FETCH_ASSOC);
 	
 	foreach ($result1 as $row) {
-		$sql = "UPDATE contributeurs SET photo_contributeur = :photo, slide1_contributeur = :couv 
+		$sql = "UPDATE contributeurs SET photo_contributeur = :photo, slide1_contributeur = :couv, y1 = 0 
 				WHERE id_contributeur = :id_contributeur";
 		$req = $bdd->prepare($sql);
 		$photo = "photo " . rand(1, 10) . ".jpg";
@@ -36,7 +36,7 @@ try
 	$result2 = $req2->fetchAll(PDO::FETCH_ASSOC);
 	
 	foreach ($result2 as $row) {
-		$sql = "UPDATE enseignes SET logotype_enseigne = :photo, slide1_enseigne = :couv 
+		$sql = "UPDATE enseignes SET logotype_enseigne = :photo, slide1_enseigne = :couv, y1 = 0 
 				WHERE id_enseigne = :id_enseigne";
 		$req = $bdd->prepare($sql);
 		$photo = "photo " . rand(1, 10) . ".jpg";

@@ -32,6 +32,11 @@ ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `slide3_enseigne`
 , DROP `slide4_enseigne`
 , DROP `slide5_enseigne`
+, DROP `y1`
+, DROP `y2`
+, DROP `y3`
+, DROP `y4`
+, DROP `y5`
 , DROP `thumnail_enseigne`
 , DROP `video_enseigne`
 , DROP `fb_enseigne`
@@ -44,6 +49,11 @@ ALTER TABLE `contributeurs` DROP `date_inscription`
 , DROP `slide3_contributeur`
 , DROP `slide4_contributeur`
 , DROP `slide5_contributeur`
+, DROP `y1`
+, DROP `y2`
+, DROP `y3`
+, DROP `y4`
+, DROP `y5`
 , DROP `profession_contributeur`
 , DROP `descriptif_contributeur`
 , DROP `categorieage_contributeur` ;
@@ -54,6 +64,11 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `slide3_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide4_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide5_contributeur` varchar(45) DEFAULT NULL
+, ADD `y1` int(10) DEFAULT NULL
+, ADD `y2` int(10) DEFAULT NULL
+, ADD `y3` int(10) DEFAULT NULL
+, ADD `y4` int(10) DEFAULT NULL
+, ADD `y5` int(10) DEFAULT NULL
 , ADD `profession_contributeur` varchar(45) DEFAULT NULL
 , ADD `descriptif_contributeur` longtext DEFAULT NULL
 , ADD `categorieage_contributeur` varchar(45) DEFAULT NULL ;
@@ -69,6 +84,11 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `slide3_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide4_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide5_enseigne` varchar(45) DEFAULT NULL
+, ADD `y1` int(10) DEFAULT NULL
+, ADD `y2` int(10) DEFAULT NULL
+, ADD `y3` int(10) DEFAULT NULL
+, ADD `y4` int(10) DEFAULT NULL
+, ADD `y5` int(10) DEFAULT NULL
 , ADD `thumnail_enseigne` varchar(45) DEFAULT NULL
 , ADD `video_enseigne` varchar(255) DEFAULT NULL
 , ADD `fb_enseigne` varchar(255) DEFAULT NULL

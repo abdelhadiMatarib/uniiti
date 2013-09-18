@@ -27,6 +27,11 @@
 	$slide3_contributeur    = $result['slide3_contributeur'];
 	$slide4_contributeur    = $result['slide4_contributeur'];
 	$slide5_contributeur    = $result['slide5_contributeur'];
+	$y1    = $result['y1'];
+	$y2    = $result['y2'];
+	$y3    = $result['y3'];
+	$y4    = $result['y4'];
+	$y5    = $result['y5'];
 	$prenom_contributeur    = $result['prenom_contributeur'];
 	$nom_contributeur       = $result['nom_contributeur'];
 	$sexe_contributeur 		= $result['sexe_contributeur'];
@@ -66,7 +71,12 @@
 			. "image2 : '" . $slide2_contributeur . "', "
 			. "image3 : '" . $slide3_contributeur . "', "
 			. "image4 : '" . $slide4_contributeur . "', "
-			. "image5 : '" . $slide5_contributeur . "'}";
+			. "image5 : '" . $slide5_contributeur . "', "
+			. "y1 : '" . $y1 . "', "
+			. "y2 : '" . $y2 . "', "
+			. "y3 : '" . $y3 . "', "
+			. "y4 : '" . $y4 . "', "
+			. "y5 : '" . $y5 . "'}";
 ?>
 <body>    
     <div id="default_dialog_large"></div>

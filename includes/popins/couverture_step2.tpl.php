@@ -238,24 +238,34 @@
 			};
 			
 			function Enregistrer () {
+
+			var NomImage = new Array;
+			for (i = 1 ; i <= 5 ; i++) {
+				if($('#ImageTemp'+i).val().lastIndexOf("http://") == 0) {
+					var NomUrl = $('#ImageTemp'+i).val();
+					NomImage[i] = NomUrl.substring(NomUrl.lastIndexOf('/')+1, NomUrl.length);
+				}
+				else {NomImage[i] = '';}
+			}
 			
-			var lastindex = $('#ImageTemp1').val().lastIndexOf('/')+1;
-			alert(lastindex);
 			var data = {
 							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
 							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
 							chemin : '',
-							image1 : $('#ImageTemp1').val(),
-							image2 : $('#ImageTemp2').val(),
-							image3 : $('#ImageTemp3').val(),
-							image4 : $('#ImageTemp4').val(),
-							image5 : $('#ImageTemp5').val(),
+							image1 : NomImage[1],
+							image2 : NomImage[2],
+							image3 : NomImage[3],
+							image4 : NomImage[4],
+							image5 : NomImage[5],
 							y1 : $('#y1').val(),
 							y2 : $('#y2').val(),
 							y3 : $('#y3').val(),
 							y4 : $('#y4').val(),
 							y5 : $('#y5').val()
 						};
+
+			console.log(data);
+
 				$.ajax({
 					async : false,
 					type :"POST",

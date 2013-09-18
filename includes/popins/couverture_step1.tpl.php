@@ -71,12 +71,12 @@
 			</div>
 
 			<input type="file" name="fileselect" id="fileselect" multiple accept="image/*" />
-			<input type="hidden" name="y" value="" id="y" />
-			<input type="hidden" name="y1" value="" id="y1" />
-			<input type="hidden" name="y2" value="" id="y2" />
-			<input type="hidden" name="y3" value="" id="y3" />
-			<input type="hidden" name="y4" value="" id="y4" />
-			<input type="hidden" name="y5" value="" id="y5" />
+			<input type="hidden" name="y" value="<?php if ((!empty($_POST['y1'])) && ($_POST['y1'] != '')) {echo $_POST['y1'];} ?>" id="y" />
+			<input type="hidden" name="y1" value="<?php if ((!empty($_POST['y1'])) && ($_POST['y1'] != '')) {echo $_POST['y1'];} ?>" id="y1" />
+			<input type="hidden" name="y2" value="<?php if ((!empty($_POST['y2'])) && ($_POST['y2'] != '')) {echo $_POST['y2'];} ?>" id="y2" />
+			<input type="hidden" name="y3" value="<?php if ((!empty($_POST['y3'])) && ($_POST['y3'] != '')) {echo $_POST['y3'];} ?>" id="y3" />
+			<input type="hidden" name="y4" value="<?php if ((!empty($_POST['y4'])) && ($_POST['y4'] != '')) {echo $_POST['y4'];} ?>" id="y4" />
+			<input type="hidden" name="y5" value="<?php if ((!empty($_POST['y5'])) && ($_POST['y5'] != '')) {echo $_POST['y5'];} ?>" id="y5" />
 			<input type="hidden" name="ImageTemp" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'];} ?>" id="ImageTemp" />
 			<input type="hidden" name="ImageTemp1" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'];} ?>" id="ImageTemp1" />
 			<input type="hidden" name="ImageTemp2" value="<?php if ((!empty($_POST['image2'])) && ($_POST['image2'] != '')) {echo $_POST['chemin'] . $_POST['image2'];} ?>" id="ImageTemp2" />
