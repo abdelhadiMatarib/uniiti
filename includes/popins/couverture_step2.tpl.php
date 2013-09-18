@@ -56,7 +56,6 @@
 		}
 		imagecopyresampled($newImage, $source, 0, 0, 0, $y * $scale, $WidthCouv, $HeightCouv, $imagewidth, $HeightCouv * $scale);
 		imagepng($newImage, $couv);
-//			echo "Image sauvegardée dans " . $ImageRecalibree;			
 	}
 		if ((!empty($_POST['id_contributeur'])) || (!empty($_POST['id_enseigne']))) {
 			if ($_POST['id_contributeur'] != "") {
@@ -78,15 +77,13 @@
 			if (substr_count($_POST['image1'], "http:") > 0) {
 				$image[1] = $_POST['image1'];
 			} else {
+				unlink($CheminImageRecalibree . "couv1.jpg");
 				CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
 				$image[1] = $CheminImageCompressee . "couv1.jpg";
 			}
 			$y[1] = $_POST['y1'];
-//			$image1 = $CheminImageRecalibree . "couv1.png";
-//			CreerImageCouverture($_POST['image1'], $image1, $_POST['y1']);
-
 		}
-		else {$image[1] = SITE_URL . "/img/pictos_popins/couv_popin2.jpg";$y[1] = 0;}
+		else {$image[1] = SITE_URL . "/photos/utilisateurs/couvertures/photo " . rand(1, 10) . ".jpg";$y[1] = 0;}
 		if (!empty($_POST['image2'])) {
 			if (substr_count($_POST['image2'], "http:") > 0) {
 				$image[2] = $_POST['image2'];
@@ -264,15 +261,13 @@
 							y5 : $('#y5').val()
 						};
 
-			console.log(data);
-
 				$.ajax({
 					async : false,
 					type :"POST",
 					url : siteurl+'/includes/requetechangecouvertures.php',
 					data : data,
 					success: function(html){
-						alert("couvertures enregistrées");
+						window.location.reload();
 					},
 					error: function() {alert('Erreur sur url : ' + url);}
 				});

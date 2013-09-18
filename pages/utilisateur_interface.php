@@ -64,6 +64,8 @@
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
 	
+	$Chemin = SITE_URL . "/photos/utilisateurs/couvertures/";
+	
 	$datacouv = "{step : 1, "
 			. "id_contributeur : " . $id_contributeur . ", "
 			. "chemin : '" . SITE_URL . "/photos/utilisateurs/couvertures/', "
@@ -153,7 +155,16 @@
             <div class="commerce_couv">
                 <div class="ligne_verticale4"></div>
                 <div class="ligne_verticale5"></div>
-                <img src="<?php echo SITE_URL . "/photos/utilisateurs/couvertures/" . $slide1_contributeur;?>" title="" alt="" />
+  <!--                <img src="<?php echo $Chemin . $slide1_contributeur;?>" title="" alt="" />-->
+              <div class="couv_container">
+				    <div id="couv_slides">
+					<?php if ($slide1_contributeur != "") { ?><img src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide2_contributeur != "") { ?><img src="<?php echo $Chemin . $slide2_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide3_contributeur != "") { ?><img src="<?php echo $Chemin . $slide3_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide4_contributeur != "") { ?><img src="<?php echo $Chemin . $slide4_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide5_contributeur != "") { ?><img src="<?php echo $Chemin . $slide5_contributeur; ?>" title="" alt=""><?php } ?>
+				    </div>
+				  </div>
                 <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><div class="utilisateur_interface_modifier_icon_blanc"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_b.png" title="" alt="" height="12" width="12" /></div><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
                 <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
                 
@@ -180,6 +191,10 @@
 		<?php include'../includes/js.php' ?>
 
 	<script>
+	$(function() {
+      $('#couv_slides').slidesjs({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
+      });
+    });   
 		function OuvreInscription2() {
 			var dataavatar = {step : 'change',
 								id_contributeur : '<?php echo $id_contributeur; ?>',

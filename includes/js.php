@@ -61,7 +61,7 @@
 	$(window).load(function() {
 		$(function(){
 			var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
-			if ($Page == "Timeline") {setInterval("NouveauxElements()", 1000);}
+			if ($Page == "Timeline") {setInterval("NouveauxElements()", 100000);}
 			CreerOverlayPush();
   
 				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
@@ -148,7 +148,6 @@
  				$(window).smartresize(function(){
 					$("#default_dialog_large").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog").dialog( "option", "position", { my: "center", at: "center", of: window });
-					$("#default_dialog_inscription").dialog( "option", "position", { my: "center", at: "center", of: window });
 					// check if columns has changed
 					var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
 					if ( currentColumns !== columns ) {

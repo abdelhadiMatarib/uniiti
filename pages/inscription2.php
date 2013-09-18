@@ -17,7 +17,7 @@
             <div class="inscription_fields_right">
                 <div class="inscription_choisir_image_texte"><span>Choisissez-en une dans la Uniiti galerie</span></div>
             </div>
-			<form id="upload" onsubmit="return EtapeSuivante();" action="<?php echo SITE_URL; ?>/pages/inscription3.php" method="POST" enctype="multipart/form-data">
+			<form id="upload" onsubmit="<?php if ($Change) {echo "return Enregistrer();";} else {echo "return EtapeSuivante();";} ?>" action="<?php echo SITE_URL; ?>/pages/inscription3.php" method="POST" enctype="multipart/form-data">
 				<div class="inscription_fields_left">
 					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 						<div class="inscription_upload_image_container">
@@ -58,13 +58,47 @@
 				</div>
 					<div class="inscription_avatar_selected">
 						<div class="inscription_avatar_selected_texte"><span>Votre avatar</span></div>
-						<img id="Avatar" src="<?php if ($Change) {echo SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'];} else {echo SITE_URL; ?>/img/avatars/6.png<?php } ?>" height="120" width="120" title="" alt="" />
+						<img id="Avatar" src="" height="120" width="120" title="" alt="" />
 					</div>
 				</div>
            </form>
 		
 		<script type="text/javascript">
-    		function EtapeSuivante() {
+
+		function Enregistrer () {
+
+			var NomImage = new Array;
+			var Compresser = 0;
+
+			if($('#ImageTemp').val().lastIndexOf("http://") == 0) {
+				var NomUrl = $('#ImageTemp').val();
+				NomImage = NomUrl.substring(NomUrl.lastIndexOf('/')+1, NomUrl.length);
+			}
+			else {NomImage = $('#ImageTemp').val(); Compresser = 1;}
+			
+			var data = {
+							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+							photo : NomImage,
+							compression : Compresser
+						};
+
+			console.log(data);
+
+				$.ajax({
+					async : false,
+					type :"POST",
+					url : siteurl+'/includes/requetechangeavatar.php',
+					data : data,
+					success: function(html){
+						window.location.reload();
+					},
+					error: function() {alert('Erreur sur url : ' + url);}
+				});
+			return false;
+		}
+
+
+		function EtapeSuivante() {
 				var data = {
 						'email_login' : $id("email_login").value,
 						prenom : $id("prenom").value,
@@ -86,8 +120,11 @@
 		
 			function ChangeAvatar(src) {
 				$("#Avatar").attr("src", src);
+				$('#ImageTemp').val(src);
 			}
-
+			<?php if ($Change) {echo "ChangeAvatar(" . "'" . SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'] . "');";}
+				else {echo "ChangeAvatar(" . "'" . SITE_URL . "/photos/utilisateurs/avatars/photo 1.jpg" . "');";} ?>
+			
 			$("#filedrag").click( function(e) {
 				e.stopPropagation();
 				$("#inscription_upload").click();
@@ -134,7 +171,7 @@
 					var reader = new FileReader();
 					reader.onload = function(e) {
 						ChangeAvatar(e.target.result);
-						$('#ImageTemp').val(e.target.result);
+		//				$('#ImageTemp').val(e.target.result);
 		//				$("#image").attr("src", e.target.result);
 					}
 					reader.readAsDataURL(file);

@@ -53,38 +53,44 @@
 		$reqcategorie = $bdd->prepare($sqlcategorie);
 		$reqcategorie->execute();
 		$resultcategorie = $reqcategorie->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($resultcategorie as $row) {
-			$CompteurCategorie[$row['provenance']][$row['id_categorie']] = $row['compteur'];
-			if (!empty($Somme[$row['id_categorie']])) {$Somme[$row['id_categorie']] += $row['compteur'];}
-			else {$Somme[$row['id_categorie']] = $row['compteur'];}
-		}
-		foreach ($Somme as $key => $value) {
-			$CompteurCategorie['all'][$key] = $value;
+		if ($resultcategorie) {
+			foreach ($resultcategorie as $row) {
+				$CompteurCategorie[$row['provenance']][$row['id_categorie']] = $row['compteur'];
+				if (!empty($Somme[$row['id_categorie']])) {$Somme[$row['id_categorie']] += $row['compteur'];}
+				else {$Somme[$row['id_categorie']] = $row['compteur'];}
+			}
+			foreach ($Somme as $key => $value) {
+				$CompteurCategorie['all'][$key] = $value;
+			}
 		}
 
 		$sqlscategorie = "SELECT provenance, t10.id_sous_categorie, COUNT(id_avis) as compteur" . $sqldroite  . " GROUP BY provenance, t10.id_sous_categorie";
 		$reqscategorie = $bdd->prepare($sqlscategorie);
 		$reqscategorie->execute();
 		$resultscategorie = $reqscategorie->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($resultscategorie as $row) {
-			$CompteurSousCategorie[$row['provenance']][$row['id_sous_categorie']] = $row['compteur'];
-			if (!empty($Sommesscategorie[$row['id_sous_categorie']])) {$Sommesscategorie[$row['id_sous_categorie']] += $row['compteur'];}
-			else {$Sommesscategorie[$row['id_sous_categorie']] = $row['compteur'];}
-		}
-		foreach ($Sommesscategorie as $key => $value) {
-			$CompteurSousCategorie['all'][$key] = $value;
+		if ($resultscategorie) {
+			foreach ($resultscategorie as $row) {
+				$CompteurSousCategorie[$row['provenance']][$row['id_sous_categorie']] = $row['compteur'];
+				if (!empty($Sommesscategorie[$row['id_sous_categorie']])) {$Sommesscategorie[$row['id_sous_categorie']] += $row['compteur'];}
+				else {$Sommesscategorie[$row['id_sous_categorie']] = $row['compteur'];}
+			}
+			foreach ($Sommesscategorie as $key => $value) {
+				$CompteurSousCategorie['all'][$key] = $value;
+			}
 		}
 		$sqlsscategorie = "SELECT provenance, t10.id_sous_categorie2, COUNT(id_avis) as compteur" . $sqldroite  . " GROUP BY provenance, t10.id_sous_categorie2";
 		$reqsscategorie = $bdd->prepare($sqlsscategorie);
 		$reqsscategorie->execute();
 		$resultsscategorie = $reqsscategorie->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($resultsscategorie as $row) {
-			$CompteurSousCategorie2[$row['provenance']][$row['id_sous_categorie2']] = $row['compteur'];
-			if (!empty($Sommesscategorie2[$row['id_sous_categorie2']])) {$Sommesscategorie2[$row['id_sous_categorie2']] += $row['compteur'];}
-			else {$Sommesscategorie2[$row['id_sous_categorie2']] = $row['compteur'];}
-		}
-		foreach ($Sommesscategorie2 as $key => $value) {
-			$CompteurSousCategorie2['all'][$key] = $value;
+		if ($resultsscategorie) {
+			foreach ($resultsscategorie as $row) {
+				$CompteurSousCategorie2[$row['provenance']][$row['id_sous_categorie2']] = $row['compteur'];
+				if (!empty($Sommesscategorie2[$row['id_sous_categorie2']])) {$Sommesscategorie2[$row['id_sous_categorie2']] += $row['compteur'];}
+				else {$Sommesscategorie2[$row['id_sous_categorie2']] = $row['compteur'];}
+			}
+			foreach ($Sommesscategorie2 as $key => $value) {
+				$CompteurSousCategorie2['all'][$key] = $value;
+			}
 		}
 
 		
