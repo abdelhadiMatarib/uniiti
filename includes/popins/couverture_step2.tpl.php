@@ -77,6 +77,7 @@
 			if (substr_count($_POST['image1'], "http:") > 0) {
 				$image[1] = $_POST['image1'];
 			} else {
+				unlink($CheminImageRecalibree . "couv1.jpg");
 				CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
 				$image[1] = $CheminImageCompressee . "couv1.jpg";
 			}
