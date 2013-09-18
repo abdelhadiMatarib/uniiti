@@ -116,7 +116,7 @@ function CreerOverlayPush() {
     
     // Social buttons display
     $('.commerce_head_desc_social span').click(function(){
-       $('.overlay_social_buttons').toggleClass('overlay_social_buttons_specific');
+       $('.overlay_social_buttons').hide().fadeIn().toggleClass('overlay_social_buttons_specific');
        $('.overlay_social_buttons_specific img').css('margin-right','5px');
     });
     
@@ -198,26 +198,26 @@ function resizeboxContainer(){
             
             // Alternate descs in head
             $('#commerce_head_desc_ariane_button').click(function(){
-                $('.commerce_head_desc_address').css('width','20px');
-                $('.commerce_head_desc_ariane').css('width','240px');
+                $('.commerce_head_desc_address').animate({width:'20px'},500);
+                $('.commerce_head_desc_ariane').animate({width:'240px'},500);
                 $('#commerce_head_desc_ariane_wrap').css('display','block');
                 $('#commerce_head_desc_address_wrap').css('display','none');
             });
             $('#commerce_head_desc_address_button').click(function(){
-                $('.commerce_head_desc_ariane').css('width','40px');
-                $('.commerce_head_desc_address').css('width','230px');
+                $('.commerce_head_desc_ariane').animate({width:'40px'},500);
+                $('.commerce_head_desc_address').animate({width:'230px'},500);
                 $('#commerce_head_desc_address_wrap').css('display','block');
                 $('#commerce_head_desc_ariane_wrap').css('display','none');
             });
             $('#commerce_head_desc_identity_button').click(function(){
-                $('.commerce_head_desc_prices').css('width','40px');
-                $('.commerce_head_desc_identity').css('width','230px');
+                $('.commerce_head_desc_prices').animate({width:'40px'},500);
+                $('.commerce_head_desc_identity').animate({width:'230px'},500);
                 $('#commerce_head_desc_identity_wrap').css('display','block');
                 $('#commerce_head_desc_prices_wrap').css('display','none');
             });
             $('#commerce_head_desc_prices_button').click(function(){
-                $('.commerce_head_desc_identity').css('width','20px');
-                $('.commerce_head_desc_prices').css('width','230px');
+                $('.commerce_head_desc_identity').animate({width:'30px'},500);
+                $('.commerce_head_desc_prices').animate({width:'230px'},500);
                 $('#commerce_head_desc_prices_wrap').css('display','block');
                 $('#commerce_head_desc_identity_wrap').css('display','none');
             });
