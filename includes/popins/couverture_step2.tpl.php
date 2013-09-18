@@ -59,17 +59,17 @@
 	}
 		if ((!empty($_POST['id_contributeur'])) || (!empty($_POST['id_enseigne']))) {
 			if ($_POST['id_contributeur'] != "") {
-				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/uniiti/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
 				$CheminImageCompressee = SITE_URL . "/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
 			}
 			else if ($_POST['id_enseigne'] != "") {
-				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
+				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/uniiti/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
 				$CheminImageCompressee = SITE_URL . "/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
 			}
 			else {exit;}
 		}
 		else {
-			$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/img/tmp/";
+			$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/uniiti/img/tmp/";
 			$CheminImageCompressee = SITE_URL . "/img/tmp/";
 		}
 		$NbImages = 1;
