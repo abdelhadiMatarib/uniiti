@@ -189,7 +189,7 @@ span.index_overlay_texte{display:block;}
 /* BOUTONS ACTIONS JM / JM PAS / WISHLIST */
 .boutons{cursor: pointer;width:50px;height:50px;margin-bottom: 10px;}
 .boutons:hover{opacity:0.9;}
-.wrapper_boutons{border-radius: 4px 0 0 4px;position:absolute;right:0;top:35px; width: 50px; background-color: rgba(0,0,0,0.6);}
+.wrapper_boutons{border-radius: 4px 0 0 4px;position:absolute;right:0;top:35px; width: 50px; background-color: rgba(0,0,0,0.6); z-index: 100;}
 .wrapper_boutons_objet{position:absolute;right:-6px;top:65px;}
 
 /* COMMERCE */
@@ -286,11 +286,11 @@ span.follower_identity_txt_avis{font-size:0.9em;font-weight:600;display:inline-b
 span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;display:inline-block;}
 
 .commerce_couv{position:relative;height:496px; overflow:hidden;}
-.ligne_verticale1{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:730px;}
-.ligne_verticale2{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:925px;}
-.commerce_couv img{max-width:100%; margin-top: -330px}
+.ligne_verticale1{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:730px;z-index: 100;}
+.ligne_verticale2{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:925px;z-index: 100;}
+.commerce_couv img{max-width:100%; /*margin-top: -330px*/}
 .commerce_concept_title{position:absolute;}
-.commerce_concept{position:absolute;bottom:0;left:0;color:white;width:370px;background-color:rgba(37,37,37,0.90);}
+.commerce_concept{z-index:100;position:absolute;bottom:0;left:0;color:white;width:370px;background-color:rgba(37,37,37,0.90);}
 .commerce_concept span{display:inline-block;margin:0;text-transform: uppercase;font-weight:bold;text-align:left;}
 .commerce_concept p{display:none;color:white;}
 .concept_content{float:left;margin:10px;}
@@ -307,14 +307,14 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .button_show_concept{}
 .commerce_recos_wrap{display:none;margin:10px 0;text-align: center;}
 .commerce_labels_wrap{display:none;margin:10px 0;text-align: center;}
-.commerce_gerant{position:absolute;bottom:0;left:370px;}
+.commerce_gerant{position:absolute;bottom:0;left:370px; z-index:100;}
 .gerant_title{width:100%;text-transform:uppercase;background-color:#cbcbcb;}
 .gerant_title_utilisateur{width:186px;}
 .gerant_title p{text-align:center;padding:5px 10px;font-weight:bold;margin:0;color: #252525;}
 .gerant_photo{width:100px;display:none;}
 
 .gerant_photo img{max-width:100%;vertical-align:bottom;}
-.commerce_recos,.commerce_labels{background-color:rgba(37,37,37,0.90);}
+.commerce_recos,.commerce_labels{background-color:rgba(37,37,37,0.90); z-index:100;}
 .commerce_recos a,.commerce_labels a{color:white;padding:5px 10px;display:inline-block;width:180px;height:100%;}
 .commerce_recos{position:absolute;width:180px;bottom:0;right:0;}
 .commerce_recos span,.commerce_labels span{display:inline-block;margin:0;text-transform: uppercase;font-weight:bold;text-align:left;}
@@ -402,7 +402,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .utilisateur_head_desc_title{float:left;padding: 0 0 5px 10px;}
 .utilisateur_head_desc_title .img_container{position:relative;}
 .utilisateur_head_desc_title h2{font-size: 1.7em;font-weight: 300;margin: 9px 0 0 0;display: inline-block;}
-.utilisateur_head_desc_avatar{position: absolute;top: 50px;z-index: 1;left: 10px;}
+.utilisateur_head_desc_avatar{position: absolute;top: 50px;z-index: 1;left: 10px;z-index:99;}
 .utilisateur_head_desc_avatar img{border:1px solid white;}
 .utilisateur_head_desc_desc{float:left;width:140px;padding:6px 0 0 175px;}
 .utilisateur_head_desc_desc span{display:block;}
@@ -1237,3 +1237,30 @@ h2.h2_suppr_commerce{margin-top:20px;}
 .box_foot_classement_nbr{font-size:2.8em;color:white;font-weight:700;}
 
 .box_user_time{float:left;width:136px;}
+
+#couv_slides {display: none;}
+#couv_slides .slidesjs-navigation {margin-top:5px;}
+a.slidesjs-next,
+a.slidesjs-previous,
+a.slidesjs-play,
+a.slidesjs-stop {background-image: url(img/btns-next-prev.png);background-repeat: no-repeat;display:block;width:12px;height:18px;overflow: hidden;text-indent: -9999px;float: left;margin-right:5px;}
+a.slidesjs-next {margin-right:10px;background-position: -12px 0;}
+a:hover.slidesjs-next {background-position: -12px -18px;}
+a.slidesjs-previous {background-position: 0 0;}
+a:hover.slidesjs-previous {background-position: 0 -18px;}
+a.slidesjs-play {width:15px;background-position: -25px 0;}
+a:hover.slidesjs-play {background-position: -25px -18px;}
+a.slidesjs-stop {width:18px;background-position: -41px 0;}
+a:hover.slidesjs-stop {background-position: -41px -18px;}
+.slidesjs-pagination {/*margin: 7px 0 0;float: right;list-style: none; position: absolute; padding: 0;z-index: 100;*/ display: none;}
+/*.slidesjs-pagination li {}*/
+.slidesjs-pagination li a {margin: -100px 0 15px 0;display: block;width: 13px;height: 0;padding-top: 13px;background-image: url(img/pagination.png);background-position: 0 0;float: left;overflow: hidden;}
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {background-position: 0 -13px}
+.slidesjs-pagination li a:hover {background-position: 0 -26px}
+#slides a:link,
+#slides a:visited {color: #333}
+#slides a:hover,
+#slides a:active {color: #9e2020}
+.navbar {overflow: hidden}
+.couv_container {margin: 0 auto;width: 1736px;height: 496px;}

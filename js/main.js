@@ -130,8 +130,8 @@ function resizeboxContainer(){
 	if (boxcontainersize == 750){$('.big_wrapper').css('width',736);$('.commerce_couv').css('height',210);}
 	if (boxcontainersize == 1000){$('.big_wrapper').css('width',986);$('.commerce_couv').css('height',282);}
 	if (boxcontainersize == 1250){$('.big_wrapper').css('width',1236);$('.commerce_couv').css('height',353);}
-	if (boxcontainersize == 1500){$('.big_wrapper').css('width',1486);$('.commerce_couv').css('height',425);}
-	if (boxcontainersize == 1750){$('.big_wrapper').css('width',1736);$('.commerce_couv').css('height',496);}
+	if (boxcontainersize == 1500){$('.big_wrapper').css('width',1486);$('.commerce_couv').css('height',425);$('.couv_container').css('width',1486);}
+	if (boxcontainersize == 1750){$('.big_wrapper').css('width',1736);$('.commerce_couv').css('height',496);$('.couv_container').css('width',1736);}
 	if (boxcontainersize == 2000){$('.big_wrapper').css('width',1986);}
 	
 	// RESIZING CONTENT DEPENDING ON SIZES
