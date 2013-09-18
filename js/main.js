@@ -53,7 +53,7 @@ filter();
 
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
-	$("#dialog_overlay").css({display: "block"});
+	//$("#dialog_overlay").fadeIn();
 	$.ajax({
 		async : false,
 		type :"POST",
@@ -64,12 +64,12 @@ function OuvrePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + url);}
 	});
-	$("#dialog_overlay").css({display: "none"});
+	//$("#dialog_overlay").fadeOut();
 }
 
 function ActualisePopin(data, url, div) {
 	url = siteurl + url;
-	$("#dialog_overlay").css({display: "block"});
+	//$("#dialog_overlay").animate({display: "block"});
 	$.ajax({
 		async : false,
 		type:"POST",
@@ -80,7 +80,7 @@ function ActualisePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + url);}
 	});
-	$("#dialog_overlay").css({display: "none"});
+	//$("#dialog_overlay").animate({display: "none"});
 }
 
 function OuvrePopinInscription(data) {
@@ -848,9 +848,9 @@ $(document).ready(function() {
         if(
         $('.overlay').is(':visible'))
         {
-            $('.overlay').css('display','none');
+            $('.overlay').fadeOut();
         }
-        else{$('.overlay').css('display','block');}
+        else{$('.overlay').fadeIn();}
         
     $('.recherche_avancee_wrapper').load(siteurl+"/includes/menus/recherche_avancee.tpl.php").stop().slideToggle(300);
     $('.header').css('z-index','1000');
@@ -866,6 +866,7 @@ $(document).ready(function() {
         width: '560px',
         height: 'auto',
 		open: function() {
+                    $('.ui-widget-overlay').hide().fadeIn();
 			jQuery('.ui-widget-overlay').bind('click', function() {
 				jQuery('#default_dialog').dialog('close');
 			});
@@ -885,6 +886,7 @@ $(document).ready(function() {
 		width: '760px',
 		height: 'auto',
 		open: function() {
+                    $('.ui-widget-overlay').hide().fadeIn();
 		function appendsuggest() {
 			var widthleft = $('.presentation_action_left').height();
 		    var changewidthsuggest = widthleft - 101;
@@ -938,6 +940,7 @@ $(document).ready(function() {
 		width: '1230px',
 		height: 'auto',
 		open: function() {
+                    $('.ui-widget-overlay').hide().fadeIn();
 			jQuery('.ui-widget-overlay').bind('click', function() {
 				jQuery('#default_dialog_inscription').dialog('close');
 			})
