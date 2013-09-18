@@ -136,6 +136,44 @@ function resizeboxContainer(){
 	
 	// RESIZING CONTENT DEPENDING ON SIZES
 	
+        // CHAMPS DE RECHERCHE AVANCÉE
+        /* 3 */if ($('.big_wrapper').width() == 736){
+    
+        //RECHERCHE AVANCÉE
+        $('.recherche_avancee_wrapper').css('background-position','-120px');
+        $('.recherche_avancee_left').css('line-height','2.2em').css('width','500px').css('margin','20px auto');
+        $('.recherche_avancee_right').css('top','10px');
+        $('.recherche_avancee_left span').css('font-size','1.1em');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','25px');
+        $('.recherche_avancee_left a.recherche_mot_inactif').css('font-size','0.8em');
+        $('.recherche_avancee_img_container').css('height','60px');
+        $('.recherche_avancee_img_container img').css('height','55.5px').css('width','56px');
+    }
+    /* 4 */if ($('.big_wrapper').width() == 986){
+
+        //RECHERCHE AVANCÉE
+        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_left').css('line-height','2.5em').css('width','600px').css('margin','20px auto');
+        $('.recherche_avancee_right').css('top','10px');
+        $('.recherche_avancee_left span').css('font-size','1.3em');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','29px');
+        $('.recherche_avancee_img_container').css('height','60px');
+        $('.recherche_avancee_img_container img').css('height','55.5px').css('width','56px');
+    }
+    /* 5 */else if ($('.big_wrapper').width() == 1236){
+
+        //RECHERCHE AVANCÉE
+        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_left').css('line-height','2.5em').css('width','700px').css('margin','20px auto');
+        $('.recherche_avancee_right').css('top','10px');
+        $('.recherche_avancee_left span').css('font-size','1.5em');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','30px');
+        $('.recherche_avancee_img_container').css('height','96px');
+        $('.recherche_avancee_img_container img').css('height','96px').css('width','95px');
+    }
+    // CHAMPS DE RECHERCHE AVANCÉE
+        
+        
 	/* 1 */if ($('.big_wrapper').width() == 236){
 		// HEADER
 		
