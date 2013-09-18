@@ -1,6 +1,6 @@
 /* GENERAL */
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
-#default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
+#default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
 #default_dialog_inscription .popin_close_button{z-index: 999;position: absolute;top: 10px;right: 5px;cursor: pointer;}
 #dialog_overlay{display:none;}
 .dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
@@ -780,7 +780,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 
 /* PRESENTATION ACTION */
 
-.presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;}
+.presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
 .menutarifs_head{width:700px;height:50px;background-color:#252525;color:white;}
 .menutarifs_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
 .menutarifs_body,.menutarifs_body_entrees,.menutarifs_body_plats,.menutarifs_body_desserts,.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{float:left;}
