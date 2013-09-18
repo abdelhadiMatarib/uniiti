@@ -947,17 +947,18 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;width:230px;}
 .input_avisenattente_precisezmotif{display:none;}
 
-/* RECHERCHE AVANCEE */
+    /* RECHERCHE AVANCEE */
 .recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background:url('../img/pictos_actions/recherche_avancee_1300.png')white;max-height:175px;}
 .recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}
 .recherche_avancee_right{float:right;margin:10px 40px 10px 20px;}
 .recherche_avancee_img_container{height:96px;width:96px;}
 .recherche_avancee_left span{display:block;font-size:2.1em;font-weight:300;}
-.recherche_avancee_left a{height:44px;border-bottom:1px dashed #252525;color:#252525;font-weight:400;display:inline-block;margin:0 10px;}
+.recherche_avancee_left a{display:inline-block;}
 .recherche_avancee_right_txt{margin-top:5px;text-align:center;}
 .recherche_avancee_right span{text-transform:uppercase;font-size:1.2em;display:block;}
 .recherche_avancee_right_txt1{font-weight:300;}
 .recherche_avancee_right_txt2{font-weight:700;}
+
 
 /* UTILISATEUR INTERFACE */
 .utilisateur_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:5px;}
