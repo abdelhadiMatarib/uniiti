@@ -113,7 +113,7 @@
                     <div class="clearfix"></div>
                     <div class="utilisateur_head_desc_avatar">
                         <div class="img_container">
-                            <img src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
+                            <img class="user_avatar_target" src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
                             <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvreInscription2();"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
                         
                         </div>
