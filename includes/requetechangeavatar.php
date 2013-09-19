@@ -29,7 +29,7 @@ function CompresserImage ($image, $ImageRecalibree, $Width, $Height) {
 }
 
 if ($_POST['compression']) {
-	CompresserImage($_POST['photo'], $_SERVER["DOCUMENT_ROOT"] . "/projects/uniiti/photos/utilisateurs/avatars/" . $id_contributeur . "avatar.jpg", 120, 120);
+	CompresserImage($_POST['photo'], ROOT_UTILISATEURS_AVATARS . $id_contributeur . "avatar.jpg", 120, 120);
 	$photo= $id_contributeur . "avatar.jpg";
 }
 else {$photo = $_POST['photo'];}

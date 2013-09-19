@@ -59,18 +59,18 @@
 	}
 		if ((!empty($_POST['id_contributeur'])) || (!empty($_POST['id_enseigne']))) {
 			if ($_POST['id_contributeur'] != "") {
-				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/uniiti/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
-				$CheminImageCompressee = SITE_URL . "/photos/utilisateurs/couvertures/" . $_POST['id_contributeur'];
+				$CheminImageRecalibree = ROOT_UTILISATEURS_COUV . $_POST['id_contributeur'];
+				$CheminImageCompressee = SITE_UTILISATEURS_COUV . $_POST['id_contributeur'];
 			}
 			else if ($_POST['id_enseigne'] != "") {
-				$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/uniiti/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
-				$CheminImageCompressee = SITE_URL . "/photos/enseignes/couvertures/" . $_POST['id_enseigne'];
+				$CheminImageRecalibree = ROOT_ENSEIGNES_COUV . $_POST['id_enseigne'];
+				$CheminImageCompressee = SITE_ENSEIGNES_COUV . $_POST['id_enseigne'];
 			}
 			else {exit;}
 		}
 		else {
-			$CheminImageRecalibree = $_SERVER["DOCUMENT_ROOT"] . "/uniiti/img/tmp/";
-			$CheminImageCompressee = SITE_URL . "/img/tmp/";
+			$CheminImageRecalibree = ROOT_IMAGES_TMP;
+			$CheminImageCompressee = SITE_IMAGES_TMP;
 		}
 		$NbImages = 1;
 		if (!empty($_POST['image1'])) {
@@ -83,7 +83,7 @@
 			}
 			$y[1] = $_POST['y1'];
 		}
-		else {$image[1] = SITE_URL . "/photos/utilisateurs/couvertures/photo " . rand(1, 113) . ".jpg";$y[1] = 0;}
+		else {$image[1] = ROOT_UTILISATEURS_COUV . "photo " . rand(1, 113) . ".jpg";$y[1] = 0;}
 		if (!empty($_POST['image2'])) {
 			if (substr_count($_POST['image2'], "http:") > 0) {
 				$image[2] = $_POST['image2'];
