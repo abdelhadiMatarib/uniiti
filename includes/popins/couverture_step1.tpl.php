@@ -249,6 +249,7 @@
 			function EtapeSuivante() {
 			var data = {
 							step : 2,
+							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
 							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
 							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
 							chemin : '',

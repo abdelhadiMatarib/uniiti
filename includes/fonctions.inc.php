@@ -64,6 +64,12 @@ function EffaceFichier($NomFichier) {
 	}
 }
 
+function DeplaceFichier($NomFichier1, $NomFichier2) {
+	if (file_exists($NomFichier1)) {
+		$Deplacement = rename($NomFichier1, $NomFichier2);
+	}
+}
+
 function EcartDate($Maintenant, $Date){
 	$html = "";
 	$Secondes = strtotime($Maintenant) - strtotime($Date);

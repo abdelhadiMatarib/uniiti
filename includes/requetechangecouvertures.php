@@ -2,6 +2,7 @@
 header('Content-Type: application/json');
 include_once '../config/configuration.inc.php';
 include_once '../config/configPDO.inc.php';
+include_once 'fonctions.inc.php';
 
 
 function CompresserImage ($image, $ImageRecalibree, $WidthCouv) {
@@ -53,10 +54,13 @@ switch ($type) {
 	break;
 }
 
+$chemintmp = $_POST['chemin'];
+
 for ($i = 1 ; $i <= 5 ; $i++) {
-
-
-
+	if (empty($_POST['image' . $i]) || (substr_count($_POST['image' . $i], "couv") == 0)) {EffaceFichier($chemin . $id . "couv" . $i . ".jpg");}
+	else {
+		DeplaceFichier($chemintmp . $id . "couv" . $i . ".jpg", $chemin . $id . "couv" . $i . ".jpg");
+	}
 }
 
 try

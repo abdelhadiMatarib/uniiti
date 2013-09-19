@@ -171,11 +171,11 @@
 	
 	function InitCouvertures() {
 	
-		y[1] = <?php echo $y1; ?>;
-		y[2] = <?php echo $y2; ?>;
-		y[3] = <?php echo $y3; ?>;
-		y[4] = <?php echo $y4; ?>;
-		y[5] = <?php echo $y5; ?>;
+		y[1] = <?php if ($y1 != '') {echo $y1;} else {echo 0;} ?>;
+		y[2] = <?php if ($y2 != '') {echo $y2;} else {echo 0;} ?>;
+		y[3] = <?php if ($y3 != '') {echo $y3;} else {echo 0;} ?>;
+		y[4] = <?php if ($y4 != '') {echo $y4;} else {echo 0;} ?>;
+		y[5] = <?php if ($y5 != '') {echo $y5;} else {echo 0;} ?>;
 		AjusteCouvertures($('.big_wrapper').css('width'));
 	}
 	InitCouvertures();

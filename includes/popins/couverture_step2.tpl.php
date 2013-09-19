@@ -4,7 +4,6 @@
 	include_once '../../config/configuration.inc.php';
 	include'../head.php';
 	
-
 	$MessageAction = "Enregistrer";
 	$MessageInfo = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
 	$Step = "{step: 1}";
@@ -60,12 +59,12 @@
 	}
 		if ((!empty($_POST['id_contributeur'])) || (!empty($_POST['id_enseigne']))) {
 			if ($_POST['id_contributeur'] != "") {
-				$CheminImageRecalibree = ROOT_UTILISATEURS_COUV . $_POST['id_contributeur'];
-				$CheminImageCompressee = SITE_UTILISATEURS_COUV . $_POST['id_contributeur'];
+				$CheminImageRecalibree = ROOT_IMAGES_TMP . $_POST['id_contributeur'];
+				$CheminImageCompressee = SITE_IMAGES_TMP. $_POST['id_contributeur'];
 			}
 			else if ($_POST['id_enseigne'] != "") {
-				$CheminImageRecalibree = ROOT_ENSEIGNES_COUV . $_POST['id_enseigne'];
-				$CheminImageCompressee = SITE_ENSEIGNES_COUV . $_POST['id_enseigne'];
+				$CheminImageRecalibree = ROOT_IMAGES_TMP . $_POST['id_enseigne'];
+				$CheminImageCompressee = SITE_IMAGES_TMP . $_POST['id_enseigne'];
 			}
 			else {exit;}
 		}
@@ -78,7 +77,6 @@
 			if (substr_count($_POST['image1'], "http:") > 0) {
 				$image[1] = $_POST['image1'];
 			} else {
-				unlink($CheminImageRecalibree . "couv1.jpg");
 				CompresserImage ($_POST['image1'], $CheminImageRecalibree . "couv1.jpg", 1750);
 				$image[1] = $CheminImageCompressee . "couv1.jpg";
 			}
@@ -150,7 +148,7 @@
 					<?php for ($i = 1 ; $i <= $NbImages ; $i++) { ?>
 					<li id="couverture_img_item<?php echo $i; ?>" class="couverture_img_item">
 						<div class="couverture_img_item_nbr_img_txt"><span><?php echo $i; ?></span></div>
-						<img src="<?php echo $image[$i] ?>" title="" alt=""/>
+						<img src="<?php echo $image[$i] . "?" . time(); ?>" title="" alt=""/>
 						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
 					</li>
 					<?php } ?>
@@ -249,10 +247,10 @@
 			}
 			
 			var data = {
-							type : 'contributeur',
+							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
 							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
 							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
-							chemin : '',
+							chemin : '<?php echo ROOT_IMAGES_TMP; ?>',
 							image1 : NomImage[1],
 							image2 : NomImage[2],
 							image3 : NomImage[3],

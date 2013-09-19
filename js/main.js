@@ -69,7 +69,7 @@ function OuvrePopin(data, url, div) {
 
 function ActualisePopin(data, url, div) {
 	url = siteurl + url;
-	//$("#dialog_overlay").animate({display: "block"});
+	$("#dialog_overlay").css({display: "block"});
 	$.ajax({
 		async : false,
 		type:"POST",
@@ -80,7 +80,7 @@ function ActualisePopin(data, url, div) {
 		},
 		error: function() {alert('Erreur sur url : ' + url);}
 	});
-	//$("#dialog_overlay").animate({display: "none"});
+	$("#dialog_overlay").css({display: "none"});
 }
 
 function OuvrePopinInscription(data) {
