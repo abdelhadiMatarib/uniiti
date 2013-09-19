@@ -30,7 +30,8 @@
 				break;
 		}
 		imagecopyresampled($newImage, $source, 0, 0, 0, 0, $WidthCouv, $imageheight / $scale, $imagewidth, $imageheight);
-		imagejpeg($newImage, $couv, 70);		
+		imagejpeg($newImage, $couv, 70);
+		imagedestroy($newImage);		
 	}
 	
 	function CreerImageCouverture ($image, $ImageRecalibree, $y, $WidthCouv, $HeightCouv) {

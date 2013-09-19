@@ -26,7 +26,8 @@ function CompresserImage ($image, $ImageRecalibree, $Width, $Height) {
 			break;
 	}
 	imagecopyresampled($newImage, $source, 0, 0, 0, 0, $Width, $Height, $imagewidth, $imageheight);
-	imagejpeg($newImage, $couv, 70);		
+	imagejpeg($newImage, $couv, 70);
+	imagedestroy($newImage);	
 }
 
 if (($_POST['compression']) || (!$_POST['compression']) && ($_POST['photo'] != $id_contributeur . "avatar.jpg")) {

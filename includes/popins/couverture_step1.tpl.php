@@ -153,7 +153,7 @@
 
 			var CompteImageErg = 0;
 			var NumImageSel = 1;
-			$('.couverture_step1_button_valider').click(function(e) {console.log($('#y').val());
+			$('.couverture_step1_button_valider').click(function(e) {
 				e.preventDefault();
 				e.stopPropagation();
 				if ($("#image" + NumImageSel).hasClass("is_valid")) {
@@ -235,11 +235,11 @@
 				if(img.offsetHeight) {height=img.offsetHeight;}
 				else if(img.style.pixelHeight){height=img.style.pixelHeight;}
 				var Newheight = Math.round(189 + (height - 189) * 2);
-				DecalageSelectionTop = 21;
-				var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
-				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});console.log(height+' '+Newheight);
+				DecalageSelectionTop = 20;
+				var Newtop = 1+DecalageSelectionTop - Math.round((Newheight - 189) / 2);
+				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
 				AfficheBtnES();
-				var decalage = -1;
+				var decalage = 0;
 				if ($('#y' + NumImageSel).val() != "") {decalage += -$('#y' + NumImageSel).val()*189/500;}
 				$(".draggable").css({top: decalage+'px'});
 				$("#image").css({display : "block"});
@@ -263,6 +263,7 @@
 							y4 : $('#y4').val(),
 							y5 : $('#y5').val()
 						};
+				
 				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
 			};
 			
@@ -275,7 +276,7 @@
 						'axis': 'y',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#y').val(Math.floor(($('#selection').offset().top - $(this).offset().top)*500/189+1));
+							$('#y').val(Math.floor(($('#selection').offset().top - $(this).offset().top+1)*500/189));
 						},
 						stop: function() {AfficheBtnES();}
 					});
