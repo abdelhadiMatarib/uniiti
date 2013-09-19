@@ -2,6 +2,20 @@
         include_once '../config/configuration.inc.php';
 		if ((!empty($_POST['step'])) && ($_POST['step'] == "change")) {$Change = true;}
 		else {$Change = false;}
+		
+		function TirageSansRemise($debut, $fin, $nombre, &$Tirage) {
+			$Tirage[1] = rand($debut, $fin);
+			for ($i = $debut + 1 ; $i <= $nombre ; $i++) {
+				$DejaTire = true;
+				while ($DejaTire) {
+					if ($DejaTire) {$NouveauTirage = rand($debut, $fin);}
+					$DejaTire = false;
+					for ($j = 1 ; $j <= sizeof($Tirage) ; $j++) {if ($Tirage[$j] == $NouveauTirage) {$DejaTire = true;}}
+				}
+				$Tirage[$i] = $NouveauTirage;
+			}
+		}
+		TirageSansRemise(1, 100, 20, $Tirage);
 
 		?>
             <div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" /><?php if ($Change) {echo "Changer votre";} else {echo "Créer un compte en seulement";} ?> <span><?php if ($Change) {echo "avatar";} else {echo "3 étapes";} ?></span></h2></div>
@@ -41,8 +55,8 @@
 						  <div id="slider">
   							<div class="container">
     							<div id="slides">
-    								<?php for ($i = 1 ; $i < 100 ; $i++) { ?>
-										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $i; ?>.jpg');" src="<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $i; ?>.jpg" alt="" />
+    								<?php for ($i = 1 ; $i < 20 ; $i++) { ?>
+										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $Tirage[$i]; ?>.jpg');" src="<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $Tirage[$i]; ?>.jpg" alt="" />
 									<?php } ?>
     							</div>
  							 </div>

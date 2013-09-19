@@ -153,7 +153,7 @@
 
 			var CompteImageErg = 0;
 			var NumImageSel = 1;
-			$('.couverture_step1_button_valider').click(function(e){
+			$('.couverture_step1_button_valider').click(function(e) {console.log($('#y').val());
 				e.preventDefault();
 				e.stopPropagation();
 				if ($("#image" + NumImageSel).hasClass("is_valid")) {
@@ -235,12 +235,12 @@
 				if(img.offsetHeight) {height=img.offsetHeight;}
 				else if(img.style.pixelHeight){height=img.style.pixelHeight;}
 				var Newheight = Math.round(189 + (height - 189) * 2);
-				DecalageSelectionTop = 20;
+				DecalageSelectionTop = 21;
 				var Newtop = DecalageSelectionTop - Math.round((Newheight - 189) / 2);
-				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});
+				$('#fenetre').css({height: Newheight + 'px', top: Newtop + 'px'});console.log(height+' '+Newheight);
 				AfficheBtnES();
-				var decalage = 0;
-				if ($('#y' + NumImageSel).val() != "") {decalage = -$('#y' + NumImageSel).val()*189/500;}
+				var decalage = -1;
+				if ($('#y' + NumImageSel).val() != "") {decalage += -$('#y' + NumImageSel).val()*189/500;}
 				$(".draggable").css({top: decalage+'px'});
 				$("#image").css({display : "block"});
 			});
@@ -275,7 +275,7 @@
 						'axis': 'y',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#y').val(($('#selection').offset().top - $(this).offset().top)*500/189);
+							$('#y').val(Math.floor(($('#selection').offset().top - $(this).offset().top)*500/189+1));
 						},
 						stop: function() {AfficheBtnES();}
 					});

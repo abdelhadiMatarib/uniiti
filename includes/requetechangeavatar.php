@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+include_once 'fonctions.inc.php';
 include_once '../config/configPDO.inc.php';
 include_once '../config/configuration.inc.php';
 
@@ -26,6 +27,10 @@ function CompresserImage ($image, $ImageRecalibree, $Width, $Height) {
 	}
 	imagecopyresampled($newImage, $source, 0, 0, 0, 0, $Width, $Height, $imagewidth, $imageheight);
 	imagejpeg($newImage, $couv, 70);		
+}
+
+if (($_POST['compression']) || (!$_POST['compression']) && ($_POST['photo'] != $id_contributeur . "avatar.jpg")) {
+	EffaceFichier(ROOT_UTILISATEURS_AVATARS . $id_contributeur . "avatar.jpg");
 }
 
 if ($_POST['compression']) {

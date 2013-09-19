@@ -192,12 +192,14 @@
 		<div class="couverture_champs_action"><a href="#" title="" onclick="Enregistrer();"><span><?php echo $MessageAction ?></span></a></div>
 </div>
 <script>    
+			$(function() {
 			function InitSortable() {
 				$( "#sortable" ).sortable();
 				$( "#sortable" ).disableSelection();
 			};
-
 			InitSortable();
+			});
+			
 			function InitImages() {
 				for (i = 1 ; i <=5 ; i++) {
 					var NumImage = i;
@@ -246,6 +248,7 @@
 			}
 			
 			var data = {
+							type : 'contributeur',
 							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
 							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
 							chemin : '',

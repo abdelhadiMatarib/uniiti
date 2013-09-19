@@ -58,6 +58,12 @@ function replaceCar($str) {
     return $str;
 }
 
+function EffaceFichier($NomFichier) {
+	if (file_exists($NomFichier)) {
+		$Effacement = unlink($NomFichier);
+	}
+}
+
 function EcartDate($Maintenant, $Date){
 	$html = "";
 	$Secondes = strtotime($Maintenant) - strtotime($Date);
