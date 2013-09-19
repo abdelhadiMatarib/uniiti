@@ -158,6 +158,7 @@
   <!--                <img src="<?php echo $Chemin . $slide1_contributeur;?>" title="" alt="" />-->
 
 				<div class="couv_container">
+					<?php if ($slide1_contributeur != "" && $slide2_contributeur == "" && $slide3_contributeur == "" && $slide4_contributeur == "" && $slide5_contributeur == "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
 				    <div id="couv_slides">
  					<?php if ($slide1_contributeur != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
 					<?php if ($slide2_contributeur != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_contributeur; ?>" title="" alt=""><?php } ?>					
