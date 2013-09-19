@@ -114,7 +114,7 @@
                     <div class="utilisateur_head_desc_avatar">
                         <div class="img_container">
                             <img class="user_avatar_target" src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
-                            <div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvreInscription2();"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
+                            <div class="utilisateur_interface_modifier_couv modifier_avatar"><a href="#" title="" class="button_changer_couverture" onclick="OuvreInscription2();"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer l'avatar</span></a></div>
                         
                         </div>
                     </div>
@@ -158,6 +158,7 @@
   <!--                <img src="<?php echo $Chemin . $slide1_contributeur;?>" title="" alt="" />-->
 
 				<div class="couv_container">
+					<?php if ($slide1_contributeur != "" && $slide2_contributeur == "" && $slide3_contributeur == "" && $slide4_contributeur == "" && $slide5_contributeur == "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
 				    <div id="couv_slides">
  					<?php if ($slide1_contributeur != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
 					<?php if ($slide2_contributeur != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_contributeur; ?>" title="" alt=""><?php } ?>					

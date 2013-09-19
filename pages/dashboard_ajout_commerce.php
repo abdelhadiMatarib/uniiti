@@ -9,6 +9,79 @@
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+        
+        $PAGE = "Commerce"; 
+
+	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
+					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
+			FROM enseignes AS t1
+				INNER JOIN sous_categories2 AS t2
+				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
+					INNER JOIN sous_categories AS t3
+					ON t2.id_sous_categorie = t3.id_sous_categorie
+						INNER JOIN categories AS t4
+						ON t2.id_categorie = t4.id_categorie
+			WHERE id_enseigne = :id_enseigne
+		";
+
+	$req2 = $bdd->prepare($sql2);
+
+	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+
+	if(isset($_SESSION['SESS_MEMBER_ID'])) {
+		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . "}";
+		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
+		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
+		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+	} else {
+		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	}		
+	
+	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+
+	$req2->execute();
+	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
+           
+	$nom_enseigne            = $result2['nom_enseigne'];
+	$logotype_enseigne       = $result2['logotype_enseigne'];
+	$slide1_enseigne    	 = $result2['slide1_enseigne'];
+	$slide2_enseigne    	 = $result2['slide2_enseigne'];
+	$slide3_enseigne    	 = $result2['slide3_enseigne'];
+	$slide4_enseigne    	 = $result2['slide4_enseigne'];
+	$slide5_enseigne    	 = $result2['slide5_enseigne'];
+	$adresse1_enseigne       = $result2['adresse1_enseigne'];
+	$code_postal             = $result2['cp_enseigne'];
+	$ville_enseigne          = $result2['ville_enseigne'];
+	$pays_enseigne           = $result2['pays_enseigne'];
+	$telephone_enseigne      = $result2['telephone_enseigne'];
+	$descriptif              = $result2['descriptif'];
+	$categorie				 = $result2['categorie_principale'];
+	$sous_categorie          = $result2['sous_categorie'];
+	$sous_categorie2         = $result2['sous_categorie2'];
+    $couleur                 = $result2['couleur'];
+	$url                     = $result2['url'];
+	$id_budget               = $result2['id_budget'];
+
+	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
+			FROM avis AS t1
+
+			INNER JOIN enseignes_recoient_avis AS t2
+			ON t1.id_avis = t2.avis_id_avis
+			INNER JOIN enseignes AS t3
+				ON t2.enseignes_id_enseigne = t3.id_enseigne
+				INNER JOIN contributeurs_donnent_avis AS t4
+					ON t1.id_avis = t4.avis_id_avis
+					INNER JOIN contributeurs AS t5
+						ON t4.contributeurs_id_contributeur = t5.id_contributeur
+			WHERE id_enseigne = :id_enseigne
+			";
+	$req = $bdd->prepare($sql);
+	$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req->execute();
+	$result = $req->fetch(PDO::FETCH_ASSOC);
+	$count_avis_enseigne     = $result['count_avis'];
+	$note_arrondi = number_format($result['moyenne'],1);
 ?>
 
     <body>
@@ -46,12 +119,11 @@
                 <div class="commerce_head_desc">
                     <a href="#" class="commerce_head_desc_modif" onclick="OuvrePopin({}, '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');"></a>
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2>Nom entreprise<?php /*echo $nom_enseigne*/?></h2></div>
-                    <div class="commerce_head_desc_social"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
                     <div class="commerce_head_desc_address"><div class="img_container" id="commerce_head_desc_address_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></a></div><div id="commerce_head_desc_address_wrap"><address>Adresse<?php /*echo /*$adresse1_enseigne; */?></address><span>CODE POSTAL VILLE<?php /*echo /*$code_postal; */?> <?php /*echo /*$ville_enseigne; */?></span></div></div>
-                    <div class="commerce_head_desc_ariane"><div class="img_container" id="commerce_head_desc_ariane_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></a></div><div id="commerce_head_desc_ariane_wrap"><span>Catégorie > Sous-catégorie</span><span class="commerce_head_desc_ariane_lastcat">Sous-sous catégorie</span></div></div>
+                    <div class="commerce_head_desc_ariane"><div class="img_container" id="commerce_head_desc_ariane_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></a></div><div id="commerce_head_desc_ariane_wrap"><span>Catégorie > Sous-catégorie </span><span class="commerce_head_desc_ariane_lastcat">> Sous-sous catégorie</span></div></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
@@ -124,12 +196,12 @@
                 <div class="commerce_recos"><a class="button_show_recos" href="#" title="" onclick="OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');"><span>Recommandations</span><div class="commerce_recos_arrow recos_arrow_up"></div><div class="commerce_recos_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="50" height="44" title="" alt="" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="50" height="44" title="" alt="" /><p></p></div></a></div>
                 <div class="commerce_labels"><a class="button_show_labels" href="#" title="" onclick="OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');"><span>Labels captain</span><div class="commerce_labels_arrow labels_arrow_up"></div><div class="commerce_labels_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="50" height="44" title="" alt="" /><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="50" height="44" title="" alt="" /><p></p></div></a></div>
                 
-                <div class="wrapper_boutons">
-                    <div class="boutons not_signedin" onclick=""><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_OK.png" height="22" width="27"/></a></div>
-                    <div class="boutons not_signedin" onclick=""><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_NOK.png" height="22" width="27"/></a></div>
-                    <div class="boutons not_signedin" onclick=""><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/wishlist.png" height="23" width="30"/></a></div>
-                </div>
-                </div>
+                <!--<div class="wrapper_boutons">
+                    <div class="boutons not_signedin" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
+                    <div class="boutons not_signedin" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
+                    <div class="boutons not_signedin" class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
+                </div>-->
+            </div>
                 </div><!-- FIN BIG WRAPPER -->
                 <div class="dashboard_couv_ombre_grande"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_grande.png"/></div>
                 <div class="dashboard_form_input_submit_wrap submit_commerce">

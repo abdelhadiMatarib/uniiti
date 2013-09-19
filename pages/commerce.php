@@ -200,7 +200,7 @@
                 <div class="wrapper_boutons">
                 <div class="boutons not_signedin" onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
                 <div class="boutons not_signedin" onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
-                <div class="boutons not_signedin" onclick="<?php echo $wishlist_step1; ?>"class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
+                <div class="boutons not_signedin" onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
                 </div>
             </div>
         
