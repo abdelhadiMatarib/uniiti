@@ -31,6 +31,11 @@
 	$slide3_contributeur    = $result['slide3_contributeur'];
 	$slide4_contributeur    = $result['slide4_contributeur'];
 	$slide5_contributeur    = $result['slide5_contributeur'];
+	$y1    = $result['y1'];
+	$y2    = $result['y2'];
+	$y3    = $result['y3'];
+	$y4    = $result['y4'];
+	$y5    = $result['y5'];
 	$prenom_contributeur    = $result['prenom_contributeur'];
 	$nom_contributeur       = $result['nom_contributeur'];
 	$sexe_contributeur 		= $result['sexe_contributeur'];
@@ -62,6 +67,8 @@
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
+	
+	$Chemin = SITE_URL . "/photos/utilisateurs/couvertures/";
 	
 ?>
 <body>    
@@ -122,7 +129,15 @@
             <div class="commerce_couv">
                 <div class="ligne_verticale4"></div>
                 <div class="ligne_verticale5"></div>
-                <img src="<?php echo SITE_URL . "/photos/utilisateurs/couvertures/" . $slide1_contributeur;?>" title="" alt="" />
+				<div class="couv_container">
+				    <div id="couv_slides">
+ 					<?php if ($slide1_contributeur != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide2_contributeur != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_contributeur; ?>" title="" alt=""><?php } ?>					
+ 					<?php if ($slide3_contributeur != "") { ?><img id="couv3" src="<?php echo $Chemin . $slide3_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide4_contributeur != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_contributeur; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide5_contributeur != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_contributeur; ?>" title="" alt=""><?php } ?>
+				    </div>
+				</div>
                 <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
                 <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
                 
@@ -147,6 +162,25 @@
         <?php include'../includes/js.php' ?>
 
 	<script>
+	
+	// Gestion du slider des couvertures
+	$(function() {
+	  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
+	  });
+	})
+	
+	function InitCouvertures() {
+	
+		y[1] = <?php echo $y1; ?>;
+		y[2] = <?php echo $y2; ?>;
+		y[3] = <?php echo $y3; ?>;
+		y[4] = <?php echo $y4; ?>;
+		y[5] = <?php echo $y5; ?>;
+		AjusteCouvertures($('.big_wrapper').css('width'));
+	}
+	InitCouvertures();
+	// Fin gestion du slider des couvertures
+	
 	function AfficheFollow(data) {
 
 		$.ajax({
@@ -183,7 +217,7 @@
 				AfficheFollow(data);
 			}
 	});
-	
+
 	</script>
 
 
