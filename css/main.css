@@ -1241,13 +1241,10 @@ h2.h2_suppr_commerce{margin-top:20px;}
 
 .box_user_time{float:left;width:136px;}
 
-
+/* SLIDER COUVERTURES AVEC RESPONSIVE */
 #couv_slides {display: none}
 #couv_slides .slidesjs2-navigation {margin-top:5px;}
-a.slidesjs2-next,
-a.slidesjs2-previous,
-a.slidesjs2-play,
-a.slidesjs2-stop {background-image: url(img/btns-next-prev.png);background-repeat: no-repeat;display:block;width:12px;height:18px;overflow: hidden;text-indent: -9999px;float: left;margin-right:5px;}
+a.slidesjs2-next,a.slidesjs2-previous,a.slidesjs2-play,a.slidesjs2-stop {background-image: url(img/btns-next-prev.png);background-repeat: no-repeat;display:block;width:12px;height:18px;overflow: hidden;text-indent: -9999px;float: left;margin-right:5px;}
 a.slidesjs2-next {margin-right:10px;background-position: -12px 0;}
 a:hover.slidesjs2-next {background-position: -12px -18px;}
 a.slidesjs2-previous {background-position: 0 0;}
@@ -1256,17 +1253,17 @@ a.slidesjs2-play {width:15px;background-position: -25px 0;}
 a:hover.slidesjs2-play {background-position: -25px -18px;}
 a.slidesjs2-stop {width:18px;background-position: -41px 0;}
 a:hover.slidesjs2-stop {background-position: -41px -18px;}
-.slidesjs2-pagination {/*margin: 7px 0 0;float: right;list-style: none; position: absolute; padding: 0;z-index: 100;*/ display: none;}
-/*.slidesjs-pagination li {}*/
+.slidesjs2-pagination {margin: 7px 0 0;float: right;list-style: none; position: absolute; padding: 0;z-index: 150;}
+.slidesjs2-pagination li {float: left;margin: 0 1px;z-index: 150;}
 .slidesjs2-pagination li a {margin: -100px 0 15px 0;display: block;width: 13px;height: 0;padding-top: 13px;background-image: url(img/pagination.png);background-position: 0 0;float: left;overflow: hidden;}
-.slidesjs2-pagination li a.active,
-.slidesjs2-pagination li a:hover.active {background-position: 0 -13px}
-.slidesjs2-pagination li a:hover {background-position: 0 -26px}
-#slides a:link,
-#slides a:visited {color: #333}
-#slides a:hover,
-#slides a:active {color: #9e2020}
+.slidesjs2-pagination li a.active,.slidesjs2-pagination li a:hover.active {background-position: 0 -13px}.slidesjs2-pagination li a:hover {background-position: 0 -26px}
+#slides a:link,#slides a:visited {color: #333}
+#slides a:hover,#slides a:active {color: #9e2020}
 .navbar {overflow: hidden}
 .couv_container {margin: 0 auto;width: 1736px;height: 496px;}
-
+@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container {width: 736px;}}
+@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container {width: 986px;}}
+@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container {width: 1236px;}}
+@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container {width: 1486px;}}
+@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container {width: 1736px;}}
 
