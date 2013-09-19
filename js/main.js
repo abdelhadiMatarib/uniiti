@@ -158,34 +158,57 @@ function resizeboxContainer(){
         $('.recherche_avancee_left').css('line-height','2.2em').css('width','500px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.1em');
-        $('.recherche_avancee_left a.recherche_mot_actif').css('height','25px');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','24px');
         $('.recherche_avancee_left a.recherche_mot_inactif').css('font-size','0.8em');
         $('.recherche_avancee_img_container').css('height','60px');
         $('.recherche_avancee_img_container img').css('height','55.5px').css('width','56px');
-    }
-    /* 4 */if ($('.big_wrapper').width() == 986){
+        }
+        /* 4 */if ($('.big_wrapper').width() == 986){
 
         //RECHERCHE AVANCÉE
         $('.recherche_avancee_wrapper').css('background-position','center');
         $('.recherche_avancee_left').css('line-height','2.5em').css('width','600px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.3em');
-        $('.recherche_avancee_left a.recherche_mot_actif').css('height','29px');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','26px');
         $('.recherche_avancee_img_container').css('height','60px');
         $('.recherche_avancee_img_container img').css('height','55.5px').css('width','56px');
-    }
-    /* 5 */else if ($('.big_wrapper').width() == 1236){
+        }
+        /* 5 */else if ($('.big_wrapper').width() == 1236){
 
         //RECHERCHE AVANCÉE
         $('.recherche_avancee_wrapper').css('background-position','center');
         $('.recherche_avancee_left').css('line-height','2.5em').css('width','700px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.5em');
-        $('.recherche_avancee_left a.recherche_mot_actif').css('height','30px');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','29px');
         $('.recherche_avancee_img_container').css('height','96px');
         $('.recherche_avancee_img_container img').css('height','96px').css('width','95px');
-    }
-    // CHAMPS DE RECHERCHE AVANCÉE
+        }
+        /* 6 */else if ($('.big_wrapper').width() == 1486){
+
+        //RECHERCHE AVANCÉE
+        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_left').css('line-height','2.8em').css('width','800px').css('margin','20px auto');
+        $('.recherche_avancee_right').css('top','10px');
+        $('.recherche_avancee_left span').css('font-size','1.6em');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','33px');
+        $('.recherche_avancee_img_container').css('height','96px');
+        $('.recherche_avancee_img_container img').css('height','96px').css('width','95px');
+        }
+        /* 7 */else if ($('.big_wrapper').width() == 1736){
+
+        //RECHERCHE AVANCÉE
+        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_left').css('line-height','3em').css('width','900px').css('margin','20px auto');
+        $('.recherche_avancee_right').css('top','10px');
+        $('.recherche_avancee_left span').css('font-size','1.7em');
+        $('.recherche_avancee_left a.recherche_mot_actif').css('height','36px');
+        $('.recherche_avancee_img_container').css('height','96px');
+        $('.recherche_avancee_img_container img').css('height','96px').css('width','95px');
+        }
+        
+        // CHAMPS DE RECHERCHE AVANCÉE
         
         
 	/* 1 */if ($('.big_wrapper').width() == 236){
@@ -257,20 +280,20 @@ function resizeboxContainer(){
 		$('.commerce_head_desc').css('width','294px');
 		$('.commerce_head_desc_address').css('width','230px').css('font-size','1em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block').css('line-height','12px');
 		$('.commerce_head_desc_identity').css('width','230px');
-                $('#commerce_head_desc_identity_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px');
 		$('.commerce_head_desc_ariane').css('width','40px');
                 $('.commerce_head_desc_ariane span').css('font-size','0.9em');
 		$('#commerce_head_desc_ariane_wrap').css('display','none').css('line-height','12px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('.commerce_head_desc_prices').css('width','40px');
-		$('#commerce_head_desc_prices_wrap').css('display','none');
+		$('#commerce_head_desc_prices_wrap').css('display','none').css('line-height','12px');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_desc_social').css('margin-top','15px').addClass('ipad_portrait_social');
 		$('.commerce_head_desc_social span').css('display','block');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','none');
-                $('.commerce_head_desc_title h2').css('font-size','1em').css('margin-top','15px');
+                $('.commerce_head_desc_title h2').css('font-size','1em').css('margin-top','15px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','180px');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',88);
 		$('.commerce_head_infos_suivre').css('width',70).css('height',88);
 		$('.commerce_head_infos_suivre span').css('margin-bottom',15).css('margin-top',15);
@@ -299,7 +322,7 @@ function resizeboxContainer(){
 		$('.commerce_gerant').css('left','272px');
 		$('.gerant_photo').css('width','80px');
 		$('.gerant_title').css('font-size','11px');
-		$('.wrapper_boutons').css('top','15px');
+		$('.wrapper_boutons').css('top','15.5px');
                 $('.wrapper_boutons .boutons').css('margin-bottom','0px');
 		$('.commerce_head_note_reserver').css('font-size','1.1em')
 		
@@ -307,16 +330,12 @@ function resizeboxContainer(){
 		$('.ligne_verticale1').css('left','465px').css('height','210px');
 		$('.ligne_verticale2').css('left','606px').css('height','210px');
 		
-		$('.ligne_verticale4').css('left','427px').css('height','210px');
-		$('.ligne_verticale5').css('left','573px').css('height','210px');
+		$('.ligne_verticale4').css('left','447px').css('height','210px');
+		$('.ligne_verticale5').css('left','582px').css('height','210px');
                 
                 // COMMERCE INTERFACE
-                $('.commerce_reservation_commerce').css('width','60px');
-                $('.commerce_reservation_commerce').css('height','28px');
-                $('.commerce_reservation_commerce').css('font-size','0.7em');
-                $('.commerce_optin_commerce').css('width','60px');
-                $('.commerce_optin_commerce').css('height','28px');
-                $('.commerce_optin_commerce').css('font-size','0.8em');
+                $('.commerce_reservation_commerce').css('width','60px').css('height','28px').css('padding-top','5px').css('font-size','0.7em');
+                $('.commerce_optin_commerce').css('width','60px').css('height','28px').css('padding-top','4px').css('font-size','0.7em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
 					
 		//PAGE OBJET
@@ -325,6 +344,9 @@ function resizeboxContainer(){
 		$('.objet_head_desc_social img').css('display','none');
 		
 		$('.objet_head_desc').css('width','295px');
+                $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','65px');
+                $('.utilisateur_suggerer_commerce a').css('font-size',"0.85em");
+		$('.utilisateur_suggerer_objet a').css('font-size',"0.85em");
 		$('.objet_head_desc_ouacheter').css('width','120px').css("font-size","85%");
 		$('.objet_head_desc_ariane').css('width','150px').css("font-size","85%");
 		$('.objet_head_desc_infosrapides').css('display','none');
@@ -335,7 +357,7 @@ function resizeboxContainer(){
 		$('.objet_head_infos_suivre').css('width',65);
 		
 		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('margin-top','0');
-		$('.objet_head_infos_services .img_container,.objet_head_infos_infos .img_container').css('width','45px').css('padding-top','5px').css('padding-bottom','2px').css('text-align','center');
+		$('.objet_head_infos_services .img_container,.objet_head_infos_infos .img_container').css('width','45px').css('padding-top','5px').css('padding-bottom','2px').css('padding-left','23px').css('padding-right','23px').css('text-align','center');
 		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('font-size','0.85em').css('width','90px').css('text-align','center');
 		$('.objet_head_infos_services_classement,.objet_head_infos_infos_classement').css('display','inline-block').css('font-size','95%').css('font-weight','bold').css('width','90px');
 		$('.objet_head_infos_services .img_container img,.objet_head_infos_infos .img_container img').css('width','28px').css('height','30px');
@@ -347,8 +369,10 @@ function resizeboxContainer(){
 		$('.ligne_verticale3').css('left','602px').css('height','210px');
 		
 		//PAGE UTILISATEUR
-		$('.utilisateur_head_desc_avatar .img_container+img').css('height','80px').css('width','80px');
-		$('.utilisateur_head_desc_desc').css('padding-left','100px').css('width','75px').css('font-size','80%');
+                $('.utilisateur_head_infos_suggestion').css('width',75).css('float','left');
+		$('.utilisateur_head_desc_avatar img.user_avatar_target').css('height','60px').css('width','60px');
+                $('.utilisateur_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','190px');
+		$('.utilisateur_head_desc_desc').css('padding-left','90px').css('width','75px').css('font-size','0.8em');
 		$('.utilisateur_head_desc_desc2').css('width','110px').css('font-size','80%');
 		$('.utilisateur_gerant_photo').css('width','145px');
 
@@ -394,7 +418,7 @@ function resizeboxContainer(){
 		// PAGE COMMERCE
 		
 		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
-		$('.wrapper_boutons').css('top','36px');
+		$('.wrapper_boutons').css('top','35.5px');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
 		$('.commerce_head_infos .separateur').css('display','block');
@@ -412,7 +436,7 @@ function resizeboxContainer(){
                 $('.commerce_recos span').css('font-size','1em');
 		$('.commerce_labels span').css('font-size','1em');
 
-                $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','12px');
+                $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','12px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','240px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
@@ -422,16 +446,15 @@ function resizeboxContainer(){
 		$('.infosrapides1').css('margin-right','10px')
 		$('.commerce_head_desc').css('width',418);
 		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','100px');
-                $('.commerce_head_desc_address').css('font-size','0.8em');
+                $('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('font-size','0.8em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block').css('line-height','12px');
 		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','120px');
-                $('.commerce_head_desc_ariane span').css('font-size','0.8em');
 		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('font-size','0.8em');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px');
                 $('#commerce_head_desc_identity_button').css('float','left').css('height','20px');
-		$('#commerce_head_desc_prices_wrap').css('display','block');
+		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','12px');
 		$('#commerce_head_desc_prices_button').css('float','left').css('height','20px');
 		$('.commerce_head_desc_address,.commerce_head_desc_ariane,.commerce_head_desc_identity,.commerce_head_desc_prices').css('width','195');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',142).css('height','82px');
@@ -452,16 +475,12 @@ function resizeboxContainer(){
 		$('.ligne_verticale1').css('left','627px').css('height','280px');
 		$('.ligne_verticale2').css('left','812px').css('height','280px');
 		
-		$('.ligne_verticale4').css('left','616px').css('height','280px');
-		$('.ligne_verticale5').css('left','801px').css('height','280px');
-                
+		$('.ligne_verticale4').css('left','636px').css('height','280px');
+		$('.ligne_verticale5').css('left','811px').css('height','280px');
+
                 // COMMERCE INTERFACE
-                $('.commerce_reservation_commerce').css('width','75px');
-                $('.commerce_reservation_commerce').css('font-size','0.8em');
-                $('.commerce_reservation_commerce').css('height','25px');
-                $('.commerce_optin_commerce').css('width','75px');
-                $('.commerce_optin_commerce').css('height','25px');
-                $('.commerce_optin_commerce').css('font-size','0.8em');
+                $('.commerce_reservation_commerce').css('width','75px').css('height','25px').css('padding-top','5px').css('font-size','0.8em');
+                $('.commerce_optin_commerce').css('width','75px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
 		
 		// PAGE OBJET
@@ -471,21 +490,21 @@ function resizeboxContainer(){
 		$('.objet_head_infos_services,.objet_head_infos_infos').css('width',150);
 		$('.objet_head_infos_suivre').css('width',70);
 		
-		$('.utilisateur_head_infos_suggestion').css('width',75);
+		$('.utilisateur_head_infos_suggestion').css('width',80).css('float','left');
 		$('.utilisateur_suggerer_commerce a').css('font-size',"0.85em");
 		$('.utilisateur_suggerer_objet a').css('font-size',"0.85em");
 		
 		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('margin-top','10px').css('margin-left','0').css('margin-right','0').css('font-size','95%').css('width','80px').css('text-align','left');
 		//$('.objet_head_infos_services_text_fin,.objet_head_infos_infos_text_fin').css("font-size","0.8em");
-		$('.objet_head_infos_services .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
+		$('.objet_head_infos_services .img_container,.objet_head_infos_infos .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
 		$('.objet_head_infos_services_classement').css('width','80px').css('text-align','center').css('margin-top','2px').css("display","block").css("font-size","1.2em");
 		//$('.objet_head_infos_services_text_couleur').css('font-size','0.9em');
 		
-		$('.objet_head_infos_infos .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
 		$('.objet_head_infos_infos_classement').css('width','80px').css('text-align','center').css('margin-top','2px').css("display","block").css("font-size","1.2em");
 		//$('.objet_head_infos_infos_text_couleur').css('font-size','0.9em');
 		
 		$('.objet_head_desc').css('width','420px');
+                $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','70px');
 		$('.objet_head_desc_ouacheter').css('width','130px').css('font-size','1em');
 		$('.objet_head_desc_ariane').css('width','160px').css('font-size','1em');
 		$('.objet_head_desc_infosrapides').css('width','100px').css('display','block').css('font-size','1em');
@@ -495,9 +514,10 @@ function resizeboxContainer(){
 		$('.ligne_verticale3').css('left','810px').css('height','280px');
 		
 		//PAGE UTILISATEUR
-		$('.utilisateur_head_desc_desc').css('width','120px').css('padding-left','150px').css('font-size','1em');
-		$('.utilisateur_head_desc_desc2').css('width','140px').css('font-size','1em');
-		$('.utilisateur_head_desc_avatar .img_container+img').css('height','120px').css('width','120px');
+		$('.utilisateur_head_desc_desc').css('width','120px').css('padding-left','155px').css('font-size','1em');
+                $('.utilisateur_head_desc_title h2').css('font-size','2em').css('margin-top','8px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','320px');
+		$('.utilisateur_head_desc_desc2').css('width','120px').css('font-size','1em');
+		$('.utilisateur_head_desc_avatar img.user_avatar_target').css('height','120px').css('width','120px');
 		$('.objet_head_infos .separateur').css('width','416px');
 
 	}
@@ -541,10 +561,10 @@ function resizeboxContainer(){
 		// PAGE COMMERCE
 		
 		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
-		$('.wrapper_boutons').css('top','72px');
+		$('.wrapper_boutons').css('top','70px');
 		$('.gerant_title').css('font-size','1em');
 
-                $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px');
+                $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','370px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
@@ -572,15 +592,14 @@ function resizeboxContainer(){
 		$('.commerce_head_desc').css('width',545);
 		$('.commerce_head_desc_address').css('width','250px').css('font-size','0.8em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
-		$('.commerce_head_desc_ariane').css('width','260px');
-                $('.commerce_head_desc_ariane span').css('font-size','0.8em');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block').css('line-height','12px');
+		$('.commerce_head_desc_ariane').css('width','260px').css('font-size','0.8em');
 		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','12px');
 		$('#commerce_head_desc_prices_button').css('float','left');
-		$('.commerce_head_desc_identity').css('width','250px').css('font-size','1em');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('font-size','0.8em');
+		$('.commerce_head_desc_identity').css('width','250px').css('font-size','0.8em');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px');
 		$('.commerce_head_desc_prices').css('width','270px').css('font-size','1em');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200).css('height','82px');
 		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10);
@@ -601,20 +620,20 @@ function resizeboxContainer(){
                 
 		$('.ligne_verticale2').css('left','1062px').css('height','352px');
 		
-		$('.ligne_verticale4').css('left','866px').css('height','352px');
-		$('.ligne_verticale5').css('left','1051px').css('height','352px');
+		$('.ligne_verticale4').css('left','886px').css('height','352px');
+		$('.ligne_verticale5').css('left','1061px').css('height','352px');
                 
                 // COMMERCE INTERFACE
-                $('.commerce_reservation_commerce').css('width','75px');
-                $('.commerce_reservation_commerce').css('height','25px');
-                $('.commerce_reservation_commerce').css('font-size','0.8em');
-                $('.commerce_optin_commerce').css('width','75px');
-                $('.commerce_optin_commerce').css('height','25px');
-                $('.commerce_optin_commerce').css('font-size','0.8em');
+                $('.utilisateur_head_infos_suggestion').css('width','100px');
+                $('.commerce_reservation_commerce').css('width','85px').css('height','25px').css('padding-top','5px').css('font-size','0.8em');
+                $('.commerce_optin_commerce').css('width','85px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
 	
 		//PAGE OBJET
 		$('.objet_head_desc').css('width',545);
+                $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','95px');
+                $('.utilisateur_suggerer_commerce a').css('font-size',"1em");
+		$('.utilisateur_suggerer_objet a').css('font-size',"1em");
 		$('.objet_head_infos_services,.objet_head_infos_infos').css('width',200);
 		$('.objet_head_infos_suivre').css('width',95);
 		$('.objet_head_desc_ouacheter').css('width','160px');
@@ -622,13 +641,25 @@ function resizeboxContainer(){
 		$('.objet_head_desc_infosrapides').css('width','150px');
 		$('.wrapper_boutons_objet').css('top','90px');
 		$('.objet_head_infos .separateur').css('width','540px');
-		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('font-size','1em');
 		
+                $('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('margin-top','15px').css('margin-left','0').css('margin-right','0').css('font-size','1em').css('width','80px').css('text-align','left');
+		//$('.objet_head_infos_services_text_fin,.objet_head_infos_infos_text_fin').css("font-size","0.8em");
+		$('.objet_head_infos_services .img_container,.objet_head_infos_infos .img_container').css('width','35px').css('padding-right','15px').css('padding-left','15px').css('padding-bottom','15px').css('padding-top','12px');
+		$('.objet_head_infos_services_classement,.objet_head_infos_infos_classement').css('width','80px').css('text-align','center').css('margin-top','2px').css("display","block").css("font-size","1.2em").css('font-weight','700');
+		//$('.objet_head_infos_services_text_couleur').css('font-size','0.9em');
+		
+		$('.objet_head_infos_infos_classement').css('width','80px').css('text-align','center').css('margin-top','2px').css("display","block").css("font-size","1.2em");
+		//$('.objet_head_infos_infos_text_couleur').css('font-size','0.9em');
+		$('.objet_head_infos_services .img_container img,.objet_head_infos_infos .img_container img').css('width','39px').css('height','41px');
+                
 		$('.ligne_verticale3').css('left','1060px').css('height','352px');
 		
 		//PAGE UTILISATEUR
-		$('.utilisateur_head_desc_desc').css('width','180px').css('font-size','1em');
-		$('.utilisateur_head_desc_desc2').css('width','180px').css('font-size','1em');
+                $('.utilisateur_head_desc_avatar img.user_avatar_target').css('height','120px').css('width','120px');
+		$('.utilisateur_head_desc_desc').css('width','180px').css('padding-left','190px').css('font-size','1em');
+                $('.utilisateur_head_desc_title h2').css('font-size','2em').css('margin-top','8px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','440px');
+		
+		$('.utilisateur_head_desc_desc2').css('width','160px').css('font-size','1em');
 		
 	}
 	/////////////////////////////////////////////////////////////////////////////////
@@ -645,7 +676,7 @@ function resizeboxContainer(){
                 $('.commerce_head_desc_ariane').css('width','280px');
                 $('.commerce_head_desc_address').css('width','350px');
                 $('#commerce_head_desc_address_wrap').css('display','block');
-                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block');
             });
             $('#commerce_head_desc_identity_button').click(function(){
                 $('.commerce_head_desc_prices').css('width','280px');
@@ -671,44 +702,49 @@ function resizeboxContainer(){
 		// PAGE COMMERCE
 		
 		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
-		$('.wrapper_boutons').css('top','100px');
+		$('.wrapper_boutons').css('top','110px');
 
-                $('.commerce_head_desc_title h2').css('font-size','1.6em');
+                $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','500px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
-		$('.commerce_concept').css('font-size','1em');
+                $('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
-		$('.commerce_recos').css('width','172px');
-                $('.commerce_recos a').css('width','150px');
-		$('.commerce_labels').css('width','190px').css('right','172px');
+                $('.commerce_concept a').css('width','350px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','234px');
+		$('.commerce_recos').css('width','174px');
+                $('.commerce_recos a').css('width','155px');
+		$('.commerce_labels').css('width','185px').css('right','174px');
                 $('.commerce_labels a').css('width','170px');
+                
+                $('.commerce_recos span').css('font-size','1em');
+		$('.commerce_labels span').css('font-size','1em');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
 		$('.commerce_head_infos .separateur').css('display','block');
 		$('.clearfix_infosrapides').css('display','none');
 		
 		$('.commerce_head_desc').css('width','670px');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','350px').css('font-size','1em');
+		$('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('width','350px').css('font-size','1em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block').css('line-height','1.5em');
 		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','280px');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
-                $('#commerce_head_desc_ariane_wrap').css('display','block');
+                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','1.5em');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-                $('#commerce_head_desc_identity_wrap').css('display','block');
-		$('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','1.5em');
+		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','1.5em');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width','266px').css('height','82px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',70).css('padding-right',10);
-		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em');;
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('width','35px').css('padding-top','22px').css('padding-left',70).css('padding-right',10);
+		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
 		$('.commerce_head_infos_suivre').css('width','88px').css('height','82px');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px');
 		$('.infosrapides1').css('margin-right','50px');
 		$('.infosrapides2,.infosrapides3').css('margin-right','50px');
-		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('margin-top','6px').css('display','block');
+		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('margin-top','6px').css('display','block').css('width','120px');
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
 		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');
 		
@@ -718,25 +754,47 @@ function resizeboxContainer(){
                 $('.commerce_head2_text3_end').css('margin-right',36);
                 $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
+                $('.gerant_photo').css('width','96px');
+                $('.gerant_title').css('font-size','1em');
 		
-		$('.ligne_verticale1').css('left','1124px').css('height','424px');
-		$('.ligne_verticale2').css('left','1313px').css('height','424px');
+		$('.ligne_verticale1').css('left','1127px').css('height','424px');
+		$('.ligne_verticale2').css('left','1312px').css('height','424px');
 		
+                // COMMERCE INTERFACE
+                $('.utilisateur_head_infos_suggestion').css('width','100px');
+                $('.commerce_reservation_commerce').css('width','80px').css('height','25px').css('padding-top','5px').css('font-size','0.8em');
+                $('.commerce_optin_commerce').css('width','80px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
+                $('.commerce_optin_commerce span').css('margin-top','0px');
+                
 		// PAGE UTILISATEUR
 		$('.objet_head_desc').css('width','665px');
-		$('.utilisateur_head_desc_desc').css('width','220px');
+                $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','95px');
+                $('.utilisateur_suggerer_commerce a').css('font-size',"1em");
+		$('.utilisateur_suggerer_objet a').css('font-size',"1em");
+		$('.utilisateur_head_desc_desc').css('width','220px').css('padding-left','220px').css('font-size','1em');
+                $('.utilisateur_head_desc_title h2').css('font-size','2em').css('margin-top','8px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','560px');
+                $('.utilisateur_head_desc_desc2').css('width','200px').css('font-size','1em');
+                $('.utilisateur_head_desc_avatar img.user_avatar_target').css('height','120px').css('width','120px');
 		$('.objet_head_infos_infos,.objet_head_infos_services').css('width','265px');
 		$('.objet_head_infos .separateur').css('width','670px');
+                
+                $('.objet_head_infos_suivre').css('width','95px');
 		
-		$('.ligne_verticale4').css('left','1119px').css('height','424px');
-		$('.ligne_verticale5').css('left','1303px').css('height','424px');
+		$('.ligne_verticale4').css('left','1136px').css('height','424px');
+		$('.ligne_verticale5').css('left','1311px').css('height','424px');
 		
 		// PAGE OBJET
 		$('.objet_head_desc_ouacheter').css('width','220px').css('font-size','1em');
 		$('.objet_head_desc_ariane').css('width','230px').css('font-size','1em');
 		$('.objet_head_desc_infosrapides').css('width','160px').css('display','block').css('font-size','1em');
-		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('font-size','1em');
+		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('font-size','1em').css('margin-top','15px').css('text-align','left');
 		
+                $('.objet_head_infos_services .img_container,.objet_head_infos_infos .img_container').css('width','45px').css('padding-top','12px').css('padding-bottom','12px').css('padding-left','22px').css('padding-right','22px').css('text-align','center');
+                $('.objet_head_infos_services_classement,.objet_head_infos_infos_classement').css('display','block').css('font-size','1.2em').css('font-weight','700').css('width','80px');
+		
+                $('.objet_head_infos_services .img_container img,.objet_head_infos_infos .img_container img').css('width','39px').css('height','41px');
+		
+                
 		$('.ligne_verticale3').css('left','1312px').css('height','424px');
 	
 	}
@@ -779,40 +837,45 @@ function resizeboxContainer(){
 		// PAGE COMMERCE
 		
 		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
-		$('.wrapper_boutons').css('top','140px');
+		$('.wrapper_boutons').css('top','145px');
 		
-                $('.commerce_head_desc_title h2').css('font-size','1.6em');
+                $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','580px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
-                $('.commerce_concept').css('font-size','1em');
+                $('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
-                $('.commerce_recos').css('width','172px');
-                $('.commerce_recos a').css('width','150px');
-                $('.commerce_labels').css('width','190px').css('right','172px');
+                $('.commerce_concept a').css('width','350px');
+                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','234px');
+		$('.commerce_recos').css('width','174px');
+                $('.commerce_recos a').css('width','155px');
+		$('.commerce_labels').css('width','185px').css('right','174px');
                 $('.commerce_labels a').css('width','170px');
+                
+                $('.commerce_recos span').css('font-size','1em');
+		$('.commerce_labels span').css('font-size','1em');
 		
                 $('.commerce_head_desc').css('width','795px');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','400px').css('font-size','1em');
+		$('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('width','400px').css('font-size','1em');
                 $('.commerce_head_desc_address').css('font-size','1em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block');
+                $('#commerce_head_desc_address_wrap').css('margin-top','0px').css('display','block').css('line-height','1.5em');
 		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','320px');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
-                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','1.5em');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-                $('#commerce_head_desc_identity_wrap').css('display','block');
-		$('#commerce_head_desc_prices_wrap').css('display','block');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','1.5em');
+		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','1.5em');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_infos .clearfix').css('display','none');
 		$('.commerce_head_infos .separateur').css('display','none');
 		$('.commerce_head_infos_suivre').css('float','right');
 		$('.clearfix_infosrapides').css('display','block');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('height','133px').css('width','200px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','65px').css('padding-top','45px').css('padding-left',40).css('padding-right',10);
-		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','40px').css('font-size','1em');
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','65px').css('width','35px').css('padding-top','45px').css('padding-left',40).css('padding-right',10);
+		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','40px').css('font-size','1em').css('text-align','left');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px');
 		$('.infosrapides1,.infosrapides2').css('margin-top','30px').css('margin-right','10px').css('width','100px').css('display','block');
 		$('.infosrapides3,.infosrapides4').css('margin-top','20px').css('margin-right','10px').css('width','100px').css('display','block');
@@ -826,27 +889,48 @@ function resizeboxContainer(){
                 $('.commerce_head2_text3_end').css('margin-right',36);
                 $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
+                $('.gerant_photo').css('width','96px');
+                $('.gerant_title').css('font-size','1em');
 		
-		$('.ligne_verticale1').css('left','1374px').css('height','496px');
-		$('.ligne_verticale2').css('left','1563px').css('height','496px');
+		$('.ligne_verticale1').css('left','1377px').css('height','496px');
+		$('.ligne_verticale2').css('left','1562px').css('height','496px');
 
+                // COMMERCE INTERFACE
+                $('.commerce_reservation_commerce').css('width','108px').css('height','40px').css('padding-top','15px').css('font-size','1.1em');
+                $('.commerce_optin_commerce').css('width','108px').css('height','40px').css('padding-top','15px').css('font-size','1.1em');
+                $('.commerce_optin_commerce span').css('margin-top','0px');
 		
 		// PAGE UTILISATEUR
 		$('.objet_head_desc').css('width','795px');
+                $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','95px');
+                $('.utilisateur_suggerer_commerce a').css('font-size',"1em");
+		$('.utilisateur_suggerer_objet a').css('font-size',"1em");
+                $('.utilisateur_head_desc_desc').css('padding-left','280px').css('width','240px').css('font-size','1em');
+                $('.utilisateur_head_desc_title h2').css('font-size','2em').css('margin-top','8px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','680px');
+                $('.utilisateur_head_desc_desc2').css('width','260px').css('font-size','1em');
+                $('.utilisateur_head_desc_avatar img.user_avatar_target').css('height','120px').css('width','120px');
 		$('.objet_head_infos_services').css('width','325px');
 		$('.objet_head_infos_infos').css('width','325px');
-		$('.objet_head_infos_suivre').css('width','94px');
+		$('.objet_head_infos_suivre').css('width','95px');
+                
+                $('.utilisateur_head_infos_suggestion').css('float','right');
+                $('.utilisateur_head_infos_suggestion .clearfix').css('display','block');
 		
-		$('.ligne_verticale4').css('left','1368px').css('height','496px');
-		$('.ligne_verticale5').css('left','1552px').css('height','496px');
+		$('.ligne_verticale4').css('left','1386px').css('height','496px');
+		$('.ligne_verticale5').css('left','1561px').css('height','496px');
 		
 		
 		// PAGE OBJET
 		$('.objet_head_desc_ouacheter').css('width','270px').css('font-size','1em');
 		$('.objet_head_desc_ariane').css('width','270px').css('font-size','1em');
 		$('.objet_head_desc_infosrapides').css('width','200px').css('display','block').css('font-size','1em');
-		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('font-size','1em');
+		$('.objet_head_infos_services_text,.objet_head_infos_infos_text').css('font-size','1em').css('margin-top','15px').css('text-align','left');
 		
+                $('.objet_head_infos_services .img_container,.objet_head_infos_infos .img_container').css('width','45px').css('padding-top','12px').css('padding-bottom','12px').css('padding-left','22px').css('padding-right','22px').css('text-align','center');
+                $('.objet_head_infos_services_classement,.objet_head_infos_infos_classement').css('display','block').css('font-size','1.2em').css('font-weight','700').css('width','80px');
+		
+                $('.objet_head_infos_services .img_container img,.objet_head_infos_infos .img_container img').css('width','39px').css('height','41px');
+                
 		$('.ligne_verticale3').css('left','1562px').css('height','496px');
 	}
 	if ($(".content").css("display") == "none") {$(".content").css({display: "block"});}
