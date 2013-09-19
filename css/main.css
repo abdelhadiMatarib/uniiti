@@ -1244,25 +1244,15 @@ h2.h2_suppr_commerce{margin-top:20px;}
 /* SLIDER COUVERTURES AVEC RESPONSIVE */
 #couv_slides {display: none}
 #couv_slides .slidesjs2-navigation {margin-top:5px;}
-a.slidesjs2-next,a.slidesjs2-previous,a.slidesjs2-play,a.slidesjs2-stop {background-image: url(img/btns-next-prev.png);background-repeat: no-repeat;display:block;width:12px;height:18px;overflow: hidden;text-indent: -9999px;float: left;margin-right:5px;}
-a.slidesjs2-next {margin-right:10px;background-position: -12px 0;}
-a:hover.slidesjs2-next {background-position: -12px -18px;}
-a.slidesjs2-previous {background-position: 0 0;}
-a:hover.slidesjs2-previous {background-position: 0 -18px;}
-a.slidesjs2-play {width:15px;background-position: -25px 0;}
-a:hover.slidesjs2-play {background-position: -25px -18px;}
-a.slidesjs2-stop {width:18px;background-position: -41px 0;}
-a:hover.slidesjs2-stop {background-position: -41px -18px;}
-.slidesjs2-pagination {margin: 7px 0 0;float: right;list-style: none; position: absolute; padding: 0;z-index: 150;}
-.slidesjs2-pagination li {float: left;margin: 0 1px;z-index: 150;}
-.slidesjs2-pagination li a {margin: -100px 0 15px 0;display: block;width: 13px;height: 0;padding-top: 13px;background-image: url(img/pagination.png);background-position: 0 0;float: left;overflow: hidden;}
-.slidesjs2-pagination li a.active,.slidesjs2-pagination li a:hover.active {background-position: 0 -13px}.slidesjs2-pagination li a:hover {background-position: 0 -26px}
-#slides a:link,#slides a:visited {color: #333}
-#slides a:hover,#slides a:active {color: #9e2020}
-.navbar {overflow: hidden}
-.couv_container {margin: 0 auto;width: 1736px;height: 496px;}
-@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container,.big_wrapper {width: 736px;}}
-@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container,.big_wrapper {width: 986px;}}
-@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container,.big_wrapper {width: 1236px;}}
-@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container,.big_wrapper {width: 1486px;}}
-@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container,.big_wrapper {width: 1736px;}}
+.slidesjs2-pagination {height: 30px;margin-top: -301px;list-style: none;position: absolute;text-align: center;display: block;z-index: 100;width: 100%;}
+.slidesjs2-pagination li {margin: 9px auto;z-index: 150;display: inline-block;}
+.slidesjs2-pagination li a {padding-right: 5px; float:left;position:relative; text-align:center;margin: 0 auto;width: 13px;height: 0;padding-top: 13px;background: url(../img/pictos_actions/pagination.png) no-repeat;background-position: 0 0;overflow: hidden;}
+.slidesjs2-pagination li a.active,.slidesjs2-pagination li a:hover.active {background-position: 0 -13px}
+.slidesjs2-pagination li a:hover {background-position: 0 -26px}
+.slidesjs2-pagination-item {text-align: center;}
+@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container {width: 736px;}.slidesjs2-pagination{margin-top: -228px;}}
+@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container {width: 986px;}.slidesjs2-pagination{margin-top: -300px;}}
+@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container {width: 1236px;}.slidesjs2-pagination{margin-top: -371px;}}
+@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container {width: 1486px;}.slidesjs2-pagination{margin-top: -443px;}}
+@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container {width: 1736px;}.slidesjs2-pagination{margin-top: -514px;}}
+
