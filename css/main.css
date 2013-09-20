@@ -969,9 +969,9 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .utilisateur_interface_modifier_icon_blanc{float:left;margin-right:10px;}
 
 /* COMMERCE INTERFACE */
-.commerce_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:5px; z-index: 100;}
-.commerce_interface_modifier_popin{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:31px; z-index: 100;}
-.commerce_interface_modifier_box{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:57px; z-index: 100;}
+.commerce_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;top:5px; z-index: 100;}
+.commerce_interface_modifier_popin{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;top:31px; z-index: 100;}
+.commerce_interface_modifier_box{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;top:57px; z-index: 100;}
 .commerce_interface_modifier_couv a, .commerce_interface_modifier_popin a, .commerce_interface_modifier_box a{color:#252525;display:inline-block;}
 
 /* MODULE RESERVATION */
