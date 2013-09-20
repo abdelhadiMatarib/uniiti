@@ -84,9 +84,7 @@ catch (PDOException $erreur)
 		
 <div class="like_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
-    <div class="like_wrapper_body_img" <?php echo  AfficheAction("aime", $categorie); ?>>
-        
-    </div>
+    <div class="like_wrapper_body_img" <?php echo  AfficheActionLarge("aime", $categorie); ?>></div>
     <div class="like_wrapper_footer_txt">
         <span class="like_wrapper_footer_txt_normal">Vous <span class="like_wrapper_footer_txt_bold">aimez</span> ce commerce</span>
     </div>
