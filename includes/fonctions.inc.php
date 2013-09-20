@@ -317,6 +317,48 @@ function AfficheAction($provenance, $categorie) {
 	return $html;
 }
 
+function AfficheActionLarge($provenance, $categorie) {
+	switch ($provenance) {
+		case ("aime") :
+			$posy = "0";
+		break;
+		case ("aime_pas") :
+			$posy = "-150px";
+		break;
+		case ("wish") :
+			$posy = "-300px";
+		break;
+	}
+	switch ($categorie) {
+		case ("Cuisine"):
+			$posx = "-600px";
+		break;
+		case ("Beauté et bien être"):
+			$posx = "-300px";
+		break;
+		case ("Culture"):
+			$posx = "-1050px";
+		break;
+		case ("Mode et design"):
+			$posx = "-750px";
+		break;
+		case ("Santé"):
+			$posx = "-900px";
+		break;
+		case ("Sorties, voyages et loisirs"):
+			$posx = "-150px";
+		break;
+		case ("Sport"):
+			$posx = "0px";
+		break;
+		case ("Services et inclassables"):
+			$posx = "-450px";
+		break;
+	}
+	$html = "style=\"background:url('" . SITE_URL . "/img/pictos_popins/picto_action_large_sprite.png') " . $posx . " " . $posy . "\"";
+	return $html;
+}
+
 function AfficheTrusts($note_arrondi, $categorie) {
 	switch ($categorie) {
 		case ("Cuisine"):
