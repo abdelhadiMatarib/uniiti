@@ -74,11 +74,11 @@ span.index_overlay_texte{display:block;}
 .header_logo{height: 30px;width:95px;position: absolute;margin: auto;top: 0;left: 0;right: 0;bottom: 0;text-align: center;}
 .header_logo > a{display:inline-block;background:url('../img/logo.png') no-repeat center;width:88px;height:26px;margin-top:2px;}
 
-.header_yourcity{float:left;line-height:30px;margin-right:14px;}
-.header_yourcity > aside{float:left;display:inline-block;margin-left: 7px;}
+.header_yourcity{float:left;margin-right:14px;}
+.header_yourcity > aside{float:left;display:inline-block;margin: 5px 0px 0px 7px;}
 .header_img_container{float:left;height:30px;width:30px;text-align:center;}
 .header_choixvilles{float:left;font-weight:bold;margin:0 10px 0 10px;}
-.header_choixvilles a {color:#252525;}
+.header_choixvilles a {display:inline-block;color:#252525;margin-top:5px;}
 .header_user{float:left;line-height:30px;}
 .header_usermenu{float:left;font-weight:bold;margin:0 10px 0 10px;}
 .header_usermenu a{color: #252525; font-weight: 600;}
@@ -780,7 +780,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 
 /* PRESENTATION ACTION */
 
-.commerce_head_desc_ariane,.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_prices{overflow:hidden;height:43px;}
+.commerce_head_desc_ariane,.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_prices{overflow:hidden;height:42px;}
 
 .presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
 .menutarifs_head{width:700px;height:50px;background-color:#252525;color:white;}
@@ -954,7 +954,7 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .recherche_avancee_left{margin:10px 10px 10px 40px;line-height:3.8em;}
 .recherche_avancee_right{float:right;margin:10px 40px 10px 20px;}
 .recherche_avancee_img_container{height:96px;width:96px;}
-.recherche_avancee_left span{display:block;font-size:2.1em;font-weight:300;}
+.recherche_avancee_left span{display:ineline-block;font-size:2.1em;font-weight:300;}
 .recherche_avancee_left a{display:inline-block;}
 .recherche_avancee_right_txt{margin-top:5px;text-align:center;}
 .recherche_avancee_right span{text-transform:uppercase;font-size:1.2em;display:block;}
