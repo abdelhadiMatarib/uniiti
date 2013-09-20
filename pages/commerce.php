@@ -29,15 +29,6 @@
 	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
 	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 
-	if(isset($_SESSION['SESS_MEMBER_ID'])) {
-		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
-		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
-		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
-		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-	} else {
-		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
-	}		
-	
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
 	$req2->execute();
@@ -92,7 +83,15 @@
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
-
+	
+	if(isset($_SESSION['SESS_MEMBER_ID'])) {
+		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
+		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
+		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
+		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+	} else {
+		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	}
 ?>
     <body>
         <div id="default_dialog"></div>
