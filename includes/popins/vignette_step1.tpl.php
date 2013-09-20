@@ -21,7 +21,7 @@
 	<body>
 
 		<style>
-			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 405px; height: 189px;}
+			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 450px; height: 210px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
 			ul {list-style-type: none;}
@@ -52,7 +52,7 @@
 			<div id="fenetre"></div>
 			<div id="selection" class="vignette_step1_dropzone">
 				<div class="draggable">
-					<img id="image" src="" height="189" />
+					<img id="image" src="" height="210" />
 				</div>
 				<div id="Interaction1">
 					<div class="vignette_step1_dropzone_img_container">
@@ -131,7 +131,7 @@
 				$(".vignette_step1_dropzone_txt").css({display : "block"});
 				$(".couverture_step1_wrap_buttons").css({display : "none"});
 				$(".vignette_step2_resize_infos").css({display : "none"});
-				$('#fenetre').css({width: 405 + 'px', left: 140 + 'px', top: 20 + 'px'});
+				$('#fenetre').css({width: 450 + 'px', left: 140 + 'px', top: 20 + 'px'});
 				$("#image").css({display : "block"});
 			};
 
@@ -182,13 +182,13 @@
 				var width;
 				if(img.offsetWidth) {width=img.offsetWidth;}
 				else if(img.style.pixelWidth){width=img.style.pixelWidth;}
-				var Newwidth = Math.round(405 + (Math.max(width, 405) - 405) * 2);
-				DecalageSelectionLeft = 148;
-				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 405) / 2);
+				var Newwidth = Math.round(450 + (Math.max(width, 450) - 450) * 2);
+				DecalageSelectionLeft = 124;
+				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 450) / 2);
 				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px'});
 				AfficheBtnES();
 				if ($('#x' + NumImageSel).val() != "") {
-					var decalage = -$('#x' + NumImageSel).val()*405/450;
+					var decalage = -$('#x' + NumImageSel).val()*450/450;
 //				alert(NumImageSel+' '+$('#x' + NumImageSel).val());
 				$(".draggable").css({left: decalage+'px'});
 				}
@@ -213,7 +213,7 @@
 						'axis': 'x',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#x').val(($('#selection').offset().left - $(this).offset().left)*450/405);
+							$('#x').val(($('#selection').offset().left - $(this).offset().left)*450/450);
 						},
 						stop: function() {AfficheBtnES();}
 					});
