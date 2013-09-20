@@ -69,7 +69,7 @@
 						<input id="inputSearch3Hidden" type="hidden" value=""/>
 						<div class="suggestionsContainer display-none" id="suggestionsContainer3"><ul class="suggestionList" id="suggestionList3"><li>&nbsp;</li></ul></div>
 				
-                        <div class="input_dashboard_large_validation">
+                        <div id="ButtonModifierCommerce" class="input_dashboard_large_validation">
                             <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/>
                         </div>
                         </div>
