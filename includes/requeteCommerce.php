@@ -220,8 +220,8 @@
             </figure>
             
             <section onclick="<?php echo $presoumodif; ?>">
-                <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?></div>
-					<?php if ($affichecommentaire) { ?><div class="box_usertext"><figcaption><span style="color:<?php echo $couleur; ?>;"><?php echo $note/2 ?>/5 |</span><?php echo $commentaire; ?></figcaption></div><?php } ?>
+            	<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?><?php if ($commentaire == "pas de commentaire") { ?><span style="color:<?php echo $couleur; ?>;font-weight: bold;"> <?php echo  $note / 2; ?>/5 <?php } ?></span></div>
+				<?php if (($affichecommentaire) && ($commentaire != "pas de commentaire"))  { ?><div class="box_usertext"><figcaption><span style="color:<?php echo $couleur; ?>;font-weight: bold;"><?php echo $note/2 ?>/5 | </span><?php echo $commentaire; ?></figcaption></div><?php } ?>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $couleur; ?>;"></div>
             </section>
             

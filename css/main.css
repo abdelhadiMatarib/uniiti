@@ -679,10 +679,10 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .parrainage_bouton_envoyer_txt{background-color:#a4ebf1;padding:2px 5px;font-size:0.85em;text-transform:uppercase;position:absolute;top:-30px;left:-8px;}
 .fleche_parrainage{position:absolute;bottom:-5px;right:25px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid #a4ebf1;}
 
-.vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:189px;width:405px;margin:20px auto;background-color:#f0f0f0;}
-.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:95px;padding:5px;}
-.vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:240px;text-align:center;}
-.vignette_step1_dropzone_img_container{margin: 60px 0px 45px 20px;float:left;}
+.vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:210px;width:660px;margin:20px auto;background-color:#f0f0f0;}
+.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:210px;padding:5px;}
+.vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
+.vignette_step1_dropzone_img_container{margin: 45px 55px 45px 60px;float:left;}
 
 .box_step1_dropzone{position:relative;border:1px dashed #252525;height:350px;width:236px;margin:20px auto;background-color:#f0f0f0;}
 .box_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:10px;padding:5px;}
@@ -842,7 +842,7 @@ height: 26px;}
 .presentation_action_left_head_titre{font-size:1.1em;margin-top:11px;margin-left:10px;display:block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 .presentation_action_left_head_categorie{font-size:12px;font-weight:600;margin-left:10px;display:block;margin-top: 3px;}
 .presentation_action_left_head_likes_wrap{font-size:0.8em;border-left:1px solid #e4e4e4;line-height:12px;height:37px;padding-top:12px;float:left;width:79px;background-color:#f0f0f0;background: url('../img/pictos_popins/pouce_OK_popin.png') 13px 15px no-repeat #f0f0f0;}
-.presentation_action_left_head_img_container_picto_likes{float:left;width:30px;height:30px;margin: 0 -1px 0 10px;}
+.presentation_action_left_head_img_container_picto_likes{float:left;width:30px;height:30px;margin: 0 -1px 0 5px;}
 .presentation_action_left_head_nombrelikes,.presentation_action_left_head_nombrelikes_txt{font-size: 1.2em;display:block;text-align:center;}
 .presentation_action_left_head_nombrelikes_txt{font-weight:300;margin-top: 3px;}
 .presentation_action_left_head_note_wrap{font-size:0.9em;line-height:16px;padding-top:8px;height:42px;color:white;text-align:center;float:left;padding-left:7px;width:113px;background-color:#252525;}
