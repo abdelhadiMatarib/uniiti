@@ -4,6 +4,7 @@
         include'../head.php'?>
 <?php
 include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
+include_once '../fonctions.inc.php'; 
 ?>
 		
 <?php
@@ -12,6 +13,7 @@ include_once '../../config/configPDO.inc.php';
 $id_enseigne        = $_POST['id_enseigne'];
 $date               = date('Y-m-d H:i:s');
 $id_contributeur    = $_SESSION['SESS_MEMBER_ID'];
+$categorie = $_POST['categorie'];
 
 try
 {
