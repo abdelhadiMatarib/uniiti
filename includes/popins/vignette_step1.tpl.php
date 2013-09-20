@@ -32,9 +32,6 @@
 			#image {position:absolute;}
                         .step1_infos_popin{float:none;margin:0 auto;width:425px;margin-top:5px;}
                         .popin_step1_infos_img_container{margin-top:-5px;}
-                        .popin_overlay_left,.popin_overlay_right{width:105px;height:210px;background:rgba(255,255,255,0.4);}
-                        .popin_overlay_left{position:absolute;left:0px;border-right:1px dashed white;}
-                        .popin_overlay_right{position:absolute;right:0px;border-left:1px dashed white;}
 		</style>
 
 <div class="couverture_wrapper">
