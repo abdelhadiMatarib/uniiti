@@ -951,7 +951,7 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 
     /* RECHERCHE AVANCEE */
 .recherche_avancee_wrapper{position:absolute;top:44px;display:none;text-align:center;background:url('../img/pictos_actions/recherche_avancee_1300.png') center no-repeat white;max-height:175px;}
-.recherche_avancee_left{margin:10px 10px 10px 40px;;float:left;line-height:3.8em;}
+.recherche_avancee_left{margin:10px 10px 10px 40px;line-height:3.8em;}
 .recherche_avancee_right{float:right;margin:10px 40px 10px 20px;}
 .recherche_avancee_img_container{height:96px;width:96px;}
 .recherche_avancee_left span{display:block;font-size:2.1em;font-weight:300;}
@@ -1127,9 +1127,9 @@ input:hover.dashboard_form_input_submit{border:1px dashed white;color:white;}
 
 .submit_commerce{margin-bottom:40px;}
 
-.dashboard_wrap .commerce_couv{height: 200px;}
+.dashboard_wrap .commerce_couv{}
 .dashboard_wrap .commerce_head_note_reservation{background-color:#a4ebf1;}
-.dashboard_wrap .commerce_head_note_avis{padding:5px 0px 13px 0;}
+.dashboard_wrap .commerce_head_note_avis{padding:5px 0px 12px 0;}
 .dashboard_wrap .commerce_head_infos_services_text_couleur,.dashboard_wrap .commerce_head_infos_infos_text_couleur{color:#a4ebf1;}
 .dashboard_wrap .commerce_head_infos_infos,.dashboard_wrap .commerce_head_infos_services{width:230px;}
 .dashboard_wrap .commerce_head2_text2{color:#a4ebf1;}

@@ -33,7 +33,7 @@
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_title_wrap"><h1>Bienvenue sur <span>l'interface d'administration</span> de Uniiti.com</h1></div>
             <div class="dashboard_panel">
-                <div class="dashboard_cube_item dashboard_cube_item_haut dashboard_cube_item_margin_right dashboard_cube_item_c"><a href="dashboard_ajout_commerce.php" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un commerce</span></a></div>
+                <div class="dashboard_cube_item dashboard_cube_item_haut dashboard_cube_item_margin_right dashboard_cube_item_c"><a href="dashboard_ajout_commerce.php?id_enseigne=1" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un commerce</span></a></div>
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_margin_right dashboard_cube_item_f"><a href="dashboard_ajout_objet.php" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un objet</span></a></div>
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_c"><a href="dashboard_ajout_avis.php" title=""><span>Ajouter</span><span class="dashboard_txt_bold">des avis</span></a></div>
                 <div class="dashboard_cube_item dashboard_cube_item_bas dashboard_cube_item_margin_right dashboard_cube_item_margin_top dashboard_cube_item_f"><div class="dashboard_notif"><span>15</span></div><a href="dashboard_gestion_commerce.php" title=""><span>Gérer</span><span class="dashboard_txt_bold">les commerces</span></a></div>
