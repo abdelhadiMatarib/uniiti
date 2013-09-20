@@ -28,7 +28,7 @@
 			#fileselect {display: none;}
 			.vignette_step2_resize_infos {display : none;}
 			.couverture_step1_wrap_buttons {display : none;}
-			.vignette_step1_dropzone_txt2	{}		
+			.vignette_step1_dropzone_txt2{}		
 			#image {position:absolute;}
                         .step1_infos_popin{float:none;margin:0 auto;width:425px;margin-top:5px;}
                         .popin_step1_infos_img_container{margin-top:-5px;}
