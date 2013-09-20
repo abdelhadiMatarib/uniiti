@@ -681,13 +681,13 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 
 .vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:189px;width:405px;margin:20px auto;background-color:#f0f0f0;}
 .vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:95px;padding:5px;}
-.vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
-.vignette_step1_dropzone_img_container{margin: 65px 20px 65px 30px;float:left;}
+.vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:240px;text-align:center;}
+.vignette_step1_dropzone_img_container{margin: 60px 0px 45px 20px;float:left;}
 
 .box_step1_dropzone{position:relative;border:1px dashed #252525;height:350px;width:236px;margin:20px auto;background-color:#f0f0f0;}
 .box_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:10px;padding:5px;}
 .box_step1_dropzone_txt{margin-top: 20px;float:left;width:230px;text-align:center;}
-.box_step1_dropzone_img_container{margin: 65px 20px 20px 95px;float:left;}
+.box_step1_dropzone_img_container{margin: 40px 20px 0px 20px;float:left;}
 .box_wrap_buttons{bottom:50px !important;}
 
 .couverture_step1_body{position:relative;float:left;width: 700px;}
@@ -809,7 +809,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .img_container_payment_options3{height:34px;width:48px;background-position:-100px 0px;}
 .img_container_payment_options4{height:34px;width:52px;background-position:-150px 0px;}
 .img_container_payment_options5{height:34px;width:55px;background-position:-205px 0px;}
-.menutarifs_body{overflow-y:scroll;height:500px;width:700px;}
+.menutarifs_body{overflow-y:scroll;overflow-x:hidden;height:500px;width:700px;}
 .menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:663px;padding:10px;}
 .menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
 .menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:562px;}
@@ -1129,6 +1129,7 @@ input:hover.dashboard_form_input_submit{border:1px dashed white;color:white;}
 
 .dashboard_wrap .commerce_couv{height: 200px;}
 .dashboard_wrap .commerce_head_note_reservation{background-color:#a4ebf1;}
+.dashboard_wrap .commerce_head_note_avis{padding:5px 0px 13px 0;}
 .dashboard_wrap .commerce_head_infos_services_text_couleur,.dashboard_wrap .commerce_head_infos_infos_text_couleur{color:#a4ebf1;}
 .dashboard_wrap .commerce_head_infos_infos,.dashboard_wrap .commerce_head_infos_services{width:230px;}
 .dashboard_wrap .commerce_head2_text2{color:#a4ebf1;}
@@ -1157,12 +1158,12 @@ span.dashboard_couv_subtitle{display:block;text-transform:uppercase;}
 .infos_gene_input select{width:166.5px;height:30px;}
 /**/
 .input_infos_horaires{float:left;}
-.input_infos_horaires input{float:left;width:40px;margin-right:5px;border:1px dashed #252525;text-align:center;}
+.input_infos_horaires input{float:left;width:35px;margin-right:5px;border:1px dashed #252525;text-align:center;}
 .infospratiques_body_horaires span{margin:0 5px;display:inline-block;float:left;}
 .bouton_commerce_ferme{cursor:pointer;float:right;height:17px;width:17px;background:url('../img/pictos_dashboard/bouton_commerce_ferme.png');}
 .bouton_commerce_ouvert{cursor:pointer;float:right;height:17px;width:17px;background:url('../img/pictos_dashboard/bouton_commerce_ouvert.png');}
 
-.input_parking{width:555px;height:10px;padding:10px;}
+.input_parking{width:540px;height:10px;padding:10px;}
 input.input_parking{border:1px dashed #252525;}
 .input_parking_mini{height:10px;padding:10px;width:30px;}
 input.input_parking_mini{border:1px dashed #252525;}
@@ -1170,7 +1171,7 @@ input.input_parking_mini{border:1px dashed #252525;}
 .input_prix_mini{height:20px;padding:2px;width: 36px;text-align:center;}
 input.input_prix_mini{border:1px dashed #252525;}
 
-input.input_menustarifs{height:30px;padding:10px;width:560px;}
+input.input_menustarifs{height:30px;padding:10px;width:540px;}
 
 span.span_float_left{float:left;margin: 6px 0 0 10px;}
 span.span_float_left_prix{float:left;margin: 6px 5px;}

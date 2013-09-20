@@ -118,7 +118,7 @@
             <div class="commerce_head">
                 <div class="commerce_head_desc">
                     <a href="#" class="commerce_head_desc_modif" onclick="OuvrePopin({}, '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');"></a>
-                    <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2>Nom entreprise<?php /*echo $nom_enseigne*/?></h2></div>
+                    <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2 class="nom_entreprise_modifiable">Nom entreprise<?php /*echo $nom_enseigne*/?></h2></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
@@ -212,7 +212,27 @@
         </div><!-- FIN BIGGY -->
      <?php include'../includes/js.php' ?> 
         </div>
+        <style>
+            input.nom_entreprise_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;background-color: #f0f0f0;padding: 10px;border-radius:3px;}
+            input.valider_nouveau_nom_commerce{float:left;height:30px;padding:5px;margin:10px 0 0 10px;border-radius:3px;}
+        </style>
         <script>
+            $(function () {
+    $('.commerce_head_desc_title').delegate('.nom_entreprise_modifiable','click',function () {
+        var input = $('<input />', {'type': 'text','class': 'nom_entreprise_modifiable_input','name': 'aname', 'value': $(this).html()});
+        var button = $('<input />', {'type': 'button','class':'valider_nouveau_nom_commerce','name':'', 'value':'OK'});
+        $(this).parent().append(input).append(button);
+        $(this).remove();
+        input.focus();
+    });
+    $('.commerce_head_desc_title').delegate('.valider_nouveau_nom_commerce','click',function(){
+       console.log('coucou');
+       $(this).parent().append($('<h2 class="nom_entreprise_modifiable"></h2>').html($('.nom_entreprise_modifiable_input').val()));
+       $(this).remove(); 
+       $('.nom_entreprise_modifiable_input').remove();
+    });
+    })
+
         function moveToNext(field,nextFieldID){
   if(field.value.length >= field.maxLength){
     document.getElementById(nextFieldID).focus();
