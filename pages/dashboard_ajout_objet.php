@@ -30,7 +30,10 @@
             </div>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
-
+        <style>
+            input.nom_objet_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}
+            input.valider_nouveau_nom_objet{float:left;height:32px;width:32px;border:1px dashed #252525;padding:5px;margin:10px 0 0 10px;border-radius:3px;background:url('../img/pictos_dashboard/button_valider_nouveau.png') no-repeat center;}
+        </style>
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_f"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un objet</span></a></div>
@@ -44,8 +47,7 @@
             <div class="liseret_bleu"></div>
             <div class="objet_head">
                 <div class="objet_head_desc">
-                    <div class="objet_head_desc_title"><div class="img_container"><img src="../img/pictos_commerces/chaussure.png" height="35" width="32" title="" alt="" /></div><h2>Nom objet</h2></div>
-                    <div class="objet_head_desc_social"><img src="../img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" /><img src="../img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" /><img src="../img/pictos_actions/g_logo.png" title="" alt="" height="24" width="24" /><span>Partager</span></div>
+                    <div class="objet_head_desc_title"><div class="img_container"><img src="../img/pictos_dashboard/icon_new_objet.png" height="29" width="19" title="" alt="" /></div><h2 class="nom_objet_modifiable">Nom objet</h2></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
@@ -112,6 +114,21 @@
      <?php include'../includes/js.php' ?> 
         </div>
         <script>
+            $(function () {
+    $('.objet_head_desc_title').delegate('.nom_objet_modifiable','click',function () {
+        var input = $('<input />', {'type': 'text','class': 'nom_objet_modifiable_input','name': 'aname', 'value': $(this).html()});
+        var button = $('<input />', {'type': 'button','class':'valider_nouveau_nom_objet','name':'', 'value':''});
+        $(this).parent().append(input).append(button);
+        $(this).remove();
+        input.focus();
+    });
+    $('.objet_head_desc_title').delegate('.valider_nouveau_nom_objet','click',function(){
+       console.log('coucou');
+       $(this).parent().append($('<h2 class="nom_objet_modifiable"></h2>').html($('.nom_objet_modifiable_input').val()));
+       $(this).remove(); 
+       $('.nom_objet_modifiable_input').remove();
+    });
+    })
         function moveToNext(field,nextFieldID){
   if(field.value.length >= field.maxLength){
     document.getElementById(nextFieldID).focus();

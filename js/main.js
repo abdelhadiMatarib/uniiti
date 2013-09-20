@@ -152,7 +152,7 @@ function resizeboxContainer(){
 	
         // CHAMPS DE RECHERCHE AVANCÉE
         /* 3 */if ($('.big_wrapper').width() == 736){
-    
+            
         //RECHERCHE AVANCÉE
         $('.recherche_avancee_wrapper').css('background-position','-120px');
         $('.recherche_avancee_left').css('line-height','2.2em').css('width','500px').css('margin','20px auto');
@@ -259,6 +259,8 @@ function resizeboxContainer(){
                 $('#commerce_head_desc_identity_wrap').css('display','none');
             });
 		
+                AjusteCouvertures(736);
+                
 		// HEADER
 		
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','none');
@@ -341,6 +343,9 @@ function resizeboxContainer(){
                 //DASHBOARD
                 $('a.commerce_head_desc_modif').css('width','295px');
                 $('input.valider_nouveau_nom_commerce').css('margin-left','5px');
+                
+                $('a.objet_head_desc_modif').css('width','295px');
+                $('input.valider_nouveau_nom_objet').css('margin-left','5px');
 					
 		//PAGE OBJET
 		$('.objet_head_desc_social').addClass('ipad_portrait_social');
@@ -387,6 +392,8 @@ function resizeboxContainer(){
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 4 */else if ($('.big_wrapper').width() == 986){
             
+            AjusteCouvertures(986);
+            
             // Alternate descs in head
             $('#commerce_head_desc_ariane_button').click(function(){
                 $('.commerce_head_desc_address').css('width','195px');
@@ -415,6 +422,7 @@ function resizeboxContainer(){
 
 		// HEADER
 		
+                $('.header input[type="text"]').css('width','110px');
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
 		$('.header_button_menu').css('display','block');
 		$('.header_rightnav').css('display','block');
@@ -494,6 +502,9 @@ function resizeboxContainer(){
                 $('a.commerce_head_desc_modif').css('width','420px');
                 $('input.valider_nouveau_nom_commerce').css('margin-left','10px');
                 
+                $('a.objet_head_desc_modif').css('width','420px');
+                $('input.valider_nouveau_nom_objet').css('margin-left','10px');
+                
 		// PAGE OBJET
 		$('.objet_head_desc_social').removeClass('ipad_portrait_social');
 		$('.objet_head_desc_social img').css('display','inline-block');
@@ -539,6 +550,8 @@ function resizeboxContainer(){
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 5 */else if ($('.big_wrapper').width() == 1236){
             
+            AjusteCouvertures(1236);
+            
             // Alternate descs in head
             $('#commerce_head_desc_ariane_button').click(function(){
                 $('.commerce_head_desc_address').css('width','250px');
@@ -567,6 +580,7 @@ function resizeboxContainer(){
 		
 		// HEADER
 		
+                $('.header input[type="text"]').css('width','auto');
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
 		$('.header_button_menu').css('display','block');
 		$('.header_rightnav').css('display','block');
@@ -645,8 +659,11 @@ function resizeboxContainer(){
                 $('.commerce_optin_commerce span').css('margin-top','0px');
                 
                 //DASHBOARD
-                $('a.commerce_head_desc_modif').css('width','420px');
+                $('a.commerce_head_desc_modif').css('width','545px');
                 $('input.valider_nouveau_nom_commerce').css('margin-left','10px');
+                
+                $('a.objet_head_desc_modif').css('width','545px');
+                $('input.valider_nouveau_nom_objet').css('margin-left','10px');
                 
 		//PAGE OBJET
 		$('.objet_head_desc').css('width',545);
@@ -688,6 +705,8 @@ function resizeboxContainer(){
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 6 */else if ($('.big_wrapper').width() == 1486){
 		
+                AjusteCouvertures(1486);
+                
             // Alternate descs in head
             $('#commerce_head_desc_ariane_button').click(function(){
                 $('.commerce_head_desc_address').css('width','350px');
@@ -716,6 +735,7 @@ function resizeboxContainer(){
                 
 		// HEADER
 		
+                $('.header input[type="text"]').css('width','auto');
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
 		$('.header_button_menu').css('display','block');
 		$('.header_rightnav').css('display','block');
@@ -789,6 +809,13 @@ function resizeboxContainer(){
                 $('.commerce_optin_commerce').css('width','80px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
                 
+                //DASHBOARD
+                $('a.commerce_head_desc_modif').css('width','670px');
+                $('input.valider_nouveau_nom_commerce').css('margin-left','10px');
+                
+                $('a.objet_head_desc_modif').css('width','670px');
+                $('input.valider_nouveau_nom_objet').css('margin-left','10px');
+                
 		// PAGE UTILISATEUR
 		$('.objet_head_desc').css('width','665px');
                 $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','95px');
@@ -828,6 +855,8 @@ function resizeboxContainer(){
 	/////////////////////////////////////////////////////////////////////////////////
 	/* 7 */else if ($('.big_wrapper').width() == 1736){
 
+                AjusteCouvertures(1736);
+                
             // Alternate descs in head
             $('#commerce_head_desc_ariane_button').click(function(){
                 $('.commerce_head_desc_address').css('width','400px');
@@ -855,6 +884,7 @@ function resizeboxContainer(){
             });
 		// HEADER
 		
+                $('.header input[type="text"]').css('width','auto');
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
 		$('.header_button_menu').css('display','block');
 		$('.header_rightnav').css('display','block');
@@ -927,6 +957,13 @@ function resizeboxContainer(){
                 $('.commerce_optin_commerce').css('width','108px').css('height','40px').css('padding-top','15px').css('font-size','1.1em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
 		
+                //DASHBOARD
+                $('a.commerce_head_desc_modif').css('width','790px');
+                $('input.valider_nouveau_nom_commerce').css('margin-left','10px');
+                
+                $('a.objet_head_desc_modif').css('width','790px');
+                $('input.valider_nouveau_nom_objet').css('margin-left','10px');
+                
 		// PAGE UTILISATEUR
 		$('.objet_head_desc').css('width','795px');
                 $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','95px');
