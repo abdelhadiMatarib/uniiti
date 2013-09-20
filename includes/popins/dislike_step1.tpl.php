@@ -80,7 +80,6 @@ catch (PDOException $erreur)
 }
 ?>
 <div class="dislike_wrapper">
-    <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="dislike_wrapper_body_img"<?php echo  AfficheActionLarge("aime_pas", $categorie); ?>></div>
     <div class="dislike_wrapper_footer_txt">
         <span class="dislike_wrapper_footer_txt_normal">Vous <span class="dislike_wrapper_footer_txt_bold">n'aimez pas</span> ce commerce</span>

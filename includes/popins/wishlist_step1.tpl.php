@@ -62,7 +62,6 @@ catch (PDOException $erreur)
 
 
 <div class="wishlist_wrapper">
-    <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="wishlist_wrapper_body_img" <?php echo AfficheActionLarge('wish',$_POST['categorie']); ?>></div>
     <div class="wishlist_wrapper_footer_txt">
         <span class="wishlist_wrapper_footer_txt_normal">Vous avez <span class="wishlist_wrapper_footer_txt_bold">ajouté</span> ce commerce</span>

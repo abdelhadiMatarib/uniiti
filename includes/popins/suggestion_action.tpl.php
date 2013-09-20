@@ -1,6 +1,16 @@
 <?php
-        include_once '../../config/configuration.inc.php';
-        include'../head.php'?>
+
+include_once '../../config/configuration.inc.php';
+include_once '../fonctions.inc.php';
+include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
+include_once '../../config/configPDO.inc.php';
+		
+?>
+<style>
+    .suggestion_body > div{border-radius:0px;}
+    .suggestion_footer{height:5px;width:100%;background-color:#fabe41;}
+    .suggestion_action_left_figure figure{height: 245px;}
+</style>
 <div class="suggestion_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="suggestion_head">
@@ -16,7 +26,7 @@
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
-                <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
+                <div class="presentation_action_left_head_img_container_picto_likes"></div>
                 <span class="presentation_action_left_head_nombrelikes"><strong>15756</strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>
@@ -30,11 +40,16 @@
             
         </div>
         <div class="suggestion_action_left_figure">
-            
+            <div class="wrapper_boutons_popin">
+                <!--<div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$_POST['categorie']); ?>></div>-->
+                <!--<div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>-->
+                <!--<div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>-->
+            </div>
             <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
             
             <figure><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_suggestion.jpg"/></figure>
-        </div>  
+        </div>
+    <div class="suggestion_footer"></div>
     </div>
 </div>
 </html>
