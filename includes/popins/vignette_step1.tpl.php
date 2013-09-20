@@ -14,7 +14,7 @@
 		if (!empty($_GET['step'])) {$step = $_GET['step'];}
 		else {$step = $_POST['step'];}
 		$MessageAction = "Étape suivante";
-		$MessageInfo = "Une fois le chargement de/des images effectué, vous pourrez les ajuster pour un affichage optimal.";
+		$MessageInfo = "Veuillez choisir sur cette image la zone visible lors de l'affichage des popins.";
 		$Step = "{step: 2}";
 ?>
 
@@ -30,7 +30,11 @@
 			.couverture_step1_wrap_buttons {display : none;}
 			.vignette_step1_dropzone_txt2	{}		
 			#image {position:absolute;}
-
+                        .step1_infos_popin{float:none;margin:0 auto;width:425px;margin-top:5px;}
+                        .popin_step1_infos_img_container{margin-top:-5px;}
+                        .popin_overlay_left,.popin_overlay_right{width:105px;height:210px;background:rgba(255,255,255,0.4);}
+                        .popin_overlay_left{position:absolute;left:0px;border-right:1px dashed white;}
+                        .popin_overlay_right{position:absolute;right:0px;border-left:1px dashed white;}
 		</style>
 
 <div class="couverture_wrapper">
@@ -52,7 +56,7 @@
 				</div>
 				<div id="Interaction1">
 					<div class="vignette_step1_dropzone_img_container">
-						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="63.3" width="132.6" />
+						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="95" width="199" />
 					</div>
 					<div class="vignette_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
@@ -60,6 +64,10 @@
 					</div>
 				</div>
 				
+                            <div class="popin_wrap_overlay">
+                                <div class="popin_overlay_left"></div>
+                                <div class="popin_overlay_right"></div>
+                            </div>
 				<div class="couverture_step1_wrap_buttons">
 					<div class="couverture_step1_button_supprimer"></div>
 					<div class="couverture_step1_button_valider"></div>
@@ -81,20 +89,9 @@
 							
 	</div>
 	<div class="couverture_step1_footer">
-		<div class="couverture_step1_footer_vertical_sep"></div>
-		<div class="couverture_step1_infos"><div class="couverture_step_1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span id="MessageInfo"><?php echo $MessageInfo ?></span></div>
+		
+		<div class="couverture_step1_infos step1_infos_popin"><div class="couverture_step_1_infos_img_container popin_step1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span id="MessageInfo"><?php echo $MessageInfo ?></span></div>
 
-		<div class="couverture_arianne">
-			<div class="couverture_arianne_txt">
-			<span class="arianne_txt_1">Votre </span>
-			<span class="arianne_txt_2">image</span>
-			</div>
-			<div class="couverture_arianne_nbr">
-				<ul class="couverture_arianne_nbr_liste">
-					<li><a id="image1" href="#" alt="">1</a></li>
-				</ul>
-			</div>
-		</div>
 	</div>
 	<div class="couverture_champs_action"><a href="#" title="" onclick="EtapeSuivante();"><span><?php echo $MessageAction ?></span></a></div>
 </div>
