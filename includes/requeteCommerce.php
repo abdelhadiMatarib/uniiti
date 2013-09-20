@@ -3,6 +3,7 @@
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
+
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -239,5 +240,9 @@
 		} // Fin du while
 
 		$req->closeCursor();    // Ferme la connexion du serveur
+		$req2->closeCursor();    // Ferme la connexion du serveur
+		$req3->closeCursor();    // Ferme la connexion du serveur
+		$req4->closeCursor();    // Ferme la connexion du serveur
+		$req5->closeCursor();    // Ferme la connexion du serveur
 		$bdd = null;            // Détruit l'objet PDO
 ?>

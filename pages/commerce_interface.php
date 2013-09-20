@@ -4,11 +4,21 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?php 
-	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+	require_once('../acces/droits.inc.php'); 					// Liste de définition des ACL	
 	include_once '../config/configuration.inc.php';
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+
+	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	
+	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL))) {$Connecte = true;}
+	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	/////////////////////////////////// IL FAUT AJOUTER UN TEST SUR LES ENSEIGNES QUE L'UTILISATEUR A LE DROIT D'ATTEINDRE
+	if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
+	else {$Admin = false;}
 	
 	$PAGE = "Commerce"; 
 
@@ -26,9 +36,6 @@
 		";
 
 	$req2 = $bdd->prepare($sql2);
-
-	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
-	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
@@ -107,7 +114,13 @@
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
 
-	if(isset($_SESSION['SESS_MEMBER_ID'])) {
+	if (!$Admin) {
+	
+		$Engrenage = "OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
+		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+
+
+		
 		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
 		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
@@ -139,7 +152,7 @@
                 <div class="commerce_head_desc">
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2><?php echo $nom_enseigne; ?></h2></div>
                     <div class="utilisateur_interface_engrenage">
-                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog');"></a></div>
+                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="<?php echo $Engrenage; ?>"></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -168,7 +181,7 @@
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
-                        <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');">
+                        <a href="#" title="" class="commerce_reserver_button" onclick="">
                         <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                         <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
                         </a>
@@ -223,14 +236,11 @@
                 
                 <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
- 
-				<div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
- 
-                 <div class="wrapper_boutons">
-                <div class="boutons not_signedin" onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
-                <div class="boutons not_signedin" onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
-                <div class="boutons not_signedin" onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
-                </div>
+				<?php if ($Admin) { ?>
+				<div class="commerce_interface_modifier_box"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/box_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la box</span></a></div>
+				<div class="commerce_interface_modifier_popin"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/vignette_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la popin</span></a></div>
+ 				<div class="commerce_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
+				<?php } ?>
             </div>
         
         <!-- FILTRE DE TRI -->
@@ -269,6 +279,42 @@
 		}
 		InitCouvertures();
 		// Fin gestion du slider des couvertures
+		
+	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
+
+	function AfficheFollowContributeur(data) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetefollowcontributeur.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+				} else {
+					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	
+	function InitFollowContributeur() {
+		$('#box_container').find('.box_suivre_user').each(function() {
+			var contributeur = $(this).find("img").attr("id").replace(/SuivreContributeur/gi, "");
+			dataFollow = {check : 1, 
+						  id_contributeurACTIF : $idcontributeurACTIF,
+						  id_contributeur : contributeur};
+			AfficheFollowContributeur(dataFollow);		
+		});
+	}
+	InitFollowContributeur();
 	
 	</script>
     </body>
