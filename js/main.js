@@ -1182,7 +1182,7 @@ $('#close_button_home').click(function() {
 	var suggestionsContainer3 = $("#suggestionsContainer3"), inputSearch3 = $("input#inputSearch3"),
 		inputSearch3Hidden = $("input#inputSearch3Hidden"), suggestionList3 = $("#suggestionList3");
 
-	document.selectSuggestion  = function (keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden) {
+	document.selectSuggestion  = function (NumAction, keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden) {
 		var suggestionListLi = suggestionList.children();
 		switch (keyCode) {
 			case 38:
@@ -1194,11 +1194,12 @@ $('#close_button_home').click(function() {
 				if (clickSuggestion > suggestionListLenght) {clickSuggestion = suggestionListLenght;}
 				break;
 			case 13:
-				$('#ButtonFiltre').trigger('click');
+				if ((NumAction == 1) || (NumAction == 2)) {$('#ButtonFiltre').trigger('click');}
+				else if (NumAction == 3) {$('#ButtonModifierCommerce').trigger('click');}
 				break;
 			case 27:
 				clickSuggestion = -1;
-				$("div#suggestionsContainer1").addClass("display-none");
+				$("div#suggestionsContainer"+NumAction).addClass("display-none");
 				break;
 		}
 
@@ -1217,16 +1218,16 @@ $('#close_button_home').click(function() {
 		if( suggestionsContainer3.is(":visible") === true ) {suggestionsContainer3.hide();}
 	});
 
-	function arrowsAction (keyCode, suggestionList, inputSearch, inputSearchHidden) {
+	function arrowsAction (NumAction, keyCode, suggestionList, inputSearch, inputSearchHidden) {
 		var suggestionListLenght = suggestionList.children().size() - 1;
-		document.selectSuggestion (keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden);
+		document.selectSuggestion (NumAction, keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden);
 		return false;
 	}
 
 	inputSearch1.keydown(function (e) {
 		var keyCode = e.keyCode || e.which;
 		if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
-			arrowsAction (keyCode, suggestionList1, inputSearch1, inputSearch1Hidden);
+			arrowsAction (1, keyCode, suggestionList1, inputSearch1, inputSearch1Hidden);
 			return false;
 		}
 		if(suggestionsContainer1.is(":visible") === false) {suggestionsContainer1.show();}
@@ -1282,6 +1283,10 @@ $('#close_button_home').click(function() {
 		else {suggestionsContainer.removeClass("display-none");}
 	}
 
+	$('#ButtonModifierCommerce').click(function() {
+		window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+inputSearch3Hidden.val());
+	});
+	
 	$('#ButtonFiltre').click(function() {
 		var data = {provenance:'all'};
 		var quoi = inputSearch1.val(), lieu = inputSearch2.val();
@@ -1334,13 +1339,13 @@ function callbackObjetOuEnseigne (suggestionsContainer, inputSearch, inputSearch
 	return function (listData) {
 		suggestionsContainer.removeClass("display-none");
 		var toSend = '';
-		for (k in listData) {toSend += '<li>'+listData[k].result+'</li>';}
+		for (k in listData) {toSend += '<li id="'+listData[k].id+'">'+listData[k].nom+'</li>';}
 		suggestionList.html(toSend);
 		suggestionList.children().on("mouseenter" , function(){
 			suggestionList.children().removeClass("active");
 			$(this).addClass("active");
 		}).on("click" , function() {
-			inputSearchHidden.val($(this).html());
+			inputSearchHidden.val($(this).attr('id'));
 			inputSearch.val($(this).text());
 			suggestionsContainer.addClass("display-none");
 		});

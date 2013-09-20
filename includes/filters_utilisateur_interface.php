@@ -31,6 +31,18 @@
 		switch ($PAGE) {
 			case "Commerce" :
 				$sqldroite .= " WHERE enseignes_id_enseigne = " . $id_enseigne;
+				$sql = "SELECT categorie_principale, couleur FROM enseignes AS t1
+							INNER JOIN sous_categories2 AS t2
+							ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
+								INNER JOIN sous_categories AS t3
+								ON t2.id_sous_categorie = t3.id_sous_categorie
+									INNER JOIN categories AS t4
+									ON t2.id_categorie = t4.id_categorie WHERE id_enseigne=" . $id_enseigne;
+				$req = $bdd->prepare($sql);
+				$req->execute();
+				$result = $req->fetch(PDO::FETCH_ASSOC);
+				$Couleur = $result['couleur'];
+				echo "<style>.categorie_" . $id_enseigne . " li, .flux_commerce a, .avisenattente_commerce a {background-color:" . $result['couleur'] . " !important;}</style>\n";
 			break;
 			case "Utilisateur" :
 				$sqldroite .= " WHERE contributeurs_id_contributeur = " . $id_contributeur;

@@ -13,7 +13,8 @@
 	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
-					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
+					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
+					adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -51,6 +52,11 @@
 	$slide3_enseigne    	 = $result2['slide3_enseigne'];
 	$slide4_enseigne    	 = $result2['slide4_enseigne'];
 	$slide5_enseigne    	 = $result2['slide5_enseigne'];
+	$y1    = $result2['y1'];
+	$y2    = $result2['y2'];
+	$y3    = $result2['y3'];
+	$y4    = $result2['y4'];
+	$y5    = $result2['y5'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$ville_enseigne          = $result2['ville_enseigne'];
@@ -92,6 +98,23 @@
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
+
+	$Chemin = SITE_URL . "/photos/enseignes/couvertures/";
+	
+	$datacouv = "{step : 1, "
+			. "type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "chemin : '" . SITE_URL . "/photos/enseignes/couvertures/', "
+			. "image1 : '" . $slide1_enseigne . "', "
+			. "image2 : '" . $slide2_enseigne . "', "
+			. "image3 : '" . $slide3_enseigne . "', "
+			. "image4 : '" . $slide4_enseigne . "', "
+			. "image5 : '" . $slide5_enseigne . "', "
+			. "y1 : '" . $y1 . "', "
+			. "y2 : '" . $y2 . "', "
+			. "y3 : '" . $y3 . "', "
+			. "y4 : '" . $y4 . "', "
+			. "y5 : '" . $y5 . "'}";
 	
 ?>
 
@@ -185,11 +208,23 @@
             <div class="commerce_couv">
                 <div class="ligne_verticale1"></div>
                 <div class="ligne_verticale2"></div>
-                <img src="<?php echo SITE_URL . "/photos/utilisateurs/couvertures/" . $slide1_enseigne;?>" title="" alt="" />
+				
+				<div class="couv_container">
+					<?php if ($slide1_enseigne != "" && $slide2_enseigne == "" && $slide3_enseigne == "" && $slide4_enseigne == "" && $slide5_enseigne == "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne; ?>" title="" alt=""><?php } ?>
+				    <div id="couv_slides">
+ 					<?php if ($slide1_enseigne != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide2_enseigne != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_enseigne; ?>" title="" alt=""><?php } ?>					
+ 					<?php if ($slide3_enseigne != "") { ?><img id="couv3" src="<?php echo $Chemin . $slide3_enseigne; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide4_enseigne != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_enseigne; ?>" title="" alt=""><?php } ?>
+					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne; ?>" title="" alt=""><?php } ?>
+				    </div>
+				</div>
                 
                 <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
-                
+ 
+				<div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
+ 
                  <div class="wrapper_boutons">
                 <div class="boutons not_signedin" onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
                 <div class="boutons not_signedin" onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
@@ -214,5 +249,26 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
         <?php include'../includes/js.php' ?>
+		
+	<script>
+		// Gestion du slider des couvertures
+		$(function() {
+		  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
+		  });
+		})
+		
+		function InitCouvertures() {
+		
+			y[1] = <?php if ($y1 != '') {echo $y1;} else {echo 0;} ?>;
+			y[2] = <?php if ($y2 != '') {echo $y2;} else {echo 0;} ?>;
+			y[3] = <?php if ($y3 != '') {echo $y3;} else {echo 0;} ?>;
+			y[4] = <?php if ($y4 != '') {echo $y4;} else {echo 0;} ?>;
+			y[5] = <?php if ($y5 != '') {echo $y5;} else {echo 0;} ?>;
+			AjusteCouvertures($('.big_wrapper').css('width'));
+		}
+		InitCouvertures();
+		// Fin gestion du slider des couvertures
+	
+	</script>
     </body>
 </html>

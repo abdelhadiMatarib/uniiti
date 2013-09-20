@@ -31,6 +31,18 @@
 		switch ($PAGE) {
 			case "Commerce" :
 				$sqldroite .= " WHERE enseignes_id_enseigne = " . $id_enseigne;
+				$sql = "SELECT categorie_principale, couleur FROM enseignes AS t1
+							INNER JOIN sous_categories2 AS t2
+							ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
+								INNER JOIN sous_categories AS t3
+								ON t2.id_sous_categorie = t3.id_sous_categorie
+									INNER JOIN categories AS t4
+									ON t2.id_categorie = t4.id_categorie WHERE id_enseigne=" . $id_enseigne;
+				$req = $bdd->prepare($sql);
+				$req->execute();
+				$result = $req->fetch(PDO::FETCH_ASSOC);
+				$Couleur = $result['couleur'];
+				echo "<style>.categorie_" . $id_enseigne . " li, .flux_commerce a, .avisenattente_commerce a {background-color:" . $result['couleur'] . " !important;}</style>\n";
 			break;
 			case "Utilisateur" :
 				$sqldroite .= " WHERE contributeurs_id_contributeur = " . $id_contributeur;
@@ -129,12 +141,12 @@ ON t1.id_categorie = t3.id_categorie */
 
 <!--<nav>-->
 <div class="filters">
-        <div class="rang0">
+        <div class="rang0<?php if ($PAGE == "Commerce") {echo " categorie_" . $id_enseigne;} ?>">
             <ul>
                 <li onclick="SetFiltre({provenance:'all'});" class="button_all"><div class="<?php if ($CompteurTotal > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurTotal ?></span></div></li>
             </ul>
         </div>
-        <div class="rang1">
+        <div class="rang1<?php if ($PAGE == "Commerce") {echo " categorie_" . $id_enseigne;} ?>">
             <ul>
 				<?php if (!empty($CompteurProvenance['avis'])) { ?>
                 <li onclick="SetFiltre({provenance:'avis'});" class="avis button_avis"><div class="<?php if ($CompteurProvenance['avis'] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurProvenance['avis']; ?></span></div></li>
