@@ -52,7 +52,7 @@
 				</div>
 				<div id="Interaction1">
 					<div class="vignette_step1_dropzone_img_container">
-						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="50" width="51" />
+						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="63.3" width="132.6" />
 					</div>
 					<div class="vignette_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>

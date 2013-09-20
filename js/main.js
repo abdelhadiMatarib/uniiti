@@ -337,6 +337,10 @@ function resizeboxContainer(){
                 $('.commerce_reservation_commerce').css('width','60px').css('height','28px').css('padding-top','5px').css('font-size','0.7em');
                 $('.commerce_optin_commerce').css('width','60px').css('height','28px').css('padding-top','4px').css('font-size','0.7em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
+                
+                //DASHBOARD
+                $('a.commerce_head_desc_modif').css('width','295px');
+                $('input.valider_nouveau_nom_commerce').css('margin-left','5px');
 					
 		//PAGE OBJET
 		$('.objet_head_desc_social').addClass('ipad_portrait_social');
@@ -486,6 +490,10 @@ function resizeboxContainer(){
                 $('.commerce_optin_commerce').css('width','75px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
 		
+                //DASHBOARD
+                $('a.commerce_head_desc_modif').css('width','420px');
+                $('input.valider_nouveau_nom_commerce').css('margin-left','10px');
+                
 		// PAGE OBJET
 		$('.objet_head_desc_social').removeClass('ipad_portrait_social');
 		$('.objet_head_desc_social img').css('display','inline-block');
@@ -635,7 +643,11 @@ function resizeboxContainer(){
                 $('.commerce_reservation_commerce').css('width','85px').css('height','25px').css('padding-top','5px').css('font-size','0.8em');
                 $('.commerce_optin_commerce').css('width','85px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
                 $('.commerce_optin_commerce span').css('margin-top','0px');
-	
+                
+                //DASHBOARD
+                $('a.commerce_head_desc_modif').css('width','420px');
+                $('input.valider_nouveau_nom_commerce').css('margin-left','10px');
+                
 		//PAGE OBJET
 		$('.objet_head_desc').css('width',545);
                 $('.utilisateur_suggerer_commerce,.utilisateur_suggerer_objet').css('width','95px');
