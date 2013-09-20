@@ -5,30 +5,6 @@ include_once '../config/configPDO.inc.php';
 include_once 'fonctions.inc.php';
 
 
-function CompresserImage ($image, $ImageRecalibree, $WidthCouv) {
-	$couv = $ImageRecalibree;
-	list($imagewidth, $imageheight, $imageType) = getimagesize($image);
-	$scale = $imagewidth / $WidthCouv;
-	$newImage = imagecreatetruecolor($WidthCouv, $imageheight / $scale);
-	$imageType = image_type_to_mime_type($imageType);
-	switch($imageType) {
-		case "image/gif":
-			$source=imagecreatefromgif($image); 
-			break;
-		case "image/pjpeg":
-		case "image/jpeg":
-		case "image/jpg":
-			$source=imagecreatefromjpeg($image); 
-			break;
-		case "image/png":
-		case "image/x-png":
-			$source=imagecreatefrompng($image); 
-			break;
-	}
-	imagecopyresampled($newImage, $source, 0, 0, 0, 0, $WidthCouv, $imageheight / $scale, $imagewidth, $imageheight);
-	imagejpeg($newImage, $couv, 70);		
-}
-
 if ((!isset($_POST['image1'])) || (!isset($_POST['image2'])) || (!isset($_POST['image3'])) || (!isset($_POST['image4'])) || (!isset($_POST['image5']))) {exit;}
 if ((!isset($_POST['y1'])) || (!isset($_POST['y2'])) || (!isset($_POST['y3'])) || (!isset($_POST['y4'])) || (!isset($_POST['y5']))) {exit;}
 

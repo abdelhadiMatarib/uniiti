@@ -10,7 +10,14 @@
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
 ?>
-
+	<style>
+	.display-none {display:none;}
+	#suggestionsContainer3 {position: relative;background-color:#f0f0f0;max-width: 620px;top: -40px;left: 0px;z-index:1000;}
+	.suggestionList li {cursor:pointer;padding: 3px 0 3px 3px;}
+	.suggestionList li.active {background-color: #ffffff;}
+	.suggestionList {list-style-type: none;z-index:1000;}
+	</style>
+	
     <body class="dashboard">
         <div class="bg_dashboard">
         <div id="default_dialog"></div>
@@ -58,7 +65,10 @@
                         </div>
                         <div class="suppression_commerce_wrap">
                         <h2 class="h2_suppr_commerce">Modification d'un commerce</h2>
-                         <input class="input_dashboard_large" type="text" placeholder="NOM DU COMMERCE"/>
+						<input id="inputSearch3" class="input_dashboard_large" type="text" value="" placeholder="NOM DU COMMERCE"/>
+						<input id="inputSearch3Hidden" type="hidden" value=""/>
+						<div class="suggestionsContainer display-none" id="suggestionsContainer3"><ul class="suggestionList" id="suggestionList3"><li>&nbsp;</li></ul></div>
+				
                         <div class="input_dashboard_large_validation">
                             <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/>
                         </div>

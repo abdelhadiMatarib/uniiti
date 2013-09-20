@@ -1171,14 +1171,16 @@ $('#close_button_home').click(function() {
 		return false;
 	});
 		
-	//////////////////////////////////
-	// Concerne le filtre du header //
-	//////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	// Concerne le filtre du header et les recherches d'enseignes et d'objets //
+	////////////////////////////////////////////////////////////////////////////
 	
 	var suggestionsContainer1 = $("#suggestionsContainer1"), inputSearch1 = $("input#inputSearch1"),
 		inputSearch1Hidden = $("input#inputSearch1Hidden"), suggestionList1 = $("#suggestionList1"), clickSuggestion = -1;
 	var suggestionsContainer2 = $("#suggestionsContainer2"), inputSearch2 = $("input#inputSearch2"),
 		inputSearch2Hidden = $("input#inputSearch2Hidden"), suggestionList2 = $("#suggestionList2");
+	var suggestionsContainer3 = $("#suggestionsContainer3"), inputSearch3 = $("input#inputSearch3"),
+		inputSearch3Hidden = $("input#inputSearch3Hidden"), suggestionList3 = $("#suggestionList3");
 
 	document.selectSuggestion  = function (keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden) {
 		var suggestionListLi = suggestionList.children();
@@ -1212,6 +1214,7 @@ $('#close_button_home').click(function() {
 	$(document).click(function(event) {
 		if( suggestionsContainer1.is(":visible") === true ) {suggestionsContainer1.hide();}
 		if( suggestionsContainer2.is(":visible") === true ) {suggestionsContainer2.hide();}
+		if( suggestionsContainer3.is(":visible") === true ) {suggestionsContainer3.hide();}
 	});
 
 	function arrowsAction (keyCode, suggestionList, inputSearch, inputSearchHidden) {
@@ -1238,6 +1241,16 @@ $('#close_button_home').click(function() {
 		}
 		if(suggestionsContainer2.is(":visible") === false) {suggestionsContainer2.show();}
 		emptyInput(inputSearch2, suggestionsContainer2);
+	});
+
+	inputSearch3.keydown(function (e) {
+		var keyCode = e.keyCode || e.which;
+		if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
+			arrowsAction (keyCode, suggestionList3, inputSearch3, inputSearch3Hidden);
+			return false;
+		}
+		if(suggestionsContainer3.is(":visible") === false) {suggestionsContainer3.show();}
+		emptyInput(inputSearch3, suggestionsContainer3);
 	});		
 	
 	inputSearch1.keyup(function (e) {
@@ -1254,6 +1267,14 @@ $('#close_button_home').click(function() {
 			timeLoadSuggestions('où', suggestionsContainer2, inputSearch2, inputSearch2Hidden, suggestionList2);
 		}
 		emptyInput(inputSearch2, suggestionsContainer2);
+	});
+	
+	inputSearch3.keyup(function (e) {
+		var keyCode = e.keyCode || e.which;
+		if(keyCode != 13 && keyCode != 38 && keyCode != 40 && keyCode != 27){
+			timeLoadEnseigneOuObjet('enseigne', suggestionsContainer3, inputSearch3, inputSearch3Hidden, suggestionList3);
+		}
+		emptyInput(inputSearch3, suggestionsContainer3);
 	});
 
 	function emptyInput(inputSearch, suggestionsContainer){
@@ -1308,3 +1329,40 @@ function timeLoadSuggestions(search, suggestionsContainer, inputSearch, inputSea
 	if(lastRequestI){clearTimeout(lastRequestI);}
 	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 500);
 }
+
+function callbackObjetOuEnseigne (suggestionsContainer, inputSearch, inputSearchHidden, suggestionList) {
+	return function (listData) {
+		suggestionsContainer.removeClass("display-none");
+		var toSend = '';
+		for (k in listData) {toSend += '<li>'+listData[k].result+'</li>';}
+		suggestionList.html(toSend);
+		suggestionList.children().on("mouseenter" , function(){
+			suggestionList.children().removeClass("active");
+			$(this).addClass("active");
+		}).on("click" , function() {
+			inputSearchHidden.val($(this).html());
+			inputSearch.val($(this).text());
+			suggestionsContainer.addClass("display-none");
+		});
+	};
+}
+
+function loadEnseigneOuObjet(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList){
+	query = inputSearch.val();
+	query = query.toLowerCase();
+
+	if(query.length == 0){return;}
+
+	query = encodeURIComponent(query);
+	res = $.getJSON(siteurl+'/includes/requetechercheobjetouenseigne.php?key='+query+'&search='+search, callbackObjetOuEnseigne(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList));
+	console.log(res);
+}
+
+function timeLoadEnseigneOuObjet(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList){
+	if(lastRequestI){clearTimeout(lastRequestI);}
+	lastRequestI = setTimeout(function () {loadEnseigneOuObjet(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 100);
+}
+
+
+
+
