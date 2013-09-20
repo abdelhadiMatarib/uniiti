@@ -551,19 +551,19 @@ input.input_signalement_motif{width:290px;}
 
 /* LIKE DISLIKE WISHLIST */
 .like_wrapper{padding:21px;z-index:998;position:relative;border-radius:3px;width:458px;background-color:#252525;}
-.like_wrapper_body_img{width:147px;margin:0 auto;}
+.like_wrapper_body_img{width:150px; height:150px;margin:0 auto;}
 .like_wrapper_footer_txt{text-align:center;}
 .like_wrapper_footer_txt_normal{font-weight:300;display:inline-block;margin-top:20px;text-transform:uppercase;font-size:2em;color:white;}
 .like_wrapper_footer_txt_bold{font-weight:700;}
 
 .dislike_wrapper{padding:21px;z-index:998;position:relative;border-radius:3px;width:458px;background-color:#252525;}
-.dislike_wrapper_body_img{width:147px;margin:0 auto;}
+.dislike_wrapper_body_img{width:150px; height:150px;margin:0 auto;}
 .dislike_wrapper_footer_txt{text-align:center;}
 .dislike_wrapper_footer_txt_normal{font-weight:300;display:inline-block;margin-top:20px;text-transform:uppercase;font-size:2em;color:white;}
 .dislike_wrapper_footer_txt_bold{font-weight:700;}
 
 .wishlist_wrapper{padding:21px;z-index:998;position:relative;border-radius:3px;width:458px;background-color:#252525;}
-.wishlist_wrapper_body_img{width:147px;margin:0 auto;}
+.wishlist_wrapper_body_img{width:150px; height:150px;margin:0 auto;}
 .wishlist_wrapper_footer_txt{text-align:center;}
 .wishlist_wrapper_footer_txt_normal{font-weight:300;display:inline-block;margin-top:20px;text-transform:uppercase;font-size:2em;color:white;}
 .wishlist_wrapper_footer_txt_bold{font-weight:700;}
