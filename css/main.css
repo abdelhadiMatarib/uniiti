@@ -171,7 +171,7 @@ span.index_overlay_texte{display:block;}
 .box section figcaption{padding-bottom: 10px; }
 .box_foot{height:50px;}
 .box_userpic{float:left;height:50px;width:50px;overflow:hidden;display:block;}
-.box_userpic img{max-width:90px;margin:auto;}
+.box_userpic img{max-width:50px;margin:auto;}
 .box_userpic:hover{float:left;height:50px;width:50px; opacity:0.9; }
 .box_posttime{padding:15px 0 0 0;float: left;width: 100%;vertical-align: middle;text-align:center;color:#252525;height: 35px;}
 .box_posttype{float:right;height:50px;width:50px;background-color:#fabe41; text-align: center; vertical-align: middle;}
@@ -402,7 +402,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .utilisateur_head_desc_title{float:left;padding: 0 0 5px 10px;}
 .utilisateur_head_desc_title .img_container{position:relative;}
 .utilisateur_head_desc_title h2{font-size: 1.7em;font-weight: 300;margin: 10px 0 0 0;display: inline-block;}
-.utilisateur_head_desc_avatar{position: absolute;top: 50px;z-index: 1;left: 10px;z-index:99;}
+.utilisateur_head_desc_avatar{position: absolute;top: 50px;z-index: 1;left: 10px;z-index:9;}
 .utilisateur_head_desc_avatar img{border:1px solid white;}
 .utilisateur_head_desc_desc{float:left;width:140px;padding:6px 0 0 175px;}
 .utilisateur_head_desc_desc span{display:block;}
@@ -710,7 +710,7 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .couverture_champs_action{position:relative;float:left;background-color:#a4ebf1;width:700px;text-align:center;}
 .couverture_champs_action a{color:#252525;padding:10px;display:inline-block;width:100%;}
 .couverture_champs_action span{font-size:1.3em;}
-.couverture_step1_dropzone_img_container{margin: 65px 55px 65px 130px;float:left;}
+.couverture_step1_dropzone_img_container{margin: 45px 55px 45px 60px;float:left;}
 .couverture_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
 .couverture_step1_dropzone_txt1{display:block;font-size:1.6em;}
 .couverture_step1_dropzone_txt2{display:block;font-size:0.9em;}
@@ -780,7 +780,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 
 /* PRESENTATION ACTION */
 
-.commerce_head_desc_ariane,.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_prices{overflow:hidden;height:40px;}
+.commerce_head_desc_ariane,.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_prices{overflow:hidden;height:43px;}
 
 .presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
 .menutarifs_head{width:700px;height:50px;background-color:#252525;color:white;}
@@ -809,10 +809,10 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .img_container_payment_options3{height:34px;width:48px;background-position:-100px 0px;}
 .img_container_payment_options4{height:34px;width:52px;background-position:-150px 0px;}
 .img_container_payment_options5{height:34px;width:55px;background-position:-205px 0px;}
-.menutarifs_body{overflow-y:scroll;height:500px;}
-.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:680px;padding:10px;}
+.menutarifs_body{overflow-y:scroll;height:500px;width:700px;}
+.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:663px;padding:10px;}
 .menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
-.menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:579px;}
+.menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:562px;}
 .menutarifs_body_entrees_prix_generique{border-top:1px solid #e4e4e4;text-align:center;padding:10px;float:left;background-color:#f0f0f0;width:80px;}
 .ajout_liencommerce_infos_txt{float:left;text-align:center;width:480px;padding:10px;background-color:white;}
 .ajout_liencommerce_infos_txt span{display:inline-block;}
@@ -1250,9 +1250,9 @@ h2.h2_suppr_commerce{margin-top:20px;}
 .slidesjs2-pagination li a.active,.slidesjs2-pagination li a:hover.active {background-position: 0 -13px}
 .slidesjs2-pagination li a:hover {background-position: 0 -26px}
 .slidesjs2-pagination-item {text-align: center;}
-@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container {width: 736px;}.slidesjs2-pagination{margin-top: -228px;}}
-@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container {width: 986px;}.slidesjs2-pagination{margin-top: -300px;}}
-@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container {width: 1236px;}.slidesjs2-pagination{margin-top: -371px;}}
-@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container {width: 1486px;}.slidesjs2-pagination{margin-top: -443px;}}
-@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container {width: 1736px;}.slidesjs2-pagination{margin-top: -514px;}}
+@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container,.big_wrapper {width: 736px;}.slidesjs2-pagination{margin-top: -228px;}}
+@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container,.big_wrapper {width: 986px;}.slidesjs2-pagination{margin-top: -300px;}}
+@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container,.big_wrapper {width: 1236px;}.slidesjs2-pagination{margin-top: -371px;}}
+@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container,.big_wrapper {width: 1486px;}.slidesjs2-pagination{margin-top: -443px;}}
+@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container,.big_wrapper {width: 1736px;}.slidesjs2-pagination{margin-top: -514px;}}
 

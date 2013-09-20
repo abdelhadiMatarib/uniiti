@@ -52,7 +52,7 @@
 				</div>
 				<div id="Interaction1">
 					<div class="couverture_step1_dropzone_img_container">
-						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="70" width="100" />
+						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="95" width="199" />
 					</div>
 					<div class="couverture_step1_dropzone_txt">
 						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>

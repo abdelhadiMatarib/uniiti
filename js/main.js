@@ -281,9 +281,9 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_address').css('width','230px').css('font-size','1em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
                 $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','12px');
-		$('.commerce_head_desc_identity').css('width','230px');
+		$('.commerce_head_desc_identity').css('width','230px').css('font-size','1em');
                 $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','5px');
-		$('.commerce_head_desc_ariane').css('width','40px');
+		$('.commerce_head_desc_ariane').css('width','40px').css('font-size','1em');
                 $('.commerce_head_desc_ariane span').css('font-size','0.9em');
 		$('#commerce_head_desc_ariane_wrap').css('display','none').css('line-height','12px').css('margin-top','5px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
@@ -464,7 +464,7 @@ function resizeboxContainer(){
 		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('padding',15).css('padding-top',22).css('padding-left',10).css('padding-right',10).css('width','35px');
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('font-size','0.9em').css('margin-top',22).css('width','60px').css('text-align','left');
 		$('.commerce_head_infos_infosrapides .img_container').css('width',35);
-		$('.commerce_head_infos_suivre').css('width','85px').css('height','82px');
+		$('.commerce_head_infos_suivre').css('width','88px').css('height','82px');
 		$('.gerant_photo').css('width','96px');
                 $('.gerant_title').css('font-size','1em');
 		
@@ -611,7 +611,7 @@ function resizeboxContainer(){
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200).css('height','82px');
 		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10);
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
-		$('.commerce_head_infos_suivre').css('width','88px').css('height','82px');
+		$('.commerce_head_infos_suivre').css('width','95px').css('height','82px');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px');
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
 		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');

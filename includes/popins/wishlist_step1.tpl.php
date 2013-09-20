@@ -1,5 +1,6 @@
 <?php
         include_once '../../config/configuration.inc.php';
+        include_once '../fonctions.inc.php';
         include'../head.php'?>
 <?php
 include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
@@ -60,8 +61,7 @@ catch (PDOException $erreur)
 
 <div class="wishlist_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
-    <div class="wishlist_wrapper_body_img">
-        <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_wishlist_large.png" title="" alt="" height="147" width="147" />
+    <div class="wishlist_wrapper_body_img" <?php echo AfficheActionLarge('wish',$_POST['categorie']); ?>  >
     </div>
     <div class="wishlist_wrapper_footer_txt">
         <span class="wishlist_wrapper_footer_txt_normal">Vous avez <span class="wishlist_wrapper_footer_txt_bold">ajouté</span> ce commerce</span>
