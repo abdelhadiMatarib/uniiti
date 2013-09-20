@@ -1250,9 +1250,9 @@ h2.h2_suppr_commerce{margin-top:20px;}
 .slidesjs2-pagination li a.active,.slidesjs2-pagination li a:hover.active {background-position: 0 -13px}
 .slidesjs2-pagination li a:hover {background-position: 0 -26px}
 .slidesjs2-pagination-item {text-align: center;}
-@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container {width: 736px;}.slidesjs2-pagination{margin-top: -228px;}}
-@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container {width: 986px;}.slidesjs2-pagination{margin-top: -300px;}}
-@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container {width: 1236px;}.slidesjs2-pagination{margin-top: -371px;}}
-@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container {width: 1486px;}.slidesjs2-pagination{margin-top: -443px;}}
-@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container {width: 1736px;}.slidesjs2-pagination{margin-top: -514px;}}
+@media only screen and (min-width:759px) and (max-width: 1008px) {.couv_container,.big_wrapper {width: 736px;}.slidesjs2-pagination{margin-top: -228px;}}
+@media only screen and (min-width:1009px) and (max-width: 1265px) {.couv_container,.big_wrapper {width: 986px;}.slidesjs2-pagination{margin-top: -300px;}}
+@media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container,.big_wrapper {width: 1236px;}.slidesjs2-pagination{margin-top: -371px;}}
+@media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container,.big_wrapper {width: 1486px;}.slidesjs2-pagination{margin-top: -443px;}}
+@media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container,.big_wrapper {width: 1736px;}.slidesjs2-pagination{margin-top: -514px;}}
 
