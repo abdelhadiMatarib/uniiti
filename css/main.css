@@ -171,7 +171,7 @@ span.index_overlay_texte{display:block;}
 .box section figcaption{padding-bottom: 10px; }
 .box_foot{height:50px;}
 .box_userpic{float:left;height:50px;width:50px;overflow:hidden;display:block;}
-.box_userpic img{max-width:90px;margin:auto;}
+.box_userpic img{max-width:50px;margin:auto;}
 .box_userpic:hover{float:left;height:50px;width:50px; opacity:0.9; }
 .box_posttime{padding:15px 0 0 0;float: left;width: 100%;vertical-align: middle;text-align:center;color:#252525;height: 35px;}
 .box_posttype{float:right;height:50px;width:50px;background-color:#fabe41; text-align: center; vertical-align: middle;}
