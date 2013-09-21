@@ -64,7 +64,14 @@
 		$(function(){
 			var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
 			if ($Page == "Timeline") {setInterval("NouveauxElements()", 100000);}
-			$("body").fadeIn(5000); // pour tester ...
+			// pour tester ...
+			if ($("#loading_page").length > 0) {
+				$("#loading_page").animate({ left: $("body").width()},3000, function() {$("#loading_page").hide();});
+			//$("#loading_page").fadeOut(3000);
+			} 
+			else {$("body").fadeIn(3000);}
+			// fin pour tester
+			
 			CreerOverlayPush();
   
 				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;

@@ -1011,6 +1011,7 @@ input#resa_infos_notifs_mail,input#resa_infos_notifs_sms{margin:20px 5px 0 0;}
 body{overflow-x: hidden;}
 .splash_ombre{background:url('../img/pictos_splash/ombre.png') no-repeat 20px;z-index:99;position:absolute;height:auto;padding:5px;width:554px;margin:auto;top:0;left:0;bottom:0;right:0;}
 #bg {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
+#loading_page {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
 #bg_img {display: none;}
 .splash_big_wrapper{position:relative;z-index:99;}
 .splash_head_wrapper{height:70px; width:100%;}

@@ -1,3 +1,15 @@
+// pour tester
+$("a").click(function(e) {
+	if ($("#loading_page").length > 0) {
+		e.preventDefault(); //don't go to default URL
+		$("#loading_page").show();
+		var url=this.href;
+		$("#loading_page").animate({ left: "0px"}, 2000, function () {window.location.assign(url);});
+	//$("#loading_page").fadeOut(3000);
+	} else if ($(this).attr("href") != "#") {$("body").fadeOut(3000);}
+});
+// fin pour tester
+
 datanvelements = {init:1};
 $(".home_newsfeed").css({'display': 'none'});
 function NouveauxElements(data) {
