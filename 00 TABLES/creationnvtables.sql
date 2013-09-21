@@ -27,6 +27,7 @@ DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
 ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `id_quartier`
 , DROP `id_budget`
+, DROP `box_enseigne`
 , DROP `slide1_enseigne`
 , DROP `slide2_enseigne`
 , DROP `slide3_enseigne`
@@ -91,7 +92,7 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `y3` int(10) DEFAULT NULL
 , ADD `y4` int(10) DEFAULT NULL
 , ADD `y5` int(10) DEFAULT NULL
-, ADD `thumnail_enseigne` varchar(45) DEFAULT NULL
+, ADD `box_enseigne` varchar(45) DEFAULT NULL
 , ADD `video_enseigne` varchar(255) DEFAULT NULL
 , ADD `fb_enseigne` varchar(255) DEFAULT NULL
 , ADD `tw_enseigne` varchar(255) DEFAULT NULL

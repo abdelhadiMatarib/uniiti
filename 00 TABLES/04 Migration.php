@@ -30,17 +30,17 @@ try
 	
 	echo "Affectation aléatoire des avatars et couvertures des utilisateurs : ok<BR><BR>";
 	
-	$sql2 = "SELECT id_enseigne, logotype_enseigne, slide1_enseigne FROM enseignes";
+	$sql2 = "SELECT id_enseigne, box_enseigne, slide1_enseigne FROM enseignes";
 	$req2 = $bdd->prepare($sql2);
 	$req2->execute();
 	$result2 = $req2->fetchAll(PDO::FETCH_ASSOC);
 	
 	foreach ($result2 as $row) {
-		$sql = "UPDATE enseignes SET logotype_enseigne = :photo, slide1_enseigne = :couv, y1 = 0 
+		$sql = "UPDATE enseignes SET box_enseigne = :photo, slide1_enseigne = :couv, y1 = 0 
 				WHERE id_enseigne = :id_enseigne";
 		$req = $bdd->prepare($sql);
-		$photo = "photo " . rand(1, 10) . ".jpg";
-		$couv = "photo " . rand(1, 10) . ".jpg";
+		$photo = "photo 1.jpg";
+		$couv = "photo " . rand(1, 113) . ".jpg";
 		$id_enseigne = $row['id_enseigne'];
 		$req->bindParam(':photo', $photo, PDO::PARAM_STR);
 		$req->bindParam(':couv', $couv, PDO::PARAM_STR);

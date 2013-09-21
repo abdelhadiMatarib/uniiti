@@ -13,7 +13,7 @@
 	else {
 		if (!empty($_GET['step'])) {$step = $_GET['step'];}
 		else {$step = $_POST['step'];}
-		$MessageAction = "Étape suivante";
+		$MessageAction = "Enregistrer";
 		$MessageInfo = "Une fois le chargement de/des images effectué, vous pourrez les ajuster pour un affichage optimal.";
 		$Step = "{step: 2}";
 ?>
@@ -21,7 +21,7 @@
 	<body>
 
 		<style>
-			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 405px; height: 189px;}
+			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 236px; height: 350px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
 			ul {list-style-type: none;}
@@ -48,7 +48,7 @@
 			<div id="fenetre"></div>
 			<div id="selection" class="box_step1_dropzone">
 				<div class="draggable">
-					<img id="image" src="" height="189" />
+					<img id="image" src="" height="350" />
 				</div>
 				<div id="Interaction1">
 					<div class="box_step1_dropzone_img_container">
@@ -112,29 +112,30 @@
 			};
 
 			$("#selection").click( function() {
-				if ($(".vignette_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
+				if ($(".box_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
 			});
 			
 			function AfficheBtnES() {
 				$id("MessageInfo").innerHTML = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
-				$(".vignette_step1_dropzone_img_container").css({display : "none"});
-				$(".vignette_step1_dropzone_txt").css({display : "none"});
+				$(".box_step1_dropzone_img_container").css({display : "none"});
+				$(".box_step1_dropzone_txt").css({display : "none"});
 				$(".couverture_step1_wrap_buttons").css({display : "block"});
-				$(".vignette_step2_resize_infos").css({display : "block"});
+				$(".box_step2_resize_infos").css({display : "block"});
 			};
 			
 			function CacheBtnES() {
 				$(".couverture_step1_wrap_buttons").css({display : "none"});
-				$(".vignette_step2_resize_infos").css({display : "none"});
+				$(".box_step2_resize_infos").css({display : "none"});
 			};
 			
 			function AfficheChercheImage() {
 				$("#image").attr("src", "");
-				$(".vignette_step1_dropzone_img_container").css({display : "block"});
-				$(".vignette_step1_dropzone_txt").css({display : "block"});
+				$("#image").css({'height': 0});
+				$(".box_step1_dropzone_img_container").css({display : "block"});
+				$(".box_step1_dropzone_txt").css({display : "block"});
 				$(".couverture_step1_wrap_buttons").css({display : "none"});
-				$(".vignette_step2_resize_infos").css({display : "none"});
-				$('#fenetre').css({width: 405 + 'px', left: 140 + 'px', top: 20 + 'px'});
+				$(".box_step2_resize_infos").css({display : "none"});
+				$('#fenetre').css({width: 236 + 'px', left: 140 + 'px', top: 20 + 'px'});
 				$("#image").css({display : "block"});
 			};
 
@@ -143,13 +144,18 @@
 			$('.couverture_step1_button_valider').click(function(e){
 				e.preventDefault();
 				e.stopPropagation();
-				if (CompteImageErg < 1) {
+				if ($("#image" + NumImageSel).hasClass("is_valid")) {
+					$('#x' + NumImageSel).val($('#x').val());
+					AfficheChercheImage();
+				}
+				else if (CompteImageErg < 1) {
 					CompteImageErg++;
 					var NumImage = CompteImageErg;
 					$("#image" + NumImage).addClass("is_valid");
 					$('#ImageTemp' + NumImage).val($('#ImageTemp').val());
 					$('#x' + NumImage).val($('#x').val());
 					$("#image" + NumImage).click(function(e){
+						InitDrag();
 						e.preventDefault();
 						e.stopPropagation();
 						NumImageSel = NumImage;
@@ -160,6 +166,28 @@
 				else {alert ("Vous ne pouvez enregistrer qu'une image")}
 
 			});
+			
+			function InitImage() {
+				if ($('#ImageTemp1').val() != "") {
+					CompteImageErg++;
+					$("#image1").addClass("is_valid");
+					$("#image1").click(function(e){
+						e.preventDefault();
+						e.stopPropagation();
+						InitDrag();
+						NumImageSel = 1;
+						$("#image").attr("src", $('#ImageTemp1').val());
+					});
+				}
+				else {
+					$("#image1").click(function(e){
+						e.preventDefault();
+						e.stopPropagation();
+						AfficheChercheImage();
+					});					
+				}
+			}
+			InitImage();
 			
 			$('.couverture_step1_button_supprimer').click(function(e){
 				e.preventDefault();
@@ -175,25 +203,30 @@
 					$("#image" + CompteImageErg).removeClass("is_valid");
 					$("#image" + CompteImageErg).unbind('click');
 					$('#x').val(0);
+					$("#image" + CompteImageErg).click(function(e){
+						e.preventDefault();
+						e.stopPropagation();
+						AfficheChercheImage();
+					});
 					CompteImageErg--;
 				}
 				AfficheChercheImage();
 			});
 
 			$("#image").load(function() {
+				$("#image").css({'height': 350});
 				var img = document.getElementById('image');
 				var width;
 				if(img.offsetWidth) {width=img.offsetWidth;}
 				else if(img.style.pixelWidth){width=img.style.pixelWidth;}
-				var Newwidth = Math.round(405 + (Math.max(width, 405) - 405) * 2);
-				DecalageSelectionLeft = 148;
-				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 405) / 2);
+				var Newwidth = Math.round(236 + (Math.max(width, 236) - 236) * 2);
+				DecalageSelectionLeft = 232;
+				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 236) / 2);
 				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px'});
 				AfficheBtnES();
 				if ($('#x' + NumImageSel).val() != "") {
-					var decalage = -$('#x' + NumImageSel).val()*405/450;
-//				alert(NumImageSel+' '+$('#x' + NumImageSel).val());
-				$(".draggable").css({left: decalage+'px'});
+					var decalage = -$('#x' + NumImageSel).val();
+					$(".draggable").css({left: decalage+'px'});
 				}
 				$("#image").css({display : "block"});
 			});
@@ -216,7 +249,7 @@
 						'axis': 'x',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#x').val(($('#selection').offset().left - $(this).offset().left)*450/405);
+							$('#x').val(($('#selection').offset().left - $(this).offset().left+1));
 						},
 						stop: function() {AfficheBtnES();}
 					});
