@@ -66,7 +66,9 @@
 			if ($Page == "Timeline") {setInterval("NouveauxElements()", 100000);}
 			// pour tester ...
 			if ($("#loading_page").length > 0) {
-				$("#loading_page").animate({ left: $("body").width()},3000, function() {$("#loading_page").hide();});
+				if (Math.random() > 0.5) {$("#loading_page").animate({ left: $("body").width()},2000, function() {$("#loading_page").hide();});}
+				else {$("#loading_page").animate({ right: $("body").width()},2000, function() {$("#loading_page").hide();});}
+
 			//$("#loading_page").fadeOut(3000);
 			} 
 			else {$("body").fadeIn(3000);}

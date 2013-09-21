@@ -1,10 +1,17 @@
 // pour tester
 $("a").click(function(e) {
-	if ($("#loading_page").length > 0) {
+	if (($("#loading_page").length > 0) && ($(this).attr("href") != "#")) {
 		e.preventDefault(); //don't go to default URL
 		$("#loading_page").show();
 		var url=this.href;
-		$("#loading_page").animate({ left: "0px"}, 2000, function () {window.location.assign(url);});
+		var left = $("#loading_page").css("left");
+		var decalage = Math.floor(left.substring(0, left.length - 2)) ;
+		if (decalage > 0 ) {
+			$("#loading_page").animate({ left: "0px"}, 500, function () {window.location.assign(url);});
+		}
+		else {
+			$("#loading_page").animate({ right : "0px"}, 500, function () {window.location.assign(url);});		
+		}
 	//$("#loading_page").fadeOut(3000);
 	} else if ($(this).attr("href") != "#") {$("body").fadeOut(3000);}
 });
