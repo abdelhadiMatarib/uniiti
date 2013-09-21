@@ -126,15 +126,8 @@
 
 		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
 		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
-
-		
-		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
-		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
-		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
-		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/SUIVRE_step1.tpl.php', 'default_dialog_large');";
-	} else {
-		$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	} 
+else {
 		$Engrenage = "OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
 		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 		$Menutarifs = "OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";

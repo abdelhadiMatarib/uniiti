@@ -680,7 +680,7 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .fleche_parrainage{position:absolute;bottom:-5px;right:25px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid #a4ebf1;}
 
 .vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:210px;width:450px;margin:20px auto;background-color:#f0f0f0;}
-.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:210px;padding:5px;}
+.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:5px;padding:5px;}
 .vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
 .vignette_step1_dropzone_img_container{margin: 45px 55px 45px 60px;float:left;}
 

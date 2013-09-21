@@ -13,7 +13,7 @@
 	else {
 		if (!empty($_GET['step'])) {$step = $_GET['step'];}
 		else {$step = $_POST['step'];}
-		$MessageAction = "Étape suivante";
+		$MessageAction = "Enregistrer";
 		$MessageInfo = "Veuillez choisir sur cette image la zone visible lors de l'affichage des popins.";
 		$Step = "{step: 2}";
 ?>
@@ -21,11 +21,10 @@
 	<body>
 
 		<style>
-			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 450px; height: 210px;}
+			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 735px; height: 210px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
 			ul {list-style-type: none;}
-			#fileselect {display: none;}
 			.vignette_step2_resize_infos {display : none;}
 			.couverture_step1_wrap_buttons {display : none;}
 			.vignette_step1_dropzone_txt2{}		
@@ -49,24 +48,10 @@
 			<div id="fenetre"></div>
 			<div id="selection" class="vignette_step1_dropzone">
 				<div class="draggable">
-					<img id="image" src="" height="210" />
+					<img id="image" src="<?php echo $_POST['chemin'] . $_POST['image1']; ?>" width="735"/>
 				</div>
-				<div id="Interaction1">
-					<div class="vignette_step1_dropzone_img_container">
-						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/img_upload.png" title="" alt="" height="95" width="199" />
-					</div>
-					<div class="vignette_step1_dropzone_txt">
-						<span class="couverture_step1_dropzone_txt1">Glissez-déposez une image dans le cadre</span>
-						<span class="couverture_step1_dropzone_txt2">Ou choisissez une image sur <a href="#" title="">votre ordinateur</a></span>
-					</div>
-				</div>
-				
-                            <div class="popin_wrap_overlay">
-                                <div class="popin_overlay_left"></div>
-                                <div class="popin_overlay_right"></div>
-                            </div>
+	
 				<div class="couverture_step1_wrap_buttons">
-					<div class="couverture_step1_button_supprimer"></div>
 					<div class="couverture_step1_button_valider"></div>
 				</div>
 				<div class="vignette_step2_resize_infos">
@@ -75,12 +60,12 @@
 				</div>
 			</div>
 
-			<input type="file" name="fileselect" id="fileselect" multiple accept="image/*" />
 			<input type="hidden" name="x" value="" id="x" />
-			<input type="hidden" name="x1" value="" id="x1" />
+			<input type="hidden" name="x1" value="<?php if ((!empty($_POST['x1'])) && ($_POST['x1'] != '')) {echo $_POST['x1'];} ?>" id="x1" />
+			<input type="hidden" name="y1" value="<?php if ((!empty($_POST['y1'])) && ($_POST['y1'] != '')) {echo $_POST['y1'];} ?>" id="y1" />
 			<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
 			<input type="hidden" name="ImageTemp1" value="" id="ImageTemp1" />
-			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
+<!--			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" /> -->
 
 		</form>
 							
@@ -100,14 +85,8 @@
 		<script language="javascript" src="../../js/jquery.easydrag.min.js"></script>
 -->
 		<script>    
-			
-			function ChercherFichier() {
-				$("#fileselect").click();
-			};
-
-			$("#selection").click( function() {
-				if ($(".vignette_step1_dropzone_txt").css('display') != 'none') {ChercherFichier();}
-			});
+			// getElementById
+			function $id(id) {return document.getElementById(id);}
 			
 			function AfficheBtnES() {
 				$id("MessageInfo").innerHTML = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
@@ -122,86 +101,41 @@
 				$(".vignette_step2_resize_infos").css({display : "none"});
 			};
 			
-			function AfficheChercheImage() {
-				$("#image").attr("src", "");
-				$(".vignette_step1_dropzone_img_container").css({display : "block"});
-				$(".vignette_step1_dropzone_txt").css({display : "block"});
-				$(".couverture_step1_wrap_buttons").css({display : "none"});
-				$(".vignette_step2_resize_infos").css({display : "none"});
-				$('#fenetre').css({width: 450 + 'px', left: 140 + 'px', top: 20 + 'px'});
-				$("#image").css({display : "block"});
-			};
-
-			var CompteImageErg = 0;
-			var NumImageSel = 1;
 			$('.couverture_step1_button_valider').click(function(e){
 				e.preventDefault();
 				e.stopPropagation();
-				if (CompteImageErg < 1) {
-					CompteImageErg++;
-					var NumImage = CompteImageErg;
-					$("#image" + NumImage).addClass("is_valid");
-					$('#ImageTemp' + NumImage).val($('#ImageTemp').val());
-					$('#x' + NumImage).val($('#x').val());
-					$("#image" + NumImage).click(function(e){
-						e.preventDefault();
-						e.stopPropagation();
-						NumImageSel = NumImage;
-						$("#image").attr("src", $('#ImageTemp' + NumImage).val());
-					});
-					AfficheChercheImage();
-				}
-				else {alert ("Vous ne pouvez enregistrer qu'une image")}
-
+				$('#ImageTemp1').val($('#ImageTemp').val());
+				$('#x1').val($('#x').val());
 			});
 			
-			$('.couverture_step1_button_supprimer').click(function(e){
-				e.preventDefault();
-				e.stopPropagation();
-				var NumImage = NumImageSel;
-				if ((CompteImageErg > 0) && (NumImage <= CompteImageErg)) {
-					for (i = NumImage + 1 ; i <= CompteImageErg ; i++) {
-						$('#ImageTemp' + (i - 1)).val($('#ImageTemp' + i).val());
-						$('#x' + (i - 1)).val($('#x' + i).val());
-					}
-					$('#ImageTemp' + CompteImageErg).val("");
-					$('#x' + CompteImageErg).val("");
-					$("#image" + CompteImageErg).removeClass("is_valid");
-					$("#image" + CompteImageErg).unbind('click');
-					$('#x').val(0);
-					CompteImageErg--;
-				}
-				AfficheChercheImage();
-			});
-
 			$("#image").load(function() {
 				var img = document.getElementById('image');
+				var height;
+				if(img.offsetHeight) {height=img.offsetHeight;}
+				else if(img.style.pixelHeight){height=img.style.pixelHeight;}
+				var Newheight = height;
 				var width;
 				if(img.offsetWidth) {width=img.offsetWidth;}
 				else if(img.style.pixelWidth){width=img.style.pixelWidth;}
-				var Newwidth = Math.round(450 + (Math.max(width, 450) - 450) * 2);
+				var Newwidth = (735 - 450)*2 + 450; 
 				DecalageSelectionLeft = 124;
 				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 450) / 2);
-				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px'});
+				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px', height: Newheight + 'px'});
+				DecalageSelectionTop = 20;
+				var Newtop = 1 + DecalageSelectionTop - $("#y1").val() * 735 /1750;
+				console.log($("#y1").val());
+				$('#fenetre').css({top: Newtop + 'px'});
 				AfficheBtnES();
-				if ($('#x' + NumImageSel).val() != "") {
-					var decalage = -$('#x' + NumImageSel).val()*450/450;
-//				alert(NumImageSel+' '+$('#x' + NumImageSel).val());
+				InitDrag();
+				$(".draggable").css({top: Newtop-20+'px'});
+				if ($('#x1').val() != "") {
+					var decalage = -$('#x1').val()*735/1750;
 				$(".draggable").css({left: decalage+'px'});
 				}
 				$("#image").css({display : "block"});
+
 			});
 
-			function EtapeSuivante() {
-			var data = {
-							step : 2,
-							image1 : $('#ImageTemp1').val(),
-							x1 : $('#x1').val(),
-						};
-				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
-			};
-			
-			
 			var DragInit = false;
 			function InitDrag() {
 				if (!DragInit) {
@@ -210,88 +144,13 @@
 						'axis': 'x',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#x').val(($('#selection').offset().left - $(this).offset().left)*450/450);
+							$('#x').val(($('#selection').offset().left - $(this).offset().left)*1750/735);
 						},
 						stop: function() {AfficheBtnES();}
 					});
 					DragInit = true;
 				}				
 			};
-
-			// getElementById
-			function $id(id) {return document.getElementById(id);}
-
-			// output information
-			function Output(msg) {
-				var m = $id("messages");
-				m.innerHTML = "<p>Information</p>" + msg;
-			}
-
-			// file drag hover
-			function selectionHover(e) {
-				e.stopPropagation();
-				e.preventDefault();
-//				e.target.className = (e.type == "dragover" ? "hover" : "");
-			}
-
-			// file selection
-			function FileSelectHandler(e) {
-				// cancel event and hover styling
-				selectionHover(e);
-				// fetch FileList object
-				var files = e.target.files || e.dataTransfer.files;
-				// process all File objects
-				for (var i = 0, f; f = files[i]; i++) {
-					ParseFile(f);
-				}
-			}
-				// output file information
-			function ParseFile(file) {
-				// display an image
-				if (file.type.indexOf("image") == 0) {
-					var reader = new FileReader();
-					reader.onload = function(e) {
-						NumImageSel = CompteImageErg+1;
-						$("#image").attr("src", e.target.result);
-						InitDrag();
-						$(".draggable").css({left: '0px'});
-						$('#x').val(0);
-						$('#ImageTemp').val(e.target.result);
-
-						/*						Output(
-							"<p>Fichier: <strong>" + file.name +
-							"</strong> type: <strong>" + file.type +
-							"</strong> size: <strong>" + file.size +
-							"</strong> bytes</p>"
-						);*/
-					}
-					reader.readAsDataURL(file);
-				}
-			}
-			
-			// initialize
-			function Init() {
-				var image = $id("image"),
-					fileselect = $id("fileselect"),
-					selection = $id("selection"),
-					submitbutton = $id("submitbutton");
-				// file select
-				fileselect.addEventListener("change", FileSelectHandler, false);
-				// is XHR2 available?
-				
-				var xhr = new XMLHttpRequest();
-				if (xhr.upload) {
-					// file drop
-					selection.addEventListener("dragover", selectionHover, false);
-					selection.addEventListener("dragleave", selectionHover, false);
-					selection.addEventListener("drop", FileSelectHandler, false);
-					
-					// remove submit button
-					submitbutton.style.display = "none";
-				}
-			}			
-			Init();
-
 		</script>
 
 	</body>
