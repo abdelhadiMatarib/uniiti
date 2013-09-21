@@ -81,7 +81,7 @@
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
 ?>
-<body>    
+<body style="display:none;">    
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
 	<div id="default_dialog_inscription"></div>

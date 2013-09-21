@@ -116,7 +116,7 @@
 		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 	}
 ?>
-    <body>
+    <body style="display:none;">
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>

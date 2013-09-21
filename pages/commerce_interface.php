@@ -138,7 +138,7 @@ else {
 			
 ?>
 
-    <body>
+    <body style="display:none;">
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>
