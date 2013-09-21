@@ -228,7 +228,7 @@
 					</div>
 					<div class="overlay_push">
 						<div class="push_buttons_wrapper">
-							<div onclick="<?php echo $like_step1; ?>" class="push_buttons_like"<?php echo AfficheAction('aime',$categorie); ?>></div>
+							<div onclick="<?php echo $like_step1; ?>" class="push_buttons_like" <?php echo AfficheAction('aime',$categorie); ?>></div>
 							<div onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
 							<div onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist" <?php echo AfficheAction('wish',$categorie); ?>></div>
 						</div>
