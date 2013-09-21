@@ -42,31 +42,21 @@
 	</div>   
 	<div class="couverture_step1_body">
 		
-		<form id="upload" action="javascript:ActualisePopin(<?php echo $Step ?>, '/includes/popins/couverture_steps.tpl.php', 'default_dialog_large');" method="POST" enctype="multipart/form-data">
-			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
-			
+		<form>
 			<div id="fenetre"></div>
 			<div id="selection" class="vignette_step1_dropzone">
 				<div class="draggable">
 					<img id="image" src="<?php echo $_POST['chemin'] . $_POST['image1']; ?>" width="735"/>
 				</div>
 	
-				<div class="couverture_step1_wrap_buttons">
-					<div class="couverture_step1_button_valider"></div>
-				</div>
 				<div class="vignette_step2_resize_infos">
 					<div class="couverture_step2_resize_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_resize_icon.png" title="" alt="" height="18" width="10" /></div>
 					<span>cliquez pour repositionner l'image</span>
 				</div>
 			</div>
 
-			<input type="hidden" name="x" value="" id="x" />
 			<input type="hidden" name="x1" value="<?php if ((!empty($_POST['x1'])) && ($_POST['x1'] != '')) {echo $_POST['x1'];} ?>" id="x1" />
 			<input type="hidden" name="y1" value="<?php if ((!empty($_POST['y1'])) && ($_POST['y1'] != '')) {echo $_POST['y1'];} ?>" id="y1" />
-			<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
-			<input type="hidden" name="ImageTemp1" value="" id="ImageTemp1" />
-<!--			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" /> -->
-
 		</form>
 							
 	</div>
@@ -75,7 +65,7 @@
 		<div class="couverture_step1_infos step1_infos_popin"><div class="couverture_step_1_infos_img_container popin_step1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span id="MessageInfo"><?php echo $MessageInfo ?></span></div>
 
 	</div>
-	<div class="couverture_champs_action"><a href="#" title="" onclick="EtapeSuivante();"><span><?php echo $MessageAction ?></span></a></div>
+	<div class="couverture_champs_action"><a href="#" title="" onclick="Enregistrer();"><span><?php echo $MessageAction ?></span></a></div>
 </div>
 <?php		
 	}
@@ -101,13 +91,6 @@
 				$(".vignette_step2_resize_infos").css({display : "none"});
 			};
 			
-			$('.couverture_step1_button_valider').click(function(e){
-				e.preventDefault();
-				e.stopPropagation();
-				$('#ImageTemp1').val($('#ImageTemp').val());
-				$('#x1').val($('#x').val());
-			});
-			
 			$("#image").load(function() {
 				var img = document.getElementById('image');
 				var height;
@@ -118,7 +101,7 @@
 				if(img.offsetWidth) {width=img.offsetWidth;}
 				else if(img.style.pixelWidth){width=img.style.pixelWidth;}
 				var Newwidth = (735 - 450)*2 + 450; 
-				DecalageSelectionLeft = 124;
+				DecalageSelectionLeft = 125;
 				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 450) / 2);
 				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px', height: Newheight + 'px'});
 				DecalageSelectionTop = 20;
@@ -130,7 +113,7 @@
 				$(".draggable").css({top: Newtop-20+'px'});
 				if ($('#x1').val() != "") {
 					var decalage = -$('#x1').val()*735/1750;
-				$(".draggable").css({left: decalage+'px'});
+					$(".draggable").css({left: decalage+'px'});
 				}
 				$("#image").css({display : "block"});
 
@@ -144,13 +127,35 @@
 						'axis': 'x',
 						start: function() {CacheBtnES();},
 						drag: function(){
-							$('#x').val(($('#selection').offset().left - $(this).offset().left)*1750/735);
+							$('#x1').val(($('#selection').offset().left - $(this).offset().left+1)*1750/735);
 						},
 						stop: function() {AfficheBtnES();}
 					});
 					DragInit = true;
 				}				
 			};
+			
+			function Enregistrer () {
+
+			var data = {
+							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
+							id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+							id_objet : '<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>',
+							x1 : $('#x1').val(),
+						};
+				console.log($('#x1').val());
+				$.ajax({
+					async : false,
+					type :"POST",
+					url : siteurl+'/includes/requetechangecouvertures.php',
+					data : data,
+					success: function(html){
+						window.location.reload();
+					},
+					error: function() {alert('Erreur sur url : ' + url);}
+				});
+			
+			}
 		</script>
 
 	</body>

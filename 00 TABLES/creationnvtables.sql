@@ -32,6 +32,7 @@ ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `slide3_enseigne`
 , DROP `slide4_enseigne`
 , DROP `slide5_enseigne`
+, DROP `x1`
 , DROP `y1`
 , DROP `y2`
 , DROP `y3`
@@ -84,6 +85,7 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
 , ADD `slide3_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide4_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide5_enseigne` varchar(45) DEFAULT NULL
+, ADD `x1` int(10) DEFAULT NULL
 , ADD `y1` int(10) DEFAULT NULL
 , ADD `y2` int(10) DEFAULT NULL
 , ADD `y3` int(10) DEFAULT NULL
@@ -530,6 +532,17 @@ CREATE TABLE IF NOT EXISTS `objets` (
   `tw_objet` varchar(255) DEFAULT NULL,  
   `goog_objet` varchar(255) DEFAULT NULL,
   `url_objet` varchar(255) DEFAULT NULL,
+  `slide1_objet` varchar(45) DEFAULT NULL,
+  `slide2_objet` varchar(45) DEFAULT NULL,
+  `slide3_objet` varchar(45) DEFAULT NULL,
+  `slide4_objet` varchar(45) DEFAULT NULL,
+  `slide5_objet` varchar(45) DEFAULT NULL,
+  `x1` int(10) DEFAULT NULL,
+  `y1` int(10) DEFAULT NULL,
+  `y2` int(10) DEFAULT NULL,
+  `y3` int(10) DEFAULT NULL,
+  `y4` int(10) DEFAULT NULL,
+  `y5` int(10) DEFAULT NULL,
   `titredescriptif1_objet` longtext,
   `contenu1descriptif1_objet` longtext,
   `contenu2descriptif1_objet` longtext,

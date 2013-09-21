@@ -79,8 +79,13 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                 <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
             </div>
             <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
-            
-            <figure><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couv_popin.jpg"/></figure>
+            <figure>
+				<?php if ($_POST['type'] == 'enseigne') { ?>
+					<img src="<?php echo SITE_URL . "/photos/enseignes/couvertures/" . $_POST['slide1'];?>" style="margin-top:<?php echo -$_POST['y1']*735/1750 . "px"; ?>;margin-left:<?php echo -$_POST['x1']*735/1750 . "px"; ?>" width="735"/>
+				<?php } else if ($_POST['type'] == 'objet') { ?>
+					<img src="<?php echo SITE_URL . "/photos/objets/couvertures/" . $_POST['slide1'];?>" width="1750"/>
+				<?php } ?>
+			</figure>
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
 			<?php if (($provenance == 'avis') && ($_POST['commentaire'] != "pas de commentaire")) { ?>

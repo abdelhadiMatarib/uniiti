@@ -23,7 +23,7 @@
 	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
-					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
+					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5, 
 					adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
@@ -49,6 +49,7 @@
 	$slide3_enseigne    	 = $result2['slide3_enseigne'];
 	$slide4_enseigne    	 = $result2['slide4_enseigne'];
 	$slide5_enseigne    	 = $result2['slide5_enseigne'];
+	$x1    = $result2['x1'];
 	$y1    = $result2['y1'];
 	$y2    = $result2['y2'];
 	$y3    = $result2['y3'];
@@ -108,6 +109,7 @@
 			. "image3 : '" . $slide3_enseigne . "', "
 			. "image4 : '" . $slide4_enseigne . "', "
 			. "image5 : '" . $slide5_enseigne . "', "
+			. "x1 : '" . $x1 . "', "
 			. "y1 : '" . $y1 . "', "
 			. "y2 : '" . $y2 . "', "
 			. "y3 : '" . $y3 . "', "
