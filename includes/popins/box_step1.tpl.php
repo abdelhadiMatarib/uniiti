@@ -224,10 +224,11 @@
 				var Newleft = DecalageSelectionLeft - Math.round((Newwidth - 236) / 2);
 				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px'});
 				AfficheBtnES();
+				var decalage = 0;
 				if ($('#x' + NumImageSel).val() != "") {
-					var decalage = -$('#x' + NumImageSel).val();
 					$(".draggable").css({left: decalage+'px'});
 				}
+				$(".draggable").css({left: decalage+'px'});
 				$("#image").css({display : "block"});
 			});
 
