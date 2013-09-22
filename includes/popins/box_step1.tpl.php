@@ -73,8 +73,8 @@
 			<input type="file" name="fileselect" id="fileselect" multiple accept="image/*" />
 			<input type="hidden" name="x" value="" id="x" />
 			<input type="hidden" name="x1" value="" id="x1" />
-			<input type="hidden" name="ImageTemp" value="" id="ImageTemp" />
-			<input type="hidden" name="ImageTemp1" value="" id="ImageTemp1" />
+			<input type="hidden" name="ImageTemp" value="<?php if (isset($_POST['box'])) {echo $_POST['cheminbox'] . $_POST['box'];} ?>" id="ImageTemp" />
+			<input type="hidden" name="ImageTemp1" value="<?php if (isset($_POST['box'])) {echo $_POST['cheminbox'] . $_POST['box'];} ?>" id="ImageTemp1" />
 			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
 
 		</form>
@@ -96,7 +96,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="couverture_champs_action"><a href="#" title="" onclick="EtapeSuivante();"><span><?php echo $MessageAction ?></span></a></div>
+	<div class="couverture_champs_action"><a href="#" title="" onclick="Enregistrer();"><span><?php echo $MessageAction ?></span></a></div>
 </div>
 <?php		
 	}
@@ -232,24 +232,27 @@
 			});
 
 			function Enregistrer () {
-
-			var data = {
-							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
-							id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
-							id_objet : '<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>',
-							x1 : $('#x1').val(),
-						};
+			
+			if ($("#image1").hasClass("is_valid")) {
+				var data = {
+								type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
+								id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+								id_objet : '<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>',
+								box : $('#ImageTemp1').val(),
+								x1 : $('#x1').val(),
+							};
 				console.log($('#x1').val());
 				$.ajax({
 					async : false,
 					type :"POST",
-					url : siteurl+'/includes/requetechangecouvertures.php',
+					url : siteurl+'/includes/requetechangebox.php',
 					data : data,
 					success: function(html){
 						window.location.reload();
 					},
 					error: function() {alert('Erreur sur url : ' + url);}
 				});
+			}
 			
 			}			
 

@@ -509,6 +509,7 @@ CREATE TABLE IF NOT EXISTS `objets` (
   `y3` int(10) DEFAULT 0,
   `y4` int(10) DEFAULT 0,
   `y5` int(10) DEFAULT 0,
+  `box_objet` varchar(45) DEFAULT NULL,
   `titredescriptif1_objet` longtext,
   `contenu1descriptif1_objet` longtext,
   `contenu2descriptif1_objet` longtext,
