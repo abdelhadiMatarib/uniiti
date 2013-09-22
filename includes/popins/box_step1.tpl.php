@@ -225,9 +225,7 @@
 				$('#fenetre').css({width: Newwidth + 'px', left: Newleft + 'px', top: 20 + 'px'});
 				AfficheBtnES();
 				var decalage = 0;
-				if ($('#x' + NumImageSel).val() != "") {
-					$(".draggable").css({left: decalage+'px'});
-				}
+				if ($('#x' + NumImageSel).val() != "") {decalage += -$('#x' + NumImageSel).val();}
 				$(".draggable").css({left: decalage+'px'});
 				$("#image").css({display : "block"});
 			});
