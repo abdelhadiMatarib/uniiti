@@ -249,8 +249,8 @@
 					</div>
                                     
 					<div class="box_localisation"><span><?php echo $arrondissement; ?></span></div>
-					<div class="box_push_et_img">
-						<img src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne ?>" title="" alt="" />
+					<div class="box_push_et_img" style="background:<?php echo $couleur; ?>;height:350px">
+						<img onload="AfficheImage($(this));" style="display:none;" src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne ?>" title="" alt="" />
 <!--						<img src="img/photos_commerces/1.jpg" title="" alt="" />	-->
 						<div class="box_push" <?php echo AffichePush($categorie); ?>></div>
 					</div>

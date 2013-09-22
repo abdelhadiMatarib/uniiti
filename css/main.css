@@ -165,7 +165,7 @@ span.index_overlay_texte{display:block;}
 
 .box_useraction{text-align: center;margin:0 0 10px 0;}
 .box_usertext{margin:0 0 7px 0;}
-.box section{position:relative;cursor:pointer;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px;}
+.box section{position:relative;cursor:zoom-in;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px;}
 .box section:hover{background-color:rgba(0, 0, 0, 0.05);}
 .box section span{font-weight: bold; color: #fabe41;}
 .box section figcaption{padding-bottom: 10px; }

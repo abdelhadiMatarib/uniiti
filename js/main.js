@@ -1,11 +1,8 @@
 // pour tester
 
-$(".box_useraction a").click(function(e) {
-		e.preventDefault(); //don't go to default URL
-		e.stopPropagation();
-		var url=this.href;
-		window.location.assign(url);
-});
+function AfficheImage(img) {
+	img.fadeIn(1000);
+}
 
 $("a").click(function(e) {
 	if (($("#loading_page").length > 0) && ($(this).attr("href") != "#")) {
@@ -131,7 +128,7 @@ function OuvrePopinMotDePasseOublie(data) {
 
 function CreerOverlayPush() {
     // Push image box
-    $('.box_push_et_img').click(function(e) {
+/*    $('.box_push_et_img').click(function(e) {
         e.preventDefault();//don't go to default URL
 		var overlay_push = $(this).next('.overlay_push');
 		overlay_push.click(function(e){
@@ -140,7 +137,15 @@ function CreerOverlayPush() {
 		});
 		$('.overlay_push').css('display','none');
 		overlay_push.css('display','block');
-    });
+    });	*/
+	
+	$(".box_useraction a").click(function(e) {
+		e.preventDefault(); //don't go to default URL
+		e.stopPropagation();
+		var url=this.href;
+		window.location.assign(url);
+	});
+
 /////// DEBUT TEST
     $('.box_push_et_img').mouseenter(function(e) {
 		var overlay_push = $(this).next('.overlay_push');
