@@ -152,7 +152,7 @@ span.index_overlay_texte{display:block;}
 .box footer{position:relative;}
 .box figure {position:relative;overflow:hidden;}
 .box_push_et_img > img:hover{cursor:pointer; opacity:0.9;}
-.overlay_push{display:none;position:absolute;top:0;left:0;background-color: rgba(32,32,32,0.65);height:100%;width:100%;}
+.overlay_push{z-index:100;cursor:zoom-in;display:none;position:absolute;top:0;left:0;background-color: rgba(113, 113, 113, 0.3);height:100%;width:100%;}
 .box_push{position:absolute;right:0;bottom:0;height:50px;width:50px;background:url('../img/pictos_commerces/sprite.png') -126px -19px;}
 .box_push_et_img{cursor:pointer;margin-bottom:-4px;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
