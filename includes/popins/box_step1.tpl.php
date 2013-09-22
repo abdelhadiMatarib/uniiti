@@ -231,16 +231,28 @@
 				$("#image").css({display : "block"});
 			});
 
-			function EtapeSuivante() {
+			function Enregistrer () {
+
 			var data = {
-							step : 2,
-							image1 : $('#ImageTemp1').val(),
+							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
+							id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+							id_objet : '<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>',
 							x1 : $('#x1').val(),
 						};
-				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
-			};
+				console.log($('#x1').val());
+				$.ajax({
+					async : false,
+					type :"POST",
+					url : siteurl+'/includes/requetechangecouvertures.php',
+					data : data,
+					success: function(html){
+						window.location.reload();
+					},
+					error: function() {alert('Erreur sur url : ' + url);}
+				});
 			
-			
+			}			
+
 			var DragInit = false;
 			function InitDrag() {
 				if (!DragInit) {
