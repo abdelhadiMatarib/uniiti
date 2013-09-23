@@ -11,6 +11,7 @@
 	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.slides.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.couv_slides.min.js"></script>
+        <script src="<?php echo SITE_URL; ?>/js/jquery.flippy.min.js"></script>
 	
 	<script>
 	

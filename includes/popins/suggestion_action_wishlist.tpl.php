@@ -7,17 +7,7 @@ include_once '../../config/configPDO.inc.php';
 include_once '../head.php';
 		
 ?>
-<style>
-    .suggestion_body > div{border-radius:0px;}
-    .suggestion_head{}
-    .suggestion_footer{float:left;height:5px;width:100%;background-color:#fabe41;border-radius:0px 0px 3px 3px;}
-    .suggestion_action_left_figure{position:relative;float:left;}
-    .suggestion_action_left_figure figure{height: 143px;}
-    .suggestion_vertical_sep1{position:absolute;right:199px;width:1px;height:142px;border-right:1px dashed white;}
-    .suggestion_vertical_sep2{position:absolute;right:120px;width:1px;height:142px;border-right:1px dashed white;}
-    .wrapper_boutons_suggestions{height:138px;}
-    .suggestion_box_localisation{right:0px;bottom:0px;border-radius:3px 0px 0px 0px;}
-</style>
+
 <div class="suggestion_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="suggestion_head">
