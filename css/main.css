@@ -152,7 +152,7 @@ span.index_overlay_texte{display:block;}
 .box footer{position:relative;}
 .box figure {position:relative;overflow:hidden;}
 .box_push_et_img > img:hover{cursor:pointer; opacity:0.9;}
-.overlay_push{display:none;position:absolute;top:0;left:0;background-color: rgba(32,32,32,0.65);height:100%;width:100%;}
+.overlay_push{z-index:100;cursor:zoom-in;display:none;position:absolute;top:0;left:0;background-color: rgba(113, 113, 113, 0.3);height:100%;width:100%;}
 .box_push{position:absolute;right:0;bottom:0;height:50px;width:50px;background:url('../img/pictos_commerces/sprite.png') -126px -19px;}
 .box_push_et_img{cursor:pointer;margin-bottom:-4px;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
@@ -165,7 +165,7 @@ span.index_overlay_texte{display:block;}
 
 .box_useraction{text-align: center;margin:0 0 10px 0;}
 .box_usertext{margin:0 0 7px 0;}
-.box section{position:relative;cursor:pointer;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px;}
+.box section{position:relative;cursor:zoom-in;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px;}
 .box section:hover{background-color:rgba(0, 0, 0, 0.05);}
 .box section span{font-weight: bold; color: #fabe41;}
 .box section figcaption{padding-bottom: 10px; }
@@ -679,8 +679,8 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .parrainage_bouton_envoyer_txt{background-color:#a4ebf1;padding:2px 5px;font-size:0.85em;text-transform:uppercase;position:absolute;top:-30px;left:-8px;}
 .fleche_parrainage{position:absolute;bottom:-5px;right:25px;margin:0 auto;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 5px solid #a4ebf1;}
 
-.vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:210px;width:660px;margin:20px auto;background-color:#f0f0f0;}
-.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:210px;padding:5px;}
+.vignette_step1_dropzone{position:relative;border:1px dashed #252525;height:210px;width:450px;margin:20px auto;background-color:#f0f0f0;}
+.vignette_step2_resize_infos{border-radius:3px;background-color:rgba(164,235,241,0.64);font-size:0.9em;position:absolute;bottom:10px;left:5px;padding:5px;}
 .vignette_step1_dropzone_txt{margin-top: 50px;float:left;width:280px;text-align:center;}
 .vignette_step1_dropzone_img_container{margin: 45px 55px 45px 60px;float:left;}
 
@@ -848,7 +848,7 @@ height: 26px;}
 .presentation_action_left_head_note_wrap{font-size:0.9em;line-height:16px;padding-top:8px;height:42px;color:white;text-align:center;float:left;padding-left:7px;width:113px;background-color:#252525;}
 .presentation_action_left_head_note_txt{display: inline-block;margin-top: 3px;}
 
-.presentation_action_left_figure{position:relative; height: 210px;width: 450px;}
+.presentation_action_left_figure{overflow:hidden;position:relative; height: 210px;width: 450px;}
 .presentation_action_left_figure figure{height: 210px;width: 450px;}
 .presentation_action_left_body{padding:15px 0 15px 0;text-align:center;width:450px;}
 .presentation_action_left_body_username,.presentation_action_left_body_action{display:inline-block;}
@@ -968,6 +968,12 @@ input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;wid
 .utilisateur_interface_modifier_icon_noir{float:right;margin-left:5px;}
 .utilisateur_interface_modifier_icon_blanc{float:left;margin-right:10px;}
 
+/* COMMERCE INTERFACE */
+.commerce_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;top:5px; z-index: 100;}
+.commerce_interface_modifier_popin{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;top:31px; z-index: 100;}
+.commerce_interface_modifier_box{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;top:57px; z-index: 100;}
+.commerce_interface_modifier_couv a, .commerce_interface_modifier_popin a, .commerce_interface_modifier_box a{color:#252525;display:inline-block;}
+
 /* MODULE RESERVATION */
 .module_reservation_body{float:left;width:500px;}
 .module_reservation_left{float:left;width:199px;border-right:1px solid #e4e4e4;}
@@ -1005,6 +1011,7 @@ input#resa_infos_notifs_mail,input#resa_infos_notifs_sms{margin:20px 5px 0 0;}
 body{overflow-x: hidden;}
 .splash_ombre{background:url('../img/pictos_splash/ombre.png') no-repeat 20px;z-index:99;position:absolute;height:auto;padding:5px;width:554px;margin:auto;top:0;left:0;bottom:0;right:0;}
 #bg {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
+#loading_page {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
 #bg_img {display: none;}
 .splash_big_wrapper{position:relative;z-index:99;}
 .splash_head_wrapper{height:70px; width:100%;}

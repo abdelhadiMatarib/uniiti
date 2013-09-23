@@ -81,7 +81,8 @@
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
 ?>
-<body>    
+<body>
+	<div id="loading_page" style="z-index:1000;background-image:url('../img/pictos_splash/splash_img2.jpg');"></div>    
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
 	<div id="default_dialog_inscription"></div>

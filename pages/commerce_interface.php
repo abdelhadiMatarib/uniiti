@@ -4,16 +4,26 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?php 
-	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+	require_once('../acces/droits.inc.php'); 					// Liste de définition des ACL	
 	include_once '../config/configuration.inc.php';
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+
+	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	
+	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL))) {$Connecte = true;}
+	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	/////////////////////////////////// IL FAUT AJOUTER UN TEST SUR LES ENSEIGNES QUE L'UTILISATEUR A LE DROIT D'ATTEINDRE
+	if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
+	else {$Admin = false;}
 	
 	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
-					logotype_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
+					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5, 
 					adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
@@ -27,21 +37,19 @@
 
 	$req2 = $bdd->prepare($sql2);
 
-	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
-	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
-
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
 	$req2->execute();
 	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
            
 	$nom_enseigne            = $result2['nom_enseigne'];
-	$logotype_enseigne       = $result2['logotype_enseigne'];
+	$box_enseigne       	 = $result2['box_enseigne'];
 	$slide1_enseigne    	 = $result2['slide1_enseigne'];
 	$slide2_enseigne    	 = $result2['slide2_enseigne'];
 	$slide3_enseigne    	 = $result2['slide3_enseigne'];
 	$slide4_enseigne    	 = $result2['slide4_enseigne'];
 	$slide5_enseigne    	 = $result2['slide5_enseigne'];
+	$x1    = $result2['x1'];
 	$y1    = $result2['y1'];
 	$y2    = $result2['y2'];
 	$y3    = $result2['y3'];
@@ -95,31 +103,47 @@
 	$datacouv = "{step : 1, "
 			. "type : 'enseigne', "
 			. "id_enseigne : " . $id_enseigne . ", "
+			. "cheminbox : '" . SITE_URL . "/photos/enseignes/box/', "
+			. "box : '" . $box_enseigne . "', "
 			. "chemin : '" . SITE_URL . "/photos/enseignes/couvertures/', "
 			. "image1 : '" . $slide1_enseigne . "', "
 			. "image2 : '" . $slide2_enseigne . "', "
 			. "image3 : '" . $slide3_enseigne . "', "
 			. "image4 : '" . $slide4_enseigne . "', "
 			. "image5 : '" . $slide5_enseigne . "', "
+			. "x1 : '" . $x1 . "', "
 			. "y1 : '" . $y1 . "', "
 			. "y2 : '" . $y2 . "', "
 			. "y3 : '" . $y3 . "', "
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
 
-	if(isset($_SESSION['SESS_MEMBER_ID'])) {
-		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
-		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
-		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
-		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-		$follow_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/SUIVRE_step1.tpl.php', 'default_dialog_large');";
-	} else {
-		$like_step1 = $dislike_step1 = $wishlist_step1 = $follow_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	if ($Admin) {
+
+		$Engrenage = "OuvrePopin({}, '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');";
+		$MotsCles = "OuvrePopin({}, '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
+		$Menutarifs = "OuvrePopin({}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
+		$Infospratiques = "OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
+		$Video = "OuvrePopin({step:1}, '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";
+		$LabelsCaptain = "OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
+		$Recommandations = "OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
+
+		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
+		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
+	} 
+else {
+		$Engrenage = "OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
+		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+		$Menutarifs = "OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";
+		$Infospratiques = "OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
+		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";
+		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	}	
 			
 ?>
 
     <body>
+		<div id="loading_page" style="z-index:1000;background-image:url('../img/pictos_splash/splash_img2.jpg');"></div>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>
@@ -139,7 +163,7 @@
                 <div class="commerce_head_desc">
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2><?php echo $nom_enseigne; ?></h2></div>
                     <div class="utilisateur_interface_engrenage">
-                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog');"></a></div>
+                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="<?php echo $Engrenage; ?>"></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -168,24 +192,24 @@
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
-                        <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');">
+                        <a href="#" title="" class="commerce_reserver_button" onclick="<?php echo $Reservation; ?>">
                         <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                         <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
                         </a>
                     </div>
                 </div>
                 <div class="commerce_head_infos">
-                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
-                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></a></div>
+                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $Menutarifs; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
+                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="<?php echo $Infospratiques; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></a></div>
                     <div class="utilisateur_head_infos_suggestion">
-                        <div class="commerce_reservation_commerce"><a href="#" onclick="OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');" title=""><span class="utilisateur_suggerer_commerce_firstcat">Réservation</span></a></div>
+                        <div class="commerce_reservation_commerce"><a href="#" onclick="<?php echo $Modulereservation; ?>" title=""><span class="utilisateur_suggerer_commerce_firstcat">Réservation</span></a></div>
                         <div class="clearfix"></div>
-                        <div class="commerce_optin_commerce"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');"><span class="utilisateur_suggerer_objet_firstcat">Campagne opt-in</span></a></div>
+                        <div class="commerce_optin_commerce"><a href="#" title="" onclick="<?php echo $Moduleoption; ?>"><span class="utilisateur_suggerer_objet_firstcat">Campagne opt-in</span></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_infos_infosrapides">
+                    <div class="commerce_head_infos_infosrapides" <?php if ($Admin) {echo "onclick=\"" . $MotsCles . "\" style='cursor:pointer'";} ?>>
                         <div class="infosrapides1"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides1.png" alt="" title="" height="26" width="21" /></div><span>Généreux</span><span>Chaleureux</span><span>Convivial</span></div>
                         <div class="infosrapides2"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div><span>Terrasse</span><span>Piscine</span><span>Voiturier</span></div>
                         <div class="clearfix_infosrapides"></div>
@@ -197,7 +221,7 @@
             
             </div>
             <div class="commerce_head2">
-                <div class="commerce_head2_coinvideo">
+                <div class="commerce_head2_coinvideo" onclick="<?php echo $Video; ?>">
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
@@ -221,16 +245,17 @@
 				    </div>
 				</div>
                 
-                <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
+                <div class="commerce_concept"><a class="button_show_concept" onclick="<?php echo $Menutarifs; ?>" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
- 
-				<div class="utilisateur_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
- 
-                 <div class="wrapper_boutons">
-                <div class="boutons not_signedin" onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
-                <div class="boutons not_signedin" onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
-                <div class="boutons not_signedin" onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
-                </div>
+
+				
+				<?php if ($Admin) { ?>
+				<div class="commerce_recos"><a class="button_show_recos" onclick="<?php echo $Recommandations; ?>" href="#" title=""><span>Recommandations</span><div class="commerce_recos_arrow recos_arrow_up"></div><div class="commerce_recos_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="50" height="44" title="" alt="" /><img class="marginleftlabels" src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="50" height="44" title="" alt="" /></div></a></div>
+                <div class="commerce_labels"><a class="button_show_labels" onclick="<?php echo $LabelsCaptain; ?>" href="#" title=""><span>Labels captain</span><div class="commerce_labels_arrow labels_arrow_up"></div><div class="commerce_labels_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="50" height="44" title="" alt="" /><img class="marginleftlabels" src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="50" height="44" title="" alt="" /></div></a></div>
+				<div class="commerce_interface_modifier_box"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/box_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la box</span></a></div>
+				<div class="commerce_interface_modifier_popin"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/vignette_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la popin</span></a></div>
+ 				<div class="commerce_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
+				<?php } ?>
             </div>
         
         <!-- FILTRE DE TRI -->
@@ -269,6 +294,42 @@
 		}
 		InitCouvertures();
 		// Fin gestion du slider des couvertures
+		
+	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
+
+	function AfficheFollowContributeur(data) {
+
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetefollowcontributeur.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+				if (result.existe == 1) {
+					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+				} else {
+					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
+				}
+			},
+			error: function() {alert('Erreur sur url : ' + url);}
+		});
+	}
+	
+	function InitFollowContributeur() {
+		$('#box_container').find('.box_suivre_user').each(function() {
+			var contributeur = $(this).find("img").attr("id").replace(/SuivreContributeur/gi, "");
+			dataFollow = {check : 1, 
+						  id_contributeurACTIF : $idcontributeurACTIF,
+						  id_contributeur : contributeur};
+			AfficheFollowContributeur(dataFollow);		
+		});
+	}
+	InitFollowContributeur();
 	
 	</script>
     </body>

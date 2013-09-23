@@ -1,8 +1,9 @@
-<?php
+<?php 
 		if (!empty($_POST['lastid']) || !empty($_POST['provenance'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['id_enseigne'])) {$id_enseigne = urldecode($_POST['id_enseigne']);}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
+
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -35,7 +36,7 @@
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 						couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
-						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, id_quartier, ville_enseigne, url
+						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, id_quartier, ville_enseigne, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -137,6 +138,10 @@
 			// Enseigne
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
+			$box_enseigne			 = $row['box_enseigne'];
+			$slide1_enseigne		 = $row['slide1_enseigne'];
+			$x1		 				 = $row['x1'];
+			$y1		 				 = $row['y1'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
 			$couleur 				 = $row['couleur'];
@@ -165,6 +170,7 @@
 			$count_likes = $result3['count_likes'];					
 			
 			$data = "{provenance :'" . addslashes($provenance) . "',"
+				. "type : '" . $type . "',"
 				. "id_avis :" . $id_avis . ","
 				. "id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
@@ -172,6 +178,9 @@
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "slide1 : '" . $slide1_enseigne . "', "
+				. "x1 : '" . $x1 . "', "
+				. "y1 : '" . $y1 . "', "
 				. "couleur : '" . $couleur . "',"
 				. "categorie : '" . addslashes($categorie) . "',"
 				. "scategorie : '" . addslashes($sous_categorie) . "',"
@@ -239,5 +248,9 @@
 		} // Fin du while
 
 		$req->closeCursor();    // Ferme la connexion du serveur
+		$req2->closeCursor();    // Ferme la connexion du serveur
+		$req3->closeCursor();    // Ferme la connexion du serveur
+		$req4->closeCursor();    // Ferme la connexion du serveur
+		$req5->closeCursor();    // Ferme la connexion du serveur
 		$bdd = null;            // Détruit l'objet PDO
 ?>

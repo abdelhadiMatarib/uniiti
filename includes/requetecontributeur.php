@@ -35,7 +35,7 @@
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 				couleur, t11.posx, t11.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
-				prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, cp_enseigne, id_quartier, ville_enseigne, url
+				prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, id_quartier, ville_enseigne, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -136,6 +136,10 @@
 			// Enseigne
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
+			$box_enseigne			 = $row['box_enseigne'];
+			$slide1_enseigne		 = $row['slide1_enseigne'];
+			$x1		 				 = $row['x1'];
+			$y1		 				 = $row['y1'];
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['ville_enseigne'];
 			$couleur 				 = $row['couleur'];
@@ -164,6 +168,7 @@
 			$count_likes = $result3['count_likes'];	
 			
 			$data = "{provenance :'" . addslashes($provenance) . "',"
+				. "type : '" . $type . "',"
 				. "id_avis :" . $id_avis . ","
 				. "id_contributeur :" . $id_contributeur . ","
 				. "nom_contributeur : '" . addslashes($nom_contributeur) . "',"
@@ -171,6 +176,9 @@
 				. "prenom_contributeur : '" . addslashes($prenom_contributeur) . "',"
 				. "id_enseigne :" . $id_enseigne . ","
 				. "nom_enseigne : '" . addslashes($nom_enseigne) . "',"
+				. "slide1 : '" . $slide1_enseigne . "', "
+				. "x1 : '" . $x1 . "', "
+				. "y1 : '" . $y1 . "', "
 				. "couleur : '" . $couleur . "',"
 				. "categorie : '" . addslashes($categorie) . "',"
 				. "scategorie : '" . addslashes($sous_categorie) . "',"
@@ -222,13 +230,13 @@
 						<div class="box_headratings"><span><?php echo $note_arrondi; ?>/10 - <?php echo $count_avis_enseigne; ?> avis</span></div>
 					</div>
 					<div class="box_localisation"><?php echo $arrondissement; ?></span></div>
-					<div class="box_push_et_img">
-						<img src="../img/photos_commerces/1.jpg" title="" alt="" />
+					<div class="box_push_et_img" style="background:<?php echo $couleur; ?>;height:350px">
+						<img onload="AfficheImage($(this));" style="display:none;" src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne ?>" title="" alt="" />
 						<div class="box_push" <?php echo AffichePush($categorie); ?>></div>
 					</div>
 					<div class="overlay_push">
 						<div class="push_buttons_wrapper">
-							<div onclick="<?php echo $like_step1; ?>" class="push_buttons_like"<?php echo AfficheAction('aime',$categorie); ?>></div>
+							<div onclick="<?php echo $like_step1; ?>" class="push_buttons_like" <?php echo AfficheAction('aime',$categorie); ?>></div>
 							<div onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
 							<div onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist" <?php echo AfficheAction('wish',$categorie); ?>></div>
 						</div>
