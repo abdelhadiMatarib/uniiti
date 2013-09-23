@@ -17,16 +17,6 @@
                     </div>
                 </div>
             </div>
-                <style>
-                    .inscription_fb_why_wrap{display:none;width:1168px;background-color:#f0f0f0;height:70px;border-top:1px solid #e4e4e4;}
-                    .inscription_fb_why_left{text-align:center;float:left;width:583px;height:55px;padding-top:15px;border-right:1px solid #e4e4e4;}
-                    .inscription_fb_why_right{float:left;width:584px;height:60px;padding-top:8px;}
-                    .inscription_fb_why_left span{display:block;text-transform:uppercase;font-size:1em;}
-                    .inscription_fb_why_right span{display:inline;text-transform:uppercase;font-size:1em;}
-                    span.inscription_fb_why_txt_normal{font-weight:300;}
-                    span.inscription_fb_why_txt_bold{font-weight:700;}
-                    .inscription_fb_why_right ul{padding-left:110px;}
-                </style>
                 <div class="inscription_fb_why_wrap">
                     <div class="inscription_fb_why_left">
                         <span class="inscription_fb_why_txt_normal">Le moyen le plus simple pour</span>

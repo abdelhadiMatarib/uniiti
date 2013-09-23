@@ -10,9 +10,6 @@
             <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/icon_infos_gene.png" title="" alt="" height="35" width="35" />
         </div><span class="maintitle">Informations générales</span>
     </div>
-    <style>
-
-    </style>
     <div class="ident_body">
         <div class="infos_gene_title"><span>Localisation | Ville </span></div>
         <div class="infos_gene_input"><input type="text" placeholder="Où trouver l'objet" /></div>

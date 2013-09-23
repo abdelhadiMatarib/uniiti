@@ -19,9 +19,7 @@
 ?>
 
 	<body>
-
-		<style>
-			#fenetre {opacity:0; position:absolute; top:-50px; left:20px; width: 660px; height: 300px;}
+<style>#fenetre {opacity:0; position:absolute; top:-50px; left:20px; width: 660px; height: 300px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
 			ul {list-style-type: none;}
@@ -30,9 +28,7 @@
 			.couverture_step1_wrap_buttons {display : none;}
 			.couverture_step1_dropzone_txt2	{}		
 			#image {position:absolute;}
-
-		</style>
-
+                        </style>
 <div class="couverture_wrapper">
 	<div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
 	<div class="couverture_head">

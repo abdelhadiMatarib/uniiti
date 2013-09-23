@@ -30,10 +30,6 @@
             </div>
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
-        <style>
-            input.nom_objet_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}
-            input.valider_nouveau_nom_objet{float:left;height:32px;width:32px;border:1px dashed #252525;padding:5px;margin:10px 0 0 10px;border-radius:3px;background:url('../img/pictos_dashboard/button_valider_nouveau.png') no-repeat center;}
-        </style>
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_f"><a href="#" title=""><span>Ajouter</span><span class="dashboard_txt_bold">un objet</span></a></div>

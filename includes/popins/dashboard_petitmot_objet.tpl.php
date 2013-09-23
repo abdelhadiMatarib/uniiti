@@ -11,15 +11,6 @@
         </div><span class="maintitle">Présentation</span>
     </div>   
     <div class="ident_body">
-        <style>
-            .input_lien_video{float:left;}
-            input.input_lien_video{padding:10px;width:480px;height:10px;}
-            .embed_preview_video{float:left;padding:10px;width:480px;height:360px;background-color:#f0f0f0;}
-            
-            .input_lien_petitmot{float:left;}
-            textarea.input_lien_petitmot{padding:10px;width:480px;height:100px;resize:none;}
-            .ptitmot_wrap_labels,.ptitmot_wrap_recos{text-align:center;float:left;background-color:white;width:480px;padding:10px;}
-        </style>
             <div class="infos_gene_title"><span>Présentation de l'objet</span></div>
                 <textarea class="input_lien_petitmot" placeholder="Présentation de l'objet en quelques lignes..."></textarea>
     </div>

@@ -1069,7 +1069,7 @@ $(document).ready(function() {
         if(
         $('.overlay').is(':visible'))
         {
-            $('.overlay').fadeOut();
+        $('.overlay').fadeOut();
         }
         else{$('.overlay').fadeIn();}
         
@@ -1077,6 +1077,7 @@ $(document).ready(function() {
     $('.header').css('z-index','1000');
     $('.recherche_avancee_wrapper').css('z-index','999');
     });
+    
     // GESTION DES POP-INS
     // initialize dialog
     var defaultdialog = $("#default_dialog").dialog({ 

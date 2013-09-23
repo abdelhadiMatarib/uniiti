@@ -10,29 +10,6 @@
             <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_classement.png" title="" alt="" height="37" width="37" />
         </div><span class="maintitle">Votre classement Uniiti</span></div>
     </div>
-<style>
-    .classement_utilisateur_body{float:left;width:500px;}
-    .classement_utilisateur_footer{float:left;height:100px;background-color:#f0f0f0;width:500px;}
-    .classement_utilisateur_footer span{display:block;text-transform:uppercase;}
-    .classement_utilisateur_body_item{float:left;width:250px;height:100px;}
-    .classement_utilisateur_body_item span{display:block;}
-    #item_classement_general{background-color:#a4ebf1;}
-    #item_classement_restauration{background-color:#fabe41;}
-    #item_classement_cinema{background-color:#46ba8f;}
-    #item_classement_beaute{background-color:#f480bc;}
-    #item_classement_sante{background-color:#de5b30;}
-    #item_classement_aucun{background-color:#f0f0f0;}
-    .classement_utilisateur_footer_badges_wrap_txt{border-right: 1px solid #e4e4e4;border-top: 1px solid #e4e4e4;font-size: 1.3em;padding: 15px 10px;float: left;height: 69px;width: 79px;background-color: #f0f0f0;}
-    .classement_utilisateur_footer_badge_item{border-right:1px solid #e4e4e4;border-top:1px solid #e4e4e4;text-align:center;font-size:0.8em;padding:10px;float:left;width:79px;height:79px;background-color:#f0f0f0;}
-    .classement_utilisateur_body_item_img_container{float:left;margin:15px 10px;}
-    .classement_utilisateur_footer_badge_item_img_container{float:left;margin:0 10px;}
-    .classement_utilisateur_body_item_txt_container{float:left;width:176px;text-align:center;margin-top:15px;}
-    .classement_utilisateur_body_item_txt_nbr{font-size:2.5em;font-weight:700;}
-    .classement_utilisateur_body_item_txt_titre{text-transform:uppercase;font-size:0.8em;}
-    #badge_cinephile_txt{color:#46ba8f;}
-    #badge_gourmet_txt{color:#fabe41;}
-    
-</style>
     <div class="classement_utilisateur_body">
         <div class="classement_utilisateur_body_item" id="item_classement_general">
             <div class="classement_utilisateur_body_item_img_container"><img src="../img/pictos_classement/classement_general.png" height="67" width="54"/></div>

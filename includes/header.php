@@ -30,14 +30,6 @@
 
 
 <!-- DEBUT DU HEADER -->
-<style>
-.display-none {display:none;}
-.suggestionsContainer {position: relative;background-color:#f0f0f0;max-width: 159px;top: -2px;left: 0px;z-index:1000;}
-.suggestionList li {cursor:pointer;padding: 3px 0 3px 3px;}
-.suggestionList li.active {background-color: #ffffff;}
-.suggestionList {list-style-type: none;z-index:1000;}
-</style>
-
 <div class="overlay"></div>
 <div class="header">
     <div class="big_wrapper">

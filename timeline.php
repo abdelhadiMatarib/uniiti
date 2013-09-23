@@ -53,14 +53,6 @@
                         <!-- FILTRES DE TRI -->
                         <?php $PAGE = "Timeline"; include'includes/filters.php' ?>
                         <!-- FIN FILTRES DE TRI -->
-                        <style>
-                            .home_newsfeed{border-radius:3px;margin-bottom:10px;background-color:#a4ebf1;width:100%;height:25px;}
-                            .home_newsfeed a{display:inline-block;width:100%;height:100%;}
-                            .home_newsfeed_centered{padding-top:3px;margin:0 auto;width:140px;}
-                            .home_newsfeed span{display:inline-block;}
-                            .home_newsfeed_number{border-radius:3px;font-size:0.9em;font-weight:700;background-color:#ff4343;padding:0px 5px;color:white;}
-                            .home_newsfeed_number+span{font-size:0.9em;margin-left:3px;color:#252525;}
-                        </style>
                         <div class="home_newsfeed">
                             <a href="#" title="">
                             <div class="home_newsfeed_centered">

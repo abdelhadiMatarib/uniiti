@@ -19,7 +19,7 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
                 <span class="presentation_action_left_head_categorie">Restauration</span>
             </div>
             <div class="presentation_action_left_head_likes_wrap">
-                <div class="presentation_action_left_head_img_container_picto_likes"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/like.png"/></div>
+                <div class="presentation_action_left_head_img_container_picto_likes"></div>
                 <span class="presentation_action_left_head_nombrelikes"><strong>15756</strong></span>
                 <span class="presentation_action_left_head_nombrelikes_txt">LIKE</span>
             </div>

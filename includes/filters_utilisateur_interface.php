@@ -141,12 +141,6 @@ ON t1.id_categorie = t3.id_categorie */
 
 <!--<nav>-->
 <div class="filters">
-    <style>
-        .flux_utilisateur{float:left;}
-        .quoideneuf_utilisateur,.recommandations_utilisateur,.avisenattente_utilisateur{float:right;}
-        .quoideneuf_utilisateur a,.recommandations_utilisateur a,.avisenattente_utilisateur a,.flux_utilisateur a{display:inline-block;color:white;height:21px;margin-right:1px;padding:12px;background-color:#CBCBCB;}
-        .quoideneuf_utilisateur a:hover,.recommandations_utilisateur a:hover,.avisenattente_utilisateur a:hover,.flux_utilisateur a:hover{color:white;background-color:#ADADAD;}
-    </style>
     <div class="quoideneuf_utilisateur button_moving"><a href="#" title="">Quoi de neuf ?</a></div>
     <div class="recommandations_utilisateur button_moving"><a href="#" title="">Recommandations</a></div>
     <div class="avisenattente_utilisateur button_moving"><a href="#" title="">Avis en attente</a></div>

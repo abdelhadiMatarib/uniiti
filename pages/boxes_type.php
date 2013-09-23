@@ -246,19 +246,6 @@ include'../includes/js.php';?>
             </footer>
             
         </div>
-<style>
-    .box_petit_mot{position:relative;float:left;background-color:#252525;height:180px;width:500px;margin-bottom:20px;}
-    
-    .box_petit_mot_modif_icon{position:absolute;top:10px;right:10px;}
-    
-    .box_petit_mot_titre{float:left;margin:10px;width:140px;text-align:center;}
-    .box_petit_mot_titre img{margin:5px 0;}
-    .box_petit_mot_titre span{display:block;color:white;font-size:1.2em;}
-    
-    .box_petit_mot_content{margin-top:40px;float:left;width:320px;padding:10px;}
-    .box_petit_mot_content p{margin:0;color:white;}
-    
-</style>
 	<!-- FIN VIGNETTE TYPE -->
 <h1>PETIT MOT DU COMMERCANT v</h1>
 <div class="box_petit_mot">
@@ -278,22 +265,6 @@ include'../includes/js.php';?>
     </div>
 </div>
 <div class="clearfix"></div>
-<style>
-    .commerce_couv_video_bg{height:100%;background-color:#252525;}
-    .commerce_couv_video_content{position:absolute;top:0;left:0;width:100%;}
-    .commerce_couv_video_embbed{margin:0 auto;width:660px;}
-    .commerce_couv_video_txt_left,.commerce_couv_video_txt_right{width:345px;text-transform:uppercase;}
-    .commerce_couv_video_txt_left{float:left;text-align:center;line-height:3.1em;margin-top:170px;}
-    .commerce_couv_video_txt_left span{display:block;font-size:3em;color:white;font-weight:300;}
-    .commerce_couv_video_txt_right{float:right;text-align:center;line-height:1.6em;margin-top:200px;}
-    .commerce_couv_video_txt_right span{display:block;font-size:1.5em;color:white;}
-    .commerce_couv_video_button_retour{position:absolute;bottom:10px;left:10px;text-align:center;}
-    .commerce_couv_video_button_retour a{border:1px dashed white;display:inline-block;height:16px;width:46px;padding:17px 2px;font-size:0.8em;font-weight:700;}
-    .commerce_couv_video_button_retour a:hover{border:1px dashed #acacac;}
-    .commerce_couv_video_button_retour span{text-transform:uppercase;color:#fabe41;}
-    .commerce_couv_video_txt_left_img_container{width:54px;margin:10px auto;}
-    .commerce_couv_video_txt_left_colored{color:#fabe41 !important;font-weight:700 !important;}
-</style>
 <h1>COUVERTURE COMMERCE VIDEO</h1>
 <div class="commerce_couv">
     <div class="commerce_couv_video_button_retour"><a href="#" title="" alt=""><span>Retour</span></a></div>
@@ -343,13 +314,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div id="map-canvas"></div>
     </div>
 <h1>BOX TOP 50 CLASSEMENT</h1>
-<style>
-    .top_50_commerces{text-align:center;color:white;background-color:#252525;width:236px;height:250px;}
-    .box_top_50_commerces_txt1{font-size:2em;font-weight:700;}
-    .box_top_50_commerces_txt2{font-size:2em;font-weight:300;}
-    .box_top_50_commerces_txt1,.box_top_50_commerces_txt2{display:block;}
-    .box_top_50_commerces_img_container{margin-top:-9px;}
-</style>
 <div class="box top_50_commerces">
     <div class="box_top_50_commerces_img_container"><img src="../img/pictos_commerces/icon_top50.png"/></div>
     <span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>

@@ -9,9 +9,6 @@
             <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_followers.png" title="" alt="" height="36" width="37" />
         </div><span class="maintitle">Ils suivent ce commerce</span>
     </div>  
-    <style>
-
-    </style>
     <div class="suggestioncommerce_body">
         <div class="follower">
             <div class="follower_img"><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></div>

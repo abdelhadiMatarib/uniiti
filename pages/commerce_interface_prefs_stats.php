@@ -162,20 +162,7 @@
         <!-- FIN FILTRE DE TRI -->
         </div>
         <!-- FIN BIG WRAPPER -->
-        <!-- CONTENU PRINCIPAL -->
-        <style>
-            .commerce_prefs_stats_tableau{border-radius:3px;width:100%;background-color:#fabe41;height:166px;margin-bottom:14px;}
-            .commerce_prefs_stats_item{text-align:center;padding:20px 10px;color:white;height:125px;background-color:#252525;position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;width:216px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
-            .commerce_prefs_stats_item a{color:#252525;display:inline-block;width:100%;height:100%;}
-            .commerce_prefs_stats_item a:hover{color:#ACACAC;}
-            
-            .commerce_prefs_stats_item span{display:block;}
-            .commerce_prefs_stats_item_nbr{font-size:5em;font-weight:600;}
-            .commerce_prefs_stats_item_titre{text-transform:uppercase;font-size:0.9em;}
-            
-            .item_gestion_site{font-size:2.3em;background-color:white;text-transform:uppercase;color:#252525;}
-        </style>
-        
+        <!-- CONTENU PRINCIPAL -->    
         <div class="commerce_prefs_stats_tableau"></div>
         <div id="prefs_items_container">
         <div class="commerce_prefs_stats_item">

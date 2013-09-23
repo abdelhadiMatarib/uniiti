@@ -136,10 +136,6 @@
                 <div class="commerce_head_desc">
                     <div class="commerce_head_desc_title"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restauration_b.png" title="" alt="" /></div><h2><?php echo $nom_enseigne; ?></h2></div>
                     <div class="commerce_head_desc_social">
-                        <style>
-                            .overlay_social_buttons{display:none;position:relative;}
-                            .overlay_social_buttons_specific{border-radius:3px;display:block !important;background-color:rgba(37,37,37,0.8);position:absolute;top:9px;right:60px;padding-left:5px;}
-                        </style>
                         <div class="overlay_social_buttons">
                         <img src="<?php echo SITE_URL; ?>/img/pictos_actions/fb_logo.png" title="" alt="" height="24" width="24" />
                         <img src="<?php echo SITE_URL; ?>/img/pictos_actions/tw_logo.png" title="" alt="" height="24" width="24" />

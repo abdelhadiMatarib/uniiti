@@ -184,49 +184,19 @@
     <div class="recherche_overlay_current_status"></div>    
     <div class="recherche_avancee_search_button"></div>
     <div class="cursor_recherche"></div>
-    <div class="recherche_avancee_right_cliquez_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/cliquezici.png" title="" alt="" height="52" width="114"/></div>
+    <div class="recherche_avancee_right_cliquez_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/cliquezici.png" title="" alt="" height="41" width="115"/></div>
 </div>
-<style>
-    .recherche_avancee_menu{background-color:#252525;}
-    .recherche_avancee_item{float:left;width:210px;height:39px;background-color:#252525;border-bottom:1px solid #3f3f3f;border-right:1px solid #3f3f3f;}
-    .recherche_picto_container{float:left;width:40px;height:40px;border-left:1px solid #3f3f3f;background:url('img/pictos_actions/picto_recherche_avancee.png') no-repeat center;}
-    
-    span.recherche_avancee_2 p{float:left;margin:0;}
-    .recherche_avancee_wrapper{left:0;width:100%;}
-    .recherche_avancee_left span{display:inline-block;font-size:1.8em;color: #89c1c6;}
-    .recherche_avancee_left{float:none;position:relative;z-index:5;}
-    
-    .recherche_avancee_left ul{margin:0;padding:0;display:inline-block;}
-    .recherche_avancee_left ul li{list-style:none;display:inline-block;}
-    
-    a.recherche_mot_actif.recherche_avancee_commerce{color:#03068a;margin:0 10px;border-bottom:1px dashed #03068a;height:44px;font-weight:300;}
-    a.recherche_mot_actif.recherche_avancee_lieu{color:#f480bc;margin:0 10px;border-bottom:1px dashed #f480bc;height:44px;font-weight:300;}
-    a.recherche_mot_actif.recherche_avancee_categorie{color:#a1679a;margin:0 10px;border-bottom:1px dashed #a1679a;height:44px;font-weight:300;}
-    a.recherche_mot_actif.recherche_avancee_sous_categorie{color:#fabe41;margin:0 10px;border-bottom:1px dashed #fabe41;height:44px;font-weight:300;}
-    a.recherche_mot_actif.recherche_avancee_sous_sous_categorie{color:#46ba8f;margin:0 10px;border-bottom:1px dashed #46ba8f;height:44px;font-weight:300;}
-    a.recherche_mot_actif.recherche_avancee_prix{color:#de5b30;margin:0 10px;border-bottom:1px dashed #de5b30;height:44px;font-weight:300;}
-    
-    a.recherche_mot_inactif{float:left;color:white;font-size:0.7em;height:37px;width:169px;padding-top:3px;}
-    a.recherche_mot_inactif:hover{background-color:#acacac;}
-    
-    .recherche_avancee_position_wrap{background-color:#252525;position:relative;margin:0 auto;width:460px;height:30px;border-radius:4px 4px 0px 0px;}
-    .recherche_avancee_position_guidelines{position:absolute;left:25px;height: 30px;width: 364px;background:url('img/pictos_actions/barre_recherche_guidelines.png') no-repeat center #252525;}
-    .recherche_avancee_search_button{cursor:pointer;float:right;height:30px;width:45px;border-radius:0px 3px 0px 0px;background:url('img/pictos_actions/recherche_avancee_button.png')no-repeat center #a4ebf1;}
-    .recherche_avancee_right_cliquez_wrap{display:block;position:absolute;top:-30px;right:-120px;}
-    
-    .recherche_avancee_menu{display:none;position:absolute;max-width:210px;}
-    .picto_selected{background:url('img/pictos_actions/recherche_picto_valide.png') #acacac no-repeat center;}
-    .text_selected{background-color:#acacac;}
-    .recherche_text_val{display:none;}
-    .recherche_avancee_current_txt{position:absolute;left:-100px;width: 100px;height: 25px;padding-top: 5px;}
-    .recherche_avancee_current_txt span{color:#252525;text-transform:uppercase;font-size:0.8em;}
-    .cursor_recherche{position:absolute;left:10px;height:33px;width:44px;background:url('img/pictos_actions/cursor_recherche.png');}
-    
-    .recherche_overlay_current_status{position:absolute;border-radius:3px 0px 0px 0px;left:0px;height:30px;width:30px;background:url('img/pictos_actions/barre_recherche_guidelines.png') #a4ebf1 no-repeat 25px center}
-
-</style>
+<div class="close_button_cdr"></div>
 <script>
+$('.close_button_cdr').click(function(){
+        $('.recherche_avancee_wrapper').slideUp(300);
+        $('.overlay').fadeOut();
+});
+$('.overlay').click(function(){
+    $('.recherche_avancee_wrapper').slideUp(300);
+        $(this).fadeOut();
     
+});
 // CLICS MENU DÉROULANT RECHERCHE AVANCÉE
 
 // désaffichage de la phrase au début

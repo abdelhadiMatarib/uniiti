@@ -11,11 +11,6 @@
         </div><span class="maintitle">Gestion de la vidéo</span>
     </div>   
     <div class="ident_body">
-        <style>
-            .input_lien_video{float:left;}
-            input.input_lien_video{padding:10px;width:480px;height:10px;}
-            .embed_preview_video{float:left;padding:10px;width:480px;height:360px;background-color:#f0f0f0;}
-        </style>
             <div class="infos_gene_title"><span>Lien vidéo (Youtube/Dailymotion/Vimeo)</span></div>
                 <input type="text" class="input_lien_video" placeholder="Lien"/>
             <div class="infos_gene_title"><span>Aperçu</span></div>

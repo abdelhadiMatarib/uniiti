@@ -212,10 +212,6 @@
         </div><!-- FIN BIGGY -->
      <?php include'../includes/js.php' ?> 
         </div>
-        <style>
-            input.nom_entreprise_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}
-            input.valider_nouveau_nom_commerce{float:left;height:32px;width:32px;border:1px dashed #252525;padding:5px;margin:10px 0 0 10px;border-radius:3px;background:url('../img/pictos_dashboard/button_valider_nouveau.png') no-repeat center;}
-        </style>
         <script>
             $(function () {
     $('.commerce_head_desc_title').delegate('.nom_entreprise_modifiable','click',function () {
