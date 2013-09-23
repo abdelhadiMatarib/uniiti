@@ -70,7 +70,7 @@ catch (PDOException $erreur)
 <script>
 setTimeout(function () {
     $('.like_wrapper').fadeOut();
-    $('#default_dialog').load('<?php echo SITE_URL; ?>/includes/popins/suggestion_action.tpl.php').fadeIn();
+    $('#default_dialog').load('<?php echo SITE_URL; ?>/includes/popins/suggestion_action_wishlist.tpl.php').fadeIn();
 }, 2000);
 </script>
 </html>
