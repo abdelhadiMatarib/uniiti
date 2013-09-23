@@ -152,7 +152,7 @@ span.index_overlay_texte{display:block;}
 .box footer{position:relative;}
 .box figure {position:relative;overflow:hidden;}
 .box_push_et_img > img:hover{cursor:pointer; opacity:0.9;}
-.overlay_push{z-index:100;cursor:zoom-in;display:none;position:absolute;top:0;left:0;background-color: rgba(113, 113, 113, 0.3);height:100%;width:100%;}
+.overlay_push{z-index:100;cursor:-webkit-zoom-in;cursor:-moz-zoom-in;cursor:pointer;cursor:zoom-in;display:none;position:absolute;top:0;left:0;background-color: rgba(113, 113, 113, 0.3);height:100%;width:100%;}
 .box_push{position:absolute;right:0;bottom:0;height:50px;width:50px;background:url('../img/pictos_commerces/sprite.png') -126px -19px;}
 .box_push_et_img{cursor:pointer;margin-bottom:-4px;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
@@ -165,7 +165,7 @@ span.index_overlay_texte{display:block;}
 
 .box_useraction{text-align: center;margin:0 0 10px 0;}
 .box_usertext{margin:0 0 7px 0;}
-.box section{position:relative;cursor:pointer;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px;}
+.box section{position:relative;cursor:-webkit-zoom-in;cursor:-moz-zoom-in;cursor:pointer;cursor:zoom-in;border-bottom:1px solid rgba(0, 0, 0, 0.07); padding:10px 10px 0 10px;}
 .box section:hover{background-color:rgba(0, 0, 0, 0.05);}
 .box section span{font-weight: bold; color: #fabe41;}
 .box section figcaption{padding-bottom: 10px; }
