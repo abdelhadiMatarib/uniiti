@@ -67,4 +67,10 @@ catch (PDOException $erreur)
         <span class="wishlist_wrapper_footer_txt_normal">Vous avez <span class="wishlist_wrapper_footer_txt_bold">ajouté</span> ce commerce</span>
     </div>
 </div>
+<script>
+setTimeout(function () {
+    $('.like_wrapper').fadeOut();
+    $('#default_dialog').load('<?php echo SITE_URL; ?>/includes/popins/suggestion_action.tpl.php').fadeIn();
+}, 2000);
+</script>
 </html>

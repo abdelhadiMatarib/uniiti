@@ -85,4 +85,10 @@ catch (PDOException $erreur)
         <span class="dislike_wrapper_footer_txt_normal">Vous <span class="dislike_wrapper_footer_txt_bold">n'aimez pas</span> ce commerce</span>
     </div>
 </div>
+<script>
+setTimeout(function () {
+    $('.like_wrapper').fadeOut();
+    $('#default_dialog').load('<?php echo SITE_URL; ?>/includes/popins/suggestion_action.tpl.php').fadeIn();
+}, 2000);
+</script>
 </html>
