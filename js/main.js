@@ -1169,7 +1169,7 @@ $(document).ready(function() {
 	var defaultdialog_inscription = $("#default_dialog_inscription").dialog({ 
 		autoOpen: false,
 		modal:true,
-		draggable:false,
+		draggable:true,
 		resizable:false,
 		width: '1230px',
 		height: 'auto',

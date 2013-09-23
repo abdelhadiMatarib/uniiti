@@ -24,7 +24,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url, id_budget
+					adresse1_enseigne, cp_enseigne, ville_enseigne, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -58,12 +58,12 @@
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$ville_enseigne          = $result2['ville_enseigne'];
-	$pays_enseigne           = $result2['pays_enseigne'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
 	$descriptif              = $result2['descriptif'];
 	$categorie				 = $result2['categorie_principale'];
 	$sous_categorie          = $result2['sous_categorie'];
 	$sous_categorie2         = $result2['sous_categorie2'];
+	$id_sous_categorie2      = $result2['id_sous_categorie2'];
     $couleur                 = $result2['couleur'];
 	$url                     = $result2['url'];
 	$id_budget               = $result2['id_budget'];
@@ -118,9 +118,22 @@
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
 
+	$datamodif = "{type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
+			. "descriptif:'" . str_replace(PHP_EOL ,'\n', addslashes($descriptif)) . "', "
+			. "adresse1_enseigne:'" . $adresse1_enseigne . "', "
+			. "ville_enseigne:'" . $ville_enseigne . "', "
+			. "cp_enseigne:'" . $code_postal . "', "
+			. "id_sous_categorie2:" . $id_sous_categorie2 . ", "
+			. "telephone_enseigne:'" . $telephone_enseigne . "', "
+			. "url:'" . $url . "', "
+//			. "id_quartier:" . $id_quartier . ", "
+			. "id_budget:" . $id_budget . "}";
+
 	if ($Admin) {
 
-		$Engrenage = "OuvrePopin({}, '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');";
+		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');";
 		$MotsCles = "OuvrePopin({}, '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
 		$Menutarifs = "OuvrePopin({}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
 		$Infospratiques = "OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
@@ -128,6 +141,7 @@
 		$LabelsCaptain = "OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 		$Recommandations = "OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 
+		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
 		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	} 
@@ -245,7 +259,7 @@ else {
 				    </div>
 				</div>
                 
-                <div class="commerce_concept"><a class="button_show_concept" onclick="<?php echo $Menutarifs; ?>" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
+                <div class="commerce_concept"><a class="button_show_concept" onclick="<?php echo $LabelsCaptain; ?>" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
 
 				

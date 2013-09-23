@@ -22,6 +22,8 @@ ALTER TABLE `enseignes` DROP FOREIGN KEY `fk_enseignes_types_enseigne1` ;
 ALTER TABLE `enseignes` DROP FOREIGN KEY `fk_enseignes_contributeursMDL1` ;
 
 ALTER TABLE `enseignes` DROP `types_enseigne_id_type_enseigne`
+, DROP `etat_enseigne`
+, DROP `pays_enseigne`
 , DROP `logotype_enseigne`
 , DROP `fax_enseigne`
 , DROP `note_moyenne`

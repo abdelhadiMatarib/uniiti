@@ -36,12 +36,14 @@ try
 	$result2 = $req2->fetchAll(PDO::FETCH_ASSOC);
 	
 	foreach ($result2 as $row) {
-		$sql = "UPDATE enseignes SET box_enseigne = :photo, slide1_enseigne = :couv, y1 = 0 
+		$sql = "UPDATE enseignes SET url = :url, box_enseigne = :photo, slide1_enseigne = :couv, y1 = 0 
 				WHERE id_enseigne = :id_enseigne";
 		$req = $bdd->prepare($sql);
 		$photo = "photo 1.jpg";
 		$couv = "photo " . rand(1, 113) . ".jpg";
+		$url = "";
 		$id_enseigne = $row['id_enseigne'];
+		$req->bindParam(':url', $url, PDO::PARAM_STR);
 		$req->bindParam(':photo', $photo, PDO::PARAM_STR);
 		$req->bindParam(':couv', $couv, PDO::PARAM_STR);
 		$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_STR);

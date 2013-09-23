@@ -6,8 +6,14 @@ if (empty($_POST['id_categorie'])) {
 	$sql = "SELECT * FROM categories";
 	$req = $bdd->prepare($sql);
 }
-else {
+else if (empty($_POST['id_sous_categorie'])) {
 	$sql = "SELECT * FROM sous_categories WHERE id_categorie=" . $_POST['id_categorie'];
+	$req = $bdd->prepare($sql);
+}
+else {
+	$sql = "SELECT * FROM sous_categories2 WHERE 
+		   id_categorie=" . $_POST['id_categorie']
+		. " AND id_sous_categorie=" . $_POST['id_sous_categorie'];
 	$req = $bdd->prepare($sql);
 }
 $req->execute();
