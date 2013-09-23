@@ -1,4 +1,6 @@
 /* GENERAL */
+img#ImageSuivre{height:32px;width:32px;}
+img#ImageSuivrePopin{height:32px;width:32px;}
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
 #default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
 #default_dialog_inscription .popin_close_button{z-index: 999;position: absolute;top: 10px;right: 5px;cursor: pointer;}
@@ -1078,14 +1080,14 @@ a.recherche_mot_inactif:hover{background-color:#acacac;}
 .picto_selected{background:url('../img/pictos_actions/recherche_picto_valide.png') #acacac no-repeat center;}
 .text_selected{background-color:#acacac;}
 .recherche_text_val{display:none;}
-.recherche_avancee_current_txt{position:absolute;left:-100px;width: 100px;height: 25px;padding-top: 5px;}
-.recherche_avancee_current_txt span{color:#252525;text-transform:uppercase;font-size:0.8em;}
+.recherche_avancee_current_txt{position:absolute;left:-140px;width: 140px;height: 25px;padding-top: 5px;}
+.recherche_avancee_current_txt span{color:#747474;font-size:1.1em;}
 .cursor_recherche{position:absolute;left:10px;height:33px;width:44px;background:url('../img/pictos_actions/cursor_recherche.png');}
 
 .recherche_overlay_current_status{position:absolute;border-radius:3px 0px 0px 0px;left:0px;height:30px;width:30px;background:url('../img/pictos_actions/barre_recherche_guidelines.png') #a4ebf1 no-repeat 25px center}
 
 
-.close_button_cdr{cursor:pointer;position:absolute;right:20px;bottom:20px;height:30px;width:30px;background:url('../img/pictos_popins/close_button_noir.png')}
+.close_button_cdr{cursor:pointer;position:absolute;right:10px;bottom:-40px;height:30px;width:30px;background:url('../img/pictos_popins/close_button.png')}
 .close_button_cdr:hover{background-position:0px -30px;}
 /* UTILISATEUR INTERFACE */
 .utilisateur_interface_modifier_couv{font-size:0.9em;border-radius:3px;position:absolute;padding:2px 5px;background-color:#a4ebf1;right:10px;bottom:5px; z-index: 100;}

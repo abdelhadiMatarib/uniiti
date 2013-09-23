@@ -150,12 +150,13 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 </div>
 <script>
     // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
-    var activemodif = false;
+    $('#modifier_commentaire_input_saisie_incorrecte,#modifier_commentaire_input_opinion_commercant,#modifier_commentaire_input_precisions,#modifier_commentaire_input_preciser_motif').click(function(){
+        if($('.input_avisenattente_precisezmotif').is(':visible'))
+            {$('.input_avisenattente_precisezmotif').stop().slideUp()}
+            else{return;}
+    });
     $('#modifier_commentaire_input_preciser_motif').click(function(){
-        if(activemodif == false){
-            $('.input_avisenattente_precisezmotif').stop().slideToggle();
-            activemodif = true;
-        }
+        $('.input_avisenattente_precisezmotif').stop().slideToggle();
     });
     var active = false;
     var heighttemp = 0;

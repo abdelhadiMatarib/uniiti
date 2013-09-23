@@ -89,7 +89,7 @@
             </span>
             <span class="recherche_avancee_4">et la sous-catégorie 
                 <ul>
-                    <div class="recherche_text_val"><span>+ précisement ?</span></div>
+                    <div class="recherche_text_val"><span>+ Précisement ?</span></div>
                     <li><a class="recherche_mot_actif recherche_avancee_sous_categorie" href="#" title="">Cuisine française</a></li>
                     
                     <div class="recherche_avancee_menu recherche_sous_categorie">
@@ -257,11 +257,11 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
     $('.recherche_avancee_right_cliquez_wrap').slideDown();
 });*/
 
-// CHAMPS DE RECHERCHE AVANCÉE
+        // CHAMPS DE RECHERCHE AVANCÉE
         /* 3 */if ($('.big_wrapper').width() == 736){
     
         //RECHERCHE AVANCÉE
-        $('.recherche_avancee_wrapper').css('background-position','-120px');
+        $('.recherche_avancee_wrapper').css('background-color',"white").css('background-image','none');
         $('.recherche_avancee_left').css('line-height','2.2em').css('width','500px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.1em');
@@ -273,7 +273,7 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
         /* 4 */if ($('.big_wrapper').width() == 986){
 
         //RECHERCHE AVANCÉE
-        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_wrapper').css('background-color',"white").css('background-image',"url('img/pictos_actions/recherche_avancee_1100.png')");
         $('.recherche_avancee_left').css('line-height','2.5em').css('width','600px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.3em');
@@ -284,7 +284,7 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
         /* 5 */else if ($('.big_wrapper').width() == 1236){
 
         //RECHERCHE AVANCÉE
-        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_wrapper').css('background-position','center').css('background-image',"url('img/pictos_actions/recherche_avancee_1300.png')");
         $('.recherche_avancee_left').css('line-height','2.5em').css('width','700px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.5em');
@@ -295,7 +295,7 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
         /* 6 */else if ($('.big_wrapper').width() == 1486){
 
         //RECHERCHE AVANCÉE
-        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_wrapper').css('background-position','center').css('background-image',"url('img/pictos_actions/recherche_avancee_1300.png')");;
         $('.recherche_avancee_left').css('line-height','2.8em').css('width','800px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.6em');
@@ -306,7 +306,7 @@ $('.recherche_prix a.recherche_mot_inactif').click(function(){
         /* 7 */else if ($('.big_wrapper').width() == 1736){
 
         //RECHERCHE AVANCÉE
-        $('.recherche_avancee_wrapper').css('background-position','center');
+        $('.recherche_avancee_wrapper').css('background-position','center').css('background-image',"url('img/pictos_actions/recherche_avancee_1300.png')");;
         $('.recherche_avancee_left').css('line-height','3em').css('width','900px').css('margin','20px auto');
         $('.recherche_avancee_right').css('top','10px');
         $('.recherche_avancee_left span').css('font-size','1.7em');

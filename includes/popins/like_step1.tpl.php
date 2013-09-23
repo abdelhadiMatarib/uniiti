@@ -136,22 +136,21 @@ catch (PDOException $erreur)
     </div>
 
 <script>
-    setTimeout(function () {
-        
-        var versoflippy = $('.suggestion_wrapper');
-            /*$('#default_dialog').load('<?php echo SITE_URL; ?>/includes/popins/suggestion_action_wishlist.tpl.php');*/
-
-        $(".like_wrapper").flippy({
-               duration: "500",
-               verso: versoflippy,
-               onFinish: $('.suggestion_wrapper').delay(250).fadeIn(
-                function() { 
-                    setTimeout(function() { $('#default_dialog').fadeOut('slow'); }, 10000);
-                    setTimeout(function() { $('#default_dialog').dialog('close'); }, 10500);
-                    }
-                ) 
-        });
-    
+    $(document).ready(
+    function(){
+        clearTimeout(TimeOutPopin1);
+    var TimeOutPopin1 = setTimeout(function () {
+        $(".like_wrapper").delay(300).fadeOut();
+        $('.suggestion_wrapper').delay(1000).fadeIn(
+        function(){
+            clearTimeout(TimeOutPopin2);
+            clearTimeout(TimeOutPopin3);
+            var TimeOutPopin2 = setTimeout(function() { $('#default_dialog').fadeOut('slow'); }, 10000);
+            var TimeOutPopin3 = setTimeout(function() { $('#default_dialog').dialog('close'); }, 10500);
+            }
+        )    
     }, 2000);
+    }
+    );
 </script>
 </html>
