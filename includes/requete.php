@@ -280,6 +280,10 @@
 				
 			</div>
 			<!-- FIN VIGNETTE TYPE -->
+                        <div class="box top_50_commerces">
+                            <div class="box_top_50_commerces_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/icon_top50.png"/></div>
+                            <span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
+                        </div>
 	<?php
 		} // Fin du while
 

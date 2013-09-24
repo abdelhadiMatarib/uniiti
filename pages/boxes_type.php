@@ -317,5 +317,4 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="box top_50_commerces">
     <div class="box_top_50_commerces_img_container"><img src="../img/pictos_commerces/icon_top50.png"/></div>
     <span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
-    
 </div>
