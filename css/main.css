@@ -125,7 +125,7 @@ span.index_overlay_texte{display:block;}
 .uniiti_footer{background-color:#e3e3e3;z-index:51;position: relative;padding:0;height:70px;}
 .uniiti_footer_loader{display:none;position:relative;width:70px;margin:0 auto;}
 .uniiti_footer_loader_barre_horizontale{position: absolute;top: 35px;border-bottom: 1px solid #252525;height: 1px;width: 100%;}
-#ScrollToTop {display:none;position:fixed;bottom:10px;right:10px;width:55px;height:70px;background: url('<?php echo SITE_URL; ?>/img/pictos_actions/scrolltop.png');z-index:95;}
+#ScrollToTop {display:none;position:fixed;bottom:10px;right:10px;width:55px;height:70px;background: url('../img/pictos_actions/scrolltop.png');z-index:95;}
 .textContainer {color: rgb(119, 119, 119);cursor: pointer;font-family: 'Helvetica',sans-serif;font-size: 15px;font-weight: 700;line-height: 19px;text-align: center;text-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px;visibility: visible;width: 50px;}
 
 /* FILTRES */
@@ -186,7 +186,7 @@ span.index_overlay_texte{display:block;}
 .box footer{position:relative;}
 .box figure {position:relative;overflow:hidden;}
 .box_push_et_img > img:hover{cursor:pointer; opacity:0.9;}
-.overlay_push{z-index:100;cursor:pointer;display:none;position:absolute;top:0;left:0;background-color: rgba(37, 37, 37, 0.6);height:100%;width:100%;}
+.overlay_push{z-index:100;cursor:pointer;display:none;position:absolute;top:0;left:0;background-color: rgba(32, 32, 32, 0.65);height:100%;width:100%;}
 .box_push{position:absolute;right:0;bottom:0;height:50px;width:50px;background:url('../img/pictos_commerces/sprite.png') -126px -19px;}
 .box_push_et_img{cursor:pointer;margin-bottom:-4px;}
 .push_buttons_wrapper{height:50px;width:180px;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;}

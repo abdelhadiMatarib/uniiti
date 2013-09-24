@@ -34,9 +34,12 @@ if (!$Changex1) {
 	if ((!isset($_POST['y1'])) || (!isset($_POST['y2'])) || (!isset($_POST['y3'])) || (!isset($_POST['y4'])) || (!isset($_POST['y5']))) {exit;}
 	$chemintmp = $_POST['chemin'];
 	for ($i = 1 ; $i <= 5 ; $i++) {
-		if (empty($_POST['image' . $i]) || (substr_count($_POST['image' . $i], "couv") == 0)) {EffaceFichier($chemin . $id . "couv" . $i . ".jpg");}
+		if (empty($_POST['image' . $i]) || (substr_count($_POST['image' . $i], "couv") == 0)) {
+			EffaceFichier($chemin . $id . "couv" . $i . ".jpg");
+		}
 		else {
-			DeplaceFichier($chemintmp . $id . "couv" . $i . ".jpg", $chemin . $id . "couv" . $i . ".jpg");
+			DeplaceFichier($chemintmp . $_POST['image' . $i], $chemin . $id . "couv" . $i . ".jpg");
+			$_POST['image' . $i] = $id . "couv" . $i . ".jpg";
 		}
 	}
 }

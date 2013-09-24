@@ -3,6 +3,7 @@
 <?php
 	include_once '../../config/configuration.inc.php';
 	include'../head.php';
+	ini_set('memory_limit', '-1');
 	
 	$MessageAction = "Enregistrer";
 	$MessageInfo = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";

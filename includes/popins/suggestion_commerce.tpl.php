@@ -49,9 +49,12 @@
 				if (typeof(data.id_categorie) == 'undefined') {
 					html = $(idselect).html();
 					for (var k in result) {html += '<option value=\"'+result[k].id_categorie+'\">'+result[k].categorie_principale+'</option>';}
-				} else {
+				} else if (typeof(data.id_sous_categorie) == 'undefined') {
 					html = '';
 					for (var k in result) {html += '<option value=\"'+result[k].id_sous_categorie+'\">'+result[k].sous_categorie+'</option>';}
+				} else {
+					html = '';
+					for (var k in result) {html += '<option value=\"'+result[k].id_sous_categorie2+'\">'+result[k].sous_categorie2+'</option>';}				
 				}
 				$(idselect).html(html);
 			},

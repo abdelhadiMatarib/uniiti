@@ -3,7 +3,8 @@ header('Content-Type: application/json');
 include_once '../config/configuration.inc.php';
 include_once '../config/configPDO.inc.php';
 include_once 'fonctions.inc.php';
-
+ini_set('memory_limit', '-1');
+	
 function CreerImageBox ($image, $ImageRecalibree, $x, $WidthCouv, $HeightCouv) {
 
 	$couv = $ImageRecalibree;
