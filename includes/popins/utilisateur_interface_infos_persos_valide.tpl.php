@@ -16,7 +16,7 @@
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Retour à votre profil</a></div>
+        <div onclick="window.location.reload();" class="suggestioncommerce_valider_wrap"><a href="#">Réactualiser la page / Retour à votre profil</a></div>
         
     </div>
 </div>

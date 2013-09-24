@@ -685,6 +685,9 @@ input.input_signalement_motif{width:290px;}
 .utilisateur_infospersos_input_pseudo,.utilisateur_infospersos_input_ddn,.utilisateur_infospersos_input_profession,.utilisateur_infospersos_input_ville,.utilisateur_infospersos_input_mdp,.utilisateur_infospersos_input_confirmmdp,.utilisateur_infospersos_input_email,.utilisateur_infospersos_input_confirmemail,.utilisateur_infospersos_input_tel{float:left;}
 .utilisateur_infospersos_body input{padding:10px;background-color:#f0f0f0;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;width: 269px;height: 20px;}
 .utilisateur_infospersos_body span{border-bottom:1px solid #e4e4e4;background-color:white;font-size:1.2em;float:left;width:190px;height:20px;padding:10px;}
+.utilisateur_infospersos_sexe_button{text-align:center;padding-top:10px;display:inline-block;width:142.5px;height:30px;border-bottom:1px solid #e4e4e4;}
+.utilisateur_infospersos_sexe_button:hover{cursor:pointer;}
+.utilisateur_infospersos_input_date{text-align:center;padding-top:10px;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;background-color:#f0f0f0;width:94.4px;height:41px;}
 .parrainage_body{position:relative;}
 .reservation_body{position:relative;}
 .parrainage_option1,.parrainage_option2{float:left;width:690px;padding:5px;background-color:#73d4dc;}

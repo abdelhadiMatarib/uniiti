@@ -98,7 +98,7 @@
 			. "date_naissance_annee:" . $date_naissance_annee_contributeur . ", "
 			. "cp_contributeur:'" . $cp_contributeur . "', "
 			. "ville_contributeur:'" . $ville_contributeur . "', "
-			. "profession_contributeur:'" . $ville_contributeur . "', "
+			. "profession_contributeur:'" . $profession_contributeur . "', "
 			. "email_login:'" . $email_contributeur . "', "
 			. "mdp:'" . $password_contributeur . "', "
 			. "telephone_contributeur:'" . $telephone_contributeur . "'}";
@@ -143,7 +143,7 @@
                         </div>
                     </div>
                     <div class="utilisateur_head_desc_desc"><div class="img_container"><img src="../img/marker_map.png" title="" alt="" height="23" width="15"/></div><span><?php switch ($sexe_contributeur) {case 1: echo "Homme";break; case 0: echo "Femme";break;}?></span><span class="utilisateur_head_desc_desc_lastcat"><?php echo $age; ?></span></div>
-                    <div class="utilisateur_head_desc_desc2"><div class="img_container"><img src="../img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></div><span>Restaurateur</span><span class="utilisateur_head_desc_desc2_lastcat">Paris</span></div>
+                    <div class="utilisateur_head_desc_desc2"><div class="img_container"><img src="../img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></div><span><?php echo $profession_contributeur; ?></span><span class="utilisateur_head_desc_desc2_lastcat"><?php echo $ville_contributeur; ?></span></div>
                     </div>
                 <div class="objet_head_note">
                     <div class="objet_head_note_stars">
