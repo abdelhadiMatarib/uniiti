@@ -99,8 +99,12 @@
 		$RequeteNow->execute();
 		$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
 
+		// Tirage au hasard top 50 commerces
+		$CompteurTop50 = rand(1, $NbItems);
+		$Compteur = 0;
 		while ($row = $req2->fetch(PDO::FETCH_ASSOC))
 		{
+			$Compteur++;
 			// Provenances des avis
 			$type = $row['type'];
 			$provenance = $row['provenance'];
@@ -279,11 +283,13 @@
 				</footer>
 				
 			</div>
+			<?php if ($CompteurTop50 == $Compteur) { ?>
 			<!-- FIN VIGNETTE TYPE -->
-                        <div class="box top_50_commerces">
-                            <div class="box_top_50_commerces_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/icon_top50.png"/></div>
-                            <span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
-                        </div>
+			<div class="box top_50_commerces">
+				<div class="box_top_50_commerces_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/icon_top50.png"/></div>
+				<span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
+			</div>
+			<?php } ?>
 	<?php
 		} // Fin du while
 
