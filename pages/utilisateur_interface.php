@@ -34,12 +34,19 @@
 	$y5    = $result['y5'];
 	$prenom_contributeur    = $result['prenom_contributeur'];
 	$nom_contributeur       = $result['nom_contributeur'];
+	$pseudo_contributeur       = $result['pseudo_contributeur'];
 	$sexe_contributeur 		= $result['sexe_contributeur'];
 	$cp_contributeur 		= $result['cp_contributeur'];
+	$ville_contributeur 	= $result['ville_contributeur'];
+	$profession_contributeur = $result['profession_contributeur'];
+
 	$date_naissance_jour_contributeur 		= $result['date_naissance_jour_contributeur'];
 	$date_naissance_mois_contributeur 		= $result['date_naissance_mois_contributeur'];
 	$date_naissance_annee_contributeur 		= $result['date_naissance_annee_contributeur'];
 	$email_contributeur 	= $result['email_contributeur'];
+	$password_contributeur 	= $result['password_contributeur'];
+	$telephone_contributeur 	= $result['telephone_contributeur'];
+
 
 	$RequeteNow = $bdd->prepare("select NOW() AS Maintenant");
 	$RequeteNow->execute();
@@ -80,6 +87,22 @@
 			. "y3 : '" . $y3 . "', "
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
+
+	$datamodif = "{id_contributeur : " . $id_contributeur . ", "
+			. "nom_contributeur:'" . addslashes($nom_contributeur) . "', "
+			. "prenom_contributeur:'" . addslashes($prenom_contributeur) . "', "
+			. "sexe_contributeur:" . $sexe_contributeur . ", "
+			. "pseudo_contributeur:'" . addslashes($pseudo_contributeur) . "', "
+			. "date_naissance_jour:" . $date_naissance_jour_contributeur . ", "
+			. "date_naissance_mois:" . $date_naissance_mois_contributeur . ", "
+			. "date_naissance_annee:" . $date_naissance_annee_contributeur . ", "
+			. "cp_contributeur:'" . $cp_contributeur . "', "
+			. "ville_contributeur:'" . $ville_contributeur . "', "
+			. "profession_contributeur:'" . $ville_contributeur . "', "
+			. "email_login:'" . $email_contributeur . "', "
+			. "mdp:'" . $password_contributeur . "', "
+			. "telephone_contributeur:'" . $telephone_contributeur . "'}";
+			
 ?>
 <body>
     <div id="default_dialog_large"></div>
@@ -107,7 +130,7 @@
                         <h2><?php echo $prenom_contributeur . " " . $nom_contributeur; ?></h2>
                     </div>
                     <div class="utilisateur_interface_engrenage">
-                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin({}, '/includes/popins/utilisateur_interface_infos_persos.tpl.php', 'default_dialog');"></a></div>
+                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin(<?php echo $datamodif; ?>, '/includes/popins/utilisateur_interface_infos_persos.tpl.php', 'default_dialog');"></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>

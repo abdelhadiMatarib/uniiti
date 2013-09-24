@@ -3,6 +3,7 @@ header('Content-Type: application/json');
 include_once 'fonctions.inc.php';
 include_once '../config/configPDO.inc.php';
 include_once '../config/configuration.inc.php';
+ini_set('memory_limit', '-1');
 
 $id_contributeur = $_POST['id_contributeur'];
 
