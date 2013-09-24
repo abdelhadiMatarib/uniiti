@@ -107,12 +107,16 @@
 						for (var k in result) {html += '<option value=\"'+result[k].id_arrondissement+'\">'+result[k].arrondissement+'</option>';}
 						AfficheQuartiers({id_ville:data.id_ville, id_arrondissement:result[1].id_arrondissement}, "#id_quartier");
 					}
-					else {AfficheQuartiers({id_ville:data.id_ville, id_arrondissement:0}, "#id_quartier");}
+					else {
+						html = '<option value=\"0\">indéfini</option>';
+						AfficheQuartiers({id_ville:data.id_ville, id_arrondissement:0}, "#id_quartier");
+					}
 				} else {
 					html = '';
 					if (typeof(result.noresult) == 'undefined') {
 						for (var k in result) {html += '<option value=\"'+result[k].id_quartier+'\">'+result[k].quartier+'</option>';}
 					}
+					else {html = '<option value=\"0\">indéfini</option>';}
 				}
 				$(idselect).html(html);
 			},

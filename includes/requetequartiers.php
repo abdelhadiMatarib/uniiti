@@ -19,7 +19,7 @@ else {
 $req->execute();
 $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$result) {$data[1]['noresult'] = 'no result';}
+if (!$result) {$data['noresult'] = 'no result';}
 else {
 	$Compteur = 0;
 	foreach ($result as $row)

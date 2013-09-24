@@ -1,7 +1,7 @@
 // pour tester
 
 function AfficheImage(img) {
-	img.fadeIn(1000);
+	img.fadeIn(1000, function () {img.parent().css({'background':'none'});});
 }	
 /*
 $("a").click(function(e) {
@@ -129,7 +129,7 @@ function CreerOverlayPush() {
 		$('.overlay_push').css('display','none');
 		overlay_push.css('display','block');
     });	
-	$(".box_push_et_img img").each(function () {$(this).load(function () {$(this).fadeIn(1000);});});
+	$(".box_push_et_img img").each(function () {$(this).load(function () {$(this).fadeIn(1000, function () {img.parent().css({'background':'none'});});});});
 /*	$(".box section").each(function () {$(this).click(function () {				////////////////// ATTENTION ATTENTION GESTION INTERNET EXPLORER
 			eval($(this).attr('onclick'));
 		});
