@@ -48,7 +48,7 @@ include'../includes/js.php';?>
 
                                         <div class="box_foot">
                                                 <div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                                                <div class="box_posttime"><time>Il y a <strong></strong></time></div>
+                                                <div class="box_user_time"></div>
                                                 <div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
                                         </div>
                                 </footer>
@@ -153,7 +153,7 @@ include'../includes/js.php';?>
 
                                         <div class="box_foot">
                                                 <div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
-                                                <div class="box_posttime_new"><span class="box_new_item">nouveau</span></div>
+                                                <div class="box_user_time"></div>
                                                 <div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
                                         </div>
                                 </footer>
@@ -197,7 +197,7 @@ include'../includes/js.php';?>
                 
                 <div class="box_foot">
                     <div class="box_userpic"><a href=""><img src="../img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong></strong></time></div>
+                    <div class="box_user_time"></div>
                     <div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
                 </div>
             </footer>
@@ -240,7 +240,7 @@ include'../includes/js.php';?>
                 
                 <div class="box_foot">
                     <div class="box_userpic"><a href=""><img src="../img/avatars/1.png" title="" alt="" /></a></div>
-                    <div class="box_posttime"><time>Il y a <strong></strong></time></div>
+                    <div class="box_user_time"></div>
                     <div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
                 </div>
             </footer>

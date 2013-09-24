@@ -1,4 +1,5 @@
 /* GENERAL */
+.custom-tooltip-styling{background-color:#252525;color:white;margin-top:-10px;}
 img#ImageSuivre{height:32px;width:32px;}
 img#ImageSuivrePopin{height:32px;width:32px;}
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
@@ -129,10 +130,10 @@ span.index_overlay_texte{display:block;}
 
 /* FILTRES */
 .filters{display: none;margin: 14px 0 14px 0;-webkit-border-radius: 3px;border-radius: 3px;background-color:white;}
-.filters{height:45px;}
+.filters{height:50px;}
 .rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{float:left;display:inline-block;}
 .rang0,.rang1,.rang2,.rang3,.rang4{float:left;position:relative;}
-.rang0 ul li,.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{position:relative;list-style:none;cursor:pointer;margin-right:1px;height:45px;width:45px;font-size:0.9em;text-align:center;background-color:#A4EBF1;color:white;}
+.rang0 ul li,.rang1 ul li,.rang2 ul li,.rang3 ul li,.rang4 ul li{position:relative;list-style:none;cursor:pointer;margin-right:1px;height:50px;width:50px;font-size:0.9em;text-align:center;background-color:#A4EBF1;color:white;}
 .button_all{-webkit-border-radius: 3px 0 0 3px;border-radius: 3px 0 0 3px;background: url('../img/sprite_filtre.png') no-repeat 10px 10px;}
 .button_avis{position:relative;background: url('../img/sprite_filtre.png') no-repeat -170px 10px;}
 .button_like{position:relative;background: url('../img/sprite_filtre.png') no-repeat -35px 10px;}

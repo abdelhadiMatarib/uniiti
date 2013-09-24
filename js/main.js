@@ -1063,6 +1063,8 @@ function resizeboxContainer(){
 
 $(document).ready(function() {
     
+    $(document).tooltip({ tooltipClass: "custom-tooltip-styling" });
+    $(document).tooltip( "option", "position", { my: "left", at: "left top+50" } );
     // RECHERCHE AVANCEE TRIGGER BASIC EVENTS
     $('.recherche_avancee_wrapper').delegate('.close_button_cdr','click',function(){
        if(
