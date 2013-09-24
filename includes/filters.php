@@ -226,9 +226,6 @@ ON t1.id_categorie = t3.id_categorie */
     <div class="leflux_wrapper">
         <a href="#" title=""><span>filtrer le flux</span></a>
     </div>
-    <?php 
-    include_once'js.php';
-    ?>
     <script>
     $('.filters').delegate('.rang2 li','click', function(){
        var cat_txt = $(this).attr('title');
