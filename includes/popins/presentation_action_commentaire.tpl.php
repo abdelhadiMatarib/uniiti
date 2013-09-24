@@ -89,7 +89,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
 			<?php if (($provenance == 'avis') && ($_POST['commentaire'] != "pas de commentaire")) { ?>
-				<div class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
+				<div title="Signaler cet avis" class="presentation_action_signalement_flag"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_signalement_flag.png"/></div>
 			<?php } ?>
             <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action"><?php echo $action ?> <?php if ($_POST['commentaire'] == "pas de commentaire") { ?><span style="color:<?php echo $_POST['couleur']; ?>;font-weight: bold;"><?php echo $_POST['note'] / 2; ?>/5 <?php } ?></span>

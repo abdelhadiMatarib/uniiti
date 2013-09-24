@@ -127,7 +127,7 @@ function CreerOverlayPush() {
 			$('.overlay_push').css('display','none');
 		});
 		$('.overlay_push').css('display','none');
-		overlay_push.css('display','block');
+		overlay_push.stop().fadeIn();
     });	
 	$(".box_push_et_img img").each(function () {$(this).load(function () {$(this).fadeIn(1000, function () {$(this).parent().css({'background':'none'});});});});
 /*	$(".box section").each(function () {$(this).click(function () {				////////////////// ATTENTION ATTENTION GESTION INTERNET EXPLORER
@@ -1055,7 +1055,6 @@ function resizeboxContainer(){
 $(document).ready(function() {
     
     $(document).tooltip({ tooltipClass: "custom-tooltip-styling" });
-    $(document).tooltip( "option", "position", { my: "left", at: "left top+50" } );
     // RECHERCHE AVANCEE TRIGGER BASIC EVENTS
     $('.recherche_avancee_wrapper').delegate('.close_button_cdr','click',function(){
        if(

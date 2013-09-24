@@ -177,7 +177,7 @@ ON t1.id_categorie = t3.id_categorie */
 						if (!empty($CompteurCategorie['all'][$Key])) {
 							foreach ($ProvAvis as $provenance) {
 								if (!empty($CompteurCategorie[$provenance][$Key])) { ?>
-									<li style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosCategoriesx[$Key] . "px" . " " . $PosCategoriesy[$Key] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
+					<li id="filtre_cat_text" title="<?php echo $Categorie ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosCategoriesx[$Key] . "px" . " " . $PosCategoriesy[$Key] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
 					<?php 		} /*<?php echo $Categorie ?>*/
 							}
 						}
@@ -193,7 +193,7 @@ ON t1.id_categorie = t3.id_categorie */
 								if (!empty($CompteurSousCategorie['all'][$Key2])) {
 									foreach ($ProvAvis as $provenance) {
 										if (!empty($CompteurSousCategorie[$provenance][$Key2])) { ?>
-					<li style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosSousCategoriesx[$Key2] . "px" . " " . $PosSousCategoriesy[$Key2] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
+					<li id="filtre_ss_cat_text" title="<?php echo $SousCategorie ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosSousCategoriesx[$Key2] . "px" . " " . $PosSousCategoriesy[$Key2] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
 					<?php 				} /* <?php echo $SousCategorie ?> */ 
 									}
 								}
@@ -212,7 +212,7 @@ ON t1.id_categorie = t3.id_categorie */
 										foreach ($ProvAvis as $provenance) {
 											if (!empty($CompteurSousCategorie2[$provenance][$Key3])) { 								
 												if ($SousCategorie2 != "") { ?>
-					<li style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosSousCategories2x[$Key3] . "px" . " " . $PosSousCategories2y[$Key3] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
+					<li id="filtre_ss_ss_cat_text" title="<?php echo $SousCategorie2 ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosSousCategories2x[$Key3] . "px" . " " . $PosSousCategories2y[$Key3] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
 					<?php						} /* <?php echo $SousCategorie2 ?> */
 											}
 										}
@@ -226,8 +226,16 @@ ON t1.id_categorie = t3.id_categorie */
     <div class="leflux_wrapper">
         <a href="#" title=""><span>filtrer le flux</span></a>
     </div>
-    <style>
-        
-    </style>
+    <?php 
+    include_once'js.php';
+    ?>
+    <script>
+    $('.filters').delegate('.rang2 li','click', function(){
+       var cat_txt = $(this).attr('title');
+       console.log(cat_txt);
+       /*$('.leflux_wrapper a span').text(cat_txt);
+       console.log(cat_txt);*/
+    });
+    </script>
 </div>
 <!--</nav>-->

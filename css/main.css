@@ -1,5 +1,5 @@
 /* GENERAL */
-.custom-tooltip-styling{background-color:#252525;color:white;margin-top:-10px;}
+.custom-tooltip-styling{background-color:#252525;color:white;margin-top:-10px;border-radius:3px;}
 img#ImageSuivre{height:32px;width:32px;}
 img#ImageSuivrePopin{height:32px;width:32px;}
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}

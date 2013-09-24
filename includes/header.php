@@ -48,13 +48,13 @@
 				<input id="inputSearch2Hidden" type="hidden" value=""/>
 				<div class="suggestionsContainer display-none" id="suggestionsContainer2"><ul class="suggestionList" id="suggestionList2"><li>&nbsp;</li></ul></div>
 			</div>
-            <div class="header_button_plus" id="recherche_avancee_button"><button type="button">+</button></div>
+            <div class="header_button_plus" id="recherche_avancee_button"><button title="Champ de recherche avancée" type="button">+</button></div>
             <div id="ButtonFiltre" class="header_button_search"><button type="button"></button></div>
 
         </div>
 
         <div class="header_logo">
-            <a href="<?php echo SITE_URL . "/timeline.php"; ?>" title="UNIITI"></a>
+            <a href="<?php echo SITE_URL . "/timeline.php"; ?>"></a>
         </div>
 
         <div class="header_rightnav">
