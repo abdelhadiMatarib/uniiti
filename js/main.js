@@ -3,7 +3,7 @@
 function AfficheImage(img) {
 	img.fadeIn(1000);
 }	
-
+/*
 $("a").click(function(e) {
 	if (($("#loading_page").length > 0) && ($(this).attr("href") != "#")) {
 		e.preventDefault(); //don't go to default URL
@@ -11,24 +11,15 @@ $("a").click(function(e) {
 		var url=this.href;
 		var left = $("#loading_page").css("left");
 		var decalagelateral = Math.floor(left.substring(0, left.length - 2)) ;
-/*		var top = $("#loading_page").css("top");
-		var decalagevertical = Math.floor(top.substring(0, top.length - 2)) ; */
 		if (decalagelateral > 0 ) {
 			$("#loading_page").animate({ left: "0px"}, 500, function () {window.location.assign(url);});
 		}
-//		else if (decalagelateral == 0 ) {
 		else {
 			$("#loading_page").animate({ right : "0px"}, 500, function () {window.location.assign(url);});		
 		}
-/*		else if (decalagevertical < 0 ) {
-			$("#loading_page").animate({ top : "0px"}, 500, function () {window.location.assign(url);});		
-		}
-		else if (decalagevertical == 0 ) {
-			$("#loading_page").animate({ bottom : "0px"}, 500, function () {window.location.assign(url);});		
-		}*/
 	//$("#loading_page").fadeOut(3000);
 	} else if ($(this).attr("href") != "#") {$("body").fadeOut(3000);}
-});
+});*/
 // fin pour tester
 
 datanvelements = {init:1};

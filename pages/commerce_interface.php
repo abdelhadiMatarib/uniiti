@@ -59,7 +59,9 @@
 	$code_postal             = $result2['cp_enseigne'];
 	$ville_enseigne          = $result2['ville_enseigne'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
-	$descriptif              = $result2['descriptif'];
+	$descriptif				 = str_replace(PHP_EOL ,"", stripslashes($result2['descriptif']));
+	$descriptif			 	 = str_replace("\r" , "", $descriptif);
+	$descriptif			 	 = str_replace("\n" , "", $descriptif);	
 	$categorie				 = $result2['categorie_principale'];
 	$sous_categorie          = $result2['sous_categorie'];
 	$sous_categorie2         = $result2['sous_categorie2'];
@@ -118,6 +120,8 @@
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
 
+		
+			
 	$datamodif = "{type : 'enseigne', "
 			. "id_enseigne : " . $id_enseigne . ", "
 			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
@@ -157,7 +161,6 @@ else {
 ?>
 
     <body>
-		<div id="loading_page" style="z-index:1000;background-image:url('../img/pictos_splash/splash_img2.jpg');"></div>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>

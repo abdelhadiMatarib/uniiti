@@ -120,6 +120,8 @@ ON t1.id_categorie = t3.id_categorie */
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($result as $row) {
 			$Lien1Categories[$row['id_categorie']] = $row['categorie_principale'];
+			$PosCategoriesx[$row['id_categorie']] = $row['posx'];
+			$PosCategoriesy[$row['id_categorie']] = $row['posy'];
 		}
 		$sql = "SELECT * FROM sous_categories";
 		$req = $bdd->prepare($sql);
@@ -127,6 +129,8 @@ ON t1.id_categorie = t3.id_categorie */
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($result as $row) {
 			$Lien2Categories[$row['id_categorie']][$row['id_sous_categorie']] = $row['sous_categorie'];
+			$PosSousCategoriesx[$row['id_sous_categorie']] = $row['posx'];
+			$PosSousCategoriesy[$row['id_sous_categorie']] = $row['posy'];
 		}
 		$sql = "SELECT * FROM sous_categories2";
 		$req = $bdd->prepare($sql);
@@ -134,6 +138,8 @@ ON t1.id_categorie = t3.id_categorie */
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($result as $row) {
 			$Lien3Categories[$row['id_categorie']][$row['id_sous_categorie']][$row['id_sous_categorie2']] = $row['sous_categorie2'];
+			$PosSousCategories2x[$row['id_sous_categorie2']] = $row['posx'];
+			$PosSousCategories2y[$row['id_sous_categorie2']] = $row['posy'];
 		}
 		$notifmoins100 = "notifs_filter";
 		$notifplus100 = "notifs_filter2";
@@ -166,23 +172,23 @@ ON t1.id_categorie = t3.id_categorie */
 				<?php } ?>
             </ul> 
         </div>
-        <div class="rang2">
-            <ul>
+		<div class="rang2">
+			<ul>
 				<?php 
 				$Compteur = 0;
 				foreach ($Lien1Categories as $Key => $Categorie) { 
 					if (!empty($CompteurCategorie['all'][$Key])) {
 						foreach ($ProvAvis as $provenance) {
 							if (!empty($CompteurCategorie[$provenance][$Key])) { ?>
-								<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><?php echo $Categorie ?><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
-				<?php 		}
+								<li style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosCategoriesx[$Key] . "px" . " " . $PosCategoriesy[$Key] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?>"><div class="<?php if ($CompteurCategorie[$provenance][$Key] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurCategorie[$provenance][$Key] ?></span></div></li>
+				<?php 		} /*<?php echo $Categorie ?>*/
 						}
 					}
 				} ?>
-            </ul>            
-        </div>
-        <div class="rang3">
-            <ul>
+			</ul>            
+		</div>
+		<div class="rang3">
+			<ul>
 				<?php 
 					$Compteur = 0;
 					foreach ($Lien2Categories as $Key => $Categorie) { 
@@ -190,16 +196,16 @@ ON t1.id_categorie = t3.id_categorie */
 							if (!empty($CompteurSousCategorie['all'][$Key2])) {
 								foreach ($ProvAvis as $provenance) {
 									if (!empty($CompteurSousCategorie[$provenance][$Key2])) { ?>
-				<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie ?><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
-				<?php 				}
+				<li style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosSousCategoriesx[$Key2] . "px" . " " . $PosSousCategoriesy[$Key2] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><div class="<?php if ($CompteurSousCategorie[$provenance][$Key2] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie[$provenance][$Key2] ?></span></div></li>
+				<?php 				} /* <?php echo $SousCategorie ?> */ 
 								}
 							}
 						}
 					  }	?>
-            </ul>            
-        </div>
-        <div class="rang4">
-            <ul>
+			</ul>            
+		</div>
+		<div class="rang4">
+			<ul>
 				<?php 
 					$Compteur = 0;
 					foreach ($Lien3Categories as $Key => $Categorie) {
@@ -209,15 +215,15 @@ ON t1.id_categorie = t3.id_categorie */
 									foreach ($ProvAvis as $provenance) {
 										if (!empty($CompteurSousCategorie2[$provenance][$Key3])) { 								
 											if ($SousCategorie2 != "") { ?>
-				<li onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><?php echo $SousCategorie2 ?><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
-				<?php						}
+				<li style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $PosSousCategories2x[$Key3] . "px" . " " . $PosSousCategories2y[$Key3] . "px"?>" onclick="SetFiltre({provenance:'<?php echo $provenance ?>', categorie:<?php echo $Key ?>, scategorie:<?php echo $Key2 ?>, sscategorie:<?php echo $Key3 ?>});" class="<?php echo $provenance ?> cat<?php echo $Key ?> sscat<?php echo $Key2 ?>"><div class="<?php if ($CompteurSousCategorie2[$provenance][$Key3] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurSousCategorie2[$provenance][$Key3] ?></span></div></li>
+				<?php						} /* <?php echo $SousCategorie2 ?> */
 										}
 									}
 								}
 							}
 						}
 					  }	?>
-            </ul>            
-        </div>
+			</ul>            
+		</div>
 </div>
 <!--</nav>-->
