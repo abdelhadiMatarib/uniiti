@@ -252,7 +252,7 @@
 				<footer>
 					
 					<div class="box_foot">
-						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>" src="<?php echo $SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" /></a></div>
+						<div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img title="<?php echo $prenom_contributeur . ' ' . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>" src="<?php echo $SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" /></a></div>
 						<div class="box_user_time"><?php echo $delai_avis;  ?></div>
 						<div class="box_posttype" <?php echo AfficheProvenance($provenance, $categorie); ?>></div>
 					</div>
