@@ -179,11 +179,14 @@ function AjusteCouvertures(NewWidth) {
 		}
 	}
 }
-	
+	// LES AJUSTEMENTS SUR LA TAILLE DU TEXTE, TAILLE DES CONTAINERS ET AUTRES SUR 
+        // PAGE COMMERCE, PAGE UTILISATEUR ET PAGE OBJET SE FONT ICI.
+        // LA LARGEUR DU HEADER 'EN DESSOUS DU LISERET' SE FAIT PAR RAPPORT A LA TAILLE DU MUR DE BOX.
+
         // RESIZING THE WRAPPER DEPENDING ON BOXES CONTAINER
-function resizeboxContainer(){
+        function resizeboxContainer(){
 	var boxcontainersize = $('#box_container').width();
-    var biggymarginer = $('.biggymarginer').width();
+        //var biggymarginer = $('.biggymarginer').width();
 
 	if (boxcontainersize == 250){$('.big_wrapper').css('width',236);AjusteCouvertures(236);}
 	if (boxcontainersize == 500){$('.big_wrapper').css('width',486);AjusteCouvertures(486);}
@@ -793,7 +796,7 @@ function resizeboxContainer(){
 		$('.wrapper_boutons').css('top','110px');
 
                 $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','500px');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','10px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
@@ -942,7 +945,7 @@ function resizeboxContainer(){
 		$('.wrapper_boutons').css('top','145px');
 		
                 $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','580px');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','10px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
@@ -1181,7 +1184,6 @@ $(document).ready(function() {
 $('#close_button_home').click(function() {
   $('#total_overlay').hide('fast');
     });
-    
     // Menu déroulant header USER (right)
     $('#header_usermenu,#header_usermenu2').click(function(){
        $('#header_menu').stop().slideToggle(150);

@@ -319,7 +319,7 @@
 			<?php } ?>
                         <?php if ($CompteurAlea3 == $Compteur) { ?>
 			<!-- FIN VIGNETTE TYPE -->
-                        <div class="box box_aleatoire">
+                        <div class="box box_aleatoire" onclick="window.open('https://facebook.com/pages/Captain-Opinion/125613297563851');">
                             <div class="box_aleatoire_img_container_sociaux">
                                 <img id="picto_fb" src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_fb.png" height="50" width="50"/>
                                 <img id="picto_tw" src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_tw.png" height="50" width="50"/>

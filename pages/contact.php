@@ -93,19 +93,19 @@
         <!-- CONTENU PRINCIPAL -->
         <style>
             .hidden_boxes{position:relative;z-index:-100;}
-            .contact_wrap{position:relative;z-index:99;margin:14px 0;}
-            .contact_head{border-radius:3px 3px 0 0;float:left;background-color:white;width:1249px;padding:10px;height:20px;}
+            .contact_wrap{position:relative;z-index:99;margin:14px 0;float:left;width:100%;}
+            .contact_head{border-radius:3px 3px 0 0;float:left;background-color:white;width:98.1%;padding:10px;height:20px;}
             .contact_head span{font-size:1.2em;}
             .contact_body{float:left;}
             .contact_txt_items,.contact_input_items,.contact_textarea_items{float:left;background-color:#f0f0f0;}
-            .contact_input_items{width:1018px;height:50px;border-top:1px solid #e4e4e4;}
-            .contact_textarea_items{border-top:1px solid #e4e4e4;}
-            .contact_txt_items{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;width:230px;height:30px;text-align:center;padding:10px;}
+            .contact_input_items{float:left;width:78%;height:50px;border-top:1px solid #e4e4e4;}
+            .contact_textarea_items{border-top:1px solid #e4e4e4;width:78%;}
+            .contact_txt_items{float:left;border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;width:20%;height:30px;text-align:center;padding:10px;}
             .contact_txt_items span{font-size:1.2em;text-transform:uppercase;}
-            .contact_input_items input{padding:10px;background-color:#f0f0f0;width:998px;height:29px;}
-            .contact_textarea_items textarea{padding:10px;background-color:#f0f0f0;width:998px;resize:none;height:230px;}
+            .contact_input_items input{padding:10px;background-color:#f0f0f0;width:80%;height:29px;}
+            .contact_textarea_items textarea{padding:10px;background-color:#f0f0f0;width:80%;resize:none;height:230px;}
             #contact_form_message{height:230px;}
-            .contact_footer{width:1269px;}
+            .contact_footer{width:100%;}
         </style>
         
         <div class="contact_wrap">

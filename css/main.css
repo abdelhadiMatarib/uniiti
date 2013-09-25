@@ -93,7 +93,7 @@ span.index_overlay_texte{display:block;}
 }
 input#inputSearch1{cursor:default;padding:0 0 0 50px;background:url('../img/pictos_actions/placeholder_quoi.png') no-repeat 10px #e3e4e4;}
 input#inputSearch2{cursor:default;padding:0 0 0 40px;background:url('../img/pictos_actions/placeholder_ou.png') no-repeat 10px #e3e4e4;}
-.header button{background-color:#f0f0f0;}
+.header button{background-color:#e3e4e4;}
 
 .header_leftnav{position:relative;height:30px;float:left;}
 .header_rightnav{position:relative;height:30px;float:right;}
@@ -392,7 +392,7 @@ span.follower_identity_txt{display:block;}
 span.follower_identity_txt_avis{font-size:0.9em;font-weight:600;display:inline-block;}
 span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;display:inline-block;}
 
-.commerce_couv{position:relative;height:496px; overflow:hidden;}
+.commerce_couv{position:relative;height:496px; overflow:hidden;border-radius:0px 0px 4px 4px}
 .ligne_verticale1{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:730px;z-index: 100;}
 .ligne_verticale2{position:absolute;bottom:0;width:1px;height:285px;border-left:1px dashed white;left:925px;z-index: 100;}
 .commerce_couv img{max-width:100%; /*margin-top: -330px*/}
@@ -503,7 +503,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 
 /* UTILISATEUR */
 
-.liseret_gris{background-color:#cbcbcb;height:5px;}
+.liseret_gris{background-color:#cbcbcb;height:5px;border-radius:3px 3px 0px 0px;}
 .utilisateur_head_desc_avatar .img_container .utilisateur_interface_modifier_couv{left: 8px;top: 103px;width: 96px;height: 15px;font-size: 0.8em;}
 .utilisateur_interface_modifier_icon_noir img{border:none !important;}
 .utilisateur_head_desc_title{float:left;padding: 0 0 5px 10px;}
@@ -889,7 +889,7 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .valider_dialog_large a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
 .valider_dialog_large a:hover{color:white;background-color:#73d4dc;}
 
-.bouton_envoyer_contact_wrap{width:100%;font-size:1.1em;text-align:center;float:left;}
+.bouton_envoyer_contact_wrap{width:98.1%;font-size:1.1em;text-align:center;float:left;}
 .bouton_envoyer_contact_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
 .bouton_envoyer_contact_wrap a:hover{color:white;background-color:#73d4dc;}
 .oublimdp_valider_wrap a,.suggestioncommerce_valider_wrap a,.suggestionobjet_valider_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
@@ -1199,6 +1199,8 @@ input.splash_input_login::-moz-placeholder, input.splash_input_password::-moz-pl
 input.splash_input_login:-ms-input-placeholder, input.splash_input_password:-ms-input-placeholder{ color:#fff; } /* ie */
 input.splash_input_login:-moz-placeholder.splash_input_login, input.splash_input_password:-moz-placeholder { color:#fff; }
 input:focus, input:focus {outline: 1px solid rgba(255,255,255,0.3);}
+textarea:focus, textarea:focus {outline: 1px solid rgba(255,255,255,0.3);}
+select:focus, select:focus {outline: 1px solid rgba(255,255,255,0.3);}
 input:focus.splash_input_login,input:focus.splash_input_password{outline: 1px solid rgba(255,255,255,0.3);background-color: rgba(255,255,255,0.08);}
 .splash_input_password{background:url('../img/pictos_splash/icon_clef.png') no-repeat 5px 15px; margin-top:-1px;}
 .splash_input_button{background-color:transparent;border:1px dashed white;width:185px;padding:5px 10px;color:white;font-size:1.4em;font-weight:300;margin-top:14px;}
