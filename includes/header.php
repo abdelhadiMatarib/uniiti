@@ -39,12 +39,12 @@
 
             <div class="header_button_menu"><button type="button"></button></div>
             <div class="header_searchbar1">
-				<input id="inputSearch1" type="text" value="" placeholder="Quoi"/>
+				<input id="inputSearch1" type="text" value="" placeholder="restaurant, boulangerie"/>
 				<input id="inputSearch1Hidden" type="hidden" value=""/>
 				<div class="suggestionsContainer display-none" id="suggestionsContainer1"><ul class="suggestionList" id="suggestionList1"><li>&nbsp;</li></ul></div>
 			</div>
             <div class="header_searchbar2">
-				<input id="inputSearch2" type="text" value="" placeholder="Où"/>
+				<input id="inputSearch2" type="text" value="" placeholder="Paris 15ème, Tour Eiffel"/>
 				<input id="inputSearch2Hidden" type="hidden" value=""/>
 				<div class="suggestionsContainer display-none" id="suggestionsContainer2"><ul class="suggestionList" id="suggestionList2"><li>&nbsp;</li></ul></div>
 			</div>

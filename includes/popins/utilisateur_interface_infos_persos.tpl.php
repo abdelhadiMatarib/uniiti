@@ -20,6 +20,7 @@
 				<div class="utilisateur_infospersos_sexe_button inscription_field_sexe_button_h" id="button_homme">Homme</div>
 				<div class="utilisateur_infospersos_sexe_button inscription_field_sexe_button_f" id="button_femme">Femme</div>
 			</div>
+                        
 			<span>Pseudo</span><div class="utilisateur_infospersos_input_pseudo"><input name="pseudo" id="pseudo" type="text" value="<?php if (!empty($_POST['pseudo_contributeur'])) {echo $_POST['pseudo_contributeur'];}?>"/></div>
 			<span>Date de naissance *</span><div class="utilisateur_infospersos_input_ddn">
 				<select required="required" name="date_naissance_jour" id="date_naissance_jour" class="utilisateur_infospersos_input_date" required="required">

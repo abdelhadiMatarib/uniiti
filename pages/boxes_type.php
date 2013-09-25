@@ -318,3 +318,36 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div class="box_top_50_commerces_img_container"><img src="../img/pictos_commerces/icon_top50.png"/></div>
     <span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
 </div>
+<div class="box box_aleatoire">
+    <div class="box_aleatoire_img_container">
+        <img src="../img/pictos_commerces/picto_commerce.png" height="69" width="69"/>
+    </div>
+    <span class="box_aleatoire_txt_1">Suggérer</span>
+    <span class="box_aleatoire_txt_2">un commerce</span>
+</div>
+<div class="box box_aleatoire">
+    <div class="box_aleatoire_img_container">
+        <img src="../img/pictos_commerces/picto_objet.png" height="69" width="69"/>
+    </div>
+    <span class="box_aleatoire_txt_1">Suggérer</span>
+    <span class="box_aleatoire_txt_2">un objet</span>
+</div>
+<div class="box box_aleatoire">
+    <div class="box_aleatoire_img_container_sociaux">
+        <img id="picto_fb" src="../img/pictos_commerces/picto_fb.png" height="50" width="50"/>
+        <img id="picto_tw" src="../img/pictos_commerces/picto_tw.png" height="50" width="50"/>
+        <img id="picto_gplus" src="../img/pictos_commerces/picto_gplus.png" height="50" width="50"/>
+    </div>
+    <span class="box_aleatoire_txt_1">Suivez</span>
+    <span class="box_aleatoire_txt_2">nous</span>
+</div>
+<style>
+    .box_aleatoire{cursor:pointer;width:236px;background-color:#252525;text-align:center;line-height:2.2em;}
+    .box_aleatoire_img_container{width:70px;margin:20px auto;}
+    .box_aleatoire_img_container_sociaux{width:190px;height:50px;margin:20px auto;}
+    .box_aleatoire_img_container_sociaux #picto_fb,.box_aleatoire_img_container_sociaux #picto_tw,.box_aleatoire_img_container_sociaux #picto_gplus{float:left;width:50px;height:50px;}
+    .box_aleatoire_img_container_sociaux #picto_fb,.box_aleatoire_img_container_sociaux #picto_tw{margin-right:20px;}
+    .box_aleatoire span{display:block;text-transform:uppercase;color:white;font-size:2em;}
+    span.box_aleatoire_txt_1{font-weight:700;}
+    span.box_aleatoire_txt_2{font-weight:300;margin-bottom:20px;}
+</style>
