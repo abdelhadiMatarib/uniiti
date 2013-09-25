@@ -342,12 +342,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <span class="box_aleatoire_txt_2">nous</span>
 </div>
 <style>
-    .box_aleatoire{cursor:pointer;width:236px;background-color:#252525;text-align:center;line-height:2.2em;}
-    .box_aleatoire_img_container{width:70px;margin:20px auto;}
-    .box_aleatoire_img_container_sociaux{width:190px;height:50px;margin:20px auto;}
-    .box_aleatoire_img_container_sociaux #picto_fb,.box_aleatoire_img_container_sociaux #picto_tw,.box_aleatoire_img_container_sociaux #picto_gplus{float:left;width:50px;height:50px;}
-    .box_aleatoire_img_container_sociaux #picto_fb,.box_aleatoire_img_container_sociaux #picto_tw{margin-right:20px;}
-    .box_aleatoire span{display:block;text-transform:uppercase;color:white;font-size:2em;}
-    span.box_aleatoire_txt_1{font-weight:700;}
-    span.box_aleatoire_txt_2{font-weight:300;margin-bottom:20px;}
+
 </style>

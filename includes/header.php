@@ -37,9 +37,20 @@
         
         <div class="header_leftnav">
 
-            <div class="header_button_menu"><button type="button"></button></div>
+            <div class="header_button_menu">
+                <button type="button"></button>
+                <div id="header_menu_left" class="header_infos_menulist">
+                    <ul>
+                        <li><a href="#">Comment ça marche ?</a></li>
+                        <li><a href="#">Uniiti c'est quoi ?</a></li>
+                        <li><a href="#">Uniiti pour les pros</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            
+            </div>
             <div class="header_searchbar1">
-				<input id="inputSearch1" type="text" value="" placeholder="restaurant, boulangerie"/>
+				<input id="inputSearch1" type="text" value="" placeholder="Restaurant, boulangerie"/>
 				<input id="inputSearch1Hidden" type="hidden" value=""/>
 				<div class="suggestionsContainer display-none" id="suggestionsContainer1"><ul class="suggestionList" id="suggestionList1"><li>&nbsp;</li></ul></div>
 			</div>

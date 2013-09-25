@@ -1182,9 +1182,14 @@ $('#close_button_home').click(function() {
   $('#total_overlay').hide('fast');
     });
     
-    // Menu déroulant header
+    // Menu déroulant header USER (right)
     $('#header_usermenu,#header_usermenu2').click(function(){
        $('#header_menu').stop().slideToggle(150);
+    });
+    
+    // Menu déroulant header INFOS (left)
+    $('.header_button_menu').click(function(){
+       $('#header_menu_left').stop().slideToggle(150);
     });
     
     // On empêche le comportement par défaut des liens au clic sur les boutons d'action de la vignette (like, dislike, wishlit)

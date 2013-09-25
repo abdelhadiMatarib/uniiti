@@ -101,6 +101,13 @@
 
 		// Tirage au hasard top 50 commerces
 		$CompteurTop50 = rand(1, $NbItems);
+                // Tirage au hasard box aléatoires
+                $CompteurAlea1 = rand(2, $NbItems);
+                // Tirage au hasard box aléatoires
+                $CompteurAlea2 = rand(3, $NbItems);
+                // Tirage au hasard box aléatoires
+                $CompteurAlea3 = rand(4, $NbItems);
+                
 		$Compteur = 0;
 		while ($row = $req2->fetch(PDO::FETCH_ASSOC))
 		{
@@ -290,6 +297,38 @@
 				<span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
 			</div>
 			<?php } ?>
+                        <?php if ($CompteurAlea1 == $Compteur) { ?>
+			<!-- FIN VIGNETTE TYPE -->
+			<div class="box box_aleatoire" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');">
+                            <div class="box_aleatoire_img_container">
+                                <img src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_commerce.png" height="69" width="69"/>
+                            </div>
+                            <span class="box_aleatoire_txt_1">Suggérer</span>
+                            <span class="box_aleatoire_txt_2">un commerce</span>
+                        </div>
+			<?php } ?>
+                        <?php if ($CompteurAlea2 == $Compteur) { ?>
+			<!-- FIN VIGNETTE TYPE -->
+			<div class="box box_aleatoire" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');">
+                            <div class="box_aleatoire_img_container">
+                                <img src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_objet.png" height="69" width="69"/>
+                            </div>
+                            <span class="box_aleatoire_txt_1">Suggérer</span>
+                            <span class="box_aleatoire_txt_2">un objet</span>
+                        </div>
+			<?php } ?>
+                        <?php if ($CompteurAlea3 == $Compteur) { ?>
+			<!-- FIN VIGNETTE TYPE -->
+                        <div class="box box_aleatoire">
+                            <div class="box_aleatoire_img_container_sociaux">
+                                <img id="picto_fb" src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_fb.png" height="50" width="50"/>
+                                <img id="picto_tw" src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_tw.png" height="50" width="50"/>
+                                <img id="picto_gplus" src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_gplus.png" height="50" width="50"/>
+                            </div>
+                            <span class="box_aleatoire_txt_1">Suivez</span>
+                            <span class="box_aleatoire_txt_2">nous</span>
+                        </div>
+                        <?php } ?>
 	<?php
 		} // Fin du while
 
