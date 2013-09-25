@@ -24,7 +24,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, ville_enseigne, telephone_enseigne, descriptif, url, id_budget
+					adresse1_enseigne, cp_enseigne, ville_enseigne, villes_id_ville, id_quartier, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -57,7 +57,6 @@
 	$y5    = $result2['y5'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
-	$ville_enseigne          = $result2['ville_enseigne'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
 	$descriptif				 = str_replace(PHP_EOL ,"", stripslashes($result2['descriptif']));
 	$descriptif			 	 = str_replace("\r" , "", $descriptif);
@@ -65,11 +64,37 @@
 	$categorie				 = $result2['categorie_principale'];
 	$sous_categorie          = $result2['sous_categorie'];
 	$sous_categorie2         = $result2['sous_categorie2'];
+	$id_categorie      		 = $result2['id_categorie'];
+	$id_sous_categorie       = $result2['id_sous_categorie'];
 	$id_sous_categorie2      = $result2['id_sous_categorie2'];
     $couleur                 = $result2['couleur'];
 	$url                     = $result2['url'];
 	$id_budget               = $result2['id_budget'];
 
+	// Recherche de la ville, de l'arrondissement et du quartier si les deux derniers existent
+	$id_ville          		 = $result2['villes_id_ville'];
+	$id_quartier          	 = $result2['id_quartier'];
+	if ($id_quartier != 0) {
+		$sql4 = "SELECT id_arrondissement, t1.id_ville, nom_ville FROM quartier AS t1 
+				INNER JOIN villes AS t2 ON t1.id_ville=t2.id_ville WHERE id_quartier=:id_quartier";
+		$req4 = $bdd->prepare($sql4);
+		$req4->bindParam(':id_quartier', $id_quartier, PDO::PARAM_INT);
+		$req4->execute();
+		$result4 = $req4->fetch(PDO::FETCH_ASSOC);		
+		$ville_enseigne          = $result4['nom_ville'];
+		$id_arrondissement       = $result4['id_arrondissement'];	
+	}
+	else {
+		$sql4 = "SELECT nom_ville FROM villes WHERE id_ville=:id_ville";
+		$req4 = $bdd->prepare($sql4);
+		$req4->bindParam(':id_ville', $id_ville, PDO::PARAM_INT);
+		$req4->execute();
+		$result4 = $req4->fetch(PDO::FETCH_ASSOC);		
+		$ville_enseigne          = $result4['nom_ville'];
+		$id_arrondissement       = 0;	
+	}
+
+	// On compte les avis reçus par l'enseigne et on calcule sa note moyenne
 	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
 
@@ -89,7 +114,8 @@
 	$result = $req->fetch(PDO::FETCH_ASSOC);
 	$count_avis_enseigne     = $result['count_avis'];
 	$note_arrondi = number_format($result['moyenne'],1);
-	
+
+	// On compte le nombre de followers de l'enseigne	
 	$sql3 = "SELECT COUNT(contributeurs_id_contributeur) AS count_abonnes
 			FROM contributeurs_follow_enseignes AS t1
 			WHERE enseignes_id_enseigne = :id_enseigne
@@ -119,20 +145,21 @@
 			. "y3 : '" . $y3 . "', "
 			. "y4 : '" . $y4 . "', "
 			. "y5 : '" . $y5 . "'}";
-
-		
 			
 	$datamodif = "{type : 'enseigne', "
 			. "id_enseigne : " . $id_enseigne . ", "
 			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
 			. "descriptif:'" . str_replace(PHP_EOL ,'\n', addslashes($descriptif)) . "', "
 			. "adresse1_enseigne:'" . $adresse1_enseigne . "', "
-			. "ville_enseigne:'" . $ville_enseigne . "', "
+			. "id_ville:'" . $id_ville . "', "
 			. "cp_enseigne:'" . $code_postal . "', "
+			. "id_categorie:" . $id_categorie . ", "
+			. "id_sous_categorie:" . $id_sous_categorie . ", "
 			. "id_sous_categorie2:" . $id_sous_categorie2 . ", "
 			. "telephone_enseigne:'" . $telephone_enseigne . "', "
 			. "url:'" . $url . "', "
-//			. "id_quartier:" . $id_quartier . ", "
+			. "id_arrondissement:" . $id_arrondissement . ", "
+			. "id_quartier:" . $id_quartier . ", "
 			. "id_budget:" . $id_budget . "}";
 
 	if ($Admin) {
@@ -142,8 +169,8 @@
 		$Menutarifs = "OuvrePopin({}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
 		$Infospratiques = "OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
 		$Video = "OuvrePopin({step:1}, '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";
-		$LabelsCaptain = "OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
-		$Recommandations = "OuvrePopin({},'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
+		$LabelsCaptain = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
+		$Recommandations = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 
 		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
@@ -190,7 +217,7 @@ else {
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title="">www.chezlesartistes.com</a></div></div>
+                    <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
                     <div class="commerce_head_desc_prices">
 						<div class="img_container" id="commerce_head_desc_prices_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></a></div>
 						<div id="commerce_head_desc_prices_wrap">

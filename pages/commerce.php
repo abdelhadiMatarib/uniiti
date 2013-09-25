@@ -14,7 +14,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, ville_enseigne, telephone_enseigne, descriptif, url, id_budget
+					adresse1_enseigne, cp_enseigne, ville_enseigne, villes_id_ville, id_quartier, telephone_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -49,6 +49,8 @@
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$ville_enseigne          = $result2['ville_enseigne'];
+	$id_ville          		 = $result2['villes_id_ville'];
+	$id_quartier          	 = $result2['id_quartier'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
 	$descriptif              = $result2['descriptif'];
 	$categorie				 = $result2['categorie_principale'];
@@ -149,7 +151,7 @@
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title="">www.chezlesartistes.com</a></div></div>
+                    <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
                     <div class="commerce_head_desc_prices">
 						<div class="img_container" id="commerce_head_desc_prices_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></a></div>
 						<div id="commerce_head_desc_prices_wrap">

@@ -9,6 +9,7 @@
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+
 ?>
     <body class="dashboard">
         <div class="bg_dashboard">
