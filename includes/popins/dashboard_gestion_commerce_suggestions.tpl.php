@@ -20,10 +20,10 @@
 	$req->execute();		
 	while ($row = $req->fetch(PDO::FETCH_ASSOC))
 	{
-		$nom_suggestion = $row['nom_suggestion'];
+		$nom_suggestion = stripslashes($row['nom_suggestion']);
 		$categorie = $row['categorie_principale'];
 		$sous_categorie = $row['sous_categorie'];
-		$description = $row['description'];
+		$description = stripslashes($row['description']);
 		$cp_ou_ville = $row['cp_ou_ville'];
 		$delai_suggestion = EcartDate($Maintenant[0]['Maintenant'], $row['date_suggestion']);
 	
@@ -46,7 +46,7 @@
 			</div>
 			<div class="dashboard_notif_item_body">
 				<div class="dashboard_notif_item_float_left">
-					<span class="dashboard_notif_txt_bold2">Nom de l'enseigne :</span><span class="dashboard_notif_txt_normal2"> <?php echo $row['nom_suggestion']; ?></span>
+					<span class="dashboard_notif_txt_bold2">Nom de l'enseigne :</span><span class="dashboard_notif_txt_normal2"> <?php echo $nom_suggestion; ?></span>
 				</div>
 				
 				<div class="dashboard_notif_item_float_left">

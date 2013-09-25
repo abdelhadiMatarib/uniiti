@@ -13,7 +13,7 @@
 				<input name="id_enseigne" id="id_enseigne" type="hidden" value="<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];}?>"/>
 				<input name="step" id="step" type="hidden" value="Concept"/>
 				<div class="infos_gene_title"><span>Concept du commerce</span></div>
-					<textarea name="descriptif" id="descriptif" class="input_lien_petitmot" placeholder="Concept du commerce en quelques lignes..."><?php if (!empty($_POST['descriptif'])) {echo $_POST['descriptif'];}?></textarea>
+					<textarea name="descriptif" id="descriptif" class="input_lien_petitmot" placeholder="Concept du commerce en quelques lignes..."><?php if (!empty($_POST['descriptif'])) {echo stripslashes($_POST['descriptif']);}?></textarea>
 				<div class="infos_gene_title">
 					<span>Les labels Uniiti</span>
 				</div>
