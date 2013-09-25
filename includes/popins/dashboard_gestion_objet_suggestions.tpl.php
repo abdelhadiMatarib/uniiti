@@ -36,7 +36,7 @@
 				<div class="dashboard_notif_item_head_desc">
 					<span class="dashboard_notif_nom_commerce"><?php echo $row['nom_contributeur'] . ' ' . $row['prenom_contributeur']; ?></span>
 					<span class="dashboard_notif_motif">Notification d'ajout d'objet</span>
-					<span class="dashboard_notif_temps"><style>.box_posttime {color:white !important;}</style><?php echo $delai_suggestion; ?></span>
+					<span class="dashboard_notif_temps"><?php echo $delai_suggestion; ?></span>
 				</div>
 				<div class="dashboard_notif_item_head_buttons">
 					<a href="#" class="first_img_margin" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/></a>
@@ -63,7 +63,7 @@
 		</div>
                 <script>
                     $('.dashboard_notif_temps .box_posttime time img').attr('src','../img/pictos_actions/clock_b.png');
-                    $('.dashboard_notif_temps .box_posttime').css('width','auto').css('padding','5px 0px 0px 0px').css('text-align','left');
+                    $('.dashboard_notif_temps .box_posttime').css('width','auto').css('padding','5px 0px 0px 0px').css('text-align','left').css('color','white');
                 </script>
 		<!-- ITEM -->
 <?php } ?>         
