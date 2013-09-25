@@ -326,14 +326,13 @@ function resizeboxContainer(){
 		$('.infosrapides1').css('margin-right','20px').css('width','120px');
                 $('.infosrapides2').css('margin-right','0').css('width','110px');
 		$('.commerce_head_desc').css('width','294px');
-		$('.commerce_head_desc_address').css('width','230px').css('font-size','1em');
+		$('.commerce_head_desc_address').css('width','230px').css('font-size','0.8em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','12px');
-		$('.commerce_head_desc_identity').css('width','230px').css('font-size','1em');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','5px');
-		$('.commerce_head_desc_ariane').css('width','40px').css('font-size','1em');
-                $('.commerce_head_desc_ariane span').css('font-size','0.9em');
-		$('#commerce_head_desc_ariane_wrap').css('display','none').css('line-height','12px').css('margin-top','5px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','7px').css('display','block').css('line-height','12px');
+		$('.commerce_head_desc_identity').css('width','230px').css('font-size','0.8em');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','7px');
+		$('.commerce_head_desc_ariane').css('width','40px').css('font-size','0.8em');
+		$('#commerce_head_desc_ariane_wrap').css('display','none').css('line-height','12px').css('margin-top','7px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('.commerce_head_desc_prices').css('width','40px');
 		$('#commerce_head_desc_prices_wrap').css('display','none').css('line-height','12px');
@@ -341,7 +340,7 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_social').css('margin-top','15px').addClass('ipad_portrait_social');
 		$('.commerce_head_desc_social span').css('display','block');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','none');
-                $('.commerce_head_desc_title h2').css('font-size','1em').css('margin-top','15px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','180px');
+                $('.commerce_head_desc_title h2').css('font-size','1.2em').css('margin-top','15px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','180px');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',88);
 		$('.commerce_head_infos_suivre').css('width',70).css('height',88);
 		$('.commerce_head_infos_suivre span').css('margin-bottom',15).css('margin-top',15);
@@ -497,8 +496,8 @@ function resizeboxContainer(){
                 $('.commerce_recos span').css('font-size','1em');
 		$('.commerce_labels span').css('font-size','1em');
 
-                $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','12px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','240px');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
+                $('.commerce_head_desc_title h2').css('font-size','1.3em').css('margin-top','13px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','240px');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','10px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
@@ -509,11 +508,11 @@ function resizeboxContainer(){
 		$('.commerce_head_desc_address,.commerce_head_desc_identity').css('width','100px');
                 $('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('font-size','0.8em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','12px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','7px').css('display','block').css('line-height','12px');
 		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','120px');
 		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px').css('margin-top','5px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','5px');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','7px');
                 $('#commerce_head_desc_identity_button').css('float','left').css('height','20px');
 		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','12px');
 		$('#commerce_head_desc_prices_button').css('float','left').css('height','20px');
@@ -639,8 +638,8 @@ function resizeboxContainer(){
 		$('.wrapper_boutons').css('top','70px');
 		$('.gerant_title').css('font-size','1em');
 
-                $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','370px');
-		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','8px');
+                $('.commerce_head_desc_title h2').css('font-size','1.5em').css('margin-top','12px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','370px');
+		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','10px');
                 $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
@@ -667,17 +666,17 @@ function resizeboxContainer(){
 		$('.commerce_head_desc').css('width',545);
 		$('.commerce_head_desc_address').css('width','250px').css('font-size','0.8em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','12px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','7px').css('display','block').css('line-height','12px');
 		$('.commerce_head_desc_ariane').css('width','260px').css('font-size','0.8em');
-		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px').css('margin-top','5px');
+		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px').css('margin-top','7px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
 		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','12px');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_desc_identity').css('width','250px').css('font-size','0.8em');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','5px');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','7px');
 		$('.commerce_head_desc_prices').css('width','270px').css('font-size','1em');
 		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200).css('height','82px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10);
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10).css('width','35px');
 		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
 		$('.commerce_head_infos_suivre').css('width','95px').css('height','82px');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px');
