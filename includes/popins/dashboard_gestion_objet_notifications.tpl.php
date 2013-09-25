@@ -51,5 +51,9 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus sed est sit amet laoreet. Donec enim neque, cursus vitae euismod at, faucibus nec neque. Etiam diam magna, ultrices ac commodo a, sodales non odio. Aliquam vel aliquet libero. Ut pellentesque odio nibh, eget euismod magna mollis quis. Sed lectus leo, mollis in sollicitudin quis, egestas a lorem.</p>
                             </div>
                         </div>
+                       <script>
+                            $('.dashboard_notif_temps .box_posttime time img').attr('src','../img/pictos_actions/clock_b.png');
+                            $('.dashboard_notif_temps .box_posttime').css('width','auto').css('padding','5px 0px 0px 0px').css('text-align','left');
+                        </script>
                         <!-- ITEM -->
                       

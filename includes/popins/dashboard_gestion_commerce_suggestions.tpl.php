@@ -66,5 +66,9 @@
 				</div>
 			</div>
 		</div>
+                <script>
+                    $('.dashboard_notif_temps .box_posttime time img').attr('src','../img/pictos_actions/clock_b.png');
+                    $('.dashboard_notif_temps .box_posttime').css('width','auto').css('padding','5px 0px 0px 0px').css('text-align','left');
+                </script>
 		<!-- ITEM -->
 <?php } ?>                      
