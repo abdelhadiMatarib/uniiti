@@ -152,7 +152,7 @@ span.index_overlay_texte{display:block;}
 .notifs_filter2{text-align:center;border-radius:3px;z-index:50;position:absolute;top:-5px;right:-5px;height:14px;width:28px;padding:1px;font-size:10px;font-weight:700;background-color:#ff4343;color:white;}
 .notifs_filter2 span{display:inline-block;line-height:10px;} 
  
-.leflux_wrapper{float:right;padding:10px;}
+.leflux_wrapper{float:right;padding:12px;}
 .leflux_wrapper span{font-size:1.4em;}
 .leflux_wrapper a{color:#252525;}
 

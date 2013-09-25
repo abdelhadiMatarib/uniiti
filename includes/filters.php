@@ -147,7 +147,7 @@ ON t1.id_categorie = t3.id_categorie */
 
 <!--<nav>-->
 <div class="filters">
-        <div class="rang0<?php if ($PAGE == "Commerce") {echo " categorie_" . $id_enseigne;} ?>">
+        <div title="Tout" class="rang0<?php if ($PAGE == "Commerce") {echo " categorie_" . $id_enseigne;} ?>">
             <ul>
                 <li onclick="SetFiltre({provenance:'all'});" class="button_all"><div class="<?php if ($CompteurTotal > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurTotal ?></span></div></li>
             </ul>
