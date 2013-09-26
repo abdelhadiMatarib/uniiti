@@ -188,7 +188,7 @@ input#inputSearch2{cursor:default;padding:0 0 0 40px;background:url('../img/pict
 
 .flux_utilisateur{float:left;}
 .quoideneuf_utilisateur,.recommandations_utilisateur,.avisenattente_utilisateur{float:right;}
-.quoideneuf_utilisateur a,.recommandations_utilisateur a,.avisenattente_utilisateur a,.flux_utilisateur a{display:inline-block;color:white;height:21px;margin-right:1px;padding:12px;background-color:#CBCBCB;}
+.quoideneuf_utilisateur a,.recommandations_utilisateur a,.avisenattente_utilisateur a,.flux_utilisateur a{display:inline-block;color:white;height:20px;margin-right:1px;padding:15px;background-color:#CBCBCB;}
 .quoideneuf_utilisateur a:hover,.recommandations_utilisateur a:hover,.avisenattente_utilisateur a:hover,.flux_utilisateur a:hover{color:white;background-color:#ADADAD;}
 
 .filters_prefs_stats_img_container{float:right;margin:10px;}
@@ -719,9 +719,11 @@ input.input_signalement_motif{width:290px;}
 .utilisateur_infospersos_input_pseudo,.utilisateur_infospersos_input_ddn,.utilisateur_infospersos_input_profession,.utilisateur_infospersos_input_ville,.utilisateur_infospersos_input_mdp,.utilisateur_infospersos_input_confirmmdp,.utilisateur_infospersos_input_email,.utilisateur_infospersos_input_confirmemail,.utilisateur_infospersos_input_tel{float:left;}
 .utilisateur_infospersos_body input{padding:10px;background-color:#f0f0f0;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;width: 269px;height: 20px;}
 .utilisateur_infospersos_body span{border-bottom:1px solid #e4e4e4;background-color:white;font-size:1.2em;float:left;width:190px;height:20px;padding:10px;}
-.utilisateur_infospersos_sexe_button{text-align:center;padding-top:10px;display:inline-block;float:left;width:142.5px;height:30px;border-bottom:1px solid #e4e4e4;}
+.utilisateur_infospersos_sexe_button{text-align:center;padding-top:10px;display:inline-block;float:left;width:144px;height:30px;border-bottom:1px solid #e4e4e4;}
+.utilisateur_infospersos_sexe_button:last-child{width:145px;}
 .utilisateur_infospersos_sexe_button:hover{cursor:pointer;}
-.utilisateur_infospersos_input_date{text-align:center;padding-top:10px;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;background-color:#f0f0f0;width:94.4px;height:41px;}
+.utilisateur_infospersos_input_date{text-align:center;float:left;padding-top:10px;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;background-color:#f0f0f0;width:96px;height:41px;}
+.utilisateur_infospersos_input_date:last-child{width:98px;}
 .parrainage_body{position:relative;}
 .reservation_body{position:relative;}
 .parrainage_option1,.parrainage_option2{float:left;width:690px;padding:5px;background-color:#73d4dc;}
