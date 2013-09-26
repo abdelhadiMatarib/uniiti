@@ -1,6 +1,7 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php'?>
+        include'../head.php';
+?>
 
 <div class="suggestioncommerce_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -16,7 +17,7 @@
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Merci !</a></div>
+        <div class="modifprofil_valider_wrap">Merci !</div>
         
     </div>
 </div>
