@@ -16,13 +16,13 @@
         
         </div>
         <div class="oublimdp_inputs">
-            <input class="oublimdp_input_email" type="mail" />
+            <input class="oublimdp_input_email" type="mail" placeholder="Votre email" />
         </div> 
             
     </div>
     <div class="oublimdp_footer">
         
-        <div class="oublimdp_valider_wrap"><a href="#">Valider</a></div>
+        <div class="modifprofil_valider_wrap">Valider</div>
         
     </div>
 </div>

@@ -100,8 +100,8 @@ span.index_overlay_texte{display:block;}
     color:    #252525;
     font-size:0.9em;
 }
-input#inputSearch1{cursor:default;padding:0 0 0 50px;background:url('../img/pictos_actions/placeholder_quoi.png') no-repeat 10px #e3e4e4;}
-input#inputSearch2{cursor:default;padding:0 0 0 40px;background:url('../img/pictos_actions/placeholder_ou.png') no-repeat 10px #e3e4e4;}
+input#inputSearch1{font-family:'open sans';font-size:1em;font-weight:100;padding:0 0 0 50px;background:url('../img/pictos_actions/placeholder_quoi.png') no-repeat 10px #e3e4e4;}
+input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding:0 0 0 40px;background:url('../img/pictos_actions/placeholder_ou.png') no-repeat 10px #e3e4e4;}
 .header button{background-color:#e3e4e4;}
 
 .header_leftnav{position:relative;height:30px;float:left;}
@@ -887,17 +887,22 @@ textarea.reservation_recap_formulaire_message{border-top:1px solid #e4e4e4;borde
 .suggestionobjet_categorie,.suggestionobjet_souscategorie{font-size:1.2em;font-weight:300;float:left;width:500px;}
 .suggestioncommerce_categorie,.suggestioncommerce_souscategorie{font-size:1.2em;font-weight:300;float:left;width:500px;}
 textarea.suggestioncommerce_description,textarea.suggestionobjet_description{height:90px;resize:none;}
-.ident_explications{float:left;width:250px;border-bottom:1px solid #e4e4e4;height:91px;}
+.ident_explications{float:left;width:250px;border-bottom:1px solid #e4e4e4;height:92px;}
 .oublimdp_explications{width:500px;border-bottom:1px solid #e4e4e4;height:25px;padding:10px 0 10px 0;text-align:center;}
 .oublimdp_explications_txt{font-size:1.1em;}
-input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popins/arobase.png') no-repeat 50px 12px;}
+input.oublimdp_input_email{padding-top: 2px;padding-left:90px;background:url('../img/pictos_popins/arobase.png') no-repeat 50px 12px;}
 .ident_big_data{float:left;color:#89c1c6;margin:0 0 0 25px;font-size:5em;font-weight:700;}
 .ident_explications_txt{font-size:1.1em;float:left;margin:15px 0 0 15px;}
 .ident_explications_txt span{display:block;margin:0;}
 .ident_inputs,.oublimdp_inputs{float:left;width:249px;border-left:1px solid #e4e4e4;}
-.ident_inputs input[type="text"],.ident_inputs input[type="password"]{font-size:1.1em;width:204px;height:45px;background-color:#efefef;border-bottom:1px solid #e4e4e4;}
-.oublimdp_inputs input[type="mail"]{font-size:1.1em;width:410px;height:45px;bakground-color:#efefef;}
-.ident_inscription_wrap,.ident_connexion_wrap{padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
+.ident_inputs input[type="text"],.ident_inputs input[type="password"]{font-family:'open sans';font-size:1.2em;font-weight:100;width:204px;height:44px;background-color:#efefef;border-bottom:1px solid #e4e4e4;}
+.oublimdp_inputs input[type="mail"]{font-family:'open sans';font-size:1.2em;font-weight:100;width:409px;height:45px;background-color:#efefef;}
+
+.ident_inscription_wrap{width:251px;background-color:#a4ebf1;cursor:pointer;padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;border-radius: 0 0 0 3px;}
+.ident_connexion_wrap{color:white;width:249px;border-left:1px solid #e4e4e4;background-color:#89c1c6;padding-top: 2px;font-size: 1.1em;height: 45px;text-align: center;position: absolute;border-radius: 0 0 3px 0;}
+.ident_inscription_wrap:hover{background-color:#89c1c6; color:white;}
+.ident_connexion_wrap:hover{background-color:#a4ebf1; color:black;}
+
 .oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{height:30px;color:#252525;background-color:#a4ebf1;padding-top:2px;display:inline-block;width:100%; height: 40px;border-radius: 0 0 3px 3px;text-align: center;}
 .modifprofil_valider_wrap {height:30px;color:#252525;background-color:#a4ebf1;padding-top:2px;display:inline-block;width:100%;border-radius: 0 0 3px 3px;text-align: center; cursor:pointer; padding-top: 10px; height: 30px;}
 .oublimdp_valider_wrap:hover,.suggestioncommerce_valider_wrap:hover,.suggestionobjet_valider_wrap:hover,.modifprofil_valider_wrap:hover{color:white;background-color:#73d4dc;}
@@ -909,12 +914,8 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .bouton_envoyer_contact_wrap{width:98.1%;font-size:1.1em;text-align:center;float:left;}
 .bouton_envoyer_contact_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
 .bouton_envoyer_contact_wrap a:hover{color:white;background-color:#73d4dc;}
-.ident_inscription_wrap{width:250px;background-color:#a4ebf1;}
-.ident_connexion_wrap{width:249px;border-left:1px solid #e4e4e4;background-color:#89c1c6;}
-.ident_inscription_wrap a,.oublimdp_valider_wrap a{display:inline-block;height:30px;width:100%;color:#252525;}
-.ident_connexion_wrap a{display:inline-block;height:100%;width:100%;color:white;}
-.ident_inscription_wrap a,.ident_connexion_wrap a{display:inline-block;}
-input.ident_input_username{padding-left:45px;background:url('../img/pictos_utilisateurs/avatar_small.png') no-repeat 10px 12px;}
+
+input.ident_input_username{padding-top:3px;padding-left:45px;background:url('../img/pictos_utilisateurs/avatar_small.png') no-repeat 10px 12px;}
 input.ident_input_password{padding-left:45px;background:url('../img/pictos_utilisateurs/clef.png') no-repeat 10px 16px;}
 .popin_close_button{z-index:999;position:absolute;top:10px;right:-40px;cursor:pointer;}
 .popin_close_button_img_container{height:30px;width:30px;background:url('../img/pictos_popins/close_button.png') no-repeat 0 0;}
