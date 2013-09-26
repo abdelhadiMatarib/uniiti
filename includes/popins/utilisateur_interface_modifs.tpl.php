@@ -72,9 +72,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
         <div class="presentation_action_left_figure">
             <div class="wrapper_boutons_popin">
-                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$_POST['categorie']); ?>></div>
-                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>
-                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" title="J'aime"<?php echo AfficheAction('aime',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" title="Je n'aime pas"<?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>
+                <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" title="Ajouter à ma Wishlist"<?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
             </div>
             <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
             <figure style="background:<?php echo $_POST['couleur']; ?>;">
@@ -134,7 +134,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                     </form>
                 </div>
             <div class="wrap_buttons_valider_supprimer">
-                <div class="button_valider"></div>
+                <div class="button_valider" title="Enregistrer"></div>
             </div>
             </div>
         </div>

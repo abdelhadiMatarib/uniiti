@@ -1,4 +1,13 @@
 /* GENERAL */
+input[type="radio"]:before{content:"";/* pour que le bouton soit visible*/
+	display:inline-block;
+	width:0.7em;
+	height:0.7em;
+	background-color:#252525;
+	border:3px solid #252525;
+	border-radius:120px;}
+input[type='radio']:checked:before{background-color:#f0f0f0;}
+
 .custom-tooltip-styling{background-color:#252525;color:white;margin-top:-10px;border-radius:3px;}
 img#ImageSuivre{height:32px;width:32px;}
 img#ImageSuivrePopin{height:32px;width:32px;}
@@ -214,6 +223,7 @@ input#inputSearch2{cursor:default;padding:0 0 0 40px;background:url('../img/pict
 
 .box_mark{position:relative;padding:5px;height:20px;background-color:#252525;}
 .box_stars{float:left;padding:1px;}
+.box_stars>div{margin-right:3px;}
 .box_headratings{float:right;}
 .box_headratings span{color:white;font-size:85%;}
 
@@ -1052,7 +1062,7 @@ a.link_engrenage_button{display:inline-block;height:20px;width:20px;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle:active{background-color:#e0e0e0;}
-.utilisateur_interface_modifs_modifier_commentaire_inside_img_container{text-align:center;font-size:0.85em;font-weight:700;margin:10px auto;}
+.utilisateur_interface_modifs_modifier_commentaire_inside_img_container{text-align:center;font-size:0.85em;font-weight:700;margin:0 auto;margin-bottom:10px;}
 .utilisateur_interface_modifs_modifier_commentaire_inside{position:relative;display:none;text-align:left;float:left;padding: 10px;background-color: #e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
@@ -1061,7 +1071,7 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle:active{background-color:#e0e0e0;}
-.utilisateur_interface_modifs_modifier_avis_inside_img_container{font-size:0.85em;margin:10px auto;}
+.utilisateur_interface_modifs_modifier_avis_inside_img_container{font-size:0.85em;margin:0 auto;margin-bottom:10px;}
 .utilisateur_interface_modifs_modifier_avis_inside{position:relative;display:none;float:left;padding: 10px;background-color: #e0e0e0;}
 
 .modif_input_float_left{float:left;width:230px;}
