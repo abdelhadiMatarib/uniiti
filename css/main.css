@@ -687,6 +687,8 @@ input.input_signalement_motif{width:290px;}
 
 /* SUGGESTION */
 .suggestion_wrapper{display:none;z-index:998;position:relative;border-radius:3px;width:500px;}
+.suggestion_wrapper .wrapper_boutons_popin{padding-top:0px !important;}
+.suggestion_wrapper .wrapper_boutons_popin .boutons_action_popin{height:45px;}
 .suggestion_head{float:left;width:500px;background-color:#252525;color:white;border-radius:3px 3px 0px 0px;}
 .suggestion_body{background-color:white;float:left;}
 .suggestion_img_container{float:left;margin:0 15px 0 6px;height:44px;width:37px;padding-top:8px;}
@@ -700,7 +702,7 @@ input.input_signalement_motif{width:290px;}
 .suggestion_action_left_figure figure{overflow:hidden;height: 143px;}
 .suggestion_vertical_sep1{position:absolute;right:199px;width:1px;height:142px;border-right:1px dashed white;}
 .suggestion_vertical_sep2{position:absolute;right:120px;width:1px;height:142px;border-right:1px dashed white;}
-.wrapper_boutons_suggestions{height:138px !important;}
+.wrapper_boutons_suggestions{height:100% !important;}
 .suggestion_box_localisation{left:50px;bottom:0px;border-radius:0px 3px 0px 0px;}
 
 /* SUIVEURS COMMERCE */

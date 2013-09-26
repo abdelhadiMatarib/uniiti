@@ -72,12 +72,12 @@ $bdd = null;            // Détruit l'objet PDO
     var TimeOutPopin1 = setTimeout(function () {
         $(".wishlist_wrapper").delay(300).fadeOut();
         $('.suggestion_wrapper').delay(1000).fadeIn(
-        function(){
+        /*function(){
             clearTimeout(TimeOutPopin2);
             clearTimeout(TimeOutPopin3);
             var TimeOutPopin2 = setTimeout(function() { $('#default_dialog').fadeOut('slow'); }, 10000);
             var TimeOutPopin3 = setTimeout(function() { $('#default_dialog').dialog('close'); }, 10500);
-            }
+            }*/
         )    
     }, 2000);
     }

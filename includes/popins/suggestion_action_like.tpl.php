@@ -7,7 +7,7 @@ include_once '../../config/configPDO.inc.php';
 include_once '../head.php';
 		
 ?>
-
+<!-- METTRE LA PHOTO DE COUV HAUTEUR PLUS GRANDE A LA PLACE -->
 <div class="suggestion_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="suggestion_head">
