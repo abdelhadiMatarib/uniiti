@@ -26,7 +26,7 @@
 				<input name="cp_ou_ville" type="text" class="suggestioncommerce_ville" placeholder="Code postal ou ville" required="required"/>
 		</div>
 		<div class="suggestioncommerce_footer">
-			<button type="submit" class="suggestioncommerce_valider_wrap"><a href="#">Suggérer ce commerce</a></button>
+			<button type="submit" class="suggestioncommerce_valider_wrap">Suggérer ce commerce</button>
 		</div>
 	</form>
 </div>
