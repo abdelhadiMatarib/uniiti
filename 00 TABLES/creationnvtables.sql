@@ -56,8 +56,7 @@ ALTER TABLE `contributeurs` DROP `date_inscription`
 , DROP `y4`
 , DROP `y5`
 , DROP `profession_contributeur`
-, DROP `descriptif_contributeur`
-, DROP `categorieage_contributeur` ;
+, DROP `descriptif_contributeur` ;
 
 ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `slide1_contributeur` varchar(45) DEFAULT NULL
@@ -71,8 +70,7 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `y4` int(10) DEFAULT 0
 , ADD `y5` int(10) DEFAULT 0
 , ADD `profession_contributeur` varchar(45) DEFAULT NULL
-, ADD `descriptif_contributeur` longtext DEFAULT NULL
-, ADD `categorieage_contributeur` varchar(45) DEFAULT NULL ;
+, ADD `descriptif_contributeur` longtext DEFAULT NULL ;
 
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 2825 ;
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 4866 ;
@@ -356,7 +354,6 @@ UPDATE `enseignes` SET sscategorie_enseigne =17, id_quartier=34, id_budget=2 WHE
 UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=14, id_budget=2 WHERE id_enseigne=257 ;
 UPDATE `enseignes` SET sscategorie_enseigne =11, id_quartier=66, id_budget=3 WHERE id_enseigne=258 ;
 
-
 -- --------------------------------------------------------
 
 --
@@ -371,6 +368,7 @@ CREATE TABLE IF NOT EXISTS `arrondissement` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 INSERT INTO `arrondissement` (`id_arrondissement`, `id_ville`, `arrondissement`) VALUES
+(0, 0, 'Indéfini'),
 (1, 1, 'Paris 1<sup>er</sup>'),
 (2, 1, 'Paris 2<sup>ème</sup>'),
 (3, 1, 'Paris 3<sup>ème</sup>'),
@@ -409,6 +407,7 @@ CREATE TABLE IF NOT EXISTS `quartier` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
 
 INSERT INTO `quartier` (`id_quartier`, `id_arrondissement`, `id_ville`, `quartier`) VALUES
+(0, 0, 0, 'Indéfini'),
 (1, 1, 1, 'Châtelet - les Halles'),
 (2, 1, 1, 'Louvre - Rivoli'),
 (3, 1, 1, 'Pyramides'),

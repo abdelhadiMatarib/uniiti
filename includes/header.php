@@ -92,7 +92,22 @@
             <div id="header_menu" class="header_user_menulist">
                 <ul>
                     <li><a href="<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=" . $_SESSION['SESS_MEMBER_ID'];?>" title="">Mon profil perso</a></li>
-					<?php if ((int)$_SESSION['droits'] & $_SESSION['ADMINISTRATEUR']) { ?><li><a href="<?php echo SITE_URL . "/pages/dashboard_index.php"; ?>" title="">Dashboard</a></li><?php } ?>
+					<?php if (((int)$_SESSION['droits'] & $_SESSION['ADMINISTRATEUR']) && (($_SESSION['SESS_MEMBER_ID'] == 2825) || ($_SESSION['SESS_MEMBER_ID'] == 4866))) { ?>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_index.php"; ?>" title="">Dashboard</a></li>
+						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=2">Passer Professionnel</a></li>
+						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=1">Passer Contributeur</a></li>
+					<?php } ?>
+					<?php if (((int)$_SESSION['droits'] & $_SESSION['PROFESSIONNEL']) && (($_SESSION['SESS_MEMBER_ID'] == 2825) || ($_SESSION['SESS_MEMBER_ID'] == 4866))) { ?>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_index.php"; ?>" title="">Dashboard</a></li>
+						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=8">Passer Administrateur</a></li>
+						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=1">Passer Contributeur</a></li>
+					<?php } ?>
+					<?php if (((int)$_SESSION['droits'] & $_SESSION['CONTRIBUTEUR']) && (($_SESSION['SESS_MEMBER_ID'] == 2825) || ($_SESSION['SESS_MEMBER_ID'] == 4866))) { ?>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_index.php"; ?>" title="">Dashboard</a></li>
+						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=8">Passer Administrateur</a></li>
+						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=2">Passer Professionnel</a></li>
+					<?php } ?>
+
                     <li><a href="#" title="">Mon restaurant</a></li>
                     <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');">Suggérer un commerce</a></li>
                     <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');">Suggérer un objet</a></li>
@@ -106,4 +121,5 @@
     </div>
 </div>
 <div class="recherche_avancee_wrapper"></div>
+
 <!-- FIN DU HEADER -->

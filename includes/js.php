@@ -27,6 +27,7 @@
 		$Filtre.sscategorie = data.sscategorie;
 		$Filtre.quoi = data.quoi;
 		$Filtre.lieu = data.lieu;
+		console.log($Filtre);
 		
 		$("#dialog_overlay").css({display: "block"});
 		
