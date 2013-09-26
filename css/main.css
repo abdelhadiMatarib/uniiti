@@ -206,6 +206,7 @@ input#inputSearch2{cursor:default;padding:0 0 0 40px;background:url('../img/pict
 
 /* BOXES GENERIQUES */
 .box:first-child{width:486px;}
+.box:first-child .box_push_et_img img{width:486px;}
 .box:first-child .box_user_time{width:386px;}
 
 .box_commerce:first-child:before{content:'METTRE LA BOX PETIT MOT ICI';font-size:2em;font-weight:700;}
