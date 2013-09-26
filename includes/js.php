@@ -16,7 +16,9 @@
 	<script>
 	
 	$Filtre = {};
-	function SetFiltre(data) {
+	function SetFiltre(data, li) {
+
+		$('.leflux_wrapper a span').text($(li).attr('filtre'));
 		var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
 		var $idenseigne = '<?php if (isset($id_enseigne)) {echo $id_enseigne;} else {echo '0';} ?>';
 		var $idcontributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo '0';} ?>';

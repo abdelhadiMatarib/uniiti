@@ -51,7 +51,7 @@ try
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Merci !</a></div>
+        <div class="modifprofil_valider_wrap">Merci !</div>
         
     </div>
 </div>

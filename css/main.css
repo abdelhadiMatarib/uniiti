@@ -1195,15 +1195,15 @@ body{overflow-x: hidden;}
 #bg {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
 #loading_page {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
 #bg_img {display: none;}
-.splash_big_wrapper{position:relative;z-index:99;}
+.splash_big_wrapper{position:relative;z-index:99; height: 100%;}
 .splash_head_wrapper{height:70px; width:100%;}
 .splash_head{width:723px; height: 70px;margin:0 auto;}
 .splash_head_items{margin:10px auto;float:left;text-align:center;width:220px;padding:10px; border-right: 1px solid #fff;}
 .splash_head_items:last-child{border-right: none;}
 .splash_head_items span{text-transform:uppercase;display:block;color:white;text-shadow: 0px 1px 1px #252525;filter: dropshadow(color=#252525, offx=0, offy=1);}
 .splash_head_items_nbr{font-size:1.8em;font-weight:700;}
-.splash_body_wrapper{height:86%;}
-.splash_body{text-align:center;position:absolute;height:270px;padding:5px;width:270px;margin:auto;top:0;left:0;bottom:0;right:0;}
+.splash_body_wrapper{height:270px;}
+.splash_body{text-align:center;position:relative;height:270px;padding:5px;width:270px;margin:auto;margin-top:12%;left:0;right:0;}
 .splash_body span{display:inline-block;color:white;margin-top:5px;}
 .splash_body h1{display:block;margin:14px 0;color:white;font-size:1em;font-weight:300;color:white;}
 .splash_input_login,.splash_input_password{color: white; height:40px;width:185px;padding:5px 5px 5px 35px;background-color:transparent;color:white;font-size:1.1em;}
