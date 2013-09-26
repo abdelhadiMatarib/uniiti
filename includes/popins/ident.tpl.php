@@ -19,21 +19,17 @@
         </div>
         <div class="ident_inputs">
 			<form action="<?php echo SITE_URL; ?>/acces/login_access.php" method="post" autocomplete="off">
-                <input class="ident_input_username" type="text" name="email-login" id="email-login" placeholder="votre login"/>
-
-                <input class="ident_input_password" type="password" name="password" id="password" placeholder="votre mot de passe"/>
-                
+                <input class="ident_input_username" type="text" name="email-login" id="email-login" placeholder="Votre login *" required/>
+                <input class="ident_input_password" type="password" name="password" id="password" placeholder="Votre mot de passe *" required/>
                 <input type="hidden" name="urlTo" readonly value="<?php echo $urlTo; ?>" />
-
-                <button id="submitbutton" type="submit" role="button" class="css3button" style="display:none;">Se connecter</button>
+                <button id="submitbutton" type="submit" role="button" class="ident_connexion_wrap">Connexion</button>
             </form>
         </div> 
             
     </div>
     <div class="ident_footer">
         
-        <div class="ident_inscription_wrap" onclick="OuvrePopinInscription(<?php echo $data; ?>);"><a href="#">Inscription</a></div>
-        <div class="ident_connexion_wrap" onclick="$('#submitbutton').click();"><a href="#">Connexion</a></div>
+        <div class="ident_inscription_wrap" onclick="OuvrePopinInscription(<?php echo $data; ?>);">Inscription</div>
         
     </div>
 </div>
