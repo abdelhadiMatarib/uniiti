@@ -697,7 +697,7 @@ input.input_signalement_motif{width:290px;}
 .suggestion_body > div{border-radius:0px;}
 .suggestion_footer{float:left;height:5px;width:100%;background-color:#fabe41;border-radius:0px 0px 3px 3px;}
 .suggestion_action_left_figure{float:left;position:relative;}
-.suggestion_action_left_figure figure{height: 143px;}
+.suggestion_action_left_figure figure{overflow:hidden;height: 143px;}
 .suggestion_vertical_sep1{position:absolute;right:199px;width:1px;height:142px;border-right:1px dashed white;}
 .suggestion_vertical_sep2{position:absolute;right:120px;width:1px;height:142px;border-right:1px dashed white;}
 .wrapper_boutons_suggestions{height:138px !important;}
@@ -708,7 +708,7 @@ input.input_signalement_motif{width:290px;}
 /* IDENTIFICATION */
 
 .ident_wrapper,.oublimdp_wrapper,.suggestioncommerce_wrapper,.suggestionobjet_wrapper,.parrainage_wrapper,.reservation_wrapper,.utilisateur_infospersos_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
-.ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head,.couverture_head,.reservation_head,.utilisateur_infospersos_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;}
+.ident_head,.oublimdp_head,.suggestioncommerce_head,.suggestionobjet_head,.parrainage_head,.couverture_head,.reservation_head,.utilisateur_infospersos_head{border-bottom:1px solid #e4e4e4;color:white;background-color:#252525;height:51px;border-radius: 3px 3px 0 0;}
 .ident_head span.maintitle, .oublimdp_head span.maintitle,.suggestioncommerce_head span.maintitle,.suggestionobjet_head span.maintitle,.parrainage_head span.maintitle,.couverture_head span.maintitle,.reservation_head span.maintitle,.utilisateur_infospersos_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
 .ident_mdp_oublie_wrapper{cursor:pointer;float:right;}
 .ident_head span.subtitle{display:inline-block;margin:16px 15px 0 0;}
@@ -885,7 +885,8 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .ident_inputs input[type="text"],.ident_inputs input[type="password"]{font-size:1.1em;width:204px;height:45px;background-color:#efefef;border-bottom:1px solid #e4e4e4;}
 .oublimdp_inputs input[type="mail"]{font-size:1.1em;width:410px;height:45px;bakground-color:#efefef;}
 .ident_inscription_wrap,.ident_connexion_wrap{padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
-.oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{width:500px;font-size:1.1em;text-align:center;float:left;}
+.oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{height:30px;color:#252525;background-color:#a4ebf1;padding-top:2px;display:inline-block;width:100%; height: 40px;border-radius: 0 0 3px 3px;}
+.oublimdp_valider_wrap:hover,.suggestioncommerce_valider_wrap:hover,.suggestionobjet_valider_wrap:hover{color:white;background-color:#73d4dc;}
 
 .valider_dialog_large{width:700px;font-size:1.1em;text-align:center;float:left;}
 .valider_dialog_large a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
@@ -894,8 +895,6 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .bouton_envoyer_contact_wrap{width:98.1%;font-size:1.1em;text-align:center;float:left;}
 .bouton_envoyer_contact_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
 .bouton_envoyer_contact_wrap a:hover{color:white;background-color:#73d4dc;}
-.oublimdp_valider_wrap a,.suggestioncommerce_valider_wrap a,.suggestionobjet_valider_wrap a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}
-.oublimdp_valider_wrap a:hover,.suggestioncommerce_valider_wrap a:hover,.suggestionobjet_valider_wrap a:hover{color:white;background-color:#73d4dc;}
 .ident_inscription_wrap{width:250px;background-color:#a4ebf1;}
 .ident_connexion_wrap{width:249px;border-left:1px solid #e4e4e4;background-color:#89c1c6;}
 .ident_inscription_wrap a,.oublimdp_valider_wrap a{display:inline-block;height:30px;width:100%;color:#252525;}
@@ -994,7 +993,7 @@ height: 26px;}
 
 .presentation_action_right_suggestions_note_reelle,.presentation_action_right_suggestions_note_base{color:white;display:inline-block;}
 .presentation_action_right_suggestions_note_base{font-size:0.9em;font-weight:300;}
-.presentation_action_right_suggestions_note_reelle{font-size:1.2em;font-weight:700;}
+.presentation_action_right_suggestions_note_reelle{font-size:1.1em;font-weight:700;}
 
 .presentation_action_right{width:250px;}
 .presentation_action_right_head{line-height:16px;float:left;border-bottom:1px solid #e4e4e4;padding-top:9px;height:41px;text-align:center;text-transform:uppercase;width:250px;background-color:#f0f0f0; border-radius: 0 4px 0 0;}

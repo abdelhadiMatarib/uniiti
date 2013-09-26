@@ -17,11 +17,15 @@ DROP TABLE IF EXISTS `contributeurs_visualisent_enseignes` ;
 DROP TABLE IF EXISTS `moderateurs_activent_professionnels` ;
 DROP TABLE IF EXISTS `moderateurs_bloquent_contributeurs` ;
 DROP TABLE IF EXISTS `types_article` ;
+DROP TABLE IF EXISTS `enseignes_ont_photos` ;
+DROP TABLE IF EXISTS `photos` ;
 
 ALTER TABLE `enseignes` DROP FOREIGN KEY `fk_enseignes_types_enseigne1` ;
+ALTER TABLE `enseignes` DROP FOREIGN KEY `fk_enseignes_professionnels1` ;
 ALTER TABLE `enseignes` DROP FOREIGN KEY `fk_enseignes_contributeursMDL1` ;
 
 ALTER TABLE `enseignes` DROP `types_enseigne_id_type_enseigne`
+, DROP `ville_enseigne`
 , DROP `etat_enseigne`
 , DROP `pays_enseigne`
 , DROP `logotype_enseigne`
@@ -40,6 +44,9 @@ ALTER TABLE `enseignes` DROP `types_enseigne_id_type_enseigne`
 
 DROP TABLE IF EXISTS `types_enseigne` ;
 DROP TABLE IF EXISTS `groupes_enseigne` ;
+
+ALTER TABLE `contributeurs` DROP `classement_contributeur`
+, DROP `points_contributeur` ;
 
 -- FIN ATTENTION
 

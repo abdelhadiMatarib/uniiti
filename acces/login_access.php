@@ -74,6 +74,7 @@
 			$_SESSION['SESS_LAST_NAME']  = $member['nom_contributeur'];
             $_SESSION['SESS_PHOTO']      = $member['photo_contributeur'];
 			$_SESSION['CONTRIBUTEUR'] = 0x01;										// FF
+			$_SESSION['PROFESSIONNEL'] = 0x02;										// FF
 			$_SESSION['ADMINISTRATEUR'] = 0x08;										// FF
 
 			//$_SESSION['SESS_COMPANY'] = $member['company'];

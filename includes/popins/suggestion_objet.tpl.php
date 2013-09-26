@@ -26,7 +26,7 @@
 		</div>
 		<div class="suggestionobjet_footer">
 			
-			<button class="suggestionobjet_valider_wrap"><a href="#">Suggérer cet objet</a></button>
+			<button class="suggestionobjet_valider_wrap">Suggérer cet objet</button>
 			
 		</div>
 </div>

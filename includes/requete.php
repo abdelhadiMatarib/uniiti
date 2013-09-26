@@ -29,7 +29,7 @@
 		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
-						couleur, t10.posx, t10.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, 
+						couleur, t11.posx AS scposx, t11.posy AS scposy, t10.posx, t10.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur, 
 						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, quartier, arrondissement, t9.id_quartier, nom_ville, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
@@ -86,7 +86,7 @@
 			$sql2 .= " OR sous_categorie2 LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%')";		
 		}
 		if (!empty($_POST['lieu'])) {
-			$sql2 .= " AND (ville_enseigne LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%'";
+			$sql2 .= " AND (nom_ville LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%'";
 			$sql2 .= " OR quartier LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%'";
 			$sql2 .= " OR arrondissement LIKE '%" . addslashes(urldecode($_POST['lieu'])) . "%')";
 		}
@@ -179,10 +179,12 @@
 			$categorie				 = $row['categorie_principale'];
 			$sous_categorie          = $row['sous_categorie'];
 			$sous_categorie2         = $row['sous_categorie2'];
+			$scposx					 = $row['scposx'];
+			$scposy					 = $row['scposy'];
 			$posx					 = $row['posx'];
 			$posy					 = $row['posy'];
 			$url                     = $row['url'];
-			
+
 			$arrondissement = $row['arrondissement'];
 			if ($arrondissement == "Indéfini") {$arrondissement = $ville_enseigne;}
 			
@@ -242,7 +244,7 @@
 			<div class="box" id="<?php echo $datetime; ?>">
 				
 				<header>
-					<div class="box_icon" title="<?php if ($sous_categorie2 == NULL) {echo $sous_categorie;} else {echo $sous_categorie2;} ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $posx . "px" . " " . $posy . "px"?>"></div>
+					<div class="box_icon" title="<?php if ($sous_categorie2 == NULL) {echo $sous_categorie;} else {echo $sous_categorie2;} ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $scposx . "px" . " " . $scposy . "px"?>"></div>
 <!--					<div class="box_desc" onclick="location.href='<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 						<div class="box_desc" onclick="location.href='<?php echo "http://127.0.0.1/projects/uniiti"; ?>/<?php echo $url; ?>/<?php echo $id_enseigne; ?>.html';">
 -->					<div class="box_desc" onclick="location.href='<?php echo $SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">

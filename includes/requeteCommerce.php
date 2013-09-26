@@ -36,7 +36,7 @@
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 						couleur, t10.posx, t10.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
-						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, id_quartier, ville_enseigne, url
+						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, id_quartier, nom_ville, url
 				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
@@ -62,7 +62,9 @@
 							INNER JOIN sous_categories AS t11
 							ON t10.id_sous_categorie = t11.id_sous_categorie
 								INNER JOIN categories AS t12
-								ON t10.id_categorie = t12.id_categorie WHERE id_enseigne = " . $id_enseigne;
+								ON t10.id_categorie = t12.id_categorie 
+									INNER JOIN villes  AS t13
+									ON t9.villes_id_ville = t13.id_ville WHERE id_enseigne = " . $id_enseigne;
 
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		if (!empty($_POST['provenance'])) {
@@ -143,7 +145,7 @@
 			$x1		 				 = $row['x1'];
 			$y1		 				 = $row['y1'];
 			$code_postal             = $row['cp_enseigne'];
-			$ville_enseigne          = $row['ville_enseigne'];
+			$ville_enseigne          = $row['nom_ville'];
 			$couleur 				 = $row['couleur'];
 			$categorie				 = $row['categorie_principale'];
 			$sous_categorie          = $row['sous_categorie'];
@@ -155,7 +157,7 @@
 			$req5->bindParam(':id_quartier', $row['id_quartier'], PDO::PARAM_INT);
 			$req5->execute();
 			$result5 = $req5->fetch(PDO::FETCH_ASSOC);
-			if ($result5) {$arrondissement = $result5['arrondissement'];}
+			if ($result5['arrondissement'] != "Indéfini") {$arrondissement = $result5['arrondissement'];}
 			else {$arrondissement = $ville_enseigne;}
 			
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
