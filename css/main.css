@@ -560,8 +560,8 @@ input:focus.inscription_field_input_text, input:focus.inscription_field_input_te
 .inscription_border_bottomright{border-bottom:1px solid #e4e4e4;border-right:1px solid #e4e4e4;}
 .inscription_field_sexe,.inscription_field_nom,.inscription_field_prenom,.inscription_field_mail,.inscription_field_confirmmail,.inscription_field_pseudo,.inscription_field_parrain,.inscription_field_cp,.inscription_field_mdp,.inscription_field_confirmmdp{float:left;height:30px;width:219px;padding:10px 0 0 0;background-color:white;text-align:center;font-size:1.2em;text-transform:uppercase;font-weight:600;}
 .inscription_field_sexe_button{display:inline-block;width:181px;height:41px;border-bottom:1px solid #e4e4e4;}
-.inscription_field_sexe_button_h{border-radius: 0px; border-right:1px solid #e4e4e4; background:url('../img/pictos_inscription/sexe_h.png') no-repeat;background-color:#f0f0f0;background-position-x:20px;background-position-y:5px;}
-.inscription_field_sexe_button_f{border-radius: 0px; background:url('../img/pictos_inscription/sexe_f.png') no-repeat;background-color:#f0f0f0;background-position-x:20px;background-position-y:5px;}
+.inscription_field_sexe_button_h{border-radius: 0px; border-right:1px solid #e4e4e4; background:url('../img/pictos_inscription/sexe_h.png') no-repeat;background-color:#f0f0f0;background-position-x:12px;background-position-y:5px;}
+.inscription_field_sexe_button_f{border-radius: 0px; background:url('../img/pictos_inscription/sexe_f.png') no-repeat;background-color:#f0f0f0;background-position-x:12px;background-position-y:5px;}
 .inscription_field_sexe_bg{background-color:#a4ebf1;}
 .inscription_field_input_text{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding-left: 15px; font-family:'open sans';font-size:1.4em;font-weight:100;width:362px;border-bottom:1px solid #e4e4e4;height:41px;background-color:#f0f0f0;}
 .inscription_field_input_chiffre{font-family:'open sans';float:left;padding:0 0 0 17px;font-size:1.4em;font-weight:100;width:120.6px;border-bottom:1px solid #e4e4e4;border-right:1px solid #e4e4e4;height:41px;background-color:#f0f0f0;}
@@ -724,7 +724,7 @@ input.input_signalement_motif{width:290px;}
 .utilisateur_infospersos_sexe_button{text-align:center;padding-top:10px;display:inline-block;float:left;width:144px;height:30px;border-bottom:1px solid #e4e4e4;}
 .utilisateur_infospersos_sexe_button:last-child{width:145px;}
 .utilisateur_infospersos_sexe_button:hover{cursor:pointer;}
-.utilisateur_infospersos_input_date{text-align:center;float:left;padding-top:10px;border-bottom:1px solid #e4e4e4;border-left:1px solid #e4e4e4;background-color:#f0f0f0;width:96px;height:41px;}
+.utilisateur_infospersos_input_date{text-align:center;padding-top:0px;border-bottom:1px solid #e4e4e4;margin-right: -3px;border-left:1px solid #e4e4e4;background-color:#f0f0f0;width: 96px;height:41px;padding-left: 10px;}
 .utilisateur_infospersos_input_date:last-child{width:98px;}
 .parrainage_body{position:relative;}
 .reservation_body{position:relative;}
@@ -887,8 +887,9 @@ input.oublimdp_input_email{padding-left:90px;background:url('../img/pictos_popin
 .ident_inputs input[type="text"],.ident_inputs input[type="password"]{font-size:1.1em;width:204px;height:45px;background-color:#efefef;border-bottom:1px solid #e4e4e4;}
 .oublimdp_inputs input[type="mail"]{font-size:1.1em;width:410px;height:45px;bakground-color:#efefef;}
 .ident_inscription_wrap,.ident_connexion_wrap{padding-top:12px;font-size:1.1em;height:33px;text-align:center;float:left;}
-.oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{height:30px;color:#252525;background-color:#a4ebf1;padding-top:2px;display:inline-block;width:100%; height: 40px;border-radius: 0 0 3px 3px;}
-.oublimdp_valider_wrap:hover,.suggestioncommerce_valider_wrap:hover,.suggestionobjet_valider_wrap:hover{color:white;background-color:#73d4dc;}
+.oublimdp_valider_wrap,.suggestioncommerce_valider_wrap,.suggestionobjet_valider_wrap{height:30px;color:#252525;background-color:#a4ebf1;padding-top:2px;display:inline-block;width:100%; height: 40px;border-radius: 0 0 3px 3px;text-align: center;}
+.modifprofil_valider_wrap {height:30px;color:#252525;background-color:#a4ebf1;padding-top:2px;display:inline-block;width:100%;border-radius: 0 0 3px 3px;text-align: center; cursor:pointer; padding-top: 10px; height: 30px;}
+.oublimdp_valider_wrap:hover,.suggestioncommerce_valider_wrap:hover,.suggestionobjet_valider_wrap:hover,.modifprofil_valider_wrap:hover{color:white;background-color:#73d4dc;}
 
 .valider_dialog_large{width:700px;font-size:1.1em;text-align:center;float:left;}
 .valider_dialog_large a{height:30px;color:#252525;background-color:#a4ebf1;padding-top:10px;display:inline-block;width:100%;}

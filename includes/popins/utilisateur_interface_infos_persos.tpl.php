@@ -69,7 +69,7 @@
 			<span>Téléphone</span><div class="utilisateur_infospersos_input_tel"><input name="telephone_contributeur" id="telephone_contributeur" type="text" value="<?php if (!empty($_POST['telephone_contributeur'])) {echo $_POST['telephone_contributeur'];}?>"/></div>
 		</div>
 		<div class="suggestioncommerce_footer">
-			<button role="button" type="submit" class="suggestioncommerce_valider_wrap"><a href="#">Modifier mes informations</a></button>
+			<button role="button" type="submit" class="suggestioncommerce_valider_wrap">Modifier mes informations</button>
 		</div>
 	</form>
 </div>

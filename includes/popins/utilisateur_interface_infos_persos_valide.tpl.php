@@ -1,6 +1,7 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php'?>
+        include'../head.php';
+?>
 
 <div class="suggestioncommerce_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -16,7 +17,7 @@
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div onclick="window.location.reload();" class="suggestioncommerce_valider_wrap"><a href="#">Réactualiser la page / Retour à votre profil</a></div>
+    <div onclick="window.location.reload();" class="modifprofil_valider_wrap">Réactualiser la page / Retour à votre profil</div>
         
     </div>
 </div>
