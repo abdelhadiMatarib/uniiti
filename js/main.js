@@ -1056,8 +1056,6 @@ function AjusteCouvertures(NewWidth) {
 
 $(document).ready(function() {
     
-    $('.box:first-child .box_posttime time').replaceWith('<time>AVIS DU JOUR</time>');
-    
     $(document).tooltip({ tooltipClass: "custom-tooltip-styling" });
     // RECHERCHE AVANCEE TRIGGER BASIC EVENTS
     $('.recherche_avancee_wrapper').delegate('.close_button_cdr','click',function(){

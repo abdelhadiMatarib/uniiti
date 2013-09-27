@@ -85,11 +85,15 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				<?php } ?>
 			</figure>
         </div>
+        <style>
+            .presentation_action_left_body{height:auto !important;}
+        </style>
         <div class="presentation_action_left_body presentation_action_commentaire_left_body">
             <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
 				<?php if ($affichecommentaire) { ?><span style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['note'] / 2; ?>/5 | </span><span><?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
+            TETETSTETSTSDTSDTE
             </div>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
@@ -171,6 +175,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     $(".utilisateur_interface_modifs_modifier_note a.maintitle").click(function(e){
        e.preventDefault();       
        $(this).next().stop().slideToggle();
+       
+       // remplacement textarea par div
+       var contenucomment = $('.presentation_action_commentaire_left_body textarea').text();
+       $('.presentation_action_commentaire_left_body textarea').replaceWith('<div class="presentation_action_commentaire_left_body_message">'+contenucomment+'</div>');
+       
        if ($(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_avis_inside").is(':visible'))
        {
            $(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
@@ -182,6 +191,10 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
        e.preventDefault();
        
        $(this).next().stop().slideToggle();
+       // remplacement div par textarea
+       var contenucomment = $('.presentation_action_commentaire_left_body_message').text();
+       $('.presentation_action_commentaire_left_body_message').replaceWith('<textarea>'+contenucomment+'</textarea>');
+       
        if ($(".utilisateur_interface_modifs_modifier_note_inside,.utilisateur_interface_modifs_modifier_avis_inside").is(':visible'))
        {
            $(".utilisateur_interface_modifs_modifier_note_inside,.utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
@@ -193,6 +206,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
        e.preventDefault();
        
        $(this).next().stop().slideToggle();
+       
+       // remplacement textarea par div
+       var contenucomment = $('.presentation_action_commentaire_left_body textarea').text();
+       $('.presentation_action_commentaire_left_body textarea').replaceWith('<div class="presentation_action_commentaire_left_body_message">'+contenucomment+'</div>');
+       
        if ($(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_note_inside").is(':visible'))
        {
            $(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_note_inside").stop().slideUp();

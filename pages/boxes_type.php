@@ -1,4 +1,7 @@
-<?php include'../config/configuration.inc.php';
+<?php 
+include'../config/configuration.inc.php';
+include'../config/configPDO.inc.php';
+include'../config/config.inc.php';
 include'../includes/head.php';
 include'../includes/js.php';?>
 <h1>BOX NORMALE v</h1>
@@ -9,7 +12,7 @@ include'../includes/js.php';?>
                                         <div class="box_icon"><img src="../img/pictos_commerces/restaurant.png" title="" alt="" /></div>
 <!--					<div class="box_desc" onclick="location.href='.html';">
                                                 <div class="box_desc" onclick="location.href='/.html';">
--->					<div class="box_desc" onclick="location.href=''">
+-->					<div class="box_desc">
                                                         <span class="box_title" title=""></span>
                                                         <span class="box_subtitle">Restauration</span>
                                         </div>
@@ -38,8 +41,8 @@ include'../includes/js.php';?>
                                 </figure>
 
 
-                                <section onclick="OuvrePopin({},'/includes/popins/presentation_action_commentaire.tpl.php', 'default_dialog_large');">
-                                        <div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span></span></a> a noté</div>
+                                <section>
+                                        <div class="box_useraction"><a href=""><span></span></a> a noté</div>
                                         <div class="box_usertext"><figcaption><span>4/5 |</span></figcaption></div>
                                 <div class="arrow_up"></div>
                                 </section>
@@ -47,7 +50,7 @@ include'../includes/js.php';?>
                                 <footer>
 
                                         <div class="box_foot">
-                                                <div class="box_userpic"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>" ><img src="<?php echo SITE_URL; ?>/img/avatars/1.png" title="" alt="" /></a></div>
+                                                <div class="box_userpic"><a href="" ><img src="../img/avatars/1.png" title="" alt="" /></a></div>
                                                 <div class="box_user_time"></div>
                                                 <div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
                                         </div>
@@ -357,6 +360,66 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <span class="box_aleatoire_nbr_1">6243</span>
     <span class="box_aleatoire_nbr_2">ajouts en wishlist</span>
 </div>
-<style>
+<h1>AVIS DU JOUR</h1>
+<!-- VIGNETTE TYPE -->
+                        <div class="box avis_du_jour" id="">
 
-</style>
+                                <header>
+                                        <div class="box_icon"><img src="../img/pictos_commerces/restaurant.png" title="" alt="" /></div>
+<!--					<div class="box_desc" onclick="location.href='.html';">
+                                                <div class="box_desc" onclick="location.href='/.html';">
+-->					<div class="box_desc">
+                                                        <span class="box_title" title=""></span>
+                                                        <span class="box_subtitle">Restauration</span>
+                                                        <div class="avisjour_note_wrap">
+    <img src="../img/pictos_actions/star_orange.png"/>
+    <img src="../img/pictos_actions/star_orange.png"/>
+    <img src="../img/pictos_actions/star_orange.png"/>
+    <img src="../img/pictos_actions/star_orange.png"/>
+    <img src="../img/pictos_actions/star_orange.png"/>
+    <span>10/10 - 101 Avis</span>
+</div>
+                                        </div>
+
+                                <div class="fanion_jour_wrap"></div>
+                                </header>
+
+                                <figure>
+                                        
+
+                                        <div class="box_localisation"><span>Paris 7<sup>ème</sup></span></div>
+                                        <div class="box_push_et_img">
+                                        <img src="../img/photos_commerces/jour.jpg" title="" alt="" />
+                                        <div class="box_push"></div>
+                                        </div>
+                                        <div class="overlay_push">
+                                            <div class="push_buttons_wrapper">
+                                                    <div onclick="OuvrePopin({}, '/includes/popins/like_step1.tpl.php', 'default_dialog');" class="push_buttons_like"><a href="#" title=""></a></div>
+                                                    <div onclick="OuvrePopin({}, '/includes/popins/dislike_step1.tpl.php', 'default_dialog');" class="push_buttons_dislike"><a href="#" title=""></a></div>
+                                                    <div onclick="OuvrePopin({}, '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');" class="push_buttons_wishlist"><a href="#" title=""></a></div>
+                                            </div>
+                                        </div>
+                                </figure>
+
+
+                                <section>
+                                        <div class="box_useraction"><a href=""><span></span></a> a noté</div>
+                                        <div class="box_usertext"><figcaption><span>4/5 |</span></figcaption></div>
+                                <div class="arrow_up"></div>
+                                </section>
+
+                                <footer>
+
+                                        <div class="box_foot">
+                                                <div class="box_userpic"><a href="" ><img src="../img/avatars/1.png" title="" alt="" /></a></div>
+                                                <div class="box_user_time">
+                                                    <div class="box_posttime">
+                                                        <time>Avis du jour</time>
+                                                    </div>
+                                                </div>
+                                                <div class="box_posttype"><img src="../img/pictos_actions/notation.png" title="" alt="" /></div>
+                                        </div>
+                                </footer>
+
+                        </div>
+                        <!-- FIN VIGNETTE TYPE -->

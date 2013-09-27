@@ -222,9 +222,23 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .box:first-child{width:486px;}
 .box:first-child .box_push_et_img img{width:486px;}
 .box:first-child .box_user_time{width:386px;}
-.box:first-child .box_posttime{font-size:0.9em;}
-.box:first-child .box_posttime time{color:white;padding:3px 6px;background-color:#F480BC;border-radius:3px;}
+
 .box_commerce:first-child:before{content:'METTRE LA BOX PETIT MOT ICI';font-size:2em;font-weight:700;}
+
+/* STYLE BOX DU JOUR */
+.box.avis_du_jour{width:486px;}
+.box.avis_du_jour .box_push_et_img img{width:486px;}
+.box.avis_du_jour .box_user_time{width:386px;}
+.box.avis_du_jour .box_posttime{font-size:0.9em;background-color: #252525;}
+.box.avis_du_jour .box_desc{background-color:rgba(37,37,37,0.6);color:white;}
+.box.avis_du_jour section{background-color:#252525;color:white;border-bottom:1px solid #4E4E4E !important;}
+.box.avis_du_jour section:hover{background-color:#3f3f3f;}
+.box.avis_du_jour .box_posttime time{font-weight:700;font-size: 1.1em;color:#252525;padding:5px 14px;background-color:#FABE41;border-radius:3px;}
+
+.box.avis_du_jour .fanion_jour_wrap{background:url('../img/pictos_commerces/fanion_avis_jour.png');height:96px;width:76px;position:absolute;top:0;right:0;}
+.box.avis_du_jour header{position: absolute;z-index: 999;width: 486px;}
+.avisjour_note_wrap{position:absolute;top:0;right:55px;width:130px;line-height:1.3em;text-align:center;height:42px;padding-top:8px;border-left:1px solid #7a7a7a;}
+
 
 .box{position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:236px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
 /*.box:hover{border: 1px solid #fabe41; margin:0px 7px 14px 6px; -webkit-box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0); box-shadow:  0px 1px 3px 0px rgba(0, 0, 0, 0);}*/
@@ -1012,6 +1026,7 @@ height: 26px;}
 .presentation_action_left_figure{overflow:hidden;position:relative; height: 210px;width: 450px;}
 .presentation_action_left_figure figure{height: 210px;width: 450px;}
 .presentation_action_left_body{padding:15px 0 15px 0;text-align:center;width:450px;}
+.presentation_action_left_body textarea{margin: 10px 0 10px 0;display: block;float: left;width: 95%;text-align: left;height: auto;padding: 10px;background-color:#f0f0f0;resize:none;}
 .presentation_action_left_body_username,.presentation_action_left_body_action{display:inline-block;}
 .presentation_action_left_body_username{color:#fabe41;font-weight:bold;}
 .presentation_action_left_body .arrow_up{margin-top:17px;}
@@ -1638,7 +1653,7 @@ span.box_aleatoire_txt_1{font-weight:700;}
 span.box_aleatoire_txt_2{font-weight:300;margin-bottom:20px;}
 
 span.box_aleatoire_nbr_1{font-weight:700;margin-top:20px;font-size:2.4em;}
-span.box_aleatoire_nbr_2{font-weight:300;margin-bottom:20px;font-size:1.4em;}
+span.box_aleatoire_nbr_2{font-weight:300;margin-bottom:20px;font-size:1.4pem;}
 
 /* SLIDER COUVERTURES AVEC RESPONSIVE */
 #couv_slides {display: none;}
