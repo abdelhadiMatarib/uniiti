@@ -10,7 +10,7 @@
 		include_once '../includes/fonctions.inc.php';
 
 		// Requête de récupération aléatoire des infos enseigne		
-		$sql = "SELECT id_enseigne, nom_enseigne, cp_enseigne, ville_enseigne, url
+		$sql = "SELECT id_enseigne, nom_enseigne, cp_enseigne, url
 				FROM enseignes ORDER BY RAND() DESC LIMIT 0,15";
 
 		$req = $bdd->prepare($sql);
@@ -24,7 +24,6 @@
 			$id_enseigne             = $row['id_enseigne'];
 			$nom_enseigne            = $row['nom_enseigne'];
 			$code_postal             = $row['cp_enseigne'];
-			$ville_enseigne          = $row['ville_enseigne'];
 			$url                     = $row['url'];
 	?>
 			<div class="inscription_box" id="<?php echo $id_enseigne;?>">

@@ -311,7 +311,7 @@ else {
         <!-- FIN BIG WRAPPER -->
         <!-- CONTENU PRINCIPAL -->
         <div id="box_container" class="content utilisateur_boxes">
-			<?php include '../includes/requetecommerce.php' ?>
+			<?php include '../includes/requetecommerce.php' ?> 
 		</div>
         
         </div>

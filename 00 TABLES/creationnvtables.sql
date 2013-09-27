@@ -76,7 +76,7 @@ UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contri
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 4866 ;
 
 ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
-, ADD `id_quartier` int(10) unsigned DEFAULT NULL
+, ADD `id_quartier` int(10) unsigned DEFAULT 0
 , ADD `id_budget` int(10) unsigned NOT NULL
 , ADD `slide1_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide2_enseigne` varchar(45) DEFAULT NULL
