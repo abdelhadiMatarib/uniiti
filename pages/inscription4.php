@@ -169,6 +169,7 @@
 		var NomImage = 'photo '+Math.floor((Math.random()*10)+1)+'.jpg';
 		
 		var data = {
+						type : 'contributeur',
 						id_contributeur : $id_contributeur,
 						id_enseigne :'',
 						chemin : '',
