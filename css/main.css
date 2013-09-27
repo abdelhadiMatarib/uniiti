@@ -947,8 +947,9 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .prix_generique_infospratiques{font-weight:600;}
 .menutarifs_body_entrees_prix_generique span a{display:inline-block;}
 .infospratiques_textebleu{color:#73d4dc;font-weight:600;}
-.infospratiques_body_voiturier{text-align:center;background-color:white;float:left;}
-.infospratiques_body_voiturier_inside{width:680px;padding:10px;}
+.infospratiques_body_voiturier{background-color:white;float:left;}
+.infospratiques_body_voiturier2{float:left;text-align:center;}
+.infospratiques_body_voiturier_inside{float:left;width:680px;padding:10px;}
 .infospratiques_body_voiturier span{display:block;}
 .paiement_generique1{width:61px !important;border-right:1px solid #e4e4e4;}
 .paiement_generique2{width:37px !important;border-right:1px solid #e4e4e4;}

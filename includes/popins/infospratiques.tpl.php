@@ -80,7 +80,7 @@
             <div class="menutarifs_body_desserts_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
             </div>
-            <div class="infospratiques_body_voiturier">
+            <div class="infospratiques_body_voiturier2">
                 <div class="infospratiques_body_voiturier_inside">
                 <span class="infospratiques_textebleu">Ce restaurant bénéficie d'un service de voiturier</span>
                 <span>Pour plus de renseignements, merci de contacter le commerce au 01.25.32.45.44</span>
