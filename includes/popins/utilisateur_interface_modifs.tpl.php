@@ -169,8 +169,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     
     // NOTE
     $(".utilisateur_interface_modifs_modifier_note a.maintitle").click(function(e){
-       e.preventDefault();
-       
+       e.preventDefault();       
        $(this).next().stop().slideToggle();
        if ($(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_avis_inside").is(':visible'))
        {

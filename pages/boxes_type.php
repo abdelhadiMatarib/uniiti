@@ -341,6 +341,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <span class="box_aleatoire_txt_1">Suivez</span>
     <span class="box_aleatoire_txt_2">nous</span>
 </div>
+<div class="box box_aleatoire box_aleatoire_nombres">
+    <span class="box_aleatoire_nbr_1">4924</span>
+    <span class="box_aleatoire_nbr_2">avis sur le site</span>
+</div>
+<div class="box box_aleatoire box_aleatoire_nombres">
+    <span class="box_aleatoire_nbr_1">8252</span>
+    <span class="box_aleatoire_nbr_2">j'aime</span>
+</div>
+<div class="box box_aleatoire box_aleatoire_nombres">
+    <span class="box_aleatoire_nbr_1">1222</span>
+    <span class="box_aleatoire_nbr_2">je n'aime pas</span>
+</div>
+<div class="box box_aleatoire box_aleatoire_nombres">
+    <span class="box_aleatoire_nbr_1">6243</span>
+    <span class="box_aleatoire_nbr_2">ajouts en wishlist</span>
+</div>
 <style>
 
 </style>

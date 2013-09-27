@@ -8,6 +8,13 @@ input[type="radio"]:before{content:"";/* pour que le bouton soit visible*/
 	border-radius:120px;}
 input[type='radio']:checked:before{background-color:#f0f0f0;}
 
+input::-webkit-input-placeholder{color:#ACACAC;}
+input::-moz-placeholder{color:#ACACAC;}
+input:-ms-input-placeholder{color:#ACACAC;}
+input:-moz-placeholder{color:#ACACAC;}
+
+.background-colored{background-color:#e0e0e0 !important;}
+
 .custom-tooltip-styling{background-color:#252525;color:white;margin-top:-10px;border-radius:3px;}
 img#ImageSuivre{height:32px;width:32px;}
 img#ImageSuivrePopin{height:32px;width:32px;}
@@ -215,7 +222,8 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .box:first-child{width:486px;}
 .box:first-child .box_push_et_img img{width:486px;}
 .box:first-child .box_user_time{width:386px;}
-
+.box:first-child .box_posttime{font-size:0.9em;}
+.box:first-child .box_posttime time{color:white;padding:3px 6px;background-color:#F480BC;border-radius:3px;}
 .box_commerce:first-child:before{content:'METTRE LA BOX PETIT MOT ICI';font-size:2em;font-weight:700;}
 
 .box{position:relative;-webkit-box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); box-shadow:0px 1px 3px 0px rgba(0, 0, 0, 0.25); margin:1px 7px 14px 7px;background-color:white;width:236px;-webkit-border-radius: 3px;border-radius: 3px;overflow: hidden;}
@@ -945,7 +953,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .horaires_commerces_ouvert span{font-weight:600;}
 .horaires_commerces_ferme span{font-weight:600;}
 .prix_generique_infospratiques{font-weight:600;}
-.menutarifs_body_entrees_prix_generique span a{display:inline-block;}
+.menutarifs_body_entrees_prix_generique span a{display:inline-block;height:14px;}
 .infospratiques_textebleu{color:#73d4dc;font-weight:600;}
 .infospratiques_body_voiturier{background-color:white;float:left;}
 .infospratiques_body_voiturier2{float:left;text-align:center;}
@@ -1072,21 +1080,23 @@ a.link_engrenage_button{display:inline-block;height:20px;width:20px;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle:active{background-color:#e0e0e0;}
-.utilisateur_interface_modifs_modifier_commentaire_inside_img_container{text-align:center;font-size:0.85em;font-weight:700;margin:0 auto;margin-bottom:10px;}
+.utilisateur_interface_modifs_modifier_commentaire_inside_img_container{text-align:center;margin-bottom:15px;font-size:0.85em;font-weight:700;margin:10px auto;}
 .utilisateur_interface_modifs_modifier_commentaire_inside{position:relative;display:none;text-align:left;float:left;padding: 10px;background-color: #e0e0e0;}
 .utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
+
+#modifier_commentaire_input_pas_auteur+label{margin-bottom:10px;}
 
 .utilisateur_interface_modifs_modifier_avis{float:left;text-align:center;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_avis a.maintitle:active{background-color:#e0e0e0;}
-.utilisateur_interface_modifs_modifier_avis_inside_img_container{font-size:0.85em;margin:0 auto;margin-bottom:10px;}
+.utilisateur_interface_modifs_modifier_avis_inside_img_container{font-size:0.85em;margin:0 auto;margin-bottom:10px;font-weight:700;}
 .utilisateur_interface_modifs_modifier_avis_inside{position:relative;display:none;float:left;padding: 10px;background-color: #e0e0e0;}
 
 .modif_input_float_left{float:left;width:230px;}
 .modif_input_float_left input[type='radio']{margin:0 10px 0 0;}
-.modif_input_float_left label{font-size:0.9em;}
+.modif_input_float_left label{font-size:0.9em;display: inline-block;width: 205px;float: right;margin-bottom:5px;}
 
 .utilisateur_interface_modifs_txt_bold{display:block;font-weight:700;}
 
@@ -1626,6 +1636,9 @@ textarea.module_optin_textarea_message{height:70px;width:280px;resize:none;paddi
 .box_aleatoire span{display:block;text-transform:uppercase;color:white;font-size:2em;}
 span.box_aleatoire_txt_1{font-weight:700;}
 span.box_aleatoire_txt_2{font-weight:300;margin-bottom:20px;}
+
+span.box_aleatoire_nbr_1{font-weight:700;margin-top:20px;font-size:2.4em;}
+span.box_aleatoire_nbr_2{font-weight:300;margin-bottom:20px;font-size:1.4em;}
 
 /* SLIDER COUVERTURES AVEC RESPONSIVE */
 #couv_slides {display: none;}

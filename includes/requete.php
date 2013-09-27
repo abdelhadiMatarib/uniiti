@@ -107,6 +107,8 @@
                 $CompteurAlea2 = rand(3, $NbItems);
                 // Tirage au hasard box aléatoires
                 $CompteurAlea3 = rand(4, $NbItems);
+                // Tirage au hasard box aléatoires
+                $CompteurAlea4 = rand(5, $NbItems);
                 
 		$Compteur = 0;
 		while ($row = $req2->fetch(PDO::FETCH_ASSOC))
@@ -342,6 +344,12 @@
                             </div>
                             <span class="box_aleatoire_txt_1">Suivez</span>
                             <span class="box_aleatoire_txt_2">nous</span>
+                        </div>
+                        <?php } ?>
+                        <?php if ($CompteurAlea4 == $Compteur) { ?>
+                        <div class="box box_aleatoire box_aleatoire_nombres">
+                            <span class="box_aleatoire_nbr_1">4924</span>
+                            <span class="box_aleatoire_nbr_2">avis sur le site</span>
                         </div>
                         <?php } ?>
 	<?php
