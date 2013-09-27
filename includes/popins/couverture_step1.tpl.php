@@ -241,25 +241,50 @@
 				$("#image").css({display : "block"});
 			});
 
+			function CreerImageCouverture (image, quality) {
+				if (image != '') {
+					var image_tmp = new Image();
+					image_tmp.src = image;
+					var cvs = document.createElement('canvas');
+					var width = image_tmp.naturalWidth;
+					var height = image_tmp.naturalHeight;
+					cvs.width = 1750;
+					cvs.height = height * 1750 / width;
+					var ctx = cvs.getContext("2d").drawImage(image_tmp, 0, 0, width, height, 0, 0, 1750, height * 1750 / width);
+					var newImage = cvs.toDataURL("image/jpeg", quality);
+					return newImage;
+				}
+				else {return image;}
+			}
 			
 			function EtapeSuivante() {
-			var data = {
-							step : 2,
-							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
-							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
-							id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
-							chemin : '',
-							image1 : $('#ImageTemp1').val(),
-							image2 : $('#ImageTemp2').val(),
-							image3 : $('#ImageTemp3').val(),
-							image4 : $('#ImageTemp4').val(),
-							image5 : $('#ImageTemp5').val(),
-							y1 : $('#y1').val(),
-							y2 : $('#y2').val(),
-							y3 : $('#y3').val(),
-							y4 : $('#y4').val(),
-							y5 : $('#y5').val()
-						};
+				$id("MessageInfo").innerHTML = "Compression en cours";
+				setTimeout(function() {},100);				
+				for (k = 1 ; k <= 5 ; k++) {
+					if(!($('#ImageTemp'+k).val().lastIndexOf("http://") == 0)) {
+						var imagecompressee = CreerImageCouverture($('#ImageTemp'+k).val(), 0.7);
+						$('#ImageTemp'+k).val(imagecompressee);
+					}
+				}
+				$id("MessageInfo").innerHTML = "Chargement en cours";
+				
+				var data = {
+								step : 2,
+								type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
+								id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+								id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+								chemin : '',
+								image1 : $('#ImageTemp1').val(),
+								image2 : $('#ImageTemp2').val(),
+								image3 : $('#ImageTemp3').val(),
+								image4 : $('#ImageTemp4').val(),
+								image5 : $('#ImageTemp5').val(),
+								y1 : $('#y1').val(),
+								y2 : $('#y2').val(),
+								y3 : $('#y3').val(),
+								y4 : $('#y4').val(),
+								y5 : $('#y5').val()
+							};
 				
 				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
 			};
@@ -308,7 +333,8 @@
 					ParseFile(f);
 				}
 			}
-				// output file information
+
+			// output file information
 			function ParseFile(file) {
 				// display an image
 				if (file.type.indexOf("image") == 0) {
@@ -320,6 +346,13 @@
 						$(".draggable").css({top: '0px'});
 						$('#y').val(0);
 						$('#ImageTemp').val(e.target.result);
+						
+/*						
+						$("#image").attr("src", e.target.result);
+						InitDrag();
+						$(".draggable").css({top: '0px'});
+						$('#y').val(0);
+						$('#ImageTemp').val(e.target.result); */
 
 						/*						Output(
 							"<p>Fichier: <strong>" + file.name +

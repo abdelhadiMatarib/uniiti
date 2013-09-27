@@ -11,7 +11,9 @@
 	<script src="<?php echo SITE_URL; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.slides.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.couv_slides.min.js"></script>
-        <script src="<?php echo SITE_URL; ?>/js/jquery.flippy.min.js"></script>
+	<script src="<?php echo SITE_URL; ?>/js/jquery.flippy.min.js"></script>
+
+Using sizeof.js
 	
 	<script>
 	
@@ -51,10 +53,12 @@
 			async : false,
 			type :"POST",
 			url : siteurl + $url,
-			data : $.extend($Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
+			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
 			success : function(html){
 				if (html) {
-					$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
+//					$('#box_container .box').isotope( 'destroy' );
+					$('#box_container .box').remove();
+//					$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
 					$('#box_container').isotope( 'insert', $(html) );
 				} else {alert('Il n\'y a plus d\'enregistrements');}
 			},
@@ -136,7 +140,7 @@
 							break;
 							case "Timeline" :
 								$url = "includes/requete.php";
-								$data = $.extend($Filtre, {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
+								$data = $.extend({}, $Filtre, {nbitems: 20, lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
 							break;
 						}
 

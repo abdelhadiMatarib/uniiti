@@ -1,9 +1,5 @@
-// pour tester
+/* pour tester
 
-function AfficheImage(img) {
-	img.fadeIn(1000, function () {$(this).parent().css({'background':'none'});});
-}	
-/*
 $("a").click(function(e) {
 	if (($("#loading_page").length > 0) && ($(this).attr("href") != "#")) {
 		e.preventDefault(); //don't go to default URL

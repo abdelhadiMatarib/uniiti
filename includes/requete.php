@@ -278,7 +278,7 @@
                                     
 					<div class="box_localisation"><span><?php echo $arrondissement; ?></span></div>
 					<div class="box_push_et_img <?php echo $Taille; ?>" style="background:<?php echo $couleur; ?>;height:350px">
-						<img onload="AfficheImage($(this));" style="display:none;" src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne  . "?" . time();?>" title="" alt="" />
+						<img style="display:none;" src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne  . "?" . time();?>" title="" alt="" />
 <!--						<img src="img/photos_commerces/1.jpg" title="" alt="" />	-->
 						<div class="box_push" <?php echo AffichePush($categorie); ?>></div>
 					</div>
@@ -292,7 +292,7 @@
 				</figure>
                                 
 				<section onclick="<?php echo $presoumodif; ?>">
-					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?><?php if ($commentaire == "pas de commentaire") { ?><span style="color:<?php echo $couleur; ?>;font-weight: bold;"> <?php echo  $note / 2; ?>/5 <?php } ?></span></div>
+					<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?><?php if ($commentaire == "pas de commentaire") { ?><span style="color:<?php echo $couleur; ?>;font-weight: bold;"> <?php echo  $note / 2; ?>/5 </span><?php } ?></div>
 					<?php if (($affichecommentaire) && ($commentaire != "pas de commentaire"))  { ?><div class="box_usertext"><figcaption><span style="color:<?php echo $couleur; ?>;font-weight: bold;"><?php echo $note/2 ?>/5 | </span><?php echo $commentaireaffiche; ?></figcaption></div><?php } ?>
 				<div class="arrow_up" style="border-bottom:5px solid <?php echo $couleur; ?>;"></div>
 				</section>

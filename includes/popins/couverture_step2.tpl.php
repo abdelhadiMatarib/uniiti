@@ -3,12 +3,39 @@
 <?php
 	include_once '../../config/configuration.inc.php';
 	include'../head.php';
+	include_once '../fonctions.inc.php';
 	ini_set('memory_limit', '-1');
-	
+
 	$MessageAction = "Enregistrer";
 	$MessageInfo = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
 	$Step = "{step: 1}";
 
+	function CreerImageCouverture ($image, $ImageRecalibree, $WidthCouv) {
+		$couv = $ImageRecalibree;
+		list($imagewidth, $imageheight, $imageType) = getimagesize($image);
+		$scale = $imagewidth / $WidthCouv;
+		$newImage = imagecreatetruecolor($WidthCouv, $imageheight / $scale);
+		$imageType = image_type_to_mime_type($imageType);
+		switch($imageType) {
+			case "image/gif":
+				$source=imagecreatefromgif($image); 
+				break;
+			case "image/pjpeg":
+			case "image/jpeg":
+			case "image/jpg":
+				$source=imagecreatefromjpeg($image); 
+				break;
+			case "image/png":
+			case "image/x-png":
+				$source=imagecreatefrompng($image); 
+				break;
+		}
+		imagecopyresampled($newImage, $source, 0, 0, 0, 0, $WidthCouv, $imageheight / $scale, $imagewidth, $imageheight);
+		imagejpeg($newImage, $couv);
+		imagedestroy($newImage);		
+	}	
+	
+	
 	function CompresserImage ($image, $ImageRecalibree, $WidthCouv) {
 		$couv = $ImageRecalibree;
 		list($imagewidth, $imageheight, $imageType) = getimagesize($image);
@@ -34,30 +61,6 @@
 		imagedestroy($newImage);		
 	}
 	
-	function CreerImageCouverture ($image, $ImageRecalibree, $y, $WidthCouv, $HeightCouv) {
-
-		$couv = $ImageRecalibree;
-		list($imagewidth, $imageheight, $imageType) = getimagesize($image);
-		$scale = $imagewidth / $WidthCouv;
-		$newImage = imagecreatetruecolor($WidthCouv, $HeightCouv);
-		$imageType = image_type_to_mime_type($imageType);
-		switch($imageType) {
-			case "image/gif":
-				$source=imagecreatefromgif($image); 
-				break;
-			case "image/pjpeg":
-			case "image/jpeg":
-			case "image/jpg":
-				$source=imagecreatefromjpeg($image); 
-				break;
-			case "image/png":
-			case "image/x-png":
-				$source=imagecreatefrompng($image); 
-				break;
-		}
-		imagecopyresampled($newImage, $source, 0, 0, 0, $y * $scale, $WidthCouv, $HeightCouv, $imagewidth, $HeightCouv * $scale);
-		imagepng($newImage, $couv);
-	}
 		if ((!empty($_POST['id_contributeur'])) || (!empty($_POST['id_enseigne']))) {
 			if ($_POST['id_contributeur'] != "") {
 				$CheminImageRecalibree = ROOT_IMAGES_TMP . $_POST['id_contributeur'];
@@ -149,7 +152,7 @@
 					<?php for ($i = 1 ; $i <= $NbImages ; $i++) { ?>
 					<li id="couverture_img_item<?php echo $i; ?>" class="couverture_img_item">
 						<div class="couverture_img_item_nbr_img_txt"><span><?php echo $i; ?></span></div>
-						<img src="<?php echo $image[$i] . "?" . time(); ?>" title="" alt=""/>
+						<img src="<?php echo $image[$i] . "?" . time(); ?>" style="margin-top:<?php echo -$y[$i]*210/1750; ?>px" title="" alt=""/>
 						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
 					</li>
 					<?php } ?>

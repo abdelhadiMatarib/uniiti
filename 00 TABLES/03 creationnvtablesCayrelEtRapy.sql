@@ -24,7 +24,6 @@ DROP TABLE IF EXISTS `objets` ;
 DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
 
 
-
 ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `slide1_contributeur` varchar(45) DEFAULT NULL
 , ADD `slide2_contributeur` varchar(45) DEFAULT NULL
@@ -42,9 +41,9 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 2825 ;
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 4866 ;
 
-ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL
-, ADD `id_quartier` int(10) unsigned DEFAULT NULL
-, ADD `id_budget` int(10) unsigned NOT NULL
+ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEFAULT 1
+, ADD `id_quartier` int(10) unsigned DEFAULT 0
+, ADD `id_budget` int(10) unsigned NOT NULL DEFAULT 1
 , ADD `slide1_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide2_enseigne` varchar(45) DEFAULT NULL
 , ADD `slide3_enseigne` varchar(45) DEFAULT NULL
