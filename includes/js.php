@@ -13,8 +13,6 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.couv_slides.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.flippy.min.js"></script>
 
-Using sizeof.js
-	
 	<script>
 	
 	$Filtre = {};
@@ -56,9 +54,9 @@ Using sizeof.js
 			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
 			success : function(html){
 				if (html) {
-//					$('#box_container .box').isotope( 'destroy' );
-					$('#box_container .box').remove();
-//					$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
+/*					$('#box_container .box').isotope( 'destroy' );
+					$('#box_container .box').remove();*/
+					$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
 					$('#box_container').isotope( 'insert', $(html) );
 				} else {alert('Il n\'y a plus d\'enregistrements');}
 			},
