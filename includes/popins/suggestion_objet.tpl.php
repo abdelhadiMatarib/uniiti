@@ -4,7 +4,9 @@
 		if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				$id_contributeurActif = $_SESSION['SESS_MEMBER_ID'];
 		}
-		else {exit;}
+		else {?>
+			<script>ActualisePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');</script>
+		<?php exit;}
 ?>
 
 <div class="suggestionobjet_wrapper">

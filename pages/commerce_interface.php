@@ -11,7 +11,7 @@
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
 
-	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+	if (isset($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
 	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 	
 	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL))) {$Connecte = true;}

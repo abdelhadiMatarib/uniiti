@@ -105,9 +105,6 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         
         </div>
     </div>
-
-
-
     
     <div class="presentation_action_right">
        
@@ -115,12 +112,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_bold">Modifier</span><span> ma note</span></a>
             <div class="utilisateur_interface_modifs_modifier_note_inside">
                 <div class="utilisateur_interface_modifs_modifier_note_inside_img_container">
-                    <img src="<?php echo SITE_URL; ?>/img/pictos_popins/modifier_note_icon_star0.png" title="" alt="" height="26" width="28" />
-                    <img src="<?php echo SITE_URL; ?>/img/pictos_popins/modifier_note_icon_star0.png" title="" alt="" height="26" width="28" />
-                    <img src="<?php echo SITE_URL; ?>/img/pictos_popins/modifier_note_icon_star0.png" title="" alt="" height="26" width="28" />
-                    <img src="<?php echo SITE_URL; ?>/img/pictos_popins/modifier_note_icon_star0.png" title="" alt="" height="26" width="28" />
-                    <img src="<?php echo SITE_URL; ?>/img/pictos_popins/modifier_note_icon_star0.png" title="" alt="" height="26" width="28" />
+				<div id="Note" class="rating"></div>
                 </div>
+				<div class="wrap_buttons_valider_supprimer">
+					<div class="button_valider" title="Enregistrer"></div>
+				</div>
             </div>
         </div>
         <div class="utilisateur_interface_modifs_modifier_commentaire">
@@ -133,13 +129,13 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                     <form>
                     <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Saisie incorrecte de mon avis</label></div>
                     <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Mon opinion sur ce commerçant a évolué</label></div>
-                    <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Je souhaite préciser ou compléter certains points</label></div>
+                    <div class="modif_input_float_left"><input checked type="radio" name="radio_modif_user" id="modifier_commentaire_input_precisions"/><label for="modifier_commentaire_input_precisions">Je souhaite préciser ou compléter certains points</label></div>
                     <div class="modif_input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_pas_auteur"/><label for="modifier_commentaire_input_pas_auteur">Je ne suis pas l'auteur de ce texte</label></div>
                     </form>
                 </div>
-            <div class="wrap_buttons_valider_supprimer">
-                <div class="button_valider" title="Enregistrer"></div>
-            </div>
+				<div class="wrap_buttons_valider_supprimer">
+					<div class="button_valider" title="Enregistrer"></div>
+				</div>
             </div>
         </div>
         <div class="utilisateur_interface_modifs_modifier_avis">
@@ -158,18 +154,46 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 
 
     </div>
-    
-
-       
-    
+     
 </div>
+<style>
+.rating {margin-left:40px;cursor: pointer;display: block;}
+.rating:after {content: '.';display: block;height: 0;width: 0;clear: both;visibility: hidden;}
+.cancel, .star {float: left;width: 19px;height: 19px;overflow: hidden;text-indent: -999em;cursor: pointer;}
+.cancel {margin-right:10px;}
+.star-left {margin-left:3px;}
+.star-left, .star-right {width: 9.5px;}
+
+.cancel, .cancel a, .star, .star a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0 -152px;}
+.star-left, .star-left a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0px -152px;}
+.star-right, .star-right a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat -9.5px -152px;}
+
+.cancel a {display: block;width: 100%;height: 100%;}
+.star.star-left a {display: block;width: 100%;height: 100%;background-position: 0 -152px;}
+.star.star-right a {display: block;width: 100%;height: 100%;background-position: -9.5px -152px;}
+
+div.rating div.star-left.on a {background-position: 0 -76px;}
+div.rating div.star-left.hover a, div.rating div.star-left a:hover {background-position: 0 -76px;}
+div.rating div.star-right.on a {background-position: -9.5px -76px;}
+div.rating div.star-right.hover a, div.rating div.star-right a:hover {background-position: -9.5px -76px;}
+
+
+</style>
+
 <script>
 // Box utilisateur modifier interface modifier note
 
-    // On annule le comportement par défaut du clic sur le lien (scroll)
-/*    $("a").click(function(e){
-       e.preventDefault(); 
-    });*/ //             FF ==> ATTENTION : LORQUE L'ON FERME LA DIALOG BOX, PLUS AUCUN LIEN NE FONCTIONNE : est-ce vraiment nécessaire ?
+	$('#Note').rating('utilisateur_interface_modifs.tpl.php', {cancel:true,maxvalue:5,increment:0.5,curvalue:4.5});
+
+	$('.utilisateur_interface_modifs_modifier_note_inside .button_valider').click(function () {
+		if ($('.star.on:last a').length > 0) {alert($('.star.on:last a').attr('href').split('#')[1] );}
+		else {alert('0/5');}
+	
+	});
+	
+	function AfficheImage(img) {
+		img.fadeIn(1000, function () {img.parent().css({'background':'none'});});
+	}
     
     // NOTE
     $(".utilisateur_interface_modifs_modifier_note a.maintitle").click(function(e){

@@ -100,15 +100,15 @@
 		$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
 
 		// Tirage au hasard top 50 commerces
-		$CompteurTop50 = rand(1, $NbItems);
-                // Tirage au hasard box aléatoires
-                $CompteurAlea1 = rand(2, $NbItems);
-                // Tirage au hasard box aléatoires
-                $CompteurAlea2 = rand(3, $NbItems);
-                // Tirage au hasard box aléatoires
-                $CompteurAlea3 = rand(4, $NbItems);
-                // Tirage au hasard box aléatoires
-                $CompteurAlea4 = rand(5, $NbItems);
+		$CompteurTop50 = rand(1, $NbItems-1);
+		// Tirage au hasard box aléatoires
+		$CompteurAlea1 = rand(2, $NbItems-1);
+		// Tirage au hasard box aléatoires
+		$CompteurAlea2 = rand(3, $NbItems-1);
+		// Tirage au hasard box aléatoires
+		$CompteurAlea3 = rand(4, $NbItems-1);
+		// Tirage au hasard box aléatoires
+		$CompteurAlea4 = rand(5, $NbItems-1);
                 
 		$Compteur = 0;
 		while ($row = $req2->fetch(PDO::FETCH_ASSOC))
@@ -116,7 +116,7 @@
 			$Compteur++;
 			// Provenances des avis
 			$type = $row['type'];
-			$provenance = $row['provenance'];
+			$provenance = $row['provenance'];			
 			$datetime = $row['date_avis'];
 			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
 			$id_avis = $row['id_avis'];			
@@ -190,6 +190,9 @@
 			$code_postal             = $row['cp_enseigne'];
 			$ville_enseigne          = $row['nom_ville'];
 			$couleur 				 = $row['couleur'];
+			$id_categorie			 = $row['id_categorie'];
+			$id_sous_categorie       = $row['id_sous_categorie'];
+			$id_sous_categorie2      = $row['id_sous_categorie2'];
 			$categorie				 = $row['categorie_principale'];
 			$sous_categorie          = $row['sous_categorie'];
 			$sous_categorie2         = $row['sous_categorie2'];
@@ -252,11 +255,12 @@
 			} else {
 				$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 				$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";
-			}		
-		
+			}
+			
+			$BoxFiltre = $type . " " . $provenance . " cat" . $id_categorie . " scat" . $id_sous_categorie . " sscat" . $id_sous_categorie2;
 	?>
 			<!-- VIGNETTE TYPE -->
-			<div class="box" id="<?php echo $datetime; ?>">
+			<div class="box <?php echo $BoxFiltre;?>" id="<?php echo $datetime; ?>" temps="<?php echo strtotime($datetime); ?>">
 				
 				<header>
 					<div class="box_icon" title="<?php if ($sous_categorie2 == NULL) {echo $sous_categorie;} else {echo $sous_categorie2;} ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $scposx . "px" . " " . $scposy . "px"?>"></div>
@@ -307,15 +311,14 @@
 				</footer>
 				
 			</div>
-			<?php if ($CompteurTop50 == $Compteur) { ?>
 			<!-- FIN VIGNETTE TYPE -->
+			<?php if ($CompteurTop50 == $Compteur) { ?>
 			<div class="box top_50_commerces">
 				<div class="box_top_50_commerces_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/icon_top50.png"/></div>
 				<span class="box_top_50_commerces_txt1">TOP 50</span><span class="box_top_50_commerces_txt2">COMMERCES</span>
 			</div>
 			<?php } ?>
                         <?php if ($CompteurAlea1 == $Compteur) { ?>
-			<!-- FIN VIGNETTE TYPE -->
 			<div class="box box_aleatoire" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');">
                             <div class="box_aleatoire_img_container">
                                 <img src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_commerce.png" height="69" width="69"/>
@@ -325,7 +328,6 @@
                         </div>
 			<?php } ?>
                         <?php if ($CompteurAlea2 == $Compteur) { ?>
-			<!-- FIN VIGNETTE TYPE -->
 			<div class="box box_aleatoire" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');">
                             <div class="box_aleatoire_img_container">
                                 <img src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_objet.png" height="69" width="69"/>
@@ -335,7 +337,6 @@
                         </div>
 			<?php } ?>
                         <?php if ($CompteurAlea3 == $Compteur) { ?>
-			<!-- FIN VIGNETTE TYPE -->
                         <div class="box box_aleatoire" onclick="window.open('https://facebook.com/pages/Captain-Opinion/125613297563851');">
                             <div class="box_aleatoire_img_container_sociaux">
                                 <img id="picto_fb" src="<?php echo SITE_URL; ?>/img/pictos_commerces/picto_fb.png" height="50" width="50"/>

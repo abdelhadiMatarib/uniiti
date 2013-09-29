@@ -12,12 +12,19 @@
 	<script src="<?php echo SITE_URL; ?>/js/jquery.slides.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.couv_slides.min.js"></script>
 	<script src="<?php echo SITE_URL; ?>/js/jquery.flippy.min.js"></script>
+	<script src="<?php echo SITE_URL; ?>/js/jquery.rating.js"></script>
 
 	<script>
+	var DisableScroll = false;
+	var CptScroll = 0;
+	var $container = $('#box_container');
+	$container.isotope({itemSelector : '.box'});
 	
 	$Filtre = {};
 	function SetFiltre(data, li) {
-
+		DisableScroll = false;
+		CptScroll = 0;
+		
 		$('.leflux_wrapper a span').text($(li).attr('filtre'));
 		var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
 		var $idenseigne = '<?php if (isset($id_enseigne)) {echo $id_enseigne;} else {echo '0';} ?>';
@@ -54,10 +61,9 @@
 			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
 			success : function(html){
 				if (html) {
-/*					$('#box_container .box').isotope( 'destroy' );
-					$('#box_container .box').remove();*/
-					$('#box_container').find('.box').each(function() {$('#box_container').isotope('remove', $(this));$(this).remove();});
-					$('#box_container').isotope( 'insert', $(html) );
+					$('#box_container .box').remove();
+					$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+					CreerOverlayPush();
 				} else {alert('Il n\'y a plus d\'enregistrements');}
 			},
 			error: function() {alert('Erreur sur url : ' + $url);}
@@ -98,8 +104,6 @@
 						});
 								
 				var isloading = false;
-				var CptScroll = 0;
-				var DisableScroll = false;
 								
 					$('#container').isotope({
 					itemSelector: '.item',
@@ -145,6 +149,7 @@
 						CptScroll++;
 						isloading = true;
 						$(".uniiti_footer_loader").css({display : "block"});
+						console.log($data);
 						$.ajax({
 							type:"POST",
 							url : $url,

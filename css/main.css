@@ -1,3 +1,5 @@
+.isotope-item {z-index: 2;}
+.isotope-hidden.isotope-item {pointer-events: none;z-index: 1;}
 /* GENERAL */
 input[type="radio"]:before{content:"";/* pour que le bouton soit visible*/
 	display:inline-block;
@@ -219,9 +221,9 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .box_height_3{height:350px !important;}
 .box_height_4{height:275px !important;}
 
-.box:first-child{width:486px;}
+/* .box:first-child{width:486px;}
 .box:first-child .box_push_et_img img{width:486px;}
-.box:first-child .box_user_time{width:386px;}
+.box:first-child .box_user_time{width:386px;} */
 
 .box_commerce:first-child:before{content:'METTRE LA BOX PETIT MOT ICI';font-size:2em;font-weight:700;}
 
@@ -1089,7 +1091,7 @@ a.link_engrenage_button{display:inline-block;height:20px;width:20px;}
 .utilisateur_interface_modifs_modifier_note a.maintitle:hover{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_note a.maintitle:active{background-color:#e0e0e0;}
 .utilisateur_interface_modifs_modifier_note_inside_img_container{margin:10px auto;height: 26px;}
-.utilisateur_interface_modifs_modifier_note_inside{position:relative;display:none;float:left;width:230px;padding: 10px;background-color: #e0e0e0;}
+.utilisateur_interface_modifs_modifier_note_inside{position:relative;display:none;float:left;width:230px;padding: 10px;background-color:rgb(37,37,37);}
 
 .utilisateur_interface_modifs_modifier_commentaire{float:left;text-align:center;}
 .utilisateur_interface_modifs_modifier_commentaire a.maintitle{text-transform:uppercase;color:#252525;font-size:0.9em;background-color:#f0f0f0;display:inline-block;width:234px;padding:8px;height:34px;}

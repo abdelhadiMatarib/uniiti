@@ -95,6 +95,10 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEF
 , ADD `tw_enseigne` varchar(255) DEFAULT NULL
 , ADD `goog_enseigne` varchar(255) DEFAULT NULL ;
 
+INSERT INTO `enseignes` (`id_enseigne`, `nom_enseigne`, `villes_id_ville`, `box_enseigne`, `slide1_enseigne`, `sscategorie_enseigne`, `id_quartier`) VALUES
+(0, 'Nom de l\'enseigne', 1, 'photo 1.jpg', 'photo 1.jpg', 1, 0);
+
+
 UPDATE `enseignes` SET sscategorie_enseigne =301, id_quartier=1, id_budget=4 WHERE id_enseigne=1 ;
 UPDATE `enseignes` SET sscategorie_enseigne =68, id_quartier=0, id_budget=4 WHERE id_enseigne=2 ;
 UPDATE `enseignes` SET sscategorie_enseigne =1, id_quartier=0, id_budget=4 WHERE id_enseigne=3 ;

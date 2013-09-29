@@ -86,7 +86,15 @@
 	</div>
 	<div class="couverture_step1_footer">
 		<div class="couverture_step1_footer_vertical_sep"></div>
-		<div class="couverture_step1_infos"><div class="couverture_step_1_infos_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" /></div><span id="MessageInfo"><?php echo $MessageInfo ?></span></div>
+		<div class="couverture_step1_infos">
+			<div class="couverture_step_1_infos_img_container">
+				<img src="<?php echo SITE_URL; ?>/img/pictos_popins/couverture_infos_icon.png" title="" alt="" height="23" width="23" />
+			</div>
+			<span id="MessageInfo"><?php if (empty($_POST['MessageInfo'])) {echo $MessageInfo;} else {echo $_POST['MessageInfo'];}?></span>
+			<div class="dialog_footer_loader" style="float:right;margin-top:-7px;display:none;">
+				<img src="<?php echo SITE_URL; ?>/img/pictos_actions/gif_uniiti.gif" height="35" width="35"/>
+			</div>
+		</div>
 
 		<div class="couverture_arianne">
 			<div class="couverture_arianne_txt">
@@ -257,17 +265,35 @@
 				else {return image;}
 			}
 			
+			function Affic () {
+			
+	
+			
+			}
+			
+			function Affic2 () {
+			
+					
+			
+			}
+			
 			function EtapeSuivante() {
-				$id("MessageInfo").innerHTML = "Compression en cours";
-				setTimeout(function() {},100);				
+
+//				jQuery.post('couverture_step1.tpl.php', {"MessageInfo": "Compression en cours"});
+ 		
+				$("#MessageInfo").html("Compression en cours");
+				$(".dialog_footer_loader").css({display : "block"});	
+		
 				for (k = 1 ; k <= 5 ; k++) {
 					if(!($('#ImageTemp'+k).val().lastIndexOf("http://") == 0)) {
 						var imagecompressee = CreerImageCouverture($('#ImageTemp'+k).val(), 0.7);
 						$('#ImageTemp'+k).val(imagecompressee);
 					}
 				}
-				$id("MessageInfo").innerHTML = "Chargement en cours";
 				
+				$id("MessageInfo").innerHTML = "Chargement en cours";
+
+			
 				var data = {
 								step : 2,
 								type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
@@ -287,6 +313,7 @@
 							};
 				
 				ActualisePopin(data, '/includes/popins/couverture_step2.tpl.php', 'default_dialog_large');
+
 			};
 			
 			

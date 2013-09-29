@@ -149,6 +149,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     <div class="clearfix"></div>    
 </div>
 <script>
+
+	function AfficheImage(img) {
+		img.fadeIn(1000, function () {img.parent().css({'background':'none'});});
+	}
+	
     // SIGNALEMENT COMMENTAIRE + PRECISION MOTIF
     $('#modifier_commentaire_input_saisie_incorrecte,#modifier_commentaire_input_opinion_commercant,#modifier_commentaire_input_precisions,#modifier_commentaire_input_preciser_motif').click(function(){
         if($('.input_avisenattente_precisezmotif').is(':visible'))
