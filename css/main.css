@@ -225,7 +225,7 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .box:first-child .box_push_et_img img{width:486px;}
 .box:first-child .box_user_time{width:386px;} */
 
-.box_commerce:first-child:before{content:'METTRE LA BOX PETIT MOT ICI';font-size:2em;font-weight:700;}
+/*.box_commerce:first-child:before{content:'METTRE LA BOX PETIT MOT ICI';font-size:2em;font-weight:700;}*/
 
 /* STYLE BOX DU JOUR */
 .box.avis_du_jour{width:486px;}
