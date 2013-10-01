@@ -134,8 +134,8 @@
 			type :"POST",
 			url : siteurl+'/includes/requetemodifieutilisateur.php',
 			data : data,
-			success: function(html){
-				ActualisePopin({}, '/includes/popins/utilisateur_interface_infos_persos_valide.tpl.php', 'default_dialog');
+			success: function(result){
+				ActualisePopin({id_contributeur:result.result}, '/includes/popins/utilisateur_interface_infos_persos_valide.tpl.php', 'default_dialog');
 			},
 			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetemodifieutilisateur.php');}
 		});

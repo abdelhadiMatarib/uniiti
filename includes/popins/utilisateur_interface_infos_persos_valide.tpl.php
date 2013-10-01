@@ -17,7 +17,7 @@
     </div>
     <div class="suggestioncommerce_footer">
         
-    <div onclick="window.location.reload();" class="modifprofil_valider_wrap">Réactualiser la page / Retour à votre profil</div>
+    <div onclick='window.location.assign("<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=" . $_POST['id_contributeur'];?>");' class="modifprofil_valider_wrap">Réactualiser la page / Retour à votre profil</div>
         
     </div>
 </div>

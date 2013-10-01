@@ -41,6 +41,9 @@ ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 2825 ;
 UPDATE `contributeurs` SET groupes_permissions_id_permission = 4 WHERE id_contributeur = 4866 ;
 
+INSERT INTO `contributeurs` (`id_contributeur`, `nom_contributeur`, `sexe_contributeur`, `slide1_contributeur`, `groupes_permissions_id_permission`) VALUES
+(0, 'Nom du contributeur', 2, 'photo 1.jpg', 1);
+
 ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEFAULT 1
 , ADD `id_quartier` int(10) unsigned DEFAULT 0
 , ADD `id_budget` int(10) unsigned NOT NULL DEFAULT 1
@@ -62,7 +65,7 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEF
 , ADD `goog_enseigne` varchar(255) DEFAULT NULL ;
 
 INSERT INTO `enseignes` (`id_enseigne`, `nom_enseigne`, `villes_id_ville`, `box_enseigne`, `slide1_enseigne`, `sscategorie_enseigne`, `id_quartier`) VALUES
-(0, 'Nom de l\'enseigne', 1, 'photo 1.jpg', 'photo 1.jpg', 1, 0);
+(0, 'Nom de l''enseigne', 1, 'photo 1.jpg', 'photo 1.jpg', 1, 0);
 
 
 UPDATE `enseignes` SET sscategorie_enseigne =301, id_quartier=1, id_budget=4 WHERE id_enseigne=1 ;

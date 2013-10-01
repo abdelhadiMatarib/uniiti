@@ -39,7 +39,7 @@
             <div class="dashboard_content form_content">
                 <h2>Saisir un avis</h2>
                     <div class="dashboard_form_wrap">
-                        <form>
+                        <form id="FormEnregistrerAvis" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/includes/requeteenregistreavis.php" method="post" autocomplete="off">
                             <div class="dashboard_form_txt">
                                 <span class="dashboard_form_avis_date"><label for="dashboard_form_avis_date">Date</label></span>
                             </div>
@@ -55,10 +55,26 @@
                             <div class="clearfix"></div>
                             <div class="dashboard_form_txt">
                                 <span class="dashboard_form_avis_commerce"><label for="dashboard_form_avis_commerce">Commerce</label></span>
+                                <a href="commerce_interface.php?id_enseigne=0" class="dashboard_form_input_submit"> | Créer un nouveau commerce</a>
+								<input id="inputSearch3" class="input_dashboard_large" type="text" value="" placeholder="NOM DU COMMERCE"/>
+								<input id="inputSearch3Hidden" type="hidden" value=""/>
+								<div class="suggestionsContainer display-none" id="suggestionsContainer3"><ul class="suggestionList" id="suggestionList3"><li>&nbsp;</li></ul></div>
                             </div>
-                            <div class="dashboard_form_input">
-                                <input type="text" id="dashboard_form_avis_commerce"/>
+							<div class="clearfix"></div>
+                            <div class="dashboard_form_txt">
+                                <span class="dashboard_form_avis_commerce"><label for="dashboard_form_avis_commerce">E-mail du contributeur</label></span>
+                                <a href="utilisateur_interface.php?id_contributeur=0" class="dashboard_form_input_submit"> | Créer un nouveau contributeur</a>
+								<input id="inputSearch4" class="input_dashboard_large" type="text" value="" placeholder="EMAIL DU CONTRIBUTEUR"/>
+								<input id="inputSearch4Hidden" type="hidden" value=""/>
+								<div class="suggestionsContainer display-none" id="suggestionsContainer4"><ul class="suggestionList" id="suggestionList4"><li>&nbsp;</li></ul></div>
                             </div>
+                            <div class="clearfix"></div>
+                            <div class="dashboard_form_txt">
+                                <span class="dashboard_form_avis_note"><label for="dashboard_form_avis_note">Note</label></span>
+                            </div>
+                            <div class="dashboard_form_input_note">
+									<div id="Note" class="rating"></div>
+                            </div>							
                             <div class="clearfix"></div>
                             <div class="dashboard_form_txt">
                                 <span class="dashboard_form_avis_commentaire"><label for="dashboard_form_avis_commentaire">Commentaire</label></span>
@@ -66,21 +82,10 @@
                             <div class="dashboard_form_input">
                                 <textarea id="dashboard_form_avis_commentaire"></textarea>
                             </div>
+
                             <div class="clearfix"></div>
-                            <div class="dashboard_form_txt">
-                                <span class="dashboard_form_avis_note"><label for="dashboard_form_avis_note">Note</label></span>
-                            </div>
-                            <div class="dashboard_form_input">
-                                <div class="dashboard_form_note_wrap" id="dashboard_form_avis_note">
-                                    <a class="note_avis_etoile" href="#" title=""></a>
-                                    <a class="note_avis_etoile" href="#" title=""></a>
-                                    <a class="note_avis_etoile" href="#" title=""></a>
-                                    <a class="note_avis_etoile" href="#" title=""></a>
-                                    <a class="note_avis_etoile" href="#" title=""></a>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="dashboard_form_txt">
+<!--                            
+							<div class="dashboard_form_txt">
                                 <span class="dashboard_form_avis_nom"><label for="dashboard_form_avis_nom">Nom</label></span>
                             </div>
                             <div class="dashboard_form_input_right">
@@ -139,8 +144,9 @@
                                     </select>
                                 </div>
                             </div>
+-->
                             <div class="dashboard_form_input_submit_wrap">
-                                <input type="submit" class="dashboard_form_input_submit" value="Envoyer le commentaire sur le flux" />
+                                <input type="submit" class="dashboard_form_input_submit" value="Enregistrer" />
                             </div>
                         </form>
                     </div>
@@ -150,12 +156,64 @@
         </div><!-- FIN BIGGY -->
         <?php include'../includes/js.php' ?>
         </div>
-        <script>
-        function moveToNext(field,nextFieldID){
-  if(field.value.length >= field.maxLength){
-    document.getElementById(nextFieldID).focus();
-  }
-}
+		
+<style>
+.rating {margin-left:20px;cursor: pointer;display: block;}
+.rating:after {content: '.';display: block;height: 0;width: 0;clear: both;visibility: hidden;}
+.cancel, .star {float: left;width: 19px;height: 19px;overflow: hidden;text-indent: -999em;cursor: pointer;}
+.cancel {margin-right:10px;}
+.star-left {margin-left:0px;}
+.star-left, .star-right {width: 9.5px;}
+
+.cancel, .cancel a, .star, .star a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0 -152px;}
+.star-left, .star-left a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0px -152px;}
+.star-right, .star-right a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat -9.5px -152px;}
+
+.cancel a {display: block;width: 100%;height: 100%;}
+.star.star-left a {display: block;width: 100%;height: 100%;background-position: 0 -152px;}
+.star.star-right a {display: block;width: 100%;height: 100%;background-position: -9.5px -152px;}
+
+div.rating div.star-left.on a {background-position: 0 -76px;}
+div.rating div.star-left.hover a, div.rating div.star-left a:hover {background-position: 0 -76px;}
+div.rating div.star-right.on a {background-position: -9.5px -76px;}
+div.rating div.star-right.hover a, div.rating div.star-right a:hover {background-position: -9.5px -76px;}
+
+
+</style>
+		
+		
+<script>
+	function moveToNext(field,nextFieldID){
+		if(field.value.length >= field.maxLength){document.getElementById(nextFieldID).focus();}
+	}
+
+	$('#Note').rating('dashboard_ajout_avis.php', {cancel:true,maxvalue:5,increment:0.5,curvalue:4.5});
+	
+	function VerifieEtErg() {
+	
+		if ($('.star.on:last a').length > 0) {note = $('.star.on:last a').attr('href').split('#')[1];}
+		else {note = 0;}
+		alert($('#inputSearch4Hidden').val()+' '+$('#inputSearch3Hidden').val()+' '+$('#dashboard_form_avis_commentaire').val()+' '+note);
+		var data = {
+						id_contributeur : ''+$('#inputSearch4Hidden').val()+'',
+						id_enseigne : ''+$('#inputSearch3Hidden').val()+'',
+						avis : ''+$('#dashboard_form_avis_commentaire').val()+'',
+						note : ''+note+''
+					};
+					console.log(data);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requeteenregistreavis.php',
+			data : data,
+			success: function(result){
+				alert("Nouvel avis n°"+result.result);
+			},
+			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistreavis.php');}
+		});
+		return false;
+	}	
+
 </script>
 
     </body>

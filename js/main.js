@@ -1306,6 +1306,8 @@ $('#close_button_home').click(function() {
 		inputSearch2Hidden = $("input#inputSearch2Hidden"), suggestionList2 = $("#suggestionList2");
 	var suggestionsContainer3 = $("#suggestionsContainer3"), inputSearch3 = $("input#inputSearch3"),
 		inputSearch3Hidden = $("input#inputSearch3Hidden"), suggestionList3 = $("#suggestionList3");
+	var suggestionsContainer4 = $("#suggestionsContainer4"), inputSearch4 = $("input#inputSearch4"),
+		inputSearch4Hidden = $("input#inputSearch4Hidden"), suggestionList4 = $("#suggestionList4");
 
 	document.selectSuggestion  = function (NumAction, keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden) {
 		var suggestionListLi = suggestionList.children();
@@ -1341,6 +1343,7 @@ $('#close_button_home').click(function() {
 		if( suggestionsContainer1.is(":visible") === true ) {suggestionsContainer1.hide();}
 		if( suggestionsContainer2.is(":visible") === true ) {suggestionsContainer2.hide();}
 		if( suggestionsContainer3.is(":visible") === true ) {suggestionsContainer3.hide();}
+		if( suggestionsContainer4.is(":visible") === true ) {suggestionsContainer4.hide();}
 	});
 
 	function arrowsAction (NumAction, keyCode, suggestionList, inputSearch, inputSearchHidden) {
@@ -1377,7 +1380,18 @@ $('#close_button_home').click(function() {
 		}
 		if(suggestionsContainer3.is(":visible") === false) {suggestionsContainer3.show();}
 		emptyInput(inputSearch3, suggestionsContainer3);
+	});
+	
+	inputSearch4.keydown(function (e) {
+		var keyCode = e.keyCode || e.which;
+		if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
+			arrowsAction (keyCode, suggestionList4, inputSearch4, inputSearch4Hidden);
+			return false;
+		}
+		if(suggestionsContainer4.is(":visible") === false) {suggestionsContainer4.show();}
+		emptyInput(inputSearch4, suggestionsContainer4);
 	});		
+	
 	
 	inputSearch1.keyup(function (e) {
 		var keyCode = e.keyCode || e.which;
@@ -1402,6 +1416,15 @@ $('#close_button_home').click(function() {
 		}
 		emptyInput(inputSearch3, suggestionsContainer3);
 	});
+	
+	inputSearch4.keyup(function (e) {
+		var keyCode = e.keyCode || e.which;
+		if(keyCode != 13 && keyCode != 38 && keyCode != 40 && keyCode != 27){
+			timeLoadEmails(suggestionsContainer4, inputSearch4, inputSearch4Hidden, suggestionList4);
+		}
+		emptyInput(inputSearch4, suggestionsContainer4);
+	});
+
 
 	function emptyInput(inputSearch, suggestionsContainer){
 		if (jQuery.trim(inputSearch.val()) == "") {suggestionsContainer.addClass("display-none");}
@@ -1459,6 +1482,41 @@ function timeLoadSuggestions(search, suggestionsContainer, inputSearch, inputSea
 	if(lastRequestI){clearTimeout(lastRequestI);}
 	lastRequestI = setTimeout(function () {loadSuggestions(search, suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 500);
 }
+
+function callbackEmails (suggestionsContainer, inputSearch, inputSearchHidden, suggestionList) {
+	return function (listData) {
+		suggestionsContainer.removeClass("display-none");
+		var toSend = '';
+		for (k in listData) {toSend += '<li id="'+listData[k].id+'">'+listData[k].nom+'</li>';}
+		suggestionList.html(toSend);
+		suggestionList.children().on("mouseenter" , function(){
+			suggestionList.children().removeClass("active");
+			$(this).addClass("active");
+		}).on("click" , function() {
+			inputSearchHidden.val($(this).attr('id'));
+			inputSearch.val($(this).text());
+			suggestionsContainer.addClass("display-none");
+		});
+	};
+}
+
+function loadEmails(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList){
+	query = inputSearch.val();
+	query = query.toLowerCase();
+
+	if(query.length == 0){return;}
+
+	query = encodeURIComponent(query);
+	res = $.getJSON(siteurl+'/includes/requetechercheemails.php?key='+query, callbackEmails(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList));
+	console.log(res);
+}
+var lastRequestI, lastRequestT;
+
+function timeLoadEmails(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList){
+	if(lastRequestI){clearTimeout(lastRequestI);}
+	lastRequestI = setTimeout(function () {loadEmails(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList)}, 500);
+}
+
 
 function callbackObjetOuEnseigne (suggestionsContainer, inputSearch, inputSearchHidden, suggestionList) {
 	return function (listData) {

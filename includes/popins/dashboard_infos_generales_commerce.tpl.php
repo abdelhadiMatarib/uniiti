@@ -11,7 +11,7 @@
 	<form id="FormModifieEnseigne" onsubmit="return Enregistrer();" action="<?php echo SITE_URL; ?>/includes/requetemodifieenseigne.php" method="post"  autocomplete="off">
 		<div class="ident_body">
 			<div class="infos_gene_title"><span>Nom du commerce</span></div>
-			<div class="infos_gene_input"><input name="nom_enseigne" id="nom_enseigne" type="text" placeholder="Nom du commerce" value="<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];}?>"/></div>
+			<div class="infos_gene_input"><input name="nom_enseigne" id="nom_enseigne" type="text" placeholder="Nom du commerce" value="<?php if (!empty($_POST['nom_enseigne'])) {echo stripslashes($_POST['nom_enseigne']);}?>"/></div>
 			<input name="id_enseigne" id="id__enseigne" type="hidden" value="<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];}?>"/>
 			<input name="step" id="step" type="hidden" value="Concept"/>
 			<div class="infos_gene_title"><span>Adresse | Code postal | Ville  | Arrond. | Quartier</span></div>

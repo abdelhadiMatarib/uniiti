@@ -1273,7 +1273,7 @@ a.commerce_head_infos_modif_clefs{position: absolute;top: 0;left: 0;display: inl
 input.nom_entreprise_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}
 input.valider_nouveau_nom_commerce{float:left;height:32px;width:32px;border:1px dashed #252525;padding:5px;margin:10px 0 0 10px;border-radius:3px;background:url('../img/pictos_dashboard/button_valider_nouveau.png') no-repeat center;}
 .display-none {display:none;}
-#suggestionsContainer3 {position: relative;background-color:#252525;color:white;max-width: 620px;top: -40px;left: 0px;z-index:1000;}
+#suggestionsContainer3, #suggestionsContainer4 {position: relative;background-color:#252525;color:white;max-width: 620px;top: -40px;left: 0px;z-index:1000;}
 
 /* DASHBOARD OBJET */
 input.nom_objet_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}
@@ -1363,6 +1363,7 @@ h2.h2_suppr_commerce{margin-top:20px;}
 .dashboard_form_input input,.dashboard_form_input_right input{height:40px;border:1px dashed #252525;font-size:1.4em;font-weight:600;color:#acacac;}
 .dashboard_form_input textarea{resize:none;height:198px;width:674px;border:1px dashed #252525;padding:10px;font-size:1.4em;font-weight:600;color:#acacac;}
 .dashboard_form_input_radio{margin-top:7px;}
+.dashboard_form_input_note{background-color:rgb(37,37,37);height:33px;padding-top:7px;float:left;width:165px;}
 
 .dashboard_form_avis_date{height:33px;padding-top:7px;margin-right:20px;}
 input#dashboard_form_avis_date{width:155px;padding-left:10px;}
@@ -1370,7 +1371,7 @@ input#dashboard_form_avis_date{width:155px;padding-left:10px;}
 input#dashboard_form_avis_heure{width:155px;padding-left:10px;}
 .dashboard_form_avis_commerce{height:33px;padding-top:7px;margin-right:20px;}
 input#dashboard_form_avis_commerce{width:570px;padding-left:10px;}
-.dashboard_form_avis_commentaire{height:33px;margin-right:20px;}
+.dashboard_form_avis_commentaire{height:33px;margin-right:20px;margin-top:20px;}
 .dashboard_form_avis_note{height:33px;padding-top:7px;margin-right:20px;}
 .dashboard_form_avis_nom{height:33px;padding-top:7px;margin-right:20px;}
 input#dashboard_form_avis_nom{width:520px;padding-left:10px;}
