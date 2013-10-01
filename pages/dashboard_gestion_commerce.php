@@ -48,14 +48,14 @@
                         </div>
                         <!-- DASHBOARD LOAD NOTIFS -->
                         
-                        <h2 class="h2_suppr_commerce">Suppression d'un commerce</h2>
-                        <div class="suppression_commerce_wrap">
-                        <span class="suppression_warning">Attention cette action est définitive</span>
-                        <input class="input_dashboard_large" type="text" placeholder="NOM DU COMMERCE"/>
-                        <div class="input_dashboard_large_suppression">
-                            <img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/>
-                        </div>
-                        </div>
+<!--		<h2 class="h2_suppr_commerce">Suppression d'un commerce</h2>
+		<div class="suppression_commerce_wrap">
+		<span class="suppression_warning">Attention cette action est définitive</span>
+		<input class="input_dashboard_large" type="text" placeholder="NOM DU COMMERCE"/>
+		<div class="input_dashboard_large_suppression">
+			<img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/>
+		</div>
+		</div	-->
                         <div class="suppression_commerce_wrap">
                         <h2 class="h2_suppr_commerce">Modification d'un commerce</h2>
 						<input id="inputSearch3" class="input_dashboard_large" type="text" value="" placeholder="NOM DU COMMERCE"/>
@@ -73,11 +73,9 @@
         </div><!-- FIN BIGGY -->
         <?php include'../includes/js.php' ?>
         </div>
-        <script>
-        function moveToNext(field,nextFieldID){
-  if(field.value.length >= field.maxLength){
-    document.getElementById(nextFieldID).focus();
-  }
+<script>
+function moveToNext(field,nextFieldID){
+	if(field.value.length >= field.maxLength){document.getElementById(nextFieldID).focus();}
 }
 </script>
 <script>

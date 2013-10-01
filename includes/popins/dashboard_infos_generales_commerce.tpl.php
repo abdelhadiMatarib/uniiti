@@ -196,10 +196,10 @@
 			type :"POST",
 			url : siteurl+'/includes/requetemodifieenseigne.php',
 			data : data,
-			success: function(html){
-				window.location.reload();
+			success: function(result){
+				window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+result.result);
 			},
-			error: function() {alert('Erreur sur url : ' + url);}
+			error: function() {alert(result.result);}
 		});
 		return false;
 	}	

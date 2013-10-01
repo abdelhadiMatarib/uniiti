@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 include_once '../config/configPDO.inc.php';
 
-if (!empty($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {exit;}
+if (isset($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {exit;}
 
 switch ($_POST['step']) {
 	case "General" :
@@ -18,7 +18,7 @@ switch ($_POST['step']) {
 		// $id_budget               = $_POST['id_budget'];
 		break;
 	case "Concept" :
-		$descriptif          = htmlspecialchars($_POST['descriptif']);
+		if (isset($_POST['descriptif'])) {$descriptif          = htmlspecialchars($_POST['descriptif']);}
 		break;
 	break;
 	default:
@@ -32,19 +32,32 @@ try
 	$bdd->beginTransaction(); // Début transaction pour requetes multiples
 	switch ($_POST['step']) {
 		case "General" :
-			$sql = "UPDATE enseignes 
-					SET nom_enseigne=:nom_enseigne,
-						adresse1_enseigne=:adresse1_enseigne,
-						villes_id_ville=:villes_id_ville,
-						cp_enseigne=:code_postal,
-						sscategorie_enseigne=:id_sous_categorie2,
-						telephone_enseigne=:telephone_enseigne,
-						url=:url,
-						id_quartier=:id_quartier,
-						id_budget=:id_budget
-						WHERE id_enseigne=:id_enseigne";
+			if ($id_enseigne == 0) {
+				$sql = "INSERT INTO enseignes 
+				( nom_enseigne, adresse1_enseigne, villes_id_ville,	cp_enseigne, sscategorie_enseigne,
+					telephone_enseigne,	url, id_quartier, id_budget, slide1_enseigne, box_enseigne ) VALUES (:nom_enseigne, :adresse1_enseigne, 
+					:villes_id_ville, :code_postal, :id_sous_categorie2, :telephone_enseigne, :url, :id_quartier, :id_budget, :slide1_enseigne, :box_enseigne)";
+			} else {
+				$sql = "UPDATE enseignes 
+						SET nom_enseigne=:nom_enseigne,
+							adresse1_enseigne=:adresse1_enseigne,
+							villes_id_ville=:villes_id_ville,
+							cp_enseigne=:code_postal,
+							sscategorie_enseigne=:id_sous_categorie2,
+							telephone_enseigne=:telephone_enseigne,
+							url=:url,
+							id_quartier=:id_quartier,
+							id_budget=:id_budget
+							WHERE id_enseigne=:id_enseigne";
+			}
 			$req = $bdd->prepare($sql);
-			$req->bindParam(':id_enseigne', $_POST['id_enseigne'], PDO::PARAM_INT);
+			if ($id_enseigne != 0) {$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);}
+			else {
+				$box = "photo 1.jpg";
+				$couv = "photo " . rand(1,113) . ".jpg";
+				$req->bindParam(':slide1_enseigne', $couv, PDO::PARAM_STR);
+				$req->bindParam(':box_enseigne', $box, PDO::PARAM_STR);
+			}
 			$req->bindParam(':nom_enseigne', $nom_enseigne, PDO::PARAM_STR);
 			$req->bindParam(':adresse1_enseigne', $adresse1_enseigne, PDO::PARAM_STR);
 			$req->bindParam(':villes_id_ville', $id_ville, PDO::PARAM_STR);
@@ -58,17 +71,17 @@ try
 		case "Concept" ;
 			$sql = "UPDATE enseignes SET descriptif=:descriptif WHERE id_enseigne=:id_enseigne";
 			$req = $bdd->prepare($sql);
-			$req->bindParam(':id_enseigne', $_POST['id_enseigne'], PDO::PARAM_INT);
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->bindParam(':descriptif', $descriptif, PDO::PARAM_STR);
 			break;
 	}
 
 	$req->execute();
-
+	if ($id_enseigne == 0) {$id_enseigne = $bdd->lastInsertId();}
 	$bdd->commit(); // Validation de la transaction / des requetes
 	$req->closeCursor();
 
-	$data['result'] = 'ok';
+	$data['result'] = $id_enseigne;
 
 	$bdd = null;            // Détruit l'objet PDO
 	
@@ -77,8 +90,10 @@ try
 }
 // Gestion des erreurs
 catch (PDOException $erreur)
-{
-	$bdd->rollBack(); // Erreur => annulation transaction / des requetes    
+{	
+	$bdd->rollBack(); // Erreur => annulation transaction / des requetes  
+	$data['result'] = $erreur->getMessage();
+	echo json_encode($data);
 	die ('Erreur : ' .$erreur->getMessage());
 	exit;
 }
