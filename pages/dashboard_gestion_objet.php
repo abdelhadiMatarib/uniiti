@@ -33,7 +33,7 @@
         <div class="dashboard_wrap"><!-- DASH WRAP -->
             <div class="dashboard_cube_ariane">
                 <div class="dashboard_cube_item dashboard_cube_item_haut item dashboard_cube_item_c"><a href="#" title=""><span>Gestion des</span><span class="dashboard_txt_bold">objets</span></a></div>
-                <div class="dashboard_notif"><span>2</span></div>
+                <div class="dashboard_notif"><span id="Nbsuggnotifs_objet"></span></div>
             </div>
             <div class="dashboard_ombre_small"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/ombre_cube_small.png"/></div>
             <div class="dashboard_retour_wrapper"><a href="javascript:history.back()">Retour</a>|<a href="dashboard_index.php">ACCUEIL</a></div>
@@ -92,6 +92,17 @@
            $(this).parents('.dashboard_notif_item').prev().css('display','none');
         })
     );
+	
+	$.ajax({
+		async : false,
+		type :"POST",
+		url : siteurl+'/includes/requetecomptenotifetsuggestions.php',
+		data : {type : 'objet'},
+		success: function(result){
+			$('#Nbsuggnotifs_objet').html(result.total);
+		},
+		error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetecomptenotifetsuggestions.php');}
+	});	
     
 </script>
 
