@@ -16,16 +16,24 @@
 				WHERE t1.id_avis = :id_avis";
 	$req2 = $bdd->prepare($sql2);
 	
-	$sql = "SELECT id_statut, description, date_notification, t1.id_action, action, id_enseigne_ou_objet, id_contributeur, id_avis, nom_enseigne FROM notifications AS t1
+	$sql = "SELECT id_statut, description, date_notification, t1.id_action, action, id_enseigne_ou_objet, slide1_enseigne, t3.x1, t3.y1, t1.id_contributeur, nom_contributeur, prenom_contributeur, id_avis, nom_enseigne FROM notifications AS t1
 				INNER JOIN action_notification AS t2
 				ON t1.id_action = t2.id_action
 					INNER JOIN enseignes AS t3
-					ON t1.id_enseigne_ou_objet = t3.id_enseigne WHERE type_notification='enseigne' AND id_statut = 1";
+					ON t1.id_enseigne_ou_objet = t3.id_enseigne 
+						INNER JOIN contributeurs AS t4
+						ON t1.id_contributeur = t4.id_contributeur
+					WHERE type_notification='enseigne' AND id_statut = 1";
 	$req = $bdd->prepare($sql);
 	$req->execute();		
 	while ($row = $req->fetch(PDO::FETCH_ASSOC))
 	{
 		$nom_enseigne = stripslashes($row['nom_enseigne']);
+		$slide1_enseigne = $row['slide1_enseigne'];
+		$y1 = $row['y1'];
+		$x1 = $row['x1'];
+		$nom_demandeur = $row['nom_contributeur'];
+		$prenom_demandeur = $row['prenom_contributeur'];
 		$id_action = $row['id_action'];
 		$action = stripslashes($row['action']);
 		$description = stripslashes($row['description']);
@@ -46,7 +54,7 @@
 		<div class="dashboard_notif_item">
 			<div class="dashboard_notif_item_head">
 				<div class="dashboard_notif_item_head_img_container">
-					<img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/photo_notif.jpg"/>
+					<img src="<?php echo SITE_URL . "/photos/enseignes/couvertures/" . $slide1_enseigne; ?>" style="width:327px;margin-top:<?php echo -$y1*327/1750;?>px;margin-left:<?php echo -$x1*327/1750;?>px;"/>
 				</div>
 				<div class="dashboard_notif_item_head_desc">
 					<span class="dashboard_notif_nom_commerce"><?php echo $nom_enseigne;?></span>
@@ -59,11 +67,13 @@
 				</div>
 			</div>
 			<div class="dashboard_notif_item_body">
-				<?php if ($id_action == 2) { ?>
 				<div class="dashboard_notif_item_body_small_head">
-				<span class="dashboard_notif_txt_normal">Commentaire laissé par <?php echo $prenom_contributeur . ' ' . $nom_contributeur;?></span><span class="dashboard_notif_txt_bold">Motif de suppression : <?php echo $commentaire;?></span>
-				</div>
+				<span class="dashboard_notif_txt_normal">Demandeur : <?php echo $prenom_demandeur . ' ' . $nom_demandeur;?></span>
+				<?php if ($id_action == 2) { ?>
+				<span class="dashboard_notif_txt_normal">sur commentaire laissé par <?php echo $prenom_contributeur . ' ' . $nom_contributeur;?></span>
+				<span class="dashboard_notif_txt_bold">Motif de suppression : <?php echo $commentaire;?></span>
 				<?php } ?>
+				</div>
 				<p><?php echo $description;?></p>
 			</div>
 		</div>

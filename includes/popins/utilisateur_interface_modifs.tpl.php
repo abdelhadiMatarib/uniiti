@@ -92,8 +92,10 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <span class="presentation_action_left_body_username" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?></span>
             <span class="presentation_action_left_body_action"><?php echo $action ?></span>
             <div class="presentation_action_commentaire_left_body_message">
-				<?php if ($affichecommentaire) { ?><span style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['note'] / 2; ?>/5 | </span><span><?php echo stripslashes($_POST['commentaire']); ?></span><?php } ?>
-            TETETSTETSTSDTSDTE
+				<?php if ($affichecommentaire) { ?>
+					<span style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['note'] / 2; ?>/5 | </span>
+					<span id="commentaire"><?php echo stripslashes($_POST['commentaire']); ?></span>
+				<?php } ?>
             </div>
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
@@ -164,9 +166,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 .star-left {margin-left:3px;}
 .star-left, .star-right {width: 9.5px;}
 
-.cancel, .cancel a, .star, .star a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0 -152px;}
-.star-left, .star-left a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0px -152px;}
-.star-right, .star-right a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat -9.5px -152px;}
+.cancel, .cancel a, .star, .star a {background: url(<?php echo SITE_URL; ?>/img/pictos_commerces/sprite.png) no-repeat 0 -152px;}
+.star-left, .star-left a {background: url(<?php echo SITE_URL; ?>/img/pictos_commerces/sprite.png) no-repeat 0px -152px;}
+.star-right, .star-right a {background: url(<?php echo SITE_URL; ?>/img/pictos_commerces/sprite.png) no-repeat -9.5px -152px;}
 
 .cancel a {display: block;width: 100%;height: 100%;}
 .star.star-left a {display: block;width: 100%;height: 100%;background-position: 0 -152px;}
@@ -176,34 +178,78 @@ div.rating div.star-left.on a {background-position: 0 -76px;}
 div.rating div.star-left.hover a, div.rating div.star-left a:hover {background-position: 0 -76px;}
 div.rating div.star-right.on a {background-position: -9.5px -76px;}
 div.rating div.star-right.hover a, div.rating div.star-right a:hover {background-position: -9.5px -76px;}
-
-
 </style>
 
 <script>
 // Box utilisateur modifier interface modifier note
 
-	$('#Note').rating('utilisateur_interface_modifs.tpl.php', {cancel:true,maxvalue:5,increment:0.5,curvalue:4.5});
+	$('#Note').rating(siteurl+'/includes/popins/utilisateur_interface_modifs.tpl.php', {cancel:true,maxvalue:5,increment:0.5,curvalue:<?php echo $_POST['note'] / 2; ?>});
 
 	$('.utilisateur_interface_modifs_modifier_note_inside .button_valider').click(function () {
-		if ($('.star.on:last a').length > 0) {alert($('.star.on:last a').attr('href').split('#')[1] );}
-		else {alert('0/5');}
-	
+		if ($('.star.on:last a').length > 0) {note = $('.star.on:last a').attr('href').split('#')[1];}
+		else {note = 0;}
+		ModifierAvis('note', note, '');
 	});
+	
+	$('.utilisateur_interface_modifs_modifier_commentaire_inside .button_valider').click(function () {
+		var commentaire = $('.presentation_action_commentaire_left_body textarea').val();
+		ModifierAvis('commentaire', '', commentaire);
+	});
+	
+	$('.utilisateur_interface_modifs_modifier_avis_inside_choice_oui').click(function () {
+		ModifierAvis('suppression', '', '');
+	});
+	
+	$('.utilisateur_interface_modifs_modifier_avis_inside_choice_non').click(function () {
+		$(".utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
+	});
+	
+	// getElementById
+	function $id(id) {return document.getElementById(id);}
+	
+	function ModifierAvis(type, note, commentaire) {
+	
+		var description;
+		if ($id('modifier_commentaire_input_saisie_incorrecte').checked) {description = $('#modifier_commentaire_input_saisie_incorrecte').next('label').text();}
+		if ($id('modifier_commentaire_input_precisions').checked) {description = $('#modifier_commentaire_input_precisions').next('label').text();}
+		if ($id('modifier_commentaire_input_opinion_commercant').checked) {description = $('#modifier_commentaire_input_opinion_commercant').next('label').text();}
+		if ($id('modifier_commentaire_input_pas_auteur').checked) {description = $('#modifier_commentaire_input_pas_auteur').next('label').text();}
+
+		var data = {
+						id_contributeur : '<?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];}?>',
+						id_enseigne : '<?php echo $_POST['id_enseigne'];?>',
+						id_avis : '<?php echo $_POST['id_avis'];?>',
+						note : ''+note+'',
+						type : type,
+						commentaire : ''+commentaire+'',
+						description : ''+description+'',
+					};
+		console.log(data);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetechangeavis.php',
+			data : data,
+			success: function(result){
+				ActualisePopin({id_contributeur:result.result}, '/includes/popins/utilisateur_interface_modifs_valide.tpl.php', 'default_dialog');
+			},
+			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetechangeavis.php');}
+		});
+	}
 	
 	function AfficheImage(img) {
 		img.fadeIn(1000, function () {img.parent().css({'background':'none'});});
 	}
     
+	var AncienCommentaire = $('#commentaire');
     // NOTE
     $(".utilisateur_interface_modifs_modifier_note a.maintitle").click(function(e){
        e.preventDefault();       
        $(this).next().stop().slideToggle();
        
        // remplacement textarea par div
-       var contenucomment = $('.presentation_action_commentaire_left_body textarea').text();
-       $('.presentation_action_commentaire_left_body textarea').replaceWith('<div class="presentation_action_commentaire_left_body_message">'+contenucomment+'</div>');
-       
+       $('#commentaire').html(AncienCommentaire.text());
+	   
        if ($(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_avis_inside").is(':visible'))
        {
            $(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
@@ -216,8 +262,7 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
        
        $(this).next().stop().slideToggle();
        // remplacement div par textarea
-       var contenucomment = $('.presentation_action_commentaire_left_body_message').text();
-       $('.presentation_action_commentaire_left_body_message').replaceWith('<textarea>'+contenucomment+'</textarea>');
+       $('#commentaire').html('<textarea>'+AncienCommentaire.text()+'</textarea>');
        
        if ($(".utilisateur_interface_modifs_modifier_note_inside,.utilisateur_interface_modifs_modifier_avis_inside").is(':visible'))
        {
@@ -232,8 +277,7 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
        $(this).next().stop().slideToggle();
        
        // remplacement textarea par div
-       var contenucomment = $('.presentation_action_commentaire_left_body textarea').text();
-       $('.presentation_action_commentaire_left_body textarea').replaceWith('<div class="presentation_action_commentaire_left_body_message">'+contenucomment+'</div>');
+       $('#commentaire').html(AncienCommentaire.text());
        
        if ($(".utilisateur_interface_modifs_modifier_commentaire_inside,.utilisateur_interface_modifs_modifier_note_inside").is(':visible'))
        {

@@ -36,7 +36,7 @@
 				</div>
 				<div class="dashboard_notif_item_head_desc">
 					<span class="dashboard_notif_nom_commerce"><?php echo $row['nom_contributeur'] . ' ' . $row['prenom_contributeur']; ?></span>
-					<span class="dashboard_notif_motif">Notification d'ajout de commerce</span>
+					<span class="dashboard_notif_motif">Suggestion d'ajout de commerce</span>
 					<span class="dashboard_notif_temps"><?php echo $delai_suggestion; ?></span>
 				</div>
 				<div class="dashboard_notif_item_head_buttons">

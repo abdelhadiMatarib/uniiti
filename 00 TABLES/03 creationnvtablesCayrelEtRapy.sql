@@ -595,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `action_notification` (
 
 INSERT INTO `action_notification` (`id_action`, `action`) VALUES
 (1, 'Demande de modification du profil'),
-(2, 'Demande de suppression d''un avis');
+(2, 'Signalement d''un avis');
 
 -- --------------------------------------------------------
 

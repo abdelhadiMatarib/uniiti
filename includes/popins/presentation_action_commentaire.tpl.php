@@ -284,7 +284,6 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		if ($id('modifier_commentaire_input_opinion_commercant').checked) {description = $('#modifier_commentaire_input_opinion_commercant').next('label').text();}
 		if ($id('modifier_commentaire_input_preciser_motif').checked) {description = $('.input_avisenattente_precisezmotif').val();}
 
-		for ($bouton in document.radio_modif_user) {alert($bouton);}
 		var data = {
 						id_contributeur : '<?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];}?>',
 						id_enseigne_ou_objet : '<?php echo $_POST['id_enseigne'];?>',
@@ -302,7 +301,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			success: function(result){
 				ActualisePopin({id_contributeur:result.result}, '/includes/popins/avisenattente_signalement.tpl.php', 'default_dialog');
 			},
-			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistreavis.php');}
+			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistrenotification.php');}
 		});
 	}
 	

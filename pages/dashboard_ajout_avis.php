@@ -152,9 +152,9 @@
 .star-left {margin-left:0px;}
 .star-left, .star-right {width: 9.5px;}
 
-.cancel, .cancel a, .star, .star a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0 -152px;}
-.star-left, .star-left a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat 0px -152px;}
-.star-right, .star-right a {background: url(http://127.0.0.1/uniiti/img/pictos_commerces/sprite.png) no-repeat -9.5px -152px;}
+.cancel, .cancel a, .star, .star a {background: url(<?php echo SITE_URL; ?>/img/pictos_commerces/sprite.png) no-repeat 0 -152px;}
+.star-left, .star-left a {background: url(<?php echo SITE_URL; ?>/img/pictos_commerces/sprite.png) no-repeat 0px -152px;}
+.star-right, .star-right a {background: url(<?php echo SITE_URL; ?>/img/pictos_commerces/sprite.png) no-repeat -9.5px -152px;}
 
 .cancel a {display: block;width: 100%;height: 100%;}
 .star.star-left a {display: block;width: 100%;height: 100%;background-position: 0 -152px;}
