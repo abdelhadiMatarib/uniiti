@@ -43,8 +43,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
+	$signaler = "Notifier();";
 } else {
-	$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	$like_step1 = $dislike_step1 = $wishlist_step1 = $signaler = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 }	
 		
 ?>
@@ -100,7 +101,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				<div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
 					<span class="presentation_action_signalement_txt">Nous vous remercions de bien vouloir justifier ce signalement</span>
 						<form>
-							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Avis à caractère diffamatoire ou injurieux</label></div>
+							<div class="input_float_left"><input checked type="radio" name="radio_modif_user" id="modifier_commentaire_input_saisie_incorrecte"/><label for="modifier_commentaire_input_saisie_incorrecte">Avis à caractère diffamatoire ou injurieux</label></div>
 							<br/>
 							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_opinion_commercant"/><label for="modifier_commentaire_input_opinion_commercant">Avis incohérent ou sans intérêt</label></div>
 							<br/>
@@ -109,7 +110,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 							<div class="input_float_left"><input type="radio" name="radio_modif_user" id="modifier_commentaire_input_preciser_motif"/><label for="modifier_commentaire_input_preciser_motif">Autre motif</label></div>
 							<br/>
 							<div class="input_float_left"><input type="text" class="input_avisenattente_precisezmotif input_signalement_motif" placeholder="Précisez le motif"/></div>
-							<div class="input_float_right bouton_signaler"><a href="#" title=""><span>Signaler</span></a></div>
+							<div onclick="<?php echo $signaler;?>" class="input_float_right bouton_signaler"><a href="#" title=""><span>Signaler</span></a></div>
 						</form>
 				</div>
 			<?php } ?>
@@ -149,7 +150,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     <div class="clearfix"></div>    
 </div>
 <script>
-
+	// getElementById
+	function $id(id) {return document.getElementById(id);}
+			
 	function AfficheImage(img) {
 		img.fadeIn(1000, function () {img.parent().css({'background':'none'});});
 	}
@@ -272,4 +275,35 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				AfficheFollow(data);
 			}
 	});
+	
+	function Notifier() {
+	
+		var description;
+		if ($id('modifier_commentaire_input_saisie_incorrecte').checked) {description = $('#modifier_commentaire_input_saisie_incorrecte').next('label').text();}
+		if ($id('modifier_commentaire_input_precisions').checked) {description = $('#modifier_commentaire_input_precisions').next('label').text();}
+		if ($id('modifier_commentaire_input_opinion_commercant').checked) {description = $('#modifier_commentaire_input_opinion_commercant').next('label').text();}
+		if ($id('modifier_commentaire_input_preciser_motif').checked) {description = $('.input_avisenattente_precisezmotif').val();}
+
+		for ($bouton in document.radio_modif_user) {alert($bouton);}
+		var data = {
+						id_contributeur : '<?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];}?>',
+						id_enseigne_ou_objet : '<?php echo $_POST['id_enseigne'];?>',
+						id_avis : '<?php echo $_POST['id_avis'];?>',
+						type_notification : 'enseigne',
+						id_action : 2,
+						description : ''+description+'',
+					};
+		console.log(data);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requeteenregistrenotification.php',
+			data : data,
+			success: function(result){
+				ActualisePopin({id_contributeur:result.result}, '/includes/popins/avisenattente_signalement.tpl.php', 'default_dialog');
+			},
+			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistreavis.php');}
+		});
+	}
+	
 </script>

@@ -216,10 +216,10 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 /* BOXES GENERIQUES */
 
 /* A METTRE DYNAMIQUEMENT DANS BOX_PUSH_ET_IMG */
-.box_height_1{height:300px !important;}
-.box_height_2{height:325px !important;}
-.box_height_3{height:350px !important;}
-.box_height_4{height:275px !important;}
+.box_height_1{height:275px !important;}
+.box_height_2{height:300px !important;}
+.box_height_3{height:325px !important;}
+.box_height_4{height:350px !important;}
 
 /* .box:first-child{width:486px;}
 .box:first-child .box_push_et_img img{width:486px;}

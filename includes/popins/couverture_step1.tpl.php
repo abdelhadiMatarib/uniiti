@@ -265,18 +265,6 @@
 				else {return image;}
 			}
 			
-			function Affic () {
-			
-	
-			
-			}
-			
-			function Affic2 () {
-			
-					
-			
-			}
-			
 			function EtapeSuivante() {
 
 //				jQuery.post('couverture_step1.tpl.php', {"MessageInfo": "Compression en cours"});

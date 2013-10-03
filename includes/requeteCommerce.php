@@ -199,7 +199,7 @@
 			if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				$dataFollow = "{check : 0, id_contributeurACTIF :" . $_SESSION['SESS_MEMBER_ID'] . ", id_contributeur :" . $id_contributeur . "}";
 				$follow_step1 = "AfficheFollowContributeur(" . $dataFollow . ");";
-				if ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) {
+				if (($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) && ($provenance == "avis")) {
 					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');";
 				} 
 				else {$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";}

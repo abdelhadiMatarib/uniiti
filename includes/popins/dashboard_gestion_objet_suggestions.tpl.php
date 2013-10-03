@@ -8,14 +8,14 @@
 	$RequeteNow->execute();
 	$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
 		
-	$sql = "SELECT categorie_principale, sous_categorie, nom_suggestion, date_suggestion, prenom_contributeur, nom_contributeur,
+	$sql = "SELECT id_statut, categorie_principale, sous_categorie, nom_suggestion, date_suggestion, prenom_contributeur, nom_contributeur,
 					description, cp_ou_ville FROM suggestions AS t1
 							INNER JOIN sous_categories AS t2
 							ON t1.id_sous_categorie = t2.id_sous_categorie
 								INNER JOIN categories AS t3
 								ON t1.id_categorie = t3.id_categorie 
 									INNER JOIN contributeurs AS t4
-									ON t1.id_contributeur = t4.id_contributeur WHERE type_suggestion='objet'";
+									ON t1.id_contributeur = t4.id_contributeur WHERE type_suggestion='objet' AND id_statut = 1";
 	$req = $bdd->prepare($sql);
 	$req->execute();		
 	while ($row = $req->fetch(PDO::FETCH_ASSOC))

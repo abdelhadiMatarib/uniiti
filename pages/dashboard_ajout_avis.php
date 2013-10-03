@@ -41,19 +41,6 @@
                     <div class="dashboard_form_wrap">
                         <form id="FormEnregistrerAvis" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/includes/requeteenregistreavis.php" method="post" autocomplete="off">
                             <div class="dashboard_form_txt">
-                                <span class="dashboard_form_avis_date"><label for="dashboard_form_avis_date">Date</label></span>
-                            </div>
-                            <div class="dashboard_form_input">
-                                <input type="text" id="dashboard_form_avis_date"/>
-                            </div>
-                            <div class="dashboard_form_txt">
-                                <span class="dashboard_form_avis_heure"><label for="dashboard_form_avis_heure">Heure</label></span>
-                            </div>
-                            <div class="dashboard_form_input">
-                                <input type="text" id="dashboard_form_avis_heure"/>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="dashboard_form_txt">
                                 <span class="dashboard_form_avis_commerce"><label for="dashboard_form_avis_commerce">Commerce</label></span>
                                 <a href="commerce_interface.php?id_enseigne=0" class="dashboard_form_input_submit"> | Créer un nouveau commerce</a>
 								<input id="inputSearch3" class="input_dashboard_large" type="text" value="" placeholder="NOM DU COMMERCE"/>

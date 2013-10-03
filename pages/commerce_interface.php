@@ -179,7 +179,7 @@
 		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	} 
 else {
-		$Engrenage = "OuvrePopin({}, '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
+		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
 		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 		$Menutarifs = "OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";
 		$Infospratiques = "OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";

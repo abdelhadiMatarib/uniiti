@@ -4,7 +4,7 @@ include_once '../config/configPDO.inc.php';
 
 if (isset($_POST['id_contributeur'])) {$id_contributeur = $_POST['id_contributeur'];} else {exit;}
 if (isset($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {exit;}
-if (isset($_POST['avis'])) {$avis = $_POST['avis'];} else {exit;}
+if (isset($_POST['avis'])) {$avis = htmlspecialchars($_POST['avis']);} else {exit;}
 if (isset($_POST['note'])) {$note = $_POST['note']*2;} else {exit;}
 
 $date = date('Y-m-d H:i:s');

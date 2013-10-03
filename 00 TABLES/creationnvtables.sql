@@ -594,6 +594,43 @@ CREATE TABLE IF NOT EXISTS `suggestions` (
   PRIMARY KEY (`id_suggestion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notifications`
+--
+
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id_notification` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_enseigne_ou_objet` int(10) unsigned NOT NULL,
+  `id_contributeur` int(10) unsigned NOT NULL,
+  `id_avis` int(10) DEFAULT 0,
+  `date_notification` datetime NOT NULL,
+  `type_notification` varchar(10) NOT NULL,
+  `id_action` int(10) NOT NULL,
+  `description` longtext DEFAULT NULL,
+  `id_statut` int(10) NOT NULL,
+  PRIMARY KEY (`id_notification`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `action_notification`
+--
+
+CREATE TABLE IF NOT EXISTS `action_notification` (
+  `id_action` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `action` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_action`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+INSERT INTO `action_notification` (`id_action`, `action`) VALUES
+(1, 'Demande de modification du profil'),
+(2, 'Demande de suppression d''un avis');
+
 -- --------------------------------------------------------
 
 --

@@ -216,7 +216,25 @@
 			$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 			$count_likes = $result3['count_likes'];					
 			
-			$Taille = "box_height_" . rand(1, 4);
+			$Hasard = rand(1, 4);
+			$Taille = "box_height_" . $Hasard;
+			if ($box_enseigne == "photo 1.jpg") {
+				switch ($Hasard) {
+					case 1 :
+						$DecalageTaille = -75;
+						break;
+					case 2 :
+						$DecalageTaille = -50;
+						break;
+					case 3 :
+						$DecalageTaille = -25;
+						break;
+					case 4 :
+						$DecalageTaille = 0;
+						break;
+				}
+			}
+			else {$DecalageTaille = 0;}
 			$data = "{provenance :'" . addslashes($provenance) . "',"
 				. "type : '" . $type . "',"
 				. "id_avis :" . $id_avis . ","
@@ -248,7 +266,7 @@
 				$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 				$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 				$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
-				if ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) {
+				if (($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) && ($provenance == "avis")) {
 					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');";
 				} 
 				else {$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";}
@@ -281,17 +299,17 @@
 					</div>
                                     
 					<div class="box_localisation"><span><?php echo $arrondissement; ?></span></div>
-					<div class="box_push_et_img <?php echo $Taille; ?>" style="background:<?php echo $couleur; ?>;height:350px">
-						<img style="display:none;" src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne  . "?" . time();?>" title="" alt="" />
+					<div class="box_push_et_img <?php echo $Taille; ?>" style="background:<?php echo $couleur; ?>;height:350px;">
+						<img style="display:none;margin-top:<?php echo $DecalageTaille;?>px;" src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne  . "?" . time();?>" title="" alt="" />
 <!--						<img src="img/photos_commerces/1.jpg" title="" alt="" />	-->
 						<div class="box_push" <?php echo AffichePush($categorie); ?>></div>
 					</div>
 					<div class="overlay_push">
-                                            <div class="push_buttons_wrapper">
-                                                <div title="J'aime" onclick="<?php echo $like_step1; ?>" class="push_buttons_like" <?php echo AfficheAction('aime',$categorie); ?>></div>
-                                                <div title="Je n'aime pas" onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
-                                                <div title="Ajouter à ma Wishlist" onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist" <?php echo AfficheAction('wish',$categorie); ?>></div>
-                                            </div>
+						<div class="push_buttons_wrapper">
+							<div title="J'aime" onclick="<?php echo $like_step1; ?>" class="push_buttons_like" <?php echo AfficheAction('aime',$categorie); ?>></div>
+							<div title="Je n'aime pas" onclick="<?php echo $dislike_step1; ?>" class="push_buttons_dislike" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
+							<div title="Ajouter à ma Wishlist" onclick="<?php echo $wishlist_step1; ?>" class="push_buttons_wishlist" <?php echo AfficheAction('wish',$categorie); ?>></div>
+						</div>
 					</div>
 				</figure>
                                 
