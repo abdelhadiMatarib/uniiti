@@ -101,9 +101,5 @@
 					error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetechangestatut.php');}
 				});
 			}
-
-
-
-
 		</script>
 <?php } ?>                      

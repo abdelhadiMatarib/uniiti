@@ -118,6 +118,7 @@
 					$("#default_dialog_large").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog_inscription").dialog( "option", "position", { my: "center", at: "center", of: window });
+					$("#dialog_confirmation").dialog( "option", "position", { my: "center", at: "center", of: window });
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
 					else {$("#ScrollToTop").css({display: "none"});}
 					if ( (CptScroll < 20)

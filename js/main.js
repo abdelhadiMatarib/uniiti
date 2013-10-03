@@ -1169,6 +1169,21 @@ $(document).ready(function() {
 	}
 
 	});
+
+	var defaultdialog_confirmation = $("#dialog_confirmation").dialog({
+		autoOpen: false,
+		modal:true,
+		draggable:true,
+		resizable:false,
+		width: '560px',
+		height: 'auto',
+		open: function() {
+            $('.ui-widget-overlay').hide().fadeIn();
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#dialog_confirmation').dialog('close');
+			});
+		}
+	});
 	
 	var defaultdialog_inscription = $("#default_dialog_inscription").dialog({ 
 		autoOpen: false,

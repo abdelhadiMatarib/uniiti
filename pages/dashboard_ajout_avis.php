@@ -15,6 +15,27 @@
         <div class="bg_dashboard">
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
+		<div id="dialog_confirmation" title="Merci de vérifier les informations suivantes :">
+			<div class="confirmation_wrapper">
+				<div class="confirmation_head">
+					<div class="suggestioncommerce_img_container">
+						<img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_suggestions.png" title="" alt="" height="39" width="39" />
+					</div><span class="maintitle">Merci de vérifier ces informations</span>
+				</div>
+				<div class="confirmation_body">
+				<BR/><span><b>Commerce : </b></span><span id="CommerceDonne"></span><BR/><BR/>
+				<span><b>Contributeur : </b></span><span id="ContributeurDonne"></span><BR/><BR/>
+				<span><b>Note : </b></span><span id="NoteDonnee"></span><BR/><BR/>
+				<span><b>Commentaire : </b></span><span id="CommentaireDonne"></span><BR/><BR/>
+				</div>
+				<div class="confirmation_footer">
+					<span>Confirmez-vous ces informations ?</span>
+					<div class="presentation_action_left_avis_utile_reponse_wrap">
+						<a id="Confirmation" href="#" title="">OUI</a><a id="Infirmation" href="#" title="">NON</a>
+					</div>
+				</div>
+			</div>
+		</div>
         <div id="dialog_overlay">
         <div class="index_overlay"></div>
             <div class="dialog_overlay_wrap_content">
@@ -39,7 +60,7 @@
             <div class="dashboard_content form_content">
                 <h2>Saisir un avis</h2>
                     <div class="dashboard_form_wrap">
-                        <form id="FormEnregistrerAvis" onsubmit="return VerifieEtErg();" action="<?php echo SITE_URL; ?>/includes/requeteenregistreavis.php" method="post" autocomplete="off">
+                        <form id="FormEnregistrerAvis" onsubmit="return OuvreConfirmation();" action="<?php echo SITE_URL; ?>/includes/requeteenregistreavis.php" method="post" autocomplete="off">
                             <div class="dashboard_form_txt">
                                 <span class="dashboard_form_avis_commerce"><label for="dashboard_form_avis_commerce">Commerce</label></span>
                                 <a href="commerce_interface.php?id_enseigne=0" class="dashboard_form_input_submit"> | Créer un nouveau commerce</a>
@@ -176,11 +197,30 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 
 	$('#Note').rating('dashboard_ajout_avis.php', {cancel:true,maxvalue:5,increment:0.5,curvalue:4.5});
 	
-	function VerifieEtErg() {
-	
+	function OuvreConfirmation() {
 		if ($('.star.on:last a').length > 0) {note = $('.star.on:last a').attr('href').split('#')[1];}
 		else {note = 0;}
-		alert($('#inputSearch4Hidden').val()+' '+$('#inputSearch3Hidden').val()+' '+$('#dashboard_form_avis_commentaire').val()+' '+note);
+		$('#CommerceDonne').html($('#inputSearch3').val()+', identifiant : '+$('#inputSearch3Hidden').val());
+		$('#ContributeurDonne').html($('#inputSearch4').val()+', identifiant : '+$('#inputSearch4Hidden').val());
+		$('#NoteDonnee').html(note);
+		$('#CommentaireDonne').html($('#dashboard_form_avis_commentaire').val());
+		$("#dialog_confirmation").dialog('open');
+		return false;
+	}
+
+	$('#Confirmation').click(function () {
+		if ($('.star.on:last a').length > 0) {note = $('.star.on:last a').attr('href').split('#')[1];}
+		else {note = 0;}
+		VerifieEtErg(note);
+	});
+	
+	$('#Infirmation').click(function () {
+		$("#dialog_confirmation").dialog('close');
+	});
+	
+	function VerifieEtErg(note) {
+		if ($('#inputSearch4Hidden').val() == '') {alert("Merci de choisir un contributeur dans la liste");$("#dialog_confirmation").dialog('close');return false;}
+		if ($('#inputSearch3Hidden').val() == '') {alert("Merci de choisir une enseigne dans la liste");$("#dialog_confirmation").dialog('close');return false;}
 		var data = {
 						id_contributeur : ''+$('#inputSearch4Hidden').val()+'',
 						id_enseigne : ''+$('#inputSearch3Hidden').val()+'',
@@ -194,7 +234,8 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 			url : siteurl+'/includes/requeteenregistreavis.php',
 			data : data,
 			success: function(result){
-				alert("Nouvel avis n°"+result.result);
+				$("#dialog_confirmation").dialog('close');
+				alert("Nouvel avis enregistré sous le n°"+result.result);
 			},
 			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistreavis.php');}
 		});
