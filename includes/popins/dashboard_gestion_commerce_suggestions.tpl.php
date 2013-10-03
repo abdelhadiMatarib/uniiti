@@ -8,7 +8,7 @@
 	$RequeteNow->execute();
 	$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);
 		
-	$sql = "SELECT id_statut, categorie_principale, sous_categorie, nom_suggestion, date_suggestion, prenom_contributeur, nom_contributeur,
+	$sql = "SELECT id_suggestion, id_statut, categorie_principale, sous_categorie, nom_suggestion, date_suggestion, prenom_contributeur, nom_contributeur,
 					description, cp_ou_ville FROM suggestions AS t1
 							INNER JOIN sous_categories AS t2
 							ON t1.id_sous_categorie = t2.id_sous_categorie
@@ -21,6 +21,7 @@
 	while ($row = $req->fetch(PDO::FETCH_ASSOC))
 	{
 		$nom_suggestion = stripslashes($row['nom_suggestion']);
+		$id_suggestion = $row['id_suggestion'];
 		$categorie = $row['categorie_principale'];
 		$sous_categorie = $row['sous_categorie'];
 		$description = stripslashes($row['description']);
@@ -40,8 +41,8 @@
 					<span class="dashboard_notif_temps"><?php echo $delai_suggestion; ?></span>
 				</div>
 				<div class="dashboard_notif_item_head_buttons">
-					<a href="#" class="first_img_margin" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/></a>
-					<a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/></a>
+					<a href="#" onclick="ModifierStatut('suggestion', <?php echo $id_suggestion;?>, 3)" class="first_img_margin" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/></a>
+					<a href="#" onclick="ModifierStatut('suggestion', <?php echo $id_suggestion;?>, 2)" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/></a>
 				</div>
 			</div>
 			<div class="dashboard_notif_item_body">
@@ -69,6 +70,25 @@
 		<script>
 			$('.dashboard_notif_temps .box_posttime time img').attr('src','../img/pictos_actions/clock_b.png');
 			$('.dashboard_notif_temps .box_posttime').css('width','auto').css('padding','5px 0px 0px 0px').css('text-align','left').css('color','white');
+			function ModifierStatut(type, id, id_statut) {
+			
+				var data = {
+								id : id,
+								type : type,
+								id_statut : id_statut,
+							};
+				console.log(data);
+				$.ajax({
+					async : false,
+					type :"POST",
+					url : siteurl+'/includes/requetechangestatut.php',
+					data : data,
+					success: function(result){
+						ActualisePopin({id_contributeur:result.result}, '/includes/popins/dashboard_gestion_commerce_suggestions.valide.tpl.php', 'default_dialog');
+					},
+					error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetechangestatut.php');}
+				});
+			}
 		</script>
 		<!-- ITEM -->
 <?php } ?>                      

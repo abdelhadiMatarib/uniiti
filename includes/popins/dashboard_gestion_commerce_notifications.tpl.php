@@ -16,7 +16,7 @@
 				WHERE t1.id_avis = :id_avis";
 	$req2 = $bdd->prepare($sql2);
 	
-	$sql = "SELECT id_statut, description, date_notification, t1.id_action, action, id_enseigne_ou_objet, slide1_enseigne, t3.x1, t3.y1, t1.id_contributeur, nom_contributeur, prenom_contributeur, id_avis, nom_enseigne FROM notifications AS t1
+	$sql = "SELECT id_notification, id_statut, description, date_notification, t1.id_action, action, id_enseigne_ou_objet, slide1_enseigne, t3.x1, t3.y1, t1.id_contributeur, nom_contributeur, prenom_contributeur, id_avis, nom_enseigne FROM notifications AS t1
 				INNER JOIN action_notification AS t2
 				ON t1.id_action = t2.id_action
 					INNER JOIN enseignes AS t3
@@ -35,6 +35,7 @@
 		$nom_demandeur = $row['nom_contributeur'];
 		$prenom_demandeur = $row['prenom_contributeur'];
 		$id_action = $row['id_action'];
+		$id_notification = $row['id_notification'];
 		$action = stripslashes($row['action']);
 		$description = stripslashes($row['description']);
 		$delai_notification = EcartDate($Maintenant[0]['Maintenant'], $row['date_notification']);
@@ -62,8 +63,8 @@
 					<span class="dashboard_notif_temps"><?php echo $delai_notification;?></span>
 				</div>
 				<div class="dashboard_notif_item_head_buttons">
-					<a href="#" class="first_img_margin dashboard_notif_bouton_suppr" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/></a>
-					<a href="#" title="" class="dashboard_notif_bouton_valide"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/></a>
+					<a href="#" onclick="ModifierStatut('notification', <?php echo $id_notification;?>, 3)" class="first_img_margin dashboard_notif_bouton_suppr" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_suppr.png"/></a>
+					<a href="#" onclick="ModifierStatut('notification', <?php echo $id_notification;?>, 2)" title="" class="dashboard_notif_bouton_valide"><img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/bouton_notif_valide.png"/></a>
 				</div>
 			</div>
 			<div class="dashboard_notif_item_body">
@@ -80,5 +81,29 @@
 		<script>
 			$('.dashboard_notif_temps .box_posttime time img').attr('src','../img/pictos_actions/clock_b.png');
 			$('.dashboard_notif_temps .box_posttime').css('width','auto').css('padding','5px 0px 0px 0px').css('text-align','left').css('color','white');
+			
+			function ModifierStatut(type, id, id_statut) {
+			
+				var data = {
+								id : id,
+								type : type,
+								id_statut : id_statut,
+							};
+				console.log(data);
+				$.ajax({
+					async : false,
+					type :"POST",
+					url : siteurl+'/includes/requetechangestatut.php',
+					data : data,
+					success: function(result){
+						ActualisePopin({id_contributeur:result.result}, '/includes/popins/dashboard_gestion_commerce_notifications.valide.tpl.php', 'default_dialog');
+					},
+					error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetechangestatut.php');}
+				});
+			}
+
+
+
+
 		</script>
 <?php } ?>                      
