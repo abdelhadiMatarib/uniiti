@@ -51,12 +51,12 @@
 	$slide3_enseigne    	 = $result2['slide3_enseigne'];
 	$slide4_enseigne    	 = $result2['slide4_enseigne'];
 	$slide5_enseigne    	 = $result2['slide5_enseigne'];
-	$x1    = $result2['x1'];
-	$y1    = $result2['y1'];
-	$y2    = $result2['y2'];
-	$y3    = $result2['y3'];
-	$y4    = $result2['y4'];
-	$y5    = $result2['y5'];
+	$x1_enseigne    		 = $result2['x1'];
+	$y1_enseigne    		 = $result2['y1'];
+	$y2_enseigne    		 = $result2['y2'];
+	$y3_enseigne		 	 = $result2['y3'];
+	$y4_enseigne    		 = $result2['y4'];
+	$y5_enseigne    		 = $result2['y5'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
@@ -335,11 +335,11 @@ else {
 		
 		function InitCouvertures() {
 		
-			y[1] = <?php if ($y1 != '') {echo $y1;} else {echo 0;} ?>;
-			y[2] = <?php if ($y2 != '') {echo $y2;} else {echo 0;} ?>;
-			y[3] = <?php if ($y3 != '') {echo $y3;} else {echo 0;} ?>;
-			y[4] = <?php if ($y4 != '') {echo $y4;} else {echo 0;} ?>;
-			y[5] = <?php if ($y5 != '') {echo $y5;} else {echo 0;} ?>;
+			y[1] = <?php if ($y1_enseigne != '') {echo $y1_enseigne;} else {echo 0;} ?>;
+			y[2] = <?php if ($y2_enseigne != '') {echo $y2_enseigne;} else {echo 0;} ?>;
+			y[3] = <?php if ($y3_enseigne != '') {echo $y3_enseigne;} else {echo 0;} ?>;
+			y[4] = <?php if ($y4_enseigne != '') {echo $y4_enseigne;} else {echo 0;} ?>;
+			y[5] = <?php if ($y5_enseigne != '') {echo $y5_enseigne;} else {echo 0;} ?>;
 			AjusteCouvertures($('.big_wrapper').css('width'));
 		}
 		InitCouvertures();

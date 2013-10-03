@@ -31,11 +31,11 @@
 	$slide3_contributeur    = $result['slide3_contributeur'];
 	$slide4_contributeur    = $result['slide4_contributeur'];
 	$slide5_contributeur    = $result['slide5_contributeur'];
-	$y1    = $result['y1'];
-	$y2    = $result['y2'];
-	$y3    = $result['y3'];
-	$y4    = $result['y4'];
-	$y5    = $result['y5'];
+	$y1_contributeur	    = $result['y1'];
+	$y2_contributeur	    = $result['y2'];
+	$y3_contributeur	    = $result['y3'];
+	$y4_contributeur	    = $result['y4'];
+	$y5_contributeur	    = $result['y5'];
 	$prenom_contributeur    = $result['prenom_contributeur'];
 	$nom_contributeur       = $result['nom_contributeur'];
 	$sexe_contributeur 		= $result['sexe_contributeur'];
@@ -174,11 +174,11 @@
 	
 	function InitCouvertures() {
 	
-		y[1] = <?php if ($y1 != '') {echo $y1;} else {echo 0;} ?>;
-		y[2] = <?php if ($y2 != '') {echo $y2;} else {echo 0;} ?>;
-		y[3] = <?php if ($y3 != '') {echo $y3;} else {echo 0;} ?>;
-		y[4] = <?php if ($y4 != '') {echo $y4;} else {echo 0;} ?>;
-		y[5] = <?php if ($y5 != '') {echo $y5;} else {echo 0;} ?>;
+		y[1] = <?php if ($y1_contributeur != '') {echo $y1_contributeur;} else {echo 0;} ?>;
+		y[2] = <?php if ($y2_contributeur != '') {echo $y2_contributeur;} else {echo 0;} ?>;
+		y[3] = <?php if ($y3_contributeur != '') {echo $y3_contributeur;} else {echo 0;} ?>;
+		y[4] = <?php if ($y4_contributeur != '') {echo $y4_contributeur;} else {echo 0;} ?>;
+		y[5] = <?php if ($y5_contributeur != '') {echo $y5_contributeur;} else {echo 0;} ?>;
 		AjusteCouvertures($('.big_wrapper').css('width'));
 	}
 	InitCouvertures();
