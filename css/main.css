@@ -141,14 +141,14 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .header_user_menulist{z-index:50;position:absolute;right:0;top:29px;width: 200px;font-size:0.9em;border-radius: 3px;}
 .header_infos_menulist{background-color:#fff;z-index:50;position:absolute;left:0;top:50px;width: 180px;font-size:0.9em;border-radius: 3px;}
 
-.header_user_menulist ul{background-color:#fff;padding:2px;-webkit-box-shadow: 0px 0px 9px 1px rgba(37, 37, 37, 0.2);box-shadow: 0px 0px 9px 1px rgba(37, 37, 37, 0.2); border-radius: 0 0 3px 3px;}
+.header_user_menulist ul{border: 1px solid rgb(207, 207, 207);background-color:#fff;padding:2px;-webkit-box-shadow: 0px 0px 9px 1px rgba(37, 37, 37, 0.2);box-shadow: 0px 0px 9px 1px rgba(37, 37, 37, 0.2); border-radius: 3px;}
 .header_user_menulist ul li{color:white;text-align:center;list-style-type:none;}
 .header_user_menulist ul li a{color:rgb(148, 148, 148);padding:5px 0;display:block;height:100%;width:100%;}
 .header_user_menulist ul li a:hover{color:white;background-color:#A4EBF1;}
 /*.header_user_menulist ul li a:visited{color:rgb(148, 148, 148);}*/
 .header_user_menulist hr {-moz-box-sizing: content-box;box-sizing: content-box;height: 1px;background-color: rgb(206, 206, 206);width: 170px;margin: 8px auto;}
 .header_user_menulist ul li a:active{color:white;}
-.header_user_menulist #fleche_haut {margin: auto;margin-left: 160px;width: 0;height: 0;border-left: 15px solid transparent;border-right: 15px solid transparent;border-bottom: 15px solid white;}
+.header_user_menulist #fleche_haut {margin: -5px;background: url('../img/fleche_haut.png') center no-repeat;margin-left: 160px;width: 0;height: 0; height: 22px;width: 35px;}
 
 .header_infos_menulist ul{padding:2px;-webkit-box-shadow: 0px 0px 9px 1px rgba(37, 37, 37, 0.2);box-shadow: 0px 0px 9px 1px rgba(37, 37, 37, 0.2);border-radius: 0 0 3px 3px;}
 .header_infos_menulist ul li{color:white;text-align:center;list-style-type:none;}
