@@ -20,7 +20,9 @@ switch ($_POST['step']) {
 	case "Concept" :
 		if (isset($_POST['descriptif'])) {$descriptif          = htmlspecialchars($_POST['descriptif']);}
 		break;
-	break;
+	case "Video" :
+		$url_video = $_POST['url_video'];
+		break;
 	default:
 		exit;
 		break;
@@ -73,6 +75,12 @@ try
 			$req = $bdd->prepare($sql);
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->bindParam(':descriptif', $descriptif, PDO::PARAM_STR);
+			break;
+		case "Video" :
+			$sql = "UPDATE enseignes SET video_enseigne=:url_video WHERE id_enseigne=:id_enseigne";
+			$req = $bdd->prepare($sql);
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':url_video', $url_video, PDO::PARAM_STR);
 			break;
 	}
 

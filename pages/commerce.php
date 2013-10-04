@@ -14,7 +14,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, descriptif, url, id_budget
+					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -60,6 +60,7 @@
 	$sous_categorie2         = $result2['sous_categorie2'];
     $couleur                 = $result2['couleur'];
 	$url                     = $result2['url'];
+	$url_video               = $result2['video_enseigne'];
 	$id_budget               = $result2['id_budget'];
 
 	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
@@ -278,9 +279,10 @@
         <?php include'../includes/js.php' ?>
 		
 	<script>
-	
+	var url_video = '<?php echo $url_video; ?>';
 	$('.commerce_head2_coinvideo').click(function () {
 		if ($('#video').css("display") == "none") {
+			$('#lienvideo').attr('src', url_video);
 			$('#video').css({"display" : "block"});
 			$('.couv_container').css({"display" : "none"});
 		}

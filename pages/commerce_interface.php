@@ -170,7 +170,7 @@
 		$MotsCles = "OuvrePopin({}, '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
 		$Menutarifs = "OuvrePopin({}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
 		$Infospratiques = "OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
-		$Video = "OuvrePopin({step:1}, '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";
+		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";
 		$LabelsCaptain = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 		$Recommandations = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 

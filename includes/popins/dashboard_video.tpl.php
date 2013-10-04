@@ -28,6 +28,24 @@
 <script>
 $('#Enregistrer').click(function () {
 	$('#video').attr('src', $('#lienvideo').val());
+	var data = {
+				step : 'Video',
+				id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+				url_video : ''+$('#lienvideo').val()+'',
+			};
+	console.log(data);
+	$.ajax({
+		async : false,
+		type :"POST",
+		url : siteurl+'/includes/requetemodifieenseigne.php',
+		data : data,
+		success: function(result){
+			alert('video enregistrée');
+		},
+		error: function() {alert(result.result);}
+	});
+	
+	
 });
 </script>
 
