@@ -56,7 +56,6 @@ try
         
     </div>
 </div>
-</html>
 <?php
 }
 // Gestion des erreurs

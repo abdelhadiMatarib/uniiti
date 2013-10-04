@@ -17,8 +17,6 @@
 		$MessageInfo = "Une fois le chargement de/des images effectué, vous pourrez les ajuster pour un affichage optimal.";
 		$Step = "{step: 2}";
 ?>
-
-	<body>
 <style>#fenetre {opacity:0; position:absolute; top:-50px; left:20px; width: 660px; height: 300px;}
 			#selection {overflow:hidden}
 			#selection:hover {box-shadow: inset 0 3px 4px #888;}
@@ -404,9 +402,6 @@
 			Init();
 
 		</script>
-
-	</body>
-</html>
 
 
 

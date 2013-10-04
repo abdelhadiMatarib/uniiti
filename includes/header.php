@@ -90,6 +90,7 @@
             </div>
 				<?php if ($Connecte) { ?>
             <div id="header_menu" class="header_user_menulist">
+            <div id="fleche_haut"></div>
                 <ul>
                     <li><a href="<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=" . $_SESSION['SESS_MEMBER_ID'];?>" title="">Mon profil perso</a></li>
 					<?php if (((int)$_SESSION['droits'] & $_SESSION['ADMINISTRATEUR']) && (($_SESSION['SESS_MEMBER_ID'] == 2825) || ($_SESSION['SESS_MEMBER_ID'] == 4866))) { ?>
@@ -111,6 +112,7 @@
                     <li><a href="#" title="">Mon restaurant</a></li>
                     <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');">Suggérer un commerce</a></li>
                     <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');">Suggérer un objet</a></li>
+                 	<hr />
                     <li><a href="<?php echo SITE_URL . "/acces/logout.php" ?>" title="">Déconnexion</a></li>
                 </ul>
             </div>

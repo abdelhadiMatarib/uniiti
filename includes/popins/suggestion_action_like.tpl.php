@@ -53,4 +53,3 @@ include_once '../head.php';
     <div class="suggestion_footer"></div>
     </div>
 </div>
-</html>

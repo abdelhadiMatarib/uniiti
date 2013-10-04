@@ -43,7 +43,6 @@
 		</div>
 	</form>
 </div>
-</html>
 <script>
 
 	// getElementByName

@@ -1,6 +1,7 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php'?>
+        include'../head.php';
+?>
 
 <div class="suggestioncommerce_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -20,4 +21,3 @@
         
     </div>
 </div>
-</html>

@@ -73,7 +73,6 @@
 		</div>
 	</form>
 </div>
-</html>
 
 <script>
 	// Boutons choix sexe formulaire d'inscription

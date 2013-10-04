@@ -151,4 +151,3 @@ include'../js.php';
        };
     });
 </script>
-</html>

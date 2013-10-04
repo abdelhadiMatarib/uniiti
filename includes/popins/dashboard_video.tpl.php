@@ -25,10 +25,9 @@
         
     </div>
 </div>
-</html>
 <script>
 $('#Enregistrer').click(function () {
 	$('#video').attr('src', $('#lienvideo').val());
 });
-
 </script>
+

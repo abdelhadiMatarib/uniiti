@@ -285,4 +285,3 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
        };
     });
 </script>
-</html>

@@ -18,7 +18,6 @@
 		$Step = "{step: 2}";
 ?>
 
-	<body>
             <style>
                 #fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 236px; height: 350px;}
 #selection {overflow:hidden}
@@ -344,9 +343,5 @@ ul {list-style-type: none;}
 			Init();
 
 		</script>
-
-	</body>
-</html>
-
 
 

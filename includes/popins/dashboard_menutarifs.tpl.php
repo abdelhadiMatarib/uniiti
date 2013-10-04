@@ -1,6 +1,7 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php'?>
+        include'../head.php';
+?>
 <div class="menutarifs_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
     <div class="menutarifs_head">
@@ -69,4 +70,3 @@
   }
 }
 </script>
-</html>
