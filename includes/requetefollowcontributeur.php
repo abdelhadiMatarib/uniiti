@@ -33,15 +33,16 @@ try
 				$req->bindParam(':id_contributeurfollow', $id_contributeurACTIF, PDO::PARAM_INT);
 				$req->bindParam(':date_follow', $date, PDO::PARAM_STR);
 				$req->execute();
+				$data['existe'] = 1;
 			}
 			else {
 				$sql = "DELETE FROM contributeurs_follow_contributeurs WHERE contributeurs_id_contributeur = :id_contributeur AND contributeurs_id_contributeurfollow =:id_contributeurfollow";
 				$req = $bdd->prepare($sql);
 				$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
 				$req->bindParam(':id_contributeurfollow', $id_contributeurACTIF, PDO::PARAM_INT);
-				$req->execute();			
+				$req->execute();
+				$data['existe'] = 0;				
 			}
-			$data['existe'] = 1;
 		}
 		else {
 			if (!$resultCheck) {$data['existe'] = 0;}

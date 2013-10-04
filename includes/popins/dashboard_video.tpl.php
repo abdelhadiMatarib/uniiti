@@ -12,16 +12,23 @@
     </div>   
     <div class="ident_body">
             <div class="infos_gene_title"><span>Lien vidéo (Youtube/Dailymotion/Vimeo)</span></div>
-                <input type="text" class="input_lien_video" placeholder="Lien"/>
+                <input id='lienvideo' type="text" class="input_lien_video" placeholder="Lien"/>
             <div class="infos_gene_title"><span>Aperçu</span></div>
             <div class="embed_preview_video">
-                
+			<iframe id="video" width="480" height="360" src="" frameborder="0" allowfullscreen>
+			</iframe>               
             </div>
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Enregistrer</a></div>
+        <div id="Enregistrer" class="suggestioncommerce_valider_wrap"><a href="#">Enregistrer</a></div>
         
     </div>
 </div>
 </html>
+<script>
+$('#Enregistrer').click(function () {
+	$('#video').attr('src', $('#lienvideo').val());
+});
+
+</script>

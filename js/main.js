@@ -126,11 +126,6 @@ function CreerOverlayPush() {
 		overlay_push.stop().fadeIn();
     });	
 	$(".box_push_et_img img").each(function () {$(this).load(function () {$(this).fadeIn(1000, function () {$(this).parent().css({'background':'none'});});});});
-/*	$(".box section").each(function () {$(this).click(function () {				////////////////// ATTENTION ATTENTION GESTION INTERNET EXPLORER
-			eval($(this).attr('onclick'));
-		});
-	}); */
-//	$(".presentation_action_left_figure img").each(function () {$(this).load(function () {alert($(this).attr('src'));$(this).fadeIn(1000);});});
 	
 	$(".box_useraction a").click(function(e) {
 		e.preventDefault(); //don't go to default URL
@@ -139,14 +134,6 @@ function CreerOverlayPush() {
 		window.location.assign(url);
 	});
 
-/////// DEBUT TEST
-/*    $('.box_push_et_img').mouseenter(function(e) {
-		var overlay_push = $(this).next('.overlay_push');
-		overlay_push.css('display','block');
-		overlay_push.mouseleave(function(e) {$(this).css('display','none');});
-    }); */
-
-/////// FIN TEST
 }
     // FLUX UTILISATEUR SWITCH BOUTONS
        $('.button_moving').click(function(e){

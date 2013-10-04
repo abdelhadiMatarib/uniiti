@@ -60,9 +60,10 @@
 			url : siteurl + $url,
 			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
 			success : function(html){
-				if (html) {
+				if (html) {console.log(html)
 					$('#box_container .box').remove();
 					$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+					if ($Page == "Commerce") {InitFollowContributeur();}
 					CreerOverlayPush();
 				} else {alert('Il n\'y a plus d\'enregistrements');}
 			},
@@ -135,11 +136,11 @@
 						switch ($Page) {
 							case "Commerce" :
 								$url = "../includes/requetecommerce.php";
-								$data = {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+								$data = $.extend({}, $Filtre, {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
 							break;
 							case "Utilisateur" :
 								$url = "../includes/requetecontributeur.php";
-								$data = {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'};
+								$data = $.extend({}, $Filtre, {nbitems: 20, id_contributeur: encodeURIComponent($idcontributeur), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
 							break;
 							case "Timeline" :
 								$url = "includes/requete.php";

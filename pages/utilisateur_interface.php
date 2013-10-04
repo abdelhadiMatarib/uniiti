@@ -82,11 +82,11 @@
 			. "image3 : '" . $slide3_contributeur . "', "
 			. "image4 : '" . $slide4_contributeur . "', "
 			. "image5 : '" . $slide5_contributeur . "', "
-			. "y1 : '" . $y1 . "', "
-			. "y2 : '" . $y2 . "', "
-			. "y3 : '" . $y3 . "', "
-			. "y4 : '" . $y4 . "', "
-			. "y5 : '" . $y5 . "'}";
+			. "y1 : '" . $y1_contributeur . "', "
+			. "y2 : '" . $y2_contributeur . "', "
+			. "y3 : '" . $y3_contributeur . "', "
+			. "y4 : '" . $y4_contributeur . "', "
+			. "y5 : '" . $y5_contributeur . "'}";
 
 	$datamodif = "{id_contributeur : " . $id_contributeur . ", "
 			. "nom_contributeur:'" . addslashes($nom_contributeur) . "', "

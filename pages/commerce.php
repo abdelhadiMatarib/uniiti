@@ -220,6 +220,31 @@
 					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne; ?>" title="" alt=""><?php } ?>
 				    </div>
 				</div>
+
+				<div id="video" style="display:none;">
+					<div class="commerce_couv_video_button_retour"><a href="#" title="" alt=""><span>Retour</span></a></div>
+					<div class="commerce_couv_video_bg">
+						<div class="commerce_couv_video_embbed">
+							<iframe id="lienvideo" width="420" height="315" src="//www.youtube.com/embed/v2AC41dglnM" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="commerce_couv_video_content">
+						<div class="commerce_couv_video_txt_left">
+							<span>Coin</span><span class="commerce_couv_video_txt_left_colored">Vidéo</span>
+							<div class="commerce_couv_video_txt_left_img_container">
+								<img src="../img/pictos_commerces/icon_player.png" title="" alt="" height="54" width="54" />
+							</div>
+						</div>
+						<div class="commerce_couv_video_txt_right">
+							<span>Découvrez</span><span class="commerce_couv_video_txt_left_colored">Chez les Artistes</span><span>en vidéo !</span>
+						</div>
+					</div>
+					<div class="wrapper_boutons">
+						<div class="boutons not_signedin" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_OK.png" height="22" width="27"/></a></div>
+						<div class="boutons not_signedin" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_NOK.png" height="22" width="27"/></a></div>
+						<div class="boutons not_signedin" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/wishlist.png" height="23" width="30"/></a></div>
+					</div>
+				</div>
                 
                 <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title" style="background-color:<?php echo $couleur; ?>;"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
@@ -253,6 +278,17 @@
         <?php include'../includes/js.php' ?>
 		
 	<script>
+	
+	$('.commerce_head2_coinvideo').click(function () {
+		if ($('#video').css("display") == "none") {
+			$('#video').css({"display" : "block"});
+			$('.couv_container').css({"display" : "none"});
+		}
+		else {
+			$('#video').css({"display" : "none"});
+			$('.couv_container').css({"display" : "block"});
+		}
+	});
 	
 	// Gestion du slider des couvertures
 	$(function() {
