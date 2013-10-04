@@ -141,12 +141,12 @@
 			. "image3 : '" . $slide3_enseigne . "', "
 			. "image4 : '" . $slide4_enseigne . "', "
 			. "image5 : '" . $slide5_enseigne . "', "
-			. "x1 : '" . $x1 . "', "
-			. "y1 : '" . $y1 . "', "
-			. "y2 : '" . $y2 . "', "
-			. "y3 : '" . $y3 . "', "
-			. "y4 : '" . $y4 . "', "
-			. "y5 : '" . $y5 . "'}";
+			. "x1 : '" . $x1_enseigne . "', "
+			. "y1 : '" . $y1_enseigne . "', "
+			. "y2 : '" . $y2_enseigne . "', "
+			. "y3 : '" . $y3_enseigne . "', "
+			. "y4 : '" . $y4_enseigne . "', "
+			. "y5 : '" . $y5_enseigne . "'}";
 			
 	$datamodif = "{type : 'enseigne', "
 			. "id_enseigne : " . $id_enseigne . ", "
