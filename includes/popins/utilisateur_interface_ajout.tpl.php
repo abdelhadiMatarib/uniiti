@@ -135,4 +135,3 @@ include_once '../fonctions.inc.php';
        };
     });
 </script>
-</html>

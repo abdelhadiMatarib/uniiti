@@ -18,8 +18,6 @@
 		$Step = "{step: 2}";
 ?>
 
-	<body>
-
 		<style>
 			#fenetre {opacity:0; position:absolute; top:20px; left:20px; width: 735px; height: 210px;}
 			#selection {overflow:hidden}
@@ -157,9 +155,6 @@
 			
 			}
 		</script>
-
-	</body>
-</html>
 
 
 

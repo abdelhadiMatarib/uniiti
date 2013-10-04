@@ -42,7 +42,6 @@
 		</div>
 	</form>
 </div>
-</html>
 <script>
 
 	// getElementById

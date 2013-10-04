@@ -23,7 +23,6 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
         <div onclick="Notifier();" class="suggestioncommerce_valider_wrap"><a href="#">Soumettre les modifications</a></div>
     </div>
 </div>
-</html>
 <script>
 
 function Notifier() {

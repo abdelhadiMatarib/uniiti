@@ -126,4 +126,3 @@ if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement
        };
     });
 </script>
-</html>

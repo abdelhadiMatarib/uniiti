@@ -64,4 +64,3 @@ function EtapeSuivante() {
             ActualisePopin(data, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
     };
 </script>
-</html>

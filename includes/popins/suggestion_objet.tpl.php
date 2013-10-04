@@ -32,7 +32,6 @@
 			
 		</div>
 </div>
-</html>
 <script>
 
 	function AfficheCategories(data, idselect) {

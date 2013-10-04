@@ -103,4 +103,3 @@ $bdd = null;            // Détruit l'objet PDO
     }
     );
 </script>
-</html>

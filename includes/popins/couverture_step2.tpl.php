@@ -135,9 +135,6 @@
 	
 	?>
 
-<body>
-
-
 <div class="couverture_wrapper">
 	<div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
 	<div class="couverture_head">
@@ -282,6 +279,3 @@
 			}
 						
 </script>
-
-</body>
-</html>
