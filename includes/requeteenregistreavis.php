@@ -16,7 +16,18 @@ try
 	// Requete
 	$bdd->beginTransaction(); // Début transaction pour requetes multiples
 	
+	$sqlcheck = "SELECT * FROM contributeurs_donnent_avis AS t1
+					INNER JOIN enseignes_recoient_avis AS t2   
+					ON t1.avis_id_avis = t2.avis_id_avis
+					WHERE t1.contributeurs_id_contributeur = :id_contributeur
+						AND t2.enseignes_id_enseigne = :id_enseigne";
+	$reqcheck = $bdd->prepare($sqlcheck);
+	$reqcheck->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
+	$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$reqcheck->execute();
+	$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
 	
+	if (!$resultcheck) {
 	$sql = "INSERT INTO avis 
 			(appreciation, note, commentaire, origine, date_avis)
 			VALUES (:appreciation, :note, :commentaire, :origine, :date_avis)";
@@ -48,7 +59,13 @@ try
 	$req3->closeCursor();
 	
 	$data['result'] = $id_avis;
-
+	}
+	else {
+		$bdd->commit(); // Validation de la transaction / des requetes
+		$data['result'] = -1;
+	}
+	
+	$reqcheck->closeCursor();
 	$bdd = null;            // Détruit l'objet PDO
 	
 	echo json_encode($data);

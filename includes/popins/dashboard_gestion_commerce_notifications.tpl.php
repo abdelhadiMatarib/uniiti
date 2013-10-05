@@ -29,6 +29,7 @@
 	while ($row = $req->fetch(PDO::FETCH_ASSOC))
 	{
 		$nom_enseigne = stripslashes($row['nom_enseigne']);
+		$id_enseigne = $row['id_enseigne_ou_objet'];
 		$slide1_enseigne = $row['slide1_enseigne'];
 		$y1 = $row['y1'];
 		$x1 = $row['x1'];
@@ -57,7 +58,7 @@
 				<div class="dashboard_notif_item_head_img_container">
 					<img src="<?php echo SITE_URL . "/photos/enseignes/couvertures/" . $slide1_enseigne; ?>" style="width:327px;margin-top:<?php echo -$y1*327/1750;?>px;margin-left:<?php echo -$x1*327/1750;?>px;"/>
 				</div>
-				<div class="dashboard_notif_item_head_desc">
+				<div class="dashboard_notif_item_head_desc" onclick="location.href='<?php echo SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">
 					<span class="dashboard_notif_nom_commerce"><?php echo $nom_enseigne;?></span>
 					<span class="dashboard_notif_motif"><?php echo $action;?></span>
 					<span class="dashboard_notif_temps"><?php echo $delai_notification;?></span>

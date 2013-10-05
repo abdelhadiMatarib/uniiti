@@ -227,9 +227,29 @@ ul {list-style-type: none;}
 				$("#image").css({display : "block"});
 			});
 
+			function CreerImageBox (image, x, quality) {
+				if (image != '') {
+					var image_tmp = new Image();
+					image_tmp.src = image;
+					var cvs = document.createElement('canvas');
+					var width = image_tmp.naturalWidth;
+					var height = image_tmp.naturalHeight;
+					cvs.height = 350;
+					cvs.width = 236;
+					var ctx = cvs.getContext("2d").drawImage(image_tmp, x*height/350, 0, 236*height/350, height, 0, 0, 236, 350);
+					var newImage = cvs.toDataURL("image/jpeg", quality);
+					return newImage;
+				}
+				else {return image;}
+			}			
+	
 			function Enregistrer () {
 			
 			if ($("#image1").hasClass("is_valid")) {
+				
+				var imagecompressee = CreerImageBox($('#ImageTemp1').val(), $('#x1').val(), 0.7);
+				$('#ImageTemp1').val(imagecompressee);			
+			
 				var data = {
 								type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
 								id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',

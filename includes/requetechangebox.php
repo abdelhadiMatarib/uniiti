@@ -52,7 +52,8 @@ switch ($type) {
 }
 
 $box = $id . "box.jpg";
-CreerImageBox ($_POST['box'], $chemin . $box, $x1, 236, 350);
+// CreerImageBox ($_POST['box'], $chemin . $box, $x1, 236, 350);
+CreerImageBox ($_POST['box'], $chemin . $box, 0, 236, 350);
 
 try
 {

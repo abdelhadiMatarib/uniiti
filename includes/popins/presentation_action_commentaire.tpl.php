@@ -55,10 +55,10 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     
     <div class="presentation_action_left">
         <div class="presentation_action_left_head">
-            <div class="presentation_action_left_head_img_container_picto_categorie" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $_POST['posx'] . "px" . " " . $_POST['posy'] . "px"?>"></div>
-            <div class="presentation_action_left_head_categorie_wrap">    
-                <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
-                <span class="presentation_action_left_head_categorie" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo stripslashes($_POST['scategorie']); ?></span>
+            <div class="presentation_action_left_head_img_container_picto_categorie" title="<?php echo stripslashes($_POST['scategorie']); ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $_POST['posx'] . "px" . " " . $_POST['posy'] . "px"?>"></div>
+            <div class="presentation_action_left_head_categorie_wrap" onclick="location.href='<?php echo SITE_URL . "/pages/commerce.php?id_enseigne=" . $_POST['id_enseigne']; ?>'">    
+                <span class="presentation_action_left_head_titre" title="<?php echo stripslashes($_POST['nom_enseigne']); ?>"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
+                <span class="presentation_action_left_head_categorie" title="<?php echo stripslashes($_POST['scategorie']); ?>" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo stripslashes($_POST['scategorie']); ?></span>
             </div>   
             
             <div class="presentation_action_left_head_likes_wrap">
@@ -128,7 +128,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 			</div>
         <?php } ?>
         <div class="presentation_action_left_footer">
-            <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'];?>" height="50" width="50"/></figure></div>
+            <div class="presentation_action_left_footer_img_container"><figure><a href="<?php echo SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $_POST['id_contributeur']; ?>" ><img title="<?php echo $_POST['prenom_contributeur'] . ' ' . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); ?>" src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'];?>" height="50" width="50"/></a></figure></div>
             <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
             <div class="presentation_action_left_footer_picto_action" <?php echo AfficheProvenance($_POST['provenance'], $_POST['categorie']); ?>></div>
         

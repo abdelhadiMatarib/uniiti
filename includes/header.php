@@ -108,6 +108,12 @@
 						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=8">Passer Administrateur</a></li>
 						<li><a href="<?php echo SITE_URL;?>/acces/ChangeDroit.php?droit=2">Passer Professionnel</a></li>
 					<?php } ?>
+					<?php if ((int)$_SESSION['droits'] & $_SESSION['ADMINISTRATEUR']) { ?>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_gestion_commerce.php"; ?>" title="">Gérer les commerces</a></li>
+						<li><a href="<?php echo SITE_URL . "/pages/commerce_interface.php?id_enseigne=0"; ?>">Créer un commerce</a></li>
+						<li><a href="<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=0"; ?>">Créer un contributeur</a></li>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_ajout_avis.php"; ?>">Ajouter un avis</a></li>
+					<?php } ?>
 
                     <li><a href="#" title="">Mon restaurant</a></li>
                     <li><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');">Suggérer un commerce</a></li>

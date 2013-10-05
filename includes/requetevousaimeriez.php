@@ -60,7 +60,7 @@
 					<div class='presentation_action_right_suggestions_img_container'>
 						<div class="box_icon" title="<?php if ($sous_categorie2 == NULL) {echo $sous_categorie;} else {echo $sous_categorie2;} ?>" style="background:url('<?php echo $SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $scposx . "px" . " " . $scposy . "px"?>"></div>
 					</div>
-		            <div class='presentation_action_right_suggestions_content'>
+		            <div class='presentation_action_right_suggestions_content' onclick="location.href='<?php echo $SITE_URL . "/pages/commerce.php?id_enseigne=" . $id_enseigne; ?>'">
 		                <span class='presentation_action_right_suggestions_content_titre'><?php echo tronque(stripslashes($nom_enseigne), 19); ?></span>
 		                <span class='presentation_action_right_suggestions_content_categorie'><?php echo tronque($categorie, 19); ?></span>
         			</div>

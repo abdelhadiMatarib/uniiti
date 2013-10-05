@@ -1117,22 +1117,6 @@ $(document).ready(function() {
 				},
 				error: function() {alert('Erreur sur url : ' + $url);}
 			});		
-			
-/*			for (var i=1; i<=appendcount; i++) {
-			$("\
-				<div id='posts'>\
-		        <div class='presentation_action_right_suggestions_img_container'><img src='"+siteurl+"/img/pictos_commerces/restaurant.png'/></div>\
-		            <div class='presentation_action_right_suggestions_content'>\
-		                <span class='presentation_action_right_suggestions_content_titre'>Au bon goût de...</span>\
-		                <span class='presentation_action_right_suggestions_content_categorie'>Restauration</span>\
-        			</div>\
-		            <div class='presentation_action_right_suggestions_note'>\
-		                <span class='presentation_action_right_suggestions_note_reelle'>7</span>\
-		                <span class='presentation_action_right_suggestions_note_base'>/10</span>\
-		            </div>\
-        		</div>\
-        		" ).appendTo( ".presentation_action_right_suggestions" );
-		    }*/
 		    var newheightright = (appendcount*47);
 		    var heightrightafterresize = $('.presentation_action_right').height();
 			var newheightleft = newheightright-254;

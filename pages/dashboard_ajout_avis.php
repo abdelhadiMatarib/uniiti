@@ -234,8 +234,15 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 			url : siteurl+'/includes/requeteenregistreavis.php',
 			data : data,
 			success: function(result){
-				$("#dialog_confirmation").dialog('close');
-				alert("Nouvel avis enregistré sous le n°"+result.result);
+				if (result.result == -1) {
+					$("#dialog_confirmation").dialog('close');
+					alert("Enregistrement de cet avis impossible car ce contributeur a déjà donné son avis sur cette enseigne !");						
+				}
+				else {
+					$("#dialog_confirmation").dialog('close');
+					alert("Nouvel avis enregistré sous le n°"+result.result);				
+				}
+
 			},
 			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistreavis.php');}
 		});

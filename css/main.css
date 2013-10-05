@@ -254,7 +254,7 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .box_of_day{height:400px;width:420px;background-color:blue}
 
 .box_desc{padding:6px 0px 0px 57px;height:44px;}
-.box_desc:hover{cursor: pointer; background-color:rgba(0, 0, 0, 0.05);}
+.box_desc:hover, .presentation_action_left_head_categorie_wrap:hover, .presentation_action_right_suggestions_content:hover{cursor: pointer; background-color:rgba(0, 0, 0, 0.05);}
 
 .box_icon{float:left;height:50px;width:50px;background-color:#fabe41;}
 .box_title{display:block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding:3px 0px; font-size: 15px;}
@@ -1299,6 +1299,7 @@ body.dashboard{background-color:white;}
 .dashboard_notif_item_head{float:left;width:100%;background-color:#252525;}
 .dashboard_notif_item_head_img_container{float:left;width:200px;height:80px;overflow:hidden;}
 .dashboard_notif_item_head_desc{float:left;padding: 8px 12px;}
+.dashboard_notif_item_head_desc:hover{cursor:pointer}
 .dashboard_notif_item_head_desc span{display:block;font-size:1.2em;color:white;}
 span.dashboard_notif_nom_commerce{font-weight:700;}
 span.dashboard_notif_temps{font-weight:700;}
