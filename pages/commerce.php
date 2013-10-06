@@ -14,7 +14,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
+					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, t1.id_budget, budget_enseigne
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -24,6 +24,8 @@
 						ON t2.id_categorie = t4.id_categorie
 							INNER JOIN villes  AS t5
 							ON t1.villes_id_ville = t5.id_ville
+								INNER JOIN budget AS t6
+								ON t1.id_budget = t6.id_budget
 			WHERE id_enseigne = :id_enseigne
 		";
 
@@ -62,6 +64,7 @@
 	$url                     = $result2['url'];
 	$url_video               = $result2['video_enseigne'];
 	$id_budget               = $result2['id_budget'];
+	$budget               	 = $result2['budget_enseigne'];
 
 	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
@@ -175,10 +178,10 @@
                     <div class="clearfix"></div>
                     <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
                     <div class="commerce_head_desc_prices">
-						<div class="img_container" id="commerce_head_desc_prices_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></a></div>
+						<div class="img_container" id="commerce_head_desc_prices_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="<?php echo $budget; ?>" alt="" height="21" width="21" /></a></div>
 						<div id="commerce_head_desc_prices_wrap">
 							<?php for ($i = 1 ; $i <= $id_budget ; $i++) { ?>
-								<img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" />
+								<img title="<?php echo $budget; ?>" class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" />
 							<?php } ?>
 						</div>
 					</div>

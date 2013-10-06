@@ -14,8 +14,7 @@ switch ($_POST['step']) {
 		$telephone_enseigne      = htmlspecialchars($_POST['telephone_enseigne']);
 		$url                     = htmlspecialchars($_POST['url']);
 		$id_quartier             = $_POST['id_quartier'];
-		$id_budget               = 1;
-		// $id_budget               = $_POST['id_budget'];
+		$id_budget               = $_POST['id_budget'];
 		break;
 	case "Concept" :
 		if (isset($_POST['descriptif'])) {$descriptif          = htmlspecialchars($_POST['descriptif']);}

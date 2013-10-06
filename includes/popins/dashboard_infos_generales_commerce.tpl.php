@@ -1,5 +1,11 @@
 <?php
         include_once '../../config/configuration.inc.php';
+		include_once '../../config/configPDO.inc.php';
+		
+		$sql = "SELECT * FROM budget ORDER BY id_budget ASC";
+		$req = $bdd->prepare($sql);
+		$req->execute();
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="ident_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -30,10 +36,10 @@
 			<div class="infos_gene_title"><span>Catégorie de prix</span></div>
 			<div class="infos_gene_input_img">
 				<div class="infos_gene_input_img_container">
-					<img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/icon_sacs_prix.png" />
-					<img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/icon_sacs_prix.png" />
-					<img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/icon_sacs_prix.png" />
-					<img src="<?php echo SITE_URL; ?>/img/pictos_dashboard/icon_sacs_prix.png" />
+				<?php $selected = " valid_budget";
+					foreach ($result as $row) { ?>
+					<img title="<?php echo $row['budget_enseigne']; ?>" id_budget="<?php echo $row['id_budget']; ?>" class="budgets<?php echo $selected; ?>" src="<?php echo SITE_URL; ?>/img/pictos_dashboard/icon_sacs_prix.png" />
+				<?php if ($row['id_budget'] == $_POST['id_budget']) {$selected ='';} } ?>
 				</div>
 			</div>
 		</div>
@@ -49,6 +55,18 @@
 	function $name(name) {return document.getElementsByName(name)[0];}
 	// getElementById
 	function $id(id) {return document.getElementById(id);}
+
+	$(".budgets").click(function() {
+		var imgnxt = imgprv = $(this);
+		while (imgnxt.next('.budgets').length > 0) {
+			imgnxt = imgnxt.next('.budgets');
+			if (imgnxt.hasClass("valid_budget")) {imgnxt.removeClass('valid_budget');}
+		}
+		while (imgprv.length > 0) {
+			if (!imgprv.hasClass("valid_budget")) {imgprv.addClass('valid_budget');}
+			imgprv = imgprv.prev('.budgets');
+		}
+	});
 	
 	function AfficheCategories(data, idselect, id_catselect, id_scatselect, id_sscatselect) {
 
@@ -187,7 +205,7 @@
 						telephone_enseigne : $id("telephone_enseigne").value,
 						url : $id("url").value,
 						id_quartier : $id("id_quartier").value,
-//						id_budget : $id("id_budget").value
+						id_budget : $(".budgets.valid_budget:last").attr('id_budget')
 					};
 		console.log(data);
 		$.ajax({
@@ -198,7 +216,7 @@
 			success: function(result){
 				window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+result.result);
 			},
-			error: function() {alert(result.result);}
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 		return false;
 	}	

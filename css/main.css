@@ -454,6 +454,8 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 .valid_label{opacity:1;}
 .recommandations {cursor:pointer;opacity:0.8;}
 .valid_recommandation{opacity:1;}
+.budgets {cursor:pointer;opacity:0.5;}
+.valid_budget{opacity:1;}
 
 .concept_content{float:left;margin:10px;}
 .commerce_concept a{color:white;padding:5px 10px;width: 350px;height: 100%;display: inline-block;}
