@@ -83,7 +83,7 @@
 	// getElementById
 	function $id(id) {return document.getElementById(id);}
 	
-	var CompteurLabels = $(".labels valid_label").length;
+	var CompteurLabels = $(".labels.valid_label").length;
 	$(".labels").click(function() {
 		if ($(this).hasClass("valid_label")) {
 			$(this).removeClass('valid_label');
@@ -95,7 +95,7 @@
 		}
 	});
 	
-	var CompteurRecommandations = $(".recommandations valid_recommandation").length;
+	var CompteurRecommandations = $(".recommandations.valid_recommandation").length;
 	$(".recommandations").click(function() {
 		if ($(this).hasClass("valid_recommandation")) {
 			$(this).removeClass('valid_recommandation');
@@ -105,6 +105,7 @@
 			CompteurRecommandations++;
 			$(this).addClass('valid_recommandation');
 		}
+		console.log(CompteurRecommandations);
 	});	
 	
 	function Enregistrer () {
