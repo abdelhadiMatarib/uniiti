@@ -129,6 +129,25 @@
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
 
+	// Labels et recommandations
+	$sql5 = "SELECT * FROM enseignes_labelsuniiti AS t1
+				INNER JOIN labelsuniiti AS t2
+				ON t1.id_label = t2.id_label
+					WHERE enseignes_id_enseigne=:id_enseigne";
+	$req5 = $bdd->prepare($sql5);
+	$req5->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req5->execute();
+	$result5 = $req5->fetchAll(PDO::FETCH_ASSOC);
+	
+	$sql6 = "SELECT * FROM enseignes_recommandations AS t1
+				INNER JOIN recommandations AS t2
+				ON t1.id_recommandation = t2.id_recommandation
+					WHERE enseignes_id_enseigne=:id_enseigne";
+	$req6 = $bdd->prepare($sql6);
+	$req6->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req6->execute();
+	$result6 = $req6->fetchAll(PDO::FETCH_ASSOC);
+	
 	$Chemin = SITE_URL . "/photos/enseignes/couvertures/";
 	
 	$datacouv = "{step : 1, "
@@ -302,8 +321,28 @@ else {
                 <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
 			
 					<?php if ($Admin) { ?>
-					<div class="commerce_recos"><a class="button_show_recos" onclick="<?php echo $Recommandations; ?>" href="#" title=""><span>Recommandations</span><div class="commerce_recos_arrow recos_arrow_up"></div><div class="commerce_recos_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="50" height="44" title="" alt="" /><img class="marginleftlabels" src="<?php echo SITE_URL; ?>/img/pictos_actions/reco_book.png" width="50" height="44" title="" alt="" /></div></a></div>
-					<div class="commerce_labels"><a class="button_show_labels" onclick="<?php echo $LabelsCaptain; ?>" href="#" title=""><span>Labels Uniiti</span><div class="commerce_labels_arrow labels_arrow_up"></div><div class="commerce_labels_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="50" height="44" title="" alt="" /><img class="marginleftlabels" src="<?php echo SITE_URL; ?>/img/pictos_actions/label_bio.png" width="50" height="44" title="" alt="" /></div></a></div>
+					<div class="commerce_recos">
+						<a class="button_show_recos" onclick="<?php echo $Recommandations; ?>" href="#" title="">
+							<span>Recommandations</span>
+							<div class="commerce_recos_arrow recos_arrow_up"></div>
+							<div class="commerce_recos_wrap">
+								<?php foreach ($result6 as $row) { ?>
+								<img title="<?php echo $row['recommandation']; ?>" src="<?php echo SITE_URL; ?>/img/pictos_actions/<?php echo $row['url_recommandation']; ?>" width="50" height="44" title="" alt="" />
+								<?php } ?>
+							</div>
+						</a>
+					</div>
+					<div class="commerce_labels">
+						<a class="button_show_labels" onclick="<?php echo $LabelsCaptain; ?>" href="#" title="">
+							<span>Labels Uniiti</span>
+							<div class="commerce_labels_arrow labels_arrow_up"></div>
+							<div class="commerce_labels_wrap">
+								<?php foreach ($result5 as $row) { ?>
+								<img title="<?php echo $row['label']; ?>" src="<?php echo SITE_URL; ?>/img/pictos_actions/<?php echo $row['url_label']; ?>" width="50" height="44" title="" alt="" />
+								<?php } ?>
+							</div>
+						</a>
+					</div>
 					<div class="commerce_interface_modifier_box"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/box_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la box</span></a></div>
 					<div class="commerce_interface_modifier_popin"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/vignette_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la popin</span></a></div>
 					<div class="commerce_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>

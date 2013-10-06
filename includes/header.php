@@ -113,6 +113,7 @@
 						<li><a href="<?php echo SITE_URL . "/pages/commerce_interface.php?id_enseigne=0"; ?>">Créer un commerce</a></li>
 						<li><a href="<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=0"; ?>">Créer un contributeur</a></li>
 						<li><a href="<?php echo SITE_URL . "/pages/dashboard_ajout_avis.php"; ?>">Ajouter un avis</a></li>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_parametres.php"; ?>" title="">Paramètres</a></li>
 					<?php } ?>
 
                     <li><a href="#" title="">Mon restaurant</a></li>
