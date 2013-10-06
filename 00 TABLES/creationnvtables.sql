@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS `contributeurs_wish_objets` ;
 DROP TABLE IF EXISTS `objets` ;
 DROP TABLE IF EXISTS `contributeurs_follow_contributeurs` ;
 
+ALTER TABLE `avis` DROP `id_statut` ;
 
 ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `id_quartier`
@@ -57,6 +58,8 @@ ALTER TABLE `contributeurs` DROP `date_inscription`
 , DROP `y5`
 , DROP `profession_contributeur`
 , DROP `descriptif_contributeur` ;
+
+ALTER TABLE `avis` ADD `id_statut` int(10) unsigned NOT NULL DEFAULT 1 ;
 
 ALTER TABLE `contributeurs` ADD `date_inscription` datetime DEFAULT NULL
 , ADD `slide1_contributeur` varchar(45) DEFAULT NULL
@@ -502,6 +505,235 @@ INSERT INTO `quartier` (`id_quartier`, `id_arrondissement`, `id_ville`, `quartie
 (85, 20, 1, 'Père Lachaise');
 
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `motscles`
+--
+
+CREATE TABLE IF NOT EXISTS `motscles` (
+  `id_motcle` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `motcle` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_motcle`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+INSERT INTO `motscles` (`id_motcle`, `motcle`) VALUES
+(1, 'Généreux'),
+(2, 'Chaleureux'),
+(3, 'Convivial'),
+(4, 'Terrasse'),
+(5, 'Piscine'),
+(6, 'Voiturier'),
+(7, 'Sans gluten'),
+(8, 'Bio'),
+(9, 'Entre amis'),
+(10, 'En famille'),
+(11, 'Séminaire');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `labelsuniiti`
+--
+
+CREATE TABLE IF NOT EXISTS `labelsuniiti` (
+  `id_label` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(45) NOT NULL,
+  `url_label` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_label`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+INSERT INTO `labelsuniiti` (`id_label`, `label`, `url_label`) VALUES
+(1, 'Bio', 'label_bio.png'),
+(2, 'Label2', 'label_bio.png'),
+(3, 'Label3', 'label_bio.png'),
+(4, 'Label4', 'label_bio.png'),
+(5, 'Label5', 'label_bio.png'),
+(6, 'Label6', 'label_bio.png'),
+(7, 'Label7', 'label_bio.png'),
+(8, 'Label8', 'label_bio.png');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recommandations`
+--
+
+CREATE TABLE IF NOT EXISTS `recommandations` (
+  `id_recommandation` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `recommandation` varchar(45) NOT NULL,
+  `url_recommandation` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_recommandation`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+INSERT INTO `recommandations` (`id_recommandation`, `recommandation`, `url_recommandation`) VALUES
+(1, 'Michelin', 'reco_book.png'),
+(2, 'Recommandation2', 'reco_book.png'),
+(3, 'Recommandation3', 'reco_book.png'),
+(4, 'Recommandation4', 'reco_book.png'),
+(5, 'Recommandation5', 'reco_book.png'),
+(6, 'Recommandation6', 'reco_book.png'),
+(7, 'Recommandation7', 'reco_book.png'),
+(8, 'Recommandation8', 'reco_book.png');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `moyenspaiements`
+--
+
+CREATE TABLE IF NOT EXISTS `moyenspaiements` (
+  `id_moyenpaiement` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moyenpaiement` varchar(45) NOT NULL,
+  `posx` int(10) DEFAULT 0,
+  PRIMARY KEY (`id_moyenpaiement`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+INSERT INTO `moyenspaiements` (`id_moyenpaiement`, `moyenpaiement`, `posx`) VALUES
+(1, 'Master Card', 0),
+(2, 'American Express', -50),
+(3, 'Carte Bleue', -100),
+(4, 'Visa', -150),
+(5, 'Ticket Restaurant', -200);
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_type_infos`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_type_infos` (
+  `id_type_info` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type_info` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_type_info`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17;
+
+INSERT INTO `enseignes_type_infos` (`id_type_info`, `type_info`) VALUES
+(1, 'En général'),
+(2, 'Les services proposés'),
+(3, 'Les régimes spéciaux'),
+(4, 'Avec qui venir ?'),
+(5, 'Horaires d''ouverture'),
+(6, 'Parking à proximité'),
+(7, 'Métro à proximité'),
+(8, 'Station vélib'' à proximité'),
+(9, 'Station autolib'' à proximité'),
+(10, 'Paiements acceptés'),
+(11, 'Service de voiturier'),
+(12, 'Label UNIITI'),
+(13, 'Recommandation'),
+(14, 'Prestation1'),
+(15, 'Prestation2'),
+(16, 'Prestation3');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_infos_generales`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_infos_generales` (
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `id_type_info` int(10) unsigned NOT NULL,
+  `id_motcle1` int(10) unsigned NOT NULL,
+  `id_motcle2` int(10) unsigned NOT NULL,
+  `id_motcle3` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne`, `id_type_info`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_horaires`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_horaires` (
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `id_type_info` int(10) unsigned NOT NULL,
+  `horaires` varchar(255) DEFAULT NULL,
+  `lundi` varchar(45) DEFAULT NULL,
+  `mardi` varchar(45) DEFAULT NULL,
+  `mercredi` varchar(45) DEFAULT NULL,
+  `jeudi` varchar(45) DEFAULT NULL,
+  `vendredi` varchar(45) DEFAULT NULL,
+  `samedi` varchar(45) DEFAULT NULL,
+  `dimanche` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_moyenspaiements`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_moyenspaiements` (
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `id_moyenpaiement` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne`, `id_moyenpaiement`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_labelsuniiti`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_labelsuniiti` (
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `id_label` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne`, `id_label`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_recommandations`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_recommandations` (
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `id_recommandation` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne`, `id_recommandation`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_prestations`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_prestations` (
+  `id_prestation` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `prestation` varchar(45) NOT NULL,
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_prestation`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT = 1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_prestations_contenus`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_prestations_contenus` (
+  `id_contenu` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_prestation` int(10) unsigned NOT NULL,
+  `contenu` varchar(45) NOT NULL,
+  `prix` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_contenu`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT = 1;
 
 -- --------------------------------------------------------
 

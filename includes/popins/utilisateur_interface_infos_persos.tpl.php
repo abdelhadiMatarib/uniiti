@@ -105,39 +105,58 @@
 
 	function VerifieEtErg() {
 		var changemdp = 0;
+		var email = '<?php echo $_POST['email_login']; ?>';
+		var emailexiste = -1;
 		if ($id("mdpvisible").value != '') {changemdp = 1;$id("mdp").value = $id("mdpvisible").value;}
 		if ($id("mdp2visible").value != '') {changemdp = 1;$id("mdp2").value = $id("mdp2visible").value;}
 		if ($id("mdp").value != $id("mdp2").value) {alert("les deux mots de passe ne correspondent pas");return false;}
 		if ($id("email_login").value != $id("email_login2").value) {alert("les deux emails ne correspondent pas");return false;}
 		if (!VerifEmail($id("email_login").value)) {alert("format de l'email invalide");return false;}
-;
-		var data = {
-						'changemdp' : changemdp,
-						id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
-						nom : $id("nom").value,
-						prenom : $id("prenom").value,
-						sexe : $id("sexe").value,
-						pseudo : $id("pseudo").value,
-						'date_naissance_jour' : $id("date_naissance_jour").value,
-						'date_naissance_mois' : $id("date_naissance_mois").value,
-						'date_naissance_annee' : $id("date_naissance_annee").value,
-						codepostal : $id("codepostal").value,
-						ville : $id("ville").value,
-						profession_contributeur : $id("profession_contributeur").value,
-						'email_login' : $id("email_login").value,
-						mdp : $id("mdp").value,
-						telephone_contributeur : $id("telephone_contributeur").value,
-					};
-		$.ajax({
-			async : false,
-			type :"POST",
-			url : siteurl+'/includes/requetemodifieutilisateur.php',
-			data : data,
-			success: function(result){
-				ActualisePopin({id_contributeur:result.result}, '/includes/popins/utilisateur_interface_infos_persos_valide.tpl.php', 'default_dialog');
-			},
-			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetemodifieutilisateur.php');}
-		});
+		
+		if ($id("email_login").value != email) {
+			$.ajax({
+				async : false,
+				type :"POST",
+				url : siteurl+'/includes/requetecheckemail.php',
+				data : {email : ''+$id("email_login").value+''},
+				success: function(result){
+					if (result.result == 1) {
+						alert("Cet email existe déjà.");
+						emailexiste = 1;						
+					}
+				},
+				error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetecheckemail.php');}
+			});
+		}
+		if (emailexiste == -1) {
+			var data = {
+							'changemdp' : changemdp,
+							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+							nom : $id("nom").value,
+							prenom : $id("prenom").value,
+							sexe : $id("sexe").value,
+							pseudo : $id("pseudo").value,
+							'date_naissance_jour' : $id("date_naissance_jour").value,
+							'date_naissance_mois' : $id("date_naissance_mois").value,
+							'date_naissance_annee' : $id("date_naissance_annee").value,
+							codepostal : $id("codepostal").value,
+							ville : $id("ville").value,
+							profession_contributeur : $id("profession_contributeur").value,
+							'email_login' : $id("email_login").value,
+							mdp : $id("mdp").value,
+							telephone_contributeur : $id("telephone_contributeur").value,
+						};
+			$.ajax({
+				async : false,
+				type :"POST",
+				url : siteurl+'/includes/requetemodifieutilisateur.php',
+				data : data,
+				success: function(result){
+					ActualisePopin({id_contributeur:result.result}, '/includes/popins/utilisateur_interface_infos_persos_valide.tpl.php', 'default_dialog');
+				},
+				error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetemodifieutilisateur.php');}
+			});
+		}
 		return false;
 	}	
 

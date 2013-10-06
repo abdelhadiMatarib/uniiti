@@ -24,7 +24,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, descriptif, url, id_budget
+					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -71,6 +71,7 @@
 	$id_sous_categorie2      = $result2['id_sous_categorie2'];
     $couleur                 = $result2['couleur'];
 	$url                     = $result2['url'];
+	$url_video               = $result2['video_enseigne'];
 	$id_budget               = $result2['id_budget'];
 
 	// Recherche de la ville, de l'arrondissement et du quartier si les deux derniers existent
@@ -152,7 +153,7 @@
 			. "id_enseigne : " . $id_enseigne . ", "
 			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
 			. "descriptif:'" . str_replace(PHP_EOL ,'\n', addslashes($descriptif)) . "', "
-			. "adresse1_enseigne:'" . $adresse1_enseigne . "', "
+			. "adresse1_enseigne:'" . addslashes($adresse1_enseigne) . "', "
 			. "id_ville:'" . $id_ville . "', "
 			. "cp_enseigne:'" . $code_postal . "', "
 			. "id_categorie:" . $id_categorie . ", "
@@ -160,6 +161,7 @@
 			. "id_sous_categorie2:" . $id_sous_categorie2 . ", "
 			. "telephone_enseigne:'" . $telephone_enseigne . "', "
 			. "url:'" . $url . "', "
+			. "url_video:'" . $url_video . "', "
 			. "id_arrondissement:" . $id_arrondissement . ", "
 			. "id_quartier:" . $id_quartier . ", "
 			. "id_budget:" . $id_budget . "}";
@@ -167,7 +169,7 @@
 	if ($Admin) {
 
 		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');";
-		$MotsCles = "OuvrePopin({}, '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
+		$MotsCles = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
 		$Menutarifs = "OuvrePopin({}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
 		$Infospratiques = "OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
 		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";

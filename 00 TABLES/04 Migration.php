@@ -126,7 +126,12 @@ try
 	}
 	
 	echo "Affectation aléatoire des avatars et couvertures des enseignes : ok<BR><BR>";
+
+	$sql = "UPDATE avis SET id_statut = 2";
+	$req = $bdd->prepare($sql);
+	$req->execute();
 	
+	echo "Ajout statut validé aux anciens avis : ok<BR><BR>";
 	
 	$bdd->commit(); // Validation de la transaction / des requetes
 	

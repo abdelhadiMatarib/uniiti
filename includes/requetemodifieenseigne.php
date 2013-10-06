@@ -23,6 +23,22 @@ switch ($_POST['step']) {
 	case "Video" :
 		$url_video = $_POST['url_video'];
 		break;
+	case "Labels" :
+		$label[1] = $_POST['label1'];
+		$label[2] = $_POST['label2'];
+		$label[3] = $_POST['label3'];
+		$label[4] = $_POST['label4'];
+		$label[5] = $_POST['label5'];
+		$label[6] = $_POST['label6'];
+		break;
+	case "Recommandations" :
+		$recommandation[1] = $_POST['recommandation1'];
+		$recommandation[2] = $_POST['recommandation2'];
+		$recommandation[3] = $_POST['recommandation3'];
+		$recommandation[4] = $_POST['recommandation4'];
+		$recommandation[5] = $_POST['recommandation5'];
+		$recommandation[6] = $_POST['recommandation6'];
+		break;
 	default:
 		exit;
 		break;
@@ -69,25 +85,97 @@ try
 			$req->bindParam(':url', $url, PDO::PARAM_STR);
 			$req->bindParam(':id_quartier', $id_quartier, PDO::PARAM_INT);
 			$req->bindParam(':id_budget', $id_budget, PDO::PARAM_INT);
+			$req->execute();
 		break;
 		case "Concept" ;
 			$sql = "UPDATE enseignes SET descriptif=:descriptif WHERE id_enseigne=:id_enseigne";
 			$req = $bdd->prepare($sql);
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->bindParam(':descriptif', $descriptif, PDO::PARAM_STR);
+			$req->execute();
 			break;
 		case "Video" :
 			$sql = "UPDATE enseignes SET video_enseigne=:url_video WHERE id_enseigne=:id_enseigne";
 			$req = $bdd->prepare($sql);
 			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 			$req->bindParam(':url_video', $url_video, PDO::PARAM_STR);
+			$req->execute();
+			break;
+		case "Labels" :
+			$sqlcheck = "SELECT * FROM enseignes_labelsuniiti WHERE enseignes_id_enseigne=:id_enseigne AND id_label=:id_label";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			foreach ($label as $key => $id_label) {
+				if ($id_label != '') {
+					$reqcheck->bindParam(':id_label', $id_label, PDO::PARAM_INT);
+					$reqcheck->execute();
+					$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
+					if (!$resultcheck) {
+						$sql = "INSERT INTO enseignes_labelsuniiti (enseignes_id_enseigne, id_label) VALUES (:id_enseigne, :id_label)";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_label', $id_label, PDO::PARAM_INT);
+						$req->execute();
+					}
+					$nepaseffacer[$id_label] = 1;
+				}
+			}
+			$sqlcheck = "SELECT * FROM enseignes_labelsuniiti WHERE enseignes_id_enseigne=:id_enseigne";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$reqcheck->execute();
+			$resultcheck = $reqcheck->fetchAll(PDO::FETCH_ASSOC);		
+			foreach ($resultcheck as $row) {
+				if (!isset($nepaseffacer[$row['id_label']])) {
+						$sql = "DELETE FROM enseignes_labelsuniiti WHERE enseignes_id_enseigne=:id_enseigne AND id_label=:id_label";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_label', $row['id_label'], PDO::PARAM_INT);
+						$req->execute();				
+				}
+			}
+			$reqcheck->closeCursor();
+			break;
+		case "Recommandations" :
+			$sqlcheck = "SELECT * FROM enseignes_recommandations WHERE enseignes_id_enseigne=:id_enseigne AND id_recommandation=:id_recommandation";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			foreach ($recommandation as $key => $id_recommandation) {
+				if ($id_recommandation != '') {
+					$reqcheck->bindParam(':id_recommandation', $id_recommandation, PDO::PARAM_INT);
+					$reqcheck->execute();
+					$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
+					if (!$resultcheck) {
+						$sql = "INSERT INTO enseignes_recommandations (enseignes_id_enseigne, id_recommandation) VALUES (:id_enseigne, :id_recommandation)";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_recommandation', $id_recommandation, PDO::PARAM_INT);
+						$req->execute();
+					}
+					$nepaseffacer[$id_recommandation] = 1;
+				}
+			}
+			$sqlcheck = "SELECT * FROM enseignes_recommandations WHERE enseignes_id_enseigne=:id_enseigne";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$reqcheck->execute();
+			$resultcheck = $reqcheck->fetchAll(PDO::FETCH_ASSOC);		
+			foreach ($resultcheck as $row) {
+				if (!isset($nepaseffacer[$row['id_recommandation']])) {
+						$sql = "DELETE FROM enseignes_recommandations WHERE enseignes_id_enseigne=:id_enseigne AND id_recommandation=:id_recommandation";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_recommandation', $row['id_recommandation'], PDO::PARAM_INT);
+						$req->execute();				
+				}
+			}
+			$reqcheck->closeCursor();
 			break;
 	}
 
-	$req->execute();
 	if ($id_enseigne == 0) {$id_enseigne = $bdd->lastInsertId();}
 	$bdd->commit(); // Validation de la transaction / des requetes
-	$req->closeCursor();
+	if (isset($req)) {$req->closeCursor();}
 
 	$data['result'] = $id_enseigne;
 

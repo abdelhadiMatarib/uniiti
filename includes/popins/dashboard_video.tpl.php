@@ -1,7 +1,6 @@
 <?php
         include_once '../../config/configuration.inc.php';
-		$urlTo = FALSE; // Déclaration variable pour login_access destination
-		$data = "{}";
+
 ?>
 <div class="ident_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -12,7 +11,7 @@
     </div>   
     <div class="ident_body">
             <div class="infos_gene_title"><span>Lien vidéo (Youtube/Dailymotion/Vimeo)</span></div>
-                <input id='lienvideo' type="text" class="input_lien_video" placeholder="Lien"/>
+                <input id='lienvideo' type="text" class="input_lien_video" placeholder="Lien" value="<?php echo $_POST['url_video'];?>"/>
             <div class="infos_gene_title"><span>Aperçu</span></div>
             <div class="embed_preview_video">
 			<iframe id="video" width="480" height="360" src="" frameborder="0" allowfullscreen>

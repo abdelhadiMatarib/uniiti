@@ -162,23 +162,39 @@
 		if ($id("mdp").value != $id("mdp2").value) {alert("les deux mots de passe ne correspondent pas");return false;}
 		if ($id("email_login").value != $id("email_login2").value) {alert("les deux emails ne correspondent pas");return false;}
 		if (!VerifEmail($id("email_login").value)) {alert("format de l'email invalide");return false;}
-		var data = {
-		        'email_login' : $id("email_login").value,
-                prenom : $id("prenom").value,
-                nom : $id("nom").value,
-                'date_naissance_jour' : $id("date_naissance_jour").value,
-                'date_naissance_mois' : $id("date_naissance_mois").value,
-                'date_naissance_annee' : $id("date_naissance_annee").value,
-                sexe : $id("sexe").value,
-                mdp : $id("mdp").value,
-                ville : $id("ville").value,
-                codepostal : $id("codepostal").value,
-                pays : $id("pays").value,
-                telephone_contributeur : $id("telephone_contributeur").value
-		};
-		ActualisePopin(data, '/pages/inscription2.php', 'default_dialog_inscription');
-		/* Initilisation du mini slider de choix d'avatar */
-		$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
+		
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetecheckemail.php',
+			data : {email : ''+$id("email_login").value+''},
+			success: function(result){
+				if (result.result == 1) {
+					alert("Cet email existe déjà.");						
+				}
+				else {
+					var data = {
+							'email_login' : $id("email_login").value,
+							prenom : $id("prenom").value,
+							nom : $id("nom").value,
+							'date_naissance_jour' : $id("date_naissance_jour").value,
+							'date_naissance_mois' : $id("date_naissance_mois").value,
+							'date_naissance_annee' : $id("date_naissance_annee").value,
+							sexe : $id("sexe").value,
+							mdp : $id("mdp").value,
+							ville : $id("ville").value,
+							codepostal : $id("codepostal").value,
+							pays : $id("pays").value,
+							telephone_contributeur : $id("telephone_contributeur").value
+					};
+					ActualisePopin(data, '/pages/inscription2.php', 'default_dialog_inscription');
+					/* Initilisation du mini slider de choix d'avatar */
+					$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});	
+				}
+
+			},
+			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetecheckemail.php');}
+		});		
 		return false; // si false l action du form ne sera pas appelé
 	};	
 </script>
