@@ -114,6 +114,32 @@
 	$req6->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 	$req6->execute();
 	$result6 = $req6->fetchAll(PDO::FETCH_ASSOC);	
+
+	// Mots clés
+	$sql7 = "SELECT id_type_info, id_motcle1, id_motcle2, id_motcle3 FROM enseignes_infos_generales WHERE enseignes_id_enseigne=" . $id_enseigne;
+	$req7 = $bdd->prepare($sql7);
+	$req7->execute();
+	$result7 = $req7->fetchAll(PDO::FETCH_ASSOC);
+	$sql8 = "SELECT motcle FROM motscles WHERE id_motcle=:id_motcle";
+	$req8 = $bdd->prepare($sql8);
+	$AfficheMotcle[1] = $AfficheMotcle[2] = $AfficheMotcle[3] = $AfficheMotcle[4] = false;
+	foreach ($result7 as $row7) {
+		$AfficheMotcle[$row7['id_type_info']] = true;
+		$req8->bindParam(':id_motcle', $row7['id_motcle1'], PDO::PARAM_INT);
+		$req8->execute();
+		$result8 = $req8->fetch(PDO::FETCH_ASSOC);
+		$MotCle[$row7['id_type_info']][1] = $result8['motcle'];
+		$req8->bindParam(':id_motcle', $row7['id_motcle2'], PDO::PARAM_INT);
+		$req8->execute();
+		$result8 = $req8->fetch(PDO::FETCH_ASSOC);
+		$MotCle[$row7['id_type_info']][7] = $result8['motcle'];
+		$req8->bindParam(':id_motcle', $row7['id_motcle3'], PDO::PARAM_INT);
+		$req8->execute();
+		$result8 = $req8->fetch(PDO::FETCH_ASSOC);
+		$MotCle[$row7['id_type_info']][3] = $result8['motcle'];			
+	}
+	$req7->closeCursor();
+	if ($req8) {$req8->closeCursor();}
 	
 	$Chemin = SITE_URL . "/photos/enseignes/couvertures/";
 	
@@ -209,12 +235,39 @@
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
                     <div class="commerce_head_infos_infosrapides">
-                        <div class="infosrapides1"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides1.png" alt="" title="" height="26" width="21" /></div><span>Généreux</span><span>Chaleureux</span><span>Convivial</span></div>
-                        <div class="infosrapides2"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div><span>Terrasse</span><span>Piscine</span><span>Voiturier</span></div>
+						<?php if ($AfficheMotcle[1]) { ?>
+                        <div class="infosrapides1">
+							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides1.png" alt="" title="" height="26" width="21" /></div>
+							<?php foreach ($MotCle[1] as $id_motcle => $motcle) { 
+							echo "<span>" . $motcle . "</span>"; 
+							} ?>
+						</div>
+						<?php } ?>
+						<?php if ($AfficheMotcle[2]) { ?>
+                        <div class="infosrapides2">
+							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div>
+							<?php foreach ($MotCle[2] as $id_motcle => $motcle) { 
+							echo "<span>" . $motcle . "</span>"; 
+							} ?>
+						</div>
                         <div class="clearfix_infosrapides"></div>
-                        <div class="infosrapides3"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides3.png" alt="" title="" height="30" width="30" /></div><span>Sans gluten</span><span>Bio</span><span></span></div>
-                        <div class="infosrapides4"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides4.png" alt="" title="" height="23" width="32" /></div><span>Entre amis</span><span>En famille</span><span>Séminaire</span></div>
-                    </div>
+						<?php } ?>
+						<?php if ($AfficheMotcle[3]) { ?>
+                        <div class="infosrapides3">
+							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides3.png" alt="" title="" height="30" width="30" /></div>
+							<?php foreach ($MotCle[3] as $id_motcle => $motcle) { 
+							echo "<span>" . $motcle . "</span>"; 
+							} ?>
+						</div>
+						<?php } ?>
+						<?php if ($AfficheMotcle[4]) { ?>
+                        <div class="infosrapides4">
+							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides4.png" alt="" title="" height="23" width="32" /></div>
+							<?php foreach ($MotCle[4] as $id_motcle => $motcle) { 
+							echo "<span>" . $motcle . "</span>"; 
+							} ?>
+						</div>
+						<?php } ?>                    </div>
                     
                 </div>
             

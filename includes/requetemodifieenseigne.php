@@ -38,6 +38,12 @@ switch ($_POST['step']) {
 		$recommandation[5] = $_POST['recommandation5'];
 		$recommandation[6] = $_POST['recommandation6'];
 		break;
+	case "MotsCles" :
+		$MotCle[1] = [1 => $_POST['motcle11'], 2 => $_POST['motcle12'], 3 => $_POST['motcle13']];
+		$MotCle[2] = [1 => $_POST['motcle21'], 2 => $_POST['motcle22'], 3 => $_POST['motcle23']];
+		$MotCle[3] = [1 => $_POST['motcle31'], 2 => $_POST['motcle32'], 3 => $_POST['motcle33']];
+		$MotCle[4] = [1 => $_POST['motcle41'], 2 => $_POST['motcle42'], 3 => $_POST['motcle43']];
+		break;
 	default:
 		exit;
 		break;
@@ -169,6 +175,44 @@ try
 				}
 			}
 			$reqcheck->closeCursor();
+			break;
+		case "MotsCles" :
+			foreach ($MotCle as $id_type_info => $value) {
+				$ACreerOuModifier = false;
+				if (($MotCle[$id_type_info][1] != '') || ($MotCle[$id_type_info][2] != '') || ($MotCle[$id_type_info][3] != '')) {$ACreerOuModifier = true;}
+				$sqlcheck = "SELECT * FROM enseignes_infos_generales WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+				$reqcheck = $bdd->prepare($sqlcheck);
+				$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+				$reqcheck->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+				$reqcheck->execute();
+				$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
+				if ((!$resultcheck) AND ($ACreerOuModifier)) {
+						$sql = "INSERT INTO enseignes_infos_generales (enseignes_id_enseigne, id_type_info, id_motcle1, id_motcle2, id_motcle3) VALUES (:id_enseigne, :id_type_info, :id_motcle1, :id_motcle2, :id_motcle3)";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->bindParam(':id_motcle1', $MotCle[$id_type_info][1], PDO::PARAM_INT);
+						$req->bindParam(':id_motcle2', $MotCle[$id_type_info][2], PDO::PARAM_INT);
+						$req->bindParam(':id_motcle3', $MotCle[$id_type_info][3], PDO::PARAM_INT);
+						$req->execute();					
+				} else if (($resultcheck) AND ($ACreerOuModifier)) {
+						$sql = "UPDATE enseignes_infos_generales SET id_motcle1=:id_motcle1, id_motcle2=:id_motcle2, id_motcle3=:id_motcle3 WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->bindParam(':id_motcle1', $MotCle[$id_type_info][1], PDO::PARAM_INT);
+						$req->bindParam(':id_motcle2', $MotCle[$id_type_info][2], PDO::PARAM_INT);
+						$req->bindParam(':id_motcle3', $MotCle[$id_type_info][3], PDO::PARAM_INT);
+						$req->execute();				
+				} else if (($resultcheck) AND (!$ACreerOuModifier)) {
+						$sql = "DELETE FROM enseignes_infos_generales WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->execute();				
+				}
+			}
+			
 			break;
 	}
 
