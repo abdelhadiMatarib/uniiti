@@ -44,30 +44,30 @@
                 <span><input id="prestation2" type="text" class="input_menustarifs" placeholder="Titre prestation 2" value="<?php if (isset($NomPrestation[15])) {echo $NomPrestation[15];} ?>"/></span>
             </div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation21" type="text" class="input_menustarifs" placeholder="Contenu n°1" value="<?php if (isset($Prestation[15][1])) {echo $Prestation[15][1];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix21" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][1])) {echo $Prix[15][1];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix21" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][1])) {echo $Prix[15][1];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation22" type="text" class="input_menustarifs" placeholder="Contenu n°2" value="<?php if (isset($Prestation[15][2])) {echo $Prestation[15][2];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix22" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][2])) {echo $Prix[15][2];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix22" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][2])) {echo $Prix[15][2];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation23" type="text" class="input_menustarifs" placeholder="Contenu n°3" value="<?php if (isset($Prestation[15][3])) {echo $Prestation[15][3];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix23" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][3])) {echo $Prix[15][3];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix23" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][3])) {echo $Prix[15][3];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation24" type="text" class="input_menustarifs" placeholder="Contenu n°4" value="<?php if (isset($Prestation[15][4])) {echo $Prestation[15][4];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix24" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][4])) {echo $Prix[15][4];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix24" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][4])) {echo $Prix[15][4];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation25" type="text" class="input_menustarifs" placeholder="Contenu n°5" value="<?php if (isset($Prestation[15][5])) {echo $Prestation[15][5];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix25" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][5])) {echo $Prix[15][5];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix25" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[15][5])) {echo $Prix[15][5];} ?>"/></span></div>
         </div>
         <div class="menutarifs_body_desserts">
             <div class="menutarifs_body_desserts_head">
                 <span><input id="prestation3" type="text" class="input_menustarifs" placeholder="Titre prestation 3" value="<?php if (isset($NomPrestation[16])) {echo $NomPrestation[16];} ?>"/></span>
             </div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation31" type="text" class="input_menustarifs" placeholder="Contenu n°1" value="<?php if (isset($Prestation[16][1])) {echo $Prestation[16][1];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix31" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][1])) {echo $Prix[16][1];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix31" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][1])) {echo $Prix[16][1];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation32" type="text" class="input_menustarifs" placeholder="Contenu n°2" value="<?php if (isset($Prestation[16][2])) {echo $Prestation[16][2];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix32" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][2])) {echo $Prix[16][2];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix32" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][2])) {echo $Prix[16][2];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation33" type="text" class="input_menustarifs" placeholder="Contenu n°3" value="<?php if (isset($Prestation[16][3])) {echo $Prestation[16][3];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix33" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][3])) {echo $Prix[16][3];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix33" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][3])) {echo $Prix[16][3];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation34" type="text" class="input_menustarifs" placeholder="Contenu n°4" value="<?php if (isset($Prestation[16][4])) {echo $Prestation[16][4];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix34" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][4])) {echo $Prix[16][4];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix34" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][4])) {echo $Prix[16][4];} ?>"/></span></div>
             <div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input id="prestation35" type="text" class="input_menustarifs" placeholder="Contenu n°5" value="<?php if (isset($Prestation[16][5])) {echo $Prestation[16][5];} ?>"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix35" type="text" maxlength=3 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][5])) {echo $Prix[16][5];} ?>"/></span></div>
+            <div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input id="prix35" type="text" maxlength=7 class="input_infos_horaires input_prix_mini" placeholder="Prix" value="<?php if (isset($Prix[16][5])) {echo $Prix[16][5];} ?>"/></span></div>
         </div>
        
     </div>
@@ -113,8 +113,7 @@
 			type :"POST",
 			url : siteurl+'/includes/requetemodifieenseigne.php',
 			data : dataprestations,
-			success: function(result){//window.location.reload();
-			},
+			success: function(result){window.location.reload();},
 			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 	}

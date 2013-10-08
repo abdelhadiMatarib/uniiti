@@ -106,8 +106,10 @@
                             
 			}
 
-			if ((int)$_SESSION['droits'] & ADMINISTRATEUR)	{header("location: ../pages/dashboard_index.php");}
-			
+			if ((int)$_SESSION['droits'] & ADMINISTRATEUR)	{
+				if ($_SESSION['SESS_MEMBER_ID'] == 2825) {header("location: ../timeline.php");}				
+				else {header("location: ../pages/dashboard_index.php");}
+			}
 			exit();
 		} else {
 			//Login failed
