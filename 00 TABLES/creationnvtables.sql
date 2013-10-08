@@ -40,6 +40,10 @@ ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `y3`
 , DROP `y4`
 , DROP `y5`
+, DROP `reservation`
+, DROP `email_reservation`
+, DROP `telephone_reservation`
+, DROP `optin`
 , DROP `video_enseigne`
 , DROP `fb_enseigne`
 , DROP `tw_enseigne`
@@ -95,6 +99,10 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEF
 , ADD `y3` int(10) DEFAULT 0
 , ADD `y4` int(10) DEFAULT 0
 , ADD `y5` int(10) DEFAULT 0
+, ADD `reservation` tinyint(1) NOT NULL DEFAULT 0
+, ADD `email_reservation` varchar(45) DEFAULT NULL
+, ADD `telephone_reservation` varchar(45) DEFAULT NULL
+, ADD `optin` tinyint(1) NOT NULL DEFAULT 0
 , ADD `box_enseigne` varchar(45) DEFAULT NULL
 , ADD `video_enseigne` varchar(255) DEFAULT NULL
 , ADD `fb_enseigne` varchar(255) DEFAULT NULL
@@ -1007,6 +1015,21 @@ CREATE TABLE IF NOT EXISTS `contributeurs_wish_enseignes` (
 ALTER TABLE `contributeurs_wish_enseignes`
   ADD CONSTRAINT `fk_enseignes_has_wish_enseignes1` FOREIGN KEY (`enseignes_id_enseigne`) REFERENCES `enseignes` (`id_enseigne`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_contributeurs_has_wish_contributeurs1` FOREIGN KEY (`contributeurs_id_contributeur`) REFERENCES `contributeurs` (`id_contributeur`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ 
+  -- --------------------------------------------------------
+
+--
+-- Structure de la table `enseignes_reseau_enseignes`
+--
+
+CREATE TABLE IF NOT EXISTS `enseignes_reseau_enseignes` (
+  `enseignes_id_enseigne1` int(10) unsigned NOT NULL,
+  `enseignes_id_enseigne2` int(10) unsigned NOT NULL,
+  `id_statut` int(10) NOT NULL,  
+  `date_reseau` datetime DEFAULT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne1`,`enseignes_id_enseigne2`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
  
  -- --------------------------------------------------------
 

@@ -38,6 +38,13 @@ switch ($_POST['step']) {
 		$recommandation[5] = $_POST['recommandation5'];
 		$recommandation[6] = $_POST['recommandation6'];
 		break;
+	case "MoyensPaiements" :
+		$paiement[1] = $_POST['paiement1'];
+		$paiement[2] = $_POST['paiement2'];
+		$paiement[3] = $_POST['paiement3'];
+		$paiement[4] = $_POST['paiement4'];
+		$paiement[5] = $_POST['paiement5'];
+		break;
 	case "MotsCles" :
 		$MotCle[1][1] = $_POST['motcle11'];
 		$MotCle[1][2] = $_POST['motcle12'];
@@ -201,6 +208,41 @@ try
 						$req = $bdd->prepare($sql);
 						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 						$req->bindParam(':id_recommandation', $row['id_recommandation'], PDO::PARAM_INT);
+						$req->execute();				
+				}
+			}
+			$reqcheck->closeCursor();
+			break;
+		case "MoyensPaiements" :
+			$sqlcheck = "SELECT * FROM enseignes_moyenspaiements WHERE enseignes_id_enseigne=:id_enseigne AND id_moyenpaiement=:id_moyenpaiement";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			foreach ($paiement as $key => $id_moyenpaiement) {
+				if ($id_moyenpaiement != '') {
+					$reqcheck->bindParam(':id_moyenpaiement', $id_moyenpaiement, PDO::PARAM_INT);
+					$reqcheck->execute();
+					$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
+					if (!$resultcheck) {
+						$sql = "INSERT INTO enseignes_moyenspaiements (enseignes_id_enseigne, id_moyenpaiement) VALUES (:id_enseigne, :id_moyenpaiement)";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_moyenpaiement', $id_moyenpaiement, PDO::PARAM_INT);
+						$req->execute();
+					}
+					$nepaseffacer[$id_moyenpaiement] = 1;
+				}
+			}
+			$sqlcheck = "SELECT * FROM enseignes_moyenspaiements WHERE enseignes_id_enseigne=:id_enseigne";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$reqcheck->execute();
+			$resultcheck = $reqcheck->fetchAll(PDO::FETCH_ASSOC);		
+			foreach ($resultcheck as $row) {
+				if (!isset($nepaseffacer[$row['id_moyenpaiement']])) {
+						$sql = "DELETE FROM enseignes_moyenspaiements WHERE enseignes_id_enseigne=:id_enseigne AND id_moyenpaiement=:id_moyenpaiement";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_moyenpaiement', $row['id_moyenpaiement'], PDO::PARAM_INT);
 						$req->execute();				
 				}
 			}

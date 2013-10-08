@@ -1,6 +1,24 @@
 <?php
         include_once '../../config/configuration.inc.php';
-        include'../head.php';
+		include_once '../../includes/fonctions.inc.php';
+		include_once '../../config/configPDO.inc.php';
+		
+		if (isset($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {exit;}
+		
+		$sql = "SELECT * FROM moyenspaiements";
+		$req = $bdd->prepare($sql);
+		$req->execute();
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
+		
+		$sqlcheck = "SELECT * FROM enseignes_moyenspaiements WHERE enseignes_id_enseigne=:id_enseigne";
+		$reqcheck = $bdd->prepare($sqlcheck);
+		$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$reqcheck->execute();
+		$resultcheck = $reqcheck->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($resultcheck as $row) {
+			$existe[$row['id_moyenpaiement']] = 1;
+		}
+
 ?>
 <div class="menutarifs_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -10,28 +28,35 @@
         </div><span class="maintitle">Infos pratiques</span>
     </div>   
     <div class="menutarifs_body">
+        <div class="infospratiques_body_paiements">
+            <div class="menutarifs_body_desserts_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="22" width="22" /></div><span>Paiements acceptés</span>
+            </div>
+			<?php foreach ($result as $row) {
+					$selected = false;
+					if (isset($existe[$row['id_moyenpaiement']])) {$selected = true;} ?>
+					<div class="menutarifs_body_entrees_prix_generique paiement_generique<?php echo $row['id_moyenpaiement'];?>">
+						<img id_paiement="<?php echo $row['id_moyenpaiement'];?>" class="img_container_payment_options img_container_payment_options<?php echo $row['id_moyenpaiement'];?> moyenspaiements<?php if ($selected) {echo " valid_paiement";}?>" title="<?php echo $row['moyenpaiement'];?>"></img>
+					</div>
+
+			<?php } ?>
+        </div>
+        <div class="infospratiques_body_voiturier">
+            <div class="menutarifs_body_desserts_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
+            </div>
+            <div class="infospratiques_body_voiturier">
+                <div class="infospratiques_body_voiturier_inside">
+                <input type="button" class="button_voiturier_choix" value="Oui"/>
+                <input type="button" class="button_voiturier_choix" value="Non"/>
+                </div>
+            </div>
+        </div>
         <div class="infospratiques_body_horaires">
             <div class="menutarifs_body_entrees_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="22" width="22" /></div><span>Horaires d'ouverture</span>
             </div>
-            <script>
-                $('.bouton_infos_modif').click(function(){
-                    if ($(this).hasClass('bouton_commerce_ferme')){
-                        $(this).removeClass('bouton_commerce_ferme');
-                        $(this).addClass('bouton_commerce_ouvert');
-                        $(this).parent().find('input').attr('disabled','disabled').val('');
-                        $(this).parent().next(':first').removeClass('horaires_commerces_ouvert');
-                        $(this).parent().next(':first').addClass('horaires_commerces_ferme');
-                    }
-                    else if ($(this).hasClass('bouton_commerce_ouvert')){
-                        $(this).removeClass('bouton_commerce_ouvert');
-                        $(this).addClass('bouton_commerce_ferme');
-                        $(this).parent().find('input').removeAttr('disabled');
-                        $(this).parent().next(':first').removeClass('horaires_commerces_ferme');
-                        $(this).parent().next(':first').addClass('horaires_commerces_ouvert');
-                    }
-                });
-        </script>
+
             <div class="menutarifs_body_entrees_entree_generique">
                 <span>De</span>
                 <div class="input_infos_horaires">
@@ -335,40 +360,75 @@
             <div class="menutarifs_body_entrees_prix_generique prix_generique_infospratiques prix_generique_bouton_map_wrap"><span><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
             
         </div>
-        <div class="infospratiques_body_paiements">
-            <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="22" width="22" /></div><span>Paiements acceptés</span>
-            </div>
-            <div class="menutarifs_body_entrees_prix_generique paiement_generique1"><span class="img_container_payment_options img_container_payment_options1"></span></div>
-            <div class="menutarifs_body_entrees_prix_generique paiement_generique2"><span class="img_container_payment_options img_container_payment_options2"></span></div>
-            <div class="menutarifs_body_entrees_prix_generique paiement_generique3"><span class="img_container_payment_options img_container_payment_options3"></span></div>
-            <div class="menutarifs_body_entrees_prix_generique paiement_generique4"><span class="img_container_payment_options img_container_payment_options4"></span></div>
-            <div class="menutarifs_body_entrees_prix_generique paiement_generique5"><span class="img_container_payment_options img_container_payment_options5"></span></div>
-        </div>
-        <div class="infospratiques_body_voiturier">
-            <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
-            </div>
-            <div class="infospratiques_body_voiturier">
-                <div class="infospratiques_body_voiturier_inside">
-                <input type="button" class="button_voiturier_choix" value="Oui"/>
-                <input type="button" class="button_voiturier_choix" value="Non"/>
-                </div>
-            </div>
-        </div>
-       
     </div>
+	<div class="suggestioncommerce_footer">
+		<button onclick="Enregistrer();" class="suggestioncommerce_valider_wrap"><a href="#">Enregistrer</a></button>
+	</div>
+</div>		
 <script>    
     $('.popin_close_button').click(function(e){
-    e.preventDefault(); //don't go to default URL
-    var defaultdialog = $("#default_dialog").dialog();
-    defaultdialog.dialog('close');
+		e.preventDefault(); //don't go to default URL
+		var defaultdialog = $("#default_dialog").dialog();
+		defaultdialog.dialog('close');
     });
-</script>
-<script>
-        function moveToNext(field,nextFieldID){
-  if(field.value.length >= field.maxLength){
-    document.getElementById(nextFieldID).focus();
-  }
-}
+
+	function moveToNext(field,nextFieldID){if(field.value.length >= field.maxLength){document.getElementById(nextFieldID).focus();}}
+
+	$('.bouton_infos_modif').click(function(){
+		if ($(this).hasClass('bouton_commerce_ferme')){
+			$(this).removeClass('bouton_commerce_ferme');
+			$(this).addClass('bouton_commerce_ouvert');
+			$(this).parent().find('input').attr('disabled','disabled').val('');
+			$(this).parent().next(':first').removeClass('horaires_commerces_ouvert');
+			$(this).parent().next(':first').addClass('horaires_commerces_ferme');
+		}
+		else if ($(this).hasClass('bouton_commerce_ouvert')){
+			$(this).removeClass('bouton_commerce_ouvert');
+			$(this).addClass('bouton_commerce_ferme');
+			$(this).parent().find('input').removeAttr('disabled');
+			$(this).parent().next(':first').removeClass('horaires_commerces_ferme');
+			$(this).parent().next(':first').addClass('horaires_commerces_ouvert');
+		}
+	});	
+	
+	
+	$(".moyenspaiements").click(function(e) {
+		e.preventDefault(); //don't go to default URL
+		e.stopPropagation();
+		if ($(this).hasClass("valid_paiement")) {$(this).removeClass('valid_paiement');}
+		else {$(this).addClass('valid_paiement');}
+	});
+	
+	function Enregistrer () {
+
+		var compteur = 1, comptepaiement = 1;
+		var paiement = new Array();
+		$(".moyenspaiements").each(function () {
+			paiement[compteur++] = '';
+			if ($(this).hasClass("valid_paiement")) {paiement[comptepaiement++] = $(this).attr('id_paiement');}
+		});
+		var datapaiements = {
+						step : 'MoyensPaiements',
+						id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+						paiement1 :paiement[1],
+						paiement2 :paiement[2],
+						paiement3 :paiement[3],
+						paiement4 :paiement[4],
+						paiement5 :paiement[5]
+					};
+		console.log(datapaiements);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetemodifieenseigne.php',
+			data : datapaiements,
+			success: function(result){
+				window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+result.result);
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+		});
+		
+		return false;
+	}
+
 </script>
