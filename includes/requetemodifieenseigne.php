@@ -39,10 +39,40 @@ switch ($_POST['step']) {
 		$recommandation[6] = $_POST['recommandation6'];
 		break;
 	case "MotsCles" :
-		$MotCle[1] = [1 => $_POST['motcle11'], 2 => $_POST['motcle12'], 3 => $_POST['motcle13']];
-		$MotCle[2] = [1 => $_POST['motcle21'], 2 => $_POST['motcle22'], 3 => $_POST['motcle23']];
-		$MotCle[3] = [1 => $_POST['motcle31'], 2 => $_POST['motcle32'], 3 => $_POST['motcle33']];
-		$MotCle[4] = [1 => $_POST['motcle41'], 2 => $_POST['motcle42'], 3 => $_POST['motcle43']];
+		$MotCle[1][1] = $_POST['motcle11'];
+		$MotCle[1][2] = $_POST['motcle12'];
+		$MotCle[1][3] = $_POST['motcle13'];
+		$MotCle[2][1] = $_POST['motcle21'];
+		$MotCle[2][2] = $_POST['motcle22'];
+		$MotCle[2][3] = $_POST['motcle23'];
+		$MotCle[3][1] = $_POST['motcle31'];
+		$MotCle[3][2] = $_POST['motcle32'];
+		$MotCle[3][3] = $_POST['motcle33'];
+		$MotCle[4][1] = $_POST['motcle41'];
+		$MotCle[4][2] = $_POST['motcle42'];
+		$MotCle[4][3] = $_POST['motcle43'];
+		
+		break;
+	case "Prestations" :
+		$NomPrestation[14] = $_POST['prestation1'];
+		$Prestation[14][1] = $_POST['prestation11'];$Prix[14][1] = $_POST['prix11'];
+		$Prestation[14][2] = $_POST['prestation12'];$Prix[14][2] = $_POST['prix12'];
+		$Prestation[14][3] = $_POST['prestation13'];$Prix[14][3] = $_POST['prix13'];
+		$Prestation[14][4] = $_POST['prestation14'];$Prix[14][4] = $_POST['prix14'];
+		$Prestation[14][5] = $_POST['prestation15'];$Prix[14][5] = $_POST['prix15'];
+		$NomPrestation[15] = $_POST['prestation2'];
+		$Prestation[15][1] = $_POST['prestation21'];$Prix[15][1] = $_POST['prix21'];
+		$Prestation[15][2] = $_POST['prestation22'];$Prix[15][2] = $_POST['prix22'];
+		$Prestation[15][3] = $_POST['prestation23'];$Prix[15][3] = $_POST['prix23'];
+		$Prestation[15][4] = $_POST['prestation24'];$Prix[15][4] = $_POST['prix24'];
+		$Prestation[15][5] = $_POST['prestation25'];$Prix[15][5] = $_POST['prix25'];
+		$NomPrestation[16] = $_POST['prestation3'];
+		$Prestation[16][1] = $_POST['prestation31'];$Prix[16][1] = $_POST['prix31'];
+		$Prestation[16][2] = $_POST['prestation32'];$Prix[16][2] = $_POST['prix32'];
+		$Prestation[16][3] = $_POST['prestation33'];$Prix[16][3] = $_POST['prix33'];
+		$Prestation[16][4] = $_POST['prestation34'];$Prix[16][4] = $_POST['prix34'];
+		$Prestation[16][5] = $_POST['prestation35'];$Prix[16][5] = $_POST['prix35'];
+		
 		break;
 	default:
 		exit;
@@ -214,6 +244,59 @@ try
 			}
 			
 			break;
+		case "Prestations" :
+			$sqldelete = "DELETE FROM enseignes_prestations_contenus WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+			$reqdelete = $bdd->prepare($sqldelete);
+			$reqdelete->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			foreach ($Prestation as $id_type_info => $value) {
+				$ACreerOuModifier = false;
+				if ($NomPrestation[$id_type_info] != '') {$ACreerOuModifier = true;}
+				$sqlcheck = "SELECT * FROM enseignes_prestations WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+				$reqcheck = $bdd->prepare($sqlcheck);
+				$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+				$reqcheck->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+				$reqcheck->execute();
+				$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
+				if ((!$resultcheck) AND ($ACreerOuModifier)) {
+						$sql = "INSERT INTO enseignes_prestations (enseignes_id_enseigne, id_type_info, prestation) VALUES (:id_enseigne, :id_type_info, :prestation)";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->bindParam(':prestation', $NomPrestation[$id_type_info], PDO::PARAM_INT);
+						$req->execute();
+				} else if (($resultcheck) AND ($ACreerOuModifier)) {
+						$sql = "UPDATE enseignes_prestations SET prestation=:prestation WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->bindParam(':prestation', $NomPrestation[$id_type_info], PDO::PARAM_INT);
+						$req->execute();
+				} else if (($resultcheck) AND (!$ACreerOuModifier)) {
+						$sql = "DELETE FROM enseignes_prestations WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->execute();
+				}
+				$reqdelete->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+				$reqdelete->execute();
+				foreach ($Prestation[$id_type_info] as $id_contenu => $contenu) {
+					if ($contenu != '') {
+						$sql = "INSERT INTO enseignes_prestations_contenus (id_contenu, enseignes_id_enseigne, id_type_info, contenu, prix) VALUES (:id_contenu, :id_enseigne, :id_type_info, :contenu, :prix)";
+						$req = $bdd->prepare($sql);
+						$req->bindParam(':id_contenu', $id_contenu, PDO::PARAM_INT);
+						$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+						$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+						$req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
+						$req->bindParam(':prix', $Prix[$id_type_info][$id_contenu], PDO::PARAM_STR);
+						$req->execute();
+						$id_contenu++;
+					}					
+				}
+			}
+			
+			break;
+
 	}
 
 	if ($id_enseigne == 0) {$id_enseigne = $bdd->lastInsertId();}

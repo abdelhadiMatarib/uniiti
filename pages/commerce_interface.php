@@ -215,7 +215,7 @@
 
 		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');";
 		$MotsCles = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
-		$Menutarifs = "OuvrePopin({}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
+		$Menutarifs = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
 		$Infospratiques = "OuvrePopin({}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
 		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";
 		$LabelsCaptain = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";

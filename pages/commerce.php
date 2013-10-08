@@ -158,6 +158,8 @@
 			. "y4 : '" . $y4_enseigne . "', "
 			. "y5 : '" . $y5_enseigne . "'}"; 
 	
+	$menu_tarif = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";	
+
 	if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
 		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
@@ -228,7 +230,7 @@
                     </div>
                 </div>
                 <div class="commerce_head_infos">
-                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
+                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
                     <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></a></div>
                     <div class="commerce_head_infos_suivre" id="Suivre"><a href="#" title=""><span id="TexteSuivre">Suivre</span><div class="img_container"><img id="ImageSuivre" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
                     <div class="clearfix"></div>

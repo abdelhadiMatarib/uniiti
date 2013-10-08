@@ -714,10 +714,10 @@ CREATE TABLE IF NOT EXISTS `enseignes_recommandations` (
 --
 
 CREATE TABLE IF NOT EXISTS `enseignes_prestations` (
-  `id_prestation` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `prestation` varchar(45) NOT NULL,
   `enseignes_id_enseigne` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id_prestation`)
+  `id_type_info` int(10) unsigned NOT NULL,
+  `prestation` varchar(45) NOT NULL,
+  PRIMARY KEY (`enseignes_id_enseigne`, `id_type_info`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT = 1;
 
 
@@ -728,12 +728,13 @@ CREATE TABLE IF NOT EXISTS `enseignes_prestations` (
 --
 
 CREATE TABLE IF NOT EXISTS `enseignes_prestations_contenus` (
-  `id_contenu` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_prestation` int(10) unsigned NOT NULL,
+  `id_contenu` int(10) unsigned NOT NULL,
+  `enseignes_id_enseigne` int(10) unsigned NOT NULL,
+  `id_type_info` int(10) unsigned NOT NULL,
   `contenu` varchar(45) NOT NULL,
   `prix` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id_contenu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT = 1;
+  PRIMARY KEY (`id_contenu`, `enseignes_id_enseigne`, `id_type_info`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
