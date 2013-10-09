@@ -386,11 +386,11 @@ else {
 				<div class="couv_container">
 					<?php if ($slide1_enseigne != "" && $slide2_enseigne == "" && $slide3_enseigne == "" && $slide4_enseigne == "" && $slide5_enseigne == "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne; ?>" title="" alt=""><?php } ?>
 				    <div id="couv_slides">
- 					<?php if ($slide1_enseigne != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne; ?>" title="" alt=""><?php } ?>
-					<?php if ($slide2_enseigne != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_enseigne; ?>" title="" alt=""><?php } ?>					
- 					<?php if ($slide3_enseigne != "") { ?><img id="couv3" src="<?php echo $Chemin . $slide3_enseigne; ?>" title="" alt=""><?php } ?>
-					<?php if ($slide4_enseigne != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_enseigne; ?>" title="" alt=""><?php } ?>
-					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne; ?>" title="" alt=""><?php } ?>
+ 					<?php if ($slide1_enseigne != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne . "?" . time(); ?>" title="" alt=""><?php } ?>
+					<?php if ($slide2_enseigne != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_enseigne . "?" . time(); ?>" title="" alt=""><?php } ?>					
+ 					<?php if ($slide3_enseigne != "") { ?><img id="couv3" src="<?php echo $Chemin . $slide3_enseigne . "?" . time(); ?>" title="" alt=""><?php } ?>
+					<?php if ($slide4_enseigne != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_enseigne . "?" . time(); ?>" title="" alt=""><?php } ?>
+					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne . "?" . time(); ?>" title="" alt=""><?php } ?>
 				    </div>
 				</div>
                 

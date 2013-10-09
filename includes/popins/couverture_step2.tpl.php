@@ -7,7 +7,7 @@
 	ini_set('memory_limit', '-1');
 
 	$MessageAction = "Enregistrer";
-	$MessageInfo = "Validez vos images en les repositionnant afin que le rendu soit le plus optimal sur le site.";
+	$MessageInfo = "Sélectionnez l'image qui sera la première à apparaître dans la gallerie.";
 	$Step = "{step: 1}";
 
 	function CreerImageCouverture ($image, $ImageRecalibree, $WidthCouv) {
@@ -147,7 +147,7 @@
 		<div class="couverture_img_items_wrapper">
 				<ul id="sortable">
 					<?php for ($i = 1 ; $i <= $NbImages ; $i++) { ?>
-					<li id="couverture_img_item<?php echo $i; ?>" class="couverture_img_item">
+					<li id="couverture_img_item<?php echo $i; ?>" class="couverture_img_item<?php if ($i == 1) {echo " valid_item";}?>">
 						<div class="couverture_img_item_nbr_img_txt"><span><?php echo $i; ?></span></div>
 						<img src="<?php echo $image[$i] . "?" . time(); ?>" style="margin-top:<?php echo -$y[$i]*210/1750; ?>px" title="" alt=""/>
 						<div class="couverture_img_item_container_draggable_icon"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_draggable.png" title="" alt=""/></div>
@@ -191,14 +191,22 @@
 		</div>
 		<div class="couverture_champs_action"><a href="#" title="" onclick="Enregistrer();"><span><?php echo $MessageAction ?></span></a></div>
 </div>
-<script>    
-			$(function() {
+<script>
+
+			$('.couverture_img_item').click(function () {
+				if (!$(this).hasClass('valid_item')) {
+					$('.couverture_img_item').removeClass('valid_item');
+					$(this).addClass('valid_item');
+				}
+			});
+    
+/*			$(function() {
 			function InitSortable() {
 				$( "#sortable" ).sortable();
 				$( "#sortable" ).disableSelection();
 			};
 			InitSortable();
-			});
+			}); */
 			
 			function InitImages() {
 				for (i = 1 ; i <=5 ; i++) {
@@ -247,7 +255,8 @@
 				}
 				else {NomImage[i] = '';}
 			}
-			
+			var premiere = $('.couverture_img_item.valid_item div span').text();
+
 			var data = {
 							type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
 							id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
@@ -262,9 +271,10 @@
 							y2 : $('#y2').val(),
 							y3 : $('#y3').val(),
 							y4 : $('#y4').val(),
-							y5 : $('#y5').val()
+							y5 : $('#y5').val(),
+							premiere : premiere
 						};
-
+				console.log(data);
 				$.ajax({
 					async : false,
 					type :"POST",
@@ -273,7 +283,7 @@
 					success: function(html){
 						window.location.reload();
 					},
-					error: function() {alert('Erreur sur url : ' + url);}
+					error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 				});
 			
 			}

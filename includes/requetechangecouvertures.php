@@ -45,6 +45,25 @@ if (!$Changex1) {
 }
 else if ($type == 'contributeur') {exit;}
 
+if ($_POST['premiere'] != "1") {
+	$premiere = $_POST['premiere'];
+	$ytmp = $_POST['y1'];
+	$imagetmp = $_POST['image1'];
+	DeplaceFichier($chemin . $id . "couv1.jpg", $chemin . $id . "couvtmp.jpg");
+	if (substr_count($_POST['image' . $premiere], "couv") == 0) {$_POST['image1'] = $_POST['image' . $premiere];}
+	else {
+		$_POST['image1'] = $id . "couv1.jpg";
+		DeplaceFichier($chemin . $id . "couv" . $premiere . ".jpg", $chemin . $id . "couv1.jpg");
+	}
+	if (substr_count($imagetmp, "couv") == 0) {$_POST['image' . $premiere] = $imagetmp;}
+	else {
+		$_POST['image' . $premiere] = $id . "couv" . $premiere . ".jpg";
+		DeplaceFichier($chemin . $id . "couvtmp.jpg", $chemin . $id . "couv" . $premiere . ".jpg");
+	}
+	$_POST['y1'] = $_POST['y' . $premiere];
+	$_POST['y' . $premiere] = $ytmp;
+}
+
 try
 {
 	// Requete

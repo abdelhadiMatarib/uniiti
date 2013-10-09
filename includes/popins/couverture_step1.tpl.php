@@ -71,12 +71,12 @@
 			<input type="hidden" name="y3" value="<?php if (isset($_POST['y3'])) {echo $_POST['y3'];} ?>" id="y3" />
 			<input type="hidden" name="y4" value="<?php if (isset($_POST['y4'])) {echo $_POST['y4'];} ?>" id="y4" />
 			<input type="hidden" name="y5" value="<?php if (isset($_POST['y5'])) {echo $_POST['y5'];} ?>" id="y5" />
-			<input type="hidden" name="ImageTemp" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'];} ?>" id="ImageTemp" />
-			<input type="hidden" name="ImageTemp1" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'];} ?>" id="ImageTemp1" />
-			<input type="hidden" name="ImageTemp2" value="<?php if ((!empty($_POST['image2'])) && ($_POST['image2'] != '')) {echo $_POST['chemin'] . $_POST['image2'];} ?>" id="ImageTemp2" />
-			<input type="hidden" name="ImageTemp3" value="<?php if ((!empty($_POST['image3'])) && ($_POST['image3'] != '')) {echo $_POST['chemin'] . $_POST['image3'];} ?>" id="ImageTemp3" />
-			<input type="hidden" name="ImageTemp4" value="<?php if ((!empty($_POST['image4'])) && ($_POST['image4'] != '')) {echo $_POST['chemin'] . $_POST['image4'];} ?>" id="ImageTemp4" />
-			<input type="hidden" name="ImageTemp5" value="<?php if ((!empty($_POST['image5'])) && ($_POST['image5'] != '')) {echo $_POST['chemin'] . $_POST['image5'];} ?>" id="ImageTemp5" />
+			<input type="hidden" name="ImageTemp" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'] . "?" . time();} ?>" id="ImageTemp" />
+			<input type="hidden" name="ImageTemp1" value="<?php if ((!empty($_POST['image1'])) && ($_POST['image1'] != '')) {echo $_POST['chemin'] . $_POST['image1'] . "?" . time();} ?>" id="ImageTemp1" />
+			<input type="hidden" name="ImageTemp2" value="<?php if ((!empty($_POST['image2'])) && ($_POST['image2'] != '')) {echo $_POST['chemin'] . $_POST['image2'] . "?" . time();} ?>" id="ImageTemp2" />
+			<input type="hidden" name="ImageTemp3" value="<?php if ((!empty($_POST['image3'])) && ($_POST['image3'] != '')) {echo $_POST['chemin'] . $_POST['image3'] . "?" . time();} ?>" id="ImageTemp3" />
+			<input type="hidden" name="ImageTemp4" value="<?php if ((!empty($_POST['image4'])) && ($_POST['image4'] != '')) {echo $_POST['chemin'] . $_POST['image4'] . "?" . time();} ?>" id="ImageTemp4" />
+			<input type="hidden" name="ImageTemp5" value="<?php if ((!empty($_POST['image5'])) && ($_POST['image5'] != '')) {echo $_POST['chemin'] . $_POST['image5'] . "?" . time();} ?>" id="ImageTemp5" />
 			<input id="submitbutton" name="submitted" type="submit" value="Sauvegarder la sélection" />
 
 		</form>

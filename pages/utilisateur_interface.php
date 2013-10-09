@@ -192,11 +192,11 @@
 				<div class="couv_container">
 					<?php if ($slide1_contributeur != "" && $slide2_contributeur == "" && $slide3_contributeur == "" && $slide4_contributeur == "" && $slide5_contributeur == "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
 				    <div id="couv_slides">
- 					<?php if ($slide1_contributeur != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur; ?>" title="" alt=""><?php } ?>
-					<?php if ($slide2_contributeur != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_contributeur; ?>" title="" alt=""><?php } ?>					
- 					<?php if ($slide3_contributeur != "") { ?><img id="couv3" src="<?php echo $Chemin . $slide3_contributeur; ?>" title="" alt=""><?php } ?>
-					<?php if ($slide4_contributeur != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_contributeur; ?>" title="" alt=""><?php } ?>
-					<?php if ($slide5_contributeur != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_contributeur; ?>" title="" alt=""><?php } ?>
+ 					<?php if ($slide1_contributeur != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_contributeur . "?" . time(); ?>" title="" alt=""><?php } ?>
+					<?php if ($slide2_contributeur != "") { ?><img id="couv2" src="<?php echo $Chemin . $slide2_contributeur . "?" . time(); ?>" title="" alt=""><?php } ?>					
+ 					<?php if ($slide3_contributeur != "") { ?><img id="couv3" src="<?php echo $Chemin . $slide3_contributeur . "?" . time(); ?>" title="" alt=""><?php } ?>
+					<?php if ($slide4_contributeur != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_contributeur . "?" . time(); ?>" title="" alt=""><?php } ?>
+					<?php if ($slide5_contributeur != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_contributeur . "?" . time(); ?>" title="" alt=""><?php } ?>
 				    </div>
 				</div>
 
