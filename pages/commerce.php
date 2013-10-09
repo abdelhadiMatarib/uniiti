@@ -14,7 +14,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, t1.id_budget, budget_enseigne
+					reservation, optin, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, t1.id_budget, budget_enseigne
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -50,6 +50,8 @@
 	$y3_enseigne    		 = $result2['y3'];
 	$y4_enseigne    		 = $result2['y4'];
 	$y5_enseigne    		 = $result2['y5'];
+	$reservation 			 = $result2['reservation'];
+	$optin	  				 = $result2['optin'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$ville_enseigne          = $result2['nom_ville'];
@@ -95,7 +97,18 @@
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
-
+	
+	// On compte le nombre de commerce en réseau avec l'enseigne	
+	$sql9 = "SELECT COUNT(enseignes_id_enseigne1) AS count_reseau
+			FROM enseignes_reseau_enseignes AS t1
+			WHERE (enseignes_id_enseigne1 = :id_enseigne OR enseignes_id_enseigne2 = :id_enseigne) AND id_statut = 2
+			";
+	$req9 = $bdd->prepare($sql9);
+	$req9->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req9->execute();
+	$result9 = $req9->fetch(PDO::FETCH_ASSOC);
+	$count_reseau = $result9['count_reseau'];
+	
 	// Labels et recommandations
 	$sql5 = "SELECT * FROM enseignes_labelsuniiti AS t1
 				INNER JOIN labelsuniiti AS t2
@@ -223,12 +236,14 @@
                     <span class="commerce_head_note_note"><?php echo $note_arrondi; ?></span><span class="commerce_head_note_note10">/10</span>
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
+					<?php if ($reservation) { ?>
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
                         <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');">
                             <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                             <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
                         </a>
                     </div>
+					<?php } ?>
                 </div>
                 <div class="commerce_head_infos">
                     <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
@@ -280,7 +295,7 @@
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
-                <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="20" width="20" /></div><div class="commerce_head2_text3"><span>2</span></div>
+                <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="20" width="20" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div>
                 <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="17" width="18" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
                 <a href="#" title="" onclick="<?php echo $IlsSuiventCeCommerce; ?>"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></a>
                 </div>

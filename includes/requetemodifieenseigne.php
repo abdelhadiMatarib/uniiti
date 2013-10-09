@@ -58,7 +58,6 @@ switch ($_POST['step']) {
 		$MotCle[4][1] = $_POST['motcle41'];
 		$MotCle[4][2] = $_POST['motcle42'];
 		$MotCle[4][3] = $_POST['motcle43'];
-		
 		break;
 	case "Prestations" :
 		$NomPrestation[14] = $_POST['prestation1'];
@@ -79,7 +78,12 @@ switch ($_POST['step']) {
 		$Prestation[16][3] = $_POST['prestation33'];$Prix[16][3] = $_POST['prix33'];
 		$Prestation[16][4] = $_POST['prestation34'];$Prix[16][4] = $_POST['prix34'];
 		$Prestation[16][5] = $_POST['prestation35'];$Prix[16][5] = $_POST['prix35'];
-		
+		break;
+	case "Reservations" :
+		$reservation = $_POST['reservation'];
+		$prevenir_reservation = $_POST['prevenir_reservation'];
+		$email_reservation = $_POST['email_reservation'];
+		$telephone_reservation = $_POST['telephone_reservation'];
 		break;
 	default:
 		exit;
@@ -336,9 +340,23 @@ try
 					}					
 				}
 			}
-			
 			break;
-
+			case "Reservations" :
+				$sql = "UPDATE enseignes 
+						SET reservation=:reservation,
+							prevenir_reservation=:prevenir_reservation,
+							email_reservation=:email_reservation,
+							telephone_reservation=:telephone_reservation
+							WHERE id_enseigne=:id_enseigne";
+				$req = $bdd->prepare($sql);
+				$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+				$req->bindParam(':reservation', $reservation, PDO::PARAM_INT);
+				$req->bindParam(':prevenir_reservation', $prevenir_reservation, PDO::PARAM_INT);
+				$req->bindParam(':email_reservation', $email_reservation, PDO::PARAM_STR);
+				$req->bindParam(':telephone_reservation', $telephone_reservation, PDO::PARAM_STR);
+				$req->execute();
+				break;
+			default:
 	}
 
 	if ($id_enseigne == 0) {$id_enseigne = $bdd->lastInsertId();}

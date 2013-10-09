@@ -60,6 +60,7 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEF
 , ADD `y4` int(10) DEFAULT 0
 , ADD `y5` int(10) DEFAULT 0
 , ADD `reservation` tinyint(1) NOT NULL DEFAULT 0
+, ADD `prevenir_reservation` int(1) DEFAULT 0
 , ADD `email_reservation` varchar(45) DEFAULT NULL
 , ADD `telephone_reservation` varchar(45) DEFAULT NULL
 , ADD `optin` tinyint(1) NOT NULL DEFAULT 0
@@ -987,7 +988,7 @@ CREATE TABLE IF NOT EXISTS `enseignes_reseau_enseignes` (
   `enseignes_id_enseigne2` int(10) unsigned NOT NULL,
   `id_statut` int(10) NOT NULL,  
   `date_reseau` datetime DEFAULT NULL,
-  PRIMARY KEY (`enseignes_id_enseigne1`,`enseignes_id_enseigne2`),
+  PRIMARY KEY (`enseignes_id_enseigne1`,`enseignes_id_enseigne2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
  

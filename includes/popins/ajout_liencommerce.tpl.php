@@ -22,10 +22,37 @@
         </div>
     </div>
     <div class="suggestioncommerce_footer">
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Valider</a></div>
+        <div onclick="Valider()" class="suggestioncommerce_valider_wrap"><a href="#">Valider</a></div>
     </div>
 </div>
 <script>
+
+	function Valider() {
+
+		data = {
+			check : 0,
+			id_enseigne1 : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+			id_enseigne2 : ''+inputSearch3Hidden.val()+'',
+			id_statut : 1
+		};
+	
+		$.ajax({
+			type: "POST",
+			url: siteurl+"/includes/requetereseauenseigne.php",
+			data: data,
+			dataType: "json",
+			beforeSend: function(x) {
+				if(x && x.overrideMimeType) {
+				x.overrideMimeType("application/json;charset=UTF-8");
+				}
+			},
+			success: function(result) {
+					ActualisePopin({}, '/includes/popins/ajout_liencommerce_valide.tpl.php', 'default_dialog');				
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+		});
+	}
+
 	var suggestionsContainer3 = $("#suggestionsContainer3"), inputSearch3 = $("input#inputSearch3"),
 		inputSearch3Hidden = $("input#inputSearch3Hidden"), suggestionList3 = $("#suggestionList3");
 

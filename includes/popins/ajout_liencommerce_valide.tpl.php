@@ -12,12 +12,12 @@
     </div>   
     <div class="suggestioncommerce_body">
             
-        <div class="suggestion_valide_txt"><span>Une demande de lien a bien été envoyée au commerce. Après confirmation il appartient à votre réseau.</span></div>
+        <div class="suggestion_valide_txt"><span>Une demande de lien a bien été envoyée au commerce. Après confirmation de celui-ci, il appartiendra à votre réseau.</span></div>
             
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Merci !</a></div>
+        <div onclick="$('.popin_close_button').click();" class="suggestioncommerce_valider_wrap"><a href="#">Merci !</a></div>
         
     </div>
 </div>

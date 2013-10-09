@@ -1221,13 +1221,13 @@ a.recherche_mot_inactif:hover{background-color:#acacac;}
 
 .module_reservation_left_head1_oui a{text-transform:uppercase;color:#cbcbcb;font-size:2em;font-weight:600;display:inline-block;width:79px;padding:20px 10px;background-color:#f0f0f0;border-right:1px solid #e4e4e4;}
 .module_reservation_left_head1_non a{text-transform:uppercase;color:#cbcbcb;font-size:2em;font-weight:600;display:inline-block;width:79px;padding:20px 10px;background-color:#f0f0f0;}
-.module_reservation_left_head1_oui a:hover{color:white;background-color:#a4ebf1;}
-.module_reservation_left_head1_non a:hover{color:white;background-color:#a4ebf1;}
+.module_reservation_left_head1_oui a:hover, .module_reservation_left_head1_oui.valid_oui a{color:white;background-color:#a4ebf1;}
+.module_reservation_left_head1_non a:hover, .module_reservation_left_head1_non.valid_non a{color:white;background-color:#a4ebf1;}
 
 .module_reservation_left_head2_rdv a{height:36px;text-transform:uppercase;color:#cbcbcb;font-size:1em;font-weight:600;display:inline-block;width:79px;padding:25px 10px;background-color:#f0f0f0;border-right:1px solid #e4e4e4;}
 .module_reservation_left_head2_reservation a{height:36px;text-transform:uppercase;color:#cbcbcb;font-size:1em;font-weight:600;display:inline-block;width:79px;padding:25px 10px;background-color:#f0f0f0;}
-.module_reservation_left_head2_rdv a:hover{color:white;background-color:#a4ebf1;}
-.module_reservation_left_head2_reservation a:hover{color:white;background-color:#a4ebf1;}
+.module_reservation_left_head2_rdv a:hover, .module_reservation_left_head2_rdv.valid_rdv a{color:white;background-color:#a4ebf1;}
+.module_reservation_left_head2_reservation a:hover, .module_reservation_left_head2_reservation.valid_renligne a{color:white;background-color:#a4ebf1;}
 
 .module_reservation_right{float:left;width:300px;}
 .module_reservation_right_head1{background-color:#73d4dc;text-align:center;float:left;padding:10px;width:280px;height:18px;}

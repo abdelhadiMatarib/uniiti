@@ -23,8 +23,8 @@
 	$PAGE = "Commerce"; 
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
-					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5, 
-					adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
+					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5,
+					reservation, prevenir_reservation, email_reservation, telephone_reservation, optin, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -57,6 +57,11 @@
 	$y3_enseigne		 	 = $result2['y3'];
 	$y4_enseigne    		 = $result2['y4'];
 	$y5_enseigne    		 = $result2['y5'];
+	$reservation 			 = $result2['reservation'];
+	$prevenir_reservation 	 = $result2['prevenir_reservation'];
+	$email_reservation 		 = $result2['email_reservation'];
+	$telephone_reservation 	 = $result2['telephone_reservation'];
+	$optin	  				 = $result2['optin'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
@@ -128,7 +133,18 @@
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
 	$count_abonnes = $result3['count_abonnes'];
-
+	
+	// On compte le nombre de commerce en réseau avec l'enseigne	
+	$sql9 = "SELECT COUNT(enseignes_id_enseigne1) AS count_reseau
+			FROM enseignes_reseau_enseignes AS t1
+			WHERE (enseignes_id_enseigne1 = :id_enseigne OR enseignes_id_enseigne2 = :id_enseigne) AND id_statut = 2
+			";
+	$req9 = $bdd->prepare($sql9);
+	$req9->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req9->execute();
+	$result9 = $req9->fetch(PDO::FETCH_ASSOC);
+	$count_reseau = $result9['count_reseau'];
+	
 	// Labels et recommandations
 	$sql5 = "SELECT * FROM enseignes_labelsuniiti AS t1
 				INNER JOIN labelsuniiti AS t2
@@ -205,6 +221,11 @@
 			. "id_sous_categorie:" . $id_sous_categorie . ", "
 			. "id_sous_categorie2:" . $id_sous_categorie2 . ", "
 			. "telephone_enseigne:'" . $telephone_enseigne . "', "
+			. "reservation : " . $reservation . ", "
+			. "prevenir_reservation : " . $prevenir_reservation . ", "
+			. "email_reservation : '" . $email_reservation . "', "
+			. "telephone_reservation : '" . $telephone_reservation . "', "
+			. "optin : " . $optin . ", "
 			. "url:'" . $url . "', "
 			. "url_video:'" . $url_video . "', "
 			. "id_arrondissement:" . $id_arrondissement . ", "
@@ -225,7 +246,7 @@
 		$Recommandations = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 
 		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
-		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
+		$Modulereservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
 		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	} 
 else {
@@ -288,12 +309,14 @@ else {
                     <span class="commerce_head_note_note"><?php echo $note_arrondi; ?></span><span class="commerce_head_note_note10">/10</span>
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
+					<?php if ($reservation) { ?>
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
                         <a href="#" title="" class="commerce_reserver_button" onclick="<?php echo $Reservation; ?>">
                         <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                         <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
                         </a>
                     </div>
+					<?php } ?>
                 </div>
 				<?php if ($id_enseigne != 0) { ?>
                 <div class="commerce_head_infos">
@@ -351,7 +374,7 @@ else {
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
-                <<a href="#" title="" onclick="<?php echo $AjoutReseau; ?>"><div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span>2</span></div></a>
+                <<a href="#" title="" onclick="<?php echo $AjoutReseau; ?>"><div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></a>
                 <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
                 <a href="#" title="" onclick="<?php echo $IlsSuiventCeCommerce; ?>"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></a>
                 </div>

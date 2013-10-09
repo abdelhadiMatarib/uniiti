@@ -17,7 +17,7 @@
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="modifprofil_valider_wrap">Merci !</div>
+        <div onclick="$('.popin_close_button').click();" class="modifprofil_valider_wrap">Merci !</div>
         
     </div>
 </div>
