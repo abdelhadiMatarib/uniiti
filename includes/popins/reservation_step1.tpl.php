@@ -67,6 +67,7 @@ jQuery(function($){
 function EtapeSuivante() {
     var data = {
                 step : 2,
+				date : ''+$( "#datepicker" ).val()+'',
                 id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
                 id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
                 chemin : ''

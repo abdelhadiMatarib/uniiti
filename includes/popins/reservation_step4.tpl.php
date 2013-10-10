@@ -18,11 +18,11 @@
             <div class="reservation_recap_body_txt">
                 <span class="reservation_recap_body_txt_bold">Une table est disponible !</span>
                 <span class="reservation_recap_body_txt_normal">pour le</span>
-                <span class="reservation_recap_body_txt_bleu">Vendredi 23 août 2013</span>
+                <span class="reservation_recap_body_txt_bleu"><?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?></span>
                 <span class="reservation_recap_body_txt_normal">à</span>
-                <span class="reservation_recap_body_txt_bleu">19h30</span>
+                <span class="reservation_recap_body_txt_bleu"><?php if (!empty($_POST['heure'])) {echo $_POST['heure'];} ?></span>
                 <span class="reservation_recap_body_txt_normal">,</span>
-                <span class="reservation_recap_body_txt_bleu">6 personnes</span>
+                <span class="reservation_recap_body_txt_bleu"><?php echo $_POST['nombre']; ?> personne<?php if ($_POST['nombre'] > 1) {echo "s";}?></span>
             </div>
         </div>
         <div class="reservation_option2">
@@ -32,35 +32,58 @@
         <div class="reservation_option2_body_centered">
             <span>Pour terminer votre réservation, veuillez remplir le formulaire ci-dessous :</span>
         </div>
-        <div class="reservation_recap_formulaire">
-            <input type="text" class="reservation_recap_formulaire_nom" placeholder="Nom"/>
-            <input type="text" class="reservation_recap_formulaire_prenom" placeholder="Prénom"/>
-            <div class="resa_recap_vertical_sep"></div>
-            <input type="text" class="reservation_recap_formulaire_email" placeholder="Email"/>
-            <input type="text" class="reservation_recap_formulaire_tel" placeholder="N° de téléphone"/>
-            <textarea class="reservation_recap_formulaire_message" placeholder="Demande à l'attention du restaurant : Votre demande sera transmise au restaurant mais nous ne pouvons vous garantir qu’il pourra satisfaire toute les demandes."></textarea>
-            <div class="reservation_recap_cgu_wrap">
-                
-                <div class="resa_recap_cgu_1">
-                <input type="checkbox" id="resa_recap_infos"/><span><label for="resa_recap_infos">Je souhaite recevoir des informations de la part de ce restaurant</label></span>
-                </div>
-                <div class="resa_recap_cgu_2">
-                <input type="checkbox" id="resa_recap_cgu"/><label for="resa_recap_cgu"><span>Je reconnais avoir pris connaissance et accepter les </span><a href="#" class="reservation_recap_body_txt_bleu">conditions générales d'utilisation de Uniiti.com</a></label>
-                </div>
-            </div>
-        </div>
-        <div class="reservation_step4_footer"><a href="#" title="" onclick="EtapeSuivante();">Terminer la réservation</a></div>
-            
+		<form id="FormReservation" onsubmit="return EtapeSuivante();" action="<?php echo SITE_URL; ?>/includes/envoyer_mail.php" method="post"  autocomplete="on">
+			<div class="reservation_recap_formulaire">
+				<input id="Nom" required="required" type="text" class="reservation_recap_formulaire_nom" placeholder="Nom *"/>
+				<input id="Prenom" type="text" class="reservation_recap_formulaire_prenom" placeholder="Prénom"/>
+				<div class="resa_recap_vertical_sep"></div>
+				<input id="email" required="required" type="text" class="reservation_recap_formulaire_email" placeholder="Email *"/>
+				<input type="text" class="reservation_recap_formulaire_tel" placeholder="N° de téléphone"/>
+				<textarea class="reservation_recap_formulaire_message" placeholder="Demande à l'attention du restaurant : Votre demande sera transmise au restaurant mais nous ne pouvons vous garantir qu’il pourra satisfaire toute les demandes."></textarea>
+				<div class="reservation_recap_cgu_wrap">
+					
+					<div class="resa_recap_cgu_1">
+					<input type="checkbox" id="resa_recap_infos"/><span><label for="resa_recap_infos">Je souhaite recevoir des informations de la part de ce restaurant</label></span>
+					</div>
+					<div class="resa_recap_cgu_2">
+					<input type="checkbox" id="resa_recap_cgu"/><label for="resa_recap_cgu"><span>Je reconnais avoir pris connaissance et accepter les </span><a href="#" class="reservation_recap_body_txt_bleu">conditions générales d'utilisation de Uniiti.com</a></label>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="reservation_step4_footer"><a href="#" title="" onclick="EtapeSuivante();">Terminer la réservation</a></button>
+ 		</form>           
     </div>
 </div>
 <script>
 function EtapeSuivante() {
-    var data = {
+
+	var nombre = '<?php if (!empty($_POST['nombre'])) {echo $_POST['nombre'];} ?>';
+	var heure = '<?php if (!empty($_POST['heure'])) {echo $_POST['heure'];} ?>';
+	var date = '<?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?>';
+	
+    var datareservation = {
                 step : 4,
+				date : date,
+				heure : heure,
+				nombre : nombre,
                 id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
                 id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
-                chemin : ''
+                destinataire : $('#email').val(),
+				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure+'. Merci pour votre confiance.',
+				message : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure+'. Merci pour votre confiance.',
                 };
-            ActualisePopin(data, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
+		console.log(datareservation);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/envoyer_mail.php',
+			data : datareservation,
+			success: function(result){
+				alert(result.result);
+//            ActualisePopin(datareservation, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+		});
+		return false;
     };
 </script>

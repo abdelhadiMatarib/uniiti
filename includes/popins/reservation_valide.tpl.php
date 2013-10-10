@@ -16,7 +16,7 @@
     </div>
     <div class="suggestioncommerce_footer">
         
-        <div class="suggestioncommerce_valider_wrap"><a href="#">Merci !</a></div>
+        <div onclick="$('.popin_close_button').click();" class="suggestioncommerce_valider_wrap"><a href="#">Merci !</a></div>
         
     </div>
 </div>

@@ -18,16 +18,16 @@
             <div class="reservation_nombre_body_txt">
                 <span>Nombre de personnes</span>
             </div>
-            <div class="reservation_nombre_personnes_1"><a href="#" title="">1</a></div>
-            <div class="reservation_nombre_personnes_2"><a href="#" title="">2</a></div>
-            <div class="reservation_nombre_personnes_3"><a href="#" title="">3</a></div>
-            <div class="reservation_nombre_personnes_4"><a href="#" title="">4</a></div>
-            <div class="reservation_nombre_personnes_5"><a href="#" title="">5</a></div>
-            <div class="reservation_nombre_personnes_6"><a href="#" title="">6</a></div>
-            <div class="reservation_nombre_personnes_7"><a href="#" title="">7</a></div>
-            <div class="reservation_nombre_personnes_8"><a href="#" title="">8</a></div>
-            <div class="reservation_nombre_personnes_9"><a href="#" title="">9</a></div>
-            <div class="reservation_nombre_personnes_10"><a href="#" title="">10</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">1</a></div>
+            <div class="reservation_nombre_personnes valid_nombre"><a href="#" title="">2</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">3</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">4</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">5</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">6</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">7</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">8</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">9</a></div>
+            <div class="reservation_nombre_personnes"><a href="#" title="">10</a></div>
             
             <div class="reservation_nombre_personnes_grande_table_txt">
                 <span class="reservation_nombre_personnes_grande_table_txt_bold">Une grande tablée ?</span>
@@ -58,7 +58,7 @@
         </div>
         <div class="reservation_step2_footer">
             <div class="reservation_step2_footer_retour_dates">
-             <a href="#" title="">Modifier l'horaire</a>
+             <a href="#" title="" onclick="EtapePrecedente();">Modifier l'horaire</a>
             </div>
             <div class="reservation_step2_3_vertical_sep"></div>
             <div class="reservation_step2_footer_etape_suivante">
@@ -70,9 +70,31 @@
     </div>
 </div>
 <script>
+$(".reservation_nombre_personnes").click(function(e) {
+	e.preventDefault(); //don't go to default URL
+	e.stopPropagation();
+	if (!$(this).hasClass("valid_horaire")) {
+		$(".reservation_nombre_personnes").removeClass('valid_nombre');
+		$(this).addClass('valid_nombre');
+	}
+});
+
+function EtapePrecedente() {
+    var data = {
+                step : 3,
+                id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+                id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                chemin : ''
+                };
+            ActualisePopin(data, '/includes/popins/reservation_step2.tpl.php', 'default_dialog');
+    };
+
 function EtapeSuivante() {
     var data = {
                 step : 4,
+				date : '<?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?>',
+				heure : '<?php if (!empty($_POST['heure'])) {echo $_POST['heure'];} ?>',
+				nombre : $('.reservation_nombre_personnes.valid_nombre a').text(),
                 id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
                 id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
                 chemin : ''

@@ -1,5 +1,5 @@
-	<meta charset="utf-8">
 <?php
+	header('Content-Type: application/json');
 	$sujet = 'Bienvenue dans la communauté UNIITI';
 	$message = "Bonjour,
 	Ceci est un message texte envoyé grâce à php.
@@ -9,7 +9,8 @@
 	else {$passage_ligne = "\n";}
 	$headers = "From: \"UNIITI\"<admin@uniiti.fr\n";
 	$headers .= "Reply-To: admin@uniiti.fr\n";
-$headers .= "Content-type: text/html; charset=utf-8\n";
-	if(mail($destinataire,htmlspecialchars($sujet),$message,$headers)) {echo "L'email a bien été envoyé.";}
-	else {echo "Une erreur c'est produite lors de l'envois de l'email.";}
+	$headers .= "Content-type: text/html; charset=utf-8\n";
+	if(mail($_POST['destinataire'],htmlspecialchars($_POST['sujet']),$_POST['message'],$headers)) {$data['result'] = "L'email a bien été envoyé.";}
+	else {$data['result'] = "Une erreur c'est produite lors de l'envois de l'email.";}
+	echo json_encode($data);
 ?>

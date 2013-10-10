@@ -18,30 +18,30 @@
             <div class="reservation_horaires_dejeuner_txt">
                 <span>Déjeuner</span>
             </div>
-            <div class="reservation_horaires_dejeuner_nbr_12"><a href="#" title="">12:00</a></div>
-            <div class="reservation_horaires_dejeuner_nbr_12_30"><a href="#" title="">12:30</a></div>
-            <div class="reservation_horaires_dejeuner_nbr_13"><a href="#" title="">13:00</a></div>
-            <div class="reservation_horaires_dejeuner_nbr_13_30"><a href="#" title="">13:30</a></div>
-            <div class="reservation_horaires_dejeuner_nbr_14"><a href="#" title="">14:00</a></div>
+            <div class="reservation_horaires_nbr_default valid_horaire"><a href="#" title="">12:00</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">12:30</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">13:00</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">13:30</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">14:00</a></div>
             
             <div class="reservation_horaires_diner_txt">
                 <span>Dîner</span>
             </div>
-            <div class="reservation_horaires_diner_nbr_19"><a href="#" title="">19:00</a></div>
-            <div class="reservation_horaires_diner_nbr_19_30"><a href="#" title="">19:30</a></div>
-            <div class="reservation_horaires_diner_nbr_20"><a href="#" title="">20:00</a></div>
-            <div class="reservation_horaires_diner_nbr_20_30"><a href="#" title="">20:30</a></div>
-            <div class="reservation_horaires_diner_nbr_21"><a href="#" title="">21:00</a></div>
-            <div class="reservation_horaires_diner_nbr_21_30"><a href="#" title="">21:30</a></div>
-            <div class="reservation_horaires_diner_nbr_22"><a href="#" title="">22:00</a></div>
-            <div class="reservation_horaires_diner_nbr_default"></div>
-            <div class="reservation_horaires_diner_nbr_default"></div>
-            <div class="reservation_horaires_diner_nbr_default"></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">19:00</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">19:30</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">20:00</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">20:30</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">21:00</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">21:30</a></div>
+            <div class="reservation_horaires_nbr_default"><a href="#" title="">22:00</a></div>
+            <div class="reservation_horaires_nbr_default"></div>
+            <div class="reservation_horaires_nbr_default"></div>
+            <div class="reservation_horaires_nbr_default"></div>
         </div>
         
         <div class="reservation_step2_footer">
             <div class="reservation_step2_footer_retour_dates">
-             <a href="#" title="">Modifier la date</a>
+             <a href="#" title="" onclick="EtapePrecedente();">Modifier la date</a>
             </div>
             <div class="reservation_step2_3_vertical_sep"></div>
             <div class="reservation_step2_footer_etape_suivante">
@@ -53,9 +53,31 @@
     </div>
 </div>
 <script>
+$(".reservation_horaires_nbr_default").click(function(e) {
+	e.preventDefault(); //don't go to default URL
+	e.stopPropagation();
+	if (!$(this).hasClass("valid_horaire")) {
+		$(".reservation_horaires_nbr_default").removeClass('valid_horaire');
+		$(this).addClass('valid_horaire');
+	}
+});
+
+function EtapePrecedente() {
+    var data = {
+                step : 3,
+                id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+                id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                chemin : ''
+                };
+            ActualisePopin(data, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');
+    };
+
+
 function EtapeSuivante() {
     var data = {
                 step : 3,
+				date : '<?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?>',
+				heure : $('.reservation_horaires_nbr_default.valid_horaire a').text(),
                 id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
                 id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
                 chemin : ''

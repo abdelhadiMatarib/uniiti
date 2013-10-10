@@ -254,18 +254,18 @@
 		$LabelsCaptain = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 		$Recommandations = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
 
-		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+		$Reservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 		$Modulereservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
-		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
+		$Moduleoption = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	} 
 else {
 		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
 		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
-		$Reservation = "OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
-		$Menutarifs = "OuvrePopin({}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";
-		$Infospratiques = "OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
-		$Modulereservation = "OuvrePopin({}, '/includes/popins/module_reservation.tpl.php', 'default_dialog');";
-		$Moduleoption = "OuvrePopin({}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
+		$Reservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+		$Menutarifs = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";
+		$Infospratiques = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
+		$Modulereservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
+		$Moduleoption = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	}	
 			
 ?>
