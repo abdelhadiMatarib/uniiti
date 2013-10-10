@@ -22,9 +22,19 @@ try
 		$reqCheck->bindParam(':id_enseigne1', $id_enseigne1, PDO::PARAM_INT);
 		$reqCheck->execute();
 		$resultCheck = $reqCheck->fetch(PDO::FETCH_ASSOC);
+		
+		$sqlCheck2 = "SELECT * FROM enseignes_reseau_enseignes
+					 WHERE enseignes_id_enseigne2 = :id_enseigne2 AND enseignes_id_enseigne1=:id_enseigne1
+					";
+
+		$reqCheck2 = $bdd->prepare($sqlCheck2);
+		$reqCheck2->bindParam(':id_enseigne2', $id_enseigne1, PDO::PARAM_INT);
+		$reqCheck2->bindParam(':id_enseigne1', $id_enseigne2, PDO::PARAM_INT);
+		$reqCheck2->execute();
+		$resultCheck2 = $reqCheck2->fetch(PDO::FETCH_ASSOC);
 
 		if (!$_POST['check']) {
-			if (!$resultCheck) {
+			if ((!$resultCheck) && (!$resultCheck2)) {
 				$sql = "INSERT INTO enseignes_reseau_enseignes
 						(enseignes_id_enseigne2, enseignes_id_enseigne1, id_statut, date_reseau) 
 						VALUES (:id_enseigne2, :id_enseigne1, :id_statut, :date_reseau)";
@@ -36,11 +46,20 @@ try
 				$req->execute();
 				$data['existe'] = 1;
 			}
-			else {
+			else if ($resultCheck) {
 				$sql = "UPDATE enseignes_reseau_enseignes SET id_statut = :id_statut WHERE enseignes_id_enseigne2 = :id_enseigne2 AND enseignes_id_enseigne1 = :id_enseigne1";
 				$req = $bdd->prepare($sql);
 				$req->bindParam(':id_enseigne2', $id_enseigne2, PDO::PARAM_INT);
 				$req->bindParam(':id_enseigne1', $id_enseigne1, PDO::PARAM_INT);
+				$req->bindParam(':id_statut', $id_statut, PDO::PARAM_INT);
+				$req->execute();
+				$data['existe'] = 1;			
+			}
+			else if ($resultCheck2) {
+				$sql = "UPDATE enseignes_reseau_enseignes SET id_statut = :id_statut WHERE enseignes_id_enseigne2 = :id_enseigne2 AND enseignes_id_enseigne1 = :id_enseigne1";
+				$req = $bdd->prepare($sql);
+				$req->bindParam(':id_enseigne2', $id_enseigne1, PDO::PARAM_INT);
+				$req->bindParam(':id_enseigne1', $id_enseigne2, PDO::PARAM_INT);
 				$req->bindParam(':id_statut', $id_statut, PDO::PARAM_INT);
 				$req->execute();
 				$data['existe'] = 1;			

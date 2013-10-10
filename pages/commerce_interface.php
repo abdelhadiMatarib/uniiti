@@ -144,6 +144,15 @@
 	$req9->execute();
 	$result9 = $req9->fetch(PDO::FETCH_ASSOC);
 	$count_reseau = $result9['count_reseau'];
+
+	$sql10 = "SELECT COUNT(enseignes_id_enseigne1) AS count_reseau_attente
+				FROM enseignes_reseau_enseignes AS t1
+					WHERE enseignes_id_enseigne2 = :id_enseigne AND id_statut = 1";
+	$req10 = $bdd->prepare($sql10);
+	$req10->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req10->execute();
+	$result10 = $req10->fetch(PDO::FETCH_ASSOC);
+	$count_reseau_attente = $result10['count_reseau_attente'];
 	
 	// Labels et recommandations
 	$sql5 = "SELECT * FROM enseignes_labelsuniiti AS t1
@@ -233,7 +242,7 @@
 			. "id_budget:" . $id_budget . "}";
 
 	$IlsSuiventCeCommerce = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog')";		
-	$AjoutReseau = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/ajout_liencommerce.tpl.php', 'default_dialog')";		
+	$AjoutReseau = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/ajout_liencommerce_votrereseau.tpl.php', 'default_dialog')";		
 			
 	if ($Admin) {
 
@@ -374,7 +383,7 @@ else {
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
-                <<a href="#" title="" onclick="<?php echo $AjoutReseau; ?>"><div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></a>
+				<a href="#" title="" onclick="<?php echo $AjoutReseau; ?>"><div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><?php if ($count_reseau_attente > 0) { ?><div class="notifs_reseau"><span><?php echo $count_reseau_attente; ?></span></div><?php } ?><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></a>
                 <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
                 <a href="#" title="" onclick="<?php echo $IlsSuiventCeCommerce; ?>"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></a>
                 </div>

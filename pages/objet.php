@@ -3,10 +3,15 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-        <?php
-		include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
-        include_once '../config/configuration.inc.php';
-        include'../includes/head.php'; ?>
+<?php 
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../config/configuration.inc.php';
+	include'../includes/head.php';
+	include_once '../includes/fonctions.inc.php';
+	include_once '../config/configPDO.inc.php';
+	
+	$PAGE = "Objet";
+?>
 <body>
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
