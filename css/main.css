@@ -1642,9 +1642,10 @@ textarea.module_optin_textarea_message{height:70px;width:280px;resize:none;paddi
 .box_petit_mot_content{margin-top:40px;float:left;width:320px;padding:10px;}
 .box_petit_mot_content p{margin:0;color:white;}
 
+#video_content {opacity: 0;}
 .commerce_couv_video_bg{height:100%;background-color:#252525;}
-.commerce_couv_video_content{position:absolute;top:0;left:0;width:100%;height: 100%;background-color: #252525;}
-.commerce_couv_video_embbed{margin:0 auto;width:660px;}
+.commerce_couv_video_content{position:absolute;top:0;left:0;width:100%;height: 100%;background-color: #181818;}
+.commerce_couv_video_embbed{margin:0 auto;width:660px;height: 100%;}
 .commerce_couv_video_txt_left,.commerce_couv_video_txt_right{width:345px;text-transform:uppercase;}
 .commerce_couv_video_txt_left{float:left;text-align:center;line-height:3.1em;margin-top:170px;}
 .commerce_couv_video_txt_left span{display:block;font-size:3em;color:white;font-weight:300;}

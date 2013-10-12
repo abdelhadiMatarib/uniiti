@@ -340,7 +340,9 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_head2_text2').css('margin-left',15);
 		$('.commerce_head2_text3').css('margin-right',15);
 		$('.commerce_head2_text3_end').css('margin-right',15);
-                
+        
+
+
 		$('.commerce_recos').css('width','130px');
                 $('.commerce_recos a').css('width','110px');
 		$('.commerce_labels').css('width','141px').css('right','130px');
@@ -359,7 +361,14 @@ function AjusteCouvertures(NewWidth) {
                 $('.wrapper_boutons .boutons').css('margin-bottom','0px');
 		$('.commerce_head_note_reserver').css('font-size','1.1em')
 		
-		
+		// VIDEO
+		$('#lienvideo').attr("height", "210").attr("width", "323");
+		$('.commerce_couv_video_embbed').width(453);
+		$('.commerce_couv_video_txt_left').width(206).css("marginTop", "30px");
+		$('.commerce_couv_video_txt_right').width(206).css("marginTop", "76px");
+		$('.commerce_couv_video_txt_right span').css('font-size','1.2em');
+		$('.commerce_couv_video_txt_left span').css('font-size','2.2em');
+
 		$('.ligne_verticale1').css('left','465px').css('height','210px');
 		$('.ligne_verticale2').css('left','606px').css('height','210px');
 		
@@ -517,7 +526,15 @@ function AjusteCouvertures(NewWidth) {
                 $('.commerce_head2_text3_end').css('margin-right',36);
                 $('.commerce_head2_text2').css('margin-left','38px');
 		$('.commerce_head2_text3').css('margin-right','36px');
-		
+
+		// VIDEO
+		$('#lienvideo').attr("height", "282").attr("width", "453");
+		$('.commerce_couv_video_embbed').width(453);
+		$('.commerce_couv_video_txt_left').width(266).css("marginTop", "75px");
+		$('.commerce_couv_video_txt_right').width(266).css("marginTop", "110px");
+		$('.commerce_couv_video_txt_right span').css('font-size','1.3em');
+		$('.commerce_couv_video_txt_left span').css('font-size','2.5em');
+
 		$('.ligne_verticale1').css('left','627px').css('height','280px');
 		$('.ligne_verticale2').css('left','812px').css('height','280px');
 		
@@ -669,6 +686,14 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
 		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');
 		
+		// VIDEO
+		$('#lienvideo').attr("height", "353").attr("width", "546");
+		$('.commerce_couv_video_embbed').width(546);
+		$('.commerce_couv_video_txt_left').width(345).css("marginTop", "110px", 'font-size','2.9em');
+		$('.commerce_couv_video_txt_right').width(345).css("marginTop", "150px");
+		$('.commerce_couv_video_txt_right span').css('font-size','1.4em');
+		$('.commerce_couv_video_txt_left span').css('font-size','2.7em');
+
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
 		$('.commerce_head2_text1').css('margin-left',38);
@@ -822,6 +847,14 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
 		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');
 		
+		// VIDEO
+		$('#lienvideo').attr("height", "425").attr("width", "710");
+		$('.commerce_couv_video_embbed').width(710);
+		$('.commerce_couv_video_txt_left').width(388).css("marginTop", "149px");
+		$('.commerce_couv_video_txt_right').width(388).css("marginTop", "182px");
+		$('.commerce_couv_video_txt_right span').css('font-size','1.5em');
+		$('.commerce_couv_video_txt_left span').css('font-size','2.9em');
+
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
 		$('.commerce_head2_text1').css('margin-left',38);
@@ -971,6 +1004,14 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_head_infos_suivre').css('width','115px').css('height','133px');
 		$('.commerce_head_infos_suivre span').css('margin-bottom','36px').css('margin-top','36px');
 		
+		// VIDEO
+		$('#lienvideo').attr("height", "496").attr("width", "835");
+		$('.commerce_couv_video_embbed').width(835);
+		$('.commerce_couv_video_txt_right').width(428).css("marginTop", "214px");
+		$('.commerce_couv_video_txt_left').width(450).css("marginTop", "179px");
+		$('.commerce_couv_video_txt_right span').css('font-size','1.6em');
+		$('.commerce_couv_video_txt_left span').css('font-size','3.0em');
+
 		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
 		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
 		$('.commerce_head2_text1').css('margin-left',38);

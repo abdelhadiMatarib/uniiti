@@ -301,10 +301,11 @@
                 </div>
             </div>
             <div class="commerce_couv">
-                <div class="ligne_verticale1"></div>
-                <div class="ligne_verticale2"></div>
+               
 				
 				<div class="couv_container">
+					<div class="ligne_verticale1"></div>
+                	<div class="ligne_verticale2"></div>
 					<?php if ($slide1_enseigne != "" && $slide2_enseigne == "" && $slide3_enseigne == "" && $slide4_enseigne == "" && $slide5_enseigne == "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne; ?>" title="" alt=""><?php } ?>
 				    <div id="couv_slides">
  					<?php if ($slide1_enseigne != "") { ?><img id="couv1" src="<?php echo $Chemin . $slide1_enseigne; ?>" title="" alt=""><?php } ?>
@@ -313,34 +314,7 @@
 					<?php if ($slide4_enseigne != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_enseigne; ?>" title="" alt=""><?php } ?>
 					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne; ?>" title="" alt=""><?php } ?>
 				    </div>
-				</div>
-
-				<div id="video" style="display:none;">
-					<div class="commerce_couv_video_button_retour"><a href="#" title="" alt=""><span>Retour</span></a></div>
-					<div class="commerce_couv_video_bg">
-						<div class="commerce_couv_video_embbed">
-							<iframe id="lienvideo" width="420" height="315" src="//www.youtube.com/embed/v2AC41dglnM" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
-					<div class="commerce_couv_video_content">
-						<div class="commerce_couv_video_txt_left">
-							<span>Coin</span><span class="commerce_couv_video_txt_left_colored">Vidéo</span>
-							<div class="commerce_couv_video_txt_left_img_container">
-								<img src="../img/pictos_commerces/icon_player.png" title="" alt="" height="54" width="54" />
-							</div>
-						</div>
-						<div class="commerce_couv_video_txt_right">
-							<span>Découvrez</span><span class="commerce_couv_video_txt_left_colored">Chez les Artistes</span><span>en vidéo !</span>
-						</div>
-					</div>
-					<div class="wrapper_boutons">
-						<div class="boutons not_signedin" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_OK.png" height="22" width="27"/></a></div>
-						<div class="boutons not_signedin" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/pouce_NOK.png" height="22" width="27"/></a></div>
-						<div class="boutons not_signedin" onclick="OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/wishlist.png" height="23" width="30"/></a></div>
-					</div>
-				</div>
-                
-                <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
+				    <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
                 <div class="commerce_gerant"><div class="gerant_title" style="background-color:<?php echo $couleur; ?>;"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
 				<div class="commerce_recos">
 					<a class="button_show_recos" onclick="<?php echo $Recommandations; ?>" href="#" title="">
@@ -363,12 +337,37 @@
 							<?php } ?>
 						</div>
 					</a>
-				</div>                
-                <div class="wrapper_boutons">
-                <div class="boutons not_signedin" title="J'aime" onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
-                <div class="boutons not_signedin" title="Je n'aime pas" onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
-                <div class="boutons not_signedin" title="Ajouter à ma Wishlist" onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
-                </div>
+				</div>
+				<div class="wrapper_boutons">
+                	<div class="boutons not_signedin" title="J'aime" onclick="<?php echo $like_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime',$categorie); ?>></div>
+                	<div class="boutons not_signedin" title="Je n'aime pas" onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('aime_pas',$categorie); ?>></div>
+                	<div class="boutons not_signedin" title="Ajouter à ma Wishlist" onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" <?php echo AfficheAction('wish',$categorie); ?>></div>
+                </div>          
+				</div>
+
+
+				<div id="video_content" style="display:none;">
+
+					<div class="commerce_couv_video_button_retour"><a href="#" title="" alt=""><span>Retour</span></a></div>
+
+					<div class="commerce_couv_video_bg">
+
+					</div>
+					<div class="commerce_couv_video_content">
+						<div class="commerce_couv_video_txt_left">
+							<span>Coin</span><span class="commerce_couv_video_txt_left_colored">Vidéo</span>
+							<div class="commerce_couv_video_txt_left_img_container">
+								<img src="../img/pictos_commerces/icon_player.png" title="" alt="" height="54" width="54" />
+							</div>
+						</div>
+						<div class="commerce_couv_video_txt_right">
+							<span>Découvrez</span><span class="commerce_couv_video_txt_left_colored">Chez les Artistes</span><span>en vidéo !</span>
+						</div>
+						<div class="commerce_couv_video_embbed">
+							<iframe id="lienvideo" width="" height="" src="" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
             </div>
         
         <!-- FILTRE DE TRI -->
@@ -392,14 +391,16 @@
 	<script>
 	var url_video = '<?php echo $url_video; ?>';
 	$('.commerce_head2_coinvideo').click(function () {
-		if ($('#video').css("display") == "none") {
+		if ($('#video_content').css("display") == "none") {
 			$('#lienvideo').attr('src', url_video);
-			$('#video').css({"display" : "block"});
-			$('.couv_container').css({"display" : "none"});
+			$('#video_content').show();
+			$('.couv_container').stop().animate({opacity: 0}, 1500).hide(1000);
+			$('#video_content').stop().animate({opacity: 1}, 1500);
 		}
 		else {
-			$('#video').css({"display" : "none"});
-			$('.couv_container').css({"display" : "block"});
+			$('#lienvideo').attr('src', '');
+			$('#video_content').stop().animate({opacity: 0}, 1500).hide(1000);
+			$('.couv_container').show().stop().animate({opacity: 1}, 1500);
 		}
 	});
 	
