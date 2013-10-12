@@ -418,7 +418,7 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .commerce_head_infos .separateur{border-bottom:1px solid #EAEAEA;height:10px;}
 
 .commerce_head2{line-height: 12px;height:30px;background-color:#252525;}
-.commerce_head2_coinvideo{float:left;margin: 4px 0 0 10px;}
+.commerce_head2_coinvideo{float:left;margin: 4px 0 0 10px;cursor:pointer;}
 .commerce_head2_coinvideo_text{float:left;text-align:center;}
 .commerce_head2_text1{margin:0 4px 0 38px;display:block;color:white;font-size:85%;font-weight:300;text-transform:uppercase;}
 .commerce_head2_text2{margin:0 4px 0 39px;display:block;font-size:85%;font-weight:bold;text-transform:uppercase;}
@@ -1427,7 +1427,8 @@ textarea.input_lien_petitmot{padding:10px;width:480px;height:100px;resize:none;}
 .ptitmot_wrap_labels,.ptitmot_wrap_recos{text-align:center;float:left;background-color:white;width:480px;padding:10px;}
 .input_lien_video{float:left;}
 input.input_lien_video{padding:10px;width:480px;height:10px;}
-.embed_preview_video{float:left;padding:10px;width:480px;height:360px;background-color:#f0f0f0;}
+.embed_preview_video{float:left;padding:10px;width:480px;height:300px;background-color:#f0f0f0;;
+}
 
 /* COMMERCE INSIDE DASHBOARD */
 
@@ -1642,7 +1643,7 @@ textarea.module_optin_textarea_message{height:70px;width:280px;resize:none;paddi
 .box_petit_mot_content p{margin:0;color:white;}
 
 .commerce_couv_video_bg{height:100%;background-color:#252525;}
-.commerce_couv_video_content{position:absolute;top:0;left:0;width:100%;}
+.commerce_couv_video_content{position:absolute;top:0;left:0;width:100%;height: 100%;background-color: #252525;}
 .commerce_couv_video_embbed{margin:0 auto;width:660px;}
 .commerce_couv_video_txt_left,.commerce_couv_video_txt_right{width:345px;text-transform:uppercase;}
 .commerce_couv_video_txt_left{float:left;text-align:center;line-height:3.1em;margin-top:170px;}

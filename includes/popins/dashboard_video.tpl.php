@@ -14,7 +14,7 @@
                 <input id='lienvideo' type="text" class="input_lien_video" placeholder="Lien" value="<?php echo $_POST['url_video'];?>"/>
             <div class="infos_gene_title"><span>Aperçu</span></div>
             <div class="embed_preview_video">
-			<iframe id="video" width="480" height="360" src="" frameborder="0" allowfullscreen>
+			<iframe id="video" width="480" height="300" src="" frameborder="0" allowfullscreen>
 			</iframe>               
             </div>
     </div>
