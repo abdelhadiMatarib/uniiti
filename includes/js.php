@@ -60,9 +60,10 @@
 			url : siteurl + $url,
 			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
 			success : function(html){
-				if (html) {console.log(html)
+				if (html) {console.log(html);
 					$('#box_container .box').remove();
 					$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+					$('#box_container .box').css({overflow : 'visible'});
 					if ($Page == "Commerce") {InitFollowContributeur();}
 					CreerOverlayPush();
 				} else {alert('Il n\'y a plus d\'enregistrements');}
@@ -91,22 +92,22 @@
 			
 			CreerOverlayPush();
   
-				var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
+			var $container = $('#box_container'), $body = $('body'), colW = 250, columns = null;
 			
-					$container.imagesLoaded(function(){
-						$container.isotope({
-							// disable window resizing
-							resizable: false,
-							masonry: {
-								itemSelector : '.box',
-								columnWidth: colW,
-								resizable: false
-							}
-						});
+			$container.imagesLoaded(function(){
+				$container.isotope({
+					// disable window resizing
+					resizable: false,
+					masonry: {
+						itemSelector : '.box',
+						columnWidth: colW,
+						resizable: false
+					}
+				});
 								
 				var isloading = false;
 								
-					$('#container').isotope({
+				$('#container').isotope({
 					itemSelector: '.item',
 					masonry: {
 					  columnWidth: 120,
