@@ -236,14 +236,12 @@
                     <span class="commerce_head_note_note"><?php echo $note_arrondi; ?></span><span class="commerce_head_note_note10">/10</span>
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
-					<?php if ($reservation) { ?>
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
-                        <a href="#" title="" class="commerce_reserver_button" onclick="OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');">
+                        <a href="#" title="" class="commerce_reserver_button" onclick="<?php if ($reservation) { ?>OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');<?php } else { ?>alert('Module non activé par le commerçant');<?php } ?>">
                             <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                             <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
                         </a>
                     </div>
-					<?php } ?>
                 </div>
                 <div class="commerce_head_infos">
                     <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
@@ -253,39 +251,32 @@
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
                     <div class="commerce_head_infos_infosrapides">
-						<?php if ($AfficheMotcle[1]) { ?>
                         <div class="infosrapides1">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides1.png" alt="" title="" height="26" width="21" /></div>
-							<?php foreach ($MotCle[1] as $id_motcle => $motcle) { 
+							<?php if ($AfficheMotcle[1]) { foreach ($MotCle[1] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
-						<?php } ?>
-						<?php if ($AfficheMotcle[2]) { ?>
                         <div class="infosrapides2">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div>
-							<?php foreach ($MotCle[2] as $id_motcle => $motcle) { 
+							<?php if ($AfficheMotcle[2]) { foreach ($MotCle[2] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
                         <div class="clearfix_infosrapides"></div>
-						<?php } ?>
-						<?php if ($AfficheMotcle[3]) { ?>
                         <div class="infosrapides3">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides3.png" alt="" title="" height="30" width="30" /></div>
-							<?php foreach ($MotCle[3] as $id_motcle => $motcle) { 
+							<?php if ($AfficheMotcle[3]) {foreach ($MotCle[3] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
-						<?php } ?>
-						<?php if ($AfficheMotcle[4]) { ?>
                         <div class="infosrapides4">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides4.png" alt="" title="" height="23" width="32" /></div>
-							<?php foreach ($MotCle[4] as $id_motcle => $motcle) { 
+							<?php if ($AfficheMotcle[4]) {foreach ($MotCle[4] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
-						<?php } ?>                    </div>
+                   </div>
                     
                 </div>
             

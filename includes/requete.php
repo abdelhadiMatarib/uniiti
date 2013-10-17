@@ -62,7 +62,9 @@
 										INNER JOIN quartier AS t14
 										ON t14.id_quartier = t9.id_quartier
 											INNER JOIN arrondissement AS t15
-											ON t15.id_arrondissement = t14.id_arrondissement ";
+											ON t15.id_arrondissement = t14.id_arrondissement
+												INNER JOIN budget AS t16
+												ON t9.id_budget = t16.id_budget ";
 		$ClauseWhere = false;
 		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);$ClauseWhere = true;}
 		if (!empty($_POST['provenance'])) {
@@ -79,6 +81,8 @@
 		}
 		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
 		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
+		if (!empty($_POST['id_ville'])) {$sql2 .= " AND t9.villes_id_ville = " . $_POST['id_ville'];}
+		if (!empty($_POST['id_budget'])) {$sql2 .= " AND t9.id_budget = " . $_POST['id_budget'];}
 		if (!empty($_POST['quoi'])) {
 			$sql2 .= " AND (nom_enseigne LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";
 			$sql2 .= " OR categorie_principale LIKE '%" . addslashes(urldecode($_POST['quoi'])) . "%'";

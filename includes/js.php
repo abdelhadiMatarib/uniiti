@@ -31,9 +31,12 @@
 		var $idcontributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo '0';} ?>';
 		
 		$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
+		$Filtre.type = data.type;
 		$Filtre.categorie = data.categorie;
 		$Filtre.scategorie = data.scategorie;
 		$Filtre.sscategorie = data.sscategorie;
+		$Filtre.id_ville = data.id_ville;
+		$Filtre.id_budget = data.id_budget;
 		$Filtre.quoi = data.quoi;
 		$Filtre.lieu = data.lieu;
 		console.log($Filtre);

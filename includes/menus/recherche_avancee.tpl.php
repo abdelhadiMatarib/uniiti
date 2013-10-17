@@ -151,7 +151,7 @@
 	});
 
 	function AfficheChoix(recherche) {
-		var data = {provenance : 'Tout'};
+		var data = {provenance : 'all'};
 		$('.recherche_mot_actif').each(function () {
 			if ($(this).parent().parent().find('.text_selected').length > 0) {
 				var valeur = $(this).attr('val');
