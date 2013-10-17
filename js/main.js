@@ -443,7 +443,7 @@ function AjusteCouvertures(NewWidth) {
             });
             $('#commerce_head_desc_address_button').click(function(){
                 $('.commerce_head_desc_ariane').css('width','195px');
-                $('.commerce_head_desc_address').css('width','195px');
+                $('.commerce_head_desc_address').css('width','150px');
                 $('#commerce_head_desc_address_wrap').css('display','block');
                 $('#commerce_head_desc_ariane_wrap').css('display','block');
             });
@@ -650,7 +650,7 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_concept').css('font-size','1em').css('width','370px');
                 $('.commerce_gerant').css('left','370px');
                 $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','305px');
+                $('.concept_content').css('overflow-x','hidden').css('max-height','305px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
@@ -663,28 +663,29 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_head_infos .separateur').css('display','block');
 		$('.clearfix_infosrapides').css('display','none');
 		
-		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',122).css('font-size','1em').css('margin-top','6px').css('display','block');
-		$('.infosrapides1,.infosrapides2,.infosrapides3').css('margin-right','12px');
-                $('.infosrapides4').css('margin-right','0').css('width','110px');
+		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('width',122).css('font-size','1em').css('margin-top','4px').css('display','block');
+		$('.infosrapides1,.infosrapides2,.infosrapides3').css('margin-right','0px');
+        $('.infosrapides4').css('margin-right','0').css('width','133px');
+        $('.infosrapides3').css('margin-left','-4px');
+        $('.infosrapides1').css('margin-left','12px');
 		$('.commerce_head_desc').css('width',545);
-		$('.commerce_head_desc_address').css('width','250px').css('font-size','0.8em');
-                $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','7px').css('display','block').css('line-height','12px');
-		$('.commerce_head_desc_ariane').css('width','260px').css('font-size','0.8em');
-		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','12px').css('margin-top','7px');
+		$('.commerce_head_desc_address').css('width','251px').css('font-size','1em');
+        $('.commerce_head_desc_address span').css('margin-top','0px');
+        $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','16px');
+		$('.commerce_head_desc_ariane').css('width','253px').css('font-size','1em');
+		$('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','15px').css('margin-top','0px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','12px');
-		$('#commerce_head_desc_prices_button').css('float','left');
-		$('.commerce_head_desc_identity').css('width','250px').css('font-size','0.8em');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','12px').css('margin-top','7px');
-		$('.commerce_head_desc_prices').css('width','270px').css('font-size','1em');
-		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',200).css('height','82px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',20).css('padding-right',10).css('width','35px');
-		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
-		$('.commerce_head_infos_suivre').css('width','95px').css('height','82px');
-		$('.commerce_head_infos_infosrapides').css('margin-top','0px');
+		$('.commerce_head_desc_identity').css('width','251px').css('font-size','1em');
+        $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','15px').css('margin-top','7px');
+		$('.commerce_head_desc_prices').css('width','253px').css('font-size','1em');
+		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width',210).css('height','101px');
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('padding-top','22px').css('padding-left',25).css('padding-right',37).css('width','35px').css('float','left');
+		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','35px').css('font-size','1em').css('text-align','left');
+		$('.commerce_head_infos_suivre').css('width','119px').css('height','101px').css('border-left','0px');
+		$('.commerce_head_infos_suivre .img_container').css('padding-top', '10px');
+		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('width','541px');
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
-		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');
+		$('.commerce_head_infos_suivre span').css('margin-bottom','2px').css('margin-top','2px');
 		
 		// VIDEO
 		$('#lienvideo').attr("height", "353").attr("width", "546");
@@ -694,16 +695,16 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_couv_video_txt_right span').css('font-size','1.4em');
 		$('.commerce_couv_video_txt_left span').css('font-size','2.7em');
 
-		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
-		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text1').css('margin-left',38);
-                $('.commerce_head2_text3_end').css('margin-right',36);
-                $('.commerce_head2_text2').css('margin-left','38px');
-		$('.commerce_head2_text3').css('margin-right','36px');
+		// $('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
+		// $('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
+		// $('.commerce_head2_text1').css('margin-left',38);
+  //       $('.commerce_head2_text3_end').css('margin-right',36);
+  //       $('.commerce_head2_text2').css('margin-left','38px');
+		// $('.commerce_head2_text3').css('margin-right','36px');
 		
-		$('.ligne_verticale1').css('left','877px').css('height','352px');
+		$('.ligne_verticale1').css('left','874px').css('height','352px');
                 
-		$('.ligne_verticale2').css('left','1062px').css('height','352px');
+		$('.ligne_verticale2').css('left','1055px').css('height','352px');
 		
 		$('.ligne_verticale4').css('left','886px').css('height','352px');
 		$('.ligne_verticale5').css('left','1061px').css('height','352px');
@@ -791,7 +792,7 @@ function AjusteCouvertures(NewWidth) {
                 
 		// HEADER
 		
-                $('.header input[type="text"]').css('width','auto');
+        $('.header input[type="text"]').css('width','auto');
 		$('.header_searchbar1,.header_searchbar2,.header_button_search').css('display','block');
 		$('.header_button_menu').css('display','block');
 		$('.header_rightnav').css('display','block');
@@ -803,22 +804,22 @@ function AjusteCouvertures(NewWidth) {
 		$('.wrapper_boutons .boutons').css('margin-bottom','10px');
 		$('.wrapper_boutons').css('top','110px');
 
-                $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','500px');
+        $('.commerce_head_desc_title h2').css('font-size','1.6em').css('margin-top','10px').css('text-overflow','ellipsis').css('white-space','nowrap').css('overflow','hidden').css('width','500px');
 		$('.commerce_head_desc_social').removeClass('ipad_portrait_social').css('margin-top','10px');
-                $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
+        $('.overlay_social_buttons').removeClass('overlay_social_buttons_specific');
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
-                $('.commerce_concept').css('font-size','1em').css('width','370px');
-                $('.commerce_gerant').css('left','370px');
-                $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','234px');
+        $('.commerce_concept').css('font-size','1em').css('width','370px');
+        $('.commerce_gerant').css('left','370px');
+        $('.commerce_concept a').css('width','350px');
+        $('.concept_content').css('overflow-x','hidden').css('max-height','234px');
 		$('.commerce_recos').css('width','174px');
-                $('.commerce_recos a').css('width','155px');
+        $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
-                $('.commerce_labels a').css('width','170px');
+        $('.commerce_labels a').css('width','170px');
                 
-                $('.commerce_recos span').css('font-size','1em');
+        $('.commerce_recos span').css('font-size','1em');
 		$('.commerce_labels span').css('font-size','1em');
 		
 		$('.commerce_head_infos .clearfix').css('display','block');
@@ -826,26 +827,28 @@ function AjusteCouvertures(NewWidth) {
 		$('.clearfix_infosrapides').css('display','none');
 		
 		$('.commerce_head_desc').css('width','670px');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('width','350px').css('font-size','1em');
-                $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','1.5em');
-		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','280px');
+		$('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('width','315px').css('font-size','1em');
+        $('.commerce_head_desc_address span').css('margin-top','0px');
+        $('#commerce_head_desc_address_wrap').css('margin-top','2px').css('display','block').css('line-height','1.5em');
+		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','314px');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
-                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','1.5em').css('margin-top','5px');
+        $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','1.5em').css('margin-top','2px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','1.5em').css('margin-top','5px');
+        $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','1.5em').css('margin-top','2px');
 		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','1.5em');
 		$('#commerce_head_desc_prices_button').css('float','left');
-		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width','266px').css('height','82px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('width','35px').css('padding-top','22px').css('padding-left',70).css('padding-right',10);
-		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','20px').css('font-size','1em').css('text-align','left');
-		$('.commerce_head_infos_suivre').css('width','88px').css('height','82px');
-		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px');
-		$('.infosrapides1').css('margin-right','50px');
-		$('.infosrapides2,.infosrapides3').css('margin-right','50px');
-		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('margin-top','6px').css('display','block').css('width','120px');
+		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('width','266px').css('height','102px');
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','35px').css('width','35px').css('float','left').css('padding-top','22px').css('padding-left',50).css('padding-right',45);
+		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','34px').css('font-size','1em').css('text-align','left');
+		$('.commerce_head_infos_suivre').css('border','0px').css('width','131px').css('height','102px');
+		$('.commerce_head_infos_suivre .img_container').css('padding-top','14px');
+		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px').css('width','666px');
+		$('.infosrapides1').css('margin-right','10px');
+		$('.infosrapides2,.infosrapides3').css('margin-right','10px');
+		$('.infosrapides2,.infosrapides4').css('margin-top','3px');
+		$('.infosrapides1,.infosrapides2,.infosrapides3,.infosrapides4').css('display','block').css('width','135px');
 		$('.commerce_head_infos .separateur').css('margin-top','0px');
-		$('.commerce_head_infos_suivre span').css('margin-bottom','12px').css('margin-top','12px');
+		$('.commerce_head_infos_suivre span').css('margin-bottom','7px').css('margin-top','0px');
 		
 		// VIDEO
 		$('#lienvideo').attr("height", "425").attr("width", "710");
@@ -855,23 +858,15 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_couv_video_txt_right span').css('font-size','1.5em');
 		$('.commerce_couv_video_txt_left span').css('font-size','2.9em');
 
-		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
-		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text1').css('margin-left',38);
-                $('.commerce_head2_text3_end').css('margin-right',36);
-                $('.commerce_head2_text2').css('margin-left','38px');
-		$('.commerce_head2_text3').css('margin-right','36px');
-                $('.gerant_photo').css('width','96px');
-                $('.gerant_title').css('font-size','1em');
+       	$('.gerant_title').css('font-size','1em');
+		$('.ligne_verticale1').css('left','1124px').css('height','424px');
+		$('.ligne_verticale2').css('left','1305px').css('height','424px');
 		
-		$('.ligne_verticale1').css('left','1127px').css('height','424px');
-		$('.ligne_verticale2').css('left','1312px').css('height','424px');
-		
-                // COMMERCE INTERFACE
-                $('.utilisateur_head_infos_suggestion').css('width','100px');
-                $('.commerce_reservation_commerce').css('width','80px').css('height','25px').css('padding-top','5px').css('font-size','0.8em');
-                $('.commerce_optin_commerce').css('width','80px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
-                $('.commerce_optin_commerce span').css('margin-top','0px');
+        // COMMERCE INTERFACE
+        $('.utilisateur_head_infos_suggestion').css('width','100px');
+        $('.commerce_reservation_commerce').css('width','80px').css('height','25px').css('padding-top','5px').css('font-size','0.8em');
+        $('.commerce_optin_commerce').css('width','80px').css('height','26px').css('padding-top','4px').css('font-size','0.8em');
+        $('.commerce_optin_commerce span').css('margin-top','0px');
                 
                 //DASHBOARD
                 $('a.commerce_head_desc_modif').css('width','670px');
@@ -966,10 +961,10 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_head_desc_social .overlay_social_buttons').css('display','block');
 		$('.commerce_head_desc_social span').css('display','none');
 		
-                $('.commerce_concept').css('font-size','1em').css('width','370px');
+                $('.commerce_concept').css('font-size','1em').css('width','470px');
                 $('.commerce_gerant').css('left','370px');
-                $('.commerce_concept a').css('width','350px');
-                $('.concept_content').css('overflow-y','scroll').css('overflow-x','hidden').css('max-height','234px');
+                $('.commerce_concept a').css('width','448px');
+                $('.concept_content').css('overflow-x','hidden').css('max-height','234px');
 		$('.commerce_recos').css('width','174px');
                 $('.commerce_recos a').css('width','155px');
 		$('.commerce_labels').css('width','185px').css('right','174px');
@@ -979,30 +974,29 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_labels span').css('font-size','1em');
 		
                 $('.commerce_head_desc').css('width','795px');
-		$('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('width','400px').css('font-size','1em');
+		$('.commerce_head_desc_address,.commerce_head_desc_identity,.commerce_head_desc_ariane').css('width','377px').css('font-size','1em');
                 $('.commerce_head_desc_address').css('font-size','1em');
                 $('.commerce_head_desc_address span').css('margin-top','0px');
-                $('#commerce_head_desc_address_wrap').css('margin-top','5px').css('display','block').css('line-height','1.5em');
-		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','320px');
+                $('#commerce_head_desc_address_wrap').css('margin-top','2px').css('display','block').css('line-height','1.5em');
+		$('.commerce_head_desc_ariane,.commerce_head_desc_prices').css('width','377px');
 		$('.commerce_head_desc_ariane span').css('font-size','1em');
-                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','1.5em').css('margin-top','5px');
+                $('#commerce_head_desc_ariane_wrap').css('display','block').css('line-height','1.5em').css('margin-top','2px');
 		$('#commerce_head_desc_ariane_button').css('float','left');
-                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','1.5em').css('margin-top','5px');
+                $('#commerce_head_desc_identity_wrap').css('display','block').css('line-height','1.5em').css('margin-top','2px');
 		$('#commerce_head_desc_prices_wrap').css('display','block').css('line-height','1.5em');
 		$('#commerce_head_desc_prices_button').css('float','left');
 		$('.commerce_head_infos .clearfix').css('display','none');
 		$('.commerce_head_infos .separateur').css('display','none');
 		$('.commerce_head_infos_suivre').css('float','right');
 		$('.clearfix_infosrapides').css('display','block');
-		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('height','133px').css('width','200px');
-		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','65px').css('width','35px').css('padding-top','45px').css('padding-left',40).css('padding-right',10);
-		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('margin-top','40px').css('font-size','1em').css('text-align','left');
+		$('.commerce_head_infos_services,.commerce_head_infos_infos').css('height','155px').css('width','200px');
+		$('.commerce_head_infos_services .img_container,.commerce_head_infos_infos .img_container').css('height','55px').css('width','45px').css('padding-top','25px').css('padding-left',70).css('padding-right',0);
+		$('.commerce_head_infos_services_text,.commerce_head_infos_infos_text').css('font-size','1em').css('text-align','center');
 		$('.commerce_head_infos_infosrapides').css('margin-top','0px').css('margin-left','0px');
-		$('.infosrapides1,.infosrapides2').css('margin-top','30px').css('margin-right','10px').css('width','100px').css('display','block');
-		$('.infosrapides3,.infosrapides4').css('margin-top','20px').css('margin-right','10px').css('width','100px').css('display','block');
-		$('.infosrapides1,.infosrapides3').css('margin-right','7px');
-		$('.commerce_head_infos_suivre').css('width','115px').css('height','133px');
-		$('.commerce_head_infos_suivre span').css('margin-bottom','36px').css('margin-top','36px');
+		$('.infosrapides1,.infosrapides2').css('margin-top','20px').css('width','125px').css('display','block');
+		$('.infosrapides3,.infosrapides4').css('margin-top','20px').css('width','125px').css('display','block');
+		$('.commerce_head_infos_suivre').css('width','101px').css('height','155px');
+		$('.commerce_head_infos_suivre span').css('margin-top','20px');
 		
 		// VIDEO
 		$('#lienvideo').attr("height", "496").attr("width", "835");
@@ -1012,17 +1006,16 @@ function AjusteCouvertures(NewWidth) {
 		$('.commerce_couv_video_txt_right span').css('font-size','1.6em');
 		$('.commerce_couv_video_txt_left span').css('font-size','3.0em');
 
-		$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
-		$('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
-		$('.commerce_head2_text1').css('margin-left',38);
-                $('.commerce_head2_text3_end').css('margin-right',36);
-                $('.commerce_head2_text2').css('margin-left','38px');
-		$('.commerce_head2_text3').css('margin-right','36px');
+		//$('.commerce_head2_avis .commerce_head2_text1').css('margin-left','43px');
+		// $('.commerce_head2_reseau .commerce_head2_text1,.commerce_head2_abonnes .commerce_head2_text1').css('margin-left','38px');
+                // $('.commerce_head2_text3_end').css('margin-right',36);
+
+		// $('.commerce_head2_text3').css('margin-right','36px');
                 $('.gerant_photo').css('width','96px');
                 $('.gerant_title').css('font-size','1em');
 		
-		$('.ligne_verticale1').css('left','1377px').css('height','496px');
-		$('.ligne_verticale2').css('left','1562px').css('height','496px');
+		$('.ligne_verticale1').css('left','1374px').css('height','496px');
+		$('.ligne_verticale2').css('left','1555px').css('height','496px');
 
                 // COMMERCE INTERFACE
                 $('.commerce_reservation_commerce').css('width','108px').css('height','40px').css('padding-top','15px').css('font-size','1.1em');
@@ -1239,8 +1232,7 @@ $('#close_button_home').click(function() {
     // Couverture commerce Toggle des divs
     $(".button_show_concept").click(function(e){
         e.preventDefault();
-        $(".gerant_photo").stop().slideToggle();
-        $(".concept_content").stop().slideToggle();
+        $(".concept_content").animate({height: "toggle", 'padding-bottom' : "toggle"},1500,'easeOutQuart');// {duration: 1000,specialEasing: {height: "easeOutQuart"}});
         $('.commerce_concept_arrow').toggleClass("concept_arrow_down").toggleClass("concept_arrow_up");
     });
      // Couverture utilisateur Toggle des divs
