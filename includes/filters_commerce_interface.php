@@ -141,7 +141,23 @@ ON t1.id_categorie = t3.id_categorie */
 ?>
 
 <!--<nav>-->
-<div class="filters">
+<div class="filters stats">
+    <div class="filters_prefs_stats_txt">
+        <span>Préférences & statistiques</span>
+    </div>
+    
+    <div class="filters_prefs_stats_img_container">
+        <img src="../img/pictos_commerces/flecheretour.png" height="22" width="20"/>
+    </div>
+    <div id="PrefStatTermine" class="filters_prefs_stats_txt_retour">
+        <a href="#" title=""><span>Retour au flux</span></a>
+    </div>
+</div>
+
+<div class="filters flux">
+    <div id="PrefStat" class="avisenattente_commerce<?php if ($PAGE == "Commerce") {echo " categorie_" . $id_enseigne;} ?>">
+        <a href="#" title=""><span>Préférences</span></a>
+    </div>
     <div class="flux_commerce button_moving<?php if ($PAGE == "Commerce") {echo " categorie_" . $id_enseigne;} ?>">
         <div class="notifs_filter"><span>2</span></div>
         <a href="#" title=""><span>Le flux</span></a>

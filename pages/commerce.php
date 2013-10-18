@@ -14,7 +14,7 @@
 
 	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
-					reservation, optin, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, t1.id_budget, budget_enseigne
+					reservation, prevenir_reservation, email_reservation, telephone_reservation, optin, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, t1.id_budget, budget_enseigne
 			FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
@@ -51,6 +51,9 @@
 	$y4_enseigne    		 = $result2['y4'];
 	$y5_enseigne    		 = $result2['y5'];
 	$reservation 			 = $result2['reservation'];
+	$prevenir_reservation 	 = $result2['prevenir_reservation'];
+	$email_reservation 		 = $result2['email_reservation'];
+	$telephone_reservation 	 = $result2['telephone_reservation'];
 	$optin	  				 = $result2['optin'];
 	$adresse1_enseigne       = $result2['adresse1_enseigne'];
 	$code_postal             = $result2['cp_enseigne'];
@@ -169,10 +172,19 @@
 			. "y2 : '" . $y2_enseigne . "', "
 			. "y3 : '" . $y3_enseigne . "', "
 			. "y4 : '" . $y4_enseigne . "', "
-			. "y5 : '" . $y5_enseigne . "'}"; 
-	
+			. "y5 : '" . $y5_enseigne . "'}";
+			
+	$datareservation = "{type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
+			. "reservation : " . $reservation . ", "
+			. "prevenir_reservation : " . $prevenir_reservation . ", "
+			. "email_reservation : '" . $email_reservation . "', "
+			. "telephone_reservation : '" . $telephone_reservation . "'}";
+			
 	$menu_tarif = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";	
-	$IlsSuiventCeCommerce = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog')";		
+	$IlsSuiventCeCommerce = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog')";
+	$Reservation = "OuvrePopin(" . $datareservation . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 
 	if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
@@ -237,7 +249,7 @@
                     </div>
                     <span class="commerce_head_note_avis"><?php echo $count_avis_enseigne; ?> Avis</span>
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
-                        <a href="#" title="" class="commerce_reserver_button" onclick="<?php if ($reservation) { ?>OuvrePopin({}, '/includes/popins/reservation_step1.tpl.php', 'default_dialog');<?php } else { ?>alert('Module non activé par le commerçant');<?php } ?>">
+                        <a href="#" title="" class="commerce_reserver_button" onclick="<?php if ($reservation) { echo $Reservation; } else { ?>alert('Module non activé par le commerçant');<?php } ?>">
                             <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
                             <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
                         </a>

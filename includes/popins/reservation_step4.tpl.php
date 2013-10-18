@@ -60,6 +60,7 @@ function EtapeSuivante() {
 	var nombre = '<?php if (!empty($_POST['nombre'])) {echo $_POST['nombre'];} ?>';
 	var heure = '<?php if (!empty($_POST['heure'])) {echo $_POST['heure'];} ?>';
 	var date = '<?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?>';
+	var nom_enseigne = '<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>';
 	
     var datareservation = {
                 step : 4,
@@ -68,9 +69,12 @@ function EtapeSuivante() {
 				nombre : nombre,
                 id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
                 id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                nom_enseigne :'<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>',
+				email_reservation :'<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
+				telephone_reservation :'<?php if (!empty($_POST['telephone_reservation'])) {echo $_POST['telephone_reservation'];} ?>',
                 destinataire : $('#email').val(),
-				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure+'. Merci pour votre confiance.',
-				message : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure+'. Merci pour votre confiance.',
+				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
+				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' a été transmise à l\'enseigne '+nom_enseigne+'.<BR>Une confirmation va vous être envoyée très prochaînement.',
                 };
 		console.log(datareservation);
 		$.ajax({

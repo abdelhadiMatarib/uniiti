@@ -4,41 +4,105 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?php 
-	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+	require_once('../acces/droits.inc.php'); 					// Liste de définition des ACL	
 	include_once '../config/configuration.inc.php';
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+
+	if (isset($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
+	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 	
-	$sql2 = "SELECT id_enseigne, logotype_enseigne, nom_enseigne, adresse1_enseigne, cp_enseigne, ville_enseigne, pays_enseigne, telephone_enseigne, descriptif, url
-			FROM enseignes AS t1 WHERE id_enseigne = :id_enseigne
+	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL))) {$Connecte = true;}
+	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	/////////////////////////////////// IL FAUT AJOUTER UN TEST SUR LES ENSEIGNES QUE L'UTILISATEUR A LE DROIT D'ATTEINDRE
+	if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
+	else {$Admin = false;}
+	
+	$PAGE = "Commerce"; 
+
+	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
+					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5,
+					reservation, prevenir_reservation, email_reservation, telephone_reservation, optin, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
+			FROM enseignes AS t1
+				INNER JOIN sous_categories2 AS t2
+				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
+					INNER JOIN sous_categories AS t3
+					ON t2.id_sous_categorie = t3.id_sous_categorie
+						INNER JOIN categories AS t4
+						ON t2.id_categorie = t4.id_categorie
+							INNER JOIN villes  AS t5
+							ON t1.villes_id_ville = t5.id_ville
+			WHERE id_enseigne = :id_enseigne
 		";
 
 	$req2 = $bdd->prepare($sql2);
 
-	if (!empty($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];}
-	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
-
 	$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 
 	$req2->execute();
-	$result = $req2->fetch(PDO::FETCH_ASSOC);
+	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
            
-	$nom_enseigne            = $result['nom_enseigne'];
-	$logotype_enseigne       = $result['logotype_enseigne'];
-	$adresse1_enseigne       = $result['adresse1_enseigne'];
-	$code_postal             = $result['cp_enseigne'];
-	$ville_enseigne          = $result['ville_enseigne'];
-	$pays_enseigne           = $result['pays_enseigne'];
-	$telephone_enseigne      = $result['telephone_enseigne'];
-	$descriptif              = $result['descriptif'];
-	$certification_pro       = $result['certification_pro'];
-	$code_visible            = $result['code_visible'];
-	$avis_visible            = $result['avis_visible'];
-//	$nom_type_enseigne       = $result['nom_type_enseigne'];
-	$btn_donner_avis_visible = $result['btn_donner_avis_visible'];
-	$url                     = $result['url'];
+	$nom_enseigne            = $result2['nom_enseigne'];
+	$box_enseigne       	 = $result2['box_enseigne'];
+	$slide1_enseigne    	 = $result2['slide1_enseigne'];
+	$slide2_enseigne    	 = $result2['slide2_enseigne'];
+	$slide3_enseigne    	 = $result2['slide3_enseigne'];
+	$slide4_enseigne    	 = $result2['slide4_enseigne'];
+	$slide5_enseigne    	 = $result2['slide5_enseigne'];
+	$x1_enseigne    		 = $result2['x1'];
+	$y1_enseigne    		 = $result2['y1'];
+	$y2_enseigne    		 = $result2['y2'];
+	$y3_enseigne		 	 = $result2['y3'];
+	$y4_enseigne    		 = $result2['y4'];
+	$y5_enseigne    		 = $result2['y5'];
+	$reservation 			 = $result2['reservation'];
+	$prevenir_reservation 	 = $result2['prevenir_reservation'];
+	$email_reservation 		 = $result2['email_reservation'];
+	$telephone_reservation 	 = $result2['telephone_reservation'];
+	$optin	  				 = $result2['optin'];
+	$adresse1_enseigne       = $result2['adresse1_enseigne'];
+	$code_postal             = $result2['cp_enseigne'];
+	$telephone_enseigne      = $result2['telephone_enseigne'];
+	$descriptif				 = str_replace(PHP_EOL ,"", stripslashes($result2['descriptif']));
+	$descriptif			 	 = str_replace("\r" , "", $descriptif);
+	$descriptif			 	 = str_replace("\n" , "", $descriptif);	
+	$categorie				 = $result2['categorie_principale'];
+	$sous_categorie          = $result2['sous_categorie'];
+	$sous_categorie2         = $result2['sous_categorie2'];
+	$id_categorie      		 = $result2['id_categorie'];
+	$id_sous_categorie       = $result2['id_sous_categorie'];
+	$id_sous_categorie2      = $result2['id_sous_categorie2'];
+    $couleur                 = $result2['couleur'];
+	$url                     = $result2['url'];
+	$url_video               = $result2['video_enseigne'];
+	$id_budget               = $result2['id_budget'];
 
+	// Recherche de la ville, de l'arrondissement et du quartier si les deux derniers existent
+	$id_ville          		 = $result2['villes_id_ville'];
+	$id_quartier          	 = $result2['id_quartier'];
+	if ($id_quartier != 0) {
+		$sql4 = "SELECT id_arrondissement, t1.id_ville, nom_ville FROM quartier AS t1 
+				INNER JOIN villes AS t2 ON t1.id_ville=t2.id_ville WHERE id_quartier=:id_quartier";
+		$req4 = $bdd->prepare($sql4);
+		$req4->bindParam(':id_quartier', $id_quartier, PDO::PARAM_INT);
+		$req4->execute();
+		$result4 = $req4->fetch(PDO::FETCH_ASSOC);		
+		$ville_enseigne          = $result4['nom_ville'];
+		$id_arrondissement       = $result4['id_arrondissement'];	
+	}
+	else {
+		$sql4 = "SELECT nom_ville FROM villes WHERE id_ville=:id_ville";
+		$req4 = $bdd->prepare($sql4);
+		$req4->bindParam(':id_ville', $id_ville, PDO::PARAM_INT);
+		$req4->execute();
+		$result4 = $req4->fetch(PDO::FETCH_ASSOC);		
+		$ville_enseigne          = $result4['nom_ville'];
+		$id_arrondissement       = 0;	
+	}
+
+	// On compte les avis reçus par l'enseigne et on calcule sa note moyenne
 	$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
 
@@ -58,6 +122,152 @@
 	$result = $req->fetch(PDO::FETCH_ASSOC);
 	$count_avis_enseigne     = $result['count_avis'];
 	$note_arrondi = number_format($result['moyenne'],1);
+
+	// On compte le nombre de followers de l'enseigne	
+	$sql3 = "SELECT COUNT(contributeurs_id_contributeur) AS count_abonnes
+			FROM contributeurs_follow_enseignes AS t1
+			WHERE enseignes_id_enseigne = :id_enseigne
+			";
+	$req3 = $bdd->prepare($sql3);
+	$req3->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req3->execute();
+	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
+	$count_abonnes = $result3['count_abonnes'];
+	
+	// On compte le nombre de commerce en réseau avec l'enseigne	
+	$sql9 = "SELECT COUNT(enseignes_id_enseigne1) AS count_reseau
+			FROM enseignes_reseau_enseignes AS t1
+			WHERE (enseignes_id_enseigne1 = :id_enseigne OR enseignes_id_enseigne2 = :id_enseigne) AND id_statut = 2
+			";
+	$req9 = $bdd->prepare($sql9);
+	$req9->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req9->execute();
+	$result9 = $req9->fetch(PDO::FETCH_ASSOC);
+	$count_reseau = $result9['count_reseau'];
+
+	$sql10 = "SELECT COUNT(enseignes_id_enseigne1) AS count_reseau_attente
+				FROM enseignes_reseau_enseignes AS t1
+					WHERE enseignes_id_enseigne2 = :id_enseigne AND id_statut = 1";
+	$req10 = $bdd->prepare($sql10);
+	$req10->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req10->execute();
+	$result10 = $req10->fetch(PDO::FETCH_ASSOC);
+	$count_reseau_attente = $result10['count_reseau_attente'];
+	
+	// Labels et recommandations
+	$sql5 = "SELECT * FROM enseignes_labelsuniiti AS t1
+				INNER JOIN labelsuniiti AS t2
+				ON t1.id_label = t2.id_label
+					WHERE enseignes_id_enseigne=:id_enseigne";
+	$req5 = $bdd->prepare($sql5);
+	$req5->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req5->execute();
+	$result5 = $req5->fetchAll(PDO::FETCH_ASSOC);
+	
+	$sql6 = "SELECT * FROM enseignes_recommandations AS t1
+				INNER JOIN recommandations AS t2
+				ON t1.id_recommandation = t2.id_recommandation
+					WHERE enseignes_id_enseigne=:id_enseigne";
+	$req6 = $bdd->prepare($sql6);
+	$req6->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req6->execute();
+	$result6 = $req6->fetchAll(PDO::FETCH_ASSOC);
+
+	// Mots clés
+	$sql7 = "SELECT id_type_info, id_motcle1, id_motcle2, id_motcle3 FROM enseignes_infos_generales WHERE enseignes_id_enseigne=" . $id_enseigne;
+	$req7 = $bdd->prepare($sql7);
+	$req7->execute();
+	$result7 = $req7->fetchAll(PDO::FETCH_ASSOC);
+	$sql8 = "SELECT motcle FROM motscles WHERE id_motcle=:id_motcle";
+	$req8 = $bdd->prepare($sql8);
+	$AfficheMotcle[1] = $AfficheMotcle[2] = $AfficheMotcle[3] = $AfficheMotcle[4] = false;
+	foreach ($result7 as $row7) {
+		$AfficheMotcle[$row7['id_type_info']] = true;
+		$req8->bindParam(':id_motcle', $row7['id_motcle1'], PDO::PARAM_INT);
+		$req8->execute();
+		$result8 = $req8->fetch(PDO::FETCH_ASSOC);
+		$MotCle[$row7['id_type_info']][1] = $result8['motcle'];
+		$req8->bindParam(':id_motcle', $row7['id_motcle2'], PDO::PARAM_INT);
+		$req8->execute();
+		$result8 = $req8->fetch(PDO::FETCH_ASSOC);
+		$MotCle[$row7['id_type_info']][7] = $result8['motcle'];
+		$req8->bindParam(':id_motcle', $row7['id_motcle3'], PDO::PARAM_INT);
+		$req8->execute();
+		$result8 = $req8->fetch(PDO::FETCH_ASSOC);
+		$MotCle[$row7['id_type_info']][3] = $result8['motcle'];			
+	}
+	$req7->closeCursor();
+	if ($req8) {$req8->closeCursor();}
+	
+	$Chemin = SITE_URL . "/photos/enseignes/couvertures/";
+	
+	$datacouv = "{step : 1, "
+			. "type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "cheminbox : '" . SITE_URL . "/photos/enseignes/box/', "
+			. "box : '" . $box_enseigne . "', "
+			. "chemin : '" . SITE_URL . "/photos/enseignes/couvertures/', "
+			. "image1 : '" . $slide1_enseigne . "', "
+			. "image2 : '" . $slide2_enseigne . "', "
+			. "image3 : '" . $slide3_enseigne . "', "
+			. "image4 : '" . $slide4_enseigne . "', "
+			. "image5 : '" . $slide5_enseigne . "', "
+			. "x1 : '" . $x1_enseigne . "', "
+			. "y1 : '" . $y1_enseigne . "', "
+			. "y2 : '" . $y2_enseigne . "', "
+			. "y3 : '" . $y3_enseigne . "', "
+			. "y4 : '" . $y4_enseigne . "', "
+			. "y5 : '" . $y5_enseigne . "'}";
+			
+	$datamodif = "{type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
+			. "descriptif:'" . str_replace(PHP_EOL ,'\n', addslashes($descriptif)) . "', "
+			. "adresse1_enseigne:'" . addslashes($adresse1_enseigne) . "', "
+			. "id_ville:'" . $id_ville . "', "
+			. "cp_enseigne:'" . $code_postal . "', "
+			. "id_categorie:" . $id_categorie . ", "
+			. "id_sous_categorie:" . $id_sous_categorie . ", "
+			. "id_sous_categorie2:" . $id_sous_categorie2 . ", "
+			. "telephone_enseigne:'" . $telephone_enseigne . "', "
+			. "reservation : " . $reservation . ", "
+			. "prevenir_reservation : " . $prevenir_reservation . ", "
+			. "email_reservation : '" . $email_reservation . "', "
+			. "telephone_reservation : '" . $telephone_reservation . "', "
+			. "optin : " . $optin . ", "
+			. "url:'" . $url . "', "
+			. "url_video:'" . $url_video . "', "
+			. "id_arrondissement:" . $id_arrondissement . ", "
+			. "id_quartier:" . $id_quartier . ", "
+			. "id_budget:" . $id_budget . "}";
+
+	$IlsSuiventCeCommerce = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog')";		
+	$AjoutReseau = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/ajout_liencommerce_votrereseau.tpl.php', 'default_dialog')";		
+			
+	if ($Admin) {
+
+		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_infos_generales_commerce.tpl.php', 'default_dialog');";
+		$MotsCles = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_mots_clefs.tpl.php', 'default_dialog');";
+		$Menutarifs = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/dashboard_menutarifs.tpl.php', 'default_dialog_large');";
+		$Infospratiques = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/dashboard_infospratiques.tpl.php', 'default_dialog_large');";
+		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/dashboard_video.tpl.php', 'default_dialog');";
+		$LabelsCaptain = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
+		$Recommandations = "OuvrePopin(" . $datamodif . ",'/includes/popins/dashboard_petitmot_commerce.tpl.php', 'default_dialog');";
+
+		$Reservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+		$Modulereservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
+		$Moduleoption = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
+	} 
+else {
+		$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
+		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
+		$Reservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+		$Menutarifs = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";
+		$Infospratiques = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
+		$Modulereservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
+		$Moduleoption = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
+	}	
+			
 ?>
 
     <body>

@@ -45,7 +45,7 @@ if (!$Changex1) {
 }
 else if ($type == 'contributeur') {exit;}
 
-if ($_POST['premiere'] != "1") {
+if (($_POST['premiere'] != "1") && (!$Changex1)) {
 	$premiere = $_POST['premiere'];
 	$ytmp = $_POST['y1'];
 	$imagetmp = $_POST['image1'];

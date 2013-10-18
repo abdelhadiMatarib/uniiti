@@ -70,8 +70,11 @@ function EtapeSuivante() {
 				date : ''+$( "#datepicker" ).val()+'',
                 id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
                 id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+                nom_enseigne :'<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>',
+				email_reservation :'<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
+				telephone_reservation :'<?php if (!empty($_POST['telephone_reservation'])) {echo $_POST['telephone_reservation'];} ?>',
                 chemin : ''
-                };
+                };console.log(data);
             ActualisePopin(data, '/includes/popins/reservation_step2.tpl.php', 'default_dialog');
     };
 </script>

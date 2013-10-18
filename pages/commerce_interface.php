@@ -153,6 +153,34 @@
 	$req10->execute();
 	$result10 = $req10->fetch(PDO::FETCH_ASSOC);
 	$count_reseau_attente = $result10['count_reseau_attente'];
+
+	$sql11 = "SELECT COUNT(contributeurs_id_contributeur) AS count_aime
+				FROM contributeurs_aiment_enseignes AS t1
+					WHERE enseignes_id_enseigne = :id_enseigne";
+	$req11 = $bdd->prepare($sql11);
+	$req11->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req11->execute();
+	$result11 = $req11->fetch(PDO::FETCH_ASSOC);
+	$count_aime = $result11['count_aime'];
+
+	$sql12 = "SELECT COUNT(contributeurs_id_contributeur) AS count_aime_pas
+				FROM contributeurs_aiment_pas_enseignes AS t1
+					WHERE enseignes_id_enseigne = :id_enseigne";
+	$req12 = $bdd->prepare($sql12);
+	$req12->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req12->execute();
+	$result12 = $req12->fetch(PDO::FETCH_ASSOC);
+	$count_aime_pas = $result12['count_aime_pas'];
+
+	$sql13 = "SELECT COUNT(contributeurs_id_contributeur) AS count_wish
+				FROM contributeurs_wish_enseignes AS t1
+					WHERE enseignes_id_enseigne = :id_enseigne";
+	$req13 = $bdd->prepare($sql13);
+	$req13->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$req13->execute();
+	$result13 = $req13->fetch(PDO::FETCH_ASSOC);
+	$count_wish = $result13['count_wish'];	
+	
 	
 	// Labels et recommandations
 	$sql5 = "SELECT * FROM enseignes_labelsuniiti AS t1
@@ -270,7 +298,7 @@ else {
 			
 ?>
 
-    <body>
+    <body style="display:none;">
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>
@@ -447,7 +475,51 @@ else {
         <div id="box_container" class="content utilisateur_boxes">
 			<?php include '../includes/requetecommerce.php' ?> 
 		</div>
-        
+ 
+		<div id="commerce_stats">
+<!--			<div class="commerce_prefs_stats_tableau"></div> -->
+			<div id="prefs_items_container">
+				<div class="commerce_prefs_stats_item">
+					<span class="commerce_prefs_stats_item_nbr"><?php echo $count_avis_enseigne; ?></span>
+					<span class="commerce_prefs_stats_item_titre">Nombre d'avis</span>
+				</div>
+				<div class="commerce_prefs_stats_item">
+					<span class="commerce_prefs_stats_item_nbr"><?php echo $count_aime; ?></span>
+					<span class="commerce_prefs_stats_item_titre">Nombre de j'aime</span>
+				</div>
+				<div class="commerce_prefs_stats_item">
+					<span class="commerce_prefs_stats_item_nbr"><?php echo $count_abonnes; ?></span>
+					<span class="commerce_prefs_stats_item_titre">Nombre d'abonnés</span>
+				</div>
+				<div class="commerce_prefs_stats_item item_gestion_site">
+					<a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/gestion_minisite.tpl.php', 'default_dialog');">
+						<span><strong>Gestion</strong></span>
+						<span>de votre</span>
+						<span><strong>Site web</strong></span>
+					</a>
+				</div>
+				<div class="commerce_prefs_stats_item">
+					<span class="commerce_prefs_stats_item_nbr"><?php echo $count_wish; ?></span>
+					<span class="commerce_prefs_stats_item_titre">Nombre d'ajout liste de souhaits</span>
+				</div>
+				<div class="commerce_prefs_stats_item">
+					<span class="commerce_prefs_stats_item_nbr"><?php echo $count_reseau; ?></span>
+					<span class="commerce_prefs_stats_item_titre">Nombre d'enseignes dans<BR/>votre réseau</span>
+				</div>
+				<div class="commerce_prefs_stats_item">
+					<span class="commerce_prefs_stats_item_nbr"><?php echo $count_aime_pas; ?></span>
+					<span class="commerce_prefs_stats_item_titre">Nombre de j'aime pas</span>
+				</div>
+				<div class="commerce_prefs_stats_item item_gestion_site">
+					<a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/gestion_minisite.tpl.php', 'default_dialog');">
+						<span><strong>Gestion</strong></span>
+						<span>de votre</span>
+						<span><strong>Site web</strong></span>
+					</a>
+				</div>
+			</div>
+		</div>
+ 
         </div>
         <!-- FIN CONTENU PRINCIPAL -->
         </div><!-- FIN BIGGY -->
@@ -457,10 +529,42 @@ else {
         <?php include'../includes/js.php' ?>
 		
 	<script>
+	$(".filters.stats").css({display: "none"});
+	$('#commerce_stats').css({display: "none"});
+	$('#PrefStat').click(function () {
+		$(".filters.stats").css({display: "block"});
+		$('#box_container').css({display: "none"});
+		$('#commerce_stats').css({display: "block"});
+		$(".filters.flux").css({display: "none"});
+        var $statcontainer = $('#prefs_items_container'), $body = $('body'), colW = 250, columns = null;
+        $statcontainer.imagesLoaded(function(){
+			$statcontainer.isotope({
+					// disable window resizing
+					resizable: false,
+					masonry: {
+						itemSelector : '.commerce_prefs_stats_item',
+						columnWidth: colW,
+						resizable: false
+					}
+			});
+		});
+		DisableScroll = true;
+
+	});
+	$('#PrefStatTermine').click(function () {
+		$(".filters.stats").css({display: "none"});
+		$('#commerce_stats').css({display: "none"});
+		$('#box_container').css({display: "block"});
+		$(".filters.flux").css({display: "block"});
+		DisableScroll = false;
+		resizeboxContainer();
+	});
+
 		// Gestion du slider des couvertures
-		$(function() {
-		  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
-		  });
+		$(window).load(function() {
+			$("body").fadeIn(500);
+		  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
+		  
 		})
 		
 		function InitCouvertures() {
