@@ -1,20 +1,31 @@
 <?php
-		$ProvAvis = array('all', 'avis', 'aime', 'aime_pas', 'wish');
+		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
+		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
+		$ProvAvis = array('all', 'avis', 'avis en attente', 'aime', 'aime_pas', 'wish');
 		
-		$sqldroite = " FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+		$sqldroite = " FROM ( SELECT 'avis en attente' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
 						INNER JOIN enseignes_recoient_avis AS t3
 						ON t1.id_avis = t3.avis_id_avis
+						WHERE id_statut = 1 AND date_avis >= '" . $datemoinssept . "'
 				UNION
-					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'avis' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					FROM avis AS t1
+					INNER JOIN contributeurs_donnent_avis AS t2
+					ON t1.id_avis = t2.avis_id_avis
+						INNER JOIN enseignes_recoient_avis AS t3
+						ON t1.id_avis = t3.avis_id_avis
+						WHERE id_statut = '2' OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')
+				UNION
+					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_enseignes AS t4
 				UNION
-					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_pas_enseignes AS t5
 				UNION
-					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_wish_enseignes AS t6
 				) AS t7
 				INNER JOIN contributeurs AS t8

@@ -8,9 +8,10 @@
     <div class="ident_head">
         <div class="ident_img_container">
             <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_gestion_minisite.png" title="" alt="" height="36" width="36" />
-        </div><span class="maintitle">Gestion de votre site web</span></div>
-    </div>   
-    <div class="minisite_body">
+        </div><span class="maintitle">Gestion de votre site web</span>
+	</div>
+
+	<div class="minisite_body">
         <div class="minisite_body_left">
         <div class="minisite_body_head_titre">
             <span>Votre URL</span>

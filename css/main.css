@@ -222,8 +222,8 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .leflux_wrapper span{font-size:1.4em;}
 .leflux_wrapper a{color:#252525;}
 
-.flux_utilisateur{float:left;}
-.quoideneuf_utilisateur,.recommandations_utilisateur,.avisenattente_utilisateur{float:right;}
+.flux_utilisateur{position:relative;float:left;}
+.quoideneuf_utilisateur,.recommandations_utilisateur,.avisenattente_utilisateur{position:relative;float:right;}
 .quoideneuf_utilisateur a,.recommandations_utilisateur a,.avisenattente_utilisateur a,.flux_utilisateur a{display:inline-block;color:white;height:20px;margin-right:1px;padding:15px;background-color:#CBCBCB;}
 .quoideneuf_utilisateur a:hover,.recommandations_utilisateur a:hover,.avisenattente_utilisateur a:hover,.flux_utilisateur a:hover{color:white;background-color:#ADADAD;}
 

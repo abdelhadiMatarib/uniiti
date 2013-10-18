@@ -37,7 +37,7 @@
             </div>
             <div class="module_reservation_right_content">
                 <form>
-                    <div class="input_resa_float"><input type="radio" <?php if (($_POST['reservation']) && ($_POST['prevenir_reservation'] == 0)) {echo "checked='checked'";} ?> id="resa_infos_affichage" name="module_resa_radio_choice"/><label for="resa_infos_affichage"><span>Affichage sur ma page commerce Uniiti.com</span></label></div>
+<!--                    <div class="input_resa_float"><input type="radio" <?php if (($_POST['reservation']) && ($_POST['prevenir_reservation'] == 0)) {echo "checked='checked'";} ?> id="resa_infos_affichage" name="module_resa_radio_choice"/><label for="resa_infos_affichage"><span>Affichage sur ma page commerce Uniiti.com</span></label></div>  -->
                     
                     <div class="input_resa_float"><input type="radio" <?php if (($_POST['reservation']) && ($_POST['prevenir_reservation'] == 1)) {echo "checked='checked'";} ?> id="resa_infos_notifs_mail" name="module_resa_radio_choice"/><label for="resa_infos_notifs_mail" class="infos_resa_espacement"><span>Notification par email</span><span>Merci d'indiquer votre email</span></label></div>
                     <input type="text" id="resa_get_notifs_mail" value="<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>" placeholder="Votre email"/>

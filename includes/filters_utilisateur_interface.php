@@ -1,20 +1,31 @@
 <?php
-		$ProvAvis = array('all', 'avis', 'aime', 'aime_pas', 'wish');
+		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
+		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
+		$ProvAvis = array('all', 'avis', 'avis en attente', 'aime', 'aime_pas', 'wish');
 		
-		$sqldroite = " FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+		$sqldroite = " FROM ( SELECT 'avis en attente' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
 						INNER JOIN enseignes_recoient_avis AS t3
 						ON t1.id_avis = t3.avis_id_avis
+						WHERE id_statut = 1 AND date_avis >= '" . $datemoinssept . "'
 				UNION
-					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'avis' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					FROM avis AS t1
+					INNER JOIN contributeurs_donnent_avis AS t2
+					ON t1.id_avis = t2.avis_id_avis
+						INNER JOIN enseignes_recoient_avis AS t3
+						ON t1.id_avis = t3.avis_id_avis
+						WHERE id_statut = '2' OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')
+				UNION
+					SELECT 'aime' AS provenance, date_aime AS date_avis, '' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_enseignes AS t4
 				UNION
-					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_pas_enseignes AS t5
 				UNION
-					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'wish' as provenance, date_wish AS date_avis, '' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_wish_enseignes AS t6
 				) AS t7
 				INNER JOIN contributeurs AS t8
@@ -149,8 +160,14 @@ ON t1.id_categorie = t3.id_categorie */
 <div class="filters">
     <div class="quoideneuf_utilisateur button_moving"><a href="#" title="">Quoi de neuf ?</a></div>
     <div class="recommandations_utilisateur button_moving"><a href="#" title="">Recommandations</a></div>
-    <div class="avisenattente_utilisateur button_moving"><a href="#" title="">Avis en attente</a></div>
-    <div class="flux_utilisateur button_moving"><a href="#" title="">Mon flux</a></div>
+    <div class="avisenattente_utilisateur button_moving">
+		<div class="<?php if ($CompteurProvenance['avis en attente'] > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurProvenance['avis en attente']; ?></span></div>
+		<a href="#" title="">Avis en attente</a>
+	</div>
+    <div class="flux_utilisateur button_moving">
+		<div class="<?php if ($CompteurTotal > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurTotal; ?></span></div>
+		<a href="#" title="">Mon flux</a>
+	</div>
         <div class="rang0">
             <ul>
 				<li onclick="SetFiltre({provenance:'all'});" class="button_all"><div class="<?php if ($CompteurTotal > 99) {echo $notifplus100;} else {echo $notifmoins100;}?>"><span><?php echo $CompteurTotal ?></span></div></li>

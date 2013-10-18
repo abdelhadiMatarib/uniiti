@@ -35,22 +35,22 @@
 		
 		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
-						couleur, t10.posx, t10.posy, date_avis, id_avis, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
+						couleur, t10.posx, t10.posy, date_avis, id_avis, id_statut, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
 						prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, id_quartier, nom_ville, url
-				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+				FROM ( SELECT 'avis' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
 						INNER JOIN enseignes_recoient_avis AS t3
 						ON t1.id_avis = t3.avis_id_avis
 				UNION
-					SELECT 'aime' AS provenance, date_aime AS date_avis, '0' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'aime' AS provenance, date_aime AS date_avis, '0' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_enseignes AS t4
 				UNION
-					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '0' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'aime_pas' as provenance, date_aime_pas AS date_avis, '0' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_aiment_pas_enseignes AS t5
 				UNION
-					SELECT 'wish' as provenance, date_wish AS date_avis, '0' AS id_avis, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+					SELECT 'wish' as provenance, date_wish AS date_avis, '0' AS id_avis, '2' AS id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM contributeurs_wish_enseignes AS t6
 				) AS t7
 				INNER JOIN contributeurs AS t8
@@ -66,9 +66,19 @@
 									INNER JOIN villes  AS t13
 									ON t9.villes_id_ville = t13.id_ville WHERE id_enseigne = " . $id_enseigne;
 
+		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
+		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		if (!empty($_POST['provenance'])) {
-			if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
+			if (urldecode($_POST['provenance']) == "\"avis en attente\"") {
+				$sql2 .= " AND id_statut = 1 AND provenance = 'avis' AND date_avis >= '" . $datemoinssept . "'";
+			}
+			else {
+				$sql2 .= " AND id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')";
+				if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
+			}
+		} else {
+			$sql2 .= " AND id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')";
 		}
 		if (!empty($_POST['categorie'])) {$sql2 .= " AND t10.id_categorie = " . $_POST['categorie'];}
 		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}

@@ -44,7 +44,7 @@
 			<div id="fenetre"></div>
 			<div id="selection" class="vignette_step1_dropzone">
 				<div class="draggable">
-					<img id="image" src="<?php echo $_POST['chemin'] . $_POST['image1']; ?>" width="735"/>
+					<img id="image" src="<?php echo $_POST['chemin'] . $_POST['image1'] . "?" . time();; ?>" width="735"/>
 				</div>
 	
 				<div class="vignette_step2_resize_infos">
