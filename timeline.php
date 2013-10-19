@@ -64,8 +64,8 @@
                         
 			<!-- CONTENU PRINCIPAL -->
 			<div id="box_container" class="content">
-				<?php include 'includes/requete.php' ?>
-                            <div class="corner-stamp"></div>
+				<?php if (!isset($_POST['filtre_avance'])) {include 'includes/requete.php';} ?>
+				<div class="corner-stamp"></div>
 			</div>
 			<!-- FIN CONTENU PRINCIPAL -->
         </div><!-- FIN DU BIGGY -->
@@ -76,3 +76,11 @@
 		<?php include 'includes/js.php' ?>
 	</body>
 </html>
+<script>
+<?php if (!empty($_POST['filtre_avance'])) {
+	$data = "{provenance:'all'";
+	foreach ($_POST as $key => $value) {$data .= ", " . $key . " : '" . $value . "'";}
+	$data .= "}";
+	echo "SetFiltre(" . $data . ");";
+} ?>
+</script>

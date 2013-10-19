@@ -136,10 +136,20 @@
 <div class="recherche_avancee_position_wrap">
     <div class="recherche_avancee_current_txt"><span>Recherche ?</span></div>
     <div class="recherche_avancee_position_guidelines"></div>
-    <div class="recherche_overlay_current_status"></div>    
-    <div class="recherche_avancee_search_button" onclick='AfficheChoix();' filtre="recherche avancée"></div>
+    <div class="recherche_overlay_current_status"></div>
+	<form id="FormRechercheAvancee" onsubmit="return AfficheChoix();" action="<?php echo SITE_URL; ?>/timeline.php" method="post"  autocomplete="off">
+		<input type="hidden" name="filtre_avance" id="filtre_avance" value="1" />
+		<input type="hidden" name="type" id="type" value="" />
+		<input type="hidden" name="id_ville" id="id_ville" value="" />
+		<input type="hidden" name="categorie" id="categorie" value="" />
+		<input type="hidden" name="scategorie" id="scategorie" value="" />
+		<input type="hidden" name="sscategorie" id="sscategorie" value="" />
+		<input type="hidden" name="id_budget" id="id_budget" value="" />
+		<button type="submit" class="recherche_avancee_search_button" filtre="recherche avancée"></button>
+	</form>
     <div class="cursor_recherche"></div>
     <div class="recherche_avancee_right_cliquez_wrap"><img src="<?php echo SITE_URL; ?>/img/pictos_actions/cliquezici.png" title="" alt="" height="41" width="115"/></div>
+
 </div>
 <div class="close_button_cdr"></div>
 <script>
@@ -150,7 +160,7 @@
 		MotsActifs[Compteur++] = $(this).text();
 	});
 
-	function AfficheChoix(recherche) {
+	function AfficheChoix() {
 		var data = {provenance : 'all'};
 		$('.recherche_mot_actif').each(function () {
 			if ($(this).parent().parent().find('.text_selected').length > 0) {
@@ -159,28 +169,40 @@
 				switch (classe) {
 					case 'recherche_avancee_1' :
 					data = $.extend(data, {type : valeur});
+					$('#type').val(valeur);
 					break;
 					case 'recherche_avancee_2' :
 					data = $.extend(data, {id_ville : valeur});
+					$('#id_ville').val(valeur);
 					break;
 					case 'recherche_avancee_3' :
 					data = $.extend(data, {categorie : valeur});
+					$('#categorie').val(valeur);
 					break;
 					case 'recherche_avancee_4' :
 					data = $.extend(data, {scategorie : valeur});
+					$('#scategorie').val(valeur);
 					break;
 					case 'recherche_avancee_5' :
 					data = $.extend(data, {sscategorie : valeur});
+					$('#sscategorie').val(valeur);
 					break;
 					case 'recherche_avancee_6' :
 					data = $.extend(data, {id_budget : valeur});
+					$('#id_budget').val(valeur);
 					break;					
 				}
 			}
 		});
 		console.log(data);
-		SetFiltre(data, $('.recherche_avancee_search_button'));
 		$('.close_button_cdr').click();
+		var $Page = window.location.pathname;
+		$Page = $Page.substring($Page.lastIndexOf("/")+1, $Page.length);
+		if ($Page == "timeline.php") {
+			SetFiltre(data, $('.recherche_avancee_search_button'));
+			return false;
+		}
+		else {return true;}
 	}
 	
 	function filterAdvanced(){

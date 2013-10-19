@@ -1473,10 +1473,15 @@ $('#close_button_home').click(function() {
 		CmpArrondissement =  CmpArrondissement.replace(/<\/sup>/gi, "");
 		if (inputSearch2.val() == CmpArrondissement) {lieu = inputSearch2Hidden.val();}	// traitement des arrondissements en html <sup></sup>
 		
-		if (quoi != '') {$.extend(data, {'quoi':encodeURIComponent(quoi)});}
-		if (lieu != '') {$.extend(data, {'lieu':encodeURIComponent(lieu)});}
-		if (location.href != siteurl+"/timeline.php") {window.location.assign(siteurl+"/timeline.php");}
-		else {SetFiltre(data);}
+		if (quoi != '') {$.extend(data, {'quoi':encodeURIComponent(quoi)});$('#quoi').val(encodeURIComponent(quoi));}
+		if (lieu != '') {$.extend(data, {'lieu':encodeURIComponent(lieu)});$('#lieu').val(encodeURIComponent(lieu));}
+		var $Page = window.location.pathname;
+		$Page = $Page.substring($Page.lastIndexOf("/")+1, $Page.length);
+		if ($Page == "timeline.php") {
+			SetFiltre(data);
+			return false;
+		}
+		else {return true;}
 	});
 }); // fin function ready
 

@@ -81,7 +81,7 @@
 				$sql2 .= " AND id_statut = 1 AND provenance = 'avis' AND date_avis >= '" . $datemoinssept . "'";
 			}
 			else {
-				$sql2 .= " AND id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')";
+				$sql2 .= " AND (id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "'))";
 				if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
 			}
 		} else {

@@ -34,35 +34,40 @@
 <div class="header">
     <div class="big_wrapper">
     <header>
-        
-        <div class="header_leftnav">
+   		<form id="FormRechercheAvancee" action="<?php echo SITE_URL; ?>/timeline.php" method="post"  autocomplete="off">
+			<div class="header_leftnav">
 
-            <div class="header_button_menu">
-                <button type="button"></button>
-                <div id="header_menu_left" class="header_infos_menulist">
-                    <ul>
-                        <li><a href="#">Comment ça marche ?</a></li>
-                        <li><a href="#">Uniiti c'est quoi ?</a></li>
-                        <li><a href="#">Uniiti pour les pros</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            
-            </div>
-            <div class="header_searchbar1">
-				<input id="inputSearch1" type="text" value="" placeholder="Restaurant, boulangerie"/>
-				<input id="inputSearch1Hidden" type="hidden" value=""/>
-				<div class="suggestionsContainer display-none" id="suggestionsContainer1"><ul class="suggestionList" id="suggestionList1"><li>&nbsp;</li></ul></div>
-			</div>
-            <div class="header_searchbar2">
-				<input id="inputSearch2" type="text" value="" placeholder="Paris 15ème, Tour Eiffel"/>
-				<input id="inputSearch2Hidden" type="hidden" value=""/>
-				<div class="suggestionsContainer display-none" id="suggestionsContainer2"><ul class="suggestionList" id="suggestionList2"><li>&nbsp;</li></ul></div>
-			</div>
-            <div class="header_button_plus" id="recherche_avancee_button"><button title="Champ de recherche avancée" type="button">+</button></div>
-            <div id="ButtonFiltre" class="header_button_search"><button type="button"></button></div>
+				<div class="header_button_menu">
+					<button type="button"></button>
+					<div id="header_menu_left" class="header_infos_menulist">
+						<ul>
+							<li><a href="#">Comment ça marche ?</a></li>
+							<li><a href="#">Uniiti c'est quoi ?</a></li>
+							<li><a href="#">Uniiti pour les pros</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+				
+				</div>
+				<div class="header_searchbar1">
+					<input id="inputSearch1" type="text" value="" placeholder="Restaurant, boulangerie"/>
+					<input id="inputSearch1Hidden" type="hidden" value=""/>
+					<div class="suggestionsContainer display-none" id="suggestionsContainer1"><ul class="suggestionList" id="suggestionList1"><li>&nbsp;</li></ul></div>
+				</div>
+				<div class="header_searchbar2">
+					<input id="inputSearch2" type="text" value="" placeholder="Paris 15ème, Tour Eiffel"/>
+					<input id="inputSearch2Hidden" type="hidden" value=""/>
+					<div class="suggestionsContainer display-none" id="suggestionsContainer2"><ul class="suggestionList" id="suggestionList2"><li>&nbsp;</li></ul></div>
+				</div>
+				<div class="header_button_plus" id="recherche_avancee_button"><button title="Champ de recherche avancée" type="button">+</button></div>
+					<input type="hidden" name="filtre_avance" id="filtre_avance" value="1" />
+					<input type="hidden" name="quoi" id="quoi" value="" />
+					<input type="hidden" name="lieu" id="lieu" value="" />
+					<div id="ButtonFiltre" class="header_button_search"><button type="submit"></button></div>
 
-        </div>
+
+			</div>
+		</form>
 
         <div class="header_logo">
             <a href="<?php echo SITE_URL . "/timeline.php"; ?>"></a>

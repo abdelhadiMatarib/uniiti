@@ -77,7 +77,7 @@
 			}
 			else {
 				if ($ClauseWhere) {$sql2 .= " AND ";} else {$sql2 .= " WHERE ";$ClauseWhere = true;}
-				$sql2 .= "id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')";
+				$sql2 .= "(id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "'))";
 				if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
 			}		
 		}
@@ -392,3 +392,6 @@
 		$req->closeCursor();    // Ferme la connexion du serveur
 		$bdd = null;            // Détruit l'objet PDO
 	?>
+	<script>
+//	console.log("<?php echo addcslashes($sql2,"\\\'\"\n\r"); ?>");
+	</script>
