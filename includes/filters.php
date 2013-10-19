@@ -1,9 +1,9 @@
 <?php
 		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
 		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
-		$ProvAvis = array('all', 'avis', 'avis en attente', 'aime', 'aime_pas', 'wish');
+		$ProvAvis = array('all', 'avis', 'avis_en_attente', 'aime', 'aime_pas', 'wish');
 		
-		$sqldroite = " FROM ( SELECT 'avis en attente' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
+		$sqldroite = " FROM ( SELECT 'avis_en_attente' AS provenance, date_avis, id_avis, id_statut, 'enseigne' AS type, contributeurs_id_contributeur, enseignes_id_enseigne
 					FROM avis AS t1
 					INNER JOIN contributeurs_donnent_avis AS t2
 					ON t1.id_avis = t2.avis_id_avis
@@ -56,14 +56,24 @@
 				echo "<style>.categorie_" . $id_enseigne . " li, .flux_commerce a, .avisenattente_commerce a {background-color:" . $result['couleur'] . " !important;}</style>\n";
 			break;
 			case "Utilisateur" :
+				$sqlfollow = "SELECT COUNT(id_avis) AS count_follow" . $sqldroite . " WHERE (contributeurs_id_contributeur IN (SELECT contributeurs_id_contributeur FROM contributeurs_follow_contributeurs WHERE contributeurs_id_contributeurfollow = " . $id_contributeur . ")
+								OR enseignes_id_enseigne IN (SELECT enseignes_id_enseigne FROM contributeurs_follow_enseignes WHERE contributeurs_id_contributeur = " . $id_contributeur . "))";
 				$sqldroite .= " WHERE contributeurs_id_contributeur = " . $id_contributeur;
 			break;
+		}
+		
+		if (isset($sqlfollow)) {
+			$reqfollow = $bdd->prepare($sqlfollow);
+			$reqfollow->execute();
+			$resultfollow = $reqfollow->fetch(PDO::FETCH_ASSOC);
+			$CompteurProvenance["follow"] = $resultfollow['count_follow'];
 		}
 								
 		$sqlprovenance = "SELECT provenance, COUNT(id_avis) as compteur" . $sqldroite . " GROUP BY provenance";
 		$reqprovenance = $bdd->prepare($sqlprovenance);
 		$reqprovenance->execute();
 		$resultprovenance = $reqprovenance->fetchAll(PDO::FETCH_ASSOC);
+		$CompteurProvenance["avis_en_attente"] = 0;
 		foreach ($resultprovenance as $row) {
 			$CompteurProvenance[$row['provenance']] = $row['compteur'];
 		}

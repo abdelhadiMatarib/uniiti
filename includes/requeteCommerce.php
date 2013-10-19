@@ -70,7 +70,7 @@
 		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		if (!empty($_POST['provenance'])) {
-			if (urldecode($_POST['provenance']) == "\"avis en attente\"") {
+			if (urldecode($_POST['provenance']) == "\"avis_en_attente\"") {
 				$sql2 .= " AND id_statut = 1 AND provenance = 'avis' AND date_avis >= '" . $datemoinssept . "'";
 			}
 			else {

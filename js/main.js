@@ -141,9 +141,10 @@ function CreerOverlayPush() {
        $(this).css('float','left');
        $(this).siblings('.button_moving').css('float','right').slideDown();
 	   if ($(this).hasClass('flux_utilisateur')) {SetFiltre({provenance:'all'});}
-	   if ($(this).hasClass('avisenattente_utilisateur')) {SetFiltre({provenance:'avis en attente'});}
+	   if ($(this).hasClass('avisenattente_utilisateur')) {SetFiltre({provenance:'avis_en_attente'});}
+	   if ($(this).hasClass('quoideneuf_utilisateur')) {SetFiltre({provenance:'follow'});}
 	   if ($(this).hasClass('flux_commerce')) {SetFiltre({provenance:'all'});}
-	   if ($(this).hasClass('avisenattente_commerce')) {SetFiltre({provenance:'avis en attente'});}
+	   if ($(this).hasClass('avisenattente_commerce')) {SetFiltre({provenance:'avis_en_attente'});}
     });
     
     // Social buttons display

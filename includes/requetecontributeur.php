@@ -32,7 +32,8 @@
 					ON t1.id_arrondissement = t2.id_arrondissement WHERE t1.id_quartier = :id_quartier";
 		$req5 = $bdd->prepare($sql5);
 		
-		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne		
+		// Requête de récupération des infos contributeurs, date, note, commentaire, enseigne
+		
 		$sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2,
 				couleur, t11.posx AS scposx, t11.posy AS scposy, t10.posx, t10.posy, date_avis, id_avis, id_statut, type, id_contributeur, email_contributeur, pseudo_contributeur, photo_contributeur,
 				prenom_contributeur, nom_contributeur, id_enseigne, nom_enseigne, box_enseigne, slide1_enseigne, x1, t9.y1, cp_enseigne, id_quartier, nom_ville, url
@@ -63,13 +64,20 @@
 								INNER JOIN categories AS t12
 								ON t10.id_categorie = t12.id_categorie 
 									INNER JOIN villes  AS t13
-									ON t9.villes_id_ville = t13.id_ville WHERE id_contributeur = " . $id_contributeur;
+									ON t9.villes_id_ville = t13.id_ville";		
+
+		if ((!empty($_POST['provenance'])) && (urldecode($_POST['provenance']) == "\"follow\"")) {
+			$_POST['provenance'] = "\"all\"";
+			$sql2 .=" WHERE (contributeurs_id_contributeur IN (SELECT contributeurs_id_contributeur FROM contributeurs_follow_contributeurs WHERE contributeurs_id_contributeurfollow = " . $id_contributeur . ")
+								OR enseignes_id_enseigne IN (SELECT enseignes_id_enseigne FROM contributeurs_follow_enseignes WHERE contributeurs_id_contributeur = " . $id_contributeur . "))";
+		}
+		else {$sql2 .= " WHERE id_contributeur = " . $id_contributeur;}
 		
 		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
 		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		if (!empty($_POST['provenance'])) {
-			if (urldecode($_POST['provenance']) == "\"avis en attente\"") {
+			if (urldecode($_POST['provenance']) == "\"avis_en_attente\"") {
 				$sql2 .= " AND id_statut = 1 AND provenance = 'avis' AND date_avis >= '" . $datemoinssept . "'";
 			}
 			else {
@@ -83,10 +91,10 @@
 		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}
 		if (!empty($_POST['sscategorie'])) {$sql2 .= " AND t10.id_sous_categorie2 = " . $_POST['sscategorie'];}
 		$sql2 .= " ORDER BY date_avis DESC LIMIT 0," . $NbItems;			
-		
+
 		$req2 = $bdd->prepare($sql2);
 		$req2->execute();
-
+	
 		$RequeteNow = $bdd->prepare("select NOW() AS Maintenant");
 		$RequeteNow->execute();
 		$Maintenant = $RequeteNow->fetchAll(PDO::FETCH_ASSOC);

@@ -71,7 +71,7 @@
 		$ClauseWhere = false;
 		if (!empty($_POST['lastid'])) {$sql2 .= "WHERE date_avis < " . urldecode($_POST['lastid']);$ClauseWhere = true;}
 		if (!empty($_POST['provenance'])) {
-			if (urldecode($_POST['provenance']) == "\"avis en attente\"") {
+			if (urldecode($_POST['provenance']) == "\"avis_en_attente\"") {
 				if ($ClauseWhere) {$sql2 .= " AND ";} else {$sql2 .= " WHERE ";$ClauseWhere = true;}
 				$sql2 .= "id_statut = 1 AND provenance = 'avis' AND date_avis >= '" . $datemoinssept . "'";
 			}

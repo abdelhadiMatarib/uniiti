@@ -63,7 +63,7 @@
 			url : siteurl + $url,
 			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
 			success : function(html){
-				if (html) {console.log(html);
+				if (html) {
 					$('#box_container .box').remove();
 					$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 					$('#box_container .box').css({overflow : 'visible'});
