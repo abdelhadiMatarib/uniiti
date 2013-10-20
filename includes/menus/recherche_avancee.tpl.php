@@ -51,7 +51,7 @@
                     
                     <div class="recherche_avancee_menu recherche_type">
                         <li class="recherche_avancee_item">
-                            <a class="recherche_mot_inactif" href="#" title="" val="commerce">Commerce</a>
+                            <a class="recherche_mot_inactif" href="#" title="" val="enseigne">Commerce</a>
                             <div class="recherche_picto_container"></div>
                         </li>
                         <li class="recherche_avancee_item">
@@ -153,7 +153,6 @@
 </div>
 <div class="close_button_cdr"></div>
 <script>
-
 	var MotsActifs = new Array;
 	var Compteur = 1;
 	$('.recherche_mot_actif').each(function () {
@@ -205,6 +204,86 @@
 		else {return true;}
 	}
 	
+	function NouveauMenu(Menu) {
+		var cible = '', retour = true;
+		switch (Menu.attr('class')) {
+			case 'recherche_avancee_2' :
+			cible = 'id_ville';
+			break;
+			case 'recherche_avancee_3' :
+			cible = 'categorie';
+			break;
+			case 'recherche_avancee_4' :
+			cible = 'scategorie';
+			break;
+			case 'recherche_avancee_5' :
+			cible = 'sscategorie';
+			break;
+			case 'recherche_avancee_6' :
+			cible = 'id_budget';
+			break;					
+		}
+
+		var data = {cible : cible, provenance : 'all'};
+		$('.recherche_mot_actif').each(function () {
+			if ($(this).parent().parent().find('.text_selected').length > 0) {
+				var valeur = $(this).attr('val');
+				var classe = $(this).parent().parent().parent().attr('class');
+				switch (classe) {
+					case 'recherche_avancee_1' :
+					data = $.extend(data, {type : valeur});
+					$('#type').val(valeur);
+					break;
+					case 'recherche_avancee_2' :
+					data = $.extend(data, {id_ville : valeur});
+					$('#id_ville').val(valeur);
+					break;
+					case 'recherche_avancee_3' :
+					data = $.extend(data, {categorie : valeur});
+					$('#categorie').val(valeur);
+					break;
+					case 'recherche_avancee_4' :
+					data = $.extend(data, {scategorie : valeur});
+					$('#scategorie').val(valeur);
+					break;
+					case 'recherche_avancee_5' :
+					data = $.extend(data, {sscategorie : valeur});
+					$('#sscategorie').val(valeur);
+					break;
+					case 'recherche_avancee_6' :
+					data = $.extend(data, {id_budget : valeur});
+					$('#id_budget').val(valeur);
+					break;					
+				}
+			}
+		});
+//		console.log(data);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetesearchavancee.php',
+			data : data,
+			success: function(result){console.log(result);
+				if (result.result != 'no data') {
+					html = '';
+					for (k in result) {
+							html += '<li class="recherche_avancee_item"><a val="'+result[k].id+'" class="recherche_mot_inactif" href="#" title="">'+result[k].nom+'</a><div class="recherche_picto_container"';
+							if (typeof(result[k].posx) != 'undefined') {
+								html += 'style="background:url(\''+siteurl+'/img/pictos_commerces/sprite_cat.jpg\') '+result[k].posx+'px '+result[k].posy+'px"></div></li>\n';
+							}
+							else {html += '></div></li>\n';}
+					}
+					Menu.find('.recherche_avancee_menu').html(html);
+					Init();
+				}
+				else {retour = false;}
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+		});
+		return retour;		
+	}	
+	
+	
 	function filterAdvanced(){
 		$('.recherche_categorie li').click(function(){
 			$('.recherche_sous_categorie li').hide();
@@ -233,76 +312,82 @@
 	// désaffichage de la phrase au début
 	$('span.recherche_avancee_2,span.recherche_avancee_3,span.recherche_avancee_4,span.recherche_avancee_5,span.recherche_avancee_6,.recherche_avancee_right').css('display','none');
 
+	function Init() {
 	// au clic sur l'élément choisit dans la phrase
-	$('.recherche_mot_actif').click(function(e){
-		e.preventDefault();
-		$(this).parent().parent().parent().parent().find('.recherche_avancee_menu').removeClass('menu_selected').slideUp();
-		$(this).parent().next().addClass('menu_selected').slideDown();
-		//$(this).parent().parent().parent().find('.recherche_avancee_menu').slideUp();
-	});
-
-	// au clic sur un des éléments dans la liste
-	$('.recherche_mot_inactif').click(function(){
-		var choix = $(this).text();
-		var currentTxt = $(this).parent().parent().parent().find('.recherche_text_val').text();
-		$('.recherche_avancee_current_txt span').text(currentTxt);
-		$(this).parent().parent().find('.recherche_picto_container').removeClass('picto_selected');
-		$(this).parent().parent().find('.recherche_mot_inactif').removeClass('text_selected');
-		$(this).next().addClass('picto_selected');
-		$(this).addClass('text_selected');
-		$(this).parent().parent().parent().find('.recherche_mot_actif').text(choix);
-		$(this).parent().parent().parent().find('.recherche_mot_actif').attr('val', $(this).attr('val'));
-		$(this).parent().parent().slideUp();
-
-		$(this).parent().parent().parent().parent().next('span:first').slideDown();
-		var affiche = initnext = true;
-		var actuel = $(this).parent().parent().parent().parent().next('span:first');
-		var compte = 1;
-		$('.recherche_text_val').parent().parent().each(function () {
-			if ($(this).attr('class') == actuel.attr('class')) {affiche = false;}
-			if (!affiche) {
-				if (!initnext) {$(this).slideUp();}
-				else {initnext = false;}
-				$(this).find('.recherche_mot_actif').text(MotsActifs[compte]);
-				$(this).find('.recherche_mot_actif').attr('val', '');
-				$(this).find('.recherche_picto_container').removeClass('picto_selected');
-				$(this).find('.recherche_mot_inactif').removeClass('text_selected');
-			}
-			compte++;
+		$('.recherche_mot_actif').unbind('click');
+		$('.recherche_mot_actif').click(function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			$(this).parent().parent().parent().parent().find('.recherche_avancee_menu').removeClass('menu_selected').slideUp();
+			$(this).parent().next().addClass('menu_selected').slideDown();
+			//$(this).parent().parent().parent().find('.recherche_avancee_menu').slideUp();
 		});
-	});
 
-	// déplacement du curseur + overlay bleu au choix lié
-	$('.recherche_type a.recherche_mot_inactif').click(function(){
-		$('.cursor_recherche').animate({left: "82px"}, 500);
-		$('.recherche_overlay_current_status').animate({width: "101px"}, 500)
-	});
-	$('.recherche_lieu a.recherche_mot_inactif').click(function(){
-		$('.cursor_recherche').animate({left: "152px"}, 500);
-		$('.recherche_overlay_current_status').animate({width: "172px"}, 500)
-	});
-	$('.recherche_categorie a.recherche_mot_inactif').click(function(){
-		$('.cursor_recherche').animate({left: "222px"}, 500);
-		$('.recherche_overlay_current_status').animate({width: "243px"}, 500)
-	});
-	$('.recherche_sous_categorie a.recherche_mot_inactif').click(function(){
-		$('.cursor_recherche').animate({left: "294px"}, 500);
-		$('.recherche_overlay_current_status').animate({width: "314px"}, 500)
-	});
-	$('.recherche_sous_sous_categorie a.recherche_mot_inactif').click(function(){
-		$('.cursor_recherche').animate({left: "365px"}, 500);
-		$('.recherche_overlay_current_status').animate({width: "385px"}, 500)
-	});
-	$('.recherche_prix a.recherche_mot_inactif').click(function(){
-		$('.cursor_recherche').animate({left: "365px"}, 500);
-		$('.recherche_overlay_current_status').animate({width: "415px"}, 500)
-	});
+		// au clic sur un des éléments dans la liste
+		$('.recherche_mot_inactif').unbind('click');
+		$('.recherche_mot_inactif').click(function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			var choix = $(this).text();
+			var currentTxt = $(this).parent().parent().parent().find('.recherche_text_val').text();
+			$('.recherche_avancee_current_txt span').text(currentTxt);
+			$(this).parent().parent().find('.recherche_picto_container').removeClass('picto_selected');
+			$(this).parent().parent().find('.recherche_mot_inactif').removeClass('text_selected');
+			$(this).next().addClass('picto_selected');
+			$(this).addClass('text_selected');
+			$(this).parent().parent().parent().find('.recherche_mot_actif').text(choix);
+			$(this).parent().parent().parent().find('.recherche_mot_actif').attr('val', $(this).attr('val'));
+			$(this).parent().parent().slideUp();
 
-	// Affichage du 'cliquez ici' à la fin
-	/*$('.recherche_prix li a').click(function(e){
-		e.preventDefault();
-		$('.recherche_avancee_right_cliquez_wrap').slideDown();
-	});*/
+			$(this).parent().parent().parent().parent().next('span:first').slideDown();
+			var affiche = initnext = true;
+			var prochain = $(this).parent().parent().parent().parent().next('span:first');
+			var compte = 1, Menu;
+			$('.recherche_text_val').parent().parent().each(function () {
+				if ($(this).attr('class') == prochain.attr('class')) {affiche = false;}
+				if (!affiche) {
+					if (!initnext) {$(this).slideUp();}
+					else {Menu = $(this);initnext = false;}
+					$(this).find('.recherche_mot_actif').text(MotsActifs[compte]);
+					$(this).find('.recherche_mot_actif').attr('val', '');
+					$(this).find('.recherche_picto_container').removeClass('picto_selected');
+					$(this).find('.recherche_mot_inactif').removeClass('text_selected');
+				}
+				compte++;
+			});
+			if (!NouveauMenu(Menu)) {
+				$('.recherche_avancee_current_txt span').text("Pas de résultat");
+				Menu.slideUp();
+			};
+		});
+		// déplacement du curseur + overlay bleu au choix lié
+		$('.recherche_type a.recherche_mot_inactif').click(function(){
+			$('.cursor_recherche').animate({left: "82px"}, 500);
+			$('.recherche_overlay_current_status').animate({width: "101px"}, 500)
+		});
+		$('.recherche_lieu a.recherche_mot_inactif').click(function(){
+			$('.cursor_recherche').animate({left: "152px"}, 500);
+			$('.recherche_overlay_current_status').animate({width: "172px"}, 500)
+		});
+		$('.recherche_categorie a.recherche_mot_inactif').click(function(){
+			$('.cursor_recherche').animate({left: "222px"}, 500);
+			$('.recherche_overlay_current_status').animate({width: "243px"}, 500)
+		});
+		$('.recherche_sous_categorie a.recherche_mot_inactif').click(function(){
+			$('.cursor_recherche').animate({left: "294px"}, 500);
+			$('.recherche_overlay_current_status').animate({width: "314px"}, 500)
+		});
+		$('.recherche_sous_sous_categorie a.recherche_mot_inactif').click(function(){
+			$('.cursor_recherche').animate({left: "365px"}, 500);
+			$('.recherche_overlay_current_status').animate({width: "385px"}, 500)
+		});
+		$('.recherche_prix a.recherche_mot_inactif').click(function(){
+			$('.cursor_recherche').animate({left: "365px"}, 500);
+			$('.recherche_overlay_current_status').animate({width: "415px"}, 500)
+		});		
+		
+	}
+	Init();
 
 	// CHAMPS DE RECHERCHE AVANCÉE
 	/* 3 */if ($('.big_wrapper').width() == 736){

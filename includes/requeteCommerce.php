@@ -78,7 +78,7 @@
 				if (urldecode($_POST['provenance']) != "\"all\"") {$sql2 .= " AND provenance = " . urldecode($_POST['provenance']);}
 			}
 		} else {
-			$sql2 .= " AND id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')";
+			$sql2 .= " AND (id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "'))";
 		}
 		if (!empty($_POST['categorie'])) {$sql2 .= " AND t10.id_categorie = " . $_POST['categorie'];}
 		if (!empty($_POST['scategorie'])) {$sql2 .= " AND t10.id_sous_categorie = " . $_POST['scategorie'];}

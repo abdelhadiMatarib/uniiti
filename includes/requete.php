@@ -83,7 +83,7 @@
 		}
 		else {
 				if ($ClauseWhere) {$sql2 .= " AND ";} else {$sql2 .= " WHERE ";$ClauseWhere = true;}
-				$sql2 .= "id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')";
+				$sql2 .= "(id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "'))";
 		}
 		if (!empty($_POST['categorie'])) {
 				if ($ClauseWhere) {$sql2 .= " AND ";}
