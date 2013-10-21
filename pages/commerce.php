@@ -225,14 +225,14 @@
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_desc_address"><div class="img_container" id="commerce_head_desc_address_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></a></div><div id="commerce_head_desc_address_wrap" title="<?php echo $adresse1_enseigne; ?> - <?php echo $code_postal; ?> <?php echo $ville_enseigne; ?>"><address><?php echo $adresse1_enseigne; ?></address><span><?php echo $code_postal; ?> <?php echo $ville_enseigne; ?></span></div></div>
-                    <div class="commerce_head_desc_ariane"><div class="img_container" id="commerce_head_desc_ariane_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></a></div><div id="commerce_head_desc_ariane_wrap" title="Commerce - <?php echo $categorie; ?> - <?php echo $sous_categorie; ?> - <?php echo $sous_categorie2; ?>"><span>Commerce - <?php echo $categorie; ?> - <?php echo $sous_categorie; ?></span><span class="commerce_head_desc_ariane_lastcat"> - <?php echo $sous_categorie2; ?></span></div></div>
+                    <div class="commerce_head_desc_address" id="commerce_head_desc_address_button"><div class="img_container" ><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></div><div id="commerce_head_desc_address_wrap" title="Visualiser sur la carte"><address><?php echo $adresse1_enseigne; ?></address><span><?php echo $code_postal; ?> <?php echo $ville_enseigne; ?></span></div></div>
+                    <div class="commerce_head_desc_ariane" id="commerce_head_desc_ariane_button"><div class="img_container" ><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></div><div id="commerce_head_desc_ariane_wrap" title="Commerce - <?php echo $categorie; ?> - <?php echo $sous_categorie; ?> - <?php echo $sous_categorie2; ?>"><span>Commerce - <?php echo $categorie; ?> - <?php echo $sous_categorie; ?></span><span class="commerce_head_desc_ariane_lastcat"> - <?php echo $sous_categorie2; ?></span></div></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
-                    <div class="commerce_head_desc_prices">
-						<div class="img_container" id="commerce_head_desc_prices_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="<?php echo $budget; ?>" alt="" height="21" width="21" /></a></div>
+                    <div class="commerce_head_desc_identity" id="commerce_head_desc_identity_button"><div class="img_container" ><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
+                    <div class="commerce_head_desc_prices" id="commerce_head_desc_prices_button">
+						<div class="img_container" ><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="<?php echo $budget; ?>" alt="" height="21" width="21" /></div>
 						<div id="commerce_head_desc_prices_wrap">
 							<?php for ($i = 1 ; $i <= $id_budget ; $i++) { ?>
 								<img title="<?php echo $budget; ?>" class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" />
@@ -256,9 +256,9 @@
                     </div>
                 </div>
                 <div class="commerce_head_infos">
-                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
-                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></a></div>
-                    <div class="commerce_head_infos_suivre" id="Suivre"><a href="#" title=""><span id="TexteSuivre">Suivre</span><div class="img_container"><img id="ImageSuivre" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
+                    <div class="commerce_head_infos_services" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/prestationstarifs.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></div>
+                    <div class="commerce_head_infos_infos" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infospratiques.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></div>
+                    <div class="commerce_head_infos_suivre" id="Suivre"><div class="img_container"><img id="ImageSuivre" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="59" width="59" /></div><span id="TexteSuivre">Suivre</span></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
@@ -298,9 +298,9 @@
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
-                <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="20" width="20" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div>
-                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="17" width="18" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
-                <a href="#" title="" onclick="<?php echo $IlsSuiventCeCommerce; ?>"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></a>
+                <div class="commerce_head2_reseau"><span class="commerce_head2_text1">Son</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></div>
+                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div></div>
+                <div class="commerce_head2_abonnes"onclick="<?php echo $IlsSuiventCeCommerce; ?>"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></div>
                 </div>
             </div>
             <div class="commerce_couv">
@@ -317,8 +317,7 @@
 					<?php if ($slide4_enseigne != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_enseigne; ?>" title="" alt=""><?php } ?>
 					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne; ?>" title="" alt=""><?php } ?>
 				    </div>
-				    <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
-                <div class="commerce_gerant"><div class="gerant_title" style="background-color:<?php echo $couleur; ?>;"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
+				    <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Concept <span style="color:<?php echo $couleur; ?>"> & Gérant</span></span> <div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><img id="gerant_photo"src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" style="border: 2px solid <?php echo $couleur; ?>" /><?php echo $descriptif ?></p></div>
 				<div class="commerce_recos">
 					<a class="button_show_recos" onclick="<?php echo $Recommandations; ?>" href="#" title="">
 						<span>Recommandations</span>
@@ -351,7 +350,7 @@
 
 				<div id="video_content" style="display:none;">
 
-					<div class="commerce_couv_video_button_retour"><a href="#" title="" alt=""><span>Retour</span></a></div>
+					<div class="commerce_couv_video_button_retour"><span>Retour</span></div>
 
 					<div class="commerce_couv_video_bg">
 
@@ -364,7 +363,7 @@
 							</div>
 						</div>
 						<div class="commerce_couv_video_txt_right">
-							<span>Découvrez</span><span class="commerce_couv_video_txt_left_colored">Chez les Artistes</span><span>en vidéo !</span>
+							<span>Découvrez</span><span class="commerce_couv_video_txt_left_colored"><?php echo $nom_enseigne; ?></span><span>en vidéo !</span>
 						</div>
 						<div class="commerce_couv_video_embbed">
 							<iframe id="lienvideo" width="" height="" src="" frameborder="0" allowfullscreen></iframe>
@@ -397,14 +396,19 @@
 		if ($('#video_content').css("display") == "none") {
 			$('#lienvideo').attr('src', url_video);
 			$('#video_content').show();
-			$('.couv_container').stop().animate({opacity: 0}, 1500).hide(1000);
-			$('#video_content').stop().animate({opacity: 1}, 1500);
+			$('.couv_container').stop().animate({opacity: 0}, 1500);
+			$('#video_content').animate({opacity: 1}, 1500);
 		}
 		else {
 			$('#lienvideo').attr('src', '');
-			$('#video_content').stop().animate({opacity: 0}, 1500).hide(1000);
-			$('.couv_container').show().stop().animate({opacity: 1}, 1500);
+			$('#video_content').animate({opacity: 0}, 1500).hide();
+			$('.couv_container').stop().animate({opacity: 1}, 1500);
 		}
+	});
+	$('.commerce_couv_video_button_retour').click(function () {
+		$('#lienvideo').attr('src', '');
+		$('#video_content').animate({opacity: 0}, 1500).hide();
+		$('.couv_container').stop().animate({opacity: 1}, 1500);
 	});
 	
 	// Gestion du slider des couvertures

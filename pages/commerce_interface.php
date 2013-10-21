@@ -323,14 +323,14 @@ else {
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_desc_address"><div class="img_container" id="commerce_head_desc_address_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></a></div><div id="commerce_head_desc_address_wrap"><address><?php echo $adresse1_enseigne; ?></address><span><?php echo $code_postal; ?> <?php echo $ville_enseigne; ?></span></div></div>
-                    <div class="commerce_head_desc_ariane"><div class="img_container" id="commerce_head_desc_ariane_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></a></div><div id="commerce_head_desc_ariane_wrap"><span>Commerce > <?php echo $categorie; ?> > <?php echo $sous_categorie; ?></span><span class="commerce_head_desc_ariane_lastcat"><?php echo $sous_categorie2; ?></span></div></div>
+                    <div class="commerce_head_desc_address" id="commerce_head_desc_address_button"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/marker_map.png" title="" alt="" height="23" width="15"/></div><div id="commerce_head_desc_address_wrap"><address><?php echo $adresse1_enseigne; ?></address><span><?php echo $code_postal; ?> <?php echo $ville_enseigne; ?></span></div></div>
+                    <div class="commerce_head_desc_ariane" id="commerce_head_desc_ariane_button"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/etiquette.png" title="" alt="" height="20" width="23" /></div><div id="commerce_head_desc_ariane_wrap"><span>Commerce > <?php echo $categorie; ?> > <?php echo $sous_categorie; ?></span><span class="commerce_head_desc_ariane_lastcat"><?php echo $sous_categorie2; ?></span></div></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
                     <div class="clearfix"></div>
-                    <div class="commerce_head_desc_identity"><div class="img_container" id="commerce_head_desc_identity_button"><a href="#"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></a></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
-                    <div class="commerce_head_desc_prices">
-						<div class="img_container" id="commerce_head_desc_prices_button"><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></a></div>
+                    <div class="commerce_head_desc_identity" id="commerce_head_desc_identity_button"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/identity.png" title="" alt="" height="18" width="22" /></div><div id="commerce_head_desc_identity_wrap"><span><?php if ($telephone_enseigne) echo 'Tél. : ';echo chunk_split($telephone_enseigne,2,'.');?></span><a href="#" title=""><?php echo $url; ?></a></div></div>
+                    <div class="commerce_head_desc_prices" id="commerce_head_desc_prices_button">
+						<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/price.png" title="" alt="" height="21" width="21" /></div>
 						<div id="commerce_head_desc_prices_wrap">
 							<?php for ($i = 1 ; $i <= $id_budget ; $i++) { ?>
 								<img class="price_bag" src="<?php echo SITE_URL; ?>/img/pictos_commerces/price_bag_1.png" title="" alt="" height="25" width="19" />
@@ -357,12 +357,12 @@ else {
                 </div>
 				<?php if ($id_enseigne != 0) { ?>
                 <div class="commerce_head_infos">
-                    <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $Menutarifs; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
-                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="<?php echo $Infospratiques; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></a></div>
+                    <div class="commerce_head_infos_services" onclick="<?php echo $Menutarifs; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/prestationstarifs.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_services_text"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></div>
+                    <div class="commerce_head_infos_infos" onclick="<?php echo $Infospratiques; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infospratiques.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_infos_text"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur">Pratiques</span></div></div>
                     <div class="utilisateur_head_infos_suggestion">
-                        <div class="commerce_reservation_commerce"><a href="#" onclick="<?php echo $Modulereservation; ?>" title=""><span class="utilisateur_suggerer_commerce_firstcat">Réservation</span></a></div>
+                        <div class="commerce_reservation_commerce"onclick="<?php echo $Modulereservation; ?>"><span class="utilisateur_suggerer_commerce_firstcat">Réservation</span></div>
                         <div class="clearfix"></div>
-                        <div class="commerce_optin_commerce"><a href="#" title="" onclick="<?php echo $Moduleoption; ?>"><span class="utilisateur_suggerer_objet_firstcat">Campagne opt-in</span></a></div>
+                        <div class="commerce_optin_commerce"onclick="<?php echo $Moduleoption; ?>"><span class="utilisateur_suggerer_objet_firstcat">Campagne opt-in</span></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -411,9 +411,9 @@ else {
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
-				<a href="#" title="" onclick="<?php echo $AjoutReseau; ?>"><div class="commerce_head2_reseau"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span></div><?php if ($count_reseau_attente > 0) { ?><div class="notifs_reseau"><span><?php echo $count_reseau_attente; ?></span></div><?php } ?><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></a>
-                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div>
-                <a href="#" title="" onclick="<?php echo $IlsSuiventCeCommerce; ?>"><div class="commerce_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></a>
+				<div class="commerce_head2_reseau"onclick="<?php echo $AjoutReseau; ?>"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span><?php if ($count_reseau_attente > 0) { ?><div class="notifs_reseau"><span><?php echo $count_reseau_attente; ?></span></div><?php } ?><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></div>
+                <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div></div>
+                <div class="commerce_head2_abonnes"onclick="<?php echo $IlsSuiventCeCommerce; ?>"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></div>
                 </div>
             </div>
             <div class="commerce_couv">
@@ -432,9 +432,9 @@ else {
 				</div>
                 
 				<?php if ($id_enseigne != 0) { ?>
-				
-                <div class="commerce_concept"><a class="button_show_concept" onclick="<?php echo $LabelsCaptain; ?>" href="#" title=""><span>Le concept</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
-                <div class="commerce_gerant"><div class="gerant_title"><a class="button_show_concept" href="#" title=""><p>Le gérant</p></a></div><div class="gerant_photo"><img src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" /></div></div>
+			
+				<div class="commerce_concept"><a class="button_show_concept" href="#" title="" onclick="<?php echo $LabelsCaptain; ?>"><span>Concept <span style="color:<?php echo $couleur; ?>"> & Gérant</span></span> <div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><img id="gerant_photo"src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" style="border: 2px solid <?php echo $couleur; ?>" /><?php echo $descriptif ?></p></div>
+
 			
 					<?php if ($Admin) { ?>
 					<div class="commerce_recos">
@@ -459,9 +459,9 @@ else {
 							</div>
 						</a>
 					</div>
-					<div class="commerce_interface_modifier_box"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/box_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la box</span></a></div>
-					<div class="commerce_interface_modifier_popin"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/vignette_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer la popin</span></a></div>
-					<div class="commerce_interface_modifier_couv"><a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" /></div><span>changer les couvertures</span></a></div>
+					<div class="commerce_interface_modifier_box" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/box_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"></div><span>Changer la box</span></div>
+					<div class="commerce_interface_modifier_popin" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/vignette_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"></div><span>Changer la popin</span></div>
+					<div class="commerce_interface_modifier_couv" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');"><div class="utilisateur_interface_modifier_icon_noir"></div><span>Changer les couvertures</span></div>
 					<?php } ?>
 				<?php } ?>
             </div>
