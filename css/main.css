@@ -30,8 +30,9 @@ input:-moz-placeholder{color:#ACACAC;}
 img#ImageSuivre{height:59px;width:59px;}
 img#ImageSuivrePopin{height:32px;width:32px;}
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
-#default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
-#default_dialog_inscription .popin_close_button{z-index: 999;position: absolute;top: 10px;right: 5px;cursor: pointer;}
+#default_dialog,#default_dialog_large{overflow:hidden;}
+#default_dialog_inscription{overflow: inherit; width: 680px !important;}
+#default_dialog_inscription .popin_close_button{z-index: 999;position: absolute;top: 10px;right: -40px;cursor: pointer;}
 #dialog_overlay{display:none;}
 .dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
 .confirmation_wrapper{z-index:998;position:relative;border-radius:3px;width:500px;}
@@ -601,67 +602,67 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 
 /* INSCRIPTION */
 
-.inscription_fb_why_wrap{display:none;width:1168px;background-color:#f0f0f0;height:70px;border-top:1px solid #e4e4e4;}
-.inscription_fb_why_left{text-align:center;float:left;width:583px;height:55px;padding-top:15px;border-right:1px solid #e4e4e4;}
-.inscription_fb_why_right{float:left;width:584px;height:60px;padding-top:8px;}
+.inscription_fb_why_wrap{display:none;width:680px;background-color:#f0f0f0;height:86px;border-top:1px solid #e4e4e4;}
+.inscription_fb_why_left{text-align:center;float:left;width:340px;height:55px;padding-top:15px;border-right:1px solid #e4e4e4;}
+.inscription_fb_why_right{float:left;width:339px;height:60px;padding-top:8px;}
 .inscription_fb_why_left span{display:block;text-transform:uppercase;font-size:1em;}
 .inscription_fb_why_right span{display:inline;text-transform:uppercase;font-size:1em;}
 span.inscription_fb_why_txt_normal{font-weight:300;}
 span.inscription_fb_why_txt_bold{font-weight:700;}
-.inscription_fb_why_right ul{padding-left:110px;}
+.inscription_fb_why_right ul{padding-left:28px;}
                     
 input:focus.inscription_field_input_text, input:focus.inscription_field_input_text {outline: none; background-color: #E6E4E4;}
 .liseret_bleu{background-color:#A4EBF1;height:5px;}
-.inscription_head{ width: 1168px;position:relative;border-radius:3px 3px 0 0;height:90px;background-color:white;text-align:center;overflow: hidden;}
+.inscription_head{ width: 680px;position:relative;border-radius:3px 3px 0 0;height:90px;background-color:white;text-align:center;overflow: hidden;}
 .inscription_head img{vertical-align:middle;margin:0 10px 0 0;}
 .inscription_head h2{margin:0;padding:15px 0 0 0;font-size:2.1em;font-weight:100;}
 .inscription_head span{display:inline-block;font-weight:400;}
-.inscription_fb_wrap{width: 1158px; overflow:hidden;position:relative;height:38px;background-color:#f0f0f0;padding:5px;}
+.inscription_fb_wrap{width: 670px; overflow:hidden;position:relative;height:38px;background-color:#f0f0f0;padding:5px;}
 .inscription_fb_plus{position:absolute;right:0;top:0;}
 .inscription_fb_plus a{display:block;}
 .fb_connect_button{cursor:pointer;margin:0 auto;background:url('../img/pictos_actions/fb_connect.png') no-repeat;height:37px;width:246px;}
 .fb_connect_button_wrap_text{padding: 8px 8px 8px 50px;}
-.fb_connect_pourquoi{position:absolute;top:15px;right:365px;}
+.fb_connect_pourquoi{position:absolute;top:15px;right:142px;}
 .fb_connect_button span{color:white;font-size:1.2em;display:inline;}
 .fb_connect_button_text{font-weight:100;}
 .fb_connect_button_highlight{font-weight:600;}
 
-.inscription_head2{width: 1168px; position:relative;border-radius:3px 3px 0 0;height:35px;background-color:#252525;}
+.inscription_head2{width: 681px; position:relative;border-radius:3px 3px 0 0;height:35px;background-color:#252525;}
 .inscription_head2 h3{font-size:1.4em;margin:0;font-weight:100;}
-.inscription_step1,.inscription_step2,.inscription_step3{padding:5px 0 0 0;color:white;float:left;width:388px;height:30px;text-align:center;}
-.inscription_current_step_texte_head > h3{color:#a4ebf1;font-weight:600;}
-.inscription_fields_left,.inscription_fields_right{position:relative;float:left;width:582px; border-right:1px solid #e4e4e4;;}
+.inscription_step1,.inscription_step2,.inscription_step3{padding:5px 0 0 0;color:white;float:left;width:227px;height:30px;text-align:center;}
+.inscription_current_step_texte_head > h3{color:#a4ebf1;}
+.inscription_fields_left,.inscription_fields_right{position:relative;float:left;width:681px;}
+.inscription_fields_left2,.inscription_fields_right2{position:relative;float:left;width:340px;}
 .inscription_border_bottom{border-bottom:1px solid #e4e4e4;}
 .inscription_border_bottomright{border-bottom:1px solid #e4e4e4;border-right:1px solid #e4e4e4;}
 .inscription_field_sexe,.inscription_field_nom,.inscription_field_prenom,.inscription_field_mail,.inscription_field_confirmmail,.inscription_field_pseudo,.inscription_field_parrain,.inscription_field_cp,.inscription_field_mdp,.inscription_field_confirmmdp{float:left;height:30px;width:219px;padding:10px 0 0 0;background-color:white;text-align:center;font-size:1.2em;text-transform:uppercase;font-weight:600;}
-.inscription_field_sexe_button{display:inline-block;width:181px;height:41px;border-bottom:1px solid #e4e4e4;}
+.inscription_field_sexe_button{display:inline-block;width:230.5px;height:41px;border-bottom:1px solid #e4e4e4;}
 .inscription_field_sexe_button_h{border-radius: 0px; border-right:1px solid #e4e4e4; background:url('../img/pictos_inscription/sexe_h.png') no-repeat;background-color:#f0f0f0;background-position-x:12px;background-position-y:5px;}
 .inscription_field_sexe_button_f{border-radius: 0px; background:url('../img/pictos_inscription/sexe_f.png') no-repeat;background-color:#f0f0f0;background-position-x:12px;background-position-y:5px;}
 .inscription_field_sexe_bg{background-color:#a4ebf1;}
-.inscription_field_input_text{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding-left: 15px; font-family:'open sans';font-size:1.4em;font-weight:100;width:362px;border-bottom:1px solid #e4e4e4;height:41px;background-color:#f0f0f0;}
-.inscription_field_input_chiffre{font-family:'open sans';float:left;padding:0 0 0 17px;font-size:1.4em;font-weight:100;width:120.6px;border-bottom:1px solid #e4e4e4;border-right:1px solid #e4e4e4;height:41px;background-color:#f0f0f0;}
+.inscription_field_input_text{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding-left: 15px; font-family:'open sans';font-size:1.4em;font-weight:100;width:461px;border-bottom:1px solid #e4e4e4;height:41px;background-color:#f0f0f0;}
+.inscription_field_input_chiffre{font-family:'open sans';float:left;padding:0 0 0 17px;font-size:1.4em;font-weight:100;width:153.6px;border-bottom:1px solid #e4e4e4;height:41px;background-color:#f0f0f0;}
 
-.inscription_charte{float:left;height:145px;width:1031px;background-color:white;}
+.inscription_charte{float:left;height:145px;width:681px;background-color:white;}
 .inscription_charte .img_container{border-bottom:1px solid #e4e4e4; float:left;height:64px;width:56px;padding:40px;}
-.inscription_charte_texte{border-bottom:1px solid #e4e4e4;color:#9A9A9A;padding:10px;height:124px;width:875px;float:left;overflow-y:scroll;}
-.inscription_next_step{background-color:#f0f0f0;float:left;width:115px;padding:10px 10px 0 10px;}
-.inscription_current_step{border-radius: 3px 3px 0 0; float:left;width:115px;height:135px;background-color:#a4ebf1;text-align: center;}
+.inscription_charte_texte{border-bottom:1px solid #e4e4e4;color:#9A9A9A;padding:10px;height:124px;width:524px;float:left;overflow-y:scroll;border-left: 1px solid rgb(214, 214, 214);}
+.inscription_next_step{display:none;background-color:#f0f0f0;float:left;width:115px;padding:10px 10px 0 10px;}
 .inscription_current_step_number{color:white;font-size: 6.5em;font-weight: 700;}
 .inscription_current_step_etape_texte{display:block;text-transform:uppercase;font-size: 1.7em;font-weight: 300;line-height:5px;}
-.inscription_footer{border-radius:0 0 3px 3px;font-size:95%;margin-bottom:40px;text-align:center;width:1166px;height:45px;float:left;position:relative;background-color:white;padding:10px 0 0 0;}
+.inscription_footer{border-radius:0 0 3px 3px;font-size:95%;margin-bottom:40px;text-align:center;width:681px;height:45px;float:left;position:relative;background-color:white;padding:10px 0 0 0;}
 .inscription_footer h4{margin:0;}
 .inscription_footer_text{font-weight:400;}
 .inscription_footer_highlight{font-weight:700;}
-.inscription_next_step_button{border-radius:0 0 3px 3px;padding:2px 0 0 0;text-align:center;color:white;position:absolute;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
+.inscription_next_step_button{border-radius: 0 0 3px 3px;padding: 2px 0 0 0;text-align: center;color: #252525;right: 10px;width: 100%;height: 30px;margin-top: 10px;background-color: #A4EBF1;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
 
 #inscription_upload{cursor:pointer;opacity:0;width:340px;height:190px;}
-.inscription_upload_button{cursor: pointer; border:1px dashed #AAAAAA;background:url('../img/pictos_inscription/upload_img.png') no-repeat 70px 48px;background-color:#f0f0f0;width:340px;height:190px; margin: 0 auto;}
+.inscription_upload_button{cursor: pointer; border:1px dashed #AAAAAA;background:url('../img/pictos_inscription/upload_img.png') no-repeat 23px 45px;background-color:#f0f0f0;width:245px;height:180px; margin: 0 auto;}
 #filedrag:hover {box-shadow: inset 0 0px 10px #C4C4C4;}
 /* Slider */
-#slider {width:583px;height:280px;overflow: hidden;margin-top:-40px;margin-left:-40px;}
+#slider {width:340px;height:280px;overflow: hidden;margin-top:-40px;margin-left:-40px;}
 .container {margin: 0 auto; width:240px;}
-.slidesjs-previous {z-index:10;position: absolute;margin:-240px 0 0 -293px;height: 240px;width: 173px;background:url('../img/slider/slider_prev.png') no-repeat rgba(255,255,255,0.6);color:red;}
-.slidesjs-next {z-index:10;position: absolute;margin: -240px 0 0 118px;height: 240px;width: 173px;background:url('../img/slider/slider_next.png') right no-repeat rgba(255,255,255,0.6);color:red;}
+.slidesjs-previous {z-index: 10;position: absolute;margin: -240px 0 0 -170px;height: 240px;width: 50px;background: url('../img/slider/slider_prev.png') no-repeat rgba(255,255,255,0.6);}
+.slidesjs-next {z-index: 10;position: absolute;margin: -240px 0 0 120px;height: 240px;width: 50px;background: url('../img/slider/slider_next.png') right no-repeat rgba(255,255,255,0.6);}
 #ombre{width: 500px; height:37px; background:url('../img/slider/slider_ombre.png') center no-repeat; margin: 0 auto; }
 
 .inscription_upload_image_texte,.inscription_choisir_image_texte{border-bottom:1px solid #e4e4e4;padding-top:10px;height:30px;text-transform:uppercase;background-color:white;text-align:center;}
@@ -673,20 +674,20 @@ input:focus.inscription_field_input_text, input:focus.inscription_field_input_te
 .inscription_upload_image_container{position:relative;border-right:1px solid #e4e4e4; height: 200px; vertical-align: middle;}
 .inscription_upload_image_container span{position:absolute;top:150px;left: 110px;width: 200px;}
 .inscription_choisir_image_container{background-color:#f0f0f0;}
-.inscription_wrap_next_step2{border-radius:0 0 3px 3px;border-top:1px solid #e4e4e4;height:49px;background-color:white;width:1166px;float:left;position:relative;}
-.inscription_next_step2{bottom:12px;right:10px;position:absolute;width:115px;padding:10px 0 0 0;z-index: 12;}
-.inscription_next_step_button2{border-radius: 0 0 3px 3px;border:none;cursor:pointer;padding:0;text-align:center;color:white;float:left;right:10px;top:0;width:115px;height:30px;background-color:#252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
-.inscription_avatar_selected{position:absolute;left:50%;margin-left:-60px;bottom:18px;z-index:12;}
-.inscription_avatar_selected_texte{text-transform:uppercase;text-align:center;background-color:#a4ebf1;}
-.inscription_avatar_selected_texte span{display:block;font-weight:700;}
+.inscription_wrap_next_step2{border-radius:0 0 3px 3px;border-top:1px solid #e4e4e4;height:4px;background-color:white;width:680px;float:left;position:relative;}
+.inscription_next_step2{bottom: -25px;position: absolute;width: 100%;padding: 10px 0 0 0;z-index: 12;}
+.inscription_next_step_button2{border-radius: 0 0 3px 3px;border: none;cursor: pointer;padding: 0;text-align: center;color: white;margin-top: 51px;width: 100%;height: 30px;background-color: #252525;font-size: 1.3em;text-transform: uppercase;font-weight: 700;}
+.inscription_avatar_selected{position: absolute;left: 50%;margin-left: -60px;bottom: 14px;z-index: 12;}
+.inscription_avatar_selected_texte{position: absolute;left: 50%;margin-left: -60px;bottom: 8px;z-index: 12;}
+.inscription_avatar_selected_texte span{position: absolute;color: white;padding-top: 5px;margin-top: -20px;font-weight: 600;width: 120px;height: 22px;border-top: 1px dashed rgb(146, 146, 146);text-transform: uppercase;text-align: center;background-color: rgba(41, 41, 41, 0.4);}
 
-.inscription_centres_interets_aime_texte,.inscription_centres_interets_aimepas_texte{background-color:white;padding:10px;text-align:center;width:974px;float:left;}
+.inscription_centres_interets_aime_texte,.inscription_centres_interets_aimepas_texte{background-color:white;padding:10px;text-align:center;width:577px;float:left;}
 .inscription_centres_interets_aime_texte h3,.inscription_centres_interets_aimepas_texte h3{display:inline;font-weight:400;text-transform:uppercase;}
 h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_interets_aimepas_texte_highlight{font-weight:700;}
-.inscription_centres_interets_aime_wrap,.inscription_centres_interets_aimepas_wrap{width:995px;float:left;height:450px;background-color:#f0f0f0;}
-.inscription_box{float:left;width:198px;height:150px;background-color:white;border-right:1px solid #e4e4e4;border-top:1px solid #e4e4e4;}
+.inscription_centres_interets_aime_wrap,.inscription_centres_interets_aimepas_wrap{width:597px;float:left;height:525px;background-color:#f0f0f0;}
+.inscription_box{float:left;width:198px;height:130px;background-color:white;border-right:1px solid #e4e4e4;border-top:1px solid #e4e4e4;}
 .inscription_box:hover{cursor:pointer;}
-.valid_box{opacity:0;display:none;width: 199px;height: 150px;position: absolute;background: url('../img/pictos_popins/valid_box.png') 50% 50% no-repeat rgba(0,0,0,0.56)}
+.valid_box{opacity:0;display:none;width: 199px;height: 130px;position: absolute;background: url('../img/pictos_popins/valid_box.png') 50% 50% no-repeat rgba(0,0,0,0.56)}
 .inscription_box_head{float:left;}
 .inscription_box_head_img_container{float:left;width:36px;height:36px;text-align:center;}
 .inscription_box_head_img_container img{vertical-align:middle;}
@@ -696,13 +697,13 @@ h3.inscription_centres_interets_aime_texte_highlight,h3.inscription_centres_inte
 .categorie_restauration_img{background-color:#fabe41;}
 .inscription_box_body_img{float:left;}
 
-.inscription_centres_interets_aime_wrap2,.inscription_centres_interets_aimepas_wrap2{text-align:center;float:left;background-color:#f0f0f0;width:173px;height:490px;}
+.inscription_centres_interets_aime_wrap2,.inscription_centres_interets_aimepas_wrap2{text-align:center;float:left;background-color:#f0f0f0;width:83px;height:565px;}
 .inscription_centres_interets_aime_wrap2 span,.inscription_centres_interets_aimepas_wrap2 span{display:block;text-transform:uppercase;font-size:1.17em;}
 .inscription_centres_interets_aime_wrap2 ul,.inscription_centres_interets_aimepas_wrap2 ul{margin:20px 0 0 0;}
 .inscription_centres_interets_aime_wrap2 ul li,.inscription_centres_interets_aimepas_wrap2 ul li{display:block;margin:15px 0 0 0;}
 .inscription_centres_interets_choix_texte{margin:10px 0 0 0;font-weight:100;}
 .inscription_centres_interets_choix_texte_highlight{font-weight:700;}
-.inscription_centres_interets_big_wrap{float:left;width:994px;overflow:hidden;}
+.inscription_centres_interets_big_wrap{float:left;width:597px;overflow:hidden;}
 
 .inscription_final_step_left{background-color:#a4ebf1;height:215px;width:530px;padding:60px;border-radius: 0 0 0 3px;}
 .inscription_final_step_img_container{float:left;}

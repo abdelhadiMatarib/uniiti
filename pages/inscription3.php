@@ -41,7 +41,6 @@
 				
 				<div class="inscription_wrap_next_step2">
 					<div class="inscription_next_step2">
-						<div class="inscription_current_step"><span class="inscription_current_step_number">3</span><span class="inscription_current_step_etape_texte">étape</span></div>
 						<button class="inscription_next_step_button2" id="submitbutton" type="submit" role="button" class="css3button" >Suivant</button>
 					</div>
 				</div>

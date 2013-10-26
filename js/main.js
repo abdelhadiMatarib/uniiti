@@ -1145,7 +1145,7 @@ $(document).ready(function() {
 		modal:true,
 		draggable:true,
 		resizable:false,
-		width: '1230px',
+		width: '690px',
 		height: 'auto',
 		open: function() {
                     $('.ui-widget-overlay').hide().fadeIn();

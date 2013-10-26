@@ -120,7 +120,6 @@
 
 				</div>
 				<div class="inscription_next_step">
-					<div class="inscription_current_step"><span class="inscription_current_step_number">1</span><span class="inscription_current_step_etape_texte">étape</span></div>
 				</div>
 				<div class="inscription_footer">
 					<h4 class="inscription_footer_highlight">Nous nous engageons à protéger votre vie privée et votre adresse e-mail ne sera jamais vendue ni louée.</h4> 
