@@ -66,7 +66,7 @@
 			$(this).addClass('valid_oui');
 			$('.module_reservation_left_head1_non').removeClass('valid_non');
 			$('.module_reservation_left_head2_rdv').addClass('valid_rdv');
-			$id('resa_infos_affichage').checked = true;
+			$id('resa_infos_notifs_mail').checked = true;
 		}
 	});
 	$('.module_reservation_left_head1_non').click(function () {
@@ -75,7 +75,7 @@
 			$('.module_reservation_left_head1_oui').removeClass('valid_oui');
 			$('.module_reservation_left_head2_reservation').removeClass('valid_renligne');
 			$('.module_reservation_left_head2_rdv').removeClass('valid_rdv');
-			$id('resa_infos_affichage').checked = $id('resa_infos_notifs_mail').checked = $id('resa_infos_notifs_sms').checked = false;
+			$id('resa_infos_notifs_mail').checked = $id('resa_infos_notifs_sms').checked = false;
 		}
 	});
 	$('.module_reservation_left_head2_rdv').click(function () {
@@ -97,8 +97,7 @@
 		else if ($('.module_reservation_left_head2_rdv').hasClass('valid_rdv')) {reservation = 1;}
 		else {reservation = 2;}
 		
-		if ($id('resa_infos_affichage').checked) {prevenir_reservation = 0;}
-		else if ($id('resa_infos_notifs_mail').checked) {prevenir_reservation = 1;}
+		if ($id('resa_infos_notifs_mail').checked) {prevenir_reservation = 1;}
 		else if ($id('resa_infos_notifs_sms').checked) {prevenir_reservation = 2;}
 		else {prevenir_reservation = 0;};
 

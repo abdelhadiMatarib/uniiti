@@ -30,7 +30,7 @@ input:-moz-placeholder{color:#ACACAC;}
 img#ImageSuivre{height:32px;width:32px;}
 img#ImageSuivrePopin{height:32px;width:32px;}
 *{font-family: 'Open Sans', sans-serif;border:0 none; padding:0;margin:0;text-decoration:none;}
-#default_dialog,#default_dialog_large, #default_dialog_inscription{overflow:hidden;}
+#default_dialog,#default_dialog_large, #default_dialog_inscription, #default_dialog_map{overflow:hidden;}
 #default_dialog_inscription .popin_close_button{z-index: 999;position: absolute;top: 10px;right: 5px;cursor: pointer;}
 #dialog_overlay{display:none;}
 .dialog_overlay_wrap_content{z-index:101;text-align:center;position: fixed;top: 50%;left:50%;width:70px;height:70px;margin-left: -35px;margin-top: -35px;}
@@ -990,7 +990,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
 .menutarifs_head{width:700px;height:50px;background-color:#252525;color:white;}
 .menutarifs_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
-.menutarifs_body,.menutarifs_body_entrees,.menutarifs_body_plats,.menutarifs_body_desserts,.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{float:left;}
+.menutarifs_body,.menutarifs_body_entrees,.menutarifs_body_plats,.menutarifs_body_desserts,.localisation_head,.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{float:left;}
 .infospratiques_body_horaires,.infospratiques_body_metro,.infospratiques_body_autolib,.infospratiques_body_velib,.infospratiques_body_paiements,.infospratiques_body_parking,.infospratiques_body_voiturier{float:left;}
 .infospratiques_head_img_container{float:left;height:22px;width:22px;margin:0 8px 0 0;}
 .horaires_commerces_ouvert{background-color:#c6eeca !important;}
@@ -1017,7 +1017,8 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .img_container_payment_options5{height:34px;width:55px;background-position:-205px 0px;}
 .menutarifs_body{overflow-y:scroll;overflow-x:hidden;height:500px;width:700px;}
 .menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:663px;padding:10px;}
-.menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
+.localisation_head{background-color:#73d4dc;width:680px;padding:10px;}
+.localisation_head span,.menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
 .menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:562px;}
 .menutarifs_body_entrees_prix_generique{border-top:1px solid #e4e4e4;text-align:center;padding:10px;float:left;background-color:#f0f0f0;width:80px;}
 .ajout_liencommerce_infos_txt{float:left;text-align:center;width:480px;padding:10px;background-color:white;}
@@ -1303,6 +1304,7 @@ input.nom_entreprise_modifiable_input{float:left;width: 190px;height: 10px;margi
 input.valider_nouveau_nom_commerce{float:left;height:32px;width:32px;border:1px dashed #252525;padding:5px;margin:10px 0 0 10px;border-radius:3px;background:url('../img/pictos_dashboard/button_valider_nouveau.png') no-repeat center;}
 .display-none {display:none;}
 #suggestionsContainer3, #suggestionsContainer4 {position: relative;background-color:#252525;color:white;max-width: 620px;top: -40px;left: 0px;z-index:1000;}
+#suggestionsContainer5 {position: relative;background-color:#252525;color:white;max-width: 250px;top: 30px;left: 0px;z-index:1000;}
 
 /* DASHBOARD OBJET */
 input.nom_objet_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}
@@ -1497,6 +1499,7 @@ span.span_float_left_prix{float:left;margin: 6px 5px;}
 .paiement_selected{background-color:#acacac !important;}
 input.button_voiturier_choix{text-transform:uppercase;padding:10px 40px;background-color:white;border:1px dashed #252525;}
 input.button_voiturier_choix:hover{background-color:#f0f0f0;border:1px dashed #acacac;}
+input.button_voiturier_choix.valid{background-color:#f0f0f0;border:1px dashed #acacac;}
 
 .dashboard_menutarifs_nopadding{padding:0 !important;}
 .dashboard_menutarifs_largerprice{width:100px !important;}

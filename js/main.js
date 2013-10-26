@@ -1220,6 +1220,26 @@ $(document).ready(function() {
 			});
 		}
 	});
+	
+	var defaultdialog_map = $("#default_dialog_map").dialog({ 
+		autoOpen: false,
+		modal:true,
+		draggable:true,
+		resizable:false,
+		width: '760px',
+		height: 'auto',
+		open: function() {
+            $('.ui-widget-overlay').hide().fadeIn();
+			jQuery('.ui-widget-overlay').bind('click', function() {
+				jQuery('#default_dialog_map').dialog('close');
+			})
+			$('.popin_close_button').click(function(e){
+				e.preventDefault(); //don't go to default URL
+				var defaultdialog_map = $("#default_dialog_map").dialog();
+				defaultdialog_map.dialog('close');
+			});
+		}
+	});
   
     // Overlay bandeau accueil
 $('#close_button_home').click(function() {
@@ -1339,6 +1359,8 @@ $('#close_button_home').click(function() {
 		inputSearch3Hidden = $("input#inputSearch3Hidden"), suggestionList3 = $("#suggestionList3");
 	var suggestionsContainer4 = $("#suggestionsContainer4"), inputSearch4 = $("input#inputSearch4"),
 		inputSearch4Hidden = $("input#inputSearch4Hidden"), suggestionList4 = $("#suggestionList4");
+	var suggestionsContainer5 = $("#suggestionsContainer5"), inputSearch5 = $("a#inputSearch5"),
+		inputSearch5Hidden = $("input#inputSearch5Hidden"), suggestionList5 = $("#suggestionList5");
 
 	document.selectSuggestion  = function (NumAction, keyCode , suggestionListLenght, suggestionList, inputSearch, inputSearchHidden) {
 		var suggestionListLi = suggestionList.children();
@@ -1421,8 +1443,23 @@ $('#close_button_home').click(function() {
 		}
 		if(suggestionsContainer4.is(":visible") === false) {suggestionsContainer4.show();}
 		emptyInput(inputSearch4, suggestionsContainer4);
-	});		
+	});
 	
+	$('#header_choixvilles2').click(function (e) {
+		if( suggestionsContainer5.is(":visible") === false ) {suggestionsContainer5.show();}
+		else {suggestionsContainer5.hide();}
+		emptyInput(inputSearch5, suggestionsContainer5);
+	});
+
+	suggestionList5.children().on("mouseenter" , function(){
+		suggestionList5.children().removeClass("active");
+		$(this).addClass("active");
+	}).on("click" , function() {
+		inputSearch5Hidden.val($(this).val());
+		inputSearch5.html($(this).text());
+		suggestionsContainer5.hide();
+		SetFiltre({provenance:'all', id_ville:$(this).val()});
+	});
 	
 	inputSearch1.keyup(function (e) {
 		var keyCode = e.keyCode || e.which;

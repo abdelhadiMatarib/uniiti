@@ -61,7 +61,7 @@
                             </a>
                         </div>
 			</div>
-                        
+
 			<!-- CONTENU PRINCIPAL -->
 			<div id="box_container" class="content">
 				<?php if (!isset($_POST['filtre_avance'])) {include 'includes/requete.php';} ?>
@@ -74,8 +74,9 @@
 		<?php include 'includes/footer.php' ?>
         <!-- FIN FOOTER -->
 		<?php include 'includes/js.php' ?>
-	</body>
-</html>
+
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyAIPMi9wXX7j6Wzer4QdNGLq4MPO4ykUQw"></script>
+
 <script>
 <?php if (!empty($_POST['filtre_avance'])) {
 	$data = "{provenance:'all'";
@@ -83,4 +84,79 @@
 	$data .= "}";
 	echo "SetFiltre(" . $data . ");";
 } ?>
+
+var geocoder = null;
+var user_position = false;
+
+function Distance(LatLng, newLatLng) {
+	   // setup our variables
+	   var lat1 = LatLng.lat();
+	   var radianLat1 = lat1 * ( Math.PI  / 180 );
+	   var lng1 = LatLng.lng();
+	   var radianLng1 = lng1 * ( Math.PI  / 180 );
+	   var lat2 = newLatLng.lat();
+	   var radianLat2 = lat2 * ( Math.PI  / 180 );
+	   var lng2 = newLatLng.lng();
+	   var radianLng2 = lng2 * ( Math.PI  / 180 );
+	   // sort out the radius, MILES or KM?
+	   var earth_radius = 6378.1; // (km = 6378.1) OR (miles = 3959) - radius of the earth
+	 
+	   // sort our the differences
+	   var diffLat =  ( radianLat1 - radianLat2 );
+	   var diffLng =  ( radianLng1 - radianLng2 );
+	   // put on a wave (hey the earth is round after all)
+	   var sinLat = Math.sin( diffLat / 2  );
+	   var sinLng = Math.sin( diffLng / 2  ); 
+	 
+	   // maths - borrowed from http://www.opensourceconnections.com/wp-content/uploads/2009/02/clientsidehaversinecalculation.html
+	   var a = Math.pow(sinLat, 2.0) + Math.cos(radianLat1) * Math.cos(radianLat2) * Math.pow(sinLng, 2.0);
+	 
+	   // work out the distance
+	   var distance = earth_radius * 2 * Math.asin(Math.min(1, Math.sqrt(a)));
+	 
+	   // return the distance
+	   return distance;
+	}
+
+function SelectionneVille(position) {
+	user_position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	var MinDistance = -1;
+	var Compteur = 0;
+	$('#suggestionList5 li').each(function () {
+		var id = $(this).attr("id");
+		geocoder.geocode( { 'address': $(this).text()}, function(results, status) {
+			/* Si l'adresse a pu être géolocalisée */
+			if (status == google.maps.GeocoderStatus.OK) {
+			 /* Récupération de sa latitude et de sa longitude */
+				var position = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+				var Dist = Distance(user_position, position);
+				Compteur++;
+//				console.log(Dist+' '+id);
+				if ((MinDistance == -1) || (Dist < MinDistance)) {
+					MinDistance = Dist;
+					$('#suggestionList5').children().removeClass("active");
+					$('#'+id).addClass("active");
+					if (Compteur == $('#suggestionList5 > li').length) {$('#'+id).click();}
+				}
+			 }
+		});
+	});
+}
+
+$(document).ready(function() {
+    if (!navigator.geolocation) return true; // Fx 3.5+ only
+	
+	geocoder = new google.maps.Geocoder();
+	navigator.geolocation.getCurrentPosition(function(position) {SelectionneVille(position);}
+											, function(error) {alert('Nous n\'avons pas pu vous géolocaliser.');});
+
+    $('.header_button_ville').click(function() {
+	navigator.geolocation.getCurrentPosition(function(position) {SelectionneVille(position);}
+											, function(error) {alert('Nous n\'avons pas pu vous géolocaliser.');});
+    });
+
+});
+
 </script>
+	</body>
+</html>

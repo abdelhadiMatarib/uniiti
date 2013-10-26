@@ -182,9 +182,19 @@
 			. "email_reservation : '" . $email_reservation . "', "
 			. "telephone_reservation : '" . $telephone_reservation . "'}";
 			
+	$datainfospratiques = "{type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "couleur:'" . $couleur . "', "
+			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
+			. "adresse1_enseigne:'" . addslashes($adresse1_enseigne) . "', "
+			. "code_postal :'" . addslashes($code_postal) . "', "
+			. "ville_enseigne:'" . addslashes($ville_enseigne) . "',"
+			. "telephone_enseigne : '" . $telephone_enseigne . "'}";
+			
 	$menu_tarif = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";	
 	$IlsSuiventCeCommerce = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog')";
 	$Reservation = "OuvrePopin(" . $datareservation . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
+	$Infospratiques = "OuvrePopin(" . $datainfospratiques . ", '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
 
 	if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
@@ -199,6 +209,7 @@
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>
+		<div id="default_dialog_map"></div>
         <div id="dialog_overlay">
 			<div class="index_overlay"></div>
 			<div class="dialog_overlay_wrap_content">
@@ -257,7 +268,7 @@
                 </div>
                 <div class="commerce_head_infos">
                     <div class="commerce_head_infos_services"><a href="#" title="" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/menutarifs.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></a></div>
-                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></a></div>
+                    <div class="commerce_head_infos_infos"><a href="#" title="" onclick="<?php echo $Infospratiques; ?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/horloge.png" alt="" title="" height="35" width="35" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></a></div>
                     <div class="commerce_head_infos_suivre" id="Suivre"><a href="#" title=""><span id="TexteSuivre">Suivre</span><div class="img_container"><img id="ImageSuivre" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></a></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -390,8 +401,9 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
         <?php include'../includes/js.php' ?>
-		
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyAIPMi9wXX7j6Wzer4QdNGLq4MPO4ykUQw&libraries=places,adsense"></script>		
 	<script>
+	
 	var url_video = '<?php echo $url_video; ?>';
 	$('.commerce_head2_coinvideo').click(function () {
 		if ($('#video_content').css("display") == "none") {
@@ -411,7 +423,14 @@
 	$(function() {
 	  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
 	  });
-	})
+	});
+	var adresse_enseigne = '<?php echo addslashes($adresse1_enseigne);?>';
+	var code_postal = '<?php echo $code_postal;?>';
+	var ville_enseigne = '<?php echo addslashes($ville_enseigne);?>';
+	adresse_enseigne += ','+code_postal+','+ville_enseigne;	
+    $('#commerce_head_desc_address_button').click(function(e){
+		OuvrePopin({adresse_enseigne : adresse_enseigne}, '/includes/popins/popin_map.php', 'default_dialog_map');
+    });	
 	
 	function InitCouvertures() {
 	

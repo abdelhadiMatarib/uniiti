@@ -19,6 +19,18 @@
 	var CptScroll = 0;
 	var $container = $('#box_container');
 	$container.isotope({itemSelector : '.box'});
+
+	function AfficheLoader() {
+		var fini = false;
+		$("#dialog_overlay").show(100, function() {
+		fini = true;
+		});
+		return fini;
+	}
+
+function AfficheLoader() {
+$("#dialog_overlay").show();
+}
 	
 	$Filtre = {};
 	function SetFiltre(data, li) {
@@ -41,8 +53,7 @@
 		$Filtre.lieu = data.lieu;
 		console.log($Filtre);
 		
-		$("#dialog_overlay").css({display: "block"});
-		
+		$("#dialog_overlay").show();
 		switch ($Page) {
 			case "Commerce" :
 				$url = "/includes/requetecommerce.php";
@@ -74,7 +85,7 @@
 			error: function() {alert('Erreur sur url : ' + $url);}
 		});
 		CreerOverlayPush();
-		$("#dialog_overlay").css({display: "none"});
+		$("#dialog_overlay").hide();
 	}
 
 	$(window).load(function() {
@@ -123,6 +134,7 @@
 					$("#default_dialog_large").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog_inscription").dialog( "option", "position", { my: "center", at: "center", of: window });
+					$("#default_dialog_map").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#dialog_confirmation").dialog( "option", "position", { my: "center", at: "center", of: window });
 					if ($(window).scrollTop() > 200) {$("#ScrollToTop").css({display: "block"});}
 					else {$("#ScrollToTop").css({display: "none"});}
@@ -180,6 +192,7 @@
 					$("#default_dialog_large").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog").dialog( "option", "position", { my: "center", at: "center", of: window });
 					$("#default_dialog_inscription").dialog( "option", "position", { my: "center", at: "center", of: window });
+					$("#default_dialog_map").dialog( "option", "position", { my: "center", at: "center", of: window });
 					// check if columns has changed
 					var currentColumns = Math.floor( ( $body.width() - 10 ) / colW );
 					if ( currentColumns !== columns ) {

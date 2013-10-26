@@ -325,41 +325,6 @@
             </div>
         
         </div>
-        <div class="infospratiques_body_parking">
-            <div class="menutarifs_body_entrees_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_parking.png" title="" alt="" height="22" width="22" /></div><span>Parking à proximité</span>
-            </div>
-            <div class="menutarifs_body_entrees_entree_generique"><span><input type="text" class="input_infos_horaires input_parking" placeholder="Parking 1"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique prix_generique_infospratiques"><input type="text" maxlength=2 class="input_infos_horaires input_parking_mini" placeholder="Prix"/><span class="span_float_left">/h.</span></div>
-            
-        </div>
-        <div class="infospratiques_body_metro">
-            <div class="menutarifs_body_plats_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_metro.png" title="" alt="" height="22" width="22" /></div><span>Métro à proximité</span>
-            </div>
-            
-            <div class="menutarifs_body_entrees_entree_generique"><span><input type="text" class="input_infos_horaires input_parking" placeholder="Station de métro 1"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique prix_generique_infospratiques prix_generique_bouton_map_wrap"><span><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            
-        </div>
-        <div class="infospratiques_body_velib">
-            <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_velib.png" title="" alt="" height="22" width="22" /></div><span>Station vélib' à proximité</span>
-            </div>
-            
-            <div class="menutarifs_body_entrees_entree_generique"><span><input type="text" class="input_infos_horaires input_parking" placeholder="Nom de la station 1"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique prix_generique_infospratiques prix_generique_bouton_map_wrap"><span><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            
-        </div>
-        <div class="infospratiques_body_autolib">
-            <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_autolib.png" title="" alt="" height="22" width="22" /></div><span>Station Autolib' à proximité</span>
-            </div>
-            
-            <div class="menutarifs_body_entrees_entree_generique"><span><input type="text" class="input_infos_horaires input_parking" placeholder="Nom de la station 1"/></span></div>
-            <div class="menutarifs_body_entrees_prix_generique prix_generique_infospratiques prix_generique_bouton_map_wrap"><span><a href="#" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            
-        </div>
     </div>
 	<div class="suggestioncommerce_footer">
 		<button onclick="Enregistrer();" class="suggestioncommerce_valider_wrap"><a href="#">Enregistrer</a></button>
@@ -371,7 +336,12 @@
 		var defaultdialog = $("#default_dialog").dialog();
 		defaultdialog.dialog('close');
     });
-
+    $('.button_voiturier_choix').click(function(e){
+		e.preventDefault(); //don't go to default URL
+		$('.button_voiturier_choix').removeClass('valid');
+		$(this).addClass('valid');
+    });
+	
 	function moveToNext(field,nextFieldID){if(field.value.length >= field.maxLength){document.getElementById(nextFieldID).focus();}}
 
 	$('.bouton_infos_modif').click(function(){

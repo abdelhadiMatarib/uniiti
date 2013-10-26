@@ -3,6 +3,11 @@
 <![endif]-->
 
 <?php
+	$sql = "SELECT * FROM villes ORDER BY id_ville ASC";
+	$req = $bdd->prepare($sql);
+	$req->execute();
+	$result = $req->fetchAll(PDO::FETCH_ASSOC);
+		
 	if(!isset($_SESSION['SESS_MEMBER_ID'])) {$Connecte = false;}
 	else {$Connecte = true;}
 	if ($Connecte) {
@@ -60,12 +65,10 @@
 					<div class="suggestionsContainer display-none" id="suggestionsContainer2"><ul class="suggestionList" id="suggestionList2"><li>&nbsp;</li></ul></div>
 				</div>
 				<div class="header_button_plus" id="recherche_avancee_button"><button title="Champ de recherche avancée" type="button">+</button></div>
-					<input type="hidden" name="filtre_avance" id="filtre_avance" value="1" />
-					<input type="hidden" name="quoi" id="quoi" value="" />
-					<input type="hidden" name="lieu" id="lieu" value="" />
-					<div id="ButtonFiltre" class="header_button_search"><button type="submit"></button></div>
-
-
+				<input type="hidden" name="filtre_avance" id="filtre_avance" value="1" />
+				<input type="hidden" name="quoi" id="quoi" value="" />
+				<input type="hidden" name="lieu" id="lieu" value="" />
+				<div id="ButtonFiltre" class="header_button_search"><button type="submit"></button></div>
 			</div>
 		</form>
 
@@ -78,8 +81,18 @@
             <div class="header_yourcity">
                 <div class="header_button_ville"><button type="button"></button></div>
                 <aside>Votre ville</aside>
-                <div class="header_choixvilles"><a id="header_choixvilles" href="#">Paris 15<sup>ème</sup></a></div>
-                <div class="header_flechebas"><a id="header_choixvilles2" href="#"></a></div>
+                <div class="header_choixvilles">
+					<a href="#" id="inputSearch5">Paris</a>
+					<input id="inputSearch5Hidden" type="hidden" value=""/>
+				</div>
+				<div class="header_flechebas"><a id="header_choixvilles2" href="#"></a></div>
+				<div class="suggestionsContainer display-none" id="suggestionsContainer5">	
+					<ul class="suggestionList" id="suggestionList5">
+					<?php foreach ($result as $row) {
+						echo '<li id="ville' . $row['id_ville'] . '" value="' . $row['id_ville'] . '">' . $row['nom_ville'] . '</li>';
+					} ?>
+					</ul>
+				</div>
             </div>
 
             <div class="header_user">
