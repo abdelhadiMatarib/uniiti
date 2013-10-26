@@ -20,18 +20,6 @@
 	var $container = $('#box_container');
 	$container.isotope({itemSelector : '.box'});
 
-	function AfficheLoader() {
-		var fini = false;
-		$("#dialog_overlay").show(100, function() {
-		fini = true;
-		});
-		return fini;
-	}
-
-function AfficheLoader() {
-$("#dialog_overlay").show();
-}
-	
 	$Filtre = {};
 	function SetFiltre(data, li) {
 		DisableScroll = false;
@@ -53,39 +41,39 @@ $("#dialog_overlay").show();
 		$Filtre.lieu = data.lieu;
 		console.log($Filtre);
 		
-		$("#dialog_overlay").show();
-		switch ($Page) {
-			case "Commerce" :
-				$url = "/includes/requetecommerce.php";
-				$data = {id_enseigne: encodeURIComponent($idenseigne)};
-			break;
-			case "Utilisateur" :
-				$url = "/includes/requetecontributeur.php";
-				$data = {id_contributeur: encodeURIComponent($idcontributeur)};
-			break;
-			case "Timeline" :
-				$url = "/includes/requete.php";
-				$data = {};
-			break;
-		}
-		$.ajax({
-			async : false,
-			type :"POST",
-			url : siteurl + $url,
-			data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
-			success : function(html){
-				if (html) {
-					$('#box_container .box').remove();
-					$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-					$('#box_container .box').css({overflow : 'visible'});
-					if ($Page == "Commerce") {InitFollowContributeur();}
-					CreerOverlayPush();
-				} else {alert('Il n\'y a plus d\'enregistrements');}
-			},
-			error: function() {alert('Erreur sur url : ' + $url);}
+		$('#box_container .box').remove();
+		$("#dialog_overlay").show('fast', function() {
+			switch ($Page) {
+				case "Commerce" :
+					$url = "/includes/requetecommerce.php";
+					$data = {id_enseigne: encodeURIComponent($idenseigne)};
+				break;
+				case "Utilisateur" :
+					$url = "/includes/requetecontributeur.php";
+					$data = {id_contributeur: encodeURIComponent($idcontributeur)};
+				break;
+				case "Timeline" :
+					$url = "/includes/requete.php";
+					$data = {};
+				break;
+			}
+			$.ajax({
+				async : true,
+				type :"POST",
+				url : siteurl + $url,
+				data : $.extend({}, $Filtre, $data, {site_url: '<?php echo SITE_URL ; ?>'}),
+				success : function(html){
+					if (html) {
+						$container.append( $(html)).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+						$('#box_container .box').css({overflow : 'visible'});
+						if ($Page == "Commerce") {InitFollowContributeur();}
+						CreerOverlayPush();
+						$("#dialog_overlay").fadeOut();
+					} else {alert('Il n\'y a plus d\'enregistrements');}
+				},
+				error: function() {$("#dialog_overlay").fadeOut();alert('Erreur sur url : ' + $url);}
+			});
 		});
-		CreerOverlayPush();
-		$("#dialog_overlay").hide();
 	}
 
 	$(window).load(function() {

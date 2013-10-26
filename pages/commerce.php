@@ -205,7 +205,7 @@
 		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 	}
 ?>
-    <body style="display:none;">
+    <body>
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>
@@ -219,7 +219,7 @@
 			</div>
         </div>
         <?php include'../includes/header.php'; ?>
-        <div class="biggymarginer">
+        <div class="biggymarginer" style="display:none;">
         <div class="big_wrapper" id="test">
             <div class="liseret" style="background-color:<?php echo $couleur; ?>;"></div>
             <div class="commerce_head">
@@ -425,10 +425,10 @@
 	
 	// Gestion du slider des couvertures
 	$(window).load(function() {
-		$("body").fadeIn(500);
-		$('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
-	  });
-	});
+		$("#dialog_overlay").hide();
+		$(".biggymarginer").fadeIn(500);
+		$('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
+	})
 	var adresse_enseigne = '<?php echo addslashes($adresse1_enseigne);?>';
 	var code_postal = '<?php echo $code_postal;?>';
 	var ville_enseigne = '<?php echo addslashes($ville_enseigne);?>';

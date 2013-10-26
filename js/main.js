@@ -73,34 +73,37 @@ filter();
 
 function OuvrePopin(data, url, div) {
 	url = siteurl + url;
-	//$("#dialog_overlay").fadeIn();
-	$.ajax({
-		async : false,
-		type :"POST",
-		url : url,
-		data : data,
-		success: function(html){
-			$("#" + div).html(html).dialog('open');
-		},
-		error: function() {alert('Erreur sur url : ' + url);}
+	$("#dialog_overlay").show('fast', function() {
+		$.ajax({
+			async : true,
+			type :"POST",
+			url : url,
+			data : data,
+			success: function(html){
+				$("#" + div).html(html).dialog('open');
+				$("#dialog_overlay").fadeOut();
+			},
+			error: function() {$("#dialog_overlay").fadeOut();alert('Erreur sur url : ' + url);}
+		});
 	});
-	//$("#dialog_overlay").fadeOut();
+
 }
 
 function ActualisePopin(data, url, div) {
 	url = siteurl + url;
-	$("#dialog_overlay").css({display: "block"});
-	$.ajax({
-		async : false,
-		type:"POST",
-		url : url,
-		data : data,
-		success: function(html){
-			$("#" + div).dialog('close').html(html).dialog('open');
-		},
-		error: function() {alert('Erreur sur url : ' + url);}
+	$("#dialog_overlay").show('fast', function() {
+		$.ajax({
+			async : true,
+			type:"POST",
+			url : url,
+			data : data,
+			success: function(html){
+				$("#" + div).dialog('close').html(html).dialog('open');
+				$("#dialog_overlay").fadeOut();
+			},
+			error: function() {$("#dialog_overlay").fadeOut();alert('Erreur sur url : ' + url);}
+		});
 	});
-	$("#dialog_overlay").css({display: "none"});
 }
 
 function OuvrePopinInscription(data) {

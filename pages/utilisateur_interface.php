@@ -104,7 +104,7 @@
 			. "telephone_contributeur:'" . $telephone_contributeur . "'}";
 			
 ?>
-<body style="display:none;">
+<body>
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
 	<div id="default_dialog_inscription"></div>
@@ -117,7 +117,7 @@
 		</div>
 	</div>
         <?php include'../includes/header.php'; ?>
-    <div class="biggymarginer">
+    <div class="biggymarginer" style="display:none;">
         <div class="big_wrapper">
             
             <div class="liseret_gris"></div>
@@ -236,9 +236,9 @@
 	
 		// Gestion du slider des couvertures
 		$(window).load(function() {
-			$("body").fadeIn(500);
-		  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
-		  
+			$("#dialog_overlay").hide();
+			$(".biggymarginer").fadeIn(500);
+			$('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
 		})
 		
 		function InitCouvertures() {

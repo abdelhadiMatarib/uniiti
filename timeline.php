@@ -48,7 +48,7 @@
         
 		<!-- END OF WRAPPER -->
         
-		<div class="biggymarginer">
+		<div class="biggymarginer" style="display:none;">
 			<div class="big_wrapper">   
                         <!-- FILTRES DE TRI -->
                         <?php $PAGE = "Timeline"; include'includes/filters.php' ?>
@@ -156,6 +156,11 @@ $(document).ready(function() {
     });
 
 });
+
+$(window).load(function() {
+	$("#dialog_overlay").hide();
+	$(".biggymarginer").fadeIn(500);
+})
 
 </script>
 	</body>
