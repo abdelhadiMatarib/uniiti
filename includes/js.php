@@ -78,6 +78,10 @@
 
 	$(window).load(function() {
 		$(function(){
+		
+			$("#dialog_overlay").hide();
+			$(".biggymarginer").fadeIn(500);
+		
 			var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
 			if ($Page == "Timeline") {setInterval("NouveauxElements()", 100000);}
 			// pour tester ...

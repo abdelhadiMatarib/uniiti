@@ -62,6 +62,7 @@
 	$id_quartier          	 = $result2['id_quartier'];
 	$telephone_enseigne      = $result2['telephone_enseigne'];
 	$descriptif              = $result2['descriptif'];
+	$id_categorie			 = $result2['id_categorie'];
 	$categorie				 = $result2['categorie_principale'];
 	$sous_categorie          = $result2['sous_categorie'];
 	$sous_categorie2         = $result2['sous_categorie2'];
@@ -262,7 +263,7 @@
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
                         <a href="#" title="" class="commerce_reserver_button" onclick="<?php if ($reservation) { echo $Reservation; } else { ?>alert('Module non activé par le commerçant');<?php } ?>">
                             <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
-                            <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
+                            <div class="commerce_head_note_reserver"><?php if ($id_categorie == 1) {echo "<span><strong>Réserver</strong> une table</span>";} else {echo "<span><strong>Prendre</strong><BR/>un rdv</span>";}?></div>
                         </a>
                     </div>
                 </div>
@@ -425,8 +426,6 @@
 	
 	// Gestion du slider des couvertures
 	$(window).load(function() {
-		$("#dialog_overlay").hide();
-		$(".biggymarginer").fadeIn(500);
 		$('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
 	})
 	var adresse_enseigne = '<?php echo addslashes($adresse1_enseigne);?>';

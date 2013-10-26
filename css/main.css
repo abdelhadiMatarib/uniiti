@@ -443,10 +443,11 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .commerce_head2_coinvideo .img_container{float:left;height:22px;width:26px;padding: 2px 0 0 5px;}
 
 .commerce_head2_right{float:right;width: 543px;}
-.commerce_head2_reseau{height: 27px;padding-top: 3px;float:left;text-align:center;border-left: 1px solid rgb(68, 68, 68);width: 180px}
+.commerce_head2_reseau,.commerce_head2_reseau_interface{height: 27px;padding-top: 3px;float:left;text-align:center;border-left: 1px solid rgb(68, 68, 68);width: 180px}
+.commerce_head2_reseau_interface{cursor:pointer;}
 .commerce_head2_avis{height: 27px;padding-top: 3px;float:left;text-align:center;border-left:1px solid #444444;width: 180px}
 .commerce_head2_abonnes{cursor:pointer;height: 27px;float: left;text-align: center;padding-top: 3px;border-left: 1px solid rgb(68, 68, 68);width: 180px;}
-.commerce_head2_abonnes:hover{background-color:#181818;}
+.commerce_head2_abonnes:hover,.commerce_head2_reseau_interface:hover{background-color:#181818;}
 .commerce_head2_right .img_container{position: absolute;float: right;height: 22px;width: 26px;margin-top: -22px;margin-left: 96px;}
 
 /* POPINS ABONNES */

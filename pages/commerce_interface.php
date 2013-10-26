@@ -350,7 +350,7 @@ else {
                     <div class="commerce_head_note_reservation" style="background-color:<?php echo $couleur; ?>;">
                         <a href="#" title="" class="commerce_reserver_button" onclick="<?php echo $Reservation; ?>">
                         <div class="img_container_reservation"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/sonette.png" title="" alt="" height="24" width="30" /></div>
-                        <div class="commerce_head_note_reserver"><span><strong>Réserver</strong> une table</span></div>
+                        <div class="commerce_head_note_reserver"><?php if ($id_categorie == 1) {echo "<span><strong>Réserver</strong> une table</span>";} else {echo "<span><strong>Prendre</strong><BR/>un rdv</span>";}?></div>
                         </a>
                     </div>
 					<?php } ?>
@@ -411,9 +411,9 @@ else {
                     <div class="commerce_head2_coinvideo_text"><span class="commerce_head2_text1_1">Coin</span><span class="commerce_head2_text2_1" style="color:<?php echo $couleur; ?>;">Vidéo</span></div><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/play.png" alt="" title="" height="19" width="19" /></div>
                 </div>
                 <div class="commerce_head2_right">
-				<div class="commerce_head2_reseau"onclick="<?php echo $AjoutReseau; ?>"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span><?php if ($count_reseau_attente > 0) { ?><div class="notifs_reseau"><span><?php echo $count_reseau_attente; ?></span></div><?php } ?><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></div>
+				<div class="commerce_head2_reseau_interface" onclick="<?php echo $AjoutReseau; ?>"><span class="commerce_head2_text1">Votre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Réseau</span><?php if ($count_reseau_attente > 0) { ?><div class="notifs_reseau"><span><?php echo $count_reseau_attente; ?></span></div><?php } ?><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/reseau.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_reseau; ?></span></div></div>
                 <div class="commerce_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Avis</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/star_0.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3"><span><?php echo $count_avis_enseigne; ?></span></div></div>
-                <div class="commerce_head2_abonnes"onclick="<?php echo $IlsSuiventCeCommerce; ?>"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></div>
+                <div class="commerce_head2_abonnes" onclick="<?php echo $IlsSuiventCeCommerce; ?>"><span class="commerce_head2_text1">Nombre</span><span class="commerce_head2_text2" style="color:<?php echo $couleur; ?>;">Abonnés</span><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/abonnes.png" alt="" title="" height="19" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></div>
                 </div>
             </div>
             <div class="commerce_couv">
@@ -562,8 +562,6 @@ else {
 
 		// Gestion du slider des couvertures
 		$(window).load(function() {
-			$("#dialog_overlay").hide();
-			$(".biggymarginer").fadeIn(500);
 			$('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
 		})
 		
