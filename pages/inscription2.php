@@ -24,15 +24,15 @@
                 <div class="inscription_step2 inscription_current_step_texte_head"><h3>Choix de l'avatar</h3></div>
                 <div class="inscription_step3"><h3><?php if (!$Change) { ?>Vos centres d'intérêts<?php } ?></h3></div>
             </div>
-            <div class="inscription_fields_left">
+            <div class="inscription_fields_left2">
                 <div class="inscription_upload_image_texte"><span>Glissez-déposez une image dans le cadre</span></div>
             <div class="inscription_separation_ou"><span>Ou</span></div>
             </div>
-            <div class="inscription_fields_right">
+            <div class="inscription_fields_right2">
                 <div class="inscription_choisir_image_texte"><span>Choisissez-en une dans la Uniiti galerie</span></div>
             </div>
 			<form id="upload" onsubmit="<?php if ($Change) {echo "return Enregistrer();";} else {echo "return EtapeSuivante();";} ?>" action="<?php echo SITE_URL; ?>/pages/inscription3.php" method="POST" enctype="multipart/form-data">
-				<div class="inscription_fields_left">
+				<div class="inscription_fields_left2">
 					<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="4000000" />
 						<div class="inscription_upload_image_container">
 							<div class="inscription_upload_button" id="filedrag"></div>
@@ -49,7 +49,7 @@
 					</div>	 -->			
 				
 				</div>
-				<div class="inscription_fields_right">
+				<div class="inscription_fields_right2">
 					<div class="inscription_choisir_image_container">
 					<!-- Slider -->
 						  <div id="slider">
@@ -67,7 +67,6 @@
 				</div>
 				<div class="inscription_wrap_next_step2">
 				<div class="inscription_next_step2">
-					<div class="inscription_current_step"><span class="inscription_current_step_number">2</span><span class="inscription_current_step_etape_texte">étape</span></div>
 					<button class="inscription_next_step_button2" id="submitbutton" type="submit" role="button" class="css3button" ><?php if ($Change) {echo "Enregistrer";} else {echo "Suivant";} ?></button>
 				</div>
 					<div class="inscription_avatar_selected">

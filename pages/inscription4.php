@@ -122,7 +122,7 @@
 	<?php if ($Inscription) { ?>
 	<div class="inscription_head"><div class="liseret_bleu"></div><h2><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user.png" height="68" width="77" title="" alt="" />Créer un compte en seulement <span>3 étapes</span></h2></div>
 	<div class="inscription_fields_left inscription_final_step_left">
-		<div class="inscription_final_step_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user_created.png" height="197" width="190" title="" alt="" /></div>
+		<div class="inscription_final_step_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_inscription/new_user_created.png" height="147" width="140" title="" alt="" /></div>
 		<div class="inscription_final_step_txt_container">
 			<span class="inscription_final_step_texte_highlight1">Bravo !</span>
 			<span class="inscription_final_step_texte_highlight2">Votre compte</span><span class="inscription_final_step_texte_highlight2">est créé</span>

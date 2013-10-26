@@ -34,7 +34,12 @@
 			<?php } ?>
 		</div>
 		<?php } ?>
-		<?php } else {echo "<BR/><BR/><CENTER><b>Prestations non communiquées à ce jour.</b></CENTER>";}?>
+		<?php } else {
+            echo "<BR/><BR/><CENTER><img src='../img/pictos_commerces/noncommuniquees.png'></img></CENTER>";?>
+            <script>
+                $('.menutarifs_body').css('height','230px').css('overflow-y','hidden').css('background-color','rgb(235, 235, 235)');
+            </script>
+        <?php } ?>
 <!--        <div class="menutarifs_body_entrees">
             <div class="menutarifs_body_entrees_head">
                 <span>Suggestions d'entrées</span>
