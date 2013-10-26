@@ -205,7 +205,7 @@
 		$like_step1 = $dislike_step1 = $wishlist_step1 = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
 	}
 ?>
-    <body>
+    <body style="display:none;">
         <div id="default_dialog"></div>
         <div id="default_dialog_large"></div>
         <div id="default_dialog_inscription"></div>
@@ -268,7 +268,7 @@
                 </div>
                 <div class="commerce_head_infos">
                     <div class="commerce_head_infos_services" onclick="<?php echo $menu_tarif;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/prestationstarifs.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_services_text" title="Prestations & Tarifs"><span class="commerce_head_infos_services_text_fin">Prestations</span><span class="commerce_head_infos_services_text_couleur" style="color:<?php echo $couleur; ?>;">& Tarifs</span></div></div>
-                    <div class="commerce_head_infos_infos" onclick="OuvrePopin({}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infospratiques.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></div>
+                    <div class="commerce_head_infos_infos" onclick="<?php echo $Infospratiques;?>"><div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infospratiques.png" alt="" title="" height="59" width="59" /></div><div class="commerce_head_infos_infos_text" title="Infos Pratiques"><span class="commerce_head_infos_infos_text_fin">Infos</span><span class="commerce_head_infos_infos_text_couleur" style="color:<?php echo $couleur; ?>;">Pratiques</span></div></div>
                     <div class="commerce_head_infos_suivre" id="Suivre"><div class="img_container"><img id="ImageSuivre" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="59" width="59" /></div><span id="TexteSuivre">Suivre</span></div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -424,17 +424,15 @@
 	});
 	
 	// Gestion du slider des couvertures
-	$(function() {
-	  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
+	$(window).load(function() {
+		$("body").fadeIn(500);
+		$('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
 	  });
 	});
 	var adresse_enseigne = '<?php echo addslashes($adresse1_enseigne);?>';
 	var code_postal = '<?php echo $code_postal;?>';
 	var ville_enseigne = '<?php echo addslashes($ville_enseigne);?>';
 	adresse_enseigne += ','+code_postal+','+ville_enseigne;	
-    $('#commerce_head_desc_address_button').click(function(e){
-		OuvrePopin({adresse_enseigne : adresse_enseigne}, '/includes/popins/popin_map.php', 'default_dialog_map');
-    });	
 	
 	function InitCouvertures() {
 	

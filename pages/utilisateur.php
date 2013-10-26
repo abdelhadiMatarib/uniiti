@@ -73,7 +73,7 @@
 	$Chemin = SITE_URL . "/photos/utilisateurs/couvertures/";
 	
 ?>
-<body>
+<body style="display:none;">
     <div id="default_dialog_large"></div>
     <div id="default_dialog"></div>
 	<div id="default_dialog_inscription"></div>
@@ -167,9 +167,10 @@
 	<script>
 	
 	// Gestion du slider des couvertures
-	$(function() {
-	  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}
-	  });
+	$(window).load(function() {
+		$("body").fadeIn(500);
+	  $('#couv_slides').slidesjs2({width: 1736,height: 496,play: {active: true,auto: true,interval: 6000,swap: true},effect: {slide: {speed: 3000}}});
+	  
 	})
 	
 	function InitCouvertures() {
