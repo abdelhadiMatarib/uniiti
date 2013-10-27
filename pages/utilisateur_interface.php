@@ -257,8 +257,6 @@
 								photo_contributeur : '<?php echo addslashes($photo_contributeur); ?>'
 						};
 			OuvrePopin(dataavatar, '/pages/inscription2.php', 'default_dialog_inscription');
-			/* Initilisation du mini slider de choix d'avatar */
-			$(function() {$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false,},effect: {fade: {speed: 400}}});});
 		}
 		
 	</script>

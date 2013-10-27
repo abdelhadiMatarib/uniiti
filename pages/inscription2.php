@@ -56,7 +56,7 @@
   							<div class="container">
     							<div id="slides">
     								<?php for ($i = 1 ; $i < 20 ; $i++) { ?>
-										<img onclick="ChangeAvatar('<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $Tirage[$i]; ?>.jpg');" src="<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $Tirage[$i]; ?>.jpg" alt="" />
+										<img id="image<?php echo $i; ?>" onclick="ChangeAvatar('<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $Tirage[$i]; ?>.jpg');" src="<?php echo SITE_URL; ?>/photos/utilisateurs/avatars/photo <?php echo $Tirage[$i]; ?>.jpg" alt="" />
 									<?php } ?>
     							</div>
  							 </div>
@@ -77,6 +77,9 @@
            </form>
 		
 		<script type="text/javascript">
+		$('#image1').load(function(){
+			$('#slides').slidesjs({width: 240,height: 240,pagination: {active: false},effect: {fade: {speed: 400}}});
+		});
 
 		function Enregistrer () {
 
@@ -200,7 +203,6 @@
 
 			// initialize
 			function Init() {
-
 				var fileselect = $id("inscription_upload"),
 					filedrag = $id("filedrag"),
 					submitbutton = $id("submitbutton");

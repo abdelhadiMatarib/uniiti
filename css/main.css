@@ -661,7 +661,7 @@ input:focus.inscription_field_input_text, input:focus.inscription_field_input_te
 #filedrag:hover {box-shadow: inset 0 0px 10px #C4C4C4;}
 /* Slider */
 #slider {width:340px;height:280px;overflow: hidden;margin-top:-40px;margin-left:-40px;}
-.container {margin: 0 auto; width:240px;}
+.container{margin: 0 auto; width:240px;height:240px}
 .slidesjs-previous {z-index: 10;position: absolute;margin: -240px 0 0 -170px;height: 240px;width: 50px;background: url('../img/slider/slider_prev.png') no-repeat rgba(255,255,255,0.6);}
 .slidesjs-next {z-index: 10;position: absolute;margin: -240px 0 0 120px;height: 240px;width: 50px;background: url('../img/slider/slider_next.png') right no-repeat rgba(255,255,255,0.6);}
 #ombre{width: 500px; height:37px; background:url('../img/slider/slider_ombre.png') center no-repeat; margin: 0 auto; }
