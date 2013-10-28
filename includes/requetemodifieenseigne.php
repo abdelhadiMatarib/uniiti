@@ -45,6 +45,18 @@ switch ($_POST['step']) {
 		$paiement[4] = $_POST['paiement4'];
 		$paiement[5] = $_POST['paiement5'];
 		break;
+	case "Voiturier" :
+		$voiturier = $_POST['voiturier'];
+		break;
+	case "Horaires" :
+		if (empty($_POST['Lundi'])) {$lundi = NULL;} else {$lundi = $_POST['Lundi'];}
+		if (empty($_POST['Mardi'])) {$mardi = NULL;} else {$mardi = $_POST['Mardi'];}
+		if (empty($_POST['Mercredi'])) {$mercredi = NULL;} else {$mercredi = $_POST['Mercredi'];}
+		if (empty($_POST['Jeudi'])) {$jeudi = NULL;} else {$jeudi = $_POST['Jeudi'];}
+		if (empty($_POST['Vendredi'])) {$vendredi = NULL;} else {$vendredi = $_POST['Vendredi'];}
+		if (empty($_POST['Samedi'])) {$samedi = NULL;} else {$samedi = $_POST['Samedi'];}
+		if (empty($_POST['Dimanche'])) {$dimanche = NULL;} else {$dimanche = $_POST['Dimanche'];}
+		break;
 	case "MotsCles" :
 		$MotCle[1][1] = $_POST['motcle11'];
 		$MotCle[1][2] = $_POST['motcle12'];
@@ -60,24 +72,24 @@ switch ($_POST['step']) {
 		$MotCle[4][3] = $_POST['motcle43'];
 		break;
 	case "Prestations" :
-		$NomPrestation[14] = $_POST['prestation1'];
-		$Prestation[14][1] = $_POST['prestation11'];$Prix[14][1] = $_POST['prix11'];
-		$Prestation[14][2] = $_POST['prestation12'];$Prix[14][2] = $_POST['prix12'];
-		$Prestation[14][3] = $_POST['prestation13'];$Prix[14][3] = $_POST['prix13'];
-		$Prestation[14][4] = $_POST['prestation14'];$Prix[14][4] = $_POST['prix14'];
-		$Prestation[14][5] = $_POST['prestation15'];$Prix[14][5] = $_POST['prix15'];
-		$NomPrestation[15] = $_POST['prestation2'];
-		$Prestation[15][1] = $_POST['prestation21'];$Prix[15][1] = $_POST['prix21'];
-		$Prestation[15][2] = $_POST['prestation22'];$Prix[15][2] = $_POST['prix22'];
-		$Prestation[15][3] = $_POST['prestation23'];$Prix[15][3] = $_POST['prix23'];
-		$Prestation[15][4] = $_POST['prestation24'];$Prix[15][4] = $_POST['prix24'];
-		$Prestation[15][5] = $_POST['prestation25'];$Prix[15][5] = $_POST['prix25'];
-		$NomPrestation[16] = $_POST['prestation3'];
-		$Prestation[16][1] = $_POST['prestation31'];$Prix[16][1] = $_POST['prix31'];
-		$Prestation[16][2] = $_POST['prestation32'];$Prix[16][2] = $_POST['prix32'];
-		$Prestation[16][3] = $_POST['prestation33'];$Prix[16][3] = $_POST['prix33'];
-		$Prestation[16][4] = $_POST['prestation34'];$Prix[16][4] = $_POST['prix34'];
-		$Prestation[16][5] = $_POST['prestation35'];$Prix[16][5] = $_POST['prix35'];
+		$NomPrestation[7] = $_POST['prestation1'];
+		$Prestation[7][1] = $_POST['prestation11'];$Prix[7][1] = $_POST['prix11'];
+		$Prestation[7][2] = $_POST['prestation12'];$Prix[7][2] = $_POST['prix12'];
+		$Prestation[7][3] = $_POST['prestation13'];$Prix[7][3] = $_POST['prix13'];
+		$Prestation[7][4] = $_POST['prestation14'];$Prix[7][4] = $_POST['prix14'];
+		$Prestation[7][5] = $_POST['prestation15'];$Prix[7][5] = $_POST['prix15'];
+		$NomPrestation[8] = $_POST['prestation2'];
+		$Prestation[8][1] = $_POST['prestation21'];$Prix[8][1] = $_POST['prix21'];
+		$Prestation[8][2] = $_POST['prestation22'];$Prix[8][2] = $_POST['prix22'];
+		$Prestation[8][3] = $_POST['prestation23'];$Prix[8][3] = $_POST['prix23'];
+		$Prestation[8][4] = $_POST['prestation24'];$Prix[8][4] = $_POST['prix24'];
+		$Prestation[8][5] = $_POST['prestation25'];$Prix[8][5] = $_POST['prix25'];
+		$NomPrestation[9] = $_POST['prestation3'];
+		$Prestation[9][1] = $_POST['prestation31'];$Prix[9][1] = $_POST['prix31'];
+		$Prestation[9][2] = $_POST['prestation32'];$Prix[9][2] = $_POST['prix32'];
+		$Prestation[9][3] = $_POST['prestation33'];$Prix[9][3] = $_POST['prix33'];
+		$Prestation[9][4] = $_POST['prestation34'];$Prix[9][4] = $_POST['prix34'];
+		$Prestation[9][5] = $_POST['prestation35'];$Prix[9][5] = $_POST['prix35'];
 		break;
 	case "Reservations" :
 		$reservation = $_POST['reservation'];
@@ -252,6 +264,43 @@ try
 			}
 			$reqcheck->closeCursor();
 			break;
+		case "Voiturier" :
+			$sql = "UPDATE enseignes 
+					SET voiturier=:voiturier
+						WHERE id_enseigne=:id_enseigne";
+			$req = $bdd->prepare($sql);
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':voiturier', $voiturier, PDO::PARAM_INT);
+			$req->execute();
+		break;
+		case "Horaires" :
+			$sqlcheck = "SELECT * FROM enseignes_horaires WHERE enseignes_id_enseigne=:id_enseigne";
+			$reqcheck = $bdd->prepare($sqlcheck);
+			$reqcheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$reqcheck->execute();		
+			$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);
+			if (!$resultcheck) {
+				$sql = "INSERT INTO enseignes_horaires (enseignes_id_enseigne, id_type_info, lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche)
+						VALUES (:id_enseigne, :id_type_info, :lundi, :mardi, :mercredi, :jeudi, :vendredi, :samedi, :dimanche)";			
+			} else {
+				$sql = "UPDATE enseignes_horaires 
+						SET id_type_info=:id_type_info, lundi=:lundi, mardi=:mardi, mercredi=:mercredi, jeudi=:jeudi,
+							vendredi=:vendredi, samedi=:samedi,	dimanche=:dimanche
+							WHERE enseignes_id_enseigne=:id_enseigne";
+			}
+			$req = $bdd->prepare($sql);
+			$id_type_info = 5;
+			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':id_type_info', $id_type_info, PDO::PARAM_INT);
+			$req->bindParam(':lundi', $lundi, PDO::PARAM_INT);
+			$req->bindParam(':mardi', $mardi, PDO::PARAM_INT);
+			$req->bindParam(':mercredi', $mercredi, PDO::PARAM_INT);
+			$req->bindParam(':jeudi', $jeudi, PDO::PARAM_INT);
+			$req->bindParam(':vendredi', $vendredi, PDO::PARAM_INT);
+			$req->bindParam(':samedi', $samedi, PDO::PARAM_INT);
+			$req->bindParam(':dimanche', $dimanche, PDO::PARAM_INT);
+			$req->execute();
+		break;
 		case "MotsCles" :
 			foreach ($MotCle as $id_type_info => $value) {
 				$ACreerOuModifier = false;

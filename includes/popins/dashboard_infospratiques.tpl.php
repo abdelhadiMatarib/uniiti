@@ -18,7 +18,28 @@
 		foreach ($resultcheck as $row) {
 			$existe[$row['id_moyenpaiement']] = 1;
 		}
+		
+		$sql2 = "SELECT voiturier FROM enseignes WHERE id_enseigne=:id_enseigne";
+		$req2 = $bdd->prepare($sql2);
+		$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$req2->execute();
+		$result2 = $req2->fetch(PDO::FETCH_ASSOC);
+		$voiturier = $result2['voiturier'];
 
+		$sql3 = "SELECT * FROM enseignes_horaires WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=5";
+		$req3 = $bdd->prepare($sql3);
+		$req3->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$req3->execute();		
+		$result3 = $req3->fetch(PDO::FETCH_ASSOC);
+		if ($result3) {
+			$datahoraires = "{Lundi : '" . $result3['lundi'] . "', "
+							. "Mardi : '" . $result3['mardi'] . "', "
+							. "Mercredi : '" . $result3['mercredi'] . "', "
+							. "Jeudi : '" . $result3['jeudi'] . "', "
+							. "Vendredi : '" . $result3['vendredi'] . "', "
+							. "Samedi : '" . $result3['samedi'] . "', "
+							. "Dimanche : '" . $result3['dimanche'] . "'}";
+		} else {$datahoraires = '{}';}
 ?>
 <div class="menutarifs_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -27,9 +48,9 @@
             <img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques.png" title="" alt="" height="37" width="37" />
         </div><span class="maintitle">Infos pratiques</span>
     </div>   
-    <div class="menutarifs_body">
+    <div class="infospratiques_body">
         <div class="infospratiques_body_paiements">
-            <div class="menutarifs_body_desserts_head">
+            <div class="infospratiques_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="22" width="22" /></div><span>Paiements acceptés</span>
             </div>
 			<?php foreach ($result as $row) {
@@ -42,283 +63,52 @@
 			<?php } ?>
         </div>
         <div class="infospratiques_body_voiturier">
-            <div class="menutarifs_body_desserts_head">
+            <div class="infospratiques_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
             </div>
             <div class="infospratiques_body_voiturier">
                 <div class="infospratiques_body_voiturier_inside">
-                <input type="button" class="button_voiturier_choix" value="Oui"/>
-                <input type="button" class="button_voiturier_choix" value="Non"/>
+                <input type="button" class="button_voiturier_choix<?php if ($voiturier == 1) {echo " valid";} ?>" value="Oui"/>
+                <input type="button" class="button_voiturier_choix<?php if ($voiturier == 2) {echo " valid";} ?>" value="Non"/>
                 </div>
             </div>
         </div>
         <div class="infospratiques_body_horaires">
-            <div class="menutarifs_body_entrees_head">
+            <div class="infospratiques_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="22" width="22" /></div><span>Horaires d'ouverture</span>
             </div>
 
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="Lh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Lh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Lh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Lh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="Lh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Lh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Lh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Lh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Lh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh1')" />
-                </div>
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires premier">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Lundi</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="Mh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Mh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Mh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Mh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="Mh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Mh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Mh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Mh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Mh8" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh1')" />
-                </div>
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Mardi</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="MMh1" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="MMh2" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="MMh3" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="MMh4" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="MMh5" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="MMh6" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="MMh7" type="text" maxlength=2 onkeyup="moveToNext(this,'MMh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="MMh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh1')" />
-                </div>                
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Mercredi</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="Jh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Jh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Jh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Jh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="Jh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Jh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Jh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Jh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Jh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh1')" />
-                </div>
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Jeudi</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="Vh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Vh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Vh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Vh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="Vh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Vh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Vh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Vh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Vh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh1')" />
-                </div>
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Vendredi</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="Sh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Sh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Sh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Sh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="Sh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Sh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Sh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Sh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Sh8" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh1')" />
-                </div>
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Samedi</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique">
-                <span>De</span>
-                <div class="input_infos_horaires">
-                    <input id="Dh1" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh2')"/>
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Dh2" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh3')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Dh3" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh4')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Dh4" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh5')" />
-                </div>
-                <span> et de </span>
-                <div class="input_infos_horaires">
-                    <input id="Dh5" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh6')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Dh6" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh7')" />
-                </div>
-                <span> à </span>
-                <div class="input_infos_horaires">
-                    <input id="Dh7" type="text" maxlength=2 onkeyup="moveToNext(this,'Dh8')" />
-                </div>
-                <span>h.</span>
-                <div class="input_infos_horaires">
-                    <input id="Dh8" type="text" maxlength=2 />
-                </div>
-                <div class="bouton_infos_modif bouton_commerce_ferme"></div>
+            <div class="infospratiques_horaires">
             </div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert">
                 <span>Dimanche</span>
@@ -342,20 +132,105 @@
 		$(this).addClass('valid');
     });
 	
+	var heuresmatin = ['','00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'];
+	var heuresapmidi = ['','00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'];
+	var minutes = ['','00','15','30','45'];
+	var inithoraires = <?php echo $datahoraires; ?>;
+	
+	function InitHoraires(div) {
+		var id = div.next().find('span').text();
+		var html = '<div style="display:none;float:left;" class="ferme">Fermé</div>\n';
+		html += '<div class="ouvert">\n';
+		html += '<span>De</span>\n';
+		for (var i = 1 ; i <= 8 ; i++) {
+			html += '<div class="input_infos_horaires">\n';
+			html += '<select id="'+id+i+'">\n';
+			if (i%2 == 0) {
+				for (var j in minutes) {
+					html += '<option value="'+minutes[j]+'">'+minutes[j]+'</option>\n';
+				}
+				html += '</select>\n';
+				html += '</div>\n';
+				if (i == 4) {html += '<span>et de</span>\n';}
+				else if (i != 8) {html += '<span>à</span>\n';}
+			} else if (i > 4) {
+				for (var j in heuresapmidi) {
+					html += '<option value="'+heuresapmidi[j]+'">'+heuresapmidi[j]+'</option>\n';
+				}
+				html += '</select>\n';
+				html += '</div>\n';
+				html += '<span>h.</span>\n';				
+			} else {
+				for (var j in heuresmatin) {
+					html += '<option value="'+heuresmatin[j]+'">'+heuresmatin[j]+'</option>\n';
+				}
+				html += '</select>\n';
+				html += '</div>\n';
+				html += '<span>h.</span>\n';
+			}
+		}
+		html += '</div>\n';
+		if (!div.hasClass('premier')) {html += '<div title="copier la ligne du dessus" class="copier_horaire"><a href="#">copier</a></div>\n';}
+		html += '<div title="commerce ouvert ou fermé" class="bouton_infos_modif bouton_commerce_ferme"></div>\n';
+		div.html(html);
+		var selectionne = new Array();
+		if (typeof(inithoraires[id]) != 'undefined') {
+			if (inithoraires[id] != "Fermé") {
+				var inith = inithoraires[id].replace(/,/g, ':');
+				selectionne = inith.split(':');
+			} else {selectionne[0] = "Fermé";}
+		}
+		if (selectionne[0] != "Fermé") {
+			for (var i = 1 ; i <= 8 ; i++) {
+				$('#'+id+i).val(selectionne[i-1]);
+			}
+		} else {
+			div.find('.bouton_infos_modif').removeClass('bouton_commerce_ferme');
+			div.find('.bouton_infos_modif').addClass('bouton_commerce_ouvert');
+			div.find('.ferme').show();
+			div.find('.ouvert').hide();
+			div.next(':first').removeClass('horaires_commerces_ouvert');
+			div.next(':first').addClass('horaires_commerces_ferme');
+		}
+	}
+	
+	$('.infospratiques_horaires').each(function() {InitHoraires($(this));});
+	
+    $('.copier_horaire').click(function(e){
+		e.preventDefault(); //don't go to default URL
+		var parent = $(this).parent();
+		var prev = parent.prev().prev();
+		var selected = new Array(), compteur = 0;
+		prev.find('.input_infos_horaires').each(function() {
+			var select = $(this).find('select');
+			var id = select.attr('id');
+			var num = Math.floor(id.substring(id.length-1, id.length));
+			selected[num] = select.val();
+		});
+		parent.find('.input_infos_horaires').each(function() {
+			var select = $(this).find('select');
+			var id = select.attr('id');
+			var num = Math.floor(id.substring(id.length-1, id.length));
+			select.val(selected[num]);
+		});
+    });	
+	
 	function moveToNext(field,nextFieldID){if(field.value.length >= field.maxLength){document.getElementById(nextFieldID).focus();}}
 
 	$('.bouton_infos_modif').click(function(){
 		if ($(this).hasClass('bouton_commerce_ferme')){
 			$(this).removeClass('bouton_commerce_ferme');
 			$(this).addClass('bouton_commerce_ouvert');
-			$(this).parent().find('input').attr('disabled','disabled').val('');
+			$(this).parent().find('.ferme').show();
+			$(this).parent().find('.ouvert').hide();
 			$(this).parent().next(':first').removeClass('horaires_commerces_ouvert');
 			$(this).parent().next(':first').addClass('horaires_commerces_ferme');
 		}
 		else if ($(this).hasClass('bouton_commerce_ouvert')){
 			$(this).removeClass('bouton_commerce_ouvert');
 			$(this).addClass('bouton_commerce_ferme');
-			$(this).parent().find('input').removeAttr('disabled');
+			$(this).parent().find('.ferme').hide();
+			$(this).parent().find('.ouvert').show();
 			$(this).parent().next(':first').removeClass('horaires_commerces_ferme');
 			$(this).parent().next(':first').addClass('horaires_commerces_ouvert');
 		}
@@ -370,34 +245,93 @@
 	});
 	
 	function Enregistrer () {
+		var id_enseigne = '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>';
+		
+		var datahoraires = {
+						step : 'Horaires',
+						id_enseigne : id_enseigne
+					};
 
+		var msg = false, unhorairenonnul = false;			
+		$('.infospratiques_horaires').each(function() {
+		var id = $(this).next().find('span').text();
+		var ouvert = $(this).find('.ouvert');
+			if (ouvert.css('display') != 'none') {
+				var attribut = '';
+				for (var i = 1 ; i <= 8 ; i++) {
+					if (i%2 == 0) {attribut += ':'+$('#'+id+i).val();if (i!=8) {attribut += ',';}}
+					else {attribut += $('#'+id+i).val();}
+				}
+				if ((attribut.length != 23) && (attribut != ':,:,:,:')) {alert("\tVous n'avez pas sélectionné\ntoutes les informations du "+id+".\n\nEnregistrement interrompu.");return false;}
+				if (attribut == ':,:,:,:') {attribut = '';if (!msg) {msg = id;} else {msg += '\n'+id;}}
+				else {unhorairenonnul = true;}
+				var chaine = '{"'+id+'" : "'+attribut+'"}';
+				var json = $.parseJSON(chaine);
+				datahoraires = $.extend({}, datahoraires, json);
+			} else {
+				var chaine = '{"'+id+'" : "Fermé"}';
+				var json = $.parseJSON(chaine);
+				datahoraires = $.extend({}, datahoraires, json);			
+			}
+		});
+		
+		if (msg) {msg = "Vous n'avez entré aucune information\npour les jours suivants :\n"+msg+"\n\nAucune information ne sera stockée\npour ces jours.";alert(msg);}
+		console.log(datahoraires);
+		if (unhorairenonnul) {
+			$.ajax({
+				async : false,
+				type :"POST",
+				data : datahoraires,
+				url : siteurl+'/includes/requetemodifieenseigne.php',
+				success: function(result){
+				},
+				error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+			});
+		}
+		
+		var voiturier = 0;
+		if ($('.button_voiturier_choix.valid').length > 0) {
+			voiturier = $('.button_voiturier_choix.valid').val();
+			if (voiturier == 'Oui') {voiturier = 1}
+			if (voiturier == 'Non') {voiturier = 2}			
+		}	
+		$.ajax({
+			async : false,
+			type :"POST",
+			data : {step : 'Voiturier', id_enseigne : id_enseigne, voiturier : voiturier},
+			url : siteurl+'/includes/requetemodifieenseigne.php',
+			success: function(result){
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+		});	
+	
 		var compteur = 1, comptepaiement = 1;
 		var paiement = new Array();
 		$(".moyenspaiements").each(function () {
 			paiement[compteur++] = '';
 			if ($(this).hasClass("valid_paiement")) {paiement[comptepaiement++] = $(this).attr('id_paiement');}
 		});
+	
 		var datapaiements = {
 						step : 'MoyensPaiements',
-						id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+						id_enseigne : id_enseigne,
 						paiement1 :paiement[1],
 						paiement2 :paiement[2],
 						paiement3 :paiement[3],
 						paiement4 :paiement[4],
 						paiement5 :paiement[5]
 					};
-		console.log(datapaiements);
 		$.ajax({
 			async : false,
 			type :"POST",
 			url : siteurl+'/includes/requetemodifieenseigne.php',
 			data : datapaiements,
 			success: function(result){
-				window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+result.result);
+				$('.popin_close_button').click();
+//				window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+result.result);
 			},
 			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
-		
 		return false;
 	}
 

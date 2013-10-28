@@ -999,7 +999,7 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .presentation_action_wrapper,.parrainage_wrapper,.couverture_wrapper,.menutarifs_wrapper{border-radius: 4px;float:left;position:relative;margin:10px 0 0 10px;width:700px;background-color:white;-webkit-box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);box-shadow:  0px 0px 10px 6px rgba(37, 37, 37, 0.2);}
 .menutarifs_head{border-radius: 3px 3px 0 0;width:700px;height:50px;background-color:#252525;color:white;}
 .menutarifs_head span.maintitle{display:inline-block;margin-top:10px;text-transform:uppercase;font-size:1.7em;font-weight:300;}
-.menutarifs_body,.menutarifs_body_entrees,.menutarifs_body_plats,.menutarifs_body_desserts,.localisation_head,.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{float:left;}
+.infospratiques_head,.menutarifs_body,.menutarifs_body_entrees,.menutarifs_body_plats,.menutarifs_body_desserts,.localisation_head,.menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{float:left;}
 .infospratiques_body_horaires,.infospratiques_body_metro,.infospratiques_body_autolib,.infospratiques_body_velib,.infospratiques_body_paiements,.infospratiques_body_parking,.infospratiques_body_voiturier{float:left;}
 .infospratiques_head_img_container{float:left;height:22px;width:22px;margin:0 8px 0 0;}
 .horaires_commerces_ouvert{background-color:#c6eeca !important;}
@@ -1025,10 +1025,13 @@ input.ident_input_password{padding-left:45px;background:url('../img/pictos_utili
 .img_container_payment_options4{height:34px;width:52px;background-position:-150px 0px;}
 .img_container_payment_options5{height:34px;width:55px;background-position:-205px 0px;}
 .menutarifs_body{border-radius: 0 0 3px 3px;overflow-y:scroll;overflow-x:hidden;height:500px;width:700px;}
+.infospratiques_body{border-radius: 0 0 3px 3px;overflow:hidden;width:700px;}
 .menutarifs_body_entrees_head,.menutarifs_body_plats_head,.menutarifs_body_desserts_head{background-color:#73d4dc;width:663px;padding:10px;}
+.infospratiques_head{background-color:#73d4dc;width:700px;padding:10px;}
 .localisation_head{background-color:#73d4dc;width:680px;padding:10px;}
-.localisation_head span,.menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
+.infospratiques_head span,.localisation_head span,.menutarifs_body_entrees_head span,.menutarifs_body_plats_head span,.menutarifs_body_desserts_head span{display:block;color:white;text-transform:uppercase;font-size:1.2em;font-weight:700;}
 .menutarifs_body_entrees_entree_generique{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:562px;}
+.infospratiques_horaires{border-top:1px solid #e4e4e4;border-right:1px solid #e4e4e4;padding:10px;float:left;background-color:white;color:#252525;width:575px;}
 .menutarifs_body_entrees_prix_generique{border-top:1px solid #e4e4e4;text-align:center;padding:10px;float:left;background-color:#f0f0f0;width:80px;}
 .ajout_liencommerce_infos_txt{float:left;text-align:center;width:480px;padding:10px;background-color:white;}
 .ajout_liencommerce_infos_txt span{display:inline-block;}
@@ -1492,6 +1495,7 @@ span.dashboard_couv_subtitle{display:block;text-transform:uppercase;}
 .infospratiques_body_horaires span{margin:0 5px;display:inline-block;float:left;}
 .bouton_commerce_ferme{cursor:pointer;float:right;height:17px;width:17px;background:url('../img/pictos_dashboard/bouton_commerce_ferme.png');}
 .bouton_commerce_ouvert{cursor:pointer;float:right;height:17px;width:17px;background:url('../img/pictos_dashboard/bouton_commerce_ouvert.png');}
+.copier_horaire{width: 40px;float: right;margin-left:5px;margin-right: -10px;}
 
 .input_parking{width:540px;height:10px;padding:10px;}
 input.input_parking{border:1px dashed #252525;}

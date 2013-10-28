@@ -44,7 +44,7 @@ ALTER TABLE `enseignes` DROP `sscategorie_enseigne`
 , DROP `prevenir_reservation`
 , DROP `email_reservation`
 , DROP `telephone_reservation`
-, DROP `optin`
+, DROP `voiturier`
 , DROP `video_enseigne`
 , DROP `fb_enseigne`
 , DROP `tw_enseigne`
@@ -104,7 +104,7 @@ ALTER TABLE `enseignes` ADD `sscategorie_enseigne` int(10) unsigned NOT NULL DEF
 , ADD `prevenir_reservation` int(1) DEFAULT 0
 , ADD `email_reservation` varchar(45) DEFAULT NULL
 , ADD `telephone_reservation` varchar(45) DEFAULT NULL
-, ADD `optin` tinyint(1) NOT NULL DEFAULT 0
+, ADD `voiturier` tinyint(1) NOT NULL DEFAULT 0
 , ADD `box_enseigne` varchar(45) DEFAULT NULL
 , ADD `video_enseigne` varchar(255) DEFAULT NULL
 , ADD `fb_enseigne` varchar(255) DEFAULT NULL
@@ -627,18 +627,11 @@ INSERT INTO `enseignes_type_infos` (`id_type_info`, `type_info`) VALUES
 (2, 'Les services proposés'),
 (3, 'Les régimes spéciaux'),
 (4, 'Avec qui venir ?'),
-(5, 'Horaires d''ouverture'),
-(6, 'Parking à proximité'),
-(7, 'Métro à proximité'),
-(8, 'Station vélib'' à proximité'),
-(9, 'Station autolib'' à proximité'),
-(10, 'Paiements acceptés'),
-(11, 'Service de voiturier'),
-(12, 'Label UNIITI'),
-(13, 'Recommandation'),
-(14, 'Prestation1'),
-(15, 'Prestation2'),
-(16, 'Prestation3');
+(5, 'Horaires'),
+(6, 'Horaires2'),
+(7, 'Prestation1'),
+(8, 'Prestation2'),
+(9, 'Prestation3');
 
 
 -- --------------------------------------------------------

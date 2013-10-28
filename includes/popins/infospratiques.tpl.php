@@ -18,7 +18,28 @@
 		foreach ($resultcheck as $row) {
 			$existe[$row['id_moyenpaiement']] = 1;
 		}
-
+		
+		$sql2 = "SELECT voiturier FROM enseignes WHERE id_enseigne=:id_enseigne";
+		$req2 = $bdd->prepare($sql2);
+		$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$req2->execute();
+		$result2 = $req2->fetch(PDO::FETCH_ASSOC);
+		$voiturier = $result2['voiturier'];
+		
+		$sql3 = "SELECT * FROM enseignes_horaires WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=5";
+		$req3 = $bdd->prepare($sql3);
+		$req3->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$req3->execute();		
+		$result3 = $req3->fetch(PDO::FETCH_ASSOC);
+		if ($result3) {
+			$datahoraires = "{Lundi : '" . $result3['lundi'] . "', "
+							. "Mardi : '" . $result3['mardi'] . "', "
+							. "Mercredi : '" . $result3['mercredi'] . "', "
+							. "Jeudi : '" . $result3['jeudi'] . "', "
+							. "Vendredi : '" . $result3['vendredi'] . "', "
+							. "Samedi : '" . $result3['samedi'] . "', "
+							. "Dimanche : '" . $result3['dimanche'] . "'}";
+		} else {$datahoraires = '""';}
 ?>
 <div class="menutarifs_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -77,19 +98,19 @@
             <div class="menutarifs_body_entrees_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="22" width="22" /></div><span>Horaires d'ouverture</span>
             </div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>De 11h30 à 15h00 et de 19h30 à 23h00</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert"><span>Lundi</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>De 11h30 à 15h00 et de 19h30 à 23h00</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert"><span>Mardi</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>De 11h30 à 15h00 et de 19h30 à 23h00</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert"><span>Mercredi</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>De 11h30 à 15h00 et de 19h30 à 23h00</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert"><span>Jeudi</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>De 11h30 à 15h00 et de 19h30 à 23h00</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert"><span>Vendredi</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>Fermé</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ferme"><span>Samedi</span></div>
-            <div class="menutarifs_body_entrees_entree_generique"><span>Fermé</span></div>
+            <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ferme"><span>Dimanche</span></div>
         
         </div>
@@ -130,6 +151,7 @@
             <div id="autolib2" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
 		</div>
+		<?php if ($resultcheck) { ?>
         <div class="infospratiques_body_paiements">
             <div class="menutarifs_body_desserts_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="22" width="22" /></div><span>Paiements acceptés</span>
@@ -141,7 +163,10 @@
 						<img id_paiement="<?php echo $row['id_moyenpaiement'];?>" class="img_container_payment_options img_container_payment_options<?php echo $row['id_moyenpaiement'];?> moyenspaiements<?php echo " valid_paiement";?>" title="<?php echo $row['moyenpaiement'];?>"></img>
 					</div>
 
-			<?php }} ?>        </div>
+			<?php }} ?>        
+		</div>
+		<?php } ?>
+		<?php if ($voiturier == 1) { ?>
         <div class="infospratiques_body_voiturier">
             <div class="menutarifs_body_desserts_head">
                 <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
@@ -153,6 +178,7 @@
                 </div>
             </div>
         </div>
+		<?php } ?>
     </div>
 
 
@@ -163,6 +189,41 @@
     defaultdialog.dialog('close');
     });
 
+	var inithoraires = <?php echo $datahoraires; ?>;
+	var init = true;
+	$('.infospratiques_body_horaires')
+		.find('.menutarifs_body_entrees_entree_generique')
+			.each(function() {
+				if (inithoraires != '') {InitHoraires($(this));}
+				else {
+					if (init) {init = false;$(this).html('<span>Informations non communiquées</span>');$(this).next().html('<span>Pas d\'information</span>')}
+					else {$(this).hide();$(this).next().hide();}
+				}
+			});
+
+	function InitHoraires(div) {
+		var id = div.next().find('span').text();
+		var span = '';
+		if (typeof(inithoraires[id]) != 'undefined') {
+			if (inithoraires[id] != "Fermé") {
+				if (inithoraires[id] == '') {span = "Pas d'information";}
+				else {
+					var sel = inithoraires[id].replace(/:/g, 'h').split(',');
+					if (sel[1] == sel[2]) {span = "De "+sel[0]+" à "+sel[3]+" sans interruption";}
+					else {span = "De "+sel[0]+" à "+sel[1]+" et de "+sel[2]+" à "+sel[3];}
+				}
+			} else {span = "Fermé";}
+		}
+		if (span == "Fermé") {
+			div.next(':first').removeClass('horaires_commerces_ouvert');
+			div.next(':first').addClass('horaires_commerces_ferme');
+		}
+		var html = '<span>\n';
+		html += span;
+		html += '</span>\n'
+		div.html(html);
+	}
+	
 	var enseigne_position = false;
 	var nom_enseigne = '<?php echo addslashes($_POST['nom_enseigne']);?>';
 	var adresse1_enseigne = '<?php echo addslashes($_POST['adresse1_enseigne']);?>';
@@ -198,8 +259,6 @@
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));		
-	console.log(autolib_icon);
-
 
 	$(document).ready(function() {
 		if (!navigator.geolocation) return true; // Fx 3.5+ only
@@ -349,7 +408,6 @@
 			icon: icon,
 			animation: google.maps.Animation.DROP
 		});
-		console.log(marker);
 		google.maps.event.addListener(marker, 'mouseover', function() {
 			infowindow2.setContent('<html><div id="infowindow">'+place.name+' <strong>à '+distance+'m</strong></div></html>');
 			infowindow2.open(map, this);
