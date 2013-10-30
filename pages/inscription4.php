@@ -158,7 +158,7 @@
 			data : data,
 			success: function(html){
 			},
-			error: function() {alert('Erreur sur url : ' + url);}
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 	}
 	$Inscription = <?php echo $Inscription; ?>;
@@ -170,6 +170,7 @@
 		
 		var data = {
 						type : 'contributeur',
+						premiere : 1,
 						id_contributeur : $id_contributeur,
 						id_enseigne :'',
 						chemin : '',
@@ -184,7 +185,6 @@
 						y4 : 0,
 						y5 : 0
 					};
-
 		$.ajax({
 			async : false,
 			type :"POST",
@@ -192,7 +192,7 @@
 			data : data,
 			success: function(html){
 			},
-			error: function() {alert('Erreur sur url : ' + url);}
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 		
 	}

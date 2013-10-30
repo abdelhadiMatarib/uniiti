@@ -2,6 +2,23 @@
 		if (!empty($_POST['lastid']) || !empty($_POST['provenance'])) {include_once '../acces/auth.inc.php';include_once '../config/configuration.inc.php';include_once '../config/configPDO.inc.php';include_once 'fonctions.inc.php';}
 		if (!empty($_POST['site_url'])) {$SITE_URL = $_POST['site_url'];} else {$SITE_URL =SITE_URL;}
 		if (!empty($_POST['nbitems'])) {$NbItems = $_POST['nbitems'];} else {$NbItems = 40;}
+		$sql5 = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
+			FROM avis AS t1
+			INNER JOIN enseignes_recoient_avis AS t2
+			ON t1.id_avis = t2.avis_id_avis
+			INNER JOIN enseignes AS t3
+				ON t2.enseignes_id_enseigne = t3.id_enseigne
+				INNER JOIN contributeurs_donnent_avis AS t4
+					ON t1.id_avis = t4.avis_id_avis
+					INNER JOIN contributeurs AS t5
+						ON t4.contributeurs_id_contributeur = t5.id_contributeur
+			";
+		$req5 = $bdd->prepare($sql5);
+		$req5->execute();
+		$result5 = $req5->fetch(PDO::FETCH_ASSOC);
+		$nbavis     = $result5['count_avis'];
+		
+		
 		// Calcul de la note moyenne et du nombre d'avis par enseigne : PAS OPTIMISE à revoir
 		$sql = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					FROM avis AS t1
@@ -382,7 +399,7 @@
                         <?php } ?>
                         <?php if ($CompteurAlea4 == $Compteur) { ?>
                         <div class="box box_aleatoire box_aleatoire_nombres">
-                            <span class="box_aleatoire_nbr_1">4924</span>
+                            <span class="box_aleatoire_nbr_1"><?php echo $nbavis ?></span>
                             <span class="box_aleatoire_nbr_2">avis sur le site</span>
                         </div>
                         <?php } ?>

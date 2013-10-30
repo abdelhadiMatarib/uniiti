@@ -137,7 +137,8 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .header_logo > a{display:inline-block;background:url('../img/logo.png') no-repeat center;width:88px;height:26px;margin-top:2px;}
 
 .header_yourcity{float:left;margin-right:14px;}
-.header_yourcity > aside{float:left;display:inline-block;margin: 5px 0px 0px 7px;}
+#header_choixvilles2{float:left;cursor:pointer;}
+#header_choixvilles2 > aside{float:left;display:inline-block;margin: 5px 0px 0px 7px;}
 .header_img_container{float:left;height:30px;width:30px;text-align:center;}
 .header_choixvilles{float:left;font-weight:bold;margin:0 10px 0 10px;}
 .header_choixvilles a {display:inline-block;color:#252525;margin-top:5px;}
@@ -1167,7 +1168,7 @@ input.utilisateur_interface_modifs_modifier_commentaire_inputs{float:left;}
 .utilisateur_interface_modifs_modifier_avis_inside_choice_non a:hover{background-color:#c76161;}
 
 .utilisateur_interface_modifs_modifier_commentaire_inside textarea{padding:10px;resize:none;width:230px;height:110px;}
-.utilisateur_interface_modifs_modifier_note_inside textarea{padding:10px;resize:none;width:230px;height:110px;}
+.utilisateur_interface_modifs_modifier_note_inside textarea{padding:10px;resize:none;width:210px;height:110px;}
 input.input_avisenattente_precisezmotif{float:left;margin:10px 0;padding:5px;width:230px;}
 .input_avisenattente_precisezmotif{display:none;}
 

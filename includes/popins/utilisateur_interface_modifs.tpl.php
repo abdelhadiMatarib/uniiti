@@ -100,12 +100,11 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <div class="arrow_up" style="border-bottom:5px solid <?php echo $_POST['couleur']; ?>;"></div>
         </div>
                     
-                <div class="presentation_action_left_footer">
+		<div class="presentation_action_left_footer">
             <div class="presentation_action_left_footer_img_container"><figure><img src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $_POST['photo_contributeur'];?>" height="50" width="50"/></figure></div>
             <div class="presentation_action_left_footer_timing"><?php echo stripslashes($_POST['delai_avis']); ?></div>
             <div class="presentation_action_left_footer_picto_action" <?php echo AfficheProvenance($_POST['provenance'], $_POST['categorie']); ?>></div>
-        
-        </div>
+		</div>
     </div>
     
     <div class="presentation_action_right">

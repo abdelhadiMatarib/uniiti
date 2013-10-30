@@ -373,31 +373,28 @@ else {
 							echo "<span>" . $motcle . "</span>"; 
 							}} ?>
 						</div>
-						<?php if ($AfficheMotcle[2]) { ?>
                         <div class="infosrapides2">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides2.png" alt="" title="" height="25" width="26" /></div>
+							<?php if ($AfficheMotcle[2]) { ?>
 							<?php foreach ($MotCle[2] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
                         <div class="clearfix_infosrapides"></div>
-						<?php } ?>
-						<?php if ($AfficheMotcle[3]) { ?>
                         <div class="infosrapides3">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides3.png" alt="" title="" height="30" width="30" /></div>
+							<?php if ($AfficheMotcle[3]) { ?>
 							<?php foreach ($MotCle[3] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
-						<?php } ?>
-						<?php if ($AfficheMotcle[4]) { ?>
                         <div class="infosrapides4">
 							<div class="img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/infosrapides4.png" alt="" title="" height="23" width="32" /></div>
+							<?php if ($AfficheMotcle[4]) { ?>
 							<?php foreach ($MotCle[4] as $id_motcle => $motcle) { 
 							echo "<span>" . $motcle . "</span>"; 
-							} ?>
+							}} ?>
 						</div>
-						<?php } ?>
                     </div>
                     
                 </div>

@@ -209,9 +209,12 @@
 			if(isset($_SESSION['SESS_MEMBER_ID'])) {
 				$dataFollow = "{check : 0, id_contributeurACTIF :" . $_SESSION['SESS_MEMBER_ID'] . ", id_contributeur :" . $id_contributeur . "}";
 				$follow_step1 = "AfficheFollowContributeur(" . $dataFollow . ");";
-				if (($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) && ($provenance == "avis")) {
+				if ((!empty($_POST['provenance'])) && (urldecode($_POST['provenance']) == "\"avis_en_attente\"")) {
+					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/avisenattente.tpl.php','default_dialog_large');";
+				}
+				else if (($_SESSION['SESS_MEMBER_ID'] == $id_contributeur) && ($provenance == "avis")) {
 					$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/utilisateur_interface_modifs.tpl.php','default_dialog_large');";
-				} 
+				}
 				else {$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";}
 			} else {
 				$presoumodif = "OuvrePopin(" . $data . ", '/includes/popins/presentation_action_commentaire.tpl.php','default_dialog_large');";
@@ -242,7 +245,15 @@
             <section onclick="<?php echo $presoumodif; ?>">
             	<div class="box_useraction"><a href="<?php echo $SITE_URL . "/pages/utilisateur.php?id_contributeur=" . $id_contributeur; ?>"><span style="color:<?php echo $couleur; ?>;"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span></a> <?php echo $action ?><?php if ($commentaire == "pas de commentaire") { ?><span style="color:<?php echo $couleur; ?>;font-weight: bold;"> <?php echo  $note / 2; ?>/5 </span><?php } ?></div>
 				<?php if (($affichecommentaire) && ($commentaire != "pas de commentaire"))  { ?><div class="box_usertext"><figcaption><span style="color:<?php echo $couleur; ?>;font-weight: bold;"><?php echo $note/2 ?>/5 | </span><?php echo $commentaire; ?></figcaption></div><?php } ?>
-            <div class="arrow_up" style="border-bottom:5px solid <?php echo $couleur; ?>;"></div>
+            <?php if ((!empty($_POST['provenance'])) && (urldecode($_POST['provenance']) == "\"avis_en_attente\"")) { ?>    
+				<div class="box_avis_attente_commercant_wrap" style="color:<?php echo $couleur; ?>">
+                    <span>Vous avez la possibilité de le</span>
+                    <span>signaler, publier ou </span>
+                    <span>commenter !</span>
+                </div>
+			<?php } ?>
+			
+			<div class="arrow_up" style="border-bottom:5px solid <?php echo $couleur; ?>;"></div>
             </section>
             
             <footer>

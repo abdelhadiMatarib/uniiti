@@ -48,6 +48,13 @@ try
 			$req2->closeCursor();    // Ferme la connexion du serveur
 			$req3->closeCursor();    // Ferme la connexion du serveur
 		break;
+		case 'publication':
+			$sql = "UPDATE avis SET id_statut = 2 WHERE id_avis = " . $id_avis;
+			$req = $bdd->prepare($sql);
+			$req->execute();
+			$bdd->commit(); // Validation de la transaction / des requetes
+			$req->closeCursor();    // Ferme la connexion du serveur		
+		break;
 		default:
 			exit;
 		break;

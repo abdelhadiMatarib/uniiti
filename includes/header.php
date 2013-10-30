@@ -80,12 +80,14 @@
 
             <div class="header_yourcity">
                 <div class="header_button_ville"><button type="button"></button></div>
-                <aside>Votre ville</aside>
-                <div class="header_choixvilles">
-					<a href="#" id="inputSearch5">Paris</a>
-					<input id="inputSearch5Hidden" type="hidden" value=""/>
+				<div id="header_choixvilles2" style="float:left;">
+					<aside>Votre ville</aside>
+					<div class="header_choixvilles">
+						<a href="#" id="inputSearch5">Paris</a>
+						<input id="inputSearch5Hidden" type="hidden" value=""/>
+					</div>
+					<div class="header_flechebas"></div>
 				</div>
-				<div class="header_flechebas"><a id="header_choixvilles2" href="#"></a></div>
 				<div class="suggestionsContainer display-none" id="suggestionsContainer5">	
 					<ul class="suggestionList" id="suggestionList5">
 					<?php foreach ($result as $row) {
