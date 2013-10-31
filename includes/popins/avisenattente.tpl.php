@@ -36,6 +36,14 @@ switch ($provenance) {
 		$affichecommentaire = false;
 		break;
 }
+
+$reponse = explode("<BR><b>Réponse du commerçant :</b> ", $_POST['commentaire']);
+$time_avis = strtotime($_POST['date_avis']);
+$dateplussept = mktime(date("H", $time_avis), date("i", $time_avis), date("s", $time_avis), date("m", $time_avis)  , date("d", $time_avis)+7, date("Y", $time_avis));
+$dateplussept = date('Y-m-d H:i:s', $dateplussept);
+$secondes = strtotime($dateplussept) - strtotime(date('Y-m-d H:i:s'));
+$jours = number_format($secondes / (60*60*24),0);
+
 if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $_POST['id_enseigne'] . "}";
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
@@ -54,7 +62,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     <div class="presentation_action_left">
         <div class="presentation_action_left_head left_head_avisenattente">
             
-            <div class="presentation_action_left_head_img_container_picto_categorie"><img src="<?php echo SITE_URL; ?>/img/pictos_commerces/restaurant.png"/></div>
+            <div class="presentation_action_left_head_img_container_picto_categorie" title="<?php echo stripslashes($_POST['scategorie']); ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $_POST['posx'] . "px" . " " . $_POST['posy'] . "px"?>"></div>
             <div class="presentation_action_left_head_categorie_wrap">    
                 <span class="presentation_action_left_head_titre user_txt_avisenattente"><?php /*echo $_POST['prenom_contributeur'] . " " . ucFirstOtherLower(tronqueName($_POST['nom_contributeur'], 1)); */?></span>
                 <span class="presentation_action_left_head_categorie">355/3000 - Confirmé</span>
@@ -83,7 +91,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             <div class="presentation_action_commentaire_left_body_message">
 				<?php if ($affichecommentaire) { ?>
 					<span style="color:<?php echo $_POST['couleur']; ?>;"><?php echo $_POST['note'] / 2; ?>/5 | </span>
-					<span id="commentaire"><?php echo stripslashes($_POST['commentaire']); ?></span>
+					<span id="commentaire"><?php if (isset($reponse[1])) {echo $reponse[0];} else {echo stripslashes($_POST['commentaire']);} ?></span>
 				<?php } ?>
             </div>
 			<div class="presentation_action_signalement_body utilisateur_interface_modifs_modifier_commentaire_inputs">
@@ -111,28 +119,25 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
     </div>
 
-
-
-    
     <div class="presentation_action_right">
         <div class="utilisateur_interface_avisenattente_haut">
-            <a href="#" title="" class="maintitle"><span>Voici un nouveau commentaire. Il sera publié dans</span><span class="interface_avisenattente_txt_colored"> <strong>3</strong> </span><span>jours</span></a>
+            <a href="#" title="" class="maintitle"><span>Voici un nouveau commentaire. Il sera publié dans</span><span class="interface_avisenattente_txt_colored" style="color:<?php echo $_POST['couleur']; ?>;"> <strong><?php echo $jours; ?></strong> </span><span>jours</span></a>
         </div>
        
         <div class="utilisateur_interface_modifs_modifier_commentaire">
-            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration">Signaler</span><span> le commentaire</span></a>
+            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration" style="color:<?php echo $_POST['couleur']; ?>;">Signaler</span><span> le commentaire</span></a>
         </div>
         <div class="utilisateur_interface_modifs_modifier_note">
-            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration">Répondre</span><span> à ce commentaire</span></a>
+            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration" style="color:<?php echo $_POST['couleur']; ?>;">Répondre</span><span> à ce commentaire</span></a>
             <div class="utilisateur_interface_modifs_modifier_note_inside">
-                <textarea placeholder="Ajouter un commentaire"></textarea>
+                <textarea id="reponse" placeholder="Ajouter un commentaire"><?php if (isset($reponse[1])) {echo $reponse[1];} ?></textarea>
             <div class="wrap_buttons_valider_supprimer">
-                <div class="button_valider"></div>
+                <div class="button_valider" onclick="ReponseAvis('reponse');"></div>
             </div>
             </div>
         </div>
         <div class="utilisateur_interface_modifs_modifier_avis">
-            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration">Publier</span><span> le commentaire</span></a>
+            <a href="#" title="" class="maintitle"><span class="utilisateur_interface_modifs_txt_restauration" style="color:<?php echo $_POST['couleur']; ?>;">Publier</span><span> le commentaire</span></a>
             <div class="utilisateur_interface_modifs_modifier_avis_inside">
                 <div class="utilisateur_interface_modifs_modifier_avis_inside_img_container">
                     <span>Êtes-vous certain de vouloir publier cet avis ?</span>
@@ -145,11 +150,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         </div>
         <div class="clearfix"></div>
 
-
     </div>
-    
-
-       
     
 </div>
 <script>
@@ -241,6 +242,30 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	$('.utilisateur_interface_modifs_modifier_avis_inside_choice_non').click(function () {
 		$(".utilisateur_interface_modifs_modifier_avis_inside").stop().slideUp();
 	});	
+
+	function ReponseAvis(type) {
+		var id_enseigne = '<?php echo $_POST['id_enseigne'];?>';
+		var data = {
+						id_contributeur : '<?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];}?>',
+						id_enseigne : id_enseigne,
+						id_avis : '<?php echo $_POST['id_avis'];?>',
+						type : type,
+						commentaire : ''+$('#commentaire').html()+'',
+						reponse : ''+$('#reponse').val()+'',
+						note : ''
+					};
+		console.log(data);
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/requetechangeavis.php',
+			data : data,
+			success: function(result){
+				window.location.assign(siteurl+"/pages/commerce_interface.php?id_enseigne="+id_enseigne);
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
+		});
+	}
 	
 	function PublierAvis(type, note, commentaire) {
 		var id_enseigne = '<?php echo $_POST['id_enseigne'];?>';

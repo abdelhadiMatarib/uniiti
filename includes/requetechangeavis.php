@@ -10,6 +10,7 @@ if (isset($_POST['id_contributeur'])) {$id_contributeur = $_POST['id_contributeu
 if (isset($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {exit;}
 if (isset($_POST['id_avis'])) {$id_avis = $_POST['id_avis'];} else {exit;}
 if (isset($_POST['commentaire'])) {$commentaire = $_POST['commentaire'];} else {exit;}
+if (isset($_POST['reponse'])) {$reponse = $_POST['reponse'];}
 if (isset($_POST['note'])) {$note = $_POST['note'];} else {exit;}
 $date = date('Y-m-d H:i:s');
 
@@ -29,6 +30,18 @@ try
 		case 'commentaire':
 			$sql = "UPDATE avis SET commentaire = '" . htmlspecialchars($commentaire) . "', date_avis = '" . $date . "' WHERE id_avis = " . $id_avis;
 			$req = $bdd->prepare($sql);
+			$req->execute();
+			$bdd->commit(); // Validation de la transaction / des requetes
+			$req->closeCursor();    // Ferme la connexion du serveur
+		break;
+		case 'reponse':
+			$commentaire = htmlspecialchars($commentaire);
+			if ($reponse != '') {$reponse = "<BR><b>Réponse du commerçant :</b> " . htmlspecialchars($reponse);}
+			$sql = "UPDATE avis SET commentaire = CONCAT(:commentaire, :reponse) WHERE id_avis = :id_avis";
+			$req = $bdd->prepare($sql);
+			$req->bindParam(':id_avis', $id_avis, PDO::PARAM_INT);
+			$req->bindParam(':commentaire', $commentaire, PDO::PARAM_STR);
+			$req->bindParam(':reponse', $reponse, PDO::PARAM_STR);
 			$req->execute();
 			$bdd->commit(); // Validation de la transaction / des requetes
 			$req->closeCursor();    // Ferme la connexion du serveur
