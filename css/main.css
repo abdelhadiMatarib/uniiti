@@ -124,8 +124,8 @@ span.index_overlay_texte{display:block;}
     color:    #252525;
     font-size:0.9em;
 }
-input#inputSearch1{font-family:'open sans';font-size:1em;font-weight:100;padding:0 0 0 50px;background:url('../img/pictos_actions/placeholder_quoi.png') no-repeat 10px #e3e4e4;}
-input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding:0 0 0 40px;background:url('../img/pictos_actions/placeholder_ou.png') no-repeat 10px #e3e4e4;}
+input#inputSearch1{font-family:'open sans';font-size:1em;font-weight:100;padding:0 0 0 50px;background:url('../img/pictos_actions/placeholder_quoi.png') no-repeat 10px #f0f0f0;}
+input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding:0 0 0 40px;background:url('../img/pictos_actions/placeholder_ou.png') no-repeat 10px #f0f0f0;}
 .header button{background-color:#e3e4e4;}
 
 .header_leftnav{position:relative;height:30px;float:left;}
