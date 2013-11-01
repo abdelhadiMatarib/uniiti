@@ -4,11 +4,15 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?php 
-	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+	require_once('../acces/droits.inc.php'); 					// Liste de définition des ACL	
 	include_once '../config/configuration.inc.php';
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
 	include_once '../config/configPDO.inc.php';
+
+	if ((isset($_SESSION['SESS_MEMBER_ID'])) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Connecte = true;}
+	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 ?>
 
     <body class="dashboard">

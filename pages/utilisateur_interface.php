@@ -4,7 +4,8 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?php
-	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+	require_once('../acces/droits.inc.php'); 					// Liste de définition des ACL	
 	include_once '../config/configuration.inc.php';
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
@@ -14,7 +15,14 @@
 
 	if (isset($_GET['id_contributeur'])) {$id_contributeur = $_GET['id_contributeur'];}
 	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
-		
+
+	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur))) {$Connecte = true;}
+	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	/////////////////////////////////// IL FAUT AJOUTER UN TEST SUR LES ENSEIGNES QUE L'UTILISATEUR A LE DROIT D'ATTEINDRE
+	if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
+	else {$Admin = false;}
+
+	
 	$sql = "SELECT * FROM contributeurs WHERE id_contributeur = " . $id_contributeur;
 
 	$req = $bdd->prepare($sql);

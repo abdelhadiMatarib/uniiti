@@ -20,6 +20,6 @@
 	if(mail($_POST['destinataire'],mb_encode_mimeheader(utf8_decode($_POST['sujet'])),$contenu,$headers)) {
 		$data['result'] = "L'email a bien été envoyé.\n" . $_POST['destinataire'] . "\n" . $_POST['sujet'];
 	}
-	else {$data['result'] = "Une erreur c'est produite lors de l'envoi de l'email.";}
+	else {$data['result'] = "Une erreur s'est produite lors de l'envoi de l'email.";}
 	echo json_encode($data);
 ?>
