@@ -16,19 +16,26 @@
 	if (isset($_GET['id_contributeur'])) {$id_contributeur = $_GET['id_contributeur'];}
 	else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 
-	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur))) {$Connecte = true;}
-	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
-	/////////////////////////////////// IL FAUT AJOUTER UN TEST SUR LES ENSEIGNES QUE L'UTILISATEUR A LE DROIT D'ATTEINDRE
-	if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
-	else {$Admin = false;}
-
-	
 	$sql = "SELECT * FROM contributeurs WHERE id_contributeur = " . $id_contributeur;
 
 	$req = $bdd->prepare($sql);
 	$req->execute();
 	$result = $req->fetch(PDO::FETCH_ASSOC);
- 
+	
+	$RecouvreMDP = false;
+	if (isset($_GET['mdp'])) {
+		$mdp = $_GET['mdp'];
+		$RecouvreMDP = true;
+		if ($result['password_contributeur'] != $mdp) {
+			echo "Mot de passe incorrect !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;		
+		}
+	} else {
+		if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ($_SESSION['SESS_MEMBER_ID'] == $id_contributeur))) {$Connecte = true;}
+		else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+		if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
+		else {$Admin = false;}
+	}
+	
 	$photo_contributeur     = $result['photo_contributeur'];
 	$slide1_contributeur    = $result['slide1_contributeur'];
 	$slide2_contributeur    = $result['slide2_contributeur'];
@@ -110,6 +117,16 @@
 			. "email_login:'" . $email_contributeur . "', "
 			. "mdp:'" . $password_contributeur . "', "
 			. "telephone_contributeur:'" . $telephone_contributeur . "'}";
+
+	$Engrenage = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_interface_infos_persos.tpl.php', 'default_dialog');";
+	if ($RecouvreMDP) {
+		$OuvreInscription2 = $Classement = $Couverture = "OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');";
+	} 
+	else {
+		$OuvreInscription2 = "OuvreInscription2();";
+		$Classement = "OuvrePopin({}, '/includes/popins/classement_utilisateur.tpl.php', 'default_dialog');";
+		$Couverture = "OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');";
+	}
 			
 ?>
 <body>
@@ -138,7 +155,7 @@
                         <h2><?php echo $prenom_contributeur . " " . $nom_contributeur; ?></h2>
                     </div>
                     <div class="utilisateur_interface_engrenage">
-                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="OuvrePopin(<?php echo $datamodif; ?>, '/includes/popins/utilisateur_interface_infos_persos.tpl.php', 'default_dialog');"></a></div>
+                        <div class="utilisateur_interface_engrenage_img_container"><a href="#" class="link_engrenage_button" title="" onclick="<?php echo $Engrenage; ?>"></a></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separateur"></div>
@@ -148,7 +165,7 @@
                             <img class="user_avatar_target" src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
 							<?php if ($id_contributeur != 0) { ?>
 								<div class="utilisateur_interface_modifier_couv modifier_avatar">
-									<a href="#" title="" class="button_changer_couverture" onclick="OuvreInscription2();">
+									<a href="#" title="" class="button_changer_couverture" onclick="<?php echo $OuvreInscription2; ?>">
 										<div class="utilisateur_interface_modifier_icon_noir">
 											<img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" />
 										</div>
@@ -176,7 +193,7 @@
                 </div>
                 <div class="objet_head_infos">
                     <div class="separateur"></div>
-                    <div class="objet_head_infos_services"><a href="#" onclick="OuvrePopin({}, '/includes/popins/classement_utilisateur.tpl.php', 'default_dialog');"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></a></div>
+                    <div class="objet_head_infos_services"><a href="#" onclick="<?php echo $Classement; ?>"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></a></div>
                     
                     <div class="objet_head_infos_infos"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_infos_text"><span class="objet_head_infos_infos_text_fin">Classement</span><span class="objet_head_infos_infos_text_couleur">Sport</span></div><span class="objet_head_infos_infos_classement">85<sup>ème</sup></span></div>
                     <div class="utilisateur_head_infos_suggestion">
@@ -212,7 +229,7 @@
                 <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
  				<?php if ($id_contributeur != 0) { ?>
 					<div class="utilisateur_interface_modifier_couv">
-						<a href="#" title="" class="button_changer_couverture" onclick="OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');">
+						<a href="#" title="" class="button_changer_couverture" onclick="<?php echo $Couverture; ?>">
 							<div class="utilisateur_interface_modifier_icon_noir">
 								<img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" />
 							</div>

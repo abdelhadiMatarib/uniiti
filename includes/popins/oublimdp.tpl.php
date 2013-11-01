@@ -47,7 +47,7 @@
 			async : false,
 			type :"POST",
 			url : siteurl+'/includes/requetecheckemail.php',
-			data : {email : ''+$id("email_login").value+'', 'oublimdp' : 1},
+			data : {email : ''+$id("email_login").value+'', 'oublimdp' : 1, 'SITE_URL' : encodeURIComponent(siteurl)},
 			success: function(result){
 				if (result.result != 1) {
 					alert("Cet email n'existe pas.");						

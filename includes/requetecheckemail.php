@@ -19,7 +19,8 @@ if ($result) {
 	$contenu .= "<title> Subject </title> \n";
 	$contenu .= "</head> \n";
 	$contenu .= "<body> \n";
-	$contenu .= $result['password_contributeur'];
+	$contenu .= "Changez votre mot de passe en suivant ce \n";
+	$contenu .= '<a href="' . urldecode($_POST['SITE_URL']) . "/pages/utilisateur_interface.php?id_contributeur=" . $result['id_contributeur'] . "&mdp=" . $result['password_contributeur'] . '">lien</a>';
 	$contenu .= "<BR/><BR/>L'équipe UNIITI vous remercie pour votre confiance.\n";
 	$contenu .= "</body> \n";
 	$contenu .= "</html> \n";
@@ -30,7 +31,7 @@ if ($result) {
 	$headers .= "From: \"UNIITI\"<info@uniiti.fr>\n";
 	$headers .= "Reply-To: info@uniiti.fr\n";
 	$headers .= "Content-type: text/html; charset=utf-8\n";
-	if(mail($_POST['email'],mb_encode_mimeheader(utf8_decode("UNIITI : oubli de mot de passe")),$contenu,$headers)) {
+	if(mail($_POST['email'],mb_encode_mimeheader(utf8_decode("UNIITI : oubli de votre mot de passe")),$contenu,$headers)) {
 		$data['resultemail'] = "Un email vous a bien été envoyé.";
 	}
 	else {$data['resultemail'] = "Une erreur s'est produite lors de l'envoi de l'email.";}	
