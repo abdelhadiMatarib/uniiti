@@ -16,13 +16,13 @@
 	
 	if ((isset($_SESSION['SESS_MEMBER_ID'])) && (((int)$_SESSION['droits'] & ADMINISTRATEUR) OR ((int)$_SESSION['droits'] & PROFESSIONNEL))) {$Connecte = true;}
 	else {echo "vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
-	/////////////////////////////////// IL FAUT AJOUTER UN TEST SUR LES ENSEIGNES QUE L'UTILISATEUR A LE DROIT D'ATTEINDRE
+
 	if (($Connecte) && ((int)$_SESSION['droits'] & ADMINISTRATEUR)) {$Admin = true;}
 	else {$Admin = false;}
 	
 	$PAGE = "Commerce"; 
 
-	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
+	$sql2 = "SELECT professionnels_id_pro, id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					box_enseigne, slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, x1, y1, y2, y3, y4, y5,
 					reservation, prevenir_reservation, email_reservation, telephone_reservation, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, id_budget
 			FROM enseignes AS t1
@@ -43,7 +43,17 @@
 
 	$req2->execute();
 	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
-           
+	
+	$id_pro 				 = $result2['professionnels_id_pro'];
+	if ((!$Admin) && ($_SESSION['SESS_MEMBER_ID'] != $id_pro)) {echo "Vous ne pouvez pas accéder à cette page sans être connecté!\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	$sql14 = "SELECT photo_contributeur FROM contributeurs WHERE id_contributeur = :id_contributeur";
+	$req14 = $bdd->prepare($sql14);
+	$req14->bindParam(':id_contributeur', $id_pro, PDO::PARAM_INT);
+	$req14->execute();
+	$result14 = $req14->fetch(PDO::FETCH_ASSOC);
+	if ($result14) {$photo_gerant = $result14['photo_contributeur'];}
+	else {$photo_gerant = false;}
+
 	$nom_enseigne            = $result2['nom_enseigne'];
 	$box_enseigne       	 = $result2['box_enseigne'];
 	$slide1_enseigne    	 = $result2['slide1_enseigne'];
@@ -267,6 +277,15 @@
 			. "id_quartier:" . $id_quartier . ", "
 			. "id_budget:" . $id_budget . "}";
 
+	$datainfospratiques = "{type : 'enseigne', "
+			. "id_enseigne : " . $id_enseigne . ", "
+			. "couleur:'" . $couleur . "', "
+			. "nom_enseigne:'" . addslashes($nom_enseigne) . "', "
+			. "adresse1_enseigne:'" . addslashes($adresse1_enseigne) . "', "
+			. "code_postal :'" . addslashes($code_postal) . "', "
+			. "ville_enseigne:'" . addslashes($ville_enseigne) . "',"
+			. "telephone_enseigne : '" . $telephone_enseigne . "'}";
+
 	$IlsSuiventCeCommerce = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/commerce_suiveurs.tpl.php', 'default_dialog')";		
 	$AjoutReseau = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/ajout_liencommerce_votrereseau.tpl.php', 'default_dialog')";		
 			
@@ -289,7 +308,7 @@ else {
 		$Video = "OuvrePopin(" . $datamodif . ", '/includes/popins/utilisateur_demande_modifs.tpl.php', 'default_dialog')";
 		$Reservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/reservation_step1.tpl.php', 'default_dialog')";
 		$Menutarifs = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/menutarifs.tpl.php', 'default_dialog_large');";
-		$Infospratiques = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
+		$Infospratiques = "OuvrePopin(" . $datainfospratiques . ", '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
 		$Modulereservation = "OuvrePopin(" . $datamodif . ", '/includes/popins/module_reservation.tpl.php', 'default_dialog');";		
 		$Moduleoption = "OuvrePopin({id_enseigne : " . $id_enseigne . "}, '/includes/popins/module_optin.tpl.php', 'default_dialog');";
 	}	
@@ -428,7 +447,7 @@ else {
                 
 				<?php if ($id_enseigne != 0) { ?>
 			
-				<div class="commerce_concept"><a class="button_show_concept" href="#" title="" onclick="<?php echo $LabelsCaptain; ?>"><span>Concept <span style="color:<?php echo $couleur; ?>"> & Gérant</span></span> <div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><img id="gerant_photo"src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" style="border: 2px solid <?php echo $couleur; ?>" /><?php echo $descriptif ?></p></div>
+				<div class="commerce_concept"><a class="button_show_concept" href="#" title="" onclick="<?php echo $LabelsCaptain; ?>"><span>Concept <span style="color:<?php echo $couleur; ?>"> & Gérant</span></span> <div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><img id="gerant_photo" src="<?php if ($photo_gerant) {echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_gerant;} ?>" title="" alt="" style="border: 2px solid <?php echo $couleur; ?>" /><?php echo $descriptif ?></p></div>
 
 			
 					<?php if ($Admin) { ?>
@@ -522,6 +541,8 @@ else {
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
         <?php include'../includes/js.php' ?>
+		
+	<script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyAIPMi9wXX7j6Wzer4QdNGLq4MPO4ykUQw&libraries=places,adsense"></script>		
 		
 	<script>
 	$(".filters.stats").css({display: "none"});

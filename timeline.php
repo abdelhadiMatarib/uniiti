@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
         <?php
-		include_once 'acces/auth.inc.php';                 // Gestion accès à la page - incluant la session		
+		include_once 'acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+		require_once('acces/droits.inc.php'); 					// Liste de définition des ACL			
 		header("Cache-Control: no-cache");
         include_once 'config/configuration.inc.php';
         include 'includes/head.php';

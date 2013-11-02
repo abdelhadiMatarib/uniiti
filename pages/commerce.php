@@ -4,7 +4,8 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <?php 
-	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session	
+	include_once '../acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
+	require_once('../acces/droits.inc.php'); 					// Liste de définition des ACL		
 	include_once '../config/configuration.inc.php';
 	include'../includes/head.php';
 	include_once '../includes/fonctions.inc.php';
@@ -12,7 +13,7 @@
 	
 	$PAGE = "Commerce"; 
 
-	$sql2 = "SELECT id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
+	$sql2 = "SELECT professionnels_id_pro, id_enseigne, t2.id_categorie, t2.id_sous_categorie, t2.id_sous_categorie2, categorie_principale, sous_categorie, sous_categorie2, couleur,
 					slide1_enseigne, slide2_enseigne, slide3_enseigne, slide4_enseigne, slide5_enseigne, nom_enseigne, y1, y2, y3, y4, y5, 
 					reservation, prevenir_reservation, email_reservation, telephone_reservation, adresse1_enseigne, cp_enseigne, nom_ville, villes_id_ville, id_quartier, telephone_enseigne, video_enseigne, descriptif, url, t1.id_budget, budget_enseigne
 			FROM enseignes AS t1
@@ -38,6 +39,15 @@
 
 	$req2->execute();
 	$result2 = $req2->fetch(PDO::FETCH_ASSOC);
+
+	$id_pro 				 = $result2['professionnels_id_pro'];
+	$sql14 = "SELECT photo_contributeur FROM contributeurs WHERE id_contributeur = :id_contributeur";
+	$req14 = $bdd->prepare($sql14);
+	$req14->bindParam(':id_contributeur', $id_pro, PDO::PARAM_INT);
+	$req14->execute();
+	$result14 = $req14->fetch(PDO::FETCH_ASSOC);
+	if ($result14) {$photo_gerant = $result14['photo_contributeur'];}
+	else {$photo_gerant = false;}
            
 	$nom_enseigne            = $result2['nom_enseigne'];
 	$slide1_enseigne    	 = $result2['slide1_enseigne'];
@@ -328,7 +338,7 @@
 					<?php if ($slide4_enseigne != "") { ?><img id="couv4" src="<?php echo $Chemin . $slide4_enseigne; ?>" title="" alt=""><?php } ?>
 					<?php if ($slide5_enseigne != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_enseigne; ?>" title="" alt=""><?php } ?>
 				    </div>
-				    <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Concept <span style="color:<?php echo $couleur; ?>"> & Gérant</span></span> <div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><img id="gerant_photo"src="<?php echo SITE_URL; ?>/img/avatars/james.jpg" title="" alt="" style="border: 2px solid <?php echo $couleur; ?>" /><?php echo $descriptif ?></p></div>
+				    <div class="commerce_concept"><a class="button_show_concept" href="#" title=""><span>Concept <span style="color:<?php echo $couleur; ?>"> & Gérant</span></span> <div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><img id="gerant_photo"src="<?php if ($photo_gerant) {echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_gerant;} ?>" title="" alt="" style="border: 2px solid <?php echo $couleur; ?>" /><?php echo $descriptif ?></p></div>
 				<div class="commerce_recos">
 					<a class="button_show_recos" onclick="<?php echo $Recommandations; ?>" href="#" title="">
 						<span>Recommandations</span>
@@ -400,7 +410,8 @@
 			<?php include '../includes/footer.php' ?>
         <!-- FIN FOOTER -->
         <?php include'../includes/js.php' ?>
-<script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyAIPMi9wXX7j6Wzer4QdNGLq4MPO4ykUQw&libraries=places,adsense"></script>		
+
+	<script src="//maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyAIPMi9wXX7j6Wzer4QdNGLq4MPO4ykUQw&libraries=places,adsense"></script>		
 	<script>
 	
 	var url_video = '<?php echo $url_video; ?>';

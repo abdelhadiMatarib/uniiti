@@ -21,6 +21,23 @@
 	$req = $bdd->prepare($sql);
 	$req->execute();
 	$result = $req->fetch(PDO::FETCH_ASSOC);
+	$professionnel = false;
+	if ($result['groupes_permissions_id_permission'] & PROFESSIONNEL) {
+		$professionnel = true;
+		$sql4 = "SELECT box_enseigne, descriptif FROM enseignes WHERE professionnels_id_pro = :id_pro";
+		$req4 = $bdd->prepare($sql4);
+		$req4->bindParam(':id_pro', $id_contributeur, PDO::PARAM_INT);
+		$req4->execute();
+		$result4 = $req4->fetch(PDO::FETCH_ASSOC);
+		$box_enseigne = "";
+		$descriptif = "";
+		if ($result4) {
+				$box_enseigne = $result4['box_enseigne'];
+				$descriptif = str_replace(PHP_EOL ,"", stripslashes($result4['descriptif']));
+				$descriptif = str_replace("\r" , "", $descriptif);
+				$descriptif = str_replace("\n" , "", $descriptif);	
+		}
+	} 
 	
 	$RecouvreMDP = false;
 	if (isset($_GET['mdp'])) {
@@ -224,10 +241,11 @@
 					<?php if ($slide5_contributeur != "") { ?><img id="couv5" src="<?php echo $Chemin . $slide5_contributeur . "?" . time(); ?>" title="" alt=""><?php } ?>
 				    </div>
 				</div>
-
-                <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><div class="utilisateur_interface_modifier_icon_blanc"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_b.png" title="" alt="" height="12" width="12" /></div><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content">En plein coeur du quartier des théâtres, Le Comptoir des Artistes est le restaurant idéal pour dîner avant ou après un spectacle.</p></div>
-                <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="../img/photos_commerces/1.jpg" title="" alt="" /></div></div>
- 				<?php if ($id_contributeur != 0) { ?>
+				<?php if ($professionnel) { ?>
+                <div class="commerce_concept"><a class="button_show_concept_utilisateur" href="#" title=""><div class="utilisateur_interface_modifier_icon_blanc"><img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_b.png" title="" alt="" height="12" width="12" /></div><span>Description</span><div class="commerce_concept_arrow concept_arrow_up"></div></a><p class="concept_content"><?php echo $descriptif ?></p></div>
+                <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne  . "?" . time();?>" title="" alt="" /></div></div>
+ 				<?php } ?>
+				<?php if ($id_contributeur != 0) { ?>
 					<div class="utilisateur_interface_modifier_couv">
 						<a href="#" title="" class="button_changer_couverture" onclick="<?php echo $Couverture; ?>">
 							<div class="utilisateur_interface_modifier_icon_noir">
