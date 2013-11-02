@@ -125,7 +125,7 @@
 	else {
 		$OuvreInscription2 = "OuvreInscription2();";
 		$Classement = "OuvrePopin({}, '/includes/popins/classement_utilisateur.tpl.php', 'default_dialog');";
-		$Couverture = "OuvrePopin(<?php echo $datacouv;?>, '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');";
+		$Couverture = "OuvrePopin(" . $datacouv . ", '/includes/popins/couverture_step1.tpl.php', 'default_dialog_large');";
 	}
 			
 ?>
