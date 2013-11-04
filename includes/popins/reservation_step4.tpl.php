@@ -38,7 +38,7 @@
 				<input id="Prenom" type="text" class="reservation_recap_formulaire_prenom" placeholder="Prénom"/>
 				<div class="resa_recap_vertical_sep"></div>
 				<input id="email" required="required" type="text" class="reservation_recap_formulaire_email" placeholder="Email *"/>
-				<input type="text" class="reservation_recap_formulaire_tel" placeholder="N° de téléphone"/>
+				<input id="Telephone" type="text" class="reservation_recap_formulaire_tel" placeholder="N° de téléphone"/>
 				<textarea class="reservation_recap_formulaire_message" placeholder="Demande à l'attention du restaurant : Votre demande sera transmise au restaurant mais nous ne pouvons vous garantir qu’il pourra satisfaire toute les demandes."></textarea>
 				<div class="reservation_recap_cgu_wrap">
 					
@@ -56,7 +56,7 @@
 </div>
 <script>
 
-function EnvoiMailContributeur(date, heure, nombre) {
+function EnvoiMailContributeur(nom_enseigne, date, heure, nombre) {
     var datareservation = {
                 destinataire : $('#email').val(),
 				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
@@ -97,9 +97,9 @@ function EtapeSuivante() {
 				telephone_reservation :'<?php if (!empty($_POST['telephone_reservation'])) {echo $_POST['telephone_reservation'];} ?>',
 				destinataire : '<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
 				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
-				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' demandeur ',
+				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' demandeur : '+$('#Nom').val()+', email : '+$('#email').val()+', tel : '+$('#Telephone').val(),
 				};
-		console.log(dataresenseigne);
+	console.log(dataresenseigne);
 	
 	if (prevenir_reservation == 1) {
 		$.ajax({
@@ -109,8 +109,9 @@ function EtapeSuivante() {
 			data : dataresenseigne,
 			success: function(result){
 				alert(result.result);
-				if (EnvoiMailContributeur(date, heure, nombre)) {
+				if (EnvoiMailContributeur(nom_enseigne, date, heure, nombre)) {
 					ActualisePopin(dataresenseigne, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
+				}
 			},
 			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});		
