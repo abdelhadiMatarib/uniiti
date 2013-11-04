@@ -53,9 +53,6 @@
 					alert("Cet email n'existe pas.");						
 				}
 				else {
-					var data = {
-							'email_login' : $id("email_login").value
-					};
 					alert(result.resultemail);
 					$('.popin_close_button').click();
 				}

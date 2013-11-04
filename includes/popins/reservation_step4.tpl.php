@@ -55,28 +55,15 @@
     </div>
 </div>
 <script>
-function EtapeSuivante() {
 
-	var nombre = '<?php if (!empty($_POST['nombre'])) {echo $_POST['nombre'];} ?>';
-	var heure = '<?php if (!empty($_POST['heure'])) {echo $_POST['heure'];} ?>';
-	var date = '<?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?>';
-	var nom_enseigne = '<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>';
-	
+function EnvoiMailContributeur(date, heure, nombre) {
     var datareservation = {
-                step : 4,
-				date : date,
-				heure : heure,
-				nombre : nombre,
-                id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
-                id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
-                nom_enseigne :'<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>',
-				email_reservation :'<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
-				telephone_reservation :'<?php if (!empty($_POST['telephone_reservation'])) {echo $_POST['telephone_reservation'];} ?>',
                 destinataire : $('#email').val(),
 				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
 				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' a été transmise à l\'enseigne '+nom_enseigne+'.<BR>Une confirmation va vous être envoyée très prochaînement.',
                 };
 		console.log(datareservation);
+		
 		$.ajax({
 			async : false,
 			type :"POST",
@@ -84,10 +71,53 @@ function EtapeSuivante() {
 			data : datareservation,
 			success: function(result){
 				alert(result.result);
-//            ActualisePopin(datareservation, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
+			},
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);return false;}
+		});
+	return true;
+}
+
+function EtapeSuivante() {
+
+	var nombre = '<?php if (!empty($_POST['nombre'])) {echo $_POST['nombre'];} ?>';
+	var heure = '<?php if (!empty($_POST['heure'])) {echo $_POST['heure'];} ?>';
+	var date = '<?php if (!empty($_POST['date'])) {echo $_POST['date'];} ?>';
+	var nom_enseigne = '<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>';
+	var prevenir_reservation = '<?php if (!empty($_POST['prevenir_reservation'])) {echo $_POST['prevenir_reservation'];} ?>';
+
+	var dataresenseigne = {
+				step : 4,
+				date : date,
+				heure : heure,
+				nombre : nombre,
+				id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
+				id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+				nom_enseigne :'<?php if (!empty($_POST['nom_enseigne'])) {echo $_POST['nom_enseigne'];} ?>',
+				email_reservation :'<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
+				telephone_reservation :'<?php if (!empty($_POST['telephone_reservation'])) {echo $_POST['telephone_reservation'];} ?>',
+				destinataire : '<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
+				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
+				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' demandeur ',
+				};
+		console.log(dataresenseigne);
+	
+	if (prevenir_reservation == 1) {
+		$.ajax({
+			async : false,
+			type :"POST",
+			url : siteurl+'/includes/envoyer_mail.php',
+			data : dataresenseigne,
+			success: function(result){
+				alert(result.result);
+				if (EnvoiMailContributeur(date, heure, nombre)) {
+					ActualisePopin(dataresenseigne, '/includes/popins/reservation_valide.tpl.php', 'default_dialog');
 			},
 			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
-		});
-		return false;
-    };
+		});		
+	} else if (prevenir_reservation == 2) {
+	
+	
+	}
+	return false;
+};
 </script>

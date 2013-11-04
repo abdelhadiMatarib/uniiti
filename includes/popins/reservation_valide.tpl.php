@@ -11,7 +11,7 @@
     </div>   
     <div class="suggestioncommerce_body">
             
-        <div class="suggestion_valide_txt"><span>Une demande de réservation pour le restaurant Positano à bien été prise en compte. Le restaurant vous contactera dans les plus brefs délais pour confirmer de cette dernière.</span></div>
+        <div class="suggestion_valide_txt"><span>Une demande de réservation pour <?php echo $_POST['nom_enseigne'] ?> à bien été prise en compte. Le commerce vous contactera dans les plus brefs délais pour confirmer de cette dernière.</span></div>
             
     </div>
     <div class="suggestioncommerce_footer">

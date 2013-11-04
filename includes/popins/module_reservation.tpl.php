@@ -97,8 +97,14 @@
 		else if ($('.module_reservation_left_head2_rdv').hasClass('valid_rdv')) {reservation = 1;}
 		else {reservation = 2;}
 		
-		if ($id('resa_infos_notifs_mail').checked) {prevenir_reservation = 1;}
-		else if ($id('resa_infos_notifs_sms').checked) {prevenir_reservation = 2;}
+		if ($id('resa_infos_notifs_mail').checked) {
+			prevenir_reservation = 1;
+			if ($('#resa_get_notifs_mail').val() == '') {alert('Vous devez entrer un email svp');return false;}
+		}
+		else if ($id('resa_infos_notifs_sms').checked) {
+			prevenir_reservation = 2;
+			if ($('#resa_get_notifs_sms').val() == '') {alert('Vous devez entrer un numéro de portable svp');return false;}
+		}
 		else {prevenir_reservation = 0;};
 
 		var datareservations = {
