@@ -42,6 +42,14 @@
 				<?php if ($row['id_budget'] == $_POST['id_budget']) {$selected ='';} } ?>
 				</div>
 			</div>
+			<?php if ($_POST['id_enseigne'] == 0) { ?>
+			<div class="infos_gene_title"><span>Professionnel à relier à cet enseigne</span></div>
+			<div class="infos_gene_input">
+				<input id="inputSearch" type="text" value="" placeholder="EMAIL DU PROFESSIONNEL"/>
+				<input id="inputSearchHidden" type="hidden" value=""/>
+				<div class="suggestionsContainer display-none" id="suggestionsContainer"><ul class="suggestionList" id="suggestionList"><li>&nbsp;</li></ul></div>
+			</div>
+			<?php } ?>
 		</div>
 
 		<div class="suggestioncommerce_footer">
@@ -193,10 +201,10 @@
 	});
 	
 	function Enregistrer () {
-
+		var id_enseigne = '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>';
 		var data = {
 						step : 'General',
-						id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+						id_enseigne : id_enseigne,
 						nom_enseigne : $id("nom_enseigne").value,
 						adresse1_enseigne : $id("adresse1_enseigne").value,
 						cp_enseigne : $id("cp_enseigne").value,
@@ -207,6 +215,10 @@
 						id_quartier : $id("id_quartier").value,
 						id_budget : $(".budgets.valid_budget:last").attr('id_budget')
 					};
+		if (id_enseigne == 0) {
+			if ($id("inputSearchHidden").value == '') {alert('Vous devez choisir un professionnel');return false;}
+			data = $.extend({}, data, {id_pro : $id("inputSearchHidden").value});
+		}
 		console.log(data);
 		$.ajax({
 			async : false,
@@ -219,6 +231,38 @@
 			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 		return false;
-	}	
+	}
+</script>	
+<?php if ($_POST['id_enseigne'] == 0) { ?>
+<script>
+	////////////////////////////////////////////////////
+	// Concerne la recherche du mail du professionnel //
+	////////////////////////////////////////////////////
 	
+	var suggestionsContainer = $("#suggestionsContainer"), inputSearch = $("input#inputSearch"),
+		inputSearchHidden = $("input#inputSearchHidden"), suggestionList = $("#suggestionList");
+
+	$(document).click(function(event) {
+		if( suggestionsContainer.is(":visible") === true ) {suggestionsContainer.hide();}
+	});
+
+	inputSearch.keydown(function (e) {
+		var keyCode = e.keyCode || e.which;
+		if(keyCode == 13 || keyCode == 38 || keyCode == 40 || keyCode == 27){
+			arrowsAction (keyCode, suggestionList, inputSearch, inputSearchHidden);
+			return false;
+		}
+		if(suggestionsContainer.is(":visible") === false) {suggestionsContainer.show();}
+		emptyInput(inputSearch, suggestionsContainer4);
+	});
+	
+	inputSearch.keyup(function (e) {
+		var keyCode = e.keyCode || e.which;
+		if(keyCode != 13 && keyCode != 38 && keyCode != 40 && keyCode != 27){
+			timeLoadEmails(suggestionsContainer, inputSearch, inputSearchHidden, suggestionList);
+		}
+		emptyInput(inputSearch, suggestionsContainer);
+	});
+
 </script>
+<?php } ?>

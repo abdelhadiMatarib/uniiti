@@ -12,9 +12,11 @@ switch ($_POST['step']) {
 		$code_postal             = htmlspecialchars($_POST['cp_enseigne']);
 		$id_sous_categorie2      = $_POST['id_sous_categorie2'];
 		$telephone_enseigne      = htmlspecialchars($_POST['telephone_enseigne']);
+		$telephone_enseigne		 = str_replace(' ','',$telephone_enseigne);
 		$url                     = htmlspecialchars($_POST['url']);
 		$id_quartier             = $_POST['id_quartier'];
 		$id_budget               = $_POST['id_budget'];
+		if (isset($_POST['id_pro'])) {$id_pro = $_POST['id_pro'];}
 		break;
 	case "Concept" :
 		if (isset($_POST['descriptif'])) {$descriptif          = htmlspecialchars($_POST['descriptif']);}
@@ -110,8 +112,8 @@ try
 		case "General" :
 			if ($id_enseigne == 0) {
 				$sql = "INSERT INTO enseignes 
-				( nom_enseigne, adresse1_enseigne, villes_id_ville,	cp_enseigne, sscategorie_enseigne,
-					telephone_enseigne,	url, id_quartier, id_budget, slide1_enseigne, box_enseigne ) VALUES (:nom_enseigne, :adresse1_enseigne, 
+				( nom_enseigne, professionnels_id_pro, adresse1_enseigne, villes_id_ville,	cp_enseigne, sscategorie_enseigne,
+					telephone_enseigne,	url, id_quartier, id_budget, slide1_enseigne, box_enseigne ) VALUES (:nom_enseigne, :professionnels_id_pro, :adresse1_enseigne, 
 					:villes_id_ville, :code_postal, :id_sous_categorie2, :telephone_enseigne, :url, :id_quartier, :id_budget, :slide1_enseigne, :box_enseigne)";
 			} else {
 				$sql = "UPDATE enseignes 
@@ -131,6 +133,19 @@ try
 			else {
 				$box = "photo 1.jpg";
 				$couv = "photo " . rand(1,113) . ".jpg";
+				$sqlcheck = "SELECT * FROM contributeurs WHERE id_contributeur=:id_pro";
+				$reqcheck = $bdd->prepare($sqlcheck);
+				$reqcheck->bindParam(':id_pro', $id_pro, PDO::PARAM_INT);
+				$reqcheck->execute();
+				$resultcheck = $reqcheck->fetch(PDO::FETCH_ASSOC);				
+				if (!$resultcheck) {exit;}
+				if ($resultcheck['groupes_permissions_id_permission'] == 1) {
+					$sql2 = "UPDATE contributeurs SET groupes_permissions_id_permission = 2 WHERE id_contributeur=:id_pro";
+					$req2 = $bdd->prepare($sql2);
+					$req2->bindParam(':id_pro', $id_pro, PDO::PARAM_INT);
+					$req2->execute();				
+				}
+				$req->bindParam(':professionnels_id_pro', $id_pro, PDO::PARAM_INT);
 				$req->bindParam(':slide1_enseigne', $couv, PDO::PARAM_STR);
 				$req->bindParam(':box_enseigne', $box, PDO::PARAM_STR);
 			}

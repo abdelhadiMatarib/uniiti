@@ -334,7 +334,7 @@
 				"q=select%20*%20from%20html%20where%20url%3D%22"+
 				encodeURIComponent(url)+
 				"%22&format=xml'&callback=?",
-		function(data){
+		function(data){console.log(data);
 			if(data.results[0]){
 				var data = filterData(data.results[0]);
 				data = JSON.parse(data);
