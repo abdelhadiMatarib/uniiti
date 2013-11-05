@@ -322,7 +322,7 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 /* BOUTONS ACTIONS JM / JM PAS / WISHLIST */
 .boutons{cursor: pointer;width:50px;height:50px;margin-bottom: 10px;}
 .boutons:hover{opacity:0.9;}
-.wrapper_boutons{border-radius: 4px 0 0 4px;position:absolute;right:0;top:35px; width: 50px; background-color: rgba(37,37,37,0.8); z-index: 100;}
+.wrapper_boutons{border-radius: 4px 0 0 4px;position:absolute;right:0;top:35px; width: 50px; background-color: rgba(37,37,37,0.8); z-index: 50;}
 .wrapper_boutons_objet{position:absolute;right:-6px;top:65px;}
 
 /* CLASSEMENT UTILISATEURS */
@@ -1321,7 +1321,7 @@ input.valider_nouveau_nom_commerce{float:left;height:32px;width:32px;border:1px 
 .display-none {display:none;}
 #suggestionsContainer {position: relative;background-color:#252525;color:white;max-width: 630px;top: 0px;left: 0px;z-index:1000;}
 #suggestionsContainer3, #suggestionsContainer4 {position: relative;background-color:#252525;color:white;max-width: 620px;top: -40px;left: 0px;z-index:1000;}
-#suggestionsContainer5 {position: relative;background-color:#252525;color:white;max-width: 250px;top: 30px;left: 0px;z-index:1000;}
+#suggestionsContainer5 {position: relative;color:white;max-width: 150px;top: 30px;left: 0px;z-index:1000;}
 
 /* DASHBOARD OBJET */
 input.nom_objet_modifiable_input{float:left;width: 190px;height: 10px;margin-top: 10px;padding: 10px;border-radius:3px;border:1px dashed #252525;}

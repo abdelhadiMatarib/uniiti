@@ -88,7 +88,7 @@
         <div class="header_rightnav">
 
             <div class="header_yourcity">
-                <div class="header_button_ville"><button type="button"></button></div>
+				<div class="header_button_ville"><button type="button"></button></div>
 				<div id="header_choixvilles2" style="float:left;">
 					<aside>Votre ville</aside>
 					<div class="header_choixvilles">
@@ -97,10 +97,11 @@
 					</div>
 					<div class="header_flechebas"></div>
 				</div>
-				<div class="suggestionsContainer display-none" id="suggestionsContainer5">	
-					<ul class="suggestionList" id="suggestionList5">
+				<div class="header_user_menulist display-none" id="suggestionsContainer5">
+					<div id="fleche_haut" style="margin-left:110px;"></div>				
+					<ul id="suggestionList5">
 					<?php foreach ($result as $row) {
-						echo '<li id="ville' . $row['id_ville'] . '" value="' . $row['id_ville'] . '">' . $row['nom_ville'] . '</li>';
+						echo '<li id="ville' . $row['id_ville'] . '" value="' . $row['id_ville'] . '"><a href="#">' . $row['nom_ville'] . '</a></li>';
 					} ?>
 					</ul>
 				</div>
