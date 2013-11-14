@@ -140,6 +140,7 @@
 							id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
 							id_objet : '<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>',
 							x1 : $('#x1').val(),
+							premiere : 0
 						};
 				console.log($('#x1').val());
 				$.ajax({
@@ -150,7 +151,7 @@
 					success: function(html){
 						window.location.reload();
 					},
-					error: function() {alert('Erreur sur url : ' + url);}
+					error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 				});
 			
 			}

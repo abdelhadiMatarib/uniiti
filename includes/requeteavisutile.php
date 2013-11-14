@@ -3,6 +3,10 @@ header('Content-Type: application/json');
 include_once '../config/configPDO.inc.php';
 
 $date = date('Y-m-d H:i:s');
+if (empty($_POST['type'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+else {$type = $_POST['type'];}
+if ($type == "enseigne") {$Table = "contributeurs_avis_utiles";}
+else if ($type == "objet") {$Table = "contributeurs_avis_utiles_objet";}
 
 try
 {
@@ -11,8 +15,8 @@ try
 
 		// Vérification si le contributeur a déjà ajouté trouvé cet avis utile
 		$sqlCheck = "SELECT id_contributeur_avis_utile, avis_utile
-					 FROM contributeurs_avis_utiles
-					 WHERE id_contributeur_avis_utile = :id_contributeur AND id_avis_utile=:id_avis
+					 FROM " . $Table
+					 . " WHERE id_contributeur_avis_utile = :id_contributeur AND id_avis_utile=:id_avis
 					";
 
 		$reqCheck = $bdd->prepare($sqlCheck);
@@ -23,8 +27,8 @@ try
 
 		if (!$_POST['check']) {
 			if (!$resultCheck) {
-				$sql = "INSERT INTO contributeurs_avis_utiles
-						(id_contributeur_avis_utile, id_avis_utile, avis_utile, date_avis_utile) 
+				$sql = "INSERT INTO " . $Table
+						. " (id_contributeur_avis_utile, id_avis_utile, avis_utile, date_avis_utile) 
 						VALUES (:id_contributeur, :id_avis, :avis_utile, :date_avis_utile)";
 				$req = $bdd->prepare($sql);
 				$req->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_INT);
@@ -33,7 +37,7 @@ try
 				$req->bindParam(':date_avis_utile', $date, PDO::PARAM_STR);
 				$req->execute();
 			} else if ($resultCheck['avis_utile'] != $_POST['avis_utile']) {
-				$sql = "UPDATE contributeurs_avis_utiles SET date_avis_utile=:date_avis_utile , avis_utile=:avis_utile
+				$sql = "UPDATE " . $Table . " SET date_avis_utile=:date_avis_utile , avis_utile=:avis_utile
 						WHERE id_contributeur_avis_utile=:id_contributeur AND id_avis_utile=:id_avis";
 				$req = $bdd->prepare($sql);
 				$req->bindParam(':id_contributeur', $_POST['id_contributeur'], PDO::PARAM_INT);

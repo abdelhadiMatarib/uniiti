@@ -5,35 +5,48 @@
 	include_once '../fonctions.inc.php'; 
 	include_once '../../config/configPDO.inc.php';
 
-$id_enseigne        = $_POST['id_enseigne'];
+$type = $_POST['type'];
+$id_enseigne_ou_objet = $_POST['id_enseigne_ou_objet'];
 $date               = date('Y-m-d H:i:s');
 $id_contributeur    = $_SESSION['SESS_MEMBER_ID'];
-$categorie = $_POST['categorie'];
+$categorie 			= $_POST['categorie'];	
 
 try
 {
 	// Requete
 	$bdd->beginTransaction(); // Début transaction pour requetes multiples
 
-		// Vérification si le contributeur a déjà ajouté l'enseigne à sa wishlist
-		$sqlCheck = "SELECT contributeurs_id_contributeur
-					 FROM contributeurs_wish_enseignes
-					 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne
-					";
-
+		// Vérification si le contributeur a déjà ajouté l'enseigne ou l'objet à sa wishlist
+		if ($type == 'enseigne') {
+			$sqlCheck = "SELECT contributeurs_id_contributeur
+						 FROM contributeurs_wish_enseignes
+						 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne_ou_objet
+						";
+		} else if ($type == 'objet') {
+			$sqlCheck = "SELECT contributeurs_id_contributeur
+						 FROM contributeurs_wish_objets
+						 WHERE contributeurs_id_contributeur = :id_contributeur AND objets_id_objet=:id_enseigne_ou_objet
+						";
+		}
 		$reqCheck = $bdd->prepare($sqlCheck);
 		$reqCheck->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_STR);
-		$reqCheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$reqCheck->bindParam(':id_enseigne_ou_objet', $id_enseigne_ou_objet, PDO::PARAM_INT);
 		$reqCheck->execute();
 		$resultCheck = $reqCheck->fetch(PDO::FETCH_ASSOC);
 
 		if (!$resultCheck) {
-			$sql = "INSERT INTO contributeurs_wish_enseignes
-					(contributeurs_id_contributeur, enseignes_id_enseigne, date_wish) 
-					VALUES (:id_contributeur, :id_enseigne, :date_wish)";
+			if ($type == 'enseigne') {
+				$sql = "INSERT INTO contributeurs_wish_enseignes
+						(contributeurs_id_contributeur, enseignes_id_enseigne, date_wish) 
+						VALUES (:id_contributeur, :id_enseigne_ou_objet, :date_wish)";
+			} else if ($type == 'objet') {
+				$sql = "INSERT INTO contributeurs_wish_objets
+						(contributeurs_id_contributeur, objets_id_objet, date_wish) 
+						VALUES (:id_contributeur, :id_enseigne_ou_objet, :date_wish)";
+			}
 			$req = $bdd->prepare($sql);
 			$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
-			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':id_enseigne_ou_objet', $id_enseigne_ou_objet, PDO::PARAM_INT);
 			$req->bindParam(':date_wish', $date, PDO::PARAM_INT);
 			$req->execute();
 		}
@@ -55,7 +68,7 @@ catch (PDOException $erreur)
 <div class="wishlist_wrapper">
     <div class="wishlist_wrapper_body_img" <?php echo AfficheActionLarge('wish',$_POST['categorie']); ?>></div>
     <div class="wishlist_wrapper_footer_txt">
-        <span class="wishlist_wrapper_footer_txt_normal">Vous avez <span class="wishlist_wrapper_footer_txt_bold">ajouté</span> ce commerce</span>
+        <span class="wishlist_wrapper_footer_txt_normal">Vous avez <span class="wishlist_wrapper_footer_txt_bold">ajouté</span> <?php if ($type == 'enseigne') {echo "ce commerce";} else {echo "cet objet";} ?></span>
     </div>
 </div>
 

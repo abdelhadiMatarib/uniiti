@@ -5,7 +5,27 @@ include_once '../fonctions.inc.php';
 include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
 include_once '../../config/configPDO.inc.php';
 
-if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+if (empty($_POST['type'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+else {$type = $_POST['type'];}
+if ($type == "enseigne") {
+	if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	else {
+		$id_enseigne_ou_objet = $_POST['id_enseigne'];
+		$nom_enseigne_ou_objet = $_POST['nom_enseigne'];
+		$localisation = $_POST['arrondissement'];
+		$lien_enseigne_ou_objet = SITE_URL . "/pages/commerce.php?id_enseigne=" . $_POST['id_enseigne'];
+		$count_avis = $_POST['count_avis_enseigne'];
+		}
+} else if ($type == "objet") {
+	if (empty($_POST['id_objet'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	else {
+		$id_enseigne_ou_objet = $_POST['id_objet'];
+		$nom_enseigne_ou_objet = $_POST['nom_objet'];
+		$localisation = $_POST['ville_objet'];
+		$lien_enseigne_ou_objet = SITE_URL . "/pages/objet.php?id_objet=" . $_POST['id_objet'];
+		$count_avis = $_POST['count_avis_objet'];		
+		}
+} else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 
 $provenance = $_POST['provenance'];
 switch ($provenance) {
@@ -39,7 +59,7 @@ switch ($provenance) {
 		break;
 }
 if(isset($_SESSION['SESS_MEMBER_ID'])) {
-	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $_POST['id_enseigne'] . ", categorie : '" . stripslashes($_POST['categorie']) . "'}";
+	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . ", type :'" . $type . "', id_enseigne_ou_objet :" . $id_enseigne_ou_objet . ", categorie : '" . addslashes($_POST['categorie']) . "'}";
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
@@ -56,8 +76,8 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
     <div class="presentation_action_left">
         <div class="presentation_action_left_head">
             <div class="presentation_action_left_head_img_container_picto_categorie" title="<?php echo stripslashes($_POST['scategorie']); ?>" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $_POST['posx'] . "px" . " " . $_POST['posy'] . "px"?>"></div>
-            <div class="presentation_action_left_head_categorie_wrap" onclick="location.href='<?php echo SITE_URL . "/pages/commerce.php?id_enseigne=" . $_POST['id_enseigne']; ?>'">    
-                <span class="presentation_action_left_head_titre" title="<?php echo stripslashes($_POST['nom_enseigne']); ?>"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
+            <div class="presentation_action_left_head_categorie_wrap" onclick="location.href='<?php echo $lien_enseigne_ou_objet; ?>'">    
+                <span class="presentation_action_left_head_titre" title="<?php echo stripslashes($nom_enseigne_ou_objet); ?>"><?php echo tronque(stripslashes($nom_enseigne_ou_objet)); ?></span>
                 <span class="presentation_action_left_head_categorie" title="<?php echo stripslashes($_POST['scategorie']); ?>" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo stripslashes($_POST['scategorie']); ?></span>
             </div>   
             
@@ -69,7 +89,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
             
             <div class="presentation_action_left_head_note_wrap">
 				<?php echo AfficheEtoiles($_POST['note_arrondi'], $_POST['categorie']); ?>
-                <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $_POST['count_avis_enseigne']; ?> Avis</span>
+                <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $count_avis; ?> Avis</span>
             </div>
             
         </div>
@@ -79,7 +99,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                 <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" title="Je n'aime pas"<?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>
                 <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" title="Ajouter à ma Wishlist"<?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
             </div>
-            <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
+            <div class="box_localisation"><span><?php echo $localisation; ?></span></div>
             <figure style="background:<?php echo $_POST['couleur']; ?>;">
 				<?php if ($_POST['type'] == 'enseigne') { ?>
 					<img onload="AfficheImage($(this));" src="<?php echo SITE_URL . "/photos/enseignes/couvertures/" . $_POST['slide1'];?>" style="display:none;margin-top:<?php echo -$_POST['y1']*735/1750 . "px"; ?>;margin-left:<?php echo -$_POST['x1']*735/1750 . "px"; ?>" width="735"/>
@@ -220,14 +240,15 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	var $idavis = <?php echo $_POST['id_avis']; ?>;
 	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
 	var $idcontributeur = <?php echo $_POST['id_contributeur']; ?>;
-	var data = {check : 1, id_contributeur : $idcontributeurACTIF, id_avis : $idavis};
+	var $type = <?php echo $_POST['type']; ?>;
+	var data = {check : 1, type : $type, id_contributeur : $idcontributeurACTIF, id_avis : $idavis};
 	if ($idcontributeurACTIF != 0) {AfficheAvisUtile(data);}
 
 	$('#AvisUtile').click(function(e) {
 		e.preventDefault(); //don't go to default URL
 		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
 		else if (!$(this).hasClass('is_valid')) {
-				data = {check : 0, id_contributeur : $idcontributeurACTIF, id_avis : $idavis, avis_utile : 1};
+				data = {check : 0, type : $type, id_contributeur : $idcontributeurACTIF, id_avis : $idavis, avis_utile : 1};
 				AfficheAvisUtile(data);
 			}
 	});
@@ -235,7 +256,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		e.preventDefault(); //don't go to default URL
 		if ($idcontributeurACTIF == 0) {OuvrePopin({}, '/includes/popins/ident.tpl.php', 'default_dialog');}
 		else if (!$(this).hasClass('is_valid')) {
-				data = {check : 0, id_contributeur : $idcontributeurACTIF, id_avis : $idavis, avis_utile : 0};
+				data = {check : 0, type : $type, id_contributeur : $idcontributeurACTIF, id_avis : $idavis, avis_utile : 0};
 				AfficheAvisUtile(data);
 			}
 	});
@@ -286,9 +307,9 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 
 		var data = {
 						id_contributeur : '<?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];}?>',
-						id_enseigne_ou_objet : '<?php echo $_POST['id_enseigne'];?>',
+						id_enseigne_ou_objet : '<?php echo $id_enseigne_ou_objet;?>',
 						id_avis : '<?php echo $_POST['id_avis'];?>',
-						type_notification : 'enseigne',
+						type_notification : '<?php echo $type;?>',
 						id_action : 2,
 						description : ''+description+'',
 					};

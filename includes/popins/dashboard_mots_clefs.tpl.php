@@ -3,14 +3,19 @@
 		include_once '../../includes/fonctions.inc.php';
 		include_once '../../config/configPDO.inc.php';
 		
-		if (isset($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {exit;}
+		if (!empty($_POST['id_enseigne'])) {
+			$id_enseigne_ou_objet = $_POST['id_enseigne'];
+			$sql2 = "SELECT id_type_info, id_motcle1, id_motcle2, id_motcle3 FROM enseignes_infos_generales WHERE enseignes_id_enseigne=" . $id_enseigne_ou_objet;
+		} else if (!empty($_POST['id_objet'])) {
+			$id_enseigne_ou_objet = $_POST['id_objet'];
+			$sql2 = "SELECT id_type_info, id_motcle1, id_motcle2, id_motcle3 FROM objets_infos_motscles WHERE objets_id_objet=" . $id_enseigne_ou_objet;
+		} else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
 		
 		$sql = "SELECT * FROM motscles";
 		$req = $bdd->prepare($sql);
 		$req->execute();
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		
-		$sql2 = "SELECT id_type_info, id_motcle1, id_motcle2, id_motcle3 FROM enseignes_infos_generales WHERE enseignes_id_enseigne=" . $id_enseigne;
 		$req2 = $bdd->prepare($sql2);
 		$req2->execute();
 		$result2 = $req2->fetchAll(PDO::FETCH_ASSOC);
@@ -61,6 +66,7 @@
 				} ?>			
 			</select>
 		</div>
+		<?php if (!empty($_POST['id_enseigne'])) { ?>
 		<div class="infos_gene_title"><span>Les services proposés</span></div>
         <div class="infos_gene_input">
 			<select id="sel4" class="motscles" id_type_info="2" mcle="1">
@@ -154,6 +160,7 @@
 				} ?>			
 			</select>
 		</div>
+		<?php } ?>
     </div>
     <div class="suggestioncommerce_footer">
         
@@ -166,28 +173,52 @@
 	function $id(id) {return document.getElementById(id);}
 	
 	function Enregistrer () {
+		var id_enseigne = '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>';
+		var id_objet = '<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>';
+		var $type = '';
+		if (id_enseigne != '') {$type = 'enseigne';}
+		else if (id_objet != '') {$type = 'objet';}
 
-		var datamotscles = {
-						step : 'MotsCles',
-						id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
-						motcle11 :$id('sel1').value,
-						motcle12 :$id('sel2').value,
-						motcle13 :$id('sel3').value,
-						motcle21 :$id('sel4').value,
-						motcle22 :$id('sel5').value,
-						motcle23 :$id('sel6').value,
-						motcle31 :$id('sel7').value,
-						motcle32 :$id('sel8').value,
-						motcle33 :$id('sel9').value,
-						motcle41 :$id('sel10').value,
-						motcle42 :$id('sel11').value,
-						motcle43 :$id('sel12').value
-					};
-		console.log(datamotscles);
+		var url = '';
+		var datamotscles;
+		if ($type == 'enseigne') {
+			url = siteurl+'/includes/requetemodifieenseigne.php';
+			datamotscles = {
+							step : 'MotsCles',
+							id_enseigne : id_enseigne,
+							id_objet : id_objet,
+							motcle11 :$id('sel1').value,
+							motcle12 :$id('sel2').value,
+							motcle13 :$id('sel3').value,
+							motcle21 :$id('sel4').value,
+							motcle22 :$id('sel5').value,
+							motcle23 :$id('sel6').value,
+							motcle31 :$id('sel7').value,
+							motcle32 :$id('sel8').value,
+							motcle33 :$id('sel9').value,
+							motcle41 :$id('sel10').value,
+							motcle42 :$id('sel11').value,
+							motcle43 :$id('sel12').value
+						};
+			console.log(datamotscles);		
+		}
+		else {
+			url = siteurl+'/includes/requetemodifieobjet.php';
+			datamotscles = {
+							step : 'MotsCles',
+							id_enseigne : id_enseigne,
+							id_objet : id_objet,
+							motcle11 :$id('sel1').value,
+							motcle12 :$id('sel2').value,
+							motcle13 :$id('sel3').value
+						};
+			console.log(datamotscles);				
+		}
+
 		$.ajax({
 			async : false,
 			type :"POST",
-			url : siteurl+'/includes/requetemodifieenseigne.php',
+			url : url,
 			data : datamotscles,
 			success: function(result){window.location.reload();},
 			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}

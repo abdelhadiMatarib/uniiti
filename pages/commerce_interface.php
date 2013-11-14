@@ -609,9 +609,9 @@ else {
 			},
 			success: function(result) {
 				if (result.existe == 1) {
-					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+					$('.SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
 				} else {
-					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
+					$('.SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
 				}
 			},
 			error: function() {alert('Erreur sur url : ' + url);}
@@ -620,7 +620,7 @@ else {
 	
 	function InitFollowContributeur() {
 		$('#box_container').find('.box_suivre_user').each(function() {
-			var contributeur = $(this).find("img").attr("id").replace(/SuivreContributeur/gi, "");
+			var contributeur = $(this).find("img").attr("class").replace(/SuivreContributeur/gi, "");
 			dataFollow = {check : 1, 
 						  id_contributeurACTIF : $idcontributeurACTIF,
 						  id_contributeur : contributeur};

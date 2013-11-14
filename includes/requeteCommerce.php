@@ -231,7 +231,7 @@
                     <span class="box_title" title="<?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?>"><?php echo $prenom_contributeur . " " . ucFirstOtherLower(tronqueName($nom_contributeur, 1)); ?></span>
                     <span class="box_subtitle" style="color:<?php echo $couleur; ?>;">355/3000 - Confirmé</span>
                 </div>
-                <div class="box_suivre_user" onclick="<?php echo $follow_step1; ?>"><img id="SuivreContributeur<?php echo $id_contributeur; ?>" src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></div>
+                <div class="box_suivre_user" onclick="<?php echo $follow_step1; ?>"><img class="SuivreContributeur<?php echo $id_contributeur; ?>" src="<?php echo $SITE_URL; ?>/img/pictos_utilisateurs/suivre.png" height="50" width="50" alt="" title="" /></div>
             </header>
             
             <figure>

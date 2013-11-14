@@ -248,7 +248,7 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 				}
 
 			},
-			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requeteenregistreavis.php');}
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 		return false;
 	}	

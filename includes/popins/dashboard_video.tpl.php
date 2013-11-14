@@ -1,6 +1,16 @@
 <?php
         include_once '../../config/configuration.inc.php';
 
+		if (empty($_POST['type'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+		else {$type = $_POST['type'];}
+		if ($type == "enseigne") {
+			if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+			else {$id_enseigne_ou_objet = $_POST['id_enseigne'];}
+		} else if ($type == "objet") {
+			if (empty($_POST['id_objet'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+			else {$id_enseigne_ou_objet = $_POST['id_objet'];}
+		} else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}		
+		
 ?>
 <div class="ident_wrapper">
     <div class="popin_close_button"><div class="popin_close_button_img_container"></div></div>
@@ -27,16 +37,21 @@
 <script>
 $('#Enregistrer').click(function () {
 	$('#video').attr('src', $('#lienvideo').val());
+	var $type = '<?php echo $type;?>';
 	var data = {
 				step : 'Video',
-				id_enseigne : '<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+				id_enseigne : '<?php echo $id_enseigne_ou_objet; ?>',
+				id_objet : '<?php echo $id_enseigne_ou_objet; ?>',
 				url_video : ''+$('#lienvideo').val()+'',
 			};
 	console.log(data);
+	var url = '';
+	if ($type == 'enseigne') {url = siteurl+'/includes/requetemodifieenseigne.php';}
+	else {url = siteurl+'/includes/requetemodifieobjet.php';}
 	$.ajax({
 		async : false,
 		type :"POST",
-		url : siteurl+'/includes/requetemodifieenseigne.php',
+		url : url,
 		data : data,
 		success: function(result){
 			alert('video enregistrée');

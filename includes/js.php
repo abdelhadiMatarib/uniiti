@@ -28,6 +28,7 @@
 		$('.leflux_wrapper a span').text($(li).attr('filtre'));
 		var $Page = '<?php if (isset($PAGE)) {echo $PAGE;} else {echo "";} ?>';
 		var $idenseigne = '<?php if (isset($id_enseigne)) {echo $id_enseigne;} else {echo '0';} ?>';
+		var $idobjet = '<?php if (isset($id_objet)) {echo $id_objet;} else {echo '0';} ?>';
 		var $idcontributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo '0';} ?>';
 		
 		$Filtre.provenance = encodeURIComponent("\"" + data.provenance + "\"");
@@ -47,6 +48,10 @@
 				case "Commerce" :
 					$url = "/includes/requetecommerce.php";
 					$data = {id_enseigne: encodeURIComponent($idenseigne)};
+				break;
+				case "Objet" :
+					$url = "/includes/requeteobjet.php";
+					$data = {id_objet: encodeURIComponent($idobjet)};
 				break;
 				case "Utilisateur" :
 					$url = "/includes/requetecontributeur.php";
@@ -138,6 +143,7 @@
 						)
 					{
 						var $idenseigne = '<?php if (isset($id_enseigne)) {echo $id_enseigne;} else {echo '0';} ?>';
+						var $idobjet = '<?php if (isset($id_objet)) {echo $id_objet;} else {echo '0';} ?>';
 						var $idcontributeur = '<?php if (isset($id_contributeur)) {echo $id_contributeur;} else {echo '0';} ?>';
 						var $url, $data;
 						
@@ -145,6 +151,10 @@
 							case "Commerce" :
 								$url = "../includes/requetecommerce.php";
 								$data = $.extend({}, $Filtre, {nbitems: 20, id_enseigne: encodeURIComponent($idenseigne), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
+							break;
+							case "Objet" :
+								$url = "../includes/requeteobjet.php";
+								$data = $.extend({}, $Filtre, {nbitems: 20, id_objet: encodeURIComponent($idobjet), lastid: encodeURIComponent("\"" + $(".box:last").attr("id") + "\""), site_url: '<?php echo SITE_URL ; ?>'});
 							break;
 							case "Utilisateur" :
 								$url = "../includes/requetecontributeur.php";

@@ -5,56 +5,81 @@
 	include_once '../fonctions.inc.php'; 
 	include_once '../../config/configPDO.inc.php';
 
-$id_enseigne        = $_POST['id_enseigne'];
+$type = $_POST['type'];
+$id_enseigne_ou_objet = $_POST['id_enseigne_ou_objet'];
 $date               = date('Y-m-d H:i:s');
 $id_contributeur    = $_SESSION['SESS_MEMBER_ID'];
-$categorie = $_POST['categorie'];
+$categorie 			= $_POST['categorie'];
 
 try
 {
 	// Requete
 	$bdd->beginTransaction(); // Début transaction pour requetes multiples
 
-		// Vérification si le contributeur a déjà aimé l'enseigne
-		$sqlCheck = "SELECT contributeurs_id_contributeur
-					 FROM contributeurs_aiment_enseignes
-					 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne
-					";
+		// Vérification si le contributeur a déjà aimé l'enseigne ou l'objet
+		if ($type == 'enseigne') {
+			$sqlCheck = "SELECT contributeurs_id_contributeur
+						 FROM contributeurs_aiment_enseignes
+						 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne_ou_objet
+						";
+		} else if ($type == 'objet') {
+			$sqlCheck = "SELECT contributeurs_id_contributeur
+						 FROM contributeurs_aiment_objets
+						 WHERE contributeurs_id_contributeur = :id_contributeur AND objets_id_objet=:id_enseigne_ou_objet
+						";		
+		}
 
 		$reqCheck = $bdd->prepare($sqlCheck);
 		$reqCheck->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_STR);
-		$reqCheck->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$reqCheck->bindParam(':id_enseigne_ou_objet', $id_enseigne_ou_objet, PDO::PARAM_INT);
 		$reqCheck->execute();
 		$resultCheck = $reqCheck->fetch(PDO::FETCH_ASSOC);
 
-		// Vérification si le contributeur n'avait pas aimé l'enseigne auparavant
-		$sqlCheck2 = "SELECT contributeurs_id_contributeur
-					 FROM contributeurs_aiment_pas_enseignes
-					 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne
-					";
+		// Vérification si le contributeur n'avait pas aimé l'enseigne ou l'objet auparavant
+		if ($type == 'enseigne') {
+			$sqlCheck2 = "SELECT contributeurs_id_contributeur
+						 FROM contributeurs_aiment_pas_enseignes
+						 WHERE contributeurs_id_contributeur = :id_contributeur AND enseignes_id_enseigne=:id_enseigne_ou_objet
+						";
+		} else if ($type == 'objet') {
+			$sqlCheck2 = "SELECT contributeurs_id_contributeur
+						 FROM contributeurs_aiment_pas_objets
+						 WHERE contributeurs_id_contributeur = :id_contributeur AND objets_id_objet=:id_enseigne_ou_objet
+						";
+		}
 
 		$reqCheck2 = $bdd->prepare($sqlCheck2);
 		$reqCheck2->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_STR);
-		$reqCheck2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+		$reqCheck2->bindParam(':id_enseigne_ou_objet', $id_enseigne_ou_objet, PDO::PARAM_INT);
 		$reqCheck2->execute();
 		$resultCheck2 = $reqCheck2->fetch(PDO::FETCH_ASSOC);
 		
 		if (!$resultCheck) {
-			$sql = "INSERT INTO contributeurs_aiment_enseignes
-					(contributeurs_id_contributeur, enseignes_id_enseigne, date_aime) 
-					VALUES (:id_contributeur, :id_enseigne, :date_aime)";
+			if ($type == 'enseigne') {
+				$sql = "INSERT INTO contributeurs_aiment_enseignes
+						(contributeurs_id_contributeur, enseignes_id_enseigne, date_aime) 
+						VALUES (:id_contributeur, :id_enseigne_ou_objet, :date_aime)";
+			} else if ($type == 'objet') {
+				$sql = "INSERT INTO contributeurs_aiment_objets
+						(contributeurs_id_contributeur, objets_id_objet, date_aime) 
+						VALUES (:id_contributeur, :id_enseigne_ou_objet, :date_aime)";			
+			}
 			$req = $bdd->prepare($sql);
 			$req->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
-			$req->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req->bindParam(':id_enseigne_ou_objet', $id_enseigne_ou_objet, PDO::PARAM_INT);
 			$req->bindParam(':date_aime', $date, PDO::PARAM_INT);
 			$req->execute();
 		}
 
 		if ($resultCheck2) {
-			$sql2 = "DELETE FROM contributeurs_aiment_pas_enseignes WHERE contributeurs_id_contributeur=:id_contributeur AND enseignes_id_enseigne=:id_enseigne";
+			if ($type == 'enseigne') {
+				$sql2 = "DELETE FROM contributeurs_aiment_pas_enseignes WHERE contributeurs_id_contributeur=:id_contributeur AND enseignes_id_enseigne=:id_enseigne_ou_objet";
+			} else if ($type == 'objet') {
+				$sql2 = "DELETE FROM contributeurs_aiment_pas_objets WHERE contributeurs_id_contributeur=:id_contributeur AND objets_id_objet=:id_enseigne_ou_objet";
+			}
 			$req2 = $bdd->prepare($sql2);
 			$req2->bindParam(':id_contributeur', $id_contributeur, PDO::PARAM_INT);
-			$req2->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+			$req2->bindParam(':id_enseigne_ou_objet', $id_enseigne_ou_objet, PDO::PARAM_INT);
 			$req2->execute();
 		}
 		
@@ -80,7 +105,7 @@ catch (PDOException $erreur)
     
     <div class="like_wrapper_body_img" <?php echo  AfficheActionLarge("aime", $categorie); ?>></div>
     <div class="like_wrapper_footer_txt">
-        <span class="like_wrapper_footer_txt_normal">Vous <span class="like_wrapper_footer_txt_bold">aimez</span> ce commerce</span>
+        <span class="like_wrapper_footer_txt_normal">Vous <span class="like_wrapper_footer_txt_bold">aimez</span> <?php if ($type == 'enseigne') {echo "ce commerce";} else {echo "cet objet";} ?></span>
     </div>
 </div>
 

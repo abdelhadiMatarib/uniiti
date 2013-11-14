@@ -285,6 +285,7 @@
 								type : '<?php if (!empty($_POST['type'])) {echo $_POST['type'];} ?>',
 								id_contributeur : '<?php if (!empty($_POST['id_contributeur'])) {echo $_POST['id_contributeur'];} ?>',
 								id_enseigne :'<?php if (!empty($_POST['id_enseigne'])) {echo $_POST['id_enseigne'];} ?>',
+								id_objet :'<?php if (!empty($_POST['id_objet'])) {echo $_POST['id_objet'];} ?>',
 								chemin : '',
 								image1 : $('#ImageTemp1').val(),
 								image2 : $('#ImageTemp2').val(),

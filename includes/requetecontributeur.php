@@ -216,7 +216,7 @@
 				. "note_arrondi :" . $note_arrondi . "}";
 				
 			if(isset($_SESSION['SESS_MEMBER_ID'])) {
-				$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
+				$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . ", type : 'enseigne', id_enseigne_ou_objet :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
 				$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 				$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 				$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";

@@ -4,7 +4,28 @@ include_once '../../config/configuration.inc.php';
 include_once '../fonctions.inc.php';
 include_once '../../acces/auth.inc.php';                 // gestion accès à la page - incluant la session
 
-if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+if (empty($_POST['type'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+else {$type = $_POST['type'];}
+if ($type == "enseigne") {
+	if (empty($_POST['id_enseigne'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	else {
+		$id_enseigne_ou_objet = $_POST['id_enseigne'];
+		$nom_enseigne_ou_objet = $_POST['nom_enseigne'];
+		$localisation = $_POST['arrondissement'];
+		$lien_enseigne_ou_objet = SITE_URL . "/pages/commerce.php?id_enseigne=" . $_POST['id_enseigne'];
+		$count_avis = $_POST['count_avis_enseigne'];
+		}
+} else if ($type == "objet") {
+	if (empty($_POST['id_objet'])) {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+	else {
+		$id_enseigne_ou_objet = $_POST['id_objet'];
+		$nom_enseigne_ou_objet = $_POST['nom_objet'];
+		$localisation = $_POST['ville_objet'];
+		$lien_enseigne_ou_objet = SITE_URL . "/pages/objet.php?id_objet=" . $_POST['id_objet'];
+		$count_avis = $_POST['count_avis_objet'];		
+		}
+} else {echo "vous ne pouvez pas accéder directement à cette page !\n<a href=\"" . SITE_URL . "\">Revenir à la page principale</a>"; exit;}
+
 $provenance = $_POST['provenance'];
 switch ($provenance) {
 	case "avis":
@@ -37,7 +58,7 @@ switch ($provenance) {
 		break;
 }
 if(isset($_SESSION['SESS_MEMBER_ID'])) {
-	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $_POST['id_enseigne'] . "}";
+	$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . ", type :'" . $type . "', id_enseigne_ou_objet :" . $id_enseigne_ou_objet . ", categorie : '" . addslashes($_POST['categorie']) . "'}";
 	$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 	$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 	$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
@@ -54,7 +75,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
         <div class="presentation_action_left_head">
             
                <div class="presentation_action_left_head_img_container_picto_categorie" style="background:url('<?php echo SITE_URL; ?>/img/pictos_commerces/sprite_cat.jpg') <?php echo $_POST['posx'] . "px" . " " . $_POST['posy'] . "px"?>"></div>         <div class="presentation_action_left_head_categorie_wrap">    
-                <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($_POST['nom_enseigne'])); ?></span>
+                <span class="presentation_action_left_head_titre"><?php echo tronque(stripslashes($nom_enseigne_ou_objet)); ?></span>
                 <span class="presentation_action_left_head_categorie" style="color:<?php echo $_POST['couleur']; ?>;"><?php echo stripslashes($_POST['scategorie']); ?></span>
             </div>
             
@@ -66,7 +87,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                 
             <div class="presentation_action_left_head_note_wrap">
 				<?php echo AfficheEtoiles($_POST['note_arrondi'], $_POST['categorie']); ?>
-                <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $_POST['count_avis_enseigne']; ?> Avis</span>
+                <span class="presentation_action_left_head_note_txt"><?php echo $_POST['note_arrondi']; ?>/10 - <?php echo $count_avis; ?> Avis</span>
             </div>
             
         </div>
@@ -76,7 +97,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
                 <div onclick="<?php echo $dislike_step1; ?>" class="boutons_action_popin" title="Je n'aime pas"<?php echo AfficheAction('aime_pas',$_POST['categorie']); ?>></div>
                 <div onclick="<?php echo $wishlist_step1; ?>" class="boutons_action_popin" title="Ajouter à ma Wishlist"<?php echo AfficheAction('wish',$_POST['categorie']); ?>></div>
             </div>
-            <div class="box_localisation"><span><?php echo $_POST['arrondissement']; ?></span></div>
+            <div class="box_localisation"><span><?php echo $localisation; ?></span></div>
             <figure style="background:<?php echo $_POST['couleur']; ?>;">
 				<?php if ($_POST['type'] == 'enseigne') { ?>
 					<img onload="AfficheImage($(this));" src="<?php echo SITE_URL . "/photos/enseignes/couvertures/" . $_POST['slide1'];?>" style="display:none;margin-top:<?php echo -$_POST['y1']*735/1750 . "px"; ?>;margin-left:<?php echo -$_POST['x1']*735/1750 . "px"; ?>" width="735"/>
@@ -208,6 +229,8 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 	
 	function ModifierAvis(type, note, commentaire) {
 	
+		var $type = '<?php echo $type;?>';
+	
 		var description;
 		if ($id('modifier_commentaire_input_saisie_incorrecte').checked) {description = $('#modifier_commentaire_input_saisie_incorrecte').next('label').text();}
 		if ($id('modifier_commentaire_input_precisions').checked) {description = $('#modifier_commentaire_input_precisions').next('label').text();}
@@ -216,7 +239,8 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 
 		var data = {
 						id_contributeur : '<?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];}?>',
-						id_enseigne : '<?php echo $_POST['id_enseigne'];?>',
+						id_enseigne : '<?php echo $id_enseigne_ou_objet;?>',
+						id_objet : '<?php echo $id_enseigne_ou_objet;?>',
 						id_avis : '<?php echo $_POST['id_avis'];?>',
 						note : ''+note+'',
 						type : type,
@@ -224,15 +248,20 @@ div.rating div.star-right.hover a, div.rating div.star-right a:hover {background
 						description : ''+description+'',
 					};
 		console.log(data);
+		
+		var url = '';
+		if ($type == 'enseigne') {url = siteurl+'/includes/requetechangeavis.php';}
+		else {url = siteurl+'/includes/requetechangeavisobjet.php';}
+		
 		$.ajax({
 			async : false,
 			type :"POST",
-			url : siteurl+'/includes/requetechangeavis.php',
+			url : url,
 			data : data,
 			success: function(result){
 				ActualisePopin({id_contributeur:result.result}, '/includes/popins/utilisateur_interface_modifs_valide.tpl.php', 'default_dialog');
 			},
-			error: function() {alert('Erreur sur url : ' + siteurl+'/includes/requetechangeavis.php');}
+			error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
 		});
 	}
 	

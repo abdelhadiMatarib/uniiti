@@ -352,7 +352,6 @@ try
 						$req->execute();				
 				}
 			}
-			
 			break;
 		case "Prestations" :
 			$sqldelete = "DELETE FROM enseignes_prestations_contenus WHERE enseignes_id_enseigne=:id_enseigne AND id_type_info=:id_type_info";
@@ -420,7 +419,6 @@ try
 				$req->bindParam(':telephone_reservation', $telephone_reservation, PDO::PARAM_STR);
 				$req->execute();
 				break;
-			default:
 	}
 
 	if ($id_enseigne == 0) {$id_enseigne = $bdd->lastInsertId();}

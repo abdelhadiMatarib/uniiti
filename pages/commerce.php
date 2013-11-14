@@ -207,7 +207,7 @@
 	$Infospratiques = "OuvrePopin(" . $datainfospratiques . ", '/includes/popins/infospratiques.tpl.php', 'default_dialog_large');";
 
 	if(isset($_SESSION['SESS_MEMBER_ID'])) {
-		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . "," . "id_enseigne :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
+		$dataLDW = "{id_contributeur :" . $_SESSION['SESS_MEMBER_ID'] . ", type : 'enseigne', id_enseigne_ou_objet :" . $id_enseigne . ", categorie : '" . addslashes($categorie) . "'}";
 		$like_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/like_step1.tpl.php', 'default_dialog');";
 		$dislike_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/dislike_step1.tpl.php', 'default_dialog');";
 		$wishlist_step1 = "OuvrePopin(" . $dataLDW . ", '/includes/popins/wishlist_step1.tpl.php', 'default_dialog');";
@@ -506,9 +506,9 @@
 			},
 			success: function(result) {
 				if (result.existe == 1) {
-					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
+					$('.SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/picto_user_suivi.png');
 				} else {
-					$('#SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
+					$('.SuivreContributeur'+data.id_contributeur).attr('src', siteurl+'/img/pictos_utilisateurs/suivre.png');				
 				}
 			},
 			error: function() {alert('Erreur sur url : ' + url);}
@@ -517,7 +517,7 @@
 	
 	function InitFollowContributeur() {
 		$('#box_container').find('.box_suivre_user').each(function() {
-			var contributeur = $(this).find("img").attr("id").replace(/SuivreContributeur/gi, "");
+			var contributeur = $(this).find("img").attr("class").replace(/SuivreContributeur/gi, "");
 			dataFollow = {check : 1, 
 						  id_contributeurACTIF : $idcontributeurACTIF,
 						  id_contributeur : contributeur};

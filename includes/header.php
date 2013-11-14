@@ -141,6 +141,8 @@
 					<?php if ((int)$_SESSION['droits'] & $_SESSION['ADMINISTRATEUR']) { ?>
 						<li><a href="<?php echo SITE_URL . "/pages/dashboard_gestion_commerce.php"; ?>" title="">Gérer les commerces</a></li>
 						<li><a href="<?php echo SITE_URL . "/pages/commerce_interface.php?id_enseigne=0"; ?>">Créer un commerce</a></li>
+						<li><a href="<?php echo SITE_URL . "/pages/dashboard_gestion_objet.php"; ?>" title="">Gérer les objets</a></li>
+						<li><a href="<?php echo SITE_URL . "/pages/objet.php?id_objet=0"; ?>">Créer un objet</a></li>
 						<li><a href="<?php echo SITE_URL . "/pages/utilisateur_interface.php?id_contributeur=0"; ?>">Créer un contributeur</a></li>
 						<li><a href="<?php echo SITE_URL . "/pages/dashboard_ajout_avis.php"; ?>">Ajouter un avis</a></li>
 						<li><a href="<?php echo SITE_URL . "/pages/dashboard_parametres.php"; ?>" title="">Paramètres</a></li>
