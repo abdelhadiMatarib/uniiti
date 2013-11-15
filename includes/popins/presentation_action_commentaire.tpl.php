@@ -240,7 +240,7 @@ if(isset($_SESSION['SESS_MEMBER_ID'])) {
 	var $idavis = <?php echo $_POST['id_avis']; ?>;
 	var $idcontributeurACTIF = <?php if (isset($_SESSION['SESS_MEMBER_ID'])) {echo $_SESSION['SESS_MEMBER_ID'];} else {echo 0;} ?>;
 	var $idcontributeur = <?php echo $_POST['id_contributeur']; ?>;
-	var $type = <?php echo $_POST['type']; ?>;
+	var $type = '<?php echo $_POST['type']; ?>';
 	var data = {check : 1, type : $type, id_contributeur : $idcontributeurACTIF, id_avis : $idavis};
 	if ($idcontributeurACTIF != 0) {AfficheAvisUtile(data);}
 
