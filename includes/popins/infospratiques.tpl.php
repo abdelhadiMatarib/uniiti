@@ -74,29 +74,21 @@
 				 vertical-align: middle;
 				 word-spacing: normal;
 			}
-
-			#legend {
-				text-align: left;
-				background: #FFF;
-				padding: 10px;
-				margin: 5px;
-				font-size: 12px;
-				font-family: Arial, sans-serif;
-			}
 			
 		</style>
 		<div class="infospratiques_body_horaires">
-			<div class="localisation_head">
-				<div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="22" width="22" /></div><span>Localisation</span>
+			<div id="info_generales_head" class="active">
+				<span class="active">Informations générales</span>
+			</div> 
+			<div id="services_proches_head">
+				<span>Services proches</span>
 			</div>
-			<div id="map-canvas"></div>  
-		</div>	
-    <div class="menutarifs_body">
-	
 
-        <div class="infospratiques_body_horaires">
-            <div class="menutarifs_body_entrees_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="22" width="22" /></div><span>Horaires d'ouverture</span>
+		</div>
+		<div id="info_generales_body">
+		<div class="infospratiques_body_horaires">
+			<div class="menutarifs_body_desserts_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="20" width="20" /></div><span>HORAIRES D'OUVERTURE</span>
             </div>
             <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ouvert"><span>Lundi</span></div>
@@ -112,54 +104,16 @@
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ferme"><span>Samedi</span></div>
             <div class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
             <div class="menutarifs_body_entrees_prix_generique horaires_commerces_ferme"><span>Dimanche</span></div>
-        
         </div>
-        <div class="infospratiques_body_parking">
-            <div class="menutarifs_body_entrees_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_parking.png" title="" alt="" height="22" width="22" /></div><span>Parking à proximité</span>
-            </div>
-            <div id="parking1" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            <div id="parking2" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-        
-        </div>
-        <div class="infospratiques_body_metro">
-            <div class="menutarifs_body_plats_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_metro.png" title="" alt="" height="22" width="22" /></div><span>Métro à proximité</span>
-            </div>
-            <div id="metro1" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            <div id="metro2" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-        </div>
-        <div class="infospratiques_body_velib">
-            <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_velib.png" title="" alt="" height="22" width="22" /></div><span>Station vélib' à proximité</span>
-            </div>
-            <div id="velib1" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            <div id="velib2" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-        </div>
-        <div class="infospratiques_body_autolib">
-            <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_autolib.png" title="" alt="" height="22" width="22" /></div><span>Station Autolib' à proximité</span>
-            </div>
-            <div id="autolib1" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-            <div id="autolib2" class="menutarifs_body_entrees_entree_generique"><span>Recherche en cours ...</span></div>
-            <div class="menutarifs_body_entrees_prix_generique"><span><a href="#map-canvas" title=""><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_map.png" title="" alt="" height="18" width="18" /></a></span></div>
-		</div>
-		<?php if ($resultcheck) { ?>
+        <?php if ($resultcheck) { ?>
         <div class="infospratiques_body_paiements">
             <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="22" width="22" /></div><span>Paiements acceptés</span>
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="20" width="20" /></div><span>Paiements acceptés</span>
             </div>
 			<?php foreach ($result as $row) {
 					$selected = false;
 					if (isset($existe[$row['id_moyenpaiement']])) { ?>
-					<div class="menutarifs_body_entrees_prix_generique paiement_generique<?php echo $row['id_moyenpaiement'];?>">
+					<div class="paiement_generique<?php echo $row['id_moyenpaiement'];?>">
 						<img id_paiement="<?php echo $row['id_moyenpaiement'];?>" class="img_container_payment_options img_container_payment_options<?php echo $row['id_moyenpaiement'];?> moyenspaiements<?php echo " valid_paiement";?>" title="<?php echo $row['moyenpaiement'];?>"></img>
 					</div>
 
@@ -169,7 +123,7 @@
 		<?php if ($voiturier == 1) { ?>
         <div class="infospratiques_body_voiturier">
             <div class="menutarifs_body_desserts_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="20" width="20" /></div><span>Service de voiturier</span>
             </div>
             <div class="infospratiques_body_voiturier2">
                 <div class="infospratiques_body_voiturier_inside">
@@ -179,10 +133,60 @@
             </div>
         </div>
 		<?php } ?>
-    </div>
+		</div>
+		<div id="services_proches_body">
+			<div class="infospratiques_body_parking">
+            <div class="menutarifs_body_entrees_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_parking.png" title="" alt="" height="20" width="20" /></div><span>Parking à proximité</span>
+            </div>
+            <div id="parking1" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+            <div id="parking2" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+        
+        </div>
+        <div class="infospratiques_body_metro">
+            <div class="menutarifs_body_plats_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_metro.png" title="" alt="" height="20" width="20" /></div><span>Métro à proximité</span>
+            </div>
+            <div id="metro1" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+            <div id="metro2" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+        </div>
+        <div class="infospratiques_body_velib">
+            <div class="menutarifs_body_desserts_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_velib.png" title="" alt="" height="20" width="20" /></div><span>Station vélib' à proximité</span>
+            </div>
+            <div id="velib1" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+            <div id="velib2" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+        </div>
+        <div class="infospratiques_body_autolib">
+            <div class="menutarifs_body_desserts_head">
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_autolib.png" title="" alt="" height="20" width="20" /></div><span>Station Autolib' à proximité</span>
+            </div>
+            <div id="autolib1" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+            <div id="autolib2" class="services_proches_body_cells"><span>Recherche en cours ...</span></div>
+		</div>
+		</div>
+		<div id="map-canvas"></div>
 
+<script>
 
-<script>    
+	$('#services_proches_head').click(function(e){
+		$('#info_generales_body').hide();
+		$('#services_proches_body').show();
+		$('#info_generales_head').removeClass('active');
+		$('#services_proches_head').addClass('active');
+		$('#info_generales_head span').removeClass('active');
+		$('#services_proches_head span').addClass('active');
+    });
+
+    $('#info_generales_head').click(function(e){
+		$('#services_proches_body').hide();
+		$('#info_generales_body').show();
+		$('#info_generales_head').addClass('active');
+		$('#services_proches_head').removeClass('active');
+		$('#info_generales_head span').addClass('active');
+		$('#services_proches_head span').removeClass('active');
+    });
+
     $('.popin_close_button').click(function(e){
     e.preventDefault(); //don't go to default URL
     var defaultdialog = $("#default_dialog").dialog();
@@ -240,22 +244,22 @@
 	couleur = couleur.replace('\#', '');
     var enseigne_icon = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=1|0|" + couleur + '|8|b|' + nom_enseigne.substring(0,Math.min(nom_enseigne.length,8)));
 	var couleur_metro = "0000ff";
-    var metro_icon = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin|M|" + couleur_metro + '|ffffff',
+    var metro_icon = new google.maps.MarkerImage('<?php echo SITE_URL; ?>' +"/img/pictos_popins/map_metro.png",
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));
 	var couleur_parking = "0000ff";
-    var parking_icon = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin|P|" + couleur_parking + '|ffffff',
+    var parking_icon = new google.maps.MarkerImage('<?php echo SITE_URL; ?>' +"/img/pictos_popins/map_parking.png",
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));
 	var couleur_velib = "00ff00";
-    var velib_icon = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin|V|" + couleur_velib + '|000000',
+    var velib_icon = new google.maps.MarkerImage('<?php echo SITE_URL; ?>' +"/img/pictos_popins/map_velib.png",
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));
 	var couleur_autolib = "00ff00";
-    var autolib_icon = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin|A|" + couleur_autolib + '|000000',
+    var autolib_icon = new google.maps.MarkerImage('<?php echo SITE_URL; ?>' +"/img/pictos_popins/map_autolib.png",
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));		
@@ -289,14 +293,33 @@
 						$('.infospratiques_body_autolib').hide();
 					break;
 				}
-
+				 var styles = [
+				  {
+				    "featureType": "road",
+				    "elementType": "geometry",
+				    "stylers": [
+				      { "visibility": "on" },
+				      { "lightness": -14 },
+				      { "saturation": 100 },
+				      { "color": "#cdccc8" }
+				    ]
+				  },{
+				    "featureType": "poi",
+				    "elementType": "geometry",
+				    "stylers": [
+				      { "color": "#929fb3" }
+				    ]
+				  },{
+				  }
+				];
+				
 				var mapOptions = {
 					zoom: 15,
 					center: enseigne_position,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-				
+				map.setOptions({styles: styles});
 				var legend = document.createElement('div');
 				legend.id = 'legend';
 				var content = [];

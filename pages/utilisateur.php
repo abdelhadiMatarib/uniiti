@@ -107,7 +107,6 @@
     
     <div class="biggymarginer" style="display:none;">
         <div class="big_wrapper">
-            
             <div class="liseret_gris"></div>
             <div class="objet_head">
                 <div class="objet_head_desc">
@@ -133,17 +132,15 @@
                     </div>
                 </div>
                 <div class="objet_head_infos">
-                    <div class="separateur"></div>
                     <div class="objet_head_infos_services"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></div>
-                    
                     <div class="objet_head_infos_infos"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_infos_text"><span class="objet_head_infos_infos_text_fin">Classement</span><span class="objet_head_infos_infos_text_couleur">Sport</span></div><span class="objet_head_infos_infos_classement">85<sup>ème</sup></span></div>
-                    <div class="objet_head_infos_suivre" id="Suivre"><span id="TexteSuivre" class="objet_head_infos_suivre_firstcat">Suivre</span><span class="objet_head_infos_suivre_lastcat"><?php echo $prenom_contributeur; ?></span><div class="img_container"><img id="ImageSuivre" src="../img/pictos_commerces/suivre.png" alt="" height="43" width="37" /></div></div>
+                    <div class="objet_head_infos_suivre" id="Suivre"><div class="img_container"><img id="ImageSuivre_utilisateur" src="<?php echo SITE_URL; ?>/img/pictos_commerces/suivre.png" alt="" height="55" width="55" /></div><span id="TexteSuivre" class="objet_head_infos_suivre_firstcat">Suivre</span><span class="objet_head_infos_suivre_lastcat"><?php echo $prenom_contributeur; ?></span></div>
                 </div>
             </div>
             <div class="commerce_head2">
-                <div class="commerce_head2_right">
-                <div class="utilisateur_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Avis</span></div><div class="img_container"><img src="../img/pictos_commerces/star_0.png" alt="" title="" height="17" width="18" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_avis_contributeur; ?></span></div>
-                <div class="utilisateur_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Abonnés</span></div><div class="img_container"><img src="../img/pictos_commerces/abonnes.png" alt="" title="" height="18" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div>
+                <div class="utilisateur_head2_right">
+                	<div class="utilisateur_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Avis</span><div class="img_container"><img src="../img/pictos_commerces/star_0.png" alt="" title="" height="17" width="18" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_avis_contributeur; ?></span></div></div>
+                	<div class="utilisateur_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Abonnés</span><div class="img_container"><img src="../img/pictos_commerces/abonnes.png" alt="" title="" height="18" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></div>
                 </div>
             </div>
             <div class="commerce_couv">

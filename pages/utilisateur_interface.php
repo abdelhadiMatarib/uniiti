@@ -179,17 +179,10 @@
                     <div class="clearfix"></div>
                     <div class="utilisateur_head_desc_avatar">
                         <div class="img_container">
-                            <img class="user_avatar_target" src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
-							<?php if ($id_contributeur != 0) { ?>
-								<div class="utilisateur_interface_modifier_couv modifier_avatar">
-									<a href="#" title="" class="button_changer_couverture" onclick="<?php echo $OuvreInscription2; ?>">
-										<div class="utilisateur_interface_modifier_icon_noir">
-											<img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" />
-										</div>
-										<span>changer l'avatar</span>
-									</a>
-								</div>
+                        	<?php if ($id_contributeur != 0) { ?>
+								<div class="utilisateur_interface_modifier_couv" onclick="<?php echo $OuvreInscription2; ?>"><div class="utilisateur_interface_modifier_icon_noir"></div><span>Changer l'avatar'</span></div>
 							<?php } ?>
+                            <img class="user_avatar_target" src="<?php echo SITE_URL . "/photos/utilisateurs/avatars/" . $photo_contributeur;?>" title="" alt="" height="120" width="120"/>
                         </div>
                     </div>
                     <div class="utilisateur_head_desc_desc"><div class="img_container"><img src="../img/marker_map.png" title="" alt="" height="23" width="15"/></div><span><?php switch ($sexe_contributeur) {case 1: echo "Homme";break; case 0: echo "Femme";break;}?></span><span class="utilisateur_head_desc_desc_lastcat"><?php echo $age; ?></span></div>
@@ -209,21 +202,20 @@
                     </div>
                 </div>
                 <div class="objet_head_infos">
-                    <div class="separateur"></div>
                     <div class="objet_head_infos_services"><a href="#" onclick="<?php echo $Classement; ?>"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_services_text"><span class="objet_head_infos_services_text_fin">Classement</span><span class="objet_head_infos_services_text_couleur">Paris</span></div><span class="objet_head_infos_services_classement">635<sup>ème</sup></span></a></div>
                     
                     <div class="objet_head_infos_infos"><div class="img_container"><img src="../img/pictos_commerces/coupe.png" alt="" title="" height="41" width="39" /></div><div class="objet_head_infos_infos_text"><span class="objet_head_infos_infos_text_fin">Classement</span><span class="objet_head_infos_infos_text_couleur">Sport</span></div><span class="objet_head_infos_infos_classement">85<sup>ème</sup></span></div>
                     <div class="utilisateur_head_infos_suggestion">
-                        <div class="utilisateur_suggerer_commerce"><a href="#" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');" title=""><span class="utilisateur_suggerer_commerce_firstcat">Suggérer</span><span class="utilisateur_suggerer_commerce_lastcat"> commerce</span></a></div>
+                        <div class="utilisateur_suggerer_commerce" onclick="OuvrePopin({}, '/includes/popins/suggestion_commerce.tpl.php', 'default_dialog');"><span class="utilisateur_suggerer_commerce_firstcat">Suggérer Commerce</span></div>
                         <div class="clearfix"></div>
-                        <div class="utilisateur_suggerer_objet"><a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');"><span class="utilisateur_suggerer_objet_firstcat">Suggérer</span><span class="utilisateur_suggerer_objet_lastcat"> objet</span></a></div>
+                        <div class="utilisateur_suggerer_objet" onclick="OuvrePopin({}, '/includes/popins/suggestion_objet.tpl.php', 'default_dialog');"><span class="utilisateur_suggerer_objet_firstcat">Suggérer Objet</span></div>
                     </div>
                 </div>
             </div>
             <div class="commerce_head2">
-                <div class="commerce_head2_right">
-                <div class="utilisateur_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Avis</span></div><div class="img_container"><img src="../img/pictos_commerces/star_0.png" alt="" title="" height="18" width="21" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_avis_contributeur; ?></span></div>
-                <div class="utilisateur_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Abonnés</span></div><div class="img_container"><img src="../img/pictos_commerces/abonnes.png" alt="" title="" height="18" width="21" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div>
+                <div class="utilisateur_head2_right">
+                	<div class="utilisateur_head2_avis"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Avis</span><div class="img_container"><img src="../img/pictos_commerces/star_0.png" alt="" title="" height="17" width="18" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_avis_contributeur; ?></span></div></div>
+                	<div class="utilisateur_head2_abonnes"><span class="commerce_head2_text1">Nombre</span><span class="objet_head2_text2">Abonnés</span><div class="img_container"><img src="../img/pictos_commerces/abonnes.png" alt="" title="" height="18" width="19" /></div><div class="commerce_head2_text3_end"><span><?php echo $count_abonnes; ?></span></div></div>
                 </div>
             </div>
             <div class="commerce_couv">
@@ -246,14 +238,7 @@
                 <div class="commerce_gerant"><div class="gerant_title gerant_title_utilisateur"><a class="button_show_concept_utilisateur" href="#" title=""><p>Son commerce</p></a></div><div class="utilisateur_gerant_photo"><img src="<?php echo SITE_ENSEIGNES_BOX . $box_enseigne  . "?" . time();?>" title="" alt="" /></div></div>
  				<?php } ?>
 				<?php if ($id_contributeur != 0) { ?>
-					<div class="utilisateur_interface_modifier_couv">
-						<a href="#" title="" class="button_changer_couverture" onclick="<?php echo $Couverture; ?>">
-							<div class="utilisateur_interface_modifier_icon_noir">
-								<img src="<?php echo SITE_URL; ?>/img/pictos_utilisateurs/interface_crayon_icon_n.png" title="" alt="" height="12" width="12" />
-							</div>
-							<span>changer les couvertures</span>
-						</a>
-					</div>
+					<div class="utilisateur_interface_modifier_couv" onclick="<?php echo $Couverture; ?>"><div class="utilisateur_interface_modifier_icon_noir"></div><span>Changer les couvertures</span></div>
 				<?php } ?>
             </div>
            
