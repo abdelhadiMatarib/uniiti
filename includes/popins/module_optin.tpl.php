@@ -105,13 +105,13 @@
             </div>
             <div class="module_reservation_right_content">
                 <form>
-                    <div class="input_optin_float"><input type="radio" id="resa_infos_affichage" name="module_resa_radio_choice"/><label for="resa_infos_affichage"><span>Campagne auprès de mes clients</span></label></div>
+                    <div class="input_optin_float"><input type="radio" id="resa_infos_affichage" name="module_resa_radio_choice" checked/><label for="resa_infos_affichage"><span>Campagne auprès de mes clients</span></label></div>
                     
                     <div class="input_optin_float"><input type="radio" id="resa_infos_notifs_mail" name="module_resa_radio_choice"/><label for="resa_infos_notifs_mail"><span id="optin_camp_clients_part">Auprès des clients de mes partenaires</span></label></div>
                     
                     <div class="module_optin_nombre_wrap">
                         
-                        <div class="module_optin_nombre_txt">79</div>
+                        <div class="module_optin_nombre_txt">--</div>
                         <div class="module_optin_nombre_choix_mails"><a href="#" title="">MAILS</a></div>
                         <div class="module_optin_nombre_choix_sms"><a href="#" title="">SMS</a></div>
                         <div class="module_optin_nombre_choix_lesdeux"><a href="#" title="">LES DEUX</a></div>
@@ -132,7 +132,7 @@
     <div class="suggestioncommerce_footer">
         
         <div class="bouton_envoyer_optin_wrap"><a href="#">Lancer ma campagne</a></div>
-        <div class="recap_optin_footer"><span class="recap_optin_footer_total">TOTAL</span><span class="recap_optin_footer_total_prix">253 €</span></div>
+        <div class="recap_optin_footer"><span class="recap_optin_footer_total">TOTAL</span><span class="recap_optin_footer_total_prix">0 €</span></div>
     </div>
 </div>
 </html>

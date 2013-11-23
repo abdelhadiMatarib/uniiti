@@ -200,7 +200,7 @@
 			.each(function() {
 				if (inithoraires != '') {InitHoraires($(this));}
 				else {
-					if (init) {init = false;$(this).html('<span>Informations non communiquées</span>');$(this).next().html('<span>Pas d\'information</span>')}
+					if (init) {init = false;$(this).html('<span>Informations non communiquées</span>');$(this).next().hide()}
 					else {$(this).hide();$(this).next().hide();}
 				}
 			});

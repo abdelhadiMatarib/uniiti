@@ -51,12 +51,12 @@
     <div class="infospratiques_body">
         <div class="infospratiques_body_paiements">
             <div class="infospratiques_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="22" width="22" /></div><span>Paiements acceptés</span>
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_paiements.png" title="" alt="" height="20" width="20" /></div><span>Paiements acceptés</span>
             </div>
 			<?php foreach ($result as $row) {
 					$selected = false;
 					if (isset($existe[$row['id_moyenpaiement']])) {$selected = true;} ?>
-					<div class="menutarifs_body_entrees_prix_generique paiement_generique<?php echo $row['id_moyenpaiement'];?>">
+					<div class="paiement_generique<?php echo $row['id_moyenpaiement'];?>">
 						<img id_paiement="<?php echo $row['id_moyenpaiement'];?>" class="img_container_payment_options img_container_payment_options<?php echo $row['id_moyenpaiement'];?> moyenspaiements<?php if ($selected) {echo " valid_paiement";}?>" title="<?php echo $row['moyenpaiement'];?>"></img>
 					</div>
 
@@ -64,7 +64,7 @@
         </div>
         <div class="infospratiques_body_voiturier">
             <div class="infospratiques_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="22" width="22" /></div><span>Service de voiturier</span>
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_voiturier.png" title="" alt="" height="20" width="20" /></div><span>Service de voiturier</span>
             </div>
             <div class="infospratiques_body_voiturier">
                 <div class="infospratiques_body_voiturier_inside">
@@ -75,7 +75,7 @@
         </div>
         <div class="infospratiques_body_horaires">
             <div class="infospratiques_head">
-                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="22" width="22" /></div><span>Horaires d'ouverture</span>
+                <div class="infospratiques_head_img_container"><img src="<?php echo SITE_URL; ?>/img/pictos_popins/icon_infospratiques_horaires.png" title="" alt="" height="20" width="20" /></div><span>Horaires d'ouverture</span>
             </div>
 
             <div class="infospratiques_horaires premier">
