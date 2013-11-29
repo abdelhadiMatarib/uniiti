@@ -1,0 +1,6 @@
+.badge-body{margin: 0; float: left; overflow: hidden;}
+.my-badge{float: left; height: 70px; width: 294px; background-image:  url('../img/photos_commerces/badgeuniiti.png');background-repeat: no-repeat;}
+.my-badge:hover{ cursor: pointer}
+.rate {display: inline-block; width: 50%;float: right; margin-right: 2%;color: white; font-family: 'Open Sans'; font-size: 35px;margin-top: 3px;font-weight: 300;margin-bottom: 0; height: 35px;}
+.votes { display: inline-block; width: 20%; float: left;margin-left: 56%; color: white; font-family: 'Open Sans'; font-size: 14px; font-weight: 300; margin-top: 5px; }
+.no-rate{display: inline-block;width: 40%; float: left; margin-left: 43%; color: white; font-family: 'Open Sans'; font-size: 14px; margin-top: 3px; font-weight: 300;margin-bottom: 0; height: 35px;margin-top: 10px;}

@@ -525,10 +525,10 @@ else {
 					<span class="commerce_prefs_stats_item_titre">Nombre de j'aime pas</span>
 				</div>
 				<div class="commerce_prefs_stats_item item_gestion_site">
-					<a href="#" title="" onclick="OuvrePopin({}, '/includes/popins/gestion_minisite.tpl.php', 'default_dialog');">
-						<span><strong>Gestion</strong></span>
-						<span>de votre</span>
-						<span><strong>Site web</strong></span>
+					<a href="#" title="" onclick="OuvrePopin({i:<?php echo $id_enseigne; ?>}, '/includes/popins/gestion_my_badge.tpl.php', 'default_dialog');">
+						<span><strong>Mon</strong></span>
+						<span>Badge</span>
+						<span><strong>Uniiti</strong></span>
 					</a>
 				</div>
 			</div>

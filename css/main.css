@@ -102,7 +102,7 @@ span.index_overlay_texte{display:block;}
 .home_newsfeed span{display:inline-block;}
 .home_newsfeed_number{border-radius:3px;font-size:0.9em;font-weight:700;background-color:#ff4343;padding:0px 5px;color:white;}
 .home_newsfeed_number+span{font-size:0.9em;margin-left:3px;color:#252525;}
-                            
+
 /* BOUTON VALIDER GENERIQUE */
 .wrap_buttons_valider_supprimer{cursor:pointer;position:absolute;bottom:10px;right:-45px;}
 .button_valider{margin-top:5px;border:1px dashed #69eb76;height:40px;width:40px;background:url('../img/pictos_popins/sprite_validation_suppression.png') no-repeat 8px -35px rgba(32,32,32,0.45);}
@@ -219,8 +219,8 @@ input#inputSearch2{font-family:'open sans';font-size:1em;font-weight:100;padding
 .notifs_filter{text-align:center;border-radius:3px;z-index:50;position:absolute;top:-5px;right:-5px;height:14px;width:14px;padding:1px;font-size:10px;font-weight:700;background-color:#ff4343;color:white;}
 .notifs_filter span{display:inline-block;line-height:10px;}
 .notifs_filter2{text-align:center;border-radius:3px;z-index:50;position:absolute;top:-5px;right:-5px;height:14px;width:28px;padding:1px;font-size:10px;font-weight:700;background-color:#ff4343;color:white;}
-.notifs_filter2 span{display:inline-block;line-height:10px;} 
- 
+.notifs_filter2 span{display:inline-block;line-height:10px;}
+
 .leflux_wrapper{float:right;padding:12px;}
 .leflux_wrapper span{font-size:1.4em;}
 .leflux_wrapper a{color:#252525;}
@@ -615,7 +615,7 @@ span.follower_identity_txt_rang{color:#fabe41;font-size:0.8em;font-weight:600;di
 span.inscription_fb_why_txt_normal{font-weight:300;}
 span.inscription_fb_why_txt_bold{font-weight:700;}
 .inscription_fb_why_right ul{padding-left:28px;}
-                    
+
 input:focus.inscription_field_input_text, input:focus.inscription_field_input_text {outline: none; background-color: #E6E4E4;}
 .liseret_bleu{background-color:#A4EBF1;height:5px;}
 .inscription_head{ width: 680px;position:relative;border-radius:3px 3px 0 0;height:90px;background-color:white;text-align:center;overflow: hidden;}
@@ -1368,7 +1368,7 @@ h2.h2_suppr_commerce{margin-top:20px;}
 
 .input_dashboard_parametres_wrap{position:relative;}
 .separation_input_parametres{width:100%;height:40px;}
-            
+
 /* DASHBOARD */
 
 .bg_dashboard{background-color:white;height:100%;}
@@ -1663,11 +1663,11 @@ textarea.module_optin_textarea_message{height:70px;width:280px;resize:none;paddi
 .recap_optin_footer{float:left;width:180px;background-color: #252525;height:25px;padding:5px 10px 10px 10px;border-radius: 0 0 3px 0;}
 .recap_optin_footer_total{float:left;font-size:1.6em;color:white;font-weight:700;}
 .recap_optin_footer_total_prix{float:right;font-size:1.6em;color:#ffffff;}
-      
+
 /* BOXES TYPE */
 
 .box_petit_mot{position:relative;float:left;background-color:#252525;height:180px;width:500px;margin-bottom:20px;}
-    
+
 .box_petit_mot_modif_icon{position:absolute;top:10px;right:10px;}
 
 .box_petit_mot_titre{float:left;margin:10px;width:140px;text-align:center;}
@@ -1692,7 +1692,7 @@ textarea.module_optin_textarea_message{height:70px;width:280px;resize:none;paddi
 .commerce_couv_video_button_retour span{text-transform:uppercase;color:#fabe41;}
 .commerce_couv_video_txt_left_img_container{width:54px;margin:10px auto;}
 .commerce_couv_video_txt_left_colored{color:#fabe41 !important;font-weight:700 !important;}
-    
+
 .top_50_commerces{cursor:pointer;text-align:center;color:white;background-color:#252525;width:236px;line-height:2.2em;}
 .box_top_50_commerces_txt1{font-size:2em;font-weight:700;}
 .box_top_50_commerces_txt2{font-size:2em;font-weight:300;margin-bottom:20px;}
@@ -1725,3 +1725,12 @@ span.box_aleatoire_nbr_2{font-weight:300;margin-bottom:20px;font-size:1.4pem;}
 @media only screen and (min-width:1265px) and (max-width: 1526px) {.couv_container,.big_wrapper {width: 1236px;}.slidesjs2-pagination{margin-top: -371px;}}
 @media only screen and (min-width:1527px) and (max-width: 1776px) {.couv_container,.big_wrapper {width: 1486px;}.slidesjs2-pagination{margin-top: -443px;}}
 @media only screen and (min-width:1777px) and (max-width: 1920px) {.couv_container,.big_wrapper {width: 1736px;}.slidesjs2-pagination{margin-top: -514px;}}
+badge-body{margin: 0; float: left; overflow: hidden;}
+.my-badge{float: left; height: 70px; width: 294px; background-image:  url('../img/photos_commerces/badgeuniiti.png');background-repeat: no-repeat;}
+.rate {display: inline-block; width: 50%;float: right; margin-right: 2%;color: white; font-family: 'Open Sans'; font-size: 35px;margin-top: 3px;font-weight: 300;margin-bottom: 0; height: 35px;}
+.votes { display: inline-block; width: 20%; float: left;margin-left: 56%; color: white; font-family: 'Open Sans'; font-size: 14px; font-weight: 300; margin-top: 5px; }
+.account-my-badge{width: 100%; padding: 0; padding-bottom: 20px; padding-top: 20px;}
+.account-my-badge #my-uniiti-rate{margin-top: 10px;}
+.account-my-badge textarea{width: 400px; color:#666; border: 1px solid #ccc; height: 300px; white-space: pre; word-wrap: normal;}
+.no-rate{display: inline-block;width: 40%; float: left; margin-left: 43%; color: white; font-family: 'Open Sans'; font-size: 14px; margin-top: 3px; font-weight: 300;margin-bottom: 0; height: 35px;margin-top: 10px;}
+.my-badge:hover{ cursor: pointer}
