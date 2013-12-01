@@ -37,15 +37,14 @@ $nbnouveauxinscrits = $result2['count_nouveaux'];
     <div class="splash_big_wrapper">
     <div class="splash_head_wrapper">
         <div class="splash_head">
-            <div class="splash_head_items"><span class="splash_head_items_nbr"><?php echo $nbavis; ?></span><span class="splash_head_items_txt">commentaires sur le site</span></div>
-            <div class="splash_head_items"><span class="splash_head_items_nbr">2</span><span class="splash_head_items_txt">minutes pour vous inscrire</span></div>
-            <div class="splash_head_items"><span class="splash_head_items_nbr"><?php echo $nbnouveauxinscrits; ?></span><span class="splash_head_items_txt">nouveaux inscrits aujourd'hui</span></div>
+            <div class="splash_head_items1"><span class="splash_head_items_nbr"><?php echo $nbavis; ?></span></div>
+            <div class="splash_head_items2"><span class="splash_head_items_nbr"><?php echo $nbnouveauxinscrits; ?></span></div>
         </div>
     </div>
     <div class="splash_body_wrapper">
         <div class="splash_body">
             <div class="splash_login_img_container"><img src="img/pictos_splash/logo_splash.png"/></div>
-            <h1>Les avis, nouvelle génération</h1>
+            <h1>Les avis, les vrais</h1>
             <form action="<?php echo SITE_URL; ?>/acces/login_access.php" method="post" autocomplete="off">
                     <input class="splash_input_login" type="text" placeholder="login" name="email-login" id="email-login"/>
                     <input class="splash_input_password" type="password" placeholder="mot de passe" name="password" id="password"/>
@@ -53,13 +52,13 @@ $nbnouveauxinscrits = $result2['count_nouveaux'];
                     <br />
                     <input class="splash_input_button" type="submit" value="connexion">
                     <br />
-                    <span>ou <a class="splash_link_create_account" href="#" onclick="OuvrePopin(<?php echo $data; ?>, '/pages/inscription.php', 'default_dialog_inscription');" title="">créer un compte</a></span>
+                    <span>ou <a class="splash_link_create_account" href="#" onclick="OuvrePopin(<?php echo $data; ?>, '/pages/inscription.php', 'default_dialog_inscription');" title="">créer un compte en 2 minutes</a></span>
             </form>
         </div>
     </div>
     </div>
         <div class="splash_footer_wrapper">
-        <div class="splash_commerce_title"><span>Cinéma <a href="#" title="">Iron Man 3</a></span></div>
+        <div class="splash_commerce_title"><span>Restaurant <a href="http://uniiti.fr/pages/commerce.php?id_enseigne=139" title="">La petite cour</a></span></div>
         <div class="splash_footer">
         <form action="timeline.php">
             <input class="splash_input_button" type="submit" value="entrer sans s'inscrire"/>
