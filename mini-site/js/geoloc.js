@@ -87,16 +87,21 @@ function callback(results, status) {
             var stringParking = "<ul>";
             var stringMetro = "<ul>";
             for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                if(place.types[0]=="parking"){
-                    var met = distHaversine(ptLocation, place.geometry.location);
-                    stringParking += "<li>"+place.name+" à <span>"+(met*1000)+" mètres</span></li>";
-                               
-                }else{
-                    // its a subway station
-                    var met = distHaversine(ptLocation, place.geometry.location);
-                    stringMetro += "<li>"+place.name+" à <span>"+(met*1000)+" mètres</span></li>";
+                if(i<5){    
+                    var place = results[i];
+                    if(place.types[0]=="parking"){
+                        var met = distHaversine(ptLocation, place.geometry.location);
+                        stringParking += "<li>"+place.name+" à <span>"+(met*1000)+" mètres</span></li>";
+                                   
+                    }else{
+                        // its a subway station
+                        var met = distHaversine(ptLocation, place.geometry.location);
+                        stringMetro += "<li>"+place.name+" à <span>"+(met*1000)+" mètres</span></li>";
+                    }
                 }
+                 else {
+                     break;
+                } 
             }
             stringParking += "</ul>";
             stringMetro += "</ul>";

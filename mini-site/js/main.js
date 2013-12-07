@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	setTimeout(function() {
+      $('#reservation').animate({right:"0"},400);
+	}, 5000);
 	var activeform = false;
 		$('#contacteznous').click(function(){
 			if (activeform==false){
@@ -6,12 +9,15 @@ $(document).ready(function() {
 				$('#contacteznous').animate({bottom: "340px"},500);
 				$('#wrapper_form').animate({height: "340px"},500);
 				$('#contact_form').animate({bottom: "280px"},500);
+				$('#reservation').animate({bottom:"370px"},400);
 				activeform = true;
 			} else {
 				$(this).addClass('close').removeClass('open');
 				$('#contacteznous').animate({bottom: "101px"},500);
 				$('#wrapper_form').animate({height: "151px"},500);
 				$('#contact_form').animate({bottom: "0px"},500);
+				$('#reservation').animate({bottom:"160px"},600);
+				$('#reservation').css('z-index', 15);
 				activeform = false;
 			}
 		});

@@ -29,6 +29,7 @@
         <![endif]-->
         <!-- Appel de Google fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
         <!-- Initialisation de la Google Map -->
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
         <script type="text/javascript"> var address = "<?php echo $oShopInfos->enseigne->adresse1_enseigne . ' ' . $oShopInfos->enseigne->cp_enseigne . ' ' . $oShopInfos->enseigne->nom_ville; ?>";</script>
@@ -88,7 +89,7 @@
         </nav>
 
         <div id="navigation">
-
+            <div id="reservation" class="ascensorLink ascensorLink6">Réserver</div>
             <section> <!-- Page d'accueil -->
                 <article id="home">
                     <div id="bg" style="background-image:url('http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>');"><div id="bloc_home">
@@ -222,7 +223,7 @@
                                  * 1 => yes
                                  * 2 => no 
                                  */
-                                if(($oShopInfos->enseigne->voiturier)==1){ ?>
+                        if(($oShopInfos->enseigne->voiturier)==1){ ?>
                                  <article id="voiturier">
                                     <h2>Service de voiturier</h2>
                                         <li>Nous vous proposons un service de voiturier</br>
@@ -345,15 +346,19 @@
                     <div id="wrapper_form">
                         <div id="contact_form">
                             <form id="formulaire" action="#">
-                                <label for="nom">Nom & Prénom </label></br>
-                                <input type="text" name="nom" id="nom" /></br>
-                                <label for="email">Email </label></br>
-                                <input type="email" name="email" id="email" /></br>
-                                <label for="sujet">Sujet </label></br>
-                                <input name="text" id="sujet" ></br>
-                                <label for="message">Méssage </label></br>
-                                <textarea name="message" id="message" ></textarea></br>
-                                <input type="submit" id="submit" name ="submit" value="Envoyer" />
+                                <div id="droite">
+                                    <label for="nom">Nom & Prénom </label></br>
+                                    <input type="text" name="nom" id="nom" /></br>
+                                    <label for="email">Email </label></br>
+                                    <input type="email" name="email" id="email" /></br>
+                                    <label for="sujet">Sujet </label></br>
+                                    <input name="text" id="sujet" ></br>
+                                </div>
+                                <div id="gauche">
+                                    <label for="message">Méssage </label></br>
+                                    <textarea name="message" id="message" ></textarea></br>
+                                    <input type="submit" id="submit" name ="submit" value="Envoyer" />
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ Options +FollowSymLinks
 RewriteEngine On
 # RewriteRule ^([a-zA-ZàÀéÉèÈ\-\']+)/([a-zA-ZàÀéÉèÈ0-9\-]+)_([a-zA-ZàÀéÉèÈ\-\']+)_([a-zA-ZàÀéÉèÈ0-9\-]+)/([0-9]+)\.html$ ./pages/commerce.php?nom_type_enseigne=$1&nom_enseigne=$2&ville_enseigne=$3&code_postal=$4&id_enseigne=$5 [L]
 RewriteRule ^([a-zA-ZàÀéÉèÈôÔ0-9\-\_\/]+)/([0-9]+)\.html$ ./pages/commerce.php?url=$1&id_enseigne=$2 [L]
-RewriteRule ^uniiti/mini-site/([0-9]+)$ uniiti/mini-site/index.php?id=$1 [L]
+RewriteRule ^mini-site/([0-9]+)$ mini-site/index.php?id=$1 [L]
 
 # Apache Configuration File
 
