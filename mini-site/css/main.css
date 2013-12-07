@@ -5,6 +5,7 @@ html {font-family:'Open Sans'; font-smooth: always;-webkit-font-smoothing: antia
 
 /*/////////////////// LIENS DE NAVIGATION ///////////////////*/
 ul {list-style: none; }
+li {list-style: none; line-height: 23px;}
 #navigationMap {position: fixed;left: 0;bottom: 0;width: 50px;height: 100%;z-index: 1000;background-color: rgba(0,0,0,0.60); }
 #navigationMap ul li a {cursor:pointer;background: #aaa;height: 50px;width: 50px;line-height: 100%;vertical-align: middle;margin:auto;display: inline-block;z-index: 999;}
 #navigationMap .ascensorLinkNext {cursor:pointer;text-decoration:none;background: url('../img/sprite.png') -50px -350px no-repeat;border: 0px transparent;height: 50px;width: 50px;position: fixed;bottom: 0;display: inline-block; }
@@ -60,11 +61,14 @@ ul {list-style: none; }
 #informations_textes article h2 {padding-left:45px; font-weight:300; font-size: 1.7em; margin-left:-21px;}
 #informations_textes article p {padding-left:24px; border-left: 1px solid white; color: white;}
 #horaires h2 {background: url('../img/sprite.png') -104px -5px no-repeat;}
+ul li span {font-weight: 600;}
+span.jour {width: 100px;display: inline-block;font-weight: 300;}
 #parking h2 {background: url('../img/sprite.png') -103px -55px no-repeat;}
 #metro h2 {background: url('../img/sprite.png') -103px -105px no-repeat;}
 #velib h2 {background: url('../img/sprite.png') -103px -154px no-repeat;}
 #paiement h2 {background: url('../img/sprite.png') -103px -205px no-repeat;}
 #voiturier h2 {background: url('../img/sprite.png') -103px -255px no-repeat;}
+#horaires li, #parking li, #metro li, #velib li, #paiement li, #voiturier li{border-left: 1px solid white;padding-left: 16px;} 
 
 /*/////////////////// SERVICES ///////////////////*/
 #ascensorFloor2 {background-color: #4ea7ca;z-index: 3;}
@@ -73,13 +77,13 @@ ul {list-style: none; }
 #services_textes {width : 900px; margin-left:700px; padding-top:100px; /*background-color: red; */color: white;}
 #services_textes article {padding-left:20px; width : 750px; margin:0 100px 30px 0;}
 #services_textes article h2 {padding-left:45px; font-weight:300; font-size: 1.7em; margin-left:-21px;}
-#services_textes article dl {padding-top: 10px;padding-left:24px; border-left: 1px solid white; color: white;line-height: 35px;width: 750px;}
-#services_textes article dt {float:left;width: 690px;}
+#services_textes article dl {padding-top: 10px;padding-left:24px; border-left: 1px solid white; color: white;line-height: 35px;width: 750px;line-height: 33px;}
+#services_textes article dt {float:left;width: 690px;line-height: 22px;}
 #services_textes article dd {right: 0;}
 #service_1 h2 {background: url('../img/sprite.png') -104px -5px no-repeat;}
 #service_2 h2 {background: url('../img/sprite.png') -104px -5px no-repeat;}
 #service_3 h2 {background: url('../img/sprite.png') -104px -5px no-repeat;}
- article#service_3 {margin-bottom: 100px;}
+article#service_3 {margin-bottom: 100px;}
 
 /*/////////////////// GALERIE ///////////////////*/
 #ascensorFloor3 {position: relative; z-index: 0;}
@@ -108,10 +112,10 @@ ul {list-style: none; }
 /*/////////////////// CONTACT ///////////////////*/
 #ascensorFloor5 {background-color: #497687;z-index: 3;overflow:hidden;}
 #contact {height: 100%;overflow:hidden;}
-#adresse {z-index: 1000;bottom:0;right:0; width: 450px; height: 100px; background-color: rgba(71, 93, 101, 0.62); position: absolute;}
+#adresse {z-index: 1000;bottom:0;right:0; width: 100%; height: 101px; background-color: #475D65; position: absolute;}
 #adresse p {color: white; text-align:center;padding-top: 6px;}
 #adresse span {font-weight: 600;}
-#formulaire {width: 450px;margin: 360px auto; z-index: 100;}
+#formulaire {width: 450px;margin: 60px auto; z-index: 100;}
 input {background-color: rgba(71, 93, 101, 0.22);color:#475d65;padding-left: 10px;font-size: 1em;margin-top: 1px;margin-bottom: 10px;width: 440px;height: 40px;border:0px;}
 input#submit {width: 450px;font-weight: 600;-webkit-transition: all 0.5s ease;-moz-transition: all 0.5s ease;
 -ms-transition: all 0.5s ease;-o-transition: all 0.5s ease;transition: all 0.5s ease;}
@@ -120,15 +124,14 @@ input#submit:hover {background-color: rgba(71, 93, 101, 0.62); cursor:pointer;co
 textarea#message{font-family:'Open Sans';background-color:rgba(71, 93, 101, 0.22);color:#475d65;padding: 10px 0 0 10px;font-size: 1em;margin-top:1px;margin-bottom:10px;width: 440px;height: 120px;border:0px;}
 input:focus,textarea#message:focus{outline: none;border:0px;}
 label {margin-left: 10px;color:#475d65;font-style: italic;}
-#wrapper_form {overflow:hidden;height: 100%; width:55px;right:0px; z-index: 999; position: absolute;}
-#contact_form {height: 100%; width: 450px; background-color:rgba(255,255,255,0.85); right:-450px;z-index: 999; position: absolute;
--moz-box-shadow: -6px 0px 30px #999;-webkit-box-shadow: -6px -0px 30px #999;box-shadow: 6px 0px 30px #999;}
-#contacteznous {height: 100%; width: 55px; right:0px; z-index: 1000; position: absolute;cursor:pointer;}
-.open {background:url('../img/contacteznousclose.png') 1px 50% no-repeat; }
-.close {background:url('../img/contacteznous.png') 1px 50% no-repeat; }
-#contact_bloc {height: 300px; width: 450px; background: url('../img/contact.png') 50% 0 no-repeat; right:0; z-index: 1000; position: absolute;}
-#contact_bloc h1 {color: #475d65; font-weight:300; text-transform: uppercase; font-size: 2em; margin-top: 295px; text-align: center;}
-#map-canvas { height: 100%; width: 100%; position: absolute;}
+#wrapper_form {bottom:101px;overflow:hidden;height: 151px;width:100%;right:0px; z-index: 999; position: absolute;margin-bottom: -101px;}
+#contact_form {bottom: 0px;height: 300px;width: 100%; background-color: #3C4B50; z-index: 999; position: absolute;margin-bottom:-199px;;}
+#contacteznous {height: 31px;width: 100%;z-index: 1000;position: absolute;cursor: pointer;bottom: 101px;}
+.open {background:url('../img/contacteznousclose.png') 50% 50% no-repeat; }
+.close {background:url('../img/contacteznous.png') 50% 50% no-repeat; }
+#contact_bloc {height: 55px;width: 450px;right: 0;z-index: 1000;position: absolute;}
+#contact_bloc h1 {color: #475d65; font-weight:300; text-transform: uppercase; font-size: 2em; margin-top: 5px; text-align: center;}
+#map-canvas { height: 91%; width: 100%; position: absolute;}
 
 /*/////////////////// RESERVATION ///////////////////*/
 #ascensorFloor6 {background-color: #444444;z-index: 3;}
@@ -229,7 +232,7 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
 @media only screen and (max-width: 1300px){
   #informations_textes article {margin: 0 30px 30px 0; }
   #informations_bloc { width: 22%; }
-  #services_bloc {left: 0px;}
+  #services_bloc {left: 73px;}
 }
 
 @media only screen and (max-width: 1290px){
@@ -240,25 +243,33 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
 	#step2 {margin-left: 150px;padding-top: 170px; }
 	#step3 {margin-left: 150px;padding-top: 170px; }
 	#step4 {margin-left: 150px;padding-top: 130px; }
+	#services_textes article dt {width: 420px;}
+	#services_textes article dl {width: 490px;}
+	#services_textes article {width: 520px;}
+	#services_textes {margin-left: 40%;padding-top: 40px; width: 540px;}
 }
 
 @media only screen and (max-width: 1050px){
 #informations_textes { margin-left: 130px;}
 #reservations_bloc {display: none;}
+#services_bloc {display: none;}
+#services_textes {margin-left: 24%}
 }
 
 @media only screen and (max-width: 980px){
-#informations_textes { margin-left: 100px; padding-top: 40px;}
+#informations_textes { margin-left: 14%; padding-top: 40px;}
 #reservations_bloc {display: none;}
 	#step1 {margin-left: 120px;padding-top: 170px; }
 	#step2 {margin-left: 120px;padding-top: 170px; }
 	#step3 {margin-left: 120px;padding-top: 170px; }
 	#step4 {margin-left: 120px;padding-top: 130px; }
+	#services_textes {margin-left: 20%}
 }
 
 @media only screen and (max-width: 940px){
   #informations_bloc { display: none;}
   #reservations_bloc {display: none;}
+  #services_textes {margin-left: 14%}
 }
 
 /*/////////////////// SLIDER FULSCREEN ///////////////////*/

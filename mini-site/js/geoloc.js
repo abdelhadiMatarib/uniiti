@@ -25,7 +25,7 @@ function codeAddress() {
             //looking up for nearest parkings and metro stations
             var request = {
                 location: results[0].geometry.location,
-                radius: '750',
+                radius: '500',
                 types: ['subway_station', 'parking'],
                 rankby: 'distance'
             };
@@ -34,7 +34,7 @@ function codeAddress() {
             service.nearbySearch(request, callback); // callback to put data in html
             //nearest vélib
             $.ajax({
-                url: "/mini-site/request/getVelib.php",
+                url: "request/getVelib.php",
                 method: "POST",
                 data:{
                     len: ptLocation.pb,
@@ -44,7 +44,7 @@ function codeAddress() {
                     try
                     {
                         results = $.parseJSON(data); 
-                        console.log(results)
+
                         if(results[results.length-1].total_available_bikes>0){
                             //callback to put data in html
                             callbackVelib(results);
@@ -80,7 +80,8 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
             
 //puts data in html div (parking + metro)
-function callback(results, status) {  
+function callback(results, status) { 
+                                        console.log(results)
     if (status == google.maps.places.PlacesServiceStatus.OK) {
         if(results.length>0){
             var stringParking = "<ul>";
@@ -89,12 +90,12 @@ function callback(results, status) {
                 var place = results[i];
                 if(place.types[0]=="parking"){
                     var met = distHaversine(ptLocation, place.geometry.location);
-                    stringParking += "<li>"+place.name+" <span>("+(met*1000)+" mètres)</span></li>";
+                    stringParking += "<li>"+place.name+" à <span>"+(met*1000)+" mètres</span></li>";
                                
                 }else{
                     // its a subway station
                     var met = distHaversine(ptLocation, place.geometry.location);
-                    stringMetro += "<li>"+place.name+" <span>("+(met*1000)+" mètres)</span></li>";
+                    stringMetro += "<li>"+place.name+" à <span>"+(met*1000)+" mètres</span></li>";
                 }
             }
             stringParking += "</ul>";
@@ -110,9 +111,13 @@ function callbackVelib(results) {
         var stringVelib = "<ul>";
         for (var i = 0; i < results.length-1; i++) {
             var place = results[i];
-            // its a subway station
-            stringVelib += "<li>"+place.address+" <span>("+(place.dist)+" mètres)</span></li>";
-                            
+            if(i<3){
+                // its a subway station
+                stringVelib += "<li>"+place.address+"  à <span>"+(place.dist)+" mètres</span></li>";
+            }
+            else{
+                break;
+            }             
         }
         stringVelib += "</ul>";
         $('#velib').append(stringVelib);

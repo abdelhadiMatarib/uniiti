@@ -3,15 +3,15 @@ $(document).ready(function() {
 		$('#contacteznous').click(function(){
 			if (activeform==false){
 				$(this).addClass('open').removeClass('close');
-				$('#contacteznous').animate({right: "450px"},500);
-				$('#contact_form').animate({right: "0px"},500);
-				$('#wrapper_form').css('width','500px');
+				$('#contacteznous').animate({bottom: "340px"},500);
+				$('#wrapper_form').animate({height: "340px"},500);
+				$('#contact_form').animate({bottom: "280px"},500);
 				activeform = true;
 			} else {
 				$(this).addClass('close').removeClass('open');
-				$('#contacteznous').animate({right: "0px"},500);
-				$('#contact_form').animate({right: "-450px"},500);
-				$('#wrapper_form').animate({width: "60px"},500);
+				$('#contacteznous').animate({bottom: "101px"},500);
+				$('#wrapper_form').animate({height: "151px"},500);
+				$('#contact_form').animate({bottom: "0px"},500);
 				activeform = false;
 			}
 		});

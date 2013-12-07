@@ -32,7 +32,7 @@
         <!-- Initialisation de la Google Map -->
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
         <script type="text/javascript"> var address = "<?php echo $oShopInfos->enseigne->adresse1_enseigne . ' ' . $oShopInfos->enseigne->cp_enseigne . ' ' . $oShopInfos->enseigne->nom_ville; ?>";</script>
-        <script type="text/javascript" src="/mini-site/js/geoloc.js"></script>
+        <script type="text/javascript" src="js/geoloc.js"></script>
         <!-- Initialisation de la galerie -->
         <script type="text/javascript" src="js/galerie.min.js"></script>
         <script type="text/javascript" src="js/galerie.theme.min.js"></script>
@@ -91,7 +91,7 @@
 
             <section> <!-- Page d'accueil -->
                 <article id="home">
-                    <div id="bg" style="background-image:url('img/imghome.jpg');"><div id="bloc_home">
+                    <div id="bg" style="background-image:url('http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>');"><div id="bloc_home">
                             <div id="logo" style="color:white">
                                 <!--<img src="img/logo.png">-->
                                 <?php echo $oShopInfos->enseigne->nom_enseigne; ?>
@@ -102,7 +102,7 @@
                                 ?>
                             </p>
                         </div>
-                        <img id="bg_img" src="img/imghome.jpg"></div>
+                        <img id="bg_img" src="http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>"></div>
 
                 </article>
             </section>
@@ -117,25 +117,74 @@
 
                                 <?php
                                 if (!empty($oShopInfos->horaires->lundi)) {
-                                    echo '<li>Lundi : ' . $oShopInfos->horaires->lundi . '</li>';
+                                    $lundi = explode(',', $oShopInfos->horaires->lundi);
+                                    if($lundi[0]=='Fermé') {
+                                        echo '<li><span class="jour">Lundi</span>  <span>' . $lundi[0] . '</span>';
+                                    }
+                                    else {
+                                        $lundi = str_replace(':', 'h', $lundi);
+                                        echo '<li><span class="jour">Lundi</span>  De <span>' . $lundi[0] . '</span> à <span>' . $lundi[1] . '</span> et de <span>'. $lundi[2] .'</span> à <span>' . $lundi[3] . '</span></li>';
+                                    }
                                 }
                                 if (!empty($oShopInfos->horaires->mardi)) {
-                                    echo '<li>Mardi : ' . $oShopInfos->horaires->mardi . '</li>';
+                                    $mardi = explode(',', $oShopInfos->horaires->mardi);
+                                    if($mardi[0]=='Fermé') {
+                                        echo '<li><span class="jour">Mardi</span>  <span>' . $mardi[0] . '</span>';
+                                    }
+                                    else {
+                                        $mardi = str_replace(':', 'h', $mardi);
+                                        echo '<li><span class="jour">Mardi</span>  De <span>' . $mardi[0] . '</span> à <span>' . $mardi[1] . '</span> et de <span>'. $mardi[2] .'</span> à <span>' . $mardi[3] . '</span></li>';
+                                    }
                                 }
                                 if (!empty($oShopInfos->horaires->mercredi)) {
-                                    echo '<li>Mercredi : ' . $oShopInfos->horaires->mercredi . '</li>';
+                                    $mercredi = explode(',', $oShopInfos->horaires->mercredi);
+                                    if($mercredi[0]=='Fermé') {
+                                        echo '<li><span class="jour">Mercredi</span>  <span>' . $mercredi[0] . '</span>';
+                                    }
+                                    else {
+                                        $mercredi = str_replace(':', 'h', $mercredi);
+                                        echo '<li><span class="jour">Mercredi</span>  De <span>' . $mercredi[0] . '</span> à <span>' . $mercredi[1] . '</span> et de <span>'. $mercredi[2] .'</span> à <span>' . $mercredi[3] . '</span></li>';
+                                    }
                                 }
                                 if (!empty($oShopInfos->horaires->jeudi)) {
-                                    echo '<li>Jeudi : ' . $oShopInfos->horaires->jeudi . '</li>';
+                                    $jeudi = explode(',', $oShopInfos->horaires->jeudi);
+                                    if($jeudi[0]=='Fermé') {
+                                        echo '<li><span class="jour">Jeudi</span>  <span>' . $jeudi[0] . '</span>';
+                                    }
+                                    else {
+                                        $jeudi = str_replace(':', 'h', $jeudi);
+                                        echo '<li><span class="jour">Jeudi</span>  De <span>' . $jeudi[0] . '</span> à <span>' . $jeudi[1] . '</span> et de <span>'. $jeudi[2] .'</span> à <span>' . $jeudi[3] . '</span></li>';
+                                    }
                                 }
                                 if (!empty($oShopInfos->horaires->vendredi)) {
-                                    echo '<li>Vendredi : ' . $oShopInfos->horaires->vendredi . '</li>';
+                                    $vendredi = explode(',', $oShopInfos->horaires->vendredi);
+                                    if($vendredi[0]=='Fermé') {
+                                        echo '<li><span class="jour">Vendredi</span>  <span>' . $vendredi[0] . '</span>';
+                                    }
+                                    else {
+                                        $vendredi = str_replace(':', 'h', $vendredi);
+                                        echo '<li><span class="jour">Vendredi</span>  De <span>' . $vendredi[0] . '</span> à <span>' . $vendredi[1] . '</span> et de <span>'. $vendredi[2] .'</span> à <span>' . $vendredi[3] . '</span></li>';
+                                    }
                                 }
                                 if (!empty($oShopInfos->horaires->samedi)) {
-                                    echo '<li>Samedi : ' . $oShopInfos->horaires->samedi . '</li>';
+                                    $samedi = explode(',', $oShopInfos->horaires->samedi);
+                                    if($samedi[0]=='Fermé') {
+                                        echo '<li><span class="jour">Samedi</span>  <span>' . $samedi[0] . '</span>';
+                                    }
+                                    else {
+                                        $samedi = str_replace(':', 'h', $samedi);
+                                        echo '<li><span class="jour">Samedi</span>  De <span>' . $samedi[0] . '</span> à <span>' . $samedi[1] . '</span> et de <span>'. $samedi[2] .'</span> à <span>' . $samedi[3] . '</span></li>';
+                                    }
                                 }
                                 if (!empty($oShopInfos->horaires->dimanche)) {
-                                    echo '<li>Dimanche : ' . $oShopInfos->horaires->dimanche . '</li>';
+                                    $dimanche = explode(',', $oShopInfos->horaires->dimanche);
+                                    if($dimanche[0]=='Fermé') {
+                                        echo '<li><span class="jour">Dimanche</span>  <span>' . $dimanche[0] . '</span>';
+                                    }
+                                    else {
+                                        $dimanche = str_replace(':', 'h', $dimanche);
+                                        echo '<li><span class="jour">Dimanche</span>  De <span>' . $dimanche[0] . '</span> à <span>' . $dimanche[1] . '</span> et de <span>'. $dimanche[2] .'</span> à <span>' . $dimanche[3] . '</span></li>';
+                                    }
                                 }
                                 ?>
                                 </li>
@@ -167,19 +216,19 @@
                                 ?>
                             </ul>
                         </article>
-                        <article id="voiturier">
-                            <h2>Service de voiturier</h2>
-                            <p>
-                                <?php
+                        <?php
                                 /**
                                  * Not sure !
                                  * 1 => yes
                                  * 2 => no 
                                  */
-                                echo '<li>' . $oShopInfos->enseigne->voiturier . '</li>';
-                                ?>
-                            </p>
-                        </article>
+                                if(($oShopInfos->enseigne->voiturier)==1){ ?>
+                                 <article id="voiturier">
+                                    <h2>Service de voiturier</h2>
+                                        <li>Nous vous proposons un service de voiturier</br>
+                                        Pour plus de renseignements, merci de nous contacter au <?php echo $oShopInfos->enseigne->telephone_enseigne; ?>.</li>
+                                </article>
+                        <?php } ?>
                     </div>
                 </article>
             </section>
@@ -292,7 +341,6 @@
 
             <section> <!-- Page Contact -->
                 <article id="contact">
-                    <div id="contact_bloc"><h1>Contact</h1></div>
                     <div id="contacteznous" class="close"></div>
                     <div id="wrapper_form">
                         <div id="contact_form">
@@ -327,12 +375,12 @@
                     <div id="reservations_bloc">
                         <h1>Réservations</h1>
                         <h2>Réserver en ligne n’a que des avantages !<h2>
-                                <p> - Le service est accessible à toute heure</br>
-                                    - Vous recevez une confirmation immédiate par email et SMS</br>
-                                    - Il est donc inutile de nous appeler</br>
-                                    - C’est 100% gratuit !
-                                </p>
-                                </div>
+                            <p> - Le service est accessible à toute heure</br>
+                                - Vous recevez une confirmation immédiate par email et SMS</br>
+                                - Il est donc inutile de nous appeler</br>
+                                - C’est 100% gratuit !
+                            </p>
+                    </div>
                                 <!-- Step 1 -->
                                 <div id="step1">
                                     <div id="barre-step1"></div><div id="img_step1"></div>
@@ -439,8 +487,8 @@
                                         </form>
                                     </div>
                                 </div>
-                                </article>
-                                </section>
+                </article>
+            </section>
 
                                 </div>
                                 <script>
