@@ -47,7 +47,7 @@ li {list-style: none; line-height: 23px;}
 #bg {position: fixed;top: 0;right: 0;bottom: 0; left: 0; background-size: cover; background-position: 50% 50%;}
 #bg_img {display: none;}
 #bloc_home {position: fixed; padding-top: 30px;position:absolute;left: 50%;top: 50%;width: 700px;height: 600px;margin-left: -350px; /* Cette valeur doit être la moitié négative de la valeur du width */margin-top: -300px; /* Cette valeur doit être la moitié négative de la valeur du height */background: url('../img/ovale_fond.png') no-repeat;}
-#logo {margin:auto; text-align:center; font-family:'Tangerine'; font-size: 3.5em;}
+#logo {margin:auto; text-align:center; font-family:'Tangerine'; font-size: 4em;}
 #bloc_home p {color: white; font-weight:300; font-size: 1.2em; text-align: center; padding: 15px; width: 300px; margin: auto;}
 #home h1 {position:absolute;}
 #home img{max-width: 100%;}
