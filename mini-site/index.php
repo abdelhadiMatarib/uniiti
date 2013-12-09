@@ -100,13 +100,19 @@
                                 </div>
                                 <p> 
                                     <?php
-                                    echo (!empty($oShopInfos->enseigne->descriptif)) ? $oShopInfos->enseigne->descriptif : $oShopInfos->enseigne->descriptif;
-                                    ?>
+                                if (!empty($oShopInfos->enseigne->descriptif)){
+                                   
+                                    if(strlen($oShopInfos->enseigne->descriptif)>413){
+                                        echo substr($oShopInfos->enseigne->descriptif, 0, 413).'...';
+                                    }else{
+                                        echo $oShopInfos->enseigne->descriptif;
+                                    }
+                                }
+                                ?>
                                 </p>
                             </div>
                             <div id="powered_by">
-                                <h2><a class="ascensorLink ascensorLink4"><?php echo $oShopInfos->enseigne->note ?>/10</a></h2>
-                                <h3><a class="ascensorLink ascensorLink4"><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</a></h3>
+                                <div id="badge" ><a href="http://uniiti.fr/pages/commerce.php?id_enseigne=<?php echo $iId; ?>" target="_blank" ><h3><?php echo $oShopInfos->enseigne->note ?>/10</h3><p><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</p></a></div>
                             </div>
                 </article>
             </section>
