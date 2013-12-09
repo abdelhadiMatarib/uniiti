@@ -8,7 +8,6 @@
         include 'inc/data.php';
         include 'inc/functions.php';
         // $iId => shop's id
-
         ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -92,28 +91,28 @@
         <div id="navigation">
             <div id="reservation" class="ascensorLink ascensorLink6">Réserver</div>
             <section> <!-- Page d'accueil -->
-                <article id="home" style="background-image:url('http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>');">
-                            <div id="bloc_home">
-                                <div id="logo" style="color:white">
-                                    <!--<img src="img/logo.png">-->
-                                    <?php echo $oShopInfos->enseigne->nom_enseigne; ?>
-                                </div>
-                                <p> 
-                                    <?php
-                                if (!empty($oShopInfos->enseigne->descriptif)){
-                                   
-                                    if(strlen($oShopInfos->enseigne->descriptif)>413){
-                                        echo substr($oShopInfos->enseigne->descriptif, 0, 413).'...';
-                                    }else{
-                                        echo $oShopInfos->enseigne->descriptif;
-                                    }
+                <article id="home" style="background-image:url('http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne; ?>');">
+                    <div id="bloc_home">
+                        <div id="logo" style="color:white">
+                            <!--<img src="img/logo.png">-->
+                            <?php echo $oShopInfos->enseigne->nom_enseigne; ?>
+                        </div>
+                        <p> 
+                            <?php
+                            if (!empty($oShopInfos->enseigne->descriptif)) {
+
+                                if (strlen($oShopInfos->enseigne->descriptif) > 413) {
+                                    echo substr($oShopInfos->enseigne->descriptif, 0, 413) . '...';
+                                } else {
+                                    echo $oShopInfos->enseigne->descriptif;
                                 }
-                                ?>
-                                </p>
-                            </div>
-                            <div id="powered_by">
-                                <div id="badge" ><a href="http://uniiti.fr/pages/commerce.php?id_enseigne=<?php echo $iId; ?>" target="_blank" ><h3><?php echo $oShopInfos->enseigne->note ?>/10</h3><p><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</p></a></div>
-                            </div>
+                            }
+                            ?>
+                        </p>
+                    </div>
+                    <div id="powered_by">
+                        <div id="badge" ><a href="http://uniiti.fr/pages/commerce.php?id_enseigne=<?php echo $iId; ?>" target="_blank" ><h3><?php echo $oShopInfos->enseigne->note ?>/10</h3><p><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</p></a></div>
+                    </div>
                 </article>
             </section>
 
@@ -128,72 +127,65 @@
                                 <?php
                                 if (!empty($oShopInfos->horaires->lundi)) {
                                     $lundi = explode(',', $oShopInfos->horaires->lundi);
-                                    if($lundi[0]=='Fermé') {
+                                    if ($lundi[0] == 'Fermé') {
                                         echo '<li><span class="jour">Lundi</span>  <span>' . $lundi[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $lundi = str_replace(':', 'h', $lundi);
-                                        echo '<li><span class="jour">Lundi</span>  De <span>' . $lundi[0] . '</span> à <span>' . $lundi[1] . '</span> et de <span>'. $lundi[2] .'</span> à <span>' . $lundi[3] . '</span></li>';
+                                        echo '<li><span class="jour">Lundi</span>  De <span>' . $lundi[0] . '</span> à <span>' . $lundi[1] . '</span> et de <span>' . $lundi[2] . '</span> à <span>' . $lundi[3] . '</span></li>';
                                     }
                                 }
                                 if (!empty($oShopInfos->horaires->mardi)) {
                                     $mardi = explode(',', $oShopInfos->horaires->mardi);
-                                    if($mardi[0]=='Fermé') {
+                                    if ($mardi[0] == 'Fermé') {
                                         echo '<li><span class="jour">Mardi</span>  <span>' . $mardi[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $mardi = str_replace(':', 'h', $mardi);
-                                        echo '<li><span class="jour">Mardi</span>  De <span>' . $mardi[0] . '</span> à <span>' . $mardi[1] . '</span> et de <span>'. $mardi[2] .'</span> à <span>' . $mardi[3] . '</span></li>';
+                                        echo '<li><span class="jour">Mardi</span>  De <span>' . $mardi[0] . '</span> à <span>' . $mardi[1] . '</span> et de <span>' . $mardi[2] . '</span> à <span>' . $mardi[3] . '</span></li>';
                                     }
                                 }
                                 if (!empty($oShopInfos->horaires->mercredi)) {
                                     $mercredi = explode(',', $oShopInfos->horaires->mercredi);
-                                    if($mercredi[0]=='Fermé') {
+                                    if ($mercredi[0] == 'Fermé') {
                                         echo '<li><span class="jour">Mercredi</span>  <span>' . $mercredi[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $mercredi = str_replace(':', 'h', $mercredi);
-                                        echo '<li><span class="jour">Mercredi</span>  De <span>' . $mercredi[0] . '</span> à <span>' . $mercredi[1] . '</span> et de <span>'. $mercredi[2] .'</span> à <span>' . $mercredi[3] . '</span></li>';
+                                        echo '<li><span class="jour">Mercredi</span>  De <span>' . $mercredi[0] . '</span> à <span>' . $mercredi[1] . '</span> et de <span>' . $mercredi[2] . '</span> à <span>' . $mercredi[3] . '</span></li>';
                                     }
                                 }
                                 if (!empty($oShopInfos->horaires->jeudi)) {
                                     $jeudi = explode(',', $oShopInfos->horaires->jeudi);
-                                    if($jeudi[0]=='Fermé') {
+                                    if ($jeudi[0] == 'Fermé') {
                                         echo '<li><span class="jour">Jeudi</span>  <span>' . $jeudi[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $jeudi = str_replace(':', 'h', $jeudi);
-                                        echo '<li><span class="jour">Jeudi</span>  De <span>' . $jeudi[0] . '</span> à <span>' . $jeudi[1] . '</span> et de <span>'. $jeudi[2] .'</span> à <span>' . $jeudi[3] . '</span></li>';
+                                        echo '<li><span class="jour">Jeudi</span>  De <span>' . $jeudi[0] . '</span> à <span>' . $jeudi[1] . '</span> et de <span>' . $jeudi[2] . '</span> à <span>' . $jeudi[3] . '</span></li>';
                                     }
                                 }
                                 if (!empty($oShopInfos->horaires->vendredi)) {
                                     $vendredi = explode(',', $oShopInfos->horaires->vendredi);
-                                    if($vendredi[0]=='Fermé') {
+                                    if ($vendredi[0] == 'Fermé') {
                                         echo '<li><span class="jour">Vendredi</span>  <span>' . $vendredi[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $vendredi = str_replace(':', 'h', $vendredi);
-                                        echo '<li><span class="jour">Vendredi</span>  De <span>' . $vendredi[0] . '</span> à <span>' . $vendredi[1] . '</span> et de <span>'. $vendredi[2] .'</span> à <span>' . $vendredi[3] . '</span></li>';
+                                        echo '<li><span class="jour">Vendredi</span>  De <span>' . $vendredi[0] . '</span> à <span>' . $vendredi[1] . '</span> et de <span>' . $vendredi[2] . '</span> à <span>' . $vendredi[3] . '</span></li>';
                                     }
                                 }
                                 if (!empty($oShopInfos->horaires->samedi)) {
                                     $samedi = explode(',', $oShopInfos->horaires->samedi);
-                                    if($samedi[0]=='Fermé') {
+                                    if ($samedi[0] == 'Fermé') {
                                         echo '<li><span class="jour">Samedi</span>  <span>' . $samedi[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $samedi = str_replace(':', 'h', $samedi);
-                                        echo '<li><span class="jour">Samedi</span>  De <span>' . $samedi[0] . '</span> à <span>' . $samedi[1] . '</span> et de <span>'. $samedi[2] .'</span> à <span>' . $samedi[3] . '</span></li>';
+                                        echo '<li><span class="jour">Samedi</span>  De <span>' . $samedi[0] . '</span> à <span>' . $samedi[1] . '</span> et de <span>' . $samedi[2] . '</span> à <span>' . $samedi[3] . '</span></li>';
                                     }
                                 }
                                 if (!empty($oShopInfos->horaires->dimanche)) {
                                     $dimanche = explode(',', $oShopInfos->horaires->dimanche);
-                                    if($dimanche[0]=='Fermé') {
+                                    if ($dimanche[0] == 'Fermé') {
                                         echo '<li><span class="jour">Dimanche</span>  <span>' . $dimanche[0] . '</span>';
-                                    }
-                                    else {
+                                    } else {
                                         $dimanche = str_replace(':', 'h', $dimanche);
-                                        echo '<li><span class="jour">Dimanche</span>  De <span>' . $dimanche[0] . '</span> à <span>' . $dimanche[1] . '</span> et de <span>'. $dimanche[2] .'</span> à <span>' . $dimanche[3] . '</span></li>';
+                                        echo '<li><span class="jour">Dimanche</span>  De <span>' . $dimanche[0] . '</span> à <span>' . $dimanche[1] . '</span> et de <span>' . $dimanche[2] . '</span> à <span>' . $dimanche[3] . '</span></li>';
                                     }
                                 }
                                 ?>
@@ -211,33 +203,34 @@
                         </article>
                         <article id="paiement">
                             <h2>Paiements acceptés</h2>
-                            <?php
-                            /**
-                             * var $oShopInfos->horaires->paiement
-                             *          |_ moyenpaiement
-                             *          |_ posx
-                             */
-                            ?>
+<?php
+/**
+ * var $oShopInfos->horaires->paiement
+ *          |_ moyenpaiement
+ *          |_ posx
+ */
+?>
                             <ul>
-                                <?php
-                                foreach ($oShopInfos->paiement as $oShop) {
-                                    echo '<li>' . $oShop->moyenpaiement . '</li>';
-                                }
-                                ?>
+                            <?php
+                            foreach ($oShopInfos->paiement as $oShop) {
+                                echo '<li>' . $oShop->moyenpaiement . '</li>';
+                            }
+                            ?>
                             </ul>
                         </article>
-                        <?php
+                                <?php
                                 /**
                                  * Not sure !
                                  * 1 => yes
                                  * 2 => no 
                                  */
-                        if(($oShopInfos->enseigne->voiturier)==1){ ?>
-                                 <article id="voiturier">
-                                    <h2>Service de voiturier</h2>
-                                        <li>Nous vous proposons un service de voiturier</br>
-                                        Pour plus de renseignements, merci de nous contacter au <?php echo $oShopInfos->enseigne->telephone_enseigne; ?>.</li>
-                                </article>
+                                if (($oShopInfos->enseigne->voiturier) == 1) {
+                                    ?>
+                            <article id="voiturier">
+                                <h2>Service de voiturier</h2>
+                                <li>Nous vous proposons un service de voiturier</br>
+                                    Pour plus de renseignements, merci de nous contacter au <?php echo $oShopInfos->enseigne->telephone_enseigne; ?>.</li>
+                            </article>
                         <?php } ?>
                     </div>
                 </article>
@@ -247,36 +240,36 @@
                 <article id="services">
                     <div id="services_bloc"><h1>Services</h1></div>
                     <div id="services_textes">
-                        <?php
-                        /*
-                         * $oShopInfos->prestations contains a collection
-                         * of "prestation content" object
-                         * 
-                         * fields :
-                         * object(stdClass)[8]
-                         * public 'Test Selim 1' =>
-                         *      array (size=1)
-                         *          0 =>
-                         *              object(stdClass)[9]
-                         *              public 'contenu' => string (length=22)
-                         *              public 'prix' => string (length=5)
-                         */
-                        if (!empty($oShopInfos->prestations)) {
-                            $i = 1;
-                            foreach ($oShopInfos->prestations as $sTitle => $aContent) {
-                                echo ' <article id="service_' . $i . '">';
-                                echo '<h2>' . $sTitle . '</h2>';
-                                echo '<dl>';
-                                foreach ($aContent as $aEntry) {
+<?php
+/*
+ * $oShopInfos->prestations contains a collection
+ * of "prestation content" object
+ * 
+ * fields :
+ * object(stdClass)[8]
+ * public 'Test Selim 1' =>
+ *      array (size=1)
+ *          0 =>
+ *              object(stdClass)[9]
+ *              public 'contenu' => string (length=22)
+ *              public 'prix' => string (length=5)
+ */
+if (!empty($oShopInfos->prestations)) {
+    $i = 1;
+    foreach ($oShopInfos->prestations as $sTitle => $aContent) {
+        echo ' <article id="service_' . $i . '">';
+        echo '<h2>' . $sTitle . '</h2>';
+        echo '<dl>';
+        foreach ($aContent as $aEntry) {
 
-                                    echo '<dt>' . $aEntry->contenu . '</dt><dd>' . $aEntry->prix . ' €</dd>';
-                                }
-                                echo '</dl>';
-                                echo ' </article>';
-                                $i++;
-                            }
-                        }
-                        ?>
+            echo '<dt>' . $aEntry->contenu . '</dt><dd>' . $aEntry->prix . ' €</dd>';
+        }
+        echo '</dl>';
+        echo ' </article>';
+        $i++;
+    }
+}
+?>
                     </div>
                 </article>
             </section>
@@ -304,46 +297,46 @@
                     <div id="avis_bloc"><h1>Les avis</h1></div>
                     <div id="badge"><a href="http://uniiti.fr/pages/commerce.php?id_enseigne=<?php echo $iId; ?>" target="_blank" ><h3><?php echo $oShopInfos->enseigne->note ?>/10</h3><p><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</p></a></div>
                     <div id="avis_content">
-                        <?php
-                        /*  $oShopInfos->avis is a collection of comments /rates
-                         *  Oject(stdClass)[12]
-                         *       public 'commentaire' => string 'J\'ai regretté la cuisson trop peu al dente des pâtes, apprécié la qualité du vin et le sourire des serveurs malgré quelques gaffes !' (length=139)
-                         *       public 'note' => string '8.0' (length=3)
-                         *       public 'date_avis' => string '2013-11-13 18:14:02' (length=19)
-                         *       public 'prenom_contributeur' => string 'Christie' (length=8)
-                         *       public 'nom_contributeur' => string 'S' (length=1)
-                         */
-                        foreach ($oShopInfos->avis as $oComment) {
-                            $fRateToFive = $oComment->note / 2;
-                            $iRate = floor($fRateToFive);      // 1
-                            $fRateFraction = $fRateToFive - $iRate; // .25
-                            echo '<article>';
-                            echo '<div id="note">';
-                            if (!empty($iRate)) {
-                                for ($i = 1; $i <= $iRate; $i++) {
-                                    echo '<img src="img/star_full.png"/>';
-                                }
-                            }
-                            if (!empty($fRateFraction) and $fRateFraction >= 0.5) {
-                                echo '<img src="img/mark_round.png"/>';
-                            }
-                            echo '</div>';
-                            //avatar
-                            echo '<div id="avatar_user">';
-                            echo '<img src="http://uniiti.fr/photos/utilisateurs/avatars/' . $oComment->photo_contributeur . '"/>';
+<?php
+/*  $oShopInfos->avis is a collection of comments /rates
+ *  Oject(stdClass)[12]
+ *       public 'commentaire' => string 'J\'ai regretté la cuisson trop peu al dente des pâtes, apprécié la qualité du vin et le sourire des serveurs malgré quelques gaffes !' (length=139)
+ *       public 'note' => string '8.0' (length=3)
+ *       public 'date_avis' => string '2013-11-13 18:14:02' (length=19)
+ *       public 'prenom_contributeur' => string 'Christie' (length=8)
+ *       public 'nom_contributeur' => string 'S' (length=1)
+ */
+foreach ($oShopInfos->avis as $oComment) {
+    $fRateToFive = $oComment->note / 2;
+    $iRate = floor($fRateToFive);      // 1
+    $fRateFraction = $fRateToFive - $iRate; // .25
+    echo '<article>';
+    echo '<div id="note">';
+    if (!empty($iRate)) {
+        for ($i = 1; $i <= $iRate; $i++) {
+            echo '<img src="img/star_full.png"/>';
+        }
+    }
+    if (!empty($fRateFraction) and $fRateFraction >= 0.5) {
+        echo '<img src="img/mark_round.png"/>';
+    }
+    echo '</div>';
+    //avatar
+    echo '<div id="avatar_user">';
+    echo '<img src="http://uniiti.fr/photos/utilisateurs/avatars/' . $oComment->photo_contributeur . '"/>';
 
-                            echo '</div>';
+    echo '</div>';
 
-                            echo '<h2>' . round($fRateToFive, 1) . '</h2>';
-                            echo '<p>' . $oComment->commentaire . '</p>';
+    echo '<h2>' . round($fRateToFive, 1) . '</h2>';
+    echo '<p>' . $oComment->commentaire . '</p>';
 
-                            echo '<p>';
-                            echo 'Avis posté <span>' . EcartDate(date('Y-m-d H:i:s'), $oComment->date_avis) . '</span> par <span>' . $oComment->prenom_contributeur . ' ' . strtoupper($oComment->nom_contributeur) . '.</span>';
-                            echo '</p>';
+    echo '<p>';
+    echo 'Avis posté <span>' . EcartDate(date('Y-m-d H:i:s'), $oComment->date_avis) . '</span> par <span>' . $oComment->prenom_contributeur . ' ' . strtoupper($oComment->nom_contributeur) . '.</span>';
+    echo '</p>';
 
-                            echo '</article>';
-                        }
-                        ?>
+    echo '</article>';
+}
+?>
                     </div>
                 </article>
             </section>
@@ -373,10 +366,10 @@
                     <div id="adresse">
                         <p>
                             <span><?php echo $oShopInfos->enseigne->nom_enseigne; ?></span></br>
-                            <?php echo $oShopInfos->enseigne->adresse1_enseigne; ?><br />
-                            <?php echo $oShopInfos->enseigne->cp_enseigne; ?> 
-                            <?php echo $oShopInfos->enseigne->nom_ville; ?><br />
-                            <?php echo $oShopInfos->enseigne->telephone_enseigne; ?>
+<?php echo $oShopInfos->enseigne->adresse1_enseigne; ?><br />
+<?php echo $oShopInfos->enseigne->cp_enseigne; ?> 
+<?php echo $oShopInfos->enseigne->nom_ville; ?><br />
+<?php echo $oShopInfos->enseigne->telephone_enseigne; ?>
                         </p>
                     </div>
                     <div id="map-canvas"></div>
@@ -388,12 +381,12 @@
                     <div id="reservations_bloc">
                         <h1>Réservations</h1>
                         <h2>Réserver en ligne n’a que des avantages !<h2>
-                            <p> - Le service est accessible à toute heure</br>
-                                - Vous recevez une confirmation immédiate par email et SMS</br>
-                                - Il est donc inutile de nous appeler</br>
-                                - C’est 100% gratuit !
-                            </p>
-                    </div>
+                                <p> - Le service est accessible à toute heure</br>
+                                    - Vous recevez une confirmation immédiate par email et SMS</br>
+                                    - Il est donc inutile de nous appeler</br>
+                                    - C’est 100% gratuit !
+                                </p>
+                                </div>
                                 <!-- Step 1 -->
                                 <div id="step1">
                                     <div id="barre-step1"></div><div id="img_step1"></div>
@@ -500,8 +493,8 @@
                                         </form>
                                     </div>
                                 </div>
-                </article>
-            </section>
+                                </article>
+                                </section>
 
                                 </div>
                                 <script>
