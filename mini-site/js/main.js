@@ -62,4 +62,3 @@ $(window).resize(function() {
   	$("#navigation").width(widthviewportsize);
   	$("#navigation").height(heightviewportsize);
 });
-

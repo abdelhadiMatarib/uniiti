@@ -8,6 +8,7 @@
         include 'inc/data.php';
         include 'inc/functions.php';
         // $iId => shop's id
+
         ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -91,20 +92,22 @@
         <div id="navigation">
             <div id="reservation" class="ascensorLink ascensorLink6">Réserver</div>
             <section> <!-- Page d'accueil -->
-                <article id="home">
-                    <div id="bg" style="background-image:url('http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>');"><div id="bloc_home">
-                            <div id="logo" style="color:white">
-                                <!--<img src="img/logo.png">-->
-                                <?php echo $oShopInfos->enseigne->nom_enseigne; ?>
+                <article id="home" style="background-image:url('http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>');">
+                            <div id="bloc_home">
+                                <div id="logo" style="color:white">
+                                    <!--<img src="img/logo.png">-->
+                                    <?php echo $oShopInfos->enseigne->nom_enseigne; ?>
+                                </div>
+                                <p> 
+                                    <?php
+                                    echo (!empty($oShopInfos->enseigne->descriptif)) ? $oShopInfos->enseigne->descriptif : $oShopInfos->enseigne->descriptif;
+                                    ?>
+                                </p>
                             </div>
-                            <p> 
-                                <?php
-                                echo (!empty($oShopInfos->enseigne->descriptif)) ? $oShopInfos->enseigne->descriptif : $oShopInfos->enseigne->descriptif;
-                                ?>
-                            </p>
-                        </div>
-                        <img id="bg_img" src="http://uniiti.fr/photos/enseignes/couvertures/<?php echo $oShopInfos->enseigne->slide1_enseigne;?>"></div>
-
+                            <div id="powered_by">
+                                <h2><a class="ascensorLink ascensorLink4"><?php echo $oShopInfos->enseigne->note ?>/10</a></h2>
+                                <h3><a class="ascensorLink ascensorLink4"><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</a></h3>
+                            </div>
                 </article>
             </section>
 
@@ -293,7 +296,7 @@
             <section> <!-- Page Avis -->
                 <article id="avis">
                     <div id="avis_bloc"><h1>Les avis</h1></div>
-                    <div id="badge"><a href="http://uniiti.fr/pages/commerce.php?id_enseigne=<?php echo $iId; ?>" target="_blank" ><h3>9/10</h3><p>552 AVIS</p></a></div>
+                    <div id="badge"><a href="http://uniiti.fr/pages/commerce.php?id_enseigne=<?php echo $iId; ?>" target="_blank" ><h3><?php echo $oShopInfos->enseigne->note ?>/10</h3><p><?php echo $oShopInfos->enseigne->nombre_avis ?> AVIS</p></a></div>
                     <div id="avis_content">
                         <?php
                         /*  $oShopInfos->avis is a collection of comments /rates
@@ -308,7 +311,6 @@
                             $fRateToFive = $oComment->note / 2;
                             $iRate = floor($fRateToFive);      // 1
                             $fRateFraction = $fRateToFive - $iRate; // .25
-
                             echo '<article>';
                             echo '<div id="note">';
                             if (!empty($iRate)) {
