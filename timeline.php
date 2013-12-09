@@ -80,6 +80,7 @@
 
 <script>
 <?php if (!empty($_POST['filtre_avance'])) {
+   
 	$data = "{provenance:'all'";
 	foreach ($_POST as $key => $value) {$data .= ", " . $key . " : '" . $value . "'";}
 	$data .= "}";

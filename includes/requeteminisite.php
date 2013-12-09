@@ -5,7 +5,7 @@
 	if (isset($_GET['id_enseigne'])) {$id_enseigne = $_GET['id_enseigne'];} else {exit;}
 
 	// On récupère les informations sur l'enseigne
-	$sql = "SELECT * FROM enseignes AS t1
+	$sql = "SELECT *, t5.nom_ville FROM enseignes AS t1
 				INNER JOIN sous_categories2 AS t2
 				ON t2.id_sous_categorie2 = t1.sscategorie_enseigne
 				INNER JOIN sous_categories AS t3
@@ -50,14 +50,102 @@
 						ON t4.contributeurs_id_contributeur = t5.id_contributeur
 			WHERE id_enseigne = :id_enseigne
 			";
+
 	
 	$req3 = $bdd->prepare($sql3);
 	$req3->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
 	$req3->execute();
 	$result3 = $req3->fetch(PDO::FETCH_ASSOC);
         
+        
+        //selim 
+        //récup des infos sur les horaires
+        
+	// On récupère les informations sur les avis
+	$sqlHoraires = "SELECT *
+			FROM enseignes_horaires
+                        WHERE enseignes_id_enseigne = :id_enseigne
+			";
+        $reqHoraires = $bdd->prepare($sqlHoraires);
+	$reqHoraires->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$reqHoraires->execute();
+	$resultHoraires = $reqHoraires->fetch(PDO::FETCH_ASSOC);
+        
+        $data['horaires'] = $resultHoraires;
+        
         // On récupère les informations sur les avis
 	$sqlAvis = "SELECT commentaire, note, date_avis, t5.prenom_contributeur, LEFT(t5.nom_contributeur, 1) as nom_contributeur
+			FROM avis AS t1
+
+			INNER JOIN enseignes_recoient_avis AS t2
+			ON t1.id_avis = t2.avis_id_avis
+			INNER JOIN enseignes AS t3
+				ON t2.enseignes_id_enseigne = t3.id_enseigne
+				INNER JOIN contributeurs_donnent_avis AS t4
+					ON t1.id_avis = t4.avis_id_avis
+					INNER JOIN contributeurs AS t5
+						ON t4.contributeurs_id_contributeur = t5.id_contributeur
+			WHERE id_enseigne = :id_enseigne
+                                AND id_statut = 2
+                                AND commentaire != '' 
+                        ORDER BY date_avis DESC
+                        LIMIT 10
+			";
+        $reqAvis = $bdd->prepare($sqlAvis);
+	$reqAvis->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$reqAvis->execute();
+	$resultAvis = $reqAvis->fetchAll(PDO::FETCH_ASSOC);
+	
+        $sqlPaiement = "SELECT t2.moyenpaiement, t2.posx
+			FROM enseignes_moyenspaiements AS t1
+
+			INNER JOIN moyenspaiements AS t2
+			ON t1.id_moyenpaiement = t2.id_moyenpaiement
+			
+			WHERE t1.enseignes_id_enseigne = :id_enseigne 
+			";
+        $reqPaiement = $bdd->prepare($sqlPaiement);
+	$reqPaiement->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$reqPaiement->execute();
+	$resultPaiement = $reqPaiement->fetchAll(PDO::FETCH_ASSOC);
+	 $data['paiement'] = $resultPaiement;
+        
+        
+        $sqlPrestation = "SELECT t1.prestation, t2.contenu, t2.prix
+			FROM enseignes_prestations AS t1
+
+			INNER JOIN enseignes_prestations_contenus AS t2
+			ON t1.enseignes_id_enseigne = t2.enseignes_id_enseigne
+                        
+			WHERE t1.enseignes_id_enseigne = :id_enseigne AND  t1.id_type_info = t2.id_type_info
+                        
+			";
+        $reqPrestation = $bdd->prepare($sqlPrestation);
+	$reqPrestation ->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);
+	$reqPrestation->execute();
+	$resultPrestation = $reqPrestation->fetchAll(PDO::FETCH_ASSOC);
+        //converting to a clean array
+        $cleanArray = null;
+        $name = null;
+        $i = 0;
+        foreach ($resultPrestation as $key=>$prestation){
+         
+        
+            if($name == null){
+                $name = $prestation['prestation'];
+                
+            }elseif($name != $prestation['prestation']){
+                $name = $prestation['prestation'];
+            }
+                $cleanArray[addslashes($name)][$i]['contenu'] = $prestation['contenu'];
+                $cleanArray[addslashes($name)][$i]['prix'] = $prestation['prix'];
+                $i++;
+        }
+           
+        $data['prestations'] = $cleanArray;
+        
+        // On récupère les informations sur les avis
+	$sqlAvis = "SELECT commentaire, note, date_avis, t5.prenom_contributeur, LEFT(t5.nom_contributeur, 1) as nom_contributeur, t5.photo_contributeur
 			FROM avis AS t1
 
 			INNER JOIN enseignes_recoient_avis AS t2

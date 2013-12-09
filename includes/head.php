@@ -7,7 +7,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="robots" content="noindex, nofollow">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
-        
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/normalize.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/main.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/jquery-ui-1.10.3.custom.css">
