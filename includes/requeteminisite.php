@@ -111,14 +111,10 @@
 	 $data['paiement'] = $resultPaiement;
         
         
-        $sqlPrestation = "SELECT t1.prestation, t2.contenu, t2.prix
-			FROM enseignes_prestations AS t1
-
-			INNER JOIN enseignes_prestations_contenus AS t2
-			ON t1.enseignes_id_enseigne = t2.enseignes_id_enseigne
-                        
-			WHERE t1.enseignes_id_enseigne = :id_enseigne AND  t1.id_type_info = t2.id_type_info
-                        
+        $sqlPrestation = "SELECT t1.id_enseignes_prestations, t1.id_type_info, t1.prestation, t2.id_contenu, t2.contenu, t2.prix FROM enseignes_prestations AS t1
+						INNER JOIN enseignes_prestations_contenus AS t2
+						ON t1.id_enseignes_prestations = t2.id_prestation 
+						WHERE t1.enseignes_id_enseigne=:id_enseigne
 			";
         $reqPrestation = $bdd->prepare($sqlPrestation);
 	$reqPrestation ->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);

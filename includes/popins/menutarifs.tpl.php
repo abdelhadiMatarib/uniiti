@@ -4,10 +4,10 @@
 
 		if (!empty($_POST['id_enseigne'])) {
 			$id_enseigne_ou_objet = $_POST['id_enseigne'];
-			$sql = "SELECT t1.prestation, t2.contenu, t2.prix FROM enseignes_prestations AS t1
+			    $sql = "SELECT t1.id_enseignes_prestations, t1.id_type_info, t1.prestation, t2.id_contenu, t2.contenu, t2.prix FROM enseignes_prestations AS t1
 						INNER JOIN enseignes_prestations_contenus AS t2
-						ON t1.enseignes_id_enseigne = t2.enseignes_id_enseigne AND t1.id_type_info = t2.id_type_info
-						WHERE t1.enseignes_id_enseigne=:id_enseigne_ou_objet";		
+						ON t1.id_enseignes_prestations = t2.id_prestation 
+						WHERE t1.enseignes_id_enseigne=:id_enseigne_ou_objet";	
 		} else if (!empty($_POST['id_objet'])) {
 			$id_enseigne_ou_objet = $_POST['id_objet'];
 			$sql = "SELECT t1.prestation, t2.contenu, t2.prix FROM objets_prestations AS t1

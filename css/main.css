@@ -1736,7 +1736,14 @@ badge-body{margin: 0; float: left; overflow: hidden;}
 .my-badge:hover{ cursor: pointer}
 .left100{float: left; width: 100%;}
 .left32{float: left; width: 32%;}
+.left49{float: left; width: 49%;}
 .margin-left-1{margin-left: 1%;}
 .radius{-webkit-border-radius: 3px; border-radius: 3px; background-color: white;}
 
 .campaign-stats-box{ height: 100px; border: 1px solid black;}
+.prestation-ligne{
+    border-bottom: 2px solid red;
+}
+.add-prestation-content{
+    cursor: pointer;
+}
