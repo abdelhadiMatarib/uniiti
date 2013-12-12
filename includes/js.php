@@ -235,7 +235,6 @@ if (isset($id_contributeur)) {
                             CptScroll++;
                             isloading = true;
                             $(".uniiti_footer_loader").css({display : "block"});
-                            console.log('la')
                             $.ajax({
                                 type:"POST",
                                 url : $url,

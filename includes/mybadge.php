@@ -69,7 +69,6 @@
                 window.open(url, '_blank');
                 window.focus();
             }
-            
         </script>
     </body>
 </html>

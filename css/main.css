@@ -1747,3 +1747,6 @@ badge-body{margin: 0; float: left; overflow: hidden;}
 .add-prestation-content{
     cursor: pointer;
 }
+.selected{
+    background-color: red;
+}
