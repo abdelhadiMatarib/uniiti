@@ -77,7 +77,7 @@ if (!empty($_POST['type'])) {
             (:id_enseigne, :type, :date, :status, :base_uniiti, :base_upload, :base_partenaires, :message)";
 
         $req = $bdd->prepare($sql);
-        $req->execute(array('id_enseigne' => $iIdEnseigne, 'type' => $sType, 'date' => date('Y-m-d H:i:s'), 'status' => '0',
+        $req->execute(array('id_enseigne' => $iIdEnseigne, 'type' => $sType, 'date' => date('Y-m-d H:i:s'), 'status' => '1',
             'base_uniiti' => $bFromUniiti, 'base_upload' => $bFromUpload, 'base_partenaires' => $bFromPartner, 'message' => $sMessage));
         $idCampagne = $bdd->lastInsertId();
         //insertion des customers
