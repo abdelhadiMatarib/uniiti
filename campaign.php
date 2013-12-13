@@ -61,6 +61,9 @@
                     <h2>Your message please !</h2>
                     <textarea id="my-compain-message" style="border: 1px solid red"></textarea>
                     
+                    <h2>Sending Date!</h2>
+                    <input type="date" style="border: 1px solid red" name="date_envoi">
+                    
                     <h2>MAKE A CHOICE DUDEEEEEE !</h2>
                     <div class="left49" id="email-compain-link">EMAIL COMPAIN</div>
                     <div class="left49" id="sms-compain-link">SMS COMPAIN</div>
@@ -351,7 +354,8 @@
                     //var formData = new FormData($('#upload-form'));
                     var formData = new FormData();    
                     formData.append( 'file', oCompain.oFile );
-                    formData.append( 'id_enseigne', $('input [name=id_enseigne]').val() );
+                    formData.append( 'id_enseigne', $('input [name=id_enseigne]').val());
+                    formData.append( 'date_envoi', $('input [name=date_envoi]').val());
                     $.ajax({
                         url: '/includes/requeteUploadCustomers.php',  //Server script to process data
                         type: 'POST',
@@ -566,6 +570,7 @@
                     //get list of email to edit before sending
                     var formData = new FormData();   
                     formData.append('id_enseigne','<?php echo $iIdEnseigne; ?>');
+                    formData.append( 'date_envoi', $('input[name=date_envoi]').val());
                     if($('#my-compain-message').val()!= ""){
                         formData.append('text', $('#my-compain-message').val());
                     }else{
@@ -638,6 +643,7 @@
                     //get list of email to edit before sending
                     var formData = new FormData(document.forms.namedItem("send-compain-from-uniiti-choose-customers"));   
                     formData.append('id_enseigne','<?php echo $iIdEnseigne; ?>');
+                    formData.append('date_envoi', $('input[name=date_envoi]').val());
                     if($('#my-compain-message').val()!= ""){
                         formData.append('text', $('#my-compain-message').val());
                     }else{
