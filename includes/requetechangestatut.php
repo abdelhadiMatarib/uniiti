@@ -9,6 +9,10 @@ if (!empty($_POST['type'])) {$type = $_POST['type'];} else {exit;}
 if (isset($_POST['id'])) {$id = $_POST['id'];} else {exit;}
 if (isset($_POST['id_statut'])) {$id_statut = $_POST['id_statut'];} else {exit;}
 
+/**
+ * SELIM
+ */
+
 
 try
 {
@@ -26,6 +30,10 @@ try
 		break;
 		case 'avis':
 			$sql = "UPDATE avis SET id_statut = " . $id_statut . " WHERE id_avis = " . $id;
+			$req = $bdd->prepare($sql);
+		break;
+		case 'campagne':
+			$sql = "UPDATE enseigne_clients_campagne SET status = " . $id_statut . " WHERE id_enseigne_clients_campagne = " . $id;
 			$req = $bdd->prepare($sql);
 		break;
 		default:
