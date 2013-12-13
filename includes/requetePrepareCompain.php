@@ -194,16 +194,16 @@ if (!empty($_POST['type'])) {
         $sql = "INSERT INTO enseigne_clients_campagne_destination (enseigne_clients_campagne_id, nom, prenom, email, telephone) VALUES ";
         foreach ($aCustomers as $aCustomer) {
             $sql .= "(";
-            $sql .= "'" . mysql_real_escape_string($idCampagne) . "', ";
-            $sql .= "'" . mysql_real_escape_string($aCustomer['prenom_contributeur']) . "', ";
-            $sql .= "'" . mysql_real_escape_string($aCustomer['nom_contributeur']) . "', ";
+            $sql .= "" . $bdd->quote($idCampagne) . ", ";
+            $sql .= "" . $bdd->quote($aCustomer['prenom_contributeur']) . ", ";
+            $sql .= "" . $bdd->quote($aCustomer['nom_contributeur']) . ", ";
             if (!empty($aCustomer['email_contributeur'])) {
-                $sql .= "'" . mysql_real_escape_string($aCustomer['email_contributeur']) . "', ";
+                $sql .= "" . $bdd->quote($aCustomer['email_contributeur']) . ", ";
             } else {
                 $sql .= "NULL, ";
             }
             if (!empty($aCustomer['telephone_contributeur'])) {
-                $sql .= "'" . mysql_real_escape_string($aCustomer['telephone_contributeur']) . "' ";
+                $sql .= "" . $bdd->quote($aCustomer['telephone_contributeur']) . " ";
             } else {
                 $sql .= "NULL ";
             }

@@ -89,16 +89,16 @@ if (!empty($_POST['type'])) {
         foreach ($aCustomers as $aCustomer) {
             if (!empty($aCustomer['email']) or !empty($aCustomer['telephone'])) {
                 $sql .= "(";
-                $sql .= "'" . mysql_real_escape_string($idCampagne) . "', ";
-                $sql .= "'" . mysql_real_escape_string($aCustomer['prenom']) . "', ";
-                $sql .= "'" . mysql_real_escape_string($aCustomer['nom']) . "', ";
+                $sql .= "" . $bdd->quote($idCampagne) . ", ";
+                $sql .= "" . $bdd->quote($aCustomer['prenom']) . ", ";
+                $sql .= "" . $bdd->quote($aCustomer['nom']) . ", ";
                 if (!empty($aCustomer['email'])) {
-                    $sql .= "'" . mysql_real_escape_string($aCustomer['email']) . "', ";
+                    $sql .= "" . $bdd->quote($aCustomer['email']) . ", ";
                 } else {
                     $sql .= "NULL, ";
                 }
                 if (!empty($aCustomer['telephone'])) {
-                    $sql .= "'" . mysql_real_escape_string($aCustomer['telephone']) . "' ";
+                    $sql .= "" . $bdd->quote($aCustomer['telephone']) . " ";
                 } else {
                     $sql .= "NULL";
                 }
