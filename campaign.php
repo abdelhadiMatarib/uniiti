@@ -171,7 +171,7 @@
 
             </div>
         </div>
-        <?php include("/includes/js.php"); ?>
+        <?php include("includes/js.php"); ?>
 
         <!-- ---------------------------------------------------  Selim js compain ------------------------------- -->
         <script type="text/javascript">
