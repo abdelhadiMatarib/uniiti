@@ -77,7 +77,7 @@ foreach ($result as $row) {
                   [1] (content id) => Array
                   (
                   [name] => contenu1
-                  [price] => 0.00
+                  [price] => 
                   )
 
                   )
@@ -92,7 +92,7 @@ foreach ($result as $row) {
                     //keep .prestation-ligne => used with javascript to get the number of current prestation
                     ?>
                     <div class="menutarifs_body_desserts prestation-ligne">
-                        <img src="/img/plus.png" class="add-prestation-content" alt="<?php echo $i; ?>" title="Ajouter un contenu" />
+                        <img src="/img/plus.png" class="add-prestation-content" alt="<?php echo $i; ?>" title="Ajouter un contenu" /> <img src="/img/trash.png" class="remove-prestation-content" alt="<?php echo $i; ?>" title="Supprimer cette prestation" />
                         <div class="menutarifs_body_desserts_head">
                             <span><input name="prestation[<?php echo $i; ?>][nom]" type="text" class="input_menustarifs" value="<?php echo $aPrest['name'] ?>"/></span>
                         </div>
@@ -147,6 +147,7 @@ foreach ($result as $row) {
             oTarifs.nbContent =1;
             $(document).on('click', '#add-prestation', oTarifs.AddPrestation);
             $(document).on('click', '.add-prestation-content', oTarifs.AddPrestationContent);
+            $(document).on('click', '.remove-prestation-content', oTarifs.RemovePrestationContent);
             $(document).on('click', '#save-menu', oTarifs.SavePrestation);
         },
         /**
@@ -156,18 +157,19 @@ foreach ($result as $row) {
             var nbPrestation = $('.prestation-ligne').size();
             //html
             var html = '<div class="menutarifs_body_desserts prestation-ligne">'+
-                '<img src="/img/plus.png" class="add-prestation-content" alt="'+(nbPrestation+1)+'" title="Ajouter un contenu" />'+
+                '<img src="/img/plus.png" class="add-prestation-content" alt="'+(nbPrestation+1)+'" title="Ajouter un contenu" /> - <img src="/img/trash.png" class="remove-prestation-content" alt="'+(nbPrestation+1)+'" title="Supprimer cette prestation" />'+
                 '<div class="menutarifs_body_desserts_head">'+
                 '<span><input name="prestation['+(nbPrestation+1)+'][nom]" type="text" class="input_menustarifs" placeholder="titre de la prestation"></span>'+
                 '</div>'+
                 '<div class="content-list left100">'+
                 '<div class="left100">'+
                 '<div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input name="prestation['+(nbPrestation+1)+'][ligne]['+(oTarifs.nbContent)+'][content]" type="text" class="input_menustarifs" placeholder="Contenu"></span></div>'+
-                '<div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input name="prestation['+(nbPrestation+1)+'][ligne]['+(oTarifs.nbContent)+'][price]" type="text" maxlength="7" class="input_infos_horaires input_prix_mini" value="0.00">€</span></div>'+
+                '<div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input name="prestation['+(nbPrestation+1)+'][ligne]['+(oTarifs.nbContent)+'][price]" type="text" maxlength="7" class="input_infos_horaires input_prix_mini" value="">€</span></div>'+
                 '</div>'+
                 '</div>'+
                             
                 '</div>';
+            console.log("trololo")
             $('#menu-body-content').prepend(html);
         },
         /**
@@ -182,7 +184,7 @@ foreach ($result as $row) {
             
             var html = '<div class="left100">'+
                 '<div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input name="prestation['+(nb)+'][ligne]['+(nbInput)+'][content]" type="text" class="input_menustarifs" placeholder="Contenu"></span></div>'+
-                '<div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input name="prestation['+(nb)+'][ligne]['+(nbInput)+'][price]" type="text" maxlength="7" class="input_infos_horaires input_prix_mini" value="0.00">€</span></div>'+
+                '<div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input name="prestation['+(nb)+'][ligne]['+(nbInput)+'][price]" type="text" maxlength="7" class="input_infos_horaires input_prix_mini" value="">€</span></div>'+
                 '</div>';
             $(this).parent('.prestation-ligne').find('.content-list').prepend(html);
             
@@ -200,6 +202,12 @@ foreach ($result as $row) {
                 success: function(result){window.location.reload();},
                 error: function(xhr) {console.log(xhr);alert('Erreur '+xhr.responseText);}
             });
+        },
+        /*
+         * Remove prestation
+         */
+        RemovePrestationContent: function(){
+            $(this).parent().remove();
         }
         
     }
