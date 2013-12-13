@@ -177,14 +177,18 @@ if (!empty($_POST['type'])) {
     if (!empty($aCustomers) and $bFromPartner == true) {
          $sMessage = "";
         $sMessage = $_POST['text'];
-        
-        $sql = "INSERT INTO enseigne_clients_campagne (id_enseigne, type, date, status, base_uniiti, base_upload, base_partenaires, message)
+        $sDateEnvoi = 'null';
+        if(!empty($_POST['date_envoi'])){
+            $sDateEnvoi = $_POST['date_envoi'];
+            
+        }
+        $sql = "INSERT INTO enseigne_clients_campagne (id_enseigne, type, date, status, base_uniiti, base_upload, base_partenaires, message, date_envoi)
             VALUES 
-            (:id_enseigne, :type, :date, :status, :base_uniiti, :base_upload, :base_partenaires, :message)";
+            (:id_enseigne, :type, :date, :status, :base_uniiti, :base_upload, :base_partenaires, :message, :date_envoi)";
 
         $req = $bdd->prepare($sql);
         $req->execute(array('id_enseigne' => $iIdEnseigne, 'type' => $sType, 'date' => date('Y-m-d H:i:s'), 'status' => '1',
-            'base_uniiti' => $bFromUniiti, 'base_upload' => $bFromUpload, 'base_partenaires' => $bFromPartner, 'message'=>$sMessage));
+            'base_uniiti' => $bFromUniiti, 'base_upload' => $bFromUpload, 'base_partenaires' => $bFromPartner, 'message'=>$sMessage, 'date_envoi' => $sDateEnvoi));
         $idCampagne = $bdd->lastInsertId();
         //insertion des customers
         $sql = "INSERT INTO enseigne_clients_campagne_destination (enseigne_clients_campagne_id, nom, prenom, email, telephone) VALUES ";

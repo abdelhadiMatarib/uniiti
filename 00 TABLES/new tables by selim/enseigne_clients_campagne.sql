@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 12 Décembre 2013 à 14:12
+-- Généré le: Ven 13 Décembre 2013 à 11:38
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `enseigne_clients_campagne` (
   `id_enseigne_clients_campagne` int(11) NOT NULL AUTO_INCREMENT,
+  `date_envoi` date DEFAULT NULL,
   `id_enseigne` int(10) unsigned NOT NULL,
   `type` varchar(20) NOT NULL,
   `message` text NOT NULL,
@@ -38,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `enseigne_clients_campagne` (
   `base_partenaires` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_enseigne_clients_campagne`),
   KEY `fk_enseigne_has_many_campagne` (`id_enseigne`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Contraintes pour les tables exportées
