@@ -168,7 +168,7 @@ foreach ($result as $row) {
                 '</div>'+
                             
                 '</div>';
-            $('#menu-body-content').append(html);
+            $('#menu-body-content').prepend(html);
         },
         /**
          * Add a new content row to current prestation 
@@ -184,7 +184,7 @@ foreach ($result as $row) {
                 '<div class="menutarifs_body_entrees_entree_generique dashboard_menutarifs_nopadding"><span><input name="prestation['+(nb)+'][ligne]['+(nbInput)+'][content]" type="text" class="input_menustarifs" placeholder="Contenu"></span></div>'+
                 '<div class="menutarifs_body_entrees_prix_generique dashboard_menutarifs_largerprice"><span><input name="prestation['+(nb)+'][ligne]['+(nbInput)+'][price]" type="text" maxlength="7" class="input_infos_horaires input_prix_mini" value="0.00">€</span></div>'+
                 '</div>';
-            $(this).parent().find('.content-list').append(html);
+            $(this).parent('.prestation-ligne').find('.content-list').prepend(html);
             
         },
         /**
