@@ -3,6 +3,7 @@
 html,body {background: #f1f1f1;;font-family:'Open Sans'; font-smooth: always;-webkit-font-smoothing: antialiased;height: 100%;min-height:100%;margin:0;}
 #reservation {background: url('../img/reservation_bouton.png') 0px 0 no-repeat;cursor: pointer;z-index: 1000;position: fixed;right: -160px;bottom: 160px;width: 82px;height: 35px;color: white;padding-left: 51px;padding-top: 13px;}
 #reservation:hover{background-color: rgba(0,0,0,0.2);}
+#readmore {font-weight: 300;font-size: 0.8em;font-style: italic;cursor: pointer;}
 /*/////////////////// LIENS DE NAVIGATION ///////////////////*/
 ul {list-style: none; }
 li {list-style: none; line-height: 23px;}
@@ -61,6 +62,8 @@ li {list-style: none; line-height: 23px;}
 #informations_textes article {padding-left:20px; width : 430px; float:left; margin:0 100px 30px 0;}
 #informations_textes article h2 {padding-left:45px; font-weight:300; font-size: 1.7em; margin-left:-21px;}
 #informations_textes article p {padding-left:24px; border-left: 1px solid white; color: white;}
+article #description {padding-left:20px; width : 80%; float:left; margin:0 100px 30px 0;text-align: center;}
+#description p  {padding:24px; border: 1px solid rgba(255, 255, 255, 0.29); border-left: 1px solid rgba(255, 255, 255, 0.29) !important; color: white;}
 #horaires h2 {background: url('../img/sprite.png') -104px -5px no-repeat;}
 ul li span {font-weight: 600;}
 span.jour {width: 100px;display: inline-block;font-weight: 300;}
@@ -93,14 +96,14 @@ article#service_3 {margin-bottom: 100px;}
 #galerie_bloc {height: 312px; width: 100%; background: url('../img/galerie.png') 50% 0 no-repeat; margin:0 auto; z-index: 100; position: absolute;}
 
 /*/////////////////// AVIS ///////////////////*/
-#ascensorFloor4 {background-color: #497687;z-index: 3;}
+#ascensorFloor4 {background-color: #497687;overflow-y: scroll !important;z-index: 3;height: 100% !important; position: relative !important;}
 #badge {width: 294px;height: 70px;background: url('../img/badgeuniiti.png') 0 15px no-repeat;margin: 0px auto;padding-top: 15px;}
 #badge a {text-decoration: none;color: white;position: absolute;width: 295px;height: 70px;}
 #badge h3 {margin:4px 48%;font-size: 2.0em;font-weight: 300;}
 #badge p {margin: -8px 165px;font-weight: 300;font-size: 0.8em;padding-bottom: 11px;width: 70px;}
 #avis_bloc h1 {color: white; font-weight:300; text-transform: uppercase; font-size: 2em; margin-top: 750px; text-align: center;}
 #avis_bloc {height: 100%; width: 30%; background: url('../img/avis.png') 50% 0 no-repeat; left:80px; z-index: 999; position: absolute;}
-#avis_content {width: 50%; margin-left:600px; padding-top: 10px; /*background-color: red; */color: white;padding-bottom: 40px;}
+#avis_content {width: 50%; margin-left:600px; padding-top: 10px; /*background-color: red; */color: white;padding-bottom: 40px;height: auto;}
 #avis_content article {padding-left:20px; margin:0 100px 30px 0;}
 #avis_content article h2 {color: #497687;padding-left: 272px;margin-top: 7px;font-weight: 600;font-size: 1em;margin-left: -16px;line-height: 31px;position: relative;}
 #avis_content article p {padding-left:24px; border-left: 1px solid white; color: white; padding-top: 20px;}
@@ -190,7 +193,7 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
 -ms-transition: all 0.5s ease;-o-transition: all 0.5s ease;transition: all 0.5s ease;}
 
 #reservations { height: 100%; background-color: #444444;}
-#avis {height: 100%; background-color: #497687;}
+#avis {height: auto; background-color: #497687;position: absolute;}
 #galerie {height: 100%; background-color: transparent; background-position: absolute;}
 
 /*/////////////////// MEDIAS QUERY ///////////////////*/

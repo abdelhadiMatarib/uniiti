@@ -14,6 +14,7 @@
         <title>Uniiti - Mini site</title> <!-- Insérer ici le titre du site -->
         <meta name="description" content=""> <!-- Insérer ici le nom du commerce -->
         <meta name="viewport" content="user-scalable=0,width=device-width,initial-scale=1,maximum-scale=1">
+
         <!-- Css & Favicon -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css">
@@ -102,7 +103,7 @@
                             if (!empty($oShopInfos->enseigne->descriptif)) {
 
                                 if (strlen($oShopInfos->enseigne->descriptif) > 413) {
-                                    echo substr($oShopInfos->enseigne->descriptif, 0, 413) . '...';
+                                    echo substr($oShopInfos->enseigne->descriptif, 0, 413) . '...</br> <a class="ascensorLink ascensorLink1" id="readmore">Lire la suite</a>';
                                 } else {
                                     echo $oShopInfos->enseigne->descriptif;
                                 }
@@ -120,6 +121,13 @@
                 <article id="informations">
                     <div id="informations_bloc"><h1>Informations</h1></div>
                     <div id="informations_textes">
+                    <?php if (strlen($oShopInfos->enseigne->descriptif) > 413) { ?>
+                        <article id="description">
+                            <p>
+                                <?php echo $oShopInfos->enseigne->descriptif; ?>
+                            </p> 
+                        </article>
+                    <?php } ?>
                         <article id="horaires">
                             <h2>Horaires</h2>
                             <ul>
