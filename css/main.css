@@ -1284,10 +1284,11 @@ body{overflow-x: hidden;}
 .splash_big_wrapper{position:relative;z-index:99; height: 100%;}
 .splash_head_wrapper{height:70px; width:100%;}
 .splash_head{width: 350px;height: 110px;margin: 0 auto;text-align: center;}
-.splash_head_items1{height: 80px;background: url('../img/pictos_splash/nbr_avis.png') no-repeat center;margin: 5px auto;float: left;text-align: center;width: 155px;padding: 10px;}
-.splash_head_items2{height: 80px;background: url('../img/pictos_splash/nbr_avis_semaine.png') no-repeat center;margin: 5px auto;float: left;text-align: center;width: 155px;padding: 10px;}
+.splash_head_items1{border-right: 1px solid rgba(255, 255, 255, 0.65);height: 40px;margin: 5px auto;float: left;text-align: center;width: 154px;padding: 10px;}
+.splash_head_items2{height: 40px;margin: 5px auto;float: left;text-align: center;width: 155px;padding: 10px;}
 .splash_head_items:last-child{border-right: none;}
-.splash_head_items1 span, .splash_head_items2 span{text-transform:uppercase;display:block;color:white;margin: 21px 7px 13px 9px;text-shadow: 0px 1px 1px #252525;filter: dropshadow(color=#252525, offx=0, offy=1);}
+.splash_head_items1 span, .splash_head_items2 span{text-transform:uppercase;display:block;color:white;margin: 0 auto;text-shadow: 0px 1px 1px #252525;filter: dropshadow(color=#252525, offx=0, offy=1);}
+.splash_head_items1 p, .splash_head_items2 p{color:white;margin: 0 auto;}
 .splash_head_items_nbr{font-size:1.8em;font-weight:700;}
 .splash_body_wrapper{height:270px;}
 .splash_body{text-align:center;position:relative;height:270px;width:350px;margin:auto;margin-top:12%;left:0;right:0;}

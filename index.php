@@ -37,8 +37,8 @@ $nbnouveauxinscrits = $result2['count_nouveaux'];
     <div class="splash_big_wrapper">
     <div class="splash_head_wrapper">
         <div class="splash_head">
-            <div class="splash_head_items1"><span class="splash_head_items_nbr"><?php echo $nbavis; ?></span></div>
-            <div class="splash_head_items2"><span class="splash_head_items_nbr"><?php echo $nbnouveauxinscrits; ?></span></div>
+            <div class="splash_head_items1"><span class="splash_head_items_nbr"><?php echo $nbavis; ?> </span><p>Avis sur le site</p></div>
+            <div class="splash_head_items2"><span class="splash_head_items_nbr"><?php echo $nbnouveauxinscrits; ?> </span><p>Avis cette semaine<p/></div>
         </div>
     </div>
     <div class="splash_body_wrapper">
