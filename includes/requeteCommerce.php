@@ -66,7 +66,7 @@
 									INNER JOIN villes  AS t13
 									ON t9.villes_id_ville = t13.id_ville WHERE id_enseigne = " . $id_enseigne;
 
-		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
+		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-1, date("Y"));
 		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
 		if (!empty($_POST['lastid'])) {$sql2 .= " AND date_avis < " . urldecode($_POST['lastid']);}
 		if (!empty($_POST['provenance'])) {

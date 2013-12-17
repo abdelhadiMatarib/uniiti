@@ -1,5 +1,6 @@
 <?php
-		$ProvAvis = array('all', 'avis', 'aime', 'aime_pas', 'wish');		$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-7, date("Y"));
+		$ProvAvis = array('all', 'avis', 'aime', 'aime_pas', 'wish');		
+                $ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-1, date("Y"));
 		$datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
 		$ProvAvis = array('all', 'avis', 'avis_en_attente', 'aime', 'aime_pas', 'wish');
 		

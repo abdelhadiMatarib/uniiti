@@ -114,7 +114,7 @@
         $sqlPrestation = "SELECT t1.id_enseignes_prestations, t1.id_type_info, t1.prestation, t2.id_contenu, t2.contenu, t2.prix FROM enseignes_prestations AS t1
 						INNER JOIN enseignes_prestations_contenus AS t2
 						ON t1.id_enseignes_prestations = t2.id_prestation 
-						WHERE t1.enseignes_id_enseigne=:id_enseigne
+						WHERE t1.enseignes_id_enseigne=:id_enseigne ORDER BY t1.id_enseignes_prestations DESC
 			";
         $reqPrestation = $bdd->prepare($sqlPrestation);
 	$reqPrestation ->bindParam(':id_enseigne', $id_enseigne, PDO::PARAM_INT);

@@ -81,7 +81,7 @@ $sql2 = "SELECT provenance, t10.id_categorie, t10.id_sous_categorie, t10.id_sous
                                                                                     		INNER JOIN budget AS t16
 												ON t9.id_budget = t16.id_budget ";
 
-$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m"), date("d") - 7, date("Y"));
+$ilyaunesemaine = mktime(date("H"), date("i"), date("s"), date("m"), date("d") - 1, date("Y"));
 $datemoinssept = date('Y-m-d H:i:s', $ilyaunesemaine);
 $sql5 = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 			FROM avis AS t1
