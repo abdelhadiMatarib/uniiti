@@ -98,7 +98,7 @@
 			$type = $row['type'];
 			$provenance = $row['provenance'];
 			$datetime = $row['date_avis'];
-			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
+			$delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime, true);
 			$id_avis = $row['id_avis'];			
 			// Avis
 			switch ($provenance) {

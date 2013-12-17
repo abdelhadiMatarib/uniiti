@@ -93,7 +93,7 @@ $sql5 = "SELECT COUNT(id_avis) AS count_avis, AVG(note) AS moyenne
 					ON t1.id_avis = t4.avis_id_avis
 					INNER JOIN contributeurs AS t5
 						ON t4.contributeurs_id_contributeur = t5.id_contributeur
-			WHERE(id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "'))";
+			WHERE(id_statut = 2 OR (id_statut = 1 AND date_avis < '" . $datemoinssept . "')) ORDER BY t1.date_avis DESC";
 $req5 = $bdd->prepare($sql5);
 $req5->execute();
 $result5 = $req5->fetch(PDO::FETCH_ASSOC);
@@ -240,7 +240,7 @@ while ($row = $req2->fetch(PDO::FETCH_ASSOC)) {
         $type = $row['type'];
         $provenance = $row['provenance'];
         $datetime = $row['date_avis'];
-        $delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime);
+        $delai_avis = EcartDate($Maintenant[0]['Maintenant'], $datetime, true);
         $id_avis = $row['id_avis'];
         // Avis
         switch ($provenance) {
