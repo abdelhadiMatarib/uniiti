@@ -21,8 +21,12 @@ $req->execute();
 $result = $req->fetch(PDO::FETCH_ASSOC);
 $nbavis     = $result['count_avis'];
 
-$sql2 = "SELECT COUNT(id_contributeur) AS count_nouveaux
-			FROM contributeurs WHERE date_inscription > \"" . date('Y-m-d H:i:s', strtotime('today')) . "\"";
+$d = new DateTime();
+    $d->modify('first day of this month');
+    $d->format('Y-m-d');
+    
+$sql2 = "SELECT COUNT(id_avis) AS count_nouveaux
+			FROM avis WHERE DATE(date_avis+1) > \"" . date('Y-m-d H:i:s', strtotime('first day of this month')) . "\"";
 $req2 = $bdd->prepare($sql2);
 $req2->execute();
 $result2 = $req2->fetch(PDO::FETCH_ASSOC);
@@ -38,7 +42,9 @@ $nbnouveauxinscrits = $result2['count_nouveaux'];
     <div class="splash_head_wrapper">
         <div class="splash_head">
             <div class="splash_head_items1"><span class="splash_head_items_nbr"><?php echo $nbavis; ?> </span><p>Avis sur le site</p></div>
-            <div class="splash_head_items2"><span class="splash_head_items_nbr"><?php echo $nbnouveauxinscrits; ?> </span><p>Avis cette semaine<p/></div>
+            <div class="splash_head_items2"><span class="splash_head_items_nbr"><?php echo $nbnouveauxinscrits; ?> </span>
+                <?php $mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"); ?>
+                <p>au mois <?php $month = $mois[date("n")]; if($month[0]=="A" or $month[0]=="O"){ echo "d'";}else{echo "de";} echo ' '.$month; ?><p/></div>
         </div>
     </div>
     <div class="splash_body_wrapper">
