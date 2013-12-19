@@ -194,7 +194,7 @@ else {
 
             <div class="reservation_option1">
                 <div class="reservation_option1_img_container"> <img src="<?php echo SITE_URL; ?>/img/pictos_popins/reservation_icon_why.png" title="" alt="" height="19" width="13" /></div>
-                <span class="reservation_option_txt">Malheureusement l'enseigne n'a pas renseignée ses horaires </span><span class="parrainage_option_txt2"></span>
+                <span class="reservation_option_txt">Malheureusement l'enseigne n'a pas renseigné ses horaires de réservation</span><span class="parrainage_option_txt2"></span>
             </div>
         </div>
     </div>
