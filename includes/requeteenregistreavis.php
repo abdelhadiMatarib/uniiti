@@ -7,7 +7,15 @@ if (isset($_POST['id_enseigne'])) {$id_enseigne = $_POST['id_enseigne'];} else {
 if (isset($_POST['avis'])) {$avis = htmlspecialchars($_POST['avis']);} else {exit;}
 if (isset($_POST['note'])) {$note = $_POST['note']*2;} else {exit;}
 
-$date = date('Y-m-d H:i:s');
+$hours= rand(7, 25);
+if($hours == 24){
+    $hours = "00";
+}else if ($hours == 25){
+    $hours == "01";
+}
+$minutes = rand(0,59);
+
+$date = date('Y-m-d '.$hours.':'.$minutes.':s');
 $origine = 1;
 $appreciation = 1;
 
