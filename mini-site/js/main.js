@@ -22,7 +22,7 @@ $(document).ready(function() {
 			}
 		});
 
-	$('#reservation_body table td.full').click(function(){
+	$(document).on('click', '#reservation_body table td.full', function(){
 		$('td.full').removeClass('selected');
 		$(this).addClass('selected');
 		var horaire = $(this).text();
@@ -30,8 +30,18 @@ $(document).ready(function() {
 	});
 
 	$('#next_step1').click(function(){
-		$('#step1').animate({opacity:'0'}, 500).hide(200);
-		$('#step2').delay(500).show(200).animate({opacity:'1'}, 500);
+                $.ajax({
+			async : false,
+			type:"POST",
+			url : "http://uniiti.fr/includes/reservationMiniSiteStep2.php",
+			data : {'id_enseigne':enseigne_id, 'date':$( "#datepicker" ).val()},
+			success: function(html){
+				$('.table-horaires').html(html);
+                                $('#step1').animate({opacity:'0'}, 500).hide(200);
+                                $('#step2').delay(500).show(200).animate({opacity:'1'}, 500);
+			},
+			error: function() {}
+		});
 	});
 
 	$('#next_step2').click(function(){
