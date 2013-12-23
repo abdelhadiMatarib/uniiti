@@ -59,8 +59,9 @@
 function EnvoiMailContributeur(nom_enseigne, date, heure, nombre) {
     var datareservation = {
                 destinataire : $('#email').val(),
+                tel_destinataire : $('#Telephone').val(),
 				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
-				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' a été transmise à l\'enseigne '+nom_enseigne+'.<BR>Une confirmation va vous être envoyée très prochaînement.',
+				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' a été transmise à l\'enseigne '+nom_enseigne+'.<BR>Une confirmation va vous être envoyée très prochaînement.'
                 };
 		console.log(datareservation);
 		
@@ -98,10 +99,15 @@ function EtapeSuivante() {
 				destinataire : '<?php if (!empty($_POST['email_reservation'])) {echo $_POST['email_reservation'];} ?>',
 				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
 				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' demandeur : '+$('#Nom').val()+', email : '+$('#email').val()+', tel : '+$('#Telephone').val(),
+				telephone_destinataire : $('#Telephone').val(),
+				email_destinataire : $('#email').val(),
+				nom_destinataire : $('#Nom').val(),
+				prenom_destinataire : $('#Prenom').val(),
+				prevenir_reservation: prevenir_reservation
 				};
 	console.log(dataresenseigne);
-	
-	if (prevenir_reservation == 1) {
+	//onfirmation mail + sms
+	if (prevenir_reservation /*== 1*/) {
 		$.ajax({
 			async : false,
 			type :"POST",
