@@ -6,6 +6,8 @@ RewriteEngine On
 RewriteRule ^([a-zA-ZàÀéÉèÈôÔ0-9\-\_\/]+)/([0-9]+)\.html$ ./pages/commerce.php?url=$1&id_enseigne=$2 [L]
 RewriteRule ^mini-site/([0-9]+)$ mini-site/index.php?id=$1 [L]
 RewriteRule ^campagne/([0-9]+)$ /campaign.php?id_enseigne=$1 [L]
+RewriteRule ^avis/ajouter/([a-zA-Z0-9]+)$ /send_opinion.php?token=$1 [L]
+RewriteRule ^confirm-r/([a-zA-Z0-9]+)$ /confirm_reservation.php?token=$1 [L]
 
 # Apache Configuration File
 
