@@ -13,7 +13,7 @@ $req->execute(array('token' => $sToken));
 $aReservationRequest = $req->fetch();
 //select enseigne
 $req = $bdd->prepare('SELECT * FROM enseignes WHERE id_enseigne=:id');
-$req->execute(array('id' => $sToken));
+$req->execute(array('id' => $aReservationRequest['enseignes_id_enseigne']));
 $aEnseigne = $req->fetch();
 if (empty($aReservationRequest)) {
     header('location:/');
@@ -28,9 +28,9 @@ if (!empty($_POST['valider']) and !empty($_POST['token'])) {
     } elseif ($_POST['valider'] == 'non') {
         $req = $bdd->prepare('UPDATE enseigne_reservation SET status_id=3 where hash=:token');
         $req->execute(array('token' => $sToken));
-        $message = "Votre réservation n'a pas été prise en compte. Merci de contacter ".$aEnseigne['nom_enseigne']."";
+        $message = "Votre réservation n'a pas été prise en compte. Merci de contacter directement ".$aEnseigne['nom_enseigne']."";
         if(!empty($aEnseigne['telephone_reservation'])){
-            $message .= " au ".$aEnseigne['telephone_reservation'];
+            $message .= " au ".$aEnseigne['telephone_enseigne'];
         }
         $message .= ".";
         $title = "UNIITI | Réservation";

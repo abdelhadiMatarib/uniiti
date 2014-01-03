@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
     <?php
-    include_once 'acces/auth.inc.php';                 // Gestion accès à la page - incluant la session
-    require_once('acces/droits.inc.php');      // Liste de définition des ACL			
-    include_once 'config/configuration.inc.php';
-    include 'includes/head.php';
     include_once 'config/configPDO.inc.php';
-    include_once 'includes/fonctions.inc.php';
     ?>
-    <body>
+    <body style="text-align: center; background: black; opacity: 0.7; height: 100%; color: white; font-family: Tahoma">
         <?php
         /**
          * ====================================== test before continue ====================================
@@ -30,13 +25,20 @@
         /**
          * ====================================== end ======================================================
          */
-        include 'includes/header.php';
         ?> 
         <!-- --------------------------------------------------- main wrapper ------------------------------- -->
-        <div class="big_wrapper"> 
+        <div class="big_wrapper" > 
+            <img src="http://uniiti.fr/img/pictos_splash/logo_splash.png" />
 
             <!-- --------------------------------------------------- formulaire  ------------------------------- -->
-
+            <style>
+                .choice{
+                    width: 75%;
+                    height: 50px;
+                    margin-bottom: 15px;
+                    font-size: 20px;
+                }
+            </style>
             <div class="left100 radius" style="margin-top:20px; text-align: center;">
                 <h1>Résumé de la réservation</h1>
                 <style>
@@ -57,12 +59,12 @@
                 <form name="send-opinion" method="POST" action="/includes/requeteupdatereservation.php">
                     <input type="hidden" name="valider" value="oui" />
                     <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>" />
-                    <input type="submit" value="valider" />
+                    <input type="submit" value="valider" class="choice" />
                 </form>
                 <form name="send-opinion" method="POST" action="/includes/requeteupdatereservation.php">
                     <input type="hidden" name="valider" value="non" />
                     <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>" />
-                    <input type="submit" value="refuser" />
+                    <input type="submit" value="refuser" class="choice"/>
                 </form>
             </div>
 

@@ -39,16 +39,22 @@ $(document).ready(function() {
             activeform = false;
         }
     });
-    var horaire;
-    $(document).on('click', '#reservation_body table td.full', function(){
+    var horaireResa;
+    var nombreResa;
+    
+
+    $('#reservation_body').on('click', 'table td.full', function(){
         $('td.full').removeClass('selected');
         $(this).addClass('selected');
-         
+        horaireResa = $(this).text();
     });
     
-    $(document).on('click', '.table-horaires table td', function(){
-         horaire = $(this).text();
+    $('.table-nombre').on('click', 'table td', function(){
+        $('td.full').removeClass('selected');
+        $(this).addClass('selected');
+        nombreResa = $(this).text();
     });
+    
 
     $('#next_step1').click(function(){
         $.ajax({
@@ -112,7 +118,6 @@ $(document).ready(function() {
         //comme sur le site, (histoire d'utiliser le meme script)
         //envoi de dexu requetes ajax
         //1) pour le shop
-        var nombre = $('.table-nombre table td.selected').text();
         var date = $( "#datepicker" ).val();
         var nom = $( "#nom_resa" ).val();
         var prenom = $( "#prenom_resa" ).val();
@@ -123,10 +128,10 @@ $(document).ready(function() {
             step : "4",
             id_enseigne : enseigne_id,
             nom_enseigne : enseigne_nom,
-            sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+horaire,
-            message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+horaire+' demandeur : '+nom+', email : '+email+', tel : '+telephone,
+            sujet : 'Réservation pour '+nombreResa+' personnes, le '+date+' à '+horaireResa,
+            message : 'Une réservation pour '+nombreResa+' personnes, le '+date+' à '+horaireResa+'.  Client : '+nom+' '+prenom+'. Email : '+email+'. Tel : '+telephone+'.',
             date : date,
-            heure : horaire,
+            heure : horaireResa,
             nom_destinataire : nom,
             prenom_destinataire : prenom,
             telephone_destinataire : telephone,
@@ -135,13 +140,13 @@ $(document).ready(function() {
             prevenir_reservation : prevenir_reservation,
             telephone_reservation : telephone_reservation,
             email_reservation  : email_reservation,
-            nombre : nombre
+            nombre : nombreResa
         }       
         var dataClient = {
             destinataire : email,
             tel_destinataire : telephone,
-            sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+horaire,
-            message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+horaire+' a été transmise à l\'enseigne '+enseigne_nom+'.<BR>Une confirmation va vous être envoyée très prochaînement.'
+            sujet : 'Réservation pour '+nombreResa+' personnes, le '+date+' à '+horaireResa,
+            message : 'Une réservation pour '+nombreResa+' personnes, le '+date+' à '+horaireResa+' a été transmise à '+enseigne_nom+'. Une confirmation va vous etre envoyée très prochainement.'
         };
                 
         $.ajax({

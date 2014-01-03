@@ -64,8 +64,9 @@ if (!empty($_POST['email_reservation']) || !empty($_POST['telephone_reservation'
             /* creation de la variable message dans laquelle nous recuperons via la methode post
               le champ portant le nom texte au niveau de la page form.htlm */
             $message = $_POST['message'];
+            $message = stripslashes($_POST['message']);
             if (!empty($rand)) {
-                $message .= 'cliquez sur le lien pour valider ';
+                $message .= ' Cliquez sur le lien pour gérer ';
                 $message .= 'http://uniiti.fr/confirm-r/'.$rand;
             }// ouverture de la fonction soapi
             try {
@@ -129,10 +130,12 @@ if (!empty($_POST['email_reservation']) || !empty($_POST['telephone_reservation'
 
         $tel = str_replace(" ", "", $_POST['tel_destinataire']);
         $tel = ltrim($tel, '0');
+        $tel = trim($tel);
         $to = '+33' . $tel;
         /* creation de la variable message dans laquelle nous recuperons via la methode post
           le champ portant le nom texte au niveau de la page form.htlm */
         $message = str_replace("<BR>", "", $_POST['message']);
+        $message = stripslashes($_POST['message']);
 
 // ouverture de la fonction soapi
         try {
