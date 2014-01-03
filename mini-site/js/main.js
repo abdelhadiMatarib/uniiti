@@ -1,74 +1,180 @@
 $(document).ready(function() {
-	setTimeout(function() {
-      $('#reservation').animate({right:"0"},400);
-	}, 5000);
-	var activeform = false;
-		$('#contacteznous').click(function(){
-			if (activeform==false){
-				$(this).addClass('open').removeClass('close');
-				$('#contacteznous').animate({bottom: "340px"},500);
-				$('#wrapper_form').animate({height: "340px"},500);
-				$('#contact_form').animate({bottom: "280px"},500);
-				$('#reservation').animate({bottom:"370px"},400);
-				activeform = true;
-			} else {
-				$(this).addClass('close').removeClass('open');
-				$('#contacteznous').animate({bottom: "101px"},500);
-				$('#wrapper_form').animate({height: "151px"},500);
-				$('#contact_form').animate({bottom: "0px"},500);
-				$('#reservation').animate({bottom:"160px"},600);
-				$('#reservation').css('z-index', 15);
-				activeform = false;
-			}
-		});
-
-	$(document).on('click', '#reservation_body table td.full', function(){
-		$('td.full').removeClass('selected');
-		$(this).addClass('selected');
-		var horaire = $(this).text();
-		return horaire;
-	});
-
-	$('#next_step1').click(function(){
-                $.ajax({
-			async : false,
-			type:"POST",
-			url : "http://uniiti.fr/includes/reservationMiniSiteStep2.php",
-			data : {'id_enseigne':enseigne_id, 'date':$( "#datepicker" ).val()},
-			success: function(html){
-				$('.table-horaires').html(html);
-                                $('#step1').animate({opacity:'0'}, 500).hide(200);
-                                $('#step2').delay(500).show(200).animate({opacity:'1'}, 500);
-			},
-			error: function() {}
-		});
-	});
-
-	$('#next_step2').click(function(){
-		$('#step2').animate({opacity:'0'}, 500).hide(200);
-		$('#step3').delay(500).show(200).animate({opacity:'1'}, 500);
-	});
-
-	$('#prev_step2').click(function(){
-		$('#step2').animate({opacity:'0'}, 500).hide(200);
-		$('#step1').delay(500).show(200).animate({opacity:'1'}, 500);
-	});
-
-	$('#next_step3').click(function(){
-		$('#step3').animate({opacity:'0'}, 500).hide(200);
-		$('#step4').delay(500).show(200).animate({opacity:'1'}, 400);
-	});
-
-	$('#prev_step3').click(function(){
-		$('#step3').animate({opacity:'0'}, 500).hide(200);
-		$('#step2').delay(500).show(200).animate({opacity:'1'}, 500);
-	});
-
+    setTimeout(function() {
+        $('#reservation').animate({
+            right:"0"
+        },400);
+    }, 5000);
+    var activeform = false;
+    $('#contacteznous').click(function(){
+        if (activeform==false){
+            $(this).addClass('open').removeClass('close');
+            $('#contacteznous').animate({
+                bottom: "340px"
+            },500);
+            $('#wrapper_form').animate({
+                height: "340px"
+            },500);
+            $('#contact_form').animate({
+                bottom: "280px"
+            },500);
+            $('#reservation').animate({
+                bottom:"370px"
+            },400);
+            activeform = true;
+        } else {
+            $(this).addClass('close').removeClass('open');
+            $('#contacteznous').animate({
+                bottom: "101px"
+            },500);
+            $('#wrapper_form').animate({
+                height: "151px"
+            },500);
+            $('#contact_form').animate({
+                bottom: "0px"
+            },500);
+            $('#reservation').animate({
+                bottom:"160px"
+            },600);
+            $('#reservation').css('z-index', 15);
+            activeform = false;
+        }
+    });
+    var horaire;
+    $(document).on('click', '#reservation_body table td.full', function(){
+        $('td.full').removeClass('selected');
+        $(this).addClass('selected');
+         
+    });
+    
+    $(document).on('click', '.table-horaires table td', function(){
+         horaire = $(this).text();
     });
 
+    $('#next_step1').click(function(){
+        $.ajax({
+            async : false,
+            type:"POST",
+            url : "http://uniiti.fr/includes/reservationMiniSiteStep2.php",
+            data : {
+                'id_enseigne':enseigne_id, 
+                'date':$( "#datepicker" ).val()
+            },
+            success: function(html){
+                $('.table-horaires').html(html);
+                $('#step1').animate({
+                    opacity:'0'
+                }, 500).hide(200);
+                $('#step2').delay(500).show(200).animate({
+                    opacity:'1'
+                }, 500);
+            },
+            error: function() {}
+        });
+    });
+
+    $('#next_step2').click(function(){
+        $('#step2').animate({
+            opacity:'0'
+        }, 500).hide(200);
+        $('#step3').delay(500).show(200).animate({
+            opacity:'1'
+        }, 500);
+    });
+
+    $('#prev_step2').click(function(){
+        $('#step2').animate({
+            opacity:'0'
+        }, 500).hide(200);
+        $('#step1').delay(500).show(200).animate({
+            opacity:'1'
+        }, 500);
+    });
+
+    $('#next_step3').click(function(){
+        $('#step3').animate({
+            opacity:'0'
+        }, 500).hide(200);
+        $('#step4').delay(500).show(200).animate({
+            opacity:'1'
+        }, 400);
+    });
+
+    $('#prev_step3').click(function(){
+        $('#step3').animate({
+            opacity:'0'
+        }, 500).hide(200);
+        $('#step2').delay(500).show(200).animate({
+            opacity:'1'
+        }, 500);
+    });
+        
+    $(document).on('click', '#submit_resa', function(){
+        //comme sur le site, (histoire d'utiliser le meme script)
+        //envoi de dexu requetes ajax
+        //1) pour le shop
+        var nombre = $('.table-nombre table td.selected').text();
+        var date = $( "#datepicker" ).val();
+        var nom = $( "#nom_resa" ).val();
+        var prenom = $( "#prenom_resa" ).val();
+        var email = $( "#email_resa" ).val();
+        var telephone = $( "#telephone_resa" ).val();
+    
+        var data = {
+            step : "4",
+            id_enseigne : enseigne_id,
+            nom_enseigne : enseigne_nom,
+            sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+horaire,
+            message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+horaire+' demandeur : '+nom+', email : '+email+', tel : '+telephone,
+            date : date,
+            heure : horaire,
+            nom_destinataire : nom,
+            prenom_destinataire : prenom,
+            telephone_destinataire : telephone,
+            destinataire : email,
+            email_destinataire : email,
+            prevenir_reservation : prevenir_reservation,
+            telephone_reservation : telephone_reservation,
+            email_reservation  : email_reservation,
+            nombre : nombre
+        }       
+        var dataClient = {
+            destinataire : email,
+            tel_destinataire : telephone,
+            sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+horaire,
+            message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+horaire+' a été transmise à l\'enseigne '+enseigne_nom+'.<BR>Une confirmation va vous être envoyée très prochaînement.'
+        };
+                
+        $.ajax({
+            async : false,
+            type:"POST",
+            url : "http://uniiti.fr/includes/envoyer_mail.php",
+            data : data,
+            success: function(data){
+                alert(data.result);
+                $.ajax({
+                    async : false,
+                    type:"POST",
+                    url : "http://uniiti.fr/includes/envoyer_mail.php",
+                    data : dataClient,
+                    success: function(data2){
+                        if(data2.result != null){
+                           alert(data2.result) 
+                        }else{
+                           alert("une erreur s'est produite lors de l'enregistrement de votre réservation."); 
+                        }
+                    },
+                    error: function() {}
+                });
+            },
+            error: function() {}
+        });
+    })
+})
+
 $(window).resize(function() {
-	var widthviewportsize = $(window).width();
-  	var heightviewportsize = $(window).height();
-  	$("#navigation").width(widthviewportsize);
-  	$("#navigation").height(heightviewportsize);
+    var widthviewportsize = $(window).width();
+    var heightviewportsize = $(window).height();
+    $("#navigation").width(widthviewportsize);
+    $("#navigation").height(heightviewportsize);
 });
+

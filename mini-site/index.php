@@ -32,8 +32,16 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
         <!-- Initialisation de la Google Map -->
+        <?php// var_dump($oShopInfos); die();?>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-        <script type="text/javascript">var enseigne_id = <?php echo $iId ?>; var address = "<?php echo $oShopInfos->enseigne->adresse1_enseigne . ' ' . $oShopInfos->enseigne->cp_enseigne . ' ' . $oShopInfos->enseigne->nom_ville; ?>";</script>
+        <script type="text/javascript">
+            var enseigne_id = <?php echo $iId ?>;
+            var enseigne_nom = "<?php echo $oShopInfos->enseigne->nom_enseigne; ?>";
+            var prevenir_reservation = "<?php echo $oShopInfos->enseigne->prevenir_reservation  ?>";
+            var email_reservation = "<?php echo $oShopInfos->enseigne->email_reservation  ?>";
+            var telephone_reservation = "<?php echo $oShopInfos->enseigne->telephone_reservation  ?>";
+            var address = "<?php echo $oShopInfos->enseigne->adresse1_enseigne . ' ' . $oShopInfos->enseigne->cp_enseigne . ' ' . $oShopInfos->enseigne->nom_ville; ?>";
+        </script>
         <script type="text/javascript" src="js/geoloc.js"></script>
         <!-- Initialisation de la galerie -->
         <script type="text/javascript" src="js/galerie.min.js"></script>
@@ -460,7 +468,7 @@
                                         <div class="reservation_stepinfos">
                                             <span class="reservation_step_num">Étape 3 : </span><span class="reservation_step_desc"> Choisissez le nombre de personne</span>
                                         </div>
-                                        <div id="reservation_body">
+                                        <div id="reservation_body" class="table-nombre">
                                             <table> 
                                                 <tr> 
                                                     <th>Nombre de personnes</th> 
@@ -493,9 +501,9 @@
                                                 pour le <span>15/11/2013</span> à <span>20:00</span> , <span>8 personnes</span>
                                             </p>
                                         </div>
+                                        
                                         <div id="terminer_reservation">
                                             <p>Pour terminer votre réservation, veuillez </br>remplir le formulaire ci-dessous :</p>
-                                            <form id="formulaire_reservation" action="#">
                                                 <input type="text" name="nom" id="nom_resa" placeholder="Nom" required/>
                                                 <input type="text" name="prenom" id="prenom_resa" placeholder="Prenom"/></br>
                                                 <input type="text" name="telephone" id="telephone_resa" placeholder="N° de téléphone" required/>
@@ -503,8 +511,7 @@
                                                 <textarea name="message" id="message_resa" placeholder="Demande à l’attention du restaurant"></textarea></br>
                                                 <input type="checkbox" id="resa_recap_infos"/><label for="resa_recap_infos" class="label_resa">Je souhaite recevoir des informations de la part de ce restaurant</label></br>
                                                 <input type="checkbox" id="resa_recap_cgu"/><label for="resa_recap_cgu" class="label_resa">Je reconnais avoir pris connaissance et accepter les <a href="#" class="reservation_recap_body_txt_bleu">conditions générales d'utilisation de Uniiti.com</a></label>
-                                                <input type="submit" id="submit_resa" name="submit" value="Terminer ma réservation" />
-                                            </form>
+                                                <input type="button" id="submit_resa" name="submit" value="Terminer ma réservation" />
                                         </div>
                                     </div>
                                     </article>
