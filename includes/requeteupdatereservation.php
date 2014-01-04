@@ -23,12 +23,12 @@ if (!empty($_POST['valider']) and !empty($_POST['token'])) {
         $sToken = $_POST['token'];
         $req = $bdd->prepare('UPDATE enseigne_reservation SET status_id=2 where hash=:token');
         $req->execute(array('token' => $sToken));
-        $message = "Votre réservation a bien été confirmé par ".$aEnseigne['nom_enseigne'].".";
+        $message = "Votre demande a bien été confirmé par ".$aEnseigne['nom_enseigne'].".";
         $title = "UNIITI | Confirmation de votre réservation";
     } elseif ($_POST['valider'] == 'non') {
         $req = $bdd->prepare('UPDATE enseigne_reservation SET status_id=3 where hash=:token');
         $req->execute(array('token' => $sToken));
-        $message = "Votre réservation n'a pas été prise en compte. Merci de contacter directement ".$aEnseigne['nom_enseigne']."";
+        $message = "Votre demande n'a pas été prise en compte. Merci de contacter directement ".$aEnseigne['nom_enseigne']."";
         if(!empty($aEnseigne['telephone_reservation'])){
             $message .= " au ".$aEnseigne['telephone_enseigne'];
         }
