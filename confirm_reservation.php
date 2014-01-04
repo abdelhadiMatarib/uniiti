@@ -69,45 +69,5 @@
             </div>
 
         </div>
-<?php include("includes/js.php"); ?>
-        <script type="text/javascript">
-            var oOpinion = {
-                init : function(){
-                    $(document).on('click', '#send-opinion', oOpinion.Send);
-                },
-                /**
-                 *try to save opinion
-                 */
-                Send : function(){
-                    var formData = new FormData(document.forms.namedItem("send-opinion"));   
-                    $.ajax({
-                        url: '/includes/requeteSaveOpinion.php',  
-                        type: 'POST',
-                      
-                        //Ajax events
-                        //beforeSend: beforeSendHandler,
-                        success: function(data){
-                            if(data.status == 'error'){
-                                alert(data.message);
-                                //                             
-                            }else if(data.status == 'success'){
-                                alert(data.message);
-                                //                                document.location.href = '/timeline.php';
-                            }
-                           
-                        },
-                        //error: errorHandler,
-                        // Form data
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false
-                        
-                    });
-                }
-            }
-            
-            oOpinion.init();
-        </script>
-    </body>
+   </body>
 </html>
