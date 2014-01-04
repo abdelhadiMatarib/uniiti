@@ -61,7 +61,7 @@ function EnvoiMailContributeur(nom_enseigne, date, heure, nombre) {
                 destinataire : $('#email').val(),
                 tel_destinataire : $('#Telephone').val(),
 				sujet : 'Réservation pour '+nombre+' personnes, le '+date+' à '+heure,
-				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' a été transmise à l\'enseigne '+nom_enseigne+'. Une confirmation va vous etre envoyée très prochainement.'
+				message : 'Une réservation pour '+nombre+' personnes, le '+date+' à '+heure+' a été transmise à l\'enseigne '+nom_enseigne+'.<BR>Une confirmation va vous être envoyée très prochaînement.'
                 };
 		console.log(datareservation);
 		

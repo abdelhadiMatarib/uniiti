@@ -145,11 +145,6 @@ label {color: #FFFFFF;font-style: italic;}
 #reservations_bloc h1 {color: white; font-weight:300; text-transform: uppercase; font-size: 2em; margin-top: 650px; text-align: center;}
 #reservations_bloc h2 {font-size: 1.1em;font-weight: 600;color: white;text-align: center;}
 #reservations_bloc p {font-size: 1em;font-weight: 300;text-align: center;}
-
-#reservations_bloc2 {height: 100%;width: 30%;margin-top: -160px;background: url('../img/prisederdv.png') 50% 0 no-repeat;right: 81px;z-index: 1000;position: absolute;}
-#reservations_bloc2 h1 {color: white; font-weight:300; text-transform: uppercase; font-size: 2em; margin-top: 650px; text-align: center;}
-#reservations_bloc2 h2 {font-size: 1.1em;font-weight: 600;color: white;text-align: center;}
-#reservations_bloc2 p {font-size: 1em;font-weight: 300;text-align: center;}
     /* STEP 1 */
 #step1 {width: 600px;margin-left:350px; padding-top: 270px; text-align: left;}
 #barre-step1 {width:50px;height: 385px;margin-left: -34px;margin-top: 30px;border-left: 1px solid white;float: left;position: absolute;}
@@ -238,7 +233,6 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
   	#services_textes {margin-left: 380px;}
 	#services_bloc {left: 0px;}
 	#reservations_bloc {right:20px;}
-	#reservations_bloc2 {right:20px;}
 }
 
 @media only screen and (max-width: 1300px){
@@ -265,7 +259,6 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
 @media only screen and (max-width: 1050px){
 #informations_textes { margin-left: 130px;}
 #reservations_bloc {display: none;}
-#reservations_bloc2 {display: none;}
 #services_bloc {display: none;}
 #services_textes {margin-left: 24%}
 #avis_content {margin-left:450px; width: 55%;}
@@ -274,7 +267,6 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
 @media only screen and (max-width: 980px){
 #informations_textes { margin-left: 14%; padding-top: 40px;}
 #reservations_bloc {display: none;}
-#reservations_bloc2 {display: none;}
 	#step1 {margin-left: 120px;padding-top: 170px; }
 	#step2 {margin-left: 120px;padding-top: 170px; }
 	#step3 {margin-left: 120px;padding-top: 170px; }
@@ -286,7 +278,6 @@ input#submit_resa:hover {background-color: #363636;color: white;-webkit-transiti
 @media only screen and (max-width: 940px){
   	#informations_bloc { display: none;}
   	#reservations_bloc {display: none;}
-  	#reservations_bloc2 {display: none;}
   	#services_textes {margin-left: 14%}
   	#avis_content {margin-left: 14%; width: 85%;}
 	#avis_bloc {display: none;}

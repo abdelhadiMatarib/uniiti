@@ -32,25 +32,15 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
         <!-- Initialisation de la Google Map -->
-        <?php // var_dump($oShopInfos); die();?>
+        <?php// var_dump($oShopInfos); die();?>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
         <script type="text/javascript">
             var enseigne_id = <?php echo $iId ?>;
             var enseigne_nom = "<?php echo $oShopInfos->enseigne->nom_enseigne; ?>";
-            var prevenir_reservation = "<?php echo $oShopInfos->enseigne->prevenir_reservation ?>";
-            var email_reservation = "<?php echo $oShopInfos->enseigne->email_reservation ?>";
-            var telephone_reservation = "<?php echo $oShopInfos->enseigne->telephone_reservation ?>";
+            var prevenir_reservation = "<?php echo $oShopInfos->enseigne->prevenir_reservation  ?>";
+            var email_reservation = "<?php echo $oShopInfos->enseigne->email_reservation  ?>";
+            var telephone_reservation = "<?php echo $oShopInfos->enseigne->telephone_reservation  ?>";
             var address = "<?php echo $oShopInfos->enseigne->adresse1_enseigne . ' ' . $oShopInfos->enseigne->cp_enseigne . ' ' . $oShopInfos->enseigne->nom_ville; ?>";
-<?php if ($oShopInfos->enseigne->reservation == 1) {
-    ?>
-            var isRdv = true;
-    <?php
-} else {
-    ?>
-            var isRdv = false;
-    <?php
-}
-?>
         </script>
         <script type="text/javascript" src="js/geoloc.js"></script>
         <!-- Initialisation de la galerie -->
@@ -405,235 +395,205 @@
             <section> <!-- Page Réservations -->
                 <article id="reservations">
 
-                    <div <?php  if ($oShopInfos->enseigne->reservation == 1) { echo 'id="reservations_bloc2"';}else{ echo 'id="reservations_bloc"';}?>>
-                        <?php
-                        if ($oShopInfos->enseigne->reservation == 1) {
-                            echo '<h1>Prise de rendez-vous</h1>';
-                            echo '<h2>Prendre un rendez-vous en ligne n’a que des avantages !<h2>';
-                        } else {
-                            echo '<h1>Réservations</h1>';
-                            echo '<h2>Réserver en ligne n’a que des avantages !<h2>';
-                        }
-                        ?>                          <p> - Le service est accessible à toute heure</br>
-                            - Vous recevez une confirmation immédiate par email et SMS</br>
-                            - Il est donc inutile de nous appeler</br>
-                            - C’est 100% gratuit !
-                        </p>
-                    </div>
-                    <?php
-                    $aHoraires = $oShopInfos->horaires;
-
-                    if (!empty($aHoraires)) {
-
-                        //=====================================================================================
-                        //=============================Horaires de l'enseigne renseignée =====================================
-                        //=====================================================================================
-                        //recherche des jours où l'enseigne est fermé
-                        $aDaysToHide = null;
-                        if (empty($aHoraires->dimanche) or ($aHoraires->dimanche == 'Fermé')) {
-                            $aDaysToHide[] = 0;
-                        }
-                        if (empty($aHoraires->lundi) or ($aHoraires->lundi == 'Fermé')) {
-                            $aDaysToHide[] = 1;
-                        }
-                        if (empty($aHoraires->mardi) or ($aHoraires->mardi == 'Fermé')) {
-                            $aDaysToHide[] = 2;
-                        }
-                        if (empty($aHoraires->mercredi) or ($aHoraires->mercredi == 'Fermé')) {
-                            $aDaysToHide[] = 3;
-                        }
-                        if (empty($aHoraires->jeudi) or ($aHoraires->jeudi == 'Fermé')) {
-                            $aDaysToHide[] = 4;
-                        }
-                        if (empty($aHoraires->vendredi) or ($aHoraires->vendredi == 'Fermé')) {
-                            $aDaysToHide[] = 5;
-                        }
-                        if (empty($aHoraires->samedi) or ($aHoraires->samedi == 'Fermé')) {
-                            $aDaysToHide[] = 6;
-                        }
-                        ?>
-                        ?>
-                        <!-- Step 1 -->
-                        <div id="step1">
-                            <div id="barre-step1"></div><div id="img_step1"></div>
-                            <div class="reservation_stepinfos">
-                                <span class="reservation_step_num">Étape 1 : </span><span class="reservation_step_desc"> Choisissez la date de votre visite</span>
-                            </div>
-                            <div class="reservation_option2_body">
-                                <div class="reservation_option2_body_centered body_calendrier">
-                                    <div id="datepicker"></div>
+                    <div id="reservations_bloc">
+                        <h1>Réservations</h1>
+                        <h2>Réserver en ligne n’a que des avantages !<h2>
+                                <p> - Le service est accessible à toute heure</br>
+                                    - Vous recevez une confirmation immédiate par email et SMS</br>
+                                    - Il est donc inutile de nous appeler</br>
+                                    - C’est 100% gratuit !
+                                </p>
                                 </div>
-                            </div>
-                            <div class="reservation_step_next" id="next_step1"><a href="#" title="">Étape suivante</a></div>
-                        </div>
+                                <?php
+                                $aHoraires = $oShopInfos->horaires;
+                                
+                                if (!empty($aHoraires)) {
 
-                        <!-- Step 2 -->
-                        <div id="step2">
-                            <div id="barre-step2"></div><div id="img_step2"></div>
-                            <div class="reservation_stepinfos">
-                                <span class="reservation_step_num">Étape 2 : </span><span class="reservation_step_desc"> Choisissez l’horaire de votre visite</span>
-                            </div>
-                            <div id="reservation_body" class="table-horaires">
-                            </div>
-                            <div class="reservation_step_next"><a href="#" title="" id="prev_step2">Modifier la date</a> <span>|</span> <a href="#" title="" id="next_step2">Étape suivante</a></div>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div id="step3">
-                            <div id="barre-step3"></div><div id="img_step3"></div>
-                            <div class="reservation_stepinfos">
-                                <span class="reservation_step_num">Étape 3 : </span><span class="reservation_step_desc"> Choisissez le nombre de personne</span>
-                            </div>
-                            <div id="reservation_body" class="table-nombre">
-                                <table> 
-                                    <tr> 
-                                        <th>Nombre de personnes</th> 
-                                        <td class="full selected" >1</td> 
-                                        <td class="full">2</td> 
-                                        <td class="full">3</td>
-                                        <td class="full">4</td>
-                                        <td class="full">5</td>
-                                        <td class="full">6</td>
-                                        <td class="full">7</td>
-                                        <td class="full">8</td>
-                                        <td class="full">9</td>
-                                        <td class="full">10</td>
-
-                                            <?php
-                                            if ($oShopInfos->enseigne->reservation == 2) {
-                                        echo '<td id="nombre">';
-                                                echo "Une grande tablée, plus de 10 personnes ?";
-                                        echo '<input type="text" id="nombre_user" placeholder="11"></input>';
-                                        echo "</td>";
-                                            } else {
-                                                echo " ";
-                                            }
-                                            ?>
-                                    </tr> 
-                                </table> 
-                            </div>
-                            <div class="reservation_step_next"><a href="#" title="" id="prev_step3">Modifier l'heure</a><span>|</span> <a href="#" title="" id="next_step3">Étape suivante</a></div>
-                        </div>
-
-                        <!-- Step 4 -->
-                        <div id="step4">
-                            <div id="barre-step4"></div><div id="img_step4"></div>
-                            <div class="reservation_stepinfos">
-                                <span class="reservation_step_desc">Récapitulatif de votre réservation</span>
-                            </div>
-                            <div id="table_dispo">
-                                <p>
-                                    <?php
-                                    if ($oShopInfos->enseigne->reservation == 2) {
-                                        echo '<span>Une table est disponible !</span>';
-                                    } else {
-                                        echo '<span>Un rendez-vous est disponible !</span>';
+                                    //=====================================================================================
+                                    //=============================Horaires de l'enseigne renseignée =====================================
+                                    //=====================================================================================
+                                    //recherche des jours où l'enseigne est fermé
+                                    $aDaysToHide = null;
+                                    if (empty($aHoraires->dimanche) or ($aHoraires->dimanche == 'Fermé')) {
+                                        $aDaysToHide[] = 0;
+                                    }
+                                    if (empty($aHoraires->lundi) or ($aHoraires->lundi == 'Fermé')) {
+                                        $aDaysToHide[] = 1;
+                                    }
+                                    if (empty($aHoraires->mardi) or ($aHoraires->mardi == 'Fermé')) {
+                                        $aDaysToHide[] = 2;
+                                    }
+                                    if (empty($aHoraires->mercredi) or ($aHoraires->mercredi == 'Fermé')) {
+                                        $aDaysToHide[] = 3;
+                                    }
+                                    if (empty($aHoraires->jeudi) or ($aHoraires->jeudi == 'Fermé')) {
+                                        $aDaysToHide[] = 4;
+                                    }
+                                    if (empty($aHoraires->vendredi) or ($aHoraires->vendredi == 'Fermé')) {
+                                        $aDaysToHide[] = 5;
+                                    }
+                                    if (empty($aHoraires->samedi) or ($aHoraires->samedi == 'Fermé')) {
+                                        $aDaysToHide[] = 6;
                                     }
                                     ?>
-                                    </br>
-                                    pour le <span id="reservation-final-step-date">15/11/2013</span> à <span id="reservation-final-step-heure">20:00</span> , <span id="reservation-final-step-nombre">8 personnes</span>
-                                </p>
-                            </div>
+                                    ?>
+                                    <!-- Step 1 -->
+                                    <div id="step1">
+                                        <div id="barre-step1"></div><div id="img_step1"></div>
+                                        <div class="reservation_stepinfos">
+                                            <span class="reservation_step_num">Étape 1 : </span><span class="reservation_step_desc"> Choisissez la date de votre visite</span>
+                                        </div>
+                                        <div class="reservation_option2_body">
+                                            <div class="reservation_option2_body_centered body_calendrier">
+                                                <div id="datepicker"></div>
+                                            </div>
+                                        </div>
+                                        <div class="reservation_step_next" id="next_step1"><a href="#" title="">Étape suivante</a></div>
+                                    </div>
 
-                            <div id="terminer_reservation">
+                                    <!-- Step 2 -->
+                                    <div id="step2">
+                                        <div id="barre-step2"></div><div id="img_step2"></div>
+                                        <div class="reservation_stepinfos">
+                                            <span class="reservation_step_num">Étape 2 : </span><span class="reservation_step_desc"> Choisissez l’horaire de votre visite</span>
+                                        </div>
+                                        <div id="reservation_body" class="table-horaires">
+                                        </div>
+                                        <div class="reservation_step_next"><a href="#" title="" id="prev_step2">Modifier la date</a> <span>|</span> <a href="#" title="" id="next_step2">Étape suivante</a></div>
+                                    </div>
+
+                                    <!-- Step 3 -->
+                                    <div id="step3">
+                                        <div id="barre-step3"></div><div id="img_step3"></div>
+                                        <div class="reservation_stepinfos">
+                                            <span class="reservation_step_num">Étape 3 : </span><span class="reservation_step_desc"> Choisissez le nombre de personne</span>
+                                        </div>
+                                        <div id="reservation_body" class="table-nombre">
+                                            <table> 
+                                                <tr> 
+                                                    <th>Nombre de personnes</th> 
+                                                    <td class="full selected" >1</td> 
+                                                    <td class="full">2</td> 
+                                                    <td class="full">3</td>
+                                                    <td class="full">4</td>
+                                                    <td class="full">5</td>
+                                                    <td class="full">6</td>
+                                                    <td class="full">7</td>
+                                                    <td class="full">8</td>
+                                                    <td class="full">9</td>
+                                                    <td class="full">10</td>
+                                                    <td id="nombre">Une grande tablée, plus de 10 personnes ?</td>
+                                                <input type="text" id="nombre_user" placeholder="11"></input>
+                                                </tr> 
+                                            </table> 
+                                        </div>
+                                        <div class="reservation_step_next"><a href="#" title="" id="prev_step3">Modifier l'heure</a><span>|</span> <a href="#" title="" id="next_step3">Étape suivante</a></div>
+                                    </div>
+
+                                    <!-- Step 4 -->
+                                    <div id="step4">
+                                        <div id="barre-step4"></div><div id="img_step4"></div>
+                                        <div class="reservation_stepinfos">
+                                            <span class="reservation_step_desc">Récapitulatif de votre réservation</span>
+                                        </div>
+                                        <div id="table_dispo">
+                                            <p><span>Une table est disponible !</span></br>
+                                                pour le <span>15/11/2013</span> à <span>20:00</span> , <span>8 personnes</span>
+                                            </p>
+                                        </div>
+                                        
+                                        <div id="terminer_reservation">
+                                            <p>Pour terminer votre réservation, veuillez </br>remplir le formulaire ci-dessous :</p>
+                                                <input type="text" name="nom" id="nom_resa" placeholder="Nom" required/>
+                                                <input type="text" name="prenom" id="prenom_resa" placeholder="Prenom"/></br>
+                                                <input type="text" name="telephone" id="telephone_resa" placeholder="N° de téléphone" required/>
+                                                <input type="email" name="email" id="email_resa" placeholder="Email" required/></br>
+                                                <textarea name="message" id="message_resa" placeholder="Demande à l’attention du restaurant"></textarea></br>
+                                                <input type="checkbox" id="resa_recap_infos"/><label for="resa_recap_infos" class="label_resa">Je souhaite recevoir des informations de la part de ce restaurant</label></br>
+                                                <input type="checkbox" id="resa_recap_cgu"/><label for="resa_recap_cgu" class="label_resa">Je reconnais avoir pris connaissance et accepter les <a href="#" class="reservation_recap_body_txt_bleu">conditions générales d'utilisation de Uniiti.com</a></label>
+                                                <input type="button" id="submit_resa" name="submit" value="Terminer ma réservation" />
+                                        </div>
+                                    </div>
+                                    </article>
+                                    </section>
                                 <?php
-                                if ($oShopInfos->enseigne->reservation == 2) {
-                                    echo" <p>Pour terminer votre réservation, veuillez </br>remplir le formulaire ci-dessous :</p>";
                                 } else {
-
-                                    echo" <p>Pour terminer votre prise de rendez-vous, veuillez </br>remplir le formulaire ci-dessous :</p>";
+                                    echo "Malheureusement l'enseigne n'a pas renseigné ses horaires de réservation.";
                                 }
                                 ?>
-                                <input type="text" name="nom" id="nom_resa" placeholder="Nom" required/>
-                                <input type="text" name="prenom" id="prenom_resa" placeholder="Prenom"/></br>
-                                <input type="text" name="telephone" id="telephone_resa" placeholder="N° de téléphone" required/>
-                                <input type="email" name="email" id="email_resa" placeholder="Email" required/></br>
-                                <textarea name="message" id="message_resa" placeholder="Demande à l’attention du commerçant"></textarea></br>
-                                <input type="checkbox" id="resa_recap_infos"/><label for="resa_recap_infos" class="label_resa">Je souhaite recevoir des informations de la part de ce commerçant</label></br>
-                                <input type="checkbox" id="resa_recap_cgu"/><label for="resa_recap_cgu" class="label_resa">Je reconnais avoir pris connaissance et accepter les <a href="#" class="reservation_recap_body_txt_bleu">conditions générales d'utilisation de Uniiti.com</a></label>
-                                <input type="button" id="submit_resa" name="submit" value="Terminer ma réservation" />
-                            </div>
-                        </div>
-                    </article>
-                </section>
-                <?php
-            } else {
-                echo "Malheureusement l'enseigne n'a pas renseigné ses horaires de réservation.";
-            }
-            ?>
-        </div>
-        <script>
-            $('#navigation').ascensor({
-                ascensorName: 'ascensor',
-                childType: 'section',
-                ascensorFloorName: ['Home','Informations','Services','Galerie','Avis','Contact','Reservation'],
-                time: 1000,
-                windowsOn: 0,
-                direction: "chocolate",
-                ascensorMap: [[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0]],
-                keyNavigation: true,
-                queued: false,
-                queuedDirection: "y",
-                overflow:"hidden"
-            })
+                                </div>
+                                <script>
+                                    $('#navigation').ascensor({
+                                        ascensorName: 'ascensor',
+                                        childType: 'section',
+                                        ascensorFloorName: ['Home','Informations','Services','Galerie','Avis','Contact','Reservation'],
+                                        time: 1000,
+                                        windowsOn: 0,
+                                        direction: "chocolate",
+                                        ascensorMap: [[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0]],
+                                        keyNavigation: true,
+                                        queued: false,
+                                        queuedDirection: "y",
+                                        overflow:"hidden"
+                                    })
 
-            $(function() {
-                jQuery(function($){
-                    $.datepicker.regional['fr'] = {
-                        closeText: 'Fermer',
-                        prevText: 'Précédent',
-                        nextText: 'Suivant',
-                        currentText: 'Aujourd\'hui',
-                        minDate: 0,
-                        monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                            'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-                        monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin',
-                            'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
-                        dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-                        dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-                        dayNamesMin: ['Dim.','Lun.','Mar.','Mer.','Jeu.','Ven.','Sam.'],
-                        weekHeader: 'Sem.',
-                        dateFormat: 'dd/mm/yy',
-                        firstDay: 1,
-                        isRTL: false,
-                        showMonthAfterYear: false,
-                        yearSuffix: ''};
-                    $.datepicker.setDefaults($.datepicker.regional['fr']);
-                    $( "#datepicker" ).datepicker({selectable:true, beforeShowDay: setCustomDate });
-                });
-            });
+                                    $(function() {
+                                        jQuery(function($){
+                                            $.datepicker.regional['fr'] = {
+                                                closeText: 'Fermer',
+                                                prevText: 'Précédent',
+                                                nextText: 'Suivant',
+                                                currentText: 'Aujourd\'hui',
+                                                minDate: 0,
+                                                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                                                    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                                                monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin',
+                                                    'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+                                                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                                                dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+                                                dayNamesMin: ['Dim.','Lun.','Mar.','Mer.','Jeu.','Ven.','Sam.'],
+                                                weekHeader: 'Sem.',
+                                                dateFormat: 'dd/mm/yy',
+                                                firstDay: 1,
+                                                isRTL: false,
+                                                showMonthAfterYear: false,
+                                                yearSuffix: ''};
+                                            $.datepicker.setDefaults($.datepicker.regional['fr']);
+                                            $( "#datepicker" ).datepicker({selectable:true, beforeShowDay: setCustomDate });
+                                        });
+                                    });
                                                               
-            function setCustomDate(date) {
+                                    function setCustomDate(date) {
           
-                var d = new Date(date);
-                var n = d.getDay();
-                var out = [];
-<?php
-//pas propre !!!!
-if (!empty($aDaysToHide)) {
-    foreach ($aDaysToHide as $iDateNum) {
-        ?>
-                        out.push(<?php echo $iDateNum ?>);
-        <?php
-    }
-}
-?>
-        var result =[];
-        if(out.length==0){
-            result.push(true);
-        }else{
+                                        var d = new Date(date);
+                                        var n = d.getDay();
+                                        var out = [];
+                <?php
+                //pas propre !!!!
+                if (!empty($aDaysToHide)) {
+                    foreach ($aDaysToHide as $iDateNum) {
+                        ?>
+                                    out.push(<?php echo $iDateNum ?>);
+                                <?php
+                            }
+                        }
+                        ?>
+                    var result =[];
+                    if(out.length==0){
+                        result.push(true);
+                    }else{
 
-            if(out.indexOf(n)>=0){
-                result.push(false);
-            }else{
-                result.push(true);
-            }
-        }
-        return result;
-    }
+                        if(out.indexOf(n)>=0){
+                            result.push(false);
+                        }else{
+                            result.push(true);
+                        }
+                    }
+                    return result;
+                }
       
-        </script>
+                                </script>
 
-    </body>
-</html>
+                                </body>
+                                </html>
 

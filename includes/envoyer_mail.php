@@ -22,7 +22,7 @@ $contenu .= "</head> \n";
 $contenu .= "<body> \n";
 $contenu .= stripslashes($_POST['message']);
 if (!empty($rand)) {
-    $contenu .= '. Cliquez sur le lien pour gérer la reservation <br />';
+    $contenu .= 'Cliquez sur le lien pour valider la reservation <br />';
     $contenu .= 'http://uniiti.fr/confirm-r/'.$rand;
 }
 $contenu .= "<BR/><BR/>L'équipe UNIITI vous remercie pour votre confiance.\n";
