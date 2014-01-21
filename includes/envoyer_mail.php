@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: http://www.coiffeurstudio17.fr/');
 function encodeObjet($objet) {
     $objet = '=?UTF-8?B?' . base64_encode($objet) . '?=';
     return $objet;

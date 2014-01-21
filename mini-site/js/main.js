@@ -99,7 +99,7 @@ $(document).ready(function() {
     });
 
     $('#next_step3').click(function(){
-                $('#reservation-final-step-date').html($( "#datepicker" ).val());
+        $('#reservation-final-step-date').html($( "#datepicker" ).val());
 
         $('#step3').animate({
             opacity:'0'
@@ -130,10 +130,10 @@ $(document).ready(function() {
         if(isRdv){
             var message = 'Rendez-vous pour '+nombreResa+' personnes, le '+date+' à '+horaireResa+'.  Client : '+nom+' '+prenom+'. Email : '+email+'. Tel : '+telephone+'.'
             var sujet = 'Prise de rendez-vous pour '+nombreResa+' personnes, le '+date+' à '+horaireResa;
-    }else{
+        }else{
             var message = 'Une réservation pour '+nombreResa+' personnes, le '+date+' à '+horaireResa+'.  Client : '+nom+' '+prenom+'. Email : '+email+'. Tel : '+telephone+'.'
             var sujet = 'Réservation pour '+nombreResa+' personnes, le '+date+' à '+horaireResa;
-    }
+        }
         var data = {
             step : "4",
             id_enseigne : enseigne_id,
@@ -167,26 +167,26 @@ $(document).ready(function() {
         };
                 
         $.ajax({
-            async : false,
+            async : true,
             type:"POST",
             url : "http://uniiti.fr/includes/envoyer_mail.php",
             data : data,
             success: function(data){
                 alert(data.result);
-                $.ajax({
-                    async : false,
-                    type:"POST",
-                    url : "http://uniiti.fr/includes/envoyer_mail.php",
-                    data : dataClient,
-                    success: function(data2){
-                        if(data2.result != null){
-                           alert(data2.result) 
-                        }else{
-                           alert("une erreur s'est produite lors de l'enregistrement de votre réservation."); 
-                        }
-                    },
-                    error: function() {}
-                });
+            },
+            error: function() {}
+        });
+        $.ajax({
+            async : true,
+            type:"POST",
+            dataType: 'json',
+            url : "http://uniiti.fr/includes/envoyer_mail.php",
+            success: function(data2){
+                if(data2.result != null){
+                    alert(data2.result) 
+                }else{
+                    alert("une erreur s'est produite lors de l'enregistrement de votre réservation."); 
+                }
             },
             error: function() {}
         });
